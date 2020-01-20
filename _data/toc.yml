@@ -34,54 +34,30 @@
 - header: Lectures
 
 - url: /courseware/Lecture01
-- title: Number 2
-  url: /courseware/Lecture02
-- title: Number 3
-  url: /courseware/Lecture03
-- title: Number 4
-  url: /courseware/Lecture04
-- title: Number 5
-  url: /courseware/Lecture05
-- title: Number 6
-  url: /courseware/Lecture06
-- title: Number 7
-  url: /courseware/Lecture07
-- title: Number 8
-  url: /courseware/Lecture08
-- title: Number 9
-  url: /courseware/Lecture09
-- title: Number 10
-  url: /courseware/Lecture10
-- title: Number 11
-  url: /courseware/Lecture11
-- title: Number 12
-  url: /courseware/Lecture12
-- title: Number 13
-  url: /courseware/Lecture13
-- title: Number 14
-  url: /courseware/Lecture14
-- title: Number 15
-  url: /courseware/Lecture15
-- title: Number 16
-  url: /courseware/Lecture16
-- title: Number 17
-  url: /courseware/Lecture17
-- title: Number 18
-  url: /courseware/Lecture18
-- title: Number 19
-  url: /courseware/Lecture19
-- title: Number 20
-  url: /courseware/Lecture20
-- title: Number 21
-  url: /courseware/Lecture21
-- title: Number 22
-  url: /courseware/Lecture22
-- title: Number 23
-  url: /courseware/Lecture23
-- title: Number 24
-  url: /courseware/Lecture24
-- title: Number 25
-  url: /courseware/Lecture25
+- url: /courseware/Lecture02
+- url: /courseware/Lecture03
+- url: /courseware/Lecture04
+- url: /courseware/Lecture05
+- url: /courseware/Lecture06
+- url: /courseware/Lecture07
+- url: /courseware/Lecture08
+- url: /courseware/Lecture09
+- url: /courseware/Lecture10
+- url: /courseware/Lecture11
+- url: /courseware/Lecture12
+- url: /courseware/Lecture13
+- url: /courseware/Lecture14
+- url: /courseware/Lecture15
+- url: /courseware/Lecture16
+- url: /courseware/Lecture17
+- url: /courseware/Lecture18
+- url: /courseware/Lecture19
+- url: /courseware/Lecture20
+- url: /courseware/Lecture21
+- url: /courseware/Lecture22
+- url: /courseware/Lecture23
+- url: /courseware/Lecture24
+- url: /courseware/Lecture25
 
 - divider: true
 - header: Assignments
