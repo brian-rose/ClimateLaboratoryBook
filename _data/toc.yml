@@ -16,8 +16,7 @@
 # - divider: true  # Will insert a divider in the sidebar
 # - header: My Header  # Will insert a header with no link in the sidebar
 
-- title: Title Page
-  url: /titlepage
+- url: /titlepage
   not_numbered: true
 
 - title: Preamble
