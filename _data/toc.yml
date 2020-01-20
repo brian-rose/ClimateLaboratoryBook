@@ -33,8 +33,7 @@
 - divider: true
 - header: Lectures
 
-- title: Number 1
-  url: /courseware/Lecture01
+- url: /courseware/Lecture01
 - title: Number 2
   url: /courseware/Lecture02
 - title: Number 3
