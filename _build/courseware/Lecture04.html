@@ -1,0 +1,1572 @@
+---
+redirect_from:
+  - "/courseware/lecture04"
+interact_link: content/courseware/Lecture04.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 4
+pagenum: 7
+prev_page:
+  url: /courseware/Lecture03.html
+next_page:
+  url: /courseware/Lecture05.html
+suffix: .ipynb
+search: model climlab here climate state using id process forward section sub com brian rose temperature called github implement zero dimensional tau dictionary lets equilibrium change albany processes code ts single variables our current information timestep step course ams version www atmos edu models python modeling collection class complex also appropriate classes easily run source latest found install doing conda c energy balance recall going exact same convenience access object ebm its well methods steps take colder why diagnostics store scenario want investigate transmissitivity atmosphere albedo parameter property subprocess without resources notes software talk gave e not facstaff brose index national
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 4</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Building-simple-climate-models-using-climlab">Building simple climate models using <code>climlab</code><a class="anchor-link" href="#Building-simple-climate-models-using-climlab"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-Introducing-climlab">1. Introducing <code>climlab</code><a class="anchor-link" href="#1.-Introducing-climlab"> </a></h2><hr>
+<p><code>climlab</code> is a python package for process-oriented climate modeling.</p>
+<p>It is based on a very general concept of a model as a collection of individual, 
+interacting processes. <code>climlab</code> defines a base class called <code>Process</code>, which
+can contain an arbitrarily complex tree of sub-processes (each also some 
+sub-class of <code>Process</code>). Every climate process (radiative, dynamical, 
+physical, turbulent, convective, chemical, etc.) can be simulated as a stand-alone
+process model given appropriate input, or as a sub-process of a more complex model. 
+New classes of model can easily be defined and run interactively by putting together an
+appropriate collection of sub-processes.</p>
+<p><code>climlab</code> is an open-source community project. The latest code can always be found on <code>github</code>:</p>
+<p><a href="https://github.com/brian-rose/climlab">https://github.com/brian-rose/climlab</a></p>
+<p>You can install <code>climlab</code> by doing</p>
+
+<pre><code>conda install -c conda-forge climlab</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">climlab</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Using-climlab-to-implement-the-zero-dimensional-energy-balance-model">2. Using <code>climlab</code> to implement the zero-dimensional energy balance model<a class="anchor-link" href="#2.-Using-climlab-to-implement-the-zero-dimensional-energy-balance-model"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that we have worked with a zero-dimensional Energy Balance Model</p>
+$$ C \frac{dT_s}{dt} = (1-\alpha) Q - \tau \sigma T_s^4 $$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we are going to implement this exact model using <code>climlab</code>.</p>
+<p>Yes, we have already written code to implement this model, but we are going to repeat this effort here as a way of learning how to use <code>climlab</code>.</p>
+<p>There are tools within <code>climlab</code> to implement much more complicated models, but the basic interface will be the same.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a zero-dimensional domain with a single surface temperature</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">surface_state</span><span class="p">(</span><span class="n">num_lat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># a single point</span>
+                              <span class="n">water_depth</span> <span class="o">=</span> <span class="mf">100.</span><span class="p">,</span>  <span class="c1"># 100 meters slab of water (sets the heat capacity)</span>
+                             <span class="p">)</span>
+<span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([[32.]])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we have created a dictionary called <code>state</code> with a single item called <code>Ts</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[32.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This dictionary holds the state variables for our model -- which is this case is a single number!  It is a <strong>temperature in degrees Celsius</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For convenience, we can access the same data as an attribute (which lets us use tab-autocomplete when doing interactive work):</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">state</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[32.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is also possible to see this <code>state</code> dictionary as an <code>xarray.Dataset</code> object:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:       (depth: 1, depth_bounds: 2, lat: 1, lat_bounds: 2)
+Coordinates:
+  * depth         (depth) float64 50.0
+  * lat           (lat) float64 0.0
+  * depth_bounds  (depth_bounds) float64 0.0 100.0
+  * lat_bounds    (lat_bounds) float64 -90.0 90.0
+Data variables:
+    Ts            (depth, lat) float64 32.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  create the longwave radiation process</span>
+<span class="n">olr</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">Boltzmann</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;OutgoingLongwave&#39;</span><span class="p">,</span>
+                                  <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
+                                  <span class="n">tau</span> <span class="o">=</span> <span class="mf">0.612</span><span class="p">,</span>
+                                  <span class="n">eps</span> <span class="o">=</span> <span class="mf">1.</span><span class="p">,</span>
+                                  <span class="n">timestep</span> <span class="o">=</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mf">30.</span><span class="p">)</span>
+<span class="c1">#  Look at what we just created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">olr</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.radiation.boltzmann.Boltzmann&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1, 1) 
+The subprocess tree: 
+OutgoingLongwave: &lt;class &#39;climlab.radiation.boltzmann.Boltzmann&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  create the shortwave radiation process</span>
+<span class="n">asr</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">SimpleAbsorbedShortwave</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;AbsorbedShortwave&#39;</span><span class="p">,</span>
+                                                <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
+                                                <span class="n">insolation</span><span class="o">=</span><span class="mf">341.3</span><span class="p">,</span> 
+                                                <span class="n">albedo</span><span class="o">=</span><span class="mf">0.299</span><span class="p">,</span>
+                                                <span class="n">timestep</span> <span class="o">=</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mf">30.</span><span class="p">)</span>
+<span class="c1">#  Look at what we just created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">asr</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1, 1) 
+The subprocess tree: 
+AbsorbedShortwave: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  couple them together into a single model</span>
+<span class="n">ebm</span> <span class="o">=</span> <span class="n">olr</span> <span class="o">+</span> <span class="n">asr</span>
+<span class="c1">#  Give the parent process name</span>
+<span class="n">ebm</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;EnergyBalanceModel&#39;</span>
+<span class="c1">#  Examine the model object</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ebm</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1, 1) 
+The subprocess tree: 
+EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   OutgoingLongwave: &lt;class &#39;climlab.radiation.boltzmann.Boltzmann&#39;&gt;
+   AbsorbedShortwave: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The object called <code>ebm</code> here is the entire model -- including its current state (the temperature <code>Ts</code>) as well as all the methods needed to integrated forward in time!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The current model state, accessed two ways:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([[32.]])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[32.]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is some internal information about the timestep of the model:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ebm</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="s1">&#39;timestep&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ebm</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="s1">&#39;steps&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2592000.0
+0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This says the timestep is 2592000 seconds (30 days!), and the model has taken 0 steps forward so far.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To take a single step forward:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[31.61786227]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The model got colder!</p>
+<p>To see why, let's look at some useful diagnostics computed by this model:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">diagnostics</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;OLR&#39;: Field([[300.896072]]), &#39;ASR&#39;: 239.25130000000004}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is another dictionary, now with two items. They should make sense to you.</p>
+<p>Just like the <code>state</code> variables, we can access these <code>diagnostics</code> variables as attributes:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[300.896072]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">ASR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>239.25130000000004</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So why did the model get colder in the first timestep?</p>
+<p>What do you think will happen next?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Run-the-zero-dimensional-EBM-out-to-equilibrium">3. Run the zero-dimensional EBM out to equilibrium<a class="anchor-link" href="#3.-Run-the-zero-dimensional-EBM-out-to-equilibrium"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's look at how the model adjusts toward its equilibrium temperature.</p>
+<p>Exercise:</p>
+<ul>
+<li>Using a <code>for</code> loop, take 500 steps forward with this model</li>
+<li>Store the current temperature at each step in an array</li>
+<li>Make a graph of the temperature as a function of time</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-A-climate-change-scenario">4. A climate change scenario<a class="anchor-link" href="#4.-A-climate-change-scenario"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose we want to investigate the effects of a small decrease in the transmissitivity of the atmosphere <code>tau</code>.</p>
+<p>Previously we used the zero-dimensional model to investigate a <strong>hypothetical climate change scenario</strong> in which:</p>
+<ul>
+<li>the transmissitivity of the atmosphere <code>tau</code> decreases to 0.57</li>
+<li>the planetary albedo increases to 0.32</li>
+</ul>
+<p>How would we do that using <code>climlab</code>?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that the model is comprised of two sub-components:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">process</span> <span class="ow">in</span> <span class="n">ebm</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">process</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>OutgoingLongwave
+climlab Process of type &lt;class &#39;climlab.radiation.boltzmann.Boltzmann&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1, 1) 
+The subprocess tree: 
+OutgoingLongwave: &lt;class &#39;climlab.radiation.boltzmann.Boltzmann&#39;&gt;
+
+AbsorbedShortwave
+climlab Process of type &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1, 1) 
+The subprocess tree: 
+AbsorbedShortwave: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The parameter <code>tau</code> is a property of the <code>OutgoingLongwave</code> subprocess:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;OutgoingLongwave&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tau</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.612</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and the parameter <code>albedo</code> is a property of the <code>AbsorbedShortwave</code> subprocess:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;AbsorbedShortwave&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">albedo</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.299</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's make an exact clone of our model and then change these two parameters:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">ebm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ebm2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1, 1) 
+The subprocess tree: 
+EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   OutgoingLongwave: &lt;class &#39;climlab.radiation.boltzmann.Boltzmann&#39;&gt;
+   AbsorbedShortwave: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;OutgoingLongwave&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="mf">0.57</span>
+<span class="n">ebm2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;AbsorbedShortwave&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">albedo</span> <span class="o">=</span> <span class="mf">0.32</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now our model is out of equilibrium and the climate will change!</p>
+<p>To see this without actually taking a step forward:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Computes diagnostics based on current state but does not change the state</span>
+<span class="n">ebm2</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="n">ebm2</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">ebm2</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[-46.76117229]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Shoud the model warm up or cool down?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Well, we can find out:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[31.61786227]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[31.32798841]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Automatic-timestepping">Automatic timestepping<a class="anchor-link" href="#Automatic-timestepping"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Often we want to integrate a model forward in time to equilibrium without needing to store information about the transient state.</p>
+<p><code>climlab</code> offers convenience methods to do this easily:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm3</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">ebm2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm3</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 608 steps, 18262.11 days, or 50 years.
+Total elapsed time is 50.10373938170343 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  What is the current temperature?</span>
+<span class="n">ebm3</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[17.94837835]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  How close are we to energy balance?</span>
+<span class="n">ebm3</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">ebm3</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[-0.00021699]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  We should be able to accomplish the exact same thing with explicit timestepping</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">608</span><span class="p">):</span>
+    <span class="n">ebm2</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[17.94837835]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ebm2</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">ebm2</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([[-0.00021699]])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Further-climlab-resources">5. Further <code>climlab</code> resources<a class="anchor-link" href="#5.-Further-climlab-resources"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will be using <code>climlab</code> extensively throughout this course. Lots of examples of more advanced usage are found here in the course notes. Here are some links to other resources:</p>
+<ul>
+<li>The documentation is hosted at <a href="https://climlab.readthedocs.io/en/latest/">https://climlab.readthedocs.io/en/latest/</a></li>
+<li>Source code (for both software and docs) are at <a href="https://github.com/brian-rose/climlab">https://github.com/brian-rose/climlab</a></li>
+<li><a href="https://ams.confex.com/ams/98Annual/videogateway.cgi/id/44948?recordingid=44948">A video of a talk I gave about <code>climlab</code> at the 2018 AMS Python symposium</a> (January 2018)</li>
+<li><a href="https://livealbany-my.sharepoint.com/:f:/g/personal/brose_albany_edu/EuA2afxy5-hNkzNhHgkp_HYBYcJumR3l6ukRVIEl4W3MmA?e=sbXN0d">Slides from a talk and demonstration that I gave in Febrary 2018</a> (The Apple Keynote version contains some animations that will not show up in the pdf version)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Jul 03 14:49:48 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

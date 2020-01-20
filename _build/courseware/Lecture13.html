@@ -1,0 +1,1415 @@
+---
+redirect_from:
+  - "/courseware/lecture13"
+interact_link: content/courseware/Lecture13.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 13
+pagenum: 16
+prev_page:
+  url: /courseware/Lecture12.html
+next_page:
+  url: /courseware/Lecture14.html
+suffix: .ipynb
+search: warming models ocean co climate heat model global equilibrium years year going transient different lapse gamma rate uptake deep surface albany radiative our temperatures temperature its m levels www atmos edu change set between here column every km just level facstaff brose think feedbacks control both build feedback humidity k much under rates larger sensitive not identical coupled scenario increases future concentration x forcing blue red pre industrial curve classes preindustrial brian rose toy notes discussed slowly effects sensitivity timescales convective single begin same done times before vapor profile into relative where assume ref critical decrease height why new very
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 13</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Toy-models-of-transient-warming">Toy models of transient warming<a class="anchor-link" href="#Toy-models-of-transient-warming"> </a></h1><h2 id="Exploring-the-rate-of-climate-change">Exploring the rate of climate change<a class="anchor-link" href="#Exploring-the-rate-of-climate-change"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the last set of notes and homework we discussed differences between <strong>equilibrium warming</strong> and <strong>transient warming</strong> due to the slowly-evolving effects of ocean heat uptake.</p>
+<p>Here we are going to look at some toy climate models and think about relationships between climate sensitivity, ocean heat uptake, and timescales.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Two-versions-of-Radiative-Convective-Equilibrium-with-different-climate-sensitivities">Two versions of Radiative-Convective Equilibrium with different climate sensitivities<a class="anchor-link" href="#Two-versions-of-Radiative-Convective-Equilibrium-with-different-climate-sensitivities"> </a></h2><p>We are going set up two different single-column model with different lapse rate feedbacks.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We begin by repeating the same setup we have done several times before, building a single-column RCM with prescribed water vapor profile.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">climlab</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Get the water vapor data</span>
+<span class="c1">#datapath = &quot;http://ramadda.atmos.albany.edu:8080/repository/opendap/latest/Top/Users/BrianRose/CESM_runs/&quot;</span>
+<span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
+<span class="c1">#endstr = &quot;/entry.das&quot;</span>
+<span class="n">atm_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_1850_f19/som_1850_f19.cam.h0.clim.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Qglobal</span> <span class="o">=</span> <span class="p">((</span><span class="n">atm_control</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="p">)</span><span class="o">/</span><span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Make a model on same vertical domain as the GCM</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">column_state</span><span class="p">(</span><span class="n">lev</span><span class="o">=</span><span class="n">Qglobal</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="n">water_depth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">steps_per_year</span> <span class="o">=</span> <span class="mi">90</span>
+<span class="n">deltat</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">seconds_per_year</span><span class="o">/</span><span class="n">steps_per_year</span>
+<span class="n">rad</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">RRTMG</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Radiation&#39;</span><span class="p">,</span>
+                              <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
+                              <span class="n">specific_humidity</span><span class="o">=</span><span class="n">Qglobal</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                              <span class="n">timestep</span> <span class="o">=</span> <span class="n">deltat</span><span class="p">,</span>
+                              <span class="n">albedo</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span>  <span class="c1"># tuned to give reasonable ASR for reference cloud-free model</span>
+                             <span class="p">)</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">ConvectiveAdjustment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Convection&#39;</span><span class="p">,</span>
+                                               <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span>
+                                               <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span>
+                                               <span class="n">timestep</span><span class="o">=</span><span class="n">rad</span><span class="o">.</span><span class="n">timestep</span><span class="p">,)</span>
+<span class="n">rcm_control</span> <span class="o">=</span> <span class="n">rad</span> <span class="o">+</span> <span class="n">conv</span>
+<span class="n">rcm_control</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Radiative-Convective Model&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Integrate the control model out to equilibrium.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rcm_control</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">rcm_control</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 450 steps, 1826.2110000000002 days, or 5 years.
+Total elapsed time is 5.000000000000044 years.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([7.49372842e-06])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now let's make two copies of this model and keep them in a list:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">slab_control</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">slab_control</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rcm_control</span><span class="p">)</span>
+<span class="n">slab_control</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">rcm_control</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are going to <strong>double CO2 in both models</strong> and label them as high and low sensitivity. We will build in <strong>different feedbacks</strong> into our two columns.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">slab_2x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slab_control</span><span class="p">)):</span>
+    <span class="n">rcm_2xCO2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">rcm_control</span><span class="p">)</span>
+    <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">2.</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;High-sensitivity RCM&#39;</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Low-sensitivity RCM&#39;</span>
+    <span class="n">slab_2x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rcm_2xCO2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will implement a water vapor feedback as we have done before: by recomputing the specific humidity at every timestep using the current temperatures so that the <strong>relative humidity stays fixed</strong>.</p>
+<p>We begin by computing the relative humidity profile from the control climate.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  actual specific humidity</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">specific_humidity</span>
+<span class="c1">#  saturation specific humidity (a function of temperature and pressure)</span>
+<span class="n">qsat</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">thermo</span><span class="o">.</span><span class="n">qsat</span><span class="p">(</span><span class="n">rcm_control</span><span class="o">.</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+<span class="c1">#  Relative humidity</span>
+<span class="n">rh</span> <span class="o">=</span> <span class="n">q</span><span class="o">/</span><span class="n">qsat</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now here is where our two models will differ:</p>
+<p>We are going to assign them <strong>different lapse rate feedbacks</strong>.</p>
+<p>Similar to the exercise in Assignment 3, we are going to assume</p>
+$$ \Gamma = \Gamma_{ref} + \gamma * \Delta T_s $$<p>where $\Gamma_{ref} = 6.5 K/km$ is the critical lapse rate in our control climate, and $\gamma$ is a number in units of km$^{-1}$ that determines how much the critical lapse rate should change per degree warming.</p>
+<p>We are going to investigate two different assumptions:</p>
+<ul>
+<li>temperatures decrease <strong>more</strong> with height under global warming, $\gamma = +0.3$ km$^{-1}$</li>
+<li>temperature decrease <strong>less</strong> with height under global warming, $\gamma = -0.3$ km$^{-1}$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lapse_change_factor</span> <span class="o">=</span> <span class="p">[</span><span class="o">+</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slab_2x</span><span class="p">)):</span>
+    <span class="n">rcm_2xCO2</span> <span class="o">=</span> <span class="n">slab_2x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Integrating &#39;</span> <span class="o">+</span> <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">steps_per_year</span><span class="p">):</span>
+        <span class="c1"># At every timestep</span>
+        <span class="c1"># we calculate the new saturation specific humidity for the new temperature</span>
+        <span class="c1">#  and change the water vapor in the radiation model</span>
+        <span class="c1">#  so that relative humidity is always the same</span>
+        <span class="n">qsat</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">thermo</span><span class="o">.</span><span class="n">qsat</span><span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+        <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">specific_humidity</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">rh</span> <span class="o">*</span> <span class="n">qsat</span>
+        <span class="c1">#  We also adjust the critical lapse rate in our convection model</span>
+        <span class="n">DeltaTs</span> <span class="o">=</span> <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">Ts</span>
+        <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Convection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">adj_lapse_rate</span> <span class="o">=</span> <span class="mf">6.5</span> <span class="o">+</span> <span class="n">lapse_change_factor</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaTs</span>
+        <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The TOA imbalance is </span><span class="si">%0.5f</span><span class="s1"> W/m2&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">ASR</span><span class="o">-</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">OLR</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The ECS is </span><span class="si">%0.3f</span><span class="s1"> K&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">Ts</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating High-sensitivity RCM
+The TOA imbalance is -0.00006 W/m2
+The ECS is 3.559 K
+
+Integrating Low-sensitivity RCM
+The TOA imbalance is 0.00010 W/m2
+The ECS is 2.217 K
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So Model 0 (in which the lapse rates have gotten larger) is <strong>more sensitive</strong> than Model 1 (smaller lapse rates). It has a larger system gain, or a more positive overall climate feedback.</p>
+<p>Although this is not the main topic of today's lesson, it's still interesting to think about why the lapse rates affect the climate sensivitity in this way...</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Time-to-reach-equilibrium">Time to reach equilibrium<a class="anchor-link" href="#Time-to-reach-equilibrium"> </a></h2><p>These models reached their new equilibria in just a few years. Why is that? Because they have very little heat capacity:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">slab_control</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">depth_bounds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0. , 2.5])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The "ocean" in these models is just a "slab" of water 2.5 meter deep.</p>
+<p>That's all we need to calculate the equilibrium temperatures, but it tells us nothing about the timescales for climate change in the real world.</p>
+<p>For this, we need a deep ocean that can <strong>exchange heat with the surface</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transient-warming-scenarios-in-column-models-with-ocean-heat-uptake">Transient warming scenarios in column models with ocean heat uptake<a class="anchor-link" href="#Transient-warming-scenarios-in-column-models-with-ocean-heat-uptake"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are now going to build two new models. The atmosphere (radiative-convective model) will be identical to the two "slab" models we just used. But these will be coupled to a <strong>column of ocean water</strong> 2000 m deep!</p>
+<p>We will <strong>parameterize the ocean heat uptake</strong> as a diffusive mixing process. Much like when we discussed the diffusive parameterization for atmospheric heat transport -- we are assuming that ocean dynamics result in a vertical mixing of heat from warm to cold temperatures.</p>
+<p>The following code will set this up for us.</p>
+<p>We will make one more assumption, just for the sake of illustration:</p>
+<p><em>The more sensitive model (Model 0) is also more efficent at taking up heat into the deep ocean</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Create the domains</span>
+<span class="n">ocean_bounds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2010.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">)</span>
+<span class="n">depthax</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">axis_type</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">ocean_bounds</span><span class="p">)</span>
+<span class="n">ocean</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">Ocean</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="n">depthax</span><span class="p">)</span>
+<span class="n">atm</span> <span class="o">=</span> <span class="n">slab_control</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Tatm</span><span class="o">.</span><span class="n">domain</span>
+
+<span class="c1">#  Model 0 has a higher ocean heat diffusion coefficient -- </span>
+<span class="c1">#  a more efficent deep ocean heat sink</span>
+<span class="n">ocean_diff</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.E-4</span><span class="p">,</span> <span class="mf">3.5E-4</span><span class="p">]</span>
+
+<span class="c1">#  List of deep ocean models</span>
+<span class="n">deep</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">slab_control</span><span class="p">)):</span>
+    <span class="n">rcm_control</span> <span class="o">=</span> <span class="n">slab_control</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="c1">#  Create the state variables</span>
+    <span class="n">Tinitial_ocean</span> <span class="o">=</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">Ts</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">ocean</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">Tocean</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">Tinitial_ocean</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">domain</span><span class="o">=</span><span class="n">ocean</span><span class="p">)</span>
+    <span class="n">Tatm</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">Field</span><span class="p">(</span><span class="n">rcm_control</span><span class="o">.</span><span class="n">Tatm</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">domain</span><span class="o">=</span><span class="n">atm</span><span class="p">)</span>
+
+    <span class="c1">#  Surface temperature Ts is the upper-most grid box of the ocean</span>
+    <span class="n">Ts</span> <span class="o">=</span> <span class="n">Tocean</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">atm_state</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Tatm&#39;</span><span class="p">:</span> <span class="n">Tatm</span><span class="p">,</span> <span class="s1">&#39;Ts&#39;</span><span class="p">:</span> <span class="n">Ts</span><span class="p">}</span>
+    
+    <span class="n">rad</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">RRTMG</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Radiation&#39;</span><span class="p">,</span>
+                                  <span class="n">state</span><span class="o">=</span><span class="n">atm_state</span><span class="p">,</span> 
+                                  <span class="n">specific_humidity</span><span class="o">=</span><span class="n">Qglobal</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                                  <span class="n">timestep</span> <span class="o">=</span> <span class="n">deltat</span><span class="p">,</span>
+                                  <span class="n">albedo</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span>  
+                                 <span class="p">)</span>
+    <span class="n">conv</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">ConvectiveAdjustment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Convection&#39;</span><span class="p">,</span>
+                                                   <span class="n">state</span><span class="o">=</span><span class="n">atm_state</span><span class="p">,</span>
+                                                   <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span>
+                                                   <span class="n">timestep</span><span class="o">=</span><span class="n">rad</span><span class="o">.</span><span class="n">timestep</span><span class="p">,)</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">rad</span> <span class="o">+</span> <span class="n">conv</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;RCM with high sensitivity and efficient heat uptake&#39;</span>
+    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;RCM with low sensitivity and inefficient heat uptake&#39;</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s1">&#39;Tocean&#39;</span><span class="p">,</span> <span class="n">Tocean</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">dynamics</span><span class="o">.</span><span class="n">Diffusion</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Tocean&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">Tocean</span><span class="p">},</span> 
+                                <span class="n">K</span><span class="o">=</span><span class="n">ocean_diff</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> 
+                                <span class="n">diffusion_axis</span><span class="o">=</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span> 
+                                <span class="n">timestep</span><span class="o">=</span><span class="n">deltat</span> <span class="o">*</span> <span class="mi">10</span><span class="p">,)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Ocean Heat Uptake&#39;</span><span class="p">,</span> <span class="n">diff</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">deep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+
+climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Tatm: (26,) 
+  Ts: (1,) 
+  Tocean: (20,) 
+The subprocess tree: 
+RCM with high sensitivity and efficient heat uptake: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   Radiation: &lt;class &#39;climlab.radiation.rrtm.rrtmg.RRTMG&#39;&gt;
+      SW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_sw.RRTMG_SW&#39;&gt;
+      LW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_lw.RRTMG_LW&#39;&gt;
+   Convection: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+   Ocean Heat Uptake: &lt;class &#39;climlab.dynamics.advection_diffusion.Diffusion&#39;&gt;
+
+
+Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+
+climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Tatm: (26,) 
+  Ts: (1,) 
+  Tocean: (20,) 
+The subprocess tree: 
+RCM with low sensitivity and inefficient heat uptake: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   Radiation: &lt;class &#39;climlab.radiation.rrtm.rrtmg.RRTMG&#39;&gt;
+      SW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_sw.RRTMG_SW&#39;&gt;
+      LW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_lw.RRTMG_LW&#39;&gt;
+   Convection: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+   Ocean Heat Uptake: &lt;class &#39;climlab.dynamics.advection_diffusion.Diffusion&#39;&gt;
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="An-idealized-transient-global-warming-scenario:-CO2-increases-by-1%/year-to-doubling.">An idealized transient global warming scenario: CO2 increases by 1%/year to doubling.<a class="anchor-link" href="#An-idealized-transient-global-warming-scenario:-CO2-increases-by-1%/year-to-doubling."> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now consider the CO2 increase. In the real world, CO2 has been increasing every year since the beginning of industrialization. Future CO2 concentrations depend on collective choices made by human societies about how much fossil fuel to extract and burn.</p>
+<p>We will set up a simple scenario. Suppose that CO2 increases by 1% of its existing concentration every year <strong>until it reaches 2x its initial concentration</strong>. This takes about 70 years.</p>
+<p>After 70 years, we assume that all anthropogenic emissions, and CO2 concentration is <strong>stabilized</strong> at the 2x level.</p>
+<p>What happens to the surface temperature?</p>
+<p>How do the histories of surface and deep ocean temperature compare in our two models?</p>
+<p>We are going to simulation <strong>400 years of transient global warming</strong> in the two models.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+This code will take a long time to run! While it's running, we'll think about what the result might look like
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_years</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Tsarray</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Tocean</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">netrad</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deep</span><span class="p">)):</span>
+    <span class="n">thisTs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">thisnetrad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">thisTocean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Tocean</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">thisTs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Ts</span>
+    <span class="n">thisnetrad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">OLR</span>
+    <span class="n">thisTocean</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Tocean</span>
+    <span class="n">Tsarray</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisTs</span><span class="p">)</span>
+    <span class="n">Tocean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisTocean</span><span class="p">)</span>
+    <span class="n">netrad</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisnetrad</span><span class="p">)</span>
+    
+<span class="n">CO2initial</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span>
+<span class="n">CO2array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">CO2array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">CO2initial</span> <span class="o">*</span> <span class="mf">1E6</span>
+
+<span class="c1">#  Increase CO2 by 1% / year for 70 years (until doubled), and then hold constant</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_years</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">deep</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">CO2initial</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">deep</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">1.01</span>
+    <span class="n">CO2array</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1E6</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Year &#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;, CO2 mixing ratio is &#39;</span><span class="p">,</span> <span class="n">CO2array</span><span class="p">[</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39; ppm.&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">deep</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_per_year</span><span class="p">):</span>            
+            <span class="n">qsat</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">thermo</span><span class="o">.</span><span class="n">qsat</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Radiation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">specific_humidity</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">rh</span> <span class="o">*</span> <span class="n">qsat</span>
+            <span class="n">DeltaTs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">slab_control</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Ts</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Convection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">adj_lapse_rate</span> <span class="o">=</span> <span class="mf">6.5</span> <span class="o">+</span> <span class="n">lapse_change_factor</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaTs</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+            
+            <span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Ts</span>
+            <span class="n">Tocean</span><span class="p">[</span><span class="n">n</span><span class="p">][:,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Tocean</span>
+            <span class="n">netrad</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Year  1 , CO2 mixing ratio is  351.47999999999996  ppm.
+Year  2 , CO2 mixing ratio is  354.9948  ppm.
+Year  3 , CO2 mixing ratio is  358.54474799999997  ppm.
+Year  4 , CO2 mixing ratio is  362.13019548  ppm.
+Year  5 , CO2 mixing ratio is  365.7514974348  ppm.
+Year  6 , CO2 mixing ratio is  369.409012409148  ppm.
+Year  7 , CO2 mixing ratio is  373.1031025332395  ppm.
+Year  8 , CO2 mixing ratio is  376.8341335585719  ppm.
+Year  9 , CO2 mixing ratio is  380.60247489415764  ppm.
+Year  10 , CO2 mixing ratio is  384.4084996430992  ppm.
+Year  11 , CO2 mixing ratio is  388.2525846395302  ppm.
+Year  12 , CO2 mixing ratio is  392.1351104859255  ppm.
+Year  13 , CO2 mixing ratio is  396.0564615907848  ppm.
+Year  14 , CO2 mixing ratio is  400.01702620669266  ppm.
+Year  15 , CO2 mixing ratio is  404.01719646875955  ppm.
+Year  16 , CO2 mixing ratio is  408.05736843344715  ppm.
+Year  17 , CO2 mixing ratio is  412.1379421177816  ppm.
+Year  18 , CO2 mixing ratio is  416.2593215389594  ppm.
+Year  19 , CO2 mixing ratio is  420.421914754349  ppm.
+Year  20 , CO2 mixing ratio is  424.6261339018925  ppm.
+Year  21 , CO2 mixing ratio is  428.87239524091143  ppm.
+Year  22 , CO2 mixing ratio is  433.16111919332053  ppm.
+Year  23 , CO2 mixing ratio is  437.4927303852537  ppm.
+Year  24 , CO2 mixing ratio is  441.8676576891063  ppm.
+Year  25 , CO2 mixing ratio is  446.2863342659973  ppm.
+Year  26 , CO2 mixing ratio is  450.7491976086573  ppm.
+Year  27 , CO2 mixing ratio is  455.25668958474387  ppm.
+Year  28 , CO2 mixing ratio is  459.80925648059133  ppm.
+Year  29 , CO2 mixing ratio is  464.40734904539727  ppm.
+Year  30 , CO2 mixing ratio is  469.05142253585126  ppm.
+Year  31 , CO2 mixing ratio is  473.7419367612098  ppm.
+Year  32 , CO2 mixing ratio is  478.4793561288219  ppm.
+Year  33 , CO2 mixing ratio is  483.2641496901101  ppm.
+Year  34 , CO2 mixing ratio is  488.0967911870112  ppm.
+Year  35 , CO2 mixing ratio is  492.97775909888134  ppm.
+Year  36 , CO2 mixing ratio is  497.9075366898702  ppm.
+Year  37 , CO2 mixing ratio is  502.8866120567689  ppm.
+Year  38 , CO2 mixing ratio is  507.9154781773365  ppm.
+Year  39 , CO2 mixing ratio is  512.9946329591099  ppm.
+Year  40 , CO2 mixing ratio is  518.124579288701  ppm.
+Year  41 , CO2 mixing ratio is  523.3058250815881  ppm.
+Year  42 , CO2 mixing ratio is  528.5388833324039  ppm.
+Year  43 , CO2 mixing ratio is  533.824272165728  ppm.
+Year  44 , CO2 mixing ratio is  539.1625148873851  ppm.
+Year  45 , CO2 mixing ratio is  544.554140036259  ppm.
+Year  46 , CO2 mixing ratio is  549.9996814366216  ppm.
+Year  47 , CO2 mixing ratio is  555.4996782509878  ppm.
+Year  48 , CO2 mixing ratio is  561.0546750334977  ppm.
+Year  49 , CO2 mixing ratio is  566.6652217838326  ppm.
+Year  50 , CO2 mixing ratio is  572.3318740016709  ppm.
+Year  51 , CO2 mixing ratio is  578.0551927416877  ppm.
+Year  52 , CO2 mixing ratio is  583.8357446691045  ppm.
+Year  53 , CO2 mixing ratio is  589.6741021157957  ppm.
+Year  54 , CO2 mixing ratio is  595.5708431369536  ppm.
+Year  55 , CO2 mixing ratio is  601.5265515683232  ppm.
+Year  56 , CO2 mixing ratio is  607.5418170840064  ppm.
+Year  57 , CO2 mixing ratio is  613.6172352548465  ppm.
+Year  58 , CO2 mixing ratio is  619.753407607395  ppm.
+Year  59 , CO2 mixing ratio is  625.950941683469  ppm.
+Year  60 , CO2 mixing ratio is  632.2104511003037  ppm.
+Year  61 , CO2 mixing ratio is  638.5325556113066  ppm.
+Year  62 , CO2 mixing ratio is  644.9178811674196  ppm.
+Year  63 , CO2 mixing ratio is  651.3670599790938  ppm.
+Year  64 , CO2 mixing ratio is  657.8807305788848  ppm.
+Year  65 , CO2 mixing ratio is  664.4595378846738  ppm.
+Year  66 , CO2 mixing ratio is  671.1041332635205  ppm.
+Year  67 , CO2 mixing ratio is  677.8151745961557  ppm.
+Year  68 , CO2 mixing ratio is  684.5933263421173  ppm.
+Year  69 , CO2 mixing ratio is  691.4392596055384  ppm.
+Year  70 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  71 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  72 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  73 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  74 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  75 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  76 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  77 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  78 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  79 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  80 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  81 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  82 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  83 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  84 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  85 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  86 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  87 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  88 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  89 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  90 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  91 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  92 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  93 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  94 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  95 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  96 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  97 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  98 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  99 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  100 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  101 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  102 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  103 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  104 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  105 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  106 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  107 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  108 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  109 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  110 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  111 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  112 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  113 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  114 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  115 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  116 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  117 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  118 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  119 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  120 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  121 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  122 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  123 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  124 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  125 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  126 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  127 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  128 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  129 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  130 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  131 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  132 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  133 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  134 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  135 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  136 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  137 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  138 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  139 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  140 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  141 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  142 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  143 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  144 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  145 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  146 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  147 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  148 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  149 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  150 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  151 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  152 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  153 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  154 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  155 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  156 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  157 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  158 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  159 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  160 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  161 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  162 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  163 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  164 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  165 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  166 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  167 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  168 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  169 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  170 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  171 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  172 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  173 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  174 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  175 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  176 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  177 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  178 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  179 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  180 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  181 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  182 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  183 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  184 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  185 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  186 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  187 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  188 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  189 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  190 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  191 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  192 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  193 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  194 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  195 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  196 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  197 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  198 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  199 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  200 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  201 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  202 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  203 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  204 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  205 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  206 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  207 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  208 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  209 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  210 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  211 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  212 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  213 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  214 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  215 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  216 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  217 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  218 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  219 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  220 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  221 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  222 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  223 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  224 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  225 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  226 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  227 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  228 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  229 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  230 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  231 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  232 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  233 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  234 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  235 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  236 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  237 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  238 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  239 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  240 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  241 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  242 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  243 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  244 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  245 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  246 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  247 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  248 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  249 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  250 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  251 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  252 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  253 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  254 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  255 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  256 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  257 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  258 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  259 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  260 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  261 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  262 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  263 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  264 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  265 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  266 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  267 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  268 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  269 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  270 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  271 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  272 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  273 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  274 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  275 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  276 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  277 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  278 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  279 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  280 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  281 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  282 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  283 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  284 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  285 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  286 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  287 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  288 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  289 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  290 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  291 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  292 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  293 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  294 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  295 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  296 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  297 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  298 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  299 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  300 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  301 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  302 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  303 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  304 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  305 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  306 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  307 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  308 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  309 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  310 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  311 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  312 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  313 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  314 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  315 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  316 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  317 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  318 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  319 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  320 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  321 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  322 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  323 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  324 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  325 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  326 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  327 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  328 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  329 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  330 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  331 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  332 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  333 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  334 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  335 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  336 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  337 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  338 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  339 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  340 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  341 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  342 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  343 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  344 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  345 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  346 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  347 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  348 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  349 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  350 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  351 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  352 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  353 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  354 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  355 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  356 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  357 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  358 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  359 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  360 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  361 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  362 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  363 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  364 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  365 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  366 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  367 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  368 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  369 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  370 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  371 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  372 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  373 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  374 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  375 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  376 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  377 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  378 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  379 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  380 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  381 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  382 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  383 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  384 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  385 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  386 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  387 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  388 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  389 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  390 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  391 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  392 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  393 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  394 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  395 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  396 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  397 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  398 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  399 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">colorlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">]</span>
+<span class="n">co2color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span>
+
+<span class="n">num_axes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">deep</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num_axes</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+
+<span class="c1"># Twin the x-axis twice to make independent y-axes.</span>
+<span class="n">topaxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">twinx</span><span class="p">(),</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">twinx</span><span class="p">()]</span>
+
+<span class="c1"># Make some space on the right side for the extra y-axis.</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+
+<span class="c1"># Move the last y-axis spine over to the right by 10% of the width of the axes</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_position</span><span class="p">((</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+
+<span class="c1"># To make the border of the right-most axis visible, we need to turn the frame</span>
+<span class="c1"># on. This hides the other plots, however, so we need to turn its fill off.</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">slab_2x</span><span class="p">):</span>
+    <span class="n">topaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Ts</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">]),</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Surface temperature (K)&#39;</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Transient warming scenario: 1%/year CO2 increase to doubling, followed by CO2 stabilization&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Model 0&#39;</span><span class="p">,</span> <span class="s1">&#39;Model 1&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">CO2array</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">co2color</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;CO2 (ppm)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">co2color</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tl</span> <span class="ow">in</span> <span class="n">topaxes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+    <span class="n">tl</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">co2color</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">300.</span><span class="p">,</span> <span class="mf">1000.</span><span class="p">)</span>
+
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;TOA imbalance (W/m2)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">tl</span> <span class="ow">in</span> <span class="n">topaxes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
+    <span class="n">tl</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+
+<span class="n">contour_levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deep</span><span class="p">)):</span>
+    <span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">depth</span><span class="p">,</span> <span class="n">Tocean</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">levels</span><span class="o">=</span><span class="n">contour_levels</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">deep</span><span class="p">):</span>
+    <span class="n">topaxes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="n">topaxes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">netrad</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">deep</span><span class="p">)):</span>
+        <span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">depth</span><span class="p">,</span> <span class="n">Tocean</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">levels</span><span class="o">=</span><span class="n">contour_levels</span><span class="p">)</span>    
+<span class="n">topaxes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">CO2array</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">co2color</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mf">0.12</span><span class="p">)</span>
+<span class="n">cbar_ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cbar_ax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture13_29_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Transient-vs.-equilibrium-warming:-key-points">Transient vs. equilibrium warming: key points<a class="anchor-link" href="#Transient-vs.-equilibrium-warming:-key-points"> </a></h2><ul>
+<li>During the first 70 years, the radiative forcing goes up every year</li>
+<li>The warming in the two models is almost identical during this phase</li>
+<li>After year 70, the CO2 levels are stable and so the radiative forcing is no longer increasing</li>
+<li>Both models continue to warm for hundreds of years</li>
+<li>The difference between the two models become larger over time</li>
+<li>In either case, at the time of CO2 doubling the model has achieved only a fraction of its equilibrium surface warming.</li>
+<li>The difference between the warming at year 70 and the equilibrium warming is called the <strong>committed warming</strong>. It is the global warming associated with CO2 emissions that are <strong>already in the atmosphere</strong>.</li>
+<li>How do we know at year 70 what the committed warming is?  Are we on the blue or the red path? At year 70, have we achieved half or only a third of the eventual equilibrium warming?</li>
+<li>In our example, the more sensitive model also has more efficient ocean heat uptake, so the initial warming looks identical. </li>
+<li><strong>Uncertainties in both climate feedback processes and ocean heat uptake processes contribute to uncertainty in the rate of global warming</strong></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Results-from-comprehensive-coupled-GCMs">Results from comprehensive coupled GCMs<a class="anchor-link" href="#Results-from-comprehensive-coupled-GCMs"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fast-and-slow-components-of-the-warming">Fast and slow components of the warming<a class="anchor-link" href="#Fast-and-slow-components-of-the-warming"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This figure shows how a comprehensive coupled GCM responds to the same kind of idealized CO2 increase we have looked at above: CO2 increases at 1%/year for 70 years and is then held constant at twice the pre-industrial level (blue curve), or at 4x the pre-industrial level (red curve).</p>
+<p>The dashed curve show the <strong>ocean heat content</strong> continuing to rise slowly over thousands of years.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Yoshimori_transientwarming.png" width="400"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>M. Yoshimori, M. Watanabe, H. Shiogama, A. Oka, A. Abe-Ouchi, R. Ohgaito, and Y. Kamae. A review of progress towards understanding the transient global mean surface temperature response to radiative perturbation. Prog. Earth Planet. Sic., 3, 2016.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-happens-if-CO2-levels-are-abruptly-returned-to-pre-industrial-levels?">What happens if CO2 levels are abruptly returned to pre-industrial levels?<a class="anchor-link" href="#What-happens-if-CO2-levels-are-abruptly-returned-to-pre-industrial-levels?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, in a different model, we see the surface temperature change through the historical period (black) followed by a typical future global warming scenario (blue).</p>
+<p>The red curves show the effects of suddenly returning greenhouse gases to their preindustrial levels at various times in the future.</p>
+<p>The temperatures very quickly drop, but <strong>not back to the preindustrial values</strong>. Over time, the build-up of heat content in the deep ocean means that, even if CO2 levels revert to what they used to be, the climate remain quite a bit warmer for thousands of years.</p>
+<p>This has been referred to as the <strong>recalcitrant</strong> component of global warming, in analogy with stubborn medical conditions that are difficult to treat.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Held_recalcitrant.png" width="400"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>I. M. Held, M. Winton, K. Takahashi, T. Delworth, F. Zeng, and G. K. Vallis. Probing the fast and slow components of global warming by returning abruptly to preindustrial forcing. J. Climate, 23:2418–2427, 2010.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, xarray, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 9.0.0 (tags/RELEASE_900/final)]</td></tr><tr><td>IPython</td><td>7.10.1</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.17.3</td></tr><tr><td>matplotlib</td><td>3.1.2</td></tr><tr><td>xarray</td><td>0.12.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Dec 11 14:02:34 2019 PST</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

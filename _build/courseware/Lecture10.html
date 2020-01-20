@@ -1,0 +1,1834 @@
+---
+redirect_from:
+  - "/courseware/lecture10"
+interact_link: content/courseware/Lecture10.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 10
+pagenum: 13
+prev_page:
+  url: /courseware/Lecture09.html
+next_page:
+  url: /courseware/Lecture11.html
+suffix: .ipynb
+search: model co absorption ozone vapor humidity climate epsilon grey observed surface specific band gas very relative radiative big spectra radiation ho total spectral greenhouse spectrum not longwave process climlab flux section delta lecture feedback light temperature gases window region global warming parameterization channel bands id atmosphere prime layer tau forcing doubling equilibrium sensitivity solar here strong above shortwave where atmos clouds absorptivity double also modeling ipynb small does our models w m k terrestrial figure shows both beam www e edu effect under pressure mean largest field just constant well stratosphere data albany behaved should kappa left g p right
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 10</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Who-needs-spectral-bands?-We-do.-Some-baby-steps...">Who needs spectral bands? We do. Some baby steps...<a class="anchor-link" href="#Who-needs-spectral-bands?-We-do.-Some-baby-steps..."> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-What-if-CO$_2$-actually-behaved-like-a-Grey-Gas?">1. What if CO$_2$ actually behaved like a Grey Gas?<a class="anchor-link" href="#1.-What-if-CO$_2$-actually-behaved-like-a-Grey-Gas?"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose that CO$_2$ actually behaved as a grey gas. In other words, no spectral dependence in absorptivity.</p>
+<p>If we then <strong>double the CO2 concentration</strong> in the atmosphere, we double the number of absorbers. This should imply that we also <strong>double the absorption cross-section</strong>:</p>
+$$ \kappa^\prime = 2 ~ \kappa $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This would imply that we <strong>double the optical thickness of every layer</strong>:</p>
+$$ \Delta \tau^\prime  = 2 \left( -\frac{\kappa}{g} \Delta p \right) = 2 ~ \Delta \tau$$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And since (from <a href="./Lecture09 -- Modeling non-scattering radiative transfer.ipynb">Lecture 9</a>) the absorptivity / emissivity of each layer is</p>
+$$  \epsilon = 1 - \exp\big( - \Delta \tau \big)  $$<p>the <strong>modified absorptivity</strong> is</p>
+$$ \epsilon^\prime = 1 - \exp\big( - 2\Delta \tau \big) = 1 - \left( \exp\big( - \Delta \tau \big)\right)^2 = 1 - (1-\epsilon)^2 $$<p>or simply
+$$ \epsilon^\prime = 2 \epsilon  - \epsilon^2 $$</p>
+<p>(Note that $\epsilon^\prime = 2 \epsilon$ for very thin layers, for which $\epsilon$ is small).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing?">What does our 2-layer analytical model then say about the radiative forcing?<a class="anchor-link" href="#What-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing?"> </a></h3><p>Recall that we tuned the two-layer model with</p>
+$$ \epsilon = 0.586 $$<p>to get the observed OLR with observed temperatures.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Applying the above formula</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.586</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Doubling a grey gas absorber would </span><span class="se">\</span>
+<span class="s1">       change the absorptivity from </span><span class="si">{:.3}</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">       to </span><span class="si">{:.3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eps</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">eps</span> <span class="o">-</span> <span class="n">eps</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Doubling a grey gas absorber would        change the absorptivity from 0.586        to 0.829
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>If CO2 behaved like a grey gas</strong>, doubling it would cause a huge increase in the absorptivity of each layer!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Back in <a href="./Lecture07 -- Elementary greenhouse models.ipynb">Lecture 7</a>
+we worked out that the radiative forcing in this model (with the observed lapse rate) is about +2.2 W m$^{-2}$ for an increase of 0.01 in $\epsilon$.</p>
+<p><strong>This means that our hypothetical doubling of "grey CO$_2$" should yield a radiative forcing of 53.5 W m$^{-2}$.</strong></p>
+<p>This is an absolutely enormous number. Assuming a net climate feedback of -1.3 W m$^{-2}$ K$^{-1}$
+(consistent with the AR5 ensemble)
+would then give us an <strong>equilibrium climate sensitivity of 41 K</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Conclusions:">Conclusions:<a class="anchor-link" href="#Conclusions:"> </a></h3><ol>
+<li><strong>If CO2 did behave like a grey gas, we would be toast.</strong></li>
+<li>The Grey Gas model is insufficient for understanding radiative forcing and feedback.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Another-look-at-observed-spectra">2. Another look at observed spectra<a class="anchor-link" href="#2.-Another-look-at-observed-spectra"> </a></h2><hr>
+<p>It's time to move away from the Grey Gas approximation and look more carefully at the actual observed spectra of solar and terrestrial radiation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Observed-solar-spectra">Observed solar spectra<a class="anchor-link" href="#Observed-solar-spectra"> </a></h3><p>The following figure shows observed spectra of solar radiation at TOA and at the surface, along with the theoretical Planck function for a blackbody at 5525 K.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/Solar_spectrum.png'></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>This figure shows the solar radiation spectrum for direct light at both the top of the Earth's atmosphere and at sea level. The sun produces light with a distribution similar to what would be expected from a 5525 K (5250 °C) blackbody, which is approximately the sun's surface temperature. As light passes through the atmosphere, some is absorbed by gases with specific absorption bands. Additional light is redistributed by Raleigh scattering, which is responsible for the atmosphere's blue color. These curves are based on the American Society for Testing and Materials (ASTM) Terrestrial Reference Spectra, which are standards adopted by the photovoltaics industry to ensure consistent test conditions and are similar to the light that could be expected in North America. Regions for ultraviolet, visible and infrared light are indicated.</p>
+</blockquote>
+<p>Source: <a href="http://commons.wikimedia.org/wiki/File:Solar_spectrum_en.svg">http://commons.wikimedia.org/wiki/File:Solar_spectrum_en.svg</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The figure shows that that the incident beam at TOA has the shape of a blackbody radiator. </li>
+<li>By the time the beam arrives at the surface, it is strongly depleted at specific wavelengths.</li>
+<li>Absorption by O$_3$ (ozone) depletes almost the entire ultraviolet spectrum.</li>
+<li>Weaker absorption features, mostly due to H$_2$O, deplete some parts of the near-infrared.</li>
+<li>Note that the depletion in the visible band is mostly due to scattering, which depletes the direct beam but contributes diffuse radiation (so we can still see when it's cloudy!)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Observed-terrestrial-spectra">Observed terrestrial spectra<a class="anchor-link" href="#Observed-terrestrial-spectra"> </a></h3><p>This figure shows the Planck function for Earth's surface temperature compared with the spectrum observed from space.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/Terrestrial_spectrum.png'></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Source: <a href="https://www.e-education.psu.edu/earth103/node/671">https://www.e-education.psu.edu/earth103/node/671</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Careful: I'm pretty sure what is plotted here is not the <strong>total</strong> observed spectrum, but rather the part of the <strong>emissions from the surface</strong> that <strong>actual make it out to space</strong>.</p>
+<p>As we now, the terrestrial beam from the surface is depleted by absorption by many greenhouse gases, but principally CO$_2$ and H$_2$O.</p>
+<p>However there is a spectral band centered on 10 $\mu$m in which the greenhouse effect is very weak. This is the so-called <strong>window region</strong> in the spectrum.</p>
+<p>Since absorption is so strong across most of the rest of the infrared spectrum, this window region is a key determinant of the overall greenhouse effect.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="One-very-big-shortcoming-of-the-Grey-Gas-model:-it-ignores-the-window-region">One very big shortcoming of the Grey Gas model: it ignores the window region<a class="anchor-link" href="#One-very-big-shortcoming-of-the-Grey-Gas-model:-it-ignores-the-window-region"> </a></h4><p>We would therefore like to start using a model that includes enough spectral information that it represents</p>
+<ul>
+<li>the mostly strong CO2 absorption outside the window region</li>
+<li>the weak absorption inside the window region</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Water-vapor-changes-under-global-warming">3. Water vapor changes under global warming<a class="anchor-link" href="#3.-Water-vapor-changes-under-global-warming"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another big shortcoming of the Grey Gas model is that it cannot represent the <strong>water vapor feedback</strong>.</p>
+<p>We have seen above that H$_2$O is an important absorber in both longwave and shortwave spectra.</p>
+<p>We also know that the water vapor load in the atmosphere increases as the climate warms. The primary reason is that the <strong>saturation vapor pressure</strong> increases strongly with temperature.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Evidence-from-CESM-simulations">Evidence from CESM simulations<a class="anchor-link" href="#Evidence-from-CESM-simulations"> </a></h3><p>Let's take at changes in the mean water vapor fields in the CESM model after a doubling of CO$_2$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">xarray.ufuncs</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">deg2rad</span><span class="p">,</span> <span class="n">log</span>
+<span class="c1">#  Disable interactive plotting (use explicit display calls to show figures)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ioff</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Open handles to the data files</span>
+<span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
+<span class="n">ctrl</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_control/som_control.cam.h0.clim.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">co2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_2xCO2/som_2xCO2.cam.h0.clim.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Plot cross-sections of the following anomalies under 2xCO2:</span>
+<span class="c1">#   - Temperature </span>
+<span class="c1">#   - Specific humidity</span>
+<span class="c1">#   - Relative humidity</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ctrl</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="p">(</span><span class="n">co2</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ctrl</span><span class="p">[</span><span class="s1">&#39;T&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">)),</span> 
+                 <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ctrl</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="p">(</span><span class="n">co2</span><span class="p">[</span><span class="s1">&#39;Q&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ctrl</span><span class="p">[</span><span class="s1">&#39;Q&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span>
+                 <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mf">3.25</span><span class="p">,</span><span class="mf">0.25</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Specific humidity (g/kg)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ctrl</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">ctrl</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="p">(</span><span class="n">co2</span><span class="p">[</span><span class="s1">&#39;RELHUM&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">ctrl</span><span class="p">[</span><span class="s1">&#39;RELHUM&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">)),</span>
+                 <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Relative humidity (%)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">]);</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure&#39;</span><span class="p">)</span>
+    
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Anomalies for 2xCO2 in CESM slab ocean simulations&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="../images/courseware/Lecture10_27_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="What-do-you-see-here?">What do you see here?<a class="anchor-link" href="#What-do-you-see-here?"> </a></h3><ul>
+<li>Where does the largest warming occur?</li>
+<li>Where does the largest moistening occur?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In fact the specific humidity anomaly has roughly the same shape of the specific humidity field itself -- <strong>it is largest where the temperature is highest</strong>. This is a consequence of the Clausius-Clapeyron relation.</p>
+<p>The <strong>relative humidity</strong> anomaly is</p>
+<ul>
+<li>overall rather small (just a few percent)</li>
+<li>Largest in places cold places where the specific humidity is very small.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The smallness of the relative humidity change is a rather remarkable result.</p>
+<p>This is not something we can derive from first principles. It is an emergent property of the GCMs. However it is a very robust feature of global warming simulations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-A-simple-water-vapor-parameterization">4. A simple water vapor parameterization<a class="anchor-link" href="#4.-A-simple-water-vapor-parameterization"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-credible-climate-model-needs-a-water-vapor-feedback">A credible climate model needs a water vapor feedback<a class="anchor-link" href="#A-credible-climate-model-needs-a-water-vapor-feedback"> </a></h3><p>If relative humidity is nearly constant under global warming, and water vapor is a greenhouse gas, this implies a positive feedback that will amplify the warming for a given radiative forcing.</p>
+<p>Thus far our simple models have ignored this process, and we have not been able to use them to assess the climate sensitivity.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To proceed towards more realistic models, we have two options:</p>
+<ul>
+<li><strong>Simulate</strong> all the evaporation, condensation and transport processes that determine the time-mean water vapor field (as is done in the CESM).</li>
+<li><strong>Parameterize</strong> the dependence of water vapor on temperature by insisting that relative humidity stays constant as the climate changes.</li>
+</ul>
+<p>We will now explore this second option, so that we can continue to think of the global energy budget under climate change as a process occurring in a single column.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Manabe's-constant-relative-humidity-parameterization">Manabe's constant relative humidity parameterization<a class="anchor-link" href="#Manabe's-constant-relative-humidity-parameterization"> </a></h3><p>We are going to adopt a parameterization first used in a very famous paper:</p>
+<blockquote><p>Manabe, S. and Wetherald, R. T. (1967). Thermal equilibrium of the atmosphere with a given distribution of relative humidity. J. Atmos. Sci., 24(3):241–259.</p>
+</blockquote>
+<p>This paper was the first to give a really credible calculation of climate sensitivity to a doubling of CO2 by accounting for the known spectral properties of CO2 and H2O absorption, as well as the water vapor feedback!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The parameterization is very simple:</p>
+<p>We assume that the relative humidity $r$ is a linear function of pressure $p$:</p>
+$$ r = r_s \left( \frac{p/p_s - 0.02}{1 - 0.02} \right) $$<p>where $p_s = 1000$ hPa is the surface pressure, and $r_s$ is a prescribed surface value of relative humidity. Manabe and Wetherald set $r_s = 0.77$, but we should consider this a tunable parameter in our parameterization.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since this formula gives a negative number above 20 hPa, we also assume that the <strong>specific humidity</strong> has a minimum value of $0.005$ g/kg (a typical stratospheric value).</p>
+<p>This formula is implemented in <code>climlab.radiation.ManabeWaterVapor()</code></p>
+<p>Using this parameterization, the surface and tropospheric specific humidity will always increase as the temperature increases.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Modeling-spectral-bands-with-the-climlab.BandRCModel-process">5. Modeling spectral bands with the <code>climlab.BandRCModel</code> process<a class="anchor-link" href="#5.-Modeling-spectral-bands-with-the-climlab.BandRCModel-process"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is a brief introduction to the <code>climlab.BandRCModel</code> process.</p>
+<p>This is a model that divides the spectrum into 7 distinct bands: three shortwave and four longwave.</p>
+<p>As we will see, the process works much like the familiar <code>climlab.RadiativeConvectiveModel</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="About-the-spectra">About the spectra<a class="anchor-link" href="#About-the-spectra"> </a></h2><h3 id="Shortwave">Shortwave<a class="anchor-link" href="#Shortwave"> </a></h3><p>The shortwave is divided into three channels:</p>
+<ul>
+<li>Channel 0 is the Hartley and Huggins band (extreme UV, 200 - 340 nm, 1% of total flux, strong ozone absorption)</li>
+<li>Channel 1 is Chappuis band (450 - 800 nm, 27% of total flux, moderate ozone absorption)</li>
+<li>Channel 2 is remaining radiation (72% of total flux, largely in the visible range, no ozone absorption)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Longwave">Longwave<a class="anchor-link" href="#Longwave"> </a></h3><p>The longwave is divided into four bands:</p>
+<ul>
+<li>Band 0 is the <strong>window region</strong> (between 8.5 and 11 $\mu$m), 17% of total flux.</li>
+<li>Band 1 is the CO2 absorption channel (the band of strong absorption by CO2 around 15 $\mu$m), 15% of total flux</li>
+<li>Band 2 is a weak water vapor absorption channel, 35% of total flux</li>
+<li>Band 3 is a strong water vapor absorption channel, 33% of total flux</li>
+</ul>
+<p>The longwave decomposition is not as easily related to specific wavelengths, as in reality there is a lot of overlap between H$_2$O and CO$_2$ absorption features (as well as absorption by other greenhouse gases such as CH$_4$ and N$_2$O that we are not representing).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example-usage-of-the-spectral-model">Example usage of the spectral model<a class="anchor-link" href="#Example-usage-of-the-spectral-model"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">climlab</span>
+<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First try a model with all default parameters. Usage is very similar to the familiar <code>RadiativeConvectiveModel</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col1</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">BandRCModel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (30,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.nband.FourBandLW&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.nband.ThreeBandSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+   convective adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+   H2O: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check out the list of subprocesses.</p>
+<p>We now have a process called <code>H2O</code>, in addition to things we've seen before.</p>
+<p>The state variables are still just temperatures:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col1</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([288.]), &#39;Tatm&#39;: Field([200.        , 202.68965517, 205.37931034, 208.06896552,
+       210.75862069, 213.44827586, 216.13793103, 218.82758621,
+       221.51724138, 224.20689655, 226.89655172, 229.5862069 ,
+       232.27586207, 234.96551724, 237.65517241, 240.34482759,
+       243.03448276, 245.72413793, 248.4137931 , 251.10344828,
+       253.79310345, 256.48275862, 259.17241379, 261.86206897,
+       264.55172414, 267.24137931, 269.93103448, 272.62068966,
+       275.31034483, 278.        ])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But the model has a new input field for specific humidity:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col1</span><span class="o">.</span><span class="n">q</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([5.00000000e-06, 5.00000000e-06, 5.00000000e-06, 5.00000000e-06,
+       5.87957411e-06, 8.55682965e-06, 1.22193649e-05, 1.71932832e-05,
+       2.38916443e-05, 3.28354282e-05, 4.46774859e-05, 6.02302082e-05,
+       8.04974602e-05, 1.06711275e-04, 1.40373783e-04, 1.83304857e-04,
+       2.37695932e-04, 3.06170488e-04, 3.91851633e-04, 4.98437246e-04,
+       6.30283118e-04, 7.92494475e-04, 9.91026303e-04, 1.23279279e-03,
+       1.52578624e-03, 1.87920573e-03, 2.30359570e-03, 2.81099479e-03,
+       3.41509495e-03, 4.13141097e-03])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>H2O</code> process sets the specific humidity field at every timestep to a specified profile, determined by air temperatures. More on that below. For now, let's compute a radiative equilibrium state.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col1</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 730 steps, 730.4844 days, or 2 years.
+Total elapsed time is 1.9986737567564754 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check for energy balance</span>
+<span class="n">col1</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">col1</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([-0.00148377])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">col1</span><span class="o">.</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">col1</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="s1">&#39;c-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;default&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">col1</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">ps</span><span class="p">,</span> <span class="s1">&#39;co&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (hPa)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature profiles&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">fig</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="../images/courseware/Lecture10_52_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By default this model has convective adjustment.  We can set the adjusted lapse rate by passing a parameter when we create the model.</p>
+<p>The model currently has no ozone (so there is no stratosphere). Not very realistic!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="About-the-radiatively-active-gases">About the radiatively active gases<a class="anchor-link" href="#About-the-radiatively-active-gases"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Band model is aware of three different absorbing gases: O3 (ozone), CO2, and H2O (water vapor). The abundances of these gases are stored in a dictionary of arrays as follows:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col1</span><span class="o">.</span><span class="n">absorber_vmr</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;CO2&#39;: Field([0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038,
+        0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038,
+        0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038,
+        0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038, 0.00038,
+        0.00038, 0.00038]),
+ &#39;O3&#39;: Field([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.]),
+ &#39;H2O&#39;: Field([5.00000000e-06, 5.00000000e-06, 5.00000000e-06, 5.00000000e-06,
+        5.00000000e-06, 5.00000000e-06, 6.38590233e-06, 9.08848690e-06,
+        1.33273826e-05, 2.34389689e-05, 3.84220914e-05, 5.95564299e-05,
+        8.82144990e-05, 1.25843839e-04, 1.73951159e-04, 2.34088411e-04,
+        3.07840683e-04, 3.96815735e-04, 5.02635028e-04, 6.26926041e-04,
+        7.71315753e-04, 9.37425100e-04, 1.12686431e-03, 1.34122899e-03,
+        1.58209684e-03, 1.85102493e-03, 2.14954752e-03, 2.47917415e-03,
+        2.84138824e-03, 3.23764591e-03])}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ozone and CO2 are both specified in the model. The default, as you see above, is zero ozone, and constant (well-mixed) CO2 at a volume mixing ratio of 3.8E-4 or 380 ppm.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Water vapor is handled differently: it is determined by the model at each timestep. We make the following assumptions, following a classic paper on radiative-convective equilibrium by Manabe and Wetherald (J. Atmos. Sci. 1967):</p>
+<ul>
+<li>the relative humidity just above the surface is fixed at 77% (can be changed of course... see the parameter <code>col1.relative_humidity</code></li>
+<li>water vapor drops off linearly with pressure</li>
+<li>there is a small specified amount of water vapor in the stratosphere.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Putting-in-some-ozone">Putting in some ozone<a class="anchor-link" href="#Putting-in-some-ozone"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need to provide some ozone data to the model in order to simulate a stratosphere. We will read in some ozone data just as we did in <a href="./Lecture08 -- Grey radiation modeling with climlab.ipynb">Lecture 8</a>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ozone</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_input/ozone_1.9x2.5_L26_2000clim_c091112.nc&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Take global, annual average and convert to Kelvin</span>
+<span class="n">weight_ozone</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span> <span class="o">/</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">O3_global</span> <span class="o">=</span> <span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">O3</span> <span class="o">*</span> <span class="n">weight_ozone</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">O3_global</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray (lev: 26)&gt;
+array([7.827929e-06, 8.641505e-06, 7.589400e-06, 5.245671e-06, 3.177616e-06,
+       1.823200e-06, 9.807570e-07, 6.228705e-07, 4.476205e-07, 3.344812e-07,
+       2.625703e-07, 2.078981e-07, 1.570746e-07, 1.124255e-07, 8.060050e-08,
+       6.278265e-08, 5.429906e-08, 4.995061e-08, 4.600757e-08, 4.229778e-08,
+       3.805591e-08, 3.387686e-08, 3.121716e-08, 2.978071e-08, 2.879810e-08,
+       2.754299e-08])
+Coordinates:
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">O3_global</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Ozone (ppm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (hPa)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Global, annual mean ozone concentration&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">fig</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="../images/courseware/Lecture10_63_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are going to create another instance of the model, this time using the same vertical coordinates as the ozone data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Create the column with appropriate vertical coordinate, surface albedo and convective adjustment</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">BandRCModel</span><span class="p">(</span><span class="n">lev</span><span class="o">=</span><span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (26,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.nband.FourBandLW&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.nband.ThreeBandSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+   convective adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+   H2O: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Set the ozone mixing ratio</span>
+<span class="n">col2</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;O3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">O3_global</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Run the model out to equilibrium!</span>
+<span class="n">col2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 730 steps, 730.4844 days, or 2.0 years.
+Total elapsed time is 1.9986737567564754 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">col1</span><span class="o">.</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">col1</span><span class="o">.</span><span class="n">lev</span><span class="o">/</span><span class="mi">1000</span><span class="p">),</span> <span class="s1">&#39;c-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RCE&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">col1</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;co&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col2</span><span class="o">.</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">col2</span><span class="o">.</span><span class="n">lev</span><span class="o">/</span><span class="mi">1000</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RCE O3&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col2</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;log(Pressure)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Temperature profiles&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="../images/courseware/Lecture10_68_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once we include ozone we get a well-defined stratosphere.</p>
+<p>Things to consider / try:</p>
+<ul>
+<li>Here we used the global annual mean Q = 341.3 W m$^{-2}$. We might want to consider latitudinal or seasonal variations in Q.</li>
+<li>We also used the global annual mean ozone profile! Ozone varies tremendously in latitude and by season. That information is all contained in the ozone data file we opened above. We might explore the effects of those variations.</li>
+<li>We can calculate climate sensitivity in this model by doubling the CO2 concentration and re-running out to the new equilibrium. Does the amount of ozone affect the climate sensitivity?  (example below)</li>
+<li>An important shortcoming of the model: there are no clouds! (that would be the next step in the hierarchy of column models)</li>
+<li>Clouds would act both in the shortwave (increasing the albedo, cooling the climate) and in the longwave (greenhouse effect, warming the climate). Which effect is stronger depends on the vertical structure of the clouds (high or low clouds) and their optical properties (e.g. thin cirrus clouds are nearly transparent to solar radiation but are good longwave absorbers).</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col3</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">col2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (26,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.nband.FourBandLW&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.nband.ThreeBandSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+   convective adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+   H2O: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s double CO2.</span>
+<span class="n">col3</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">2.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col3</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The radiative forcing for doubling CO2 is </span><span class="si">%f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">col2</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">[</span><span class="s1">&#39;OLR&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">col3</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">[</span><span class="s1">&#39;OLR&#39;</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The radiative forcing for doubling CO2 is 1.390262 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col3</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 1095 steps, 1095.7266 days, or 3 years.
+Total elapsed time is 4.996684391891189 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col3</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">col3</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([4.25509398e-07])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The Equilibrium Climate Sensitivity is </span><span class="si">%f</span><span class="s1"> K.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">col3</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">col2</span><span class="o">.</span><span class="n">Ts</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The Equilibrium Climate Sensitivity is 2.790202 K.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  An example with no ozone</span>
+<span class="n">col4</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">col1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (30,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.BandRCModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.nband.FourBandLW&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.nband.ThreeBandSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+   convective adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+   H2O: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col4</span><span class="o">.</span><span class="n">absorber_vmr</span><span class="p">[</span><span class="s1">&#39;CO2&#39;</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">2.</span>
+<span class="n">col4</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The radiative forcing for doubling CO2 is </span><span class="si">%f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">col1</span><span class="o">.</span><span class="n">OLR</span> <span class="o">-</span> <span class="n">col4</span><span class="o">.</span><span class="n">OLR</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The radiative forcing for doubling CO2 is 4.421081 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col4</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span>
+<span class="n">col4</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">col4</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 1095 steps, 1095.7266 days, or 3.0 years.
+Total elapsed time is 4.996684391891189 years.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([-5.25654883e-07])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The Equilibrium Climate Sensitivity is </span><span class="si">%f</span><span class="s1"> K.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">col4</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">col1</span><span class="o">.</span><span class="n">Ts</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The Equilibrium Climate Sensitivity is 3.180993 K.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Interesting that the model is MORE sensitive when ozone is set to zero.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, xarray, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 9.0.0 (tags/RELEASE_900/final)]</td></tr><tr><td>IPython</td><td>7.10.1</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.17.3</td></tr><tr><td>matplotlib</td><td>3.1.2</td></tr><tr><td>xarray</td><td>0.12.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Dec 11 13:54:40 2019 PST</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

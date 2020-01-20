@@ -1,0 +1,1241 @@
+---
+redirect_from:
+  - "/courseware/lecture12"
+interact_link: content/courseware/Lecture12.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 12
+pagenum: 15
+prev_page:
+  url: /courseware/Lecture11.html
+next_page:
+  url: /courseware/Lecture13.html
+suffix: .ipynb
+search: co equilibrium transient ocean model warming temperature climate global mean surface doubling ecs annual changes average here coupled slab tcr change why not maps response cesm year sensitivity air atmos output plot simulations think results www land any albany pre industrial after increase only compare spatial brian rose edu run fully control scenario years prescribed flux our compute concentration experiment using compounded due atmosphere issues talk atmospheric absolute radiative forcing four plots including approximate cycle different vs much cmip against img src images patterns zonal line both polar amplification larger som southern present contrast homework assignment following energy asr olr
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 12</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Examing-the-transient-and-equilibrium-CO$_2$-response-in-the-CESM">Examing the transient and equilibrium CO$_2$ response in the CESM<a class="anchor-link" href="#Examing-the-transient-and-equilibrium-CO$_2$-response-in-the-CESM"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I have run two sets of experiments with the CESM model:</p>
+<ul>
+<li>The fully coupled model:<ul>
+<li>pre-industrial control</li>
+<li>1%/year CO2 ramp scenario for 80 years </li>
+</ul>
+</li>
+<li>The slab ocean model:<ul>
+<li>pre-industrial control with prescribed q-flux</li>
+<li>2xCO2 scenario run out to equilibrium</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our main first task is to compute the two canonical measures of climate sensitivity for this model:</p>
+<ul>
+<li>Equilibrium Climate Sensitivity (ECS)</li>
+<li>Transient Climate Response (TCR)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From the IPCC AR5 WG1 report, Chapter 9, page 817:</p>
+<blockquote><p>Equilibrium climate sensitivity (ECS) is the equilibrium change in global and annual mean surface air temperature after doubling the atmos- pheric concentration of CO2 relative to pre-industrial levels.</p>
+<p>The transient climate response (TCR) is the change in global and annual mean surface temperature from an experiment in which the CO2 con- centration is increased by 1% yr–1, and calculated using the difference between the start of the experiment and a 20-year period centred on the time of CO2 doubling.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="First,-a-quick-demonstration-that-1%/year-compounded-increase-reaches-doubling-after-70-years">First, a quick demonstration that 1%/year compounded increase reaches doubling after 70 years<a class="anchor-link" href="#First,-a-quick-demonstration-that-1%/year-compounded-increase-reaches-doubling-after-70-years"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">startingamount</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="n">startingamount</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">*=</span> <span class="mf">1.01</span>
+<span class="n">amount</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.006763368395386</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TCR is always smaller than ECS due to the transient effects of ocean heat uptake.</p>
+<p>We are going to <strong>estimate</strong> the ECS of the fully coupled model by using the equilibrium response of the Slab Ocean .</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Load-the-concatenated-output-from-the-CAM-output-(atmosphere)">Load the concatenated output from the CAM output (atmosphere)<a class="anchor-link" href="#Load-the-concatenated-output-from-the-CAM-output-(atmosphere)"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">casenames</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">:</span> <span class="s1">&#39;cpl_1850_f19&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">:</span> <span class="s1">&#39;cpl_CO2ramp_f19&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;som_control&#39;</span><span class="p">:</span> <span class="s1">&#39;som_1850_f19&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;som_2xCO2&#39;</span><span class="p">:</span>   <span class="s1">&#39;som_1850_2xCO2&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+<span class="c1"># The path to the THREDDS server, should work from anywhere</span>
+<span class="n">basepath</span> <span class="o">=</span> <span class="s1">&#39;http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/&#39;</span>
+<span class="c1"># For better performance if you can access the roselab_rit filesystem (e.g. from JupyterHub)</span>
+<span class="c1">#basepath = &#39;/roselab_rit/cesm_archive/&#39;</span>
+<span class="n">casepaths</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="n">casepaths</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">basepath</span> <span class="o">+</span> <span class="n">casenames</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/concatenated/&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make a dictionary of all the CAM atmosphere output</span>
+<span class="n">atm</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">casepaths</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="n">casenames</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.cam.h0.nc&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Attempting to open the dataset &#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_CO2ramp_f19/concatenated/cpl_CO2ramp_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_f19/concatenated/som_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_2xCO2/concatenated/som_1850_2xCO2.cam.h0.nc
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-plot-of-the-prescribed-CO2-concentrations-in-the-coupled-simulations">A plot of the prescribed CO2 concentrations in the coupled simulations<a class="anchor-link" href="#A-plot-of-the-prescribed-CO2-concentrations-in-the-coupled-simulations"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">days_per_year</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">,</span> <span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="o">/</span><span class="n">days_per_year</span><span class="p">,</span> <span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">co2vmr</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CO2 volume mixing ratio (CESM coupled simulations)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;pCO2 (ppm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture12_12_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Issues to think about:</p>
+<ul>
+<li>Why do we talk about fractional changes in CO2, such as "doubling atmospheric CO2", and "1%/year compounded CO2 increase?</li>
+<li>Why not instead talk about changes in absolute amounts of CO2?</li>
+</ul>
+<p>The answer is closely related to the fact that the <strong>radiative forcing</strong> associated with CO2 increase is approximately <strong>logarithmic</strong> in CO2 amount. So a doubling of CO2 represents roughly the same radiative forcing <em>regardless of the initial CO2 concentration</em>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Compute-and-plot-time-series-of-global,-annual-mean-near-surface-air-temperature-in-all-four-simulations">Compute and plot time series of global, annual mean near-surface air temperature in all four simulations<a class="anchor-link" href="#Compute-and-plot-time-series-of-global,-annual-mean-near-surface-air-temperature-in-all-four-simulations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The surface air temperature, which we will use for our sensitivity metrics</span>
+<span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#39;TREFHT&#39; (time: 240, lat: 96, lon: 144)&gt;
+[3317760 values with dtype=float32]
+Coordinates:
+  * time     (time) float64 31.0 59.0 90.0 120.0 ... 7.239e+03 7.269e+03 7.3e+03
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    units:         K
+    long_name:     Reference height temperature
+    cell_methods:  time: mean</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  The area weighting needed for global averaging</span>
+<span class="n">gw</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">gw</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gw</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray &#39;gw&#39; (lat: 96)&gt;
+array([0.000137, 0.001093, 0.002185, 0.003275, 0.004361, 0.005443, 0.006518,
+       0.007587, 0.008647, 0.009697, 0.010737, 0.011765, 0.012781, 0.013782,
+       0.014768, 0.015739, 0.016692, 0.017626, 0.018542, 0.019437, 0.020311,
+       0.021162, 0.021991, 0.022795, 0.023575, 0.024329, 0.025056, 0.025756,
+       0.026427, 0.02707 , 0.027683, 0.028266, 0.028818, 0.029339, 0.029827,
+       0.030283, 0.030705, 0.031094, 0.031449, 0.03177 , 0.032056, 0.032307,
+       0.032522, 0.032702, 0.032847, 0.032955, 0.033027, 0.033063, 0.033063,
+       0.033027, 0.032955, 0.032847, 0.032702, 0.032522, 0.032307, 0.032056,
+       0.03177 , 0.031449, 0.031094, 0.030705, 0.030283, 0.029827, 0.029339,
+       0.028818, 0.028266, 0.027683, 0.02707 , 0.026427, 0.025756, 0.025056,
+       0.024329, 0.023575, 0.022795, 0.021991, 0.021162, 0.020311, 0.019437,
+       0.018542, 0.017626, 0.016692, 0.015739, 0.014768, 0.013782, 0.012781,
+       0.011765, 0.010737, 0.009697, 0.008647, 0.007587, 0.006518, 0.005443,
+       0.004361, 0.003275, 0.002185, 0.001093, 0.000137])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+Attributes:
+    long_name:  gauss weights
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">global_mean</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">gw</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Return the area-weighted global average of the input field&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">field</span><span class="o">*</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span><span class="o">/</span><span class="n">weight</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Loop through the four simulations and produce the global mean timeseries</span>
+<span class="n">TREFHT_global</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="n">TREFHT_global</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_mean</span><span class="p">(</span><span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Make-some-pretty-timeseries-plots,-including-an-approximate-running-annual-average">Make some pretty timeseries plots, including an <strong>approximate</strong> running annual average<a class="anchor-link" href="#Make-some-pretty-timeseries-plots,-including-an-approximate-running-annual-average"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;cpl&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fully coupled ocean&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Slab ocean&#39;</span><span class="p">)</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">field_running</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">time</span> <span class="o">/</span> <span class="n">days_per_year</span><span class="p">,</span> 
+                   <span class="n">field</span><span class="p">,</span> 
+                   <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                   <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+                   <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field_running</span><span class="o">.</span><span class="n">time</span> <span class="o">/</span> <span class="n">days_per_year</span><span class="p">,</span> 
+            <span class="n">field_running</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_color</span><span class="p">(),</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Global mean surface air temperature in CESM simulations&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture12_20_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Issues to think about here include:</p>
+<ul>
+<li>Why is the annual average here only approximate? <em>(think about the calendar)</em></li>
+<li>Why is there an annual cycle in the global average temperature? (planet is coldest during NH winter)</li>
+<li>Different character of the temperature <strong>variability</strong> in the coupled vs. slab model</li>
+<li>Much more rapid warming in the Slab Ocean Model</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Now-we-can-work-on-computing-ECS-and-TCR">Now we can work on computing ECS and TCR<a class="anchor-link" href="#Now-we-can-work-on-computing-ECS-and-TCR"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># extract the last 10 years from the slab ocean control simulation</span>
+<span class="c1"># and the last 20 years from the coupled control</span>
+<span class="n">nyears_slab</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">nyears_cpl</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">clim_slice_slab</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">nyears_slab</span><span class="o">*</span><span class="mi">12</span><span class="p">),</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">clim_slice_cpl</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">nyears_cpl</span><span class="o">*</span><span class="mi">12</span><span class="p">),</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># extract the last 10 years from the slab ocean control simulation</span>
+<span class="n">T0_slab</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T0_slab</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray ()&gt;
+array(286.824865)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># and the last 20 years from the coupled control</span>
+<span class="n">T0_cpl</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T0_cpl</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray ()&gt;
+array(286.751259)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># extract the last 10 years from the slab 2xCO2 simulation</span>
+<span class="n">T2x_slab</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;som_2xCO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T2x_slab</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray ()&gt;
+array(289.715214)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># extract the last 20 years from the coupled CO2 ramp simulation</span>
+<span class="n">T2x_cpl</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T2x_cpl</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray ()&gt;
+array(288.419353)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ECS</span> <span class="o">=</span> <span class="n">T2x_slab</span> <span class="o">-</span> <span class="n">T0_slab</span>
+<span class="n">TCR</span> <span class="o">=</span> <span class="n">T2x_cpl</span> <span class="o">-</span> <span class="n">T0_cpl</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Equilibrium Climate Sensitivity is </span><span class="si">{:.3}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ECS</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Transient Climate Response is </span><span class="si">{:.3}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">TCR</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The Equilibrium Climate Sensitivity is 2.89 K.
+The Transient Climate Response is 1.67 K.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Some-CMIP-climate-sensitivity-results-to-compare-against">Some CMIP climate sensitivity results to compare against<a class="anchor-link" href="#Some-CMIP-climate-sensitivity-results-to-compare-against"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='http://www.climatechange2013.org/images/figures/WGI_AR5_Fig9-43.jpg' width=800></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/AR5_Table9.5.png'></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Comparing against the multi-model mean of the ECS and TCR, our model is apparently slightly less sensitive than the CMIP5 mean.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Let's-make-some-maps-to-compare-spatial-patterns-of-transient-vs.-equilibrium-warming">Let's make some maps to compare spatial patterns of transient vs. equilibrium warming<a class="anchor-link" href="#Let's-make-some-maps-to-compare-spatial-patterns-of-transient-vs.-equilibrium-warming"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is a helper function that takes a 2D lat/lon field and renders it as a nice contour map with accompanying zonal average line plot.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The map projection capabilities come from the cartopy package. There are many possible projections</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">make_map</span><span class="p">(</span><span class="n">field</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;input field should be a 2D xarray.DataArray on a lat/lon grid.</span>
+<span class="sd">        Make a filled contour plot of the field, and a line plot of the zonal mean</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">nrows</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">mapax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">rowspan</span><span class="o">=</span><span class="n">nrows</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">())</span>
+    <span class="n">barax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">),</span> <span class="p">(</span><span class="n">nrows</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plotax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="n">nrows</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">cx</span> <span class="o">=</span> <span class="n">mapax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+    <span class="n">mapax</span><span class="o">.</span><span class="n">set_global</span><span class="p">();</span> <span class="n">mapax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">();</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">barax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+    <span class="n">plotax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">),</span> <span class="n">field</span><span class="o">.</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">plotax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+    <span class="n">plotax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">mapax</span><span class="p">,</span> <span class="n">plotax</span><span class="p">,</span> <span class="n">barax</span><span class="p">),</span> <span class="n">cx</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot a single time slice of surface air temperature just as example</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture12_37_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Make-maps-of-the-surface-air-temperature-anomaly-due-to-CO2-doubling-in-both-the-slab-and-coupled-models">Make maps of the surface air temperature anomaly due to CO2 doubling in both the slab and coupled models<a class="anchor-link" href="#Make-maps-of-the-surface-air-temperature-anomaly-due-to-CO2-doubling-in-both-the-slab-and-coupled-models"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tmap_cpl_2x</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">Tmap_cpl_control</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">DeltaT_cpl</span> <span class="o">=</span> <span class="n">Tmap_cpl_2x</span> <span class="o">-</span> <span class="n">Tmap_cpl_control</span>
+
+<span class="n">Tmap_som_2x</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_2xCO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">Tmap_som_control</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">DeltaT_som</span> <span class="o">=</span> <span class="n">Tmap_som_2x</span> <span class="o">-</span> <span class="n">Tmap_som_control</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">DeltaT_cpl</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Surface air temperature anomaly (coupled transient)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># ensure the line plots have same axes</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">set_clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>    <span class="c1"># ensure the contour maps have the same color intervals</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span><span class="n">cx</span>  <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">DeltaT_som</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Surface air temperature anomaly (equilibrium SOM)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">set_clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture12_40_0.png"
+>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture12_40_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Lots of intersting phenomena to think about here, including:</p>
+<ul>
+<li>Polar amplification of surface warming</li>
+<li>Reduction in equator-to-pole temperature gradients</li>
+<li>Much larger polar amplification in SOM than in transient -- especially over the Southern Ocean (the <em>delayed warming of the Southern Ocean</em>)</li>
+<li>North Atlantic <em>warming hole</em> present in transient but not in equilibrium SOM.</li>
+<li>Land-ocean warming contrast: larger in transient, but still present in equilibrium</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Homework-assignment">Homework assignment<a class="anchor-link" href="#Homework-assignment"> </a></h2><p>Continue to compare the transient and equilibrium responses in these CESM simulations.</p>
+<p>Specifically, I would like you to examine the following:</p>
+<ol>
+<li><p>Top-of-atmosphere energy budget:</p>
+<ul>
+<li>Calculate the global mean <strong>net TOA energy flux</strong> for all four simulations. <ul>
+<li>Which ones are close to zero in the global average, and which are not?</li>
+</ul>
+</li>
+<li>Make spatial maps of the <strong>change in ASR</strong> and the <strong>change in OLR</strong> after doubling CO2 (both transient and equilibrium).</li>
+<li>Repeat for the <strong>clear-sky</strong> component of those changes.</li>
+<li>Comment on what you found in your maps:<ul>
+<li>Are there any discernible spatial patterns in ASR and OLR changes?</li>
+<li>What about the clear sky components? </li>
+<li>Can you relate any of these results to the surface warming maps we created above?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The hydrological cycle:</p>
+<ul>
+<li>precipitation</li>
+<li>evaporation</li>
+<li>P-E</li>
+<li>For each of these quantities, plot the anomalies two different ways:<ul>
+<li>Absolute changes</li>
+<li>Normalized changes in %/K (normalized by the global mean warming)</li>
+</ul>
+</li>
+<li>Comment on which of these two perspective seems more useful, and why.</li>
+</ul>
+</li>
+<li><p>Land - ocean warming contrast:</p>
+<ul>
+<li>Make line plots of the zonal average surface air temperature change <strong>over land only</strong> and <strong>over ocean only</strong>.</li>
+</ul>
+</li>
+</ol>
+<p>For all your results, please make an effort to point out any interesting or surprising results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, xarray, cartopy
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td>xarray</td><td>0.12.1</td></tr><tr><td>cartopy</td><td>0.17.0</td></tr><tr><td colspan='2'>Wed Jul 03 14:52:57 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Appendix:-for-later-reference,-here-is-how-you-can-open-the-other-output-types">Appendix: for later reference, here is how you can open the other output types<a class="anchor-link" href="#Appendix:-for-later-reference,-here-is-how-you-can-open-the-other-output-types"> </a></h2><p>The following will open the rest of the CESM output (land, sea ice, river routing, ocean).</p>
+<p>These are not needed for the above homework assignment, but may be useful later on.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # make a dictionary of all the CLM land model output</span>
+<span class="c1"># land = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     path = casepaths[name] + casenames[name] + &#39;.clm2.h0.nc&#39;</span>
+<span class="c1">#     print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#     land[name] = xr.open_dataset(path)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # make a dictionary of all the sea ice model output</span>
+<span class="c1"># ice = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     path = casepaths[name] + casenames[name] + &#39;.cice.h.nc&#39;</span>
+<span class="c1">#     print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#     ice[name] = xr.open_dataset(path)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># # make a dictionary of all the river transport output</span>
+<span class="c1"># rtm = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     path = casepaths[name] + casenames[name] + &#39;.rtm.h0.nc&#39;</span>
+<span class="c1">#     print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#     rtm[name] = xr.open_dataset(path)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ocn = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     if &#39;cpl&#39; in name:</span>
+<span class="c1">#         path = casepaths[name] + casenames[name] + &#39;.pop.h.nc&#39;</span>
+<span class="c1">#         print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#         ocn[name] = xr.open_dataset(path)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

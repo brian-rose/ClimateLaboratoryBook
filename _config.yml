@@ -22,8 +22,8 @@ email: brose@albany.edu
 description: >-
   Interactive lecture notes on climate dynamics and climate modeling
 
-baseurl: '' # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
-url: https://jupyterbook.org   # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/ClimateLaboratoryBook" # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
+url: "https://brian-rose.github.io"  # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #######################################################################################
@@ -35,7 +35,7 @@ footer_text: This page was created by <a href="https://github.com/jupyter/jupyte
 
 # Sidebar settings
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
-collapse_inactive_chapters: false # Whether to collapse the inactive chapters in the sidebar
+collapse_inactive_chapters: true # Whether to collapse the inactive chapters in the sidebar
 collapse_inactive_sections: true  # Whether to collapse the sub-sections within a non-active section in the sidebar
 textbook_logo: images/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar. Should be square
 textbook_logo_link: https://jupyterbook.org/intro.html          # A link for the logo.
@@ -46,7 +46,7 @@ number_toc_chapters: true         # Whether to add numbers to chapterse in your 
 search_max_words_in_content: 100   # In the search function, use at most this many words (too many words will make search slow)
 
 # Controlling page information
-page_titles: infer                      # Either `None`, `infer`, or `toc`
+page_titles: toc                      # Either `None`, `infer`, or `toc`
 page_authors: None                     # Either `None` or `infer`
 filename_title_split_character: _     # If inferring titles based on filename, splt on this character.
 

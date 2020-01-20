@@ -1,0 +1,1434 @@
+---
+redirect_from:
+  - "/courseware/lecture02"
+interact_link: content/courseware/Lecture02.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 2
+pagenum: 5
+prev_page:
+  url: /courseware/Lecture01.html
+next_page:
+  url: /courseware/Lecture03.html
+suffix: .ipynb
+search: t temperature ts model energy our olr frac system equilibrium prime climate asr delta balance tau text c e earth budget sigma change radiation not lets very q surface eq id section global alpha just equation heat observations space where planetary back solve python parameter dt capacity function feedback simple atmosphere reflected statement right k folding greenhouse longwave shortwave absorbed albedo m changes solution left values why any fact defined d lambda timescale define terms mean incoming take functions variables actually effective value h estimate processes bigg albany observed radiative class also approx quantity greater modeling need get possible calculate
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 2</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-zero-dimensional-energy-balance-model">The zero-dimensional energy balance model<a class="anchor-link" href="#The-zero-dimensional-energy-balance-model"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-Recap-of-the-global-energy-budget">1. Recap of the global energy budget<a class="anchor-link" href="#1.-Recap-of-the-global-energy-budget"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's look again at the observations:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="../images/GlobalEnergyBudget.png" alt="Observed global energy flows from Trenberth and Fasullo (2012)"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="2.-Tuning-radiative-fluxes-to-the-observations">2. Tuning radiative fluxes to the observations<a class="anchor-link" href="#2.-Tuning-radiative-fluxes-to-the-observations"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Recap-of-our-simple-greenhouse-model">Recap of our simple greenhouse model<a class="anchor-link" href="#Recap-of-our-simple-greenhouse-model"> </a></h3><p>Last class we introduced a very simple model for the <strong>OLR</strong> or Outgoing Longwave Radiation to space:</p>
+$$ \text{OLR} = \tau \sigma T_s^4 $$<p>where $\tau$ is the <strong>transmissivity</strong> of the atmosphere, a number less than 1 that represents the greenhouse effect of Earth's atmosphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We also tuned this model to the observations by choosing $ \tau \approx 0.61$.</p>
+<p>More precisely:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">OLRobserved</span> <span class="o">=</span> <span class="mf">238.5</span>  <span class="c1"># in W/m2</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">5.67E-8</span>  <span class="c1"># S-B constant</span>
+<span class="n">Tsobserved</span> <span class="o">=</span> <span class="mf">288.</span>  <span class="c1"># global average surface temperature</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">OLRobserved</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">Tsobserved</span><span class="o">**</span><span class="mi">4</span>  <span class="c1"># solve for tuned value of transmissivity</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's now deal with the shortwave (solar) side of the energy budget.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Absorbed-Shortwave-Radiation-(ASR)-and-Planetary-Albedo">Absorbed Shortwave Radiation (ASR) and Planetary Albedo<a class="anchor-link" href="#Absorbed-Shortwave-Radiation-(ASR)-and-Planetary-Albedo"> </a></h3><p>Let's define a few terms.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Global-mean-insolation">Global mean insolation<a class="anchor-link" href="#Global-mean-insolation"> </a></h4><p>From the observations, the area-averaged incoming solar radiation or <strong>insolation</strong> is 341.3 W m$^{-2}$.</p>
+<p>Let's denote this quantity by $Q$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="mf">341.3</span>  <span class="c1"># the insolation</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Planetary-albedo">Planetary albedo<a class="anchor-link" href="#Planetary-albedo"> </a></h4><p>Some of the incoming radiation is not absorbed at all but simply reflected back to space. Let's call this quantity $F_{reflected}$</p>
+<p>From observations we have:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Freflected</span> <span class="o">=</span> <span class="mf">101.9</span>  <span class="c1">#  reflected shortwave flux in W/m2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>planetary albedo</strong> is the fraction of $Q$ that is reflected.</p>
+<p>We will denote the planetary albedo by $\alpha$.</p>
+<p>From the observations:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">Freflected</span> <span class="o">/</span> <span class="n">Q</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alpha</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That is, about 30% of the incoming radiation is reflected back to space.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Absorbed-Shortwave-Radiation">Absorbed Shortwave Radiation<a class="anchor-link" href="#Absorbed-Shortwave-Radiation"> </a></h4><p>The <strong>Absorbed Shortwave Radiation</strong> or ASR is the part of the incoming sunlight that is <em>not</em> reflected back to space, i.e. that part that is absorbed somewhere within the Earth system.</p>
+<p>Mathematically we write</p>
+$$ \text{ASR} = Q - F_{reflected} = (1-\alpha) Q $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From the observations:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ASRobserved</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">-</span> <span class="n">Freflected</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ASRobserved</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we noted last time, this number is <em>just slightly greater</em> than the observed OLR of 238.5 W m$^{-2}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Equilibrium-temperature">3. Equilibrium temperature<a class="anchor-link" href="#3.-Equilibrium-temperature"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>This is one of the central concepts in climate modeling.</em></p>
+<p>The Earth system is in <strong>energy balance</strong> when energy in = energy out, i.e. when</p>
+$$ \text{ASR} = \text{OLR} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want to know:</p>
+<ul>
+<li>What surface temperature do we need to have this balance?</li>
+<li>By how much would the temperature change in response to other changes in Earth system?<ul>
+<li>Changes in greenhouse gases</li>
+<li>Changes in cloudiness</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With our simple greenhouse model, we can get an <strong>exact solution</strong> for the equilibrium temperature.</p>
+<p>First, write down our statement of energy balance:</p>
+$$ (1-\alpha) Q = \tau \sigma T_s^4 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Rearrange to solve for $T_s$:</p>
+$$ T_s^4 = \frac{(1-\alpha) Q}{\tau \sigma} $$<p>and take the fourth root, denoting our <strong>equilibrium temperature</strong> as $T_{eq}$:</p>
+$$ T_{eq} = \left( \frac{(1-\alpha) Q}{\tau \sigma} \right)^\frac{1}{4} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Plugging the observed values back in, we compute:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  define a reusable function!</span>
+<span class="k">def</span> <span class="nf">equilibrium_temperature</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">tau</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span><span class="o">/</span><span class="p">(</span><span class="n">tau</span><span class="o">*</span><span class="n">sigma</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">Teq_observed</span> <span class="o">=</span> <span class="n">equilibrium_temperature</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">tau</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Teq_observed</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And this equilibrium temperature is <em>just slightly warmer</em> than 288 K.  Why?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-climate-change-scenario">A climate change scenario<a class="anchor-link" href="#A-climate-change-scenario"> </a></h3><p>Suppose that, due to global warming (changes in atmospheric composition and subsequent changes in cloudiness):</p>
+<ul>
+<li>The longwave transmissitivity decreases to $\tau = 0.57$ </li>
+<li>The planetary albedo increases to $\alpha = 0.32$</li>
+</ul>
+<p>What is the new equilibrium temperature?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this very simple model, we can work out the answer exactly:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Teq_new</span> <span class="o">=</span> <span class="n">equilibrium_temperature</span><span class="p">(</span><span class="mf">0.32</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="mf">0.57</span><span class="p">)</span>
+<span class="c1">#  an example of formatted print output, limiting to two or one decimal places</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The new equilibrium temperature is </span><span class="si">{:.2f}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Teq_new</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The equilibrium temperature increased by about </span><span class="si">{:.1f}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Teq_new</span><span class="o">-</span><span class="n">Teq_observed</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Most climate models are more complicated mathematically, and solving directly for the equilibrium temperature will not be possible!</p>
+<p>Instead, we will be able to use the model to calculate the terms in the energy budget (ASR and OLR).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Python-exercise">Python exercise<a class="anchor-link" href="#Python-exercise"> </a></h3><ul>
+<li>Write Python functions to calculate ASR and OLR for <em>arbitrary parameter values</em>.</li>
+<li>Verify the following:<ul>
+<li>With the new parameter values but the old temperature T = 288 K, is ASR greater or lesser than OLR? </li>
+<li>Is the Earth gaining or losing energy?</li>
+<li>How does your answer change if T = 295 K (or any other temperature greater than 291 K)?</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-A-time-dependent-Energy-Balance-Model">4. A time-dependent Energy Balance Model<a class="anchor-link" href="#4.-A-time-dependent-Energy-Balance-Model"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above exercise shows us that if some properties of the climate system change in such a way that the <strong>equilibrium temperature goes up</strong>, then the Earth system <em>receives more energy from the sun than it is losing to space</em>. The system is <strong>no longer in energy balance</strong>.</p>
+<p>The temperature must then increase to get back into balance. The increase will not happen all at once! It will take time for energy to accumulate in the climate system. We want to model this <strong>time-dependent adjustment</strong> of the system.</p>
+<p>In fact almost all climate models are <strong>time-dependent</strong>, meaning the model calculates <strong>time derivatives</strong> (rates of change) of climate variables.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-energy-balance-equation">An energy balance equation<a class="anchor-link" href="#An-energy-balance-equation"> </a></h3><p>We will write the <strong>total energy budget</strong> of the Earth system as</p>
+$$ \frac{dE}{dt} = (1-\alpha) Q - OLR $$<p>Note: <strong>This is a generically true statement.</strong> We have just defined some terms, and made the (very good) assumption that the only significant energy sources are radiative exchanges with space.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>This equation is the starting point for EVERY CLIMATE MODEL.</strong></p>
+<p>But so far, we don’t actually have a MODEL. We just have a statement of a budget. To use this budget to make a model, we need to relate terms in the budget to state variables of the atmosphere-ocean system.</p>
+<p>For now, the state variable we are most interested in is <strong>temperature</strong> – because it is directly connected to the physics of each term above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we now suppose that</p>
+$$ E = C T_s $$<p>where $T_s$ is the <strong>global mean surface temperature</strong>, and $C$ is a constant – the <strong>effective heat capacity</strong> of the atmosphere- ocean column.</p>
+<p>then our budget equation becomes:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ C \frac{dT_s}{dt} = \text{ASR} - \text{OLR} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>where</p>
+<ul>
+<li>$C$ is the <strong>heat capacity</strong> of Earth system, in units of J m$^{-2}$ K$^{-1}$.</li>
+<li>$\frac{dT}{dt}$ is the rate of change of global average surface temperature.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>By adopting this equation, we are assuming that the energy content of the Earth system (atmosphere, ocean, ice, etc.) is <em>proportional to surface temperature</em>.</p>
+<p>Important things to think about:</p>
+<ul>
+<li>Why is this a sensible assumption?</li>
+<li>What determines the heat capacity $C$?</li>
+<li>What are some limitations of this assumption?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For our purposes here we are going to use a value of C equivalent to heating 100 meters of water:</p>
+$$C = c_w \rho_w H$$<p>where</p>
+<p>$c_w = 4 \times 10^3$ J kg$^{-1}$ $^\circ$C$^{-1}$ is the specific heat of water,</p>
+<p>$\rho_w = 10^3$ kg m$^{-3}$ is the density of water, and</p>
+<p>$H$ is an effective depth of water that is heated or cooled.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c_w</span> <span class="o">=</span> <span class="mf">4E3</span>  <span class="c1">#  Specific heat of water in J/kg/K</span>
+<span class="n">rho_w</span> <span class="o">=</span> <span class="mf">1E3</span>  <span class="c1">#  Density of water in kg/m3</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">100.</span>   <span class="c1">#  Depth of water in m</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">c_w</span> <span class="o">*</span> <span class="n">rho_w</span> <span class="o">*</span> <span class="n">H</span>   <span class="c1">#  Heat capacity of the model </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The effective heat capacity is </span><span class="si">{:.1e}</span><span class="s1"> J/m2/K&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solving-the-energy-balance-model">Solving the energy balance model<a class="anchor-link" href="#Solving-the-energy-balance-model"> </a></h3><p>This is a first-order Ordinary Differential Equation (ODE) for $T_s$ as a function of time. It is also our very first climate model.</p>
+<p>To solve it (i.e. see how $T_s$ evolves from some specified initial condition) we have two choices:</p>
+<ol>
+<li>Solve it analytically</li>
+<li>Solve it numerically</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Option 1 (analytical) will usually not be possible because the equations will typically be too complex and non-linear. This is why computers are our best friends in the world of climate modeling.</p>
+<p>HOWEVER it is often useful and instructive to simplify a model down to something that is analytically solvable when possible. Why? Two reasons:</p>
+<ol>
+<li>Analysis will often yield a deeper understanding of the behavior of the system</li>
+<li>Gives us a benchmark against which to test the results of our numerical solutions.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Representing-time-derivatives-on-a-computer">5. Representing time derivatives on a computer<a class="anchor-link" href="#5.-Representing-time-derivatives-on-a-computer"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that the derivative is the <strong>instantaneous rate of change</strong>. It is defined as</p>
+$$ \frac{dT}{dt} = \lim_{\Delta t\rightarrow 0}⁡ \frac{\Delta T}{\Delta t}$$<ul>
+<li><strong>On the computer there is no such thing as an instantaneous change.</strong> </li>
+<li>We are always dealing with <em>discrete quantities</em>.</li>
+<li>So we approximate the derivative with $\Delta T/ \Delta t$. </li>
+<li>So long as we take the time interval $\Delta t$ "small enough", the approximation is valid and useful.</li>
+<li>(The meaning of "small enough" varies widely in practice. Let's not talk about it now)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So we write our model as</p>
+$$ C  \frac{\Delta T}{\Delta t} \approx \text{ASR} - \text{OLR}$$<p>where $\Delta T$ is the <strong>change in temperature predicted by our model</strong> over a short time interval $\Delta t$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can now use this to <strong>make a prediction</strong>:</p>
+<p>Given a current temperature $T_1$ at time $t_1$, what is the temperature $T_2$ at a future time $t_2$?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can write</p>
+$$ \Delta T = T_2-T_1 $$$$ \Delta t = t_2-t_1 $$<p>and so our model says</p>
+$$ C  \frac{T_2-T_1}{\Delta t} = \text{ASR} - \text{OLR} $$<p>Which we can rearrange to <strong>solve for the future temperature</strong>:</p>
+$$ T_2 = T_1 + \frac{\Delta t}{C} \left( \text{ASR} - \text{OLR}(T_1) \right)  $$<p>We now have a formula with which to make our prediction!</p>
+<p>Notice that we have written the OLR as a <em>function of temperature</em>. We will use the current temperature $T_1$ to compute the OLR, and use that OLR to determine the future temperature.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section6'></a></p>
+<h2 id="6.-Numerical-solution-of-the-Energy-Balance-Model">6. Numerical solution of the Energy Balance Model<a class="anchor-link" href="#6.-Numerical-solution-of-the-Energy-Balance-Model"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The quantity $\Delta t$ is called a <strong>timestep</strong>. It is the smallest time interval represented in our model.</p>
+<p>Here we're going to use a timestep of 1 year:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dt</span> <span class="o">=</span> <span class="mf">60.</span> <span class="o">*</span> <span class="mf">60.</span> <span class="o">*</span> <span class="mf">24.</span> <span class="o">*</span> <span class="mf">365.</span>   <span class="c1"># one year expressed in seconds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Try a single timestep, assuming we have working functions for ASR and OLR</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="mf">288.</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What happened? Why?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Try another timestep</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">T1</span> <span class="o">=</span> <span class="n">T2</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Warmed up again, but by a smaller amount.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But this is tedious typing. Time to <strong>define a function</strong> to make things easier and more reliable:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">step_forward</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">T</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Try it out with an arbitrary temperature:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">step_forward</span><span class="p">(</span><span class="mf">300.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that our function calls other functions and variables we have already defined.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-fact-10:-Functions-can-access-variables-and-other-functions-defined-outside-of-the-function.">Python fact 10: Functions can access variables and other functions defined outside of the function.<a class="anchor-link" href="#Python-fact-10:-Functions-can-access-variables-and-other-functions-defined-outside-of-the-function."> </a></h4><p>This is both very useful and occasionally confusing.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now let's really harness the power of the computer by <strong>making a loop</strong> (and storing values in arrays):</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">numsteps</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">Tsteps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">numsteps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">numsteps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Tsteps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">288.</span> 
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numsteps</span><span class="p">):</span>
+    <span class="n">Years</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">Tsteps</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span> <span class="n">Tsteps</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tsteps</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What did we just do?</p>
+<ul>
+<li>Created an array of zeros</li>
+<li>set the initial temperature to 288 K</li>
+<li>repeated our time step 20 times. </li>
+<li>Stored the results of each time step into the array.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-fact-11:-the-for-statement-executes-a-statement-(or-series-of-statements)-a-specified-number-of-times-(a-loop!)">Python fact 11: the <code>for</code> statement executes a statement (or series of statements) a specified number of times (a loop!)<a class="anchor-link" href="#Python-fact-11:-the-for-statement-executes-a-statement-(or-series-of-statements)-a-specified-number-of-times-(a-loop!)"> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-fact-12:-Use-square-bracket-[-]-to-refer-to-elements-of-an-array-or-list.-Use-round-parentheses-(-)-for-function-arguments.">Python fact 12: Use square bracket [ ] to refer to elements of an array or list. Use round parentheses ( ) for function arguments.<a class="anchor-link" href="#Python-fact-12:-Use-square-bracket-[-]-to-refer-to-elements-of-an-array-or-list.-Use-round-parentheses-(-)-for-function-arguments."> </a></h4>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plotting-the-result">Plotting the result<a class="anchor-link" href="#Plotting-the-result"> </a></h3><p>Now let's draw a picture of our result!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># a special instruction for the Jupyter notebook</span>
+<span class="c1">#   Display all plots inline in the notebook</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline  
+<span class="c1">#  import the plotting package</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">Years</span><span class="p">,</span> <span class="n">Tsteps</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Global mean temperature (K)&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note how the temperature <em>adjusts smoothly toward the equilibrium temperature</em>, that is, the temperature at which
+ASR = OLR.</p>
+<p><strong>If the planetary energy budget is out of balance, the temperature must change so that the OLR gets closer to the ASR!</strong></p>
+<p>The adjustment is actually an <em>exponential decay</em> process: The rate of adjustment slows as the temperature approaches equilibrium.</p>
+<p>The temperature gets very very close to equilibrium but never reaches it exactly.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Python-fact-13:-We-can-easily-make-simple-graphs-with-the-function-plt.plot(x,y),-where-x-and-y-are-arrays-of-the-same-size.-But-we-must-import-it-first.">Python fact 13: We can easily make simple graphs with the function <code>plt.plot(x,y)</code>, where <code>x</code> and <code>y</code> are arrays of the same size. But we must import it first.<a class="anchor-link" href="#Python-fact-13:-We-can-easily-make-simple-graphs-with-the-function-plt.plot(x,y),-where-x-and-y-are-arrays-of-the-same-size.-But-we-must-import-it-first."> </a></h4><p>This is actually not native Python, but uses a special graphics library called <code>matplotlib</code>.</p>
+<p>Just about all of our notebooks will start with this:</p>
+
+<pre><code>%matplotlib inline
+import numpy as np
+import matplotlib.pyplot as plt</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section7'></a></p>
+<h2 id="7.-Analytical-solution-of-the-Energy-Balance-Model:-e-folding-time-and-feedback-parameter">7. Analytical solution of the Energy Balance Model: e-folding time and feedback parameter<a class="anchor-link" href="#7.-Analytical-solution-of-the-Energy-Balance-Model:-e-folding-time-and-feedback-parameter"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Equilibrium-solutions">Equilibrium solutions<a class="anchor-link" href="#Equilibrium-solutions"> </a></h3><p>We've already seen that the equilibrium solution of the model is</p>
+$$ T_{eq} = \left( \frac{(1-\alpha) Q}{\tau \sigma} \right)^\frac{1}{4} $$<p>and tuned the model parameter based on this relationship.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are going to <strong>linearize the equation</strong> for small perturbations away from this equilibrium.</p>
+<p>Let $T_s = T_{eq} + T_s^\prime$ and restrict our solution to $T_s^\prime &lt;&lt; T_{eq}$.</p>
+<p>Note this this is not a big restriction! For example, a 10 degree warming or cooling is just $\pm$3.4% of the absolute equilibrium temperature.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Linearizing-the-governing-equation">Linearizing the governing equation<a class="anchor-link" href="#Linearizing-the-governing-equation"> </a></h3><p>Now use a first-order Taylor series expansion to write</p>
+$$ \text{OLR} = \tau \sigma T_s^4 $$$$OLR = \tau \sigma T_s^4 = \tau \sigma \left( T_{eq} + T_s^\prime \right)^4  \approx \tau \sigma \left( T_{eq}^4 + 4 T_{eq}^3 T_s^\prime \right) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and the budget for the perturbation temperature thus becomes</p>
+$$C \frac{d T_s^\prime}{d t} = -\lambda_0 T_s^\prime$$<p>where we define</p>
+$$\lambda_0 = 4 \tau \sigma T_{eq}^3 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Putting in our observational values, we get</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">Teq_observed</span><span class="o">**</span><span class="mi">3</span>
+<span class="c1">#  This is an example of formatted text output in Python</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;lambda_0 = </span><span class="si">{:.2f}</span><span class="s1"> W m-2 K-1&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lambda_0</span><span class="p">)</span>  <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is actually our first estimate of what is often called the <strong>Planck feedback</strong>. It is the tendency for a warm surface to cool by increased longwave radiation to space.</p>
+<p>It may also be refered to as the "no-feedback" climate response parameter. As we will see, $\lambda_0$ quantifies the sensitivity of the climate system in the absence of any actual feedback processes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solve-the-linear-ODE">Solve the linear ODE<a class="anchor-link" href="#Solve-the-linear-ODE"> </a></h3><p>Now define</p>
+$$ t^* = \frac{C}{\lambda_0}  $$<p>This is a positive constant with dimensions of time (seconds). With these definitions the temperature evolves according to</p>
+$$ \frac{d T_s^\prime}{d t} = - \frac{T_s^\prime}{t^*}$$<p>This is one of the simplest ODEs. Hopefully it looks familiar to most of you. It is the equation for an <strong>exponential decay</strong> process.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can easily solve for the temperature evolution by integrating from an initial condition $T_s^\prime(0)$:</p>
+$$ \int_{T_s^\prime(0)}^{T_s^\prime(t)} \frac{d T_s^\prime}{T_s^\prime} = -\int_0^t  \frac{dt}{t^*}$$$$\ln \bigg( \frac{T_s^\prime(t)}{T_s^\prime(0)} \bigg) = -\frac{t}{t^*}$$$$T_s^\prime(t) = T_s^\prime(0) \exp \bigg(-\frac{t}{t^*} \bigg)$$<p>I hope that the mathematics is straightforward for everyone in this class. If not, go through it carefully and make sure you understand each step.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="e-folding-time-for-relaxation-of-global-mean-temperature">e-folding time for relaxation of global mean temperature<a class="anchor-link" href="#e-folding-time-for-relaxation-of-global-mean-temperature"> </a></h3><p>Our model says that surface temperature will relax toward its equilibrium value over a characteristic time scale $t^*$. This is an <strong>e-folding time</strong> – the time it takes for the perturbation to decay by a factor $1/e = 0.37$</p>
+<p><em>What should this timescale be for the climate system?</em></p>
+<p>To estimate $t^*$ we need a value for the effective heat capacity $C$.</p>
+<p>Our "quick and dirty" estimate above used 100 meters of water to set this heat capacity.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="What-is-the-right-choice-for-water-depth-$H$?">What is the right choice for water depth $H$?<a class="anchor-link" href="#What-is-the-right-choice-for-water-depth-$H$?"> </a></h4><p>That turns out to be an interesting and subtle question. It depends very much on the timescale of the problem</p>
+<ul>
+<li>days?</li>
+<li>years?</li>
+<li>decades?</li>
+<li>millenia?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will revisit this question later in the course. For now, let’s just continue assuming $H = 100$ m (a bit deeper than the typical depth of the surface mixed layer in the oceans).</p>
+<p>Now calculate the e-folding time for the surface temperature:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tstar</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">lambda_0</span>   <span class="c1">#  Calculated value of relaxation time constant</span>
+<span class="n">seconds_per_year</span> <span class="o">=</span> <span class="mf">60.</span><span class="o">*</span><span class="mf">60.</span><span class="o">*</span><span class="mf">24.</span><span class="o">*</span><span class="mf">365.</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The e-folding time is </span><span class="si">{:1.2e}</span><span class="s1"> seconds or about </span><span class="si">{:1.0f}</span><span class="s1"> years.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tstar</span><span class="p">,</span> <span class="n">tstar</span> <span class="o">/</span> <span class="n">seconds_per_year</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is a rather fast timescale relative to other processes that can affect the planetary energy budget.</p>
+<p><strong>But notice that the climate feedback parameter $\lambda$ is smaller, the timescale gets longer.</strong>  We will come back to this later.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section8'></a></p>
+<h2 id="8.-Summary-and-take-away-messages">8. Summary and take-away messages<a class="anchor-link" href="#8.-Summary-and-take-away-messages"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>We looked at the flows of energy in and out of the Earth system. </li>
+<li>These are determined by radiation at the top of the Earth's atmosphere.</li>
+<li>Any imbalance between shortwave absorption (ASR) and longwave emission (OLR) drives a change in temperature</li>
+<li>Using this idea, we built a climate model!</li>
+<li>This <strong>Zero-Dimensional Energy Balance Model</strong> solves for the global, annual mean surface temperature $T_s$</li>
+<li>Two key assumptions:<ul>
+<li>Energy content of the Earth system varies proportionally to $T_s$</li>
+<li>The OLR increases as $\tau \sigma T_s^4$ (our simple greenhouse model)</li>
+</ul>
+</li>
+<li>Earth (or any planet) has a well-defined <strong>equilibrium temperature</strong> at which ASR = OLR, because of the <em>temperature dependence of the outgoing longwave radiation</em>.</li>
+<li>The system will tend to relax toward its equilibrium temperature on an $e$-folding timescale that depends on <ul>
+<li>(1) radiative feedback processes, and </li>
+<li>(2) effective heat capacity.</li>
+</ul>
+</li>
+<li>In our estimate, this e-folding time is relatively short. <em>In the absence of other processes that can either increase the heat capacity or lower (in absolute value) the feedback parameter, the Earth would never be very far out of energy balance.</em></li>
+<li>We will quantify this statement more as the term progresses.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td colspan='2'>Wed Jul 03 14:49:10 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

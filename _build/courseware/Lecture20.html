@@ -1,0 +1,1999 @@
+---
+redirect_from:
+  - "/courseware/lecture20"
+interact_link: content/courseware/Lecture20.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 20
+pagenum: 23
+prev_page:
+  url: /courseware/Lecture19.html
+next_page:
+  url: /courseware/Lecture21.html
+suffix: .ipynb
+search: x j frac u delta k partial n t f diffusion text our approx left right grid un numerical method scheme xin mathbf bigg equation flux difference le xi m id section exp timestep diffusive forward discretization xj spatial points condition resolution stability times boundary field operator ujn system implicit suppose centered same using conditions just any here value problem solving derivative ebm biggj thus normal array future uj very ikj factor methods together want model function terms lecture point apply well staggered including boundaries numpy finite smooth d above where ftcs lets double solution analysis c ik sin need
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 20</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-peak-at-numerical-methods-for-diffusion-models">A peak at numerical methods for diffusion models<a class="anchor-link" href="#A-peak-at-numerical-methods-for-diffusion-models"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-The-one-dimensional-diffusion-equation">1. The one-dimensional diffusion equation<a class="anchor-link" href="#1.-The-one-dimensional-diffusion-equation"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose that a quantity $u(x)$ is mixed down-gradient by a diffusive process.</p>
+<p>The diffusive flux is</p>
+$$ F = - K \frac{\partial u}{\partial x} $$<p>There will be local changes in $u$ wherever this flux is convergent or divergent:</p>
+$$ \frac{\partial u}{\partial t} = - \frac{\partial F}{\partial x} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Putting this together gives the classical diffusion equation in one dimension</p>
+$$ \frac{\partial u}{\partial t} = \frac{\partial}{\partial x} \left( K \frac{\partial u}{\partial x} \right) $$<p>For simplicity, we are going to limit ourselves to Cartesian geometry rather than meridional diffusion on a sphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will also assume here that $K$ is a constant, so our governing equation is</p>
+$$ \frac{\partial u}{\partial t} = K \frac{\partial^2 u}{\partial x^2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This equation represents a time-dependent diffusion process. It is an <strong>initial-boundary value problem</strong>. We want to integrate the model forward in time to model the changes in the field $u(x)$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Discretizing-the-diffusion-operator-in-space">2. Discretizing the diffusion operator in space<a class="anchor-link" href="#2.-Discretizing-the-diffusion-operator-in-space"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Solving a differential equation on a computer always requires some approximation to represent the continuous function $u(x,t)$ and its derivatives in terms of discrete quantities (arrays of numbers).</p>
+<p>We have already dealt with simple discretization of the time derivative back in <a href="./Lecture02 -- Solving the zero-dimensional EBM.ipynb">Lecture 2</a>. We used the <strong>forward Euler</strong> method to step all our of radiation models forward in time so far.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-notation-for-discretization-of-$u(x,t)$">Some notation for discretization of $u(x,t)$<a class="anchor-link" href="#Some-notation-for-discretization-of-$u(x,t)$"> </a></h3><p>We will discretize time and space on grids</p>
+$$ x_j , ~~~ t^n $$<p>so that</p>
+$$ u_j^n = u(x_j, ~t^n) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Discretizing-the-diffusive-flux">Discretizing the diffusive flux<a class="anchor-link" href="#Discretizing-the-diffusive-flux"> </a></h3><p>The governing equation can be written in terms of the convergence of the diffusive flux:</p>
+$$ \frac{\partial u}{\partial t} = - \frac{\partial F}{\partial x} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is sensible to use a <strong>centered difference</strong> to approximate this derivative:</p>
+$$ \frac{\partial F}{\partial x} \bigg|_j \approx  \frac{F_{j+\frac{1}{2}} - F_{j-\frac{1}{2}}}{x_{j+\frac{1}{2}} - x_{j-\frac{1}{2}}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The time tendency at point $x_j$ can thus be written</p>
+$$ \frac{\partial u}{\partial t} \bigg|_j  \approx - \frac{F_{j+\frac{1}{2}} - F_{j-\frac{1}{2}}}{x_{j+\frac{1}{2}} - x_{j-\frac{1}{2}}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The flux itself depends on a spatial derivative of $u$. We will apply the same centered difference approximation. At point $x_j$ this would look like</p>
+$$ \frac{\partial u}{\partial x} \approx \frac{u_{j+\frac{1}{2}} - u_{j-\frac{1}{2}}}{x_{j+\frac{1}{2}} - x_{j-\frac{1}{2}}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But we actually want to approximate $F_{j+\frac{1}{2}}$ and $F_{j-\frac{1}{2}}$, so we apply the centered difference formula at these intermediate points to get</p>
+$$ F_{j+\frac{1}{2}} \approx -K \frac{u_{j+1} - u_{j}}{x_{j+1} - x_{j}} $$<p>and</p>
+$$ F_{j-\frac{1}{2}} \approx -K \frac{u_{j} - u_{j-1}}{x_{j} - x_{j-1}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Putting this all together, we can write the time tendency at $x_j$ as</p>
+$$ \frac{\partial u}{\partial t} \bigg|_j  \approx K \frac{ \frac{u_{j+1} - u_{j}}{x_{j+1} - x_{j}} - \frac{u_{j} - u_{j-1}}{x_{j} - x_{j-1}}}{x_{j+\frac{1}{2}} - x_{j-\frac{1}{2}}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll make things easy on ourselves by using uniform grid spacing in $x$, so</p>
+$$ x_{j+1} - x_{j} = x_{j} - x_{j-1} = x_{j+\frac{1}{2}} - x_{j-\frac{1}{2}} = \Delta x $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So our final formula for the diffusive flux convergence is</p>
+$$ \frac{\partial u}{\partial t} \bigg|_j  \approx K \frac{ u_{j+1} - 2 u_{j} + u_{j-1}}{\Delta x^2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="No-flux-boundary-conditions">No-flux boundary conditions<a class="anchor-link" href="#No-flux-boundary-conditions"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose the domain is $0 \le x \le 1$, with solid walls at $x=0, 1$.</p>
+<p>The physical boundary condition at the walls is that there can be no flux in or out of the walls:</p>
+$$ F(0) = F(1) = 0 $$<p>So the boundary conditions on $u$ are</p>
+$$ \frac{\partial u}{\partial x} = 0 ~~~ \text{at} ~~~ x=0,1 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-staggered-grid">The staggered grid<a class="anchor-link" href="#The-staggered-grid"> </a></h3><p>Suppose we have a grid of $J+1$ total points between $x=0$ and $x=1$, <strong>including the boundaries</strong>:</p>
+<ul>
+<li>$x^*_0 = 0 $</li>
+<li>$x^*_1 = \Delta x$</li>
+<li>$x^*_2 = 2~\Delta x$</li>
+<li>...</li>
+<li>$x^*_j = j~\Delta x$</li>
+<li>...</li>
+<li>$x^*_{J-1} = (J-1)~\Delta x = 1 - \Delta x $</li>
+<li>$x^*_J = J ~ \Delta x = 1 $</li>
+</ul>
+<p>Clearly then the grid spacing must be $\Delta x = 1/J$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll define the fluxes on this grid. The boundary conditions can thus be written</p>
+$$ F_0 = F_J = 0 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Since our centered difference discretization defines $F$ at points halfway between the $u$ points, it is sensible to locate $u$ on another grid that is offset by $\Delta x / 2$.</p>
+<p>The first grid point for $u$ is thus a distance $\Delta x / 2$ from the wall, and there are a total of $J$ points:</p>
+<ul>
+<li>$x_0 = \Delta x / 2$</li>
+<li>$x_1 = \Delta x / 2 + \Delta x$</li>
+<li>$x_2 = \Delta x / 2 + 2~\Delta x$</li>
+<li>...</li>
+<li>$x_j = \Delta x / 2 + j~\Delta x$</li>
+<li>...</li>
+<li>$x_{J-1} = \Delta x / 2 + (J-1)~\Delta x = 1 - \Delta x / 2 $</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Implementing-the-boundary-condition-on-the-staggered-grid">Implementing the boundary condition on the staggered grid<a class="anchor-link" href="#Implementing-the-boundary-condition-on-the-staggered-grid"> </a></h3><p>At $x_0$ we have</p>
+$$ \frac{\partial u}{\partial t} \bigg|_0  \approx -\frac{ F_1 - F_0}{\Delta x} $$<p>Subbing in $F_0 = 0$ and the normal discretization for $F_1$ gives</p>
+$$ \frac{\partial u}{\partial t} \bigg|_0  \approx K \frac{ u_1 - u_0 }{\Delta x^2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The same procedure at the other wall yields</p>
+$$ \frac{\partial u}{\partial t} \bigg|_{J-1}  \approx - K \frac{ u_{J-1} - u_{J-2} }{\Delta x^2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pulling this all together we have a complete discretization of the diffusion operator including its boundary conditions:</p>
+$$ \frac{\partial u}{\partial t} \bigg|_0  \approx K \frac{ u_1 - u_0 }{\Delta x^2} $$$$ \frac{\partial u}{\partial t} \bigg|_j  \approx K \frac{ u_{j+1} - 2 u_{j} + u_{j-1}}{\Delta x^2}, ~~~~~~ j=1,...,J-2 $$$$ \frac{\partial u}{\partial t} \bigg|_{J-1}  \approx - K \frac{ u_{J-1} - u_{J-2} }{\Delta x^2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Coding-the-discretized-diffusion-operator-in-numpy">3. Coding the discretized diffusion operator in <code>numpy</code><a class="anchor-link" href="#3.-Coding-the-discretized-diffusion-operator-in-numpy"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span><span class="p">,</span> <span class="n">Latex</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we will divide our domain up into 20 grid points.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">J1</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">J1</span>
+<span class="n">deltax</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">J</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;J = </span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">J</span>))
+<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\Delta x = </span><span class="si">%0.3f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">deltax</span>))
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle J = 20$
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \Delta x = 0.050$
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The fluxes will be solved on the staggered grid with 21 points.</p>
+<p>$u$ will be solved on the 20 point grid.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xstag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">J</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xstag</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">deltax</span><span class="o">/</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0.025 0.075 0.125 0.175 0.225 0.275 0.325 0.375 0.425 0.475 0.525 0.575
+ 0.625 0.675 0.725 0.775 0.825 0.875 0.925 0.975]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here's one way to implement the finite difference, using array indexing.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dudx</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dudx</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(19,)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also use the function <code>numpy.diff()</code> to accomplish the same thing:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Help on function diff in module numpy:
+
+diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
+    Calculate the n-th discrete difference along the given axis.
+    
+    The first difference is given by ``out[n] = a[n+1] - a[n]`` along
+    the given axis, higher differences are calculated by using `diff`
+    recursively.
+    
+    Parameters
+    ----------
+    a : array_like
+        Input array
+    n : int, optional
+        The number of times values are differenced. If zero, the input
+        is returned as-is.
+    axis : int, optional
+        The axis along which the difference is taken, default is the
+        last axis.
+    prepend, append : array_like, optional
+        Values to prepend or append to &#34;a&#34; along axis prior to
+        performing the difference.  Scalar values are expanded to
+        arrays with length 1 in the direction of axis and the shape
+        of the input array in along all other axes.  Otherwise the
+        dimension and shape must match &#34;a&#34; except along axis.
+    
+    Returns
+    -------
+    diff : ndarray
+        The n-th differences. The shape of the output is the same as `a`
+        except along `axis` where the dimension is smaller by `n`. The
+        type of the output is the same as the type of the difference
+        between any two elements of `a`. This is the same as the type of
+        `a` in most cases. A notable exception is `datetime64`, which
+        results in a `timedelta64` output array.
+    
+    See Also
+    --------
+    gradient, ediff1d, cumsum
+    
+    Notes
+    -----
+    Type is preserved for boolean arrays, so the result will contain
+    `False` when consecutive elements are the same and `True` when they
+    differ.
+    
+    For unsigned integer arrays, the results will also be unsigned. This
+    should not be surprising, as the result is consistent with
+    calculating the difference directly:
+    
+    &gt;&gt;&gt; u8_arr = np.array([1, 0], dtype=np.uint8)
+    &gt;&gt;&gt; np.diff(u8_arr)
+    array([255], dtype=uint8)
+    &gt;&gt;&gt; u8_arr[1,...] - u8_arr[0,...]
+    array(255, np.uint8)
+    
+    If this is not desirable, then the array should be cast to a larger
+    integer type first:
+    
+    &gt;&gt;&gt; i16_arr = u8_arr.astype(np.int16)
+    &gt;&gt;&gt; np.diff(i16_arr)
+    array([-1], dtype=int16)
+    
+    Examples
+    --------
+    &gt;&gt;&gt; x = np.array([1, 2, 4, 7, 0])
+    &gt;&gt;&gt; np.diff(x)
+    array([ 1,  2,  3, -7])
+    &gt;&gt;&gt; np.diff(x, n=2)
+    array([  1,   1, -10])
+    
+    &gt;&gt;&gt; x = np.array([[1, 3, 6, 10], [0, 5, 6, 8]])
+    &gt;&gt;&gt; np.diff(x)
+    array([[2, 3, 4],
+           [5, 1, 2]])
+    &gt;&gt;&gt; np.diff(x, axis=0)
+    array([[-1,  2,  0, -2]])
+    
+    &gt;&gt;&gt; x = np.arange(&#39;1066-10-13&#39;, &#39;1066-10-16&#39;, dtype=np.datetime64)
+    &gt;&gt;&gt; np.diff(x)
+    array([1, 1], dtype=&#39;timedelta64[D]&#39;)
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(19,)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here is a function that computes the diffusive flux $F$ on the staggered grid, including the boundaries.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">diffusive_flux</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1">#  Take the finite difference</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">deltax</span>
+    <span class="c1">#  add a zero as the first element (no flux on boundary)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="c1">#  add another zero as the last element (no flux on boundary)</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span>
+    <span class="c1">#  flux is DOWN gradient, proportional to D</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">K</span><span class="o">*</span><span class="n">F</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">diffusive_flux</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">deltax</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(21,)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The time tendency of $u$ is just the convergence of this flux, which requires one more finite difference:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="c1">#  compute flux</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">diffusive_flux</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="c1">#  take convergence of flux</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">F</span><span class="p">)</span> <span class="o">/</span> <span class="n">deltax</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-smooth-example">A smooth example<a class="anchor-link" href="#A-smooth-example"> </a></h3><p>Suppose we have an initial $u$ field that has a local maximum in the interior.</p>
+<p>The gaussian (bell curve) function is a convenient way to create such a field.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">std</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">std</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="n">dudt</span> <span class="o">=</span> <span class="n">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="n">K</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$u(x)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dudt</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$du/dt$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x11465d7b8&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture20_46_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Hopefully this makes sense. The diffusion is acting to smooth out $u$ by reducing the peak and increasing $u$ on the flanks of the gaussian bump.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-non-smooth-examples">Some non-smooth examples<a class="anchor-link" href="#Some-non-smooth-examples"> </a></h3><p>Use a random number generator to create some noisy initial conditions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+    <span class="n">dudt</span> <span class="o">=</span> <span class="n">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dudt</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture20_49_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-Discretizing-the-time-derivative">4. Discretizing the time derivative<a class="anchor-link" href="#4.-Discretizing-the-time-derivative"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The simplest way to discretize the time derivative is the <strong>forward Euler</strong> method:</p>
+$$ \frac{d u}{dt} \bigg|^n \approx \frac{u^{n+1} - u^n}{\Delta t} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have already used this method to step our prognostic variables forward in time.</p>
+<p>Solving the above for the future value of $u$ gives</p>
+$$ u^{n+1} = u^n + \Delta t \frac{d u}{dt} \bigg|^n $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We apply our discretization of the diffusion operator to the current value of the field $u^n_j$, to get our formula for the future values:</p>
+$$ u_j^{n+1} = u_j^n + \frac{K \Delta t}{\Delta x^2} \left( u^n_{j+1} - 2 u^n_{j} + u^n_{j-1} \right)  $$<p>(except at the boundaries, where the diffusion operator is slightly different -- see above).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Together, this scheme is known as <strong>Forward Time, Centered Space</strong> or <strong>FTCS</strong>.</p>
+<p>It is very simple to implement in <code>numpy</code> code.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">step_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">dudt</span> <span class="o">=</span> <span class="n">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">u</span> <span class="o">+</span> <span class="n">deltat</span> <span class="o">*</span> <span class="n">dudt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">deltat</span> <span class="o">=</span> <span class="mf">0.125</span>
+<span class="n">deltat1</span> <span class="o">=</span> <span class="n">deltat</span>
+
+<span class="n">u0</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="n">u1</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat1</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;initial&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;next&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x114bf5eb8&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture20_56_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's loop through a number of timesteps.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  regular resolution</span>
+<span class="n">J</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">deltax</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">J</span>
+<span class="n">xstag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">J</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xstag</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">deltax</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="n">niter</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat1</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x114ab64e0&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture20_59_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The numerics were easy to implement, and the scheme seems to work very well! The results are physically sensible.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Now,-suppose-that-you-wanted-to-double-the-spatial-resolution">Now, suppose that you wanted to <strong>double</strong> the spatial resolution<a class="anchor-link" href="#Now,-suppose-that-you-wanted-to-double-the-spatial-resolution"> </a></h3><p>Try setting $J=40$ and repeat the above procedure.</p>
+<p>What happens?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  double the resolution</span>
+<span class="n">scaling_factor</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">J1</span> <span class="o">*</span> <span class="n">scaling_factor</span>
+<span class="n">deltax</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">J</span>
+<span class="n">xstag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">J</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xstag</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">deltax</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat1</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x114d1a470&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture20_63_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suddenly our scheme is producing numerical noise that grows in time and overwhelms to smooth physical solution we are trying to model.</p>
+<p><strong>This is bad!</strong></p>
+<p>What went wrong, and what can we do about it?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Stability-analysis-of-the-FTCS-scheme">5. Stability analysis of the FTCS scheme<a class="anchor-link" href="#5.-Stability-analysis-of-the-FTCS-scheme"> </a></h2><hr>
+<p>Following Press et al. (1988), "Numerical Recipes in C: The Art of Scientific Computing", Cambridge University Press.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is an example of the so-called <strong>von Neumann Stability Analysis</strong>. It is a form of <em>normal mode</em> analysis for a discrete system.</p>
+<p>We look for normal mode solutions (i.e. wavy sines and cosines) of the finite difference equations of the form</p>
+$$ u_j^n = \xi^n \exp(i~k~j~ \Delta x) $$<p>where $k$ is some real number that represents a spatial wavenumber (which can have any value), and $\xi = \xi(k)$ is a complex number that depends on $k$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The number $\xi$ is called the <strong>amplification factor</strong> at a given wavenumber $k$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The question is, <strong>under what conditions do wavy solutions grow with time</strong>?  (This is bad, as it means small numerical noise will become large numerical noise and make our differencing scheme unusable)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's substitute the normal mode solution into our finite difference equation</p>
+$$ \frac{u_j^{n+1} -  u_j^n}{\Delta t} = \frac{K}{\Delta x^2} \left( u^n_{j+1} - 2 u^n_{j} + u^n_{j-1} \right)  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \frac{\xi^{n+1} \exp(i~k~j~ \Delta x) -  \xi^n \exp(i~k~j~ \Delta x)}{\Delta t} = \frac{K}{\Delta x^2} \left( \xi^n \exp(i~k~(j+1)~ \Delta x) - 2 \xi^n \exp(i~k~j~ \Delta x) + \xi^n \exp(i~k~(j-1)~ \Delta x) \right)  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Divide through by $\xi^n \exp(i~k~j~\Delta x)$:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \frac{\xi^{n+1}}{\xi^n} -  1 = \frac{K \Delta t}{\Delta x^2} \left(\exp(i~k~\Delta x) - 2 + \exp(-i~k~\Delta x) \right)  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The exponentials simplify</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \frac{\xi^{n+1}}{\xi^n} = 1 + \frac{K \Delta t}{\Delta x^2} \left(2 \cos(k~\Delta x) - 2 \right)  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Or using a double angle identity,</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+$$ \frac{\xi^{n+1}}{\xi^n} = 1 - \frac{4 K \Delta t}{\Delta x^2} \sin^2 \left( \frac{k~\Delta x}{2} \right)  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-wavy-solution-must-not-grow-with-time">The wavy solution must not grow with time<a class="anchor-link" href="#The-wavy-solution-must-not-grow-with-time"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need to prevent growing normal modes. So successive amplitudes should be</p>
+$$ \bigg| \frac{\xi^{n+1}}{\xi^n} \bigg| \le 1 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The stability condition is thus</p>
+$$ \bigg| 1 - \frac{4 K \Delta t}{\Delta x^2} \sin^2 \left( \frac{k~\Delta x}{2} \right) \bigg| \le 1 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and this condition must be met for <strong>EVERY</strong> possible wavenumber $k$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Because $0 \le \sin^2(\phi) \le 1$ for any $\phi$, our condition can only be violated if</p>
+$$ \frac{4 K \Delta t}{\Delta x^2} &gt; 2 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We conclude the the FTCS scheme is stable so long as this stability condition is met:</p>
+$$ \Delta t \le \frac{\Delta x^2}{2 K} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="We-have-just-discovered-an-important-constraint-on-the-allowable-timestep">We have just discovered an important constraint on the allowable timestep<a class="anchor-link" href="#We-have-just-discovered-an-important-constraint-on-the-allowable-timestep"> </a></h3><p>The maximum timestep we can use with the FTCS scheme for the diffusion equation is proportional to $\Delta x^2$.</p>
+<p><strong>A doubling of the spatial resolution would require a 4x shorter timestep to preserve numerical stability.</strong></p>
+<p>Physically, the restriction is that the maximum allowable timestep is approximately the diffusion time across a grid cell of width $\Delta x$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section6'></a></p>
+<h2 id="6.-Numerical-tests-with-a-shorter-timestep">6. Numerical tests with a shorter timestep<a class="anchor-link" href="#6.-Numerical-tests-with-a-shorter-timestep"> </a></h2><hr>
+<p>Going back to our Gaussian example, let's double the resolution but shorten the timestep by a factor of 4.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  double the resolution</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">J1</span> <span class="o">*</span> <span class="n">scaling_factor</span>
+<span class="n">deltax</span> <span class="o">=</span> <span class="mf">1.</span><span class="o">/</span><span class="n">J</span>
+<span class="n">xstag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">J</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xstag</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">deltax</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="c1">#  The maximum stable timestep</span>
+<span class="n">deltat_max</span> <span class="o">=</span> <span class="n">deltax</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">K</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The maximum allowable timestep is </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">deltat_max</span>)
+
+<span class="n">deltat</span> <span class="o">=</span> <span class="n">deltat1</span> <span class="o">/</span> <span class="n">scaling_factor</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;4x the previous timestep is </span><span class="si">%f</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">deltat</span>)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The maximum allowable timestep is 0.031250
+4x the previous timestep is 0.031250
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">u</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">niter</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">scaling_factor</span><span class="o">**</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x114e55a58&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture20_87_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Success! The graph now looks like a smoother (higher resolution) version of our first integration with the coarser grid.</p>
+<p><strong>But at a big cost</strong>:  our calculation required 4 times more timesteps to do the same integration.</p>
+<p>The total increase in computational cost was actally a factor of 8 to get a factor of 2 increase in spatial resolution.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section7'></a></p>
+<h2 id="7.-The-need-for-a-more-efficient-method">7. The need for a more efficient method<a class="anchor-link" href="#7.-The-need-for-a-more-efficient-method"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In practice the condition</p>
+$$ \Delta t \le \frac{\Delta x^2}{2 K} $$<p>is often too restrictive to be practical!</p>
+<p>Consider our diffusive EBM. Suppose we want a spatial resolution of 1º latitude. Then we have 180 grid points from pole to pole, and our physical length scale is</p>
+$$ \Delta x \approx 10^5 \text{m} $$<p></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We were using a diffusivity of $D = 0.6 ~ \text{W m}^{-2}~\text{K}^{-1}$ and a heat capacity of $C = 4 \times 10^7 ~ \text{J m}^{-2} ~\text{K}^{-1}$ (for 10 m of water, <a href="./Lecture17%20--%20Seasonal%20cycle%20and%20heat%20capacity.ipynb">see Lecture 17</a>).</p>
+<p>Accounting for the spherical geometry in our EBM, this translates to</p>
+$$ K = \frac{2 \pi a^2 D}{C} = \frac{2 \pi ~ (6.4 \times 10^6 ~\text{m})^2 ~(0.6 ~ \text{W m}^{-2}~\text{K}^{-1})}{4 \times 10^7 ~ \text{J m}^{-2} ~\text{K}^{-1}} \approx 4 \times 10^{6} ~ \text{m}^2 ~ \text{s}^{-1} $$<p>Recall that this is the diffusivity associated with the large-scale motion of the atmosphere (mostly). If we take a typical velocity scale for a mid-latitude eddy, $V \approx 20~\text{m s}^{-1}$, and a typical length scale for that eddy, $L \approx 2000~\text{km}$, the diffusivity then scales as</p>
+$$ K = V~ L = 4 \times 10^{6} ~ \text{m}^2 ~ \text{s}^{-1} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using these numbers the stability condition is roughly</p>
+$$ \Delta t \le 10^3 ~\text{s}$$<p>which is less than one hour!</p>
+<p>And if we wanted to double the resolution to 0.5º, we would need a timestep of just a few minutes.</p>
+<p>This can be a very onerous requirement for a model that would like to integrate out for many years.  <strong>We can do better, but we need a different time discretization!</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section8'></a></p>
+<h2 id="8.-Implicit-time-method">8. Implicit time method<a class="anchor-link" href="#8.-Implicit-time-method"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>With numerical methods for partial differential equations, it often turns out that a small change in the discretization can make an enormous difference in the results.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>implicit time</strong> scheme applies exactly the same centered difference scheme to the spatial derivatives in the diffusion operator.</p>
+<p>But instead of applying the operator to the field $u^n$ at time $n$, we instead apply it to the field <strong>at the future time</strong> $u^{n+1}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The scheme looks like</p>
+$$ \frac{u_j^{n+1} - u_j^n}{\Delta t} =  \frac{K}{\Delta x^2} \left( u^{n+1}_{j+1} - 2 u^{n+1}_{j} + u^{n+1}_{j-1} \right)  $$<p>in the interior, and at the boundaries:</p>
+$$ \frac{u_0^{n+1} - u_0^n}{\Delta t} = \frac{K}{\Delta x^2} \left( u^{n+1}_1 - u^{n+1}_0 \right) $$<p>and</p>
+$$ \frac{u_{J-1}^{n+1} - u_{J-1}^n}{\Delta t} = - \frac{K}{\Delta x^2} \left( u_{J-1}^{n+1} - u_{J-2}^{n+1} \right) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This might seem like a strange way to write the system, since <strong>we don't know the future state of the system at $t^{n+1}$</strong>. That's what we're trying to solve for!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's move all terms evaluated at $t^{n+1}$ to the left hand side:</p>
+$$ u_j^{n+1}  - \frac{K \Delta t}{\Delta x^2} \left( u^{n+1}_{j+1} - 2 u^{n+1}_{j} + u^{n+1}_{j-1} \right) = u_j^n   $$<p>or</p>
+$$ -K^* u^{n+1}_{j+1} + \left(1+2K^* \right) u_j^{n+1} - K^* u_{j-1}^{n+1} = u_j^n $$<p>(in the interior)</p>
+<p>where we have introduced a non-dimensional diffusivity</p>
+$$ K^* = \frac{K \Delta t}{\Delta x^2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-implicit-scheme-as-a-matrix-problem">The implicit scheme as a matrix problem<a class="anchor-link" href="#The-implicit-scheme-as-a-matrix-problem"> </a></h3><p>We can write this as a matrix equation</p>
+$$ \mathbf{A} ~ \mathbf{U}^{n+1} = \mathbf{U}^n $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>where $\mathbf{U}$ is a $J\times1$ column vector giving the field $u(x)$ at a particular instant in time:</p>
+$$ \mathbf{U}^n = \left[ \begin{array}{c} 
+u^n_0 \\
+u^n_1  \\
+u^n_2 \\
+...  \\
+u^n_{J-2} \\
+u^n_{J-1} \\
+\end{array}
+\right] 
+$$<p>and $\mathbf{U}^{n+1}$ is the same vector at $t^{n+1}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\mathbf{A}$ is a $J\times J$ tridiagonal matrix:</p>
+$$ \mathbf{A} = \left[ \begin{array}{cccccccc}
+ 1+K^* &amp; -K^* &amp; 0 &amp; 0 &amp; ... &amp; 0 &amp; 0 &amp; 0 \\
+ -K^* &amp; 1+2K^* &amp; -K^* &amp; 0 &amp; ... &amp; 0 &amp; 0 &amp; 0 \\
+ 0 &amp; -K^* &amp; 1+2K^* &amp; -K^* &amp;... &amp; 0 &amp; 0 &amp; 0 \\
+ ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; ... &amp; -K^* &amp; 1+2K^* &amp; -K^* \\
+ 0 &amp; 0 &amp; 0 &amp; 0 &amp; ... &amp; 0 &amp; -K^* &amp; 1+K^* \\
+\end{array}
+\right] 
+$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Solving for the future state of the system $\mathbf{U}^{n+1}$ is then just the solution of the linear system</p>
+$$ \mathbf{U}^{n+1} = \mathbf{A}^{-1} \mathbf{U}^{n}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Solving a tridiagonal matrix problem like this is a very common operation in computer science, and efficient numerical routines are available in many languages (including Python / <code>numpy</code>!)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Stability-analysis-of-the-implicit-scheme">Stability analysis of the implicit scheme<a class="anchor-link" href="#Stability-analysis-of-the-implicit-scheme"> </a></h3><p>We'll skip the details, but the amplification factor for this scheme is (see <em>Numerical Recipes</em> book or other text on numerical methods):</p>
+$$ \frac{\xi^{n+1}}{\xi^n} = \frac{1}{1+4 K^* \sin^2 \left( \frac{k \Delta x}{2} \right) } $$<p>so the stability criterion of $$ \bigg| \frac{\xi^{n+1}}{\xi^n} \bigg| \le 1 $$</p>
+<p>is met for any value of $K^*$ and thus <strong>for any timestep $\Delta t$</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The implicit method (also called <strong>backward time</strong>) is unconditionally stable for any choice of timestep.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section9'></a></p>
+<h2 id="9.-Your-homework-assignment">9. Your homework assignment<a class="anchor-link" href="#9.-Your-homework-assignment"> </a></h2><hr>
+<p>Write Python code to solve the diffusion equation using this implicit time method. Demonstrate that it is numerically stable for much larger timesteps than we were able to use with the forward-time method. One way to do this is to use a much higher spatial resolution.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Some-final-thoughts:">Some final thoughts:<a class="anchor-link" href="#Some-final-thoughts:"> </a></h3><p>We have just scratched the surface of the wonders and sorrows of numerical methods here. The implicit method is very <strong>stable</strong> but is not the most <strong>accurate</strong> method for a diffusion problem, particularly when you are interested in some of the faster dynamics of the system (as opposed to just getting the system quickly to its equilibrium state).</p>
+<p>There are always trade-offs in the choice of a numerical method.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The equations for most climate models are sufficiently complex that more than one numerical method is necessary. Even in the simple diffusive EBM, the radiation terms are handled by a forward-time method while the diffusion term is solved implicitly.</p>
+<p>Once you have worked through the above problem (diffusion only), you might want to look in the <code>climlab</code> code to see how the diffusion solver is implemented there, and how it is used when you integrate the EBM.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+
+[Back to ATM 623 notebook home](../index.ipynb)
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td colspan='2'>Wed Jul 03 14:55:15 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

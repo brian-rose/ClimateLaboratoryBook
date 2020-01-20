@@ -1,0 +1,1613 @@
+---
+redirect_from:
+  - "/courseware/lecture16"
+interact_link: content/courseware/Lecture16.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Number 16
+pagenum: 19
+prev_page:
+  url: /courseware/Lecture15.html
+next_page:
+  url: /courseware/Lecture17.html
+suffix: .ipynb
+search: insolation ice orbital obliquity variations summer eccentricity orbit perihelion sun e northern earths years earth high parameters ages sheets around annual mean id solstice latitudes seasonal precession section large present png global because not climate any last climlab solar three points circular longitude past during seasons called astronomical theory tilt changes line point varies very lambda million hemisphere img src interglglachg axis zero m harvard between our its milankovitch hypothesis www edu aphelion ellipse precessional parameter small mostly images maximum figure imbrie university perfectly pole winter period equator just understand positive total lgm kyr due albany wikimedia org commons iceagenorth
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Number 16</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Orbital-variations,-insolation,-and-the-ice-ages">Orbital variations, insolation, and the ice ages<a class="anchor-link" href="#Orbital-variations,-insolation,-and-the-ice-ages"> </a></h1>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-The-ice-ages">1. The ice ages<a class="anchor-link" href="#1.-The-ice-ages"> </a></h2><hr>
+<p>Recent Earth history (past few million years) has been dominated by the repeated growth and retreat of large continental ice sheets, mostly over the land masses of the Northern Hemisphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Extent-of-glaciation">Extent of glaciation<a class="anchor-link" href="#Extent-of-glaciation"> </a></h3><p>The images below show typical maximum extents of the ice sheets during recent glaciations (grey) compared with present-day ice sheets (black)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Iceage_north-intergl_glac_hg.png/480px-Iceage_north-intergl_glac_hg.png'></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Iceage_south-intergl_glac_hg.png/480px-Iceage_south-intergl_glac_hg.png'></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Hannes Grobe/AWI, <a href="http://commons.wikimedia.org/wiki/File:Iceage_north-intergl_glac_hg.png">http://commons.wikimedia.org/wiki/File:Iceage_north-intergl_glac_hg.png</a></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a id='icevolumeseries'></a></p>
+<h3 id="Pacing-of-ice-ages:-evidence-from-ocean-sediments">Pacing of ice ages: evidence from ocean sediments<a class="anchor-link" href="#Pacing-of-ice-ages:-evidence-from-ocean-sediments"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The figure below shows a global record of <strong>oxygen isotopes</strong> recorded in the shells of marine organisms. This record tells us primarily about variations in <strong>global ice volume</strong> -- because the net evaporation of water from the oceans to build up the ice sheets leaves the oceans enriched in heavier isotopes.</p>
+<p>The x axis is plotted in <strong>Thousands of years before present</strong> (present-day is at zero on the left).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/Lisiecki_Raymo_Fig.4top.png' width=800></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Lisiecki, L. E. and Raymo, M. E. (2005). A Pliocene-Pleistocene stack of 57 globally distributed benthic δ18O records. Paleoceanog., 20.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The ice ages (times of extensive glaciation and high ocean $\delta^{18}$O) do not seem to be random fluctations. They have come and gone (approximately) periodically, somewhat like the seasons.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Spectral analysis</strong> of such records reveals peaks at some special frequencies:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/ImbrieImbrie_Fig42.png' width=400></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Imbrie, J. and Imbrie, K. P. (1986). Ice Ages: Solving the Mystery. Harvard University Press, Cambridge, Massachusetts.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The peaks noted on this figure are special because they correspond to frequencies of variations in Earth's orbital parameters, as we will see.</p>
+<p>These kind of results became available in the 1970’s for the first time, because ocean sediment cores allowed a sufficiently detailed look into the past to use time series analysis methods on them, e.g. to compute spectra.</p>
+<p>The presence of peaks in the spectrum at orbital frequencies was seen as convincing evidence that the so-called <strong>astronomical theory of the ice ages</strong> was (at least partially) correct.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Introducing-the-astronomical-theory-of-the-ice-ages">2. Introducing the astronomical theory of the ice ages<a class="anchor-link" href="#2.-Introducing-the-astronomical-theory-of-the-ice-ages"> </a></h2><hr>
+<p>The <strong>Astronomical Theory</strong> of climate and the ice ages looks to the <strong>regular, predictable variations in the Earth's orbit around the Sun</strong> as the driving force for the growth and melt of the great ice sheets. Such theories have been discussed since long before there was any evidence about the timing of past glaciations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last time we saw that insolation is NOT perfectly symmetrically distributed between the two hemispheres and seasons.</p>
+<p>To refresh our memory, let's use</p>
+
+<pre><code>climlab.solar.insolation.daily_insolation()</code></pre>
+<p>to compare the maximum insolation received at the North Pole (at its summer solstice) and the South Pole (at its summer solstice).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span><span class="p">,</span> <span class="mi">365</span><span class="p">)</span>
+<span class="n">Qnorth</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="n">days</span><span class="p">)</span>
+<span class="n">Qsouth</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="n">days</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Daily average insolation at summer solstice:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;North Pole: </span><span class="si">%0.2f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="k">np</span>.max(Qnorth))
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;South Pole: </span><span class="si">%0.2f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="k">np</span>.max(Qsouth))
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Daily average insolation at summer solstice:
+North Pole: 525.31 W/m2.
+South Pole: 562.03 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These asymmetries arise because of the detailed shape of the orbit of the Earth around the Sun and the tilt of the Earth's axis of rotation.</p>
+<p>As these orbitals details change over time, there are significant changes in the distribution of sunlight over the seasons and latitudes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Milankovitch-hypothesis">The Milankovitch hypothesis<a class="anchor-link" href="#The-Milankovitch-hypothesis"> </a></h3><p>Version of the astronomical theory have been debated for at least 150 years.</p>
+<p>The most popular flavor has been the so-called <strong>Milankovitch hypothesis</strong>:</p>
+<blockquote><p>Ice sheets grow during periods of <em>weak summer insolation</em> in the Northern high latitudes.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The idea is that for an ice sheet to grow, seasonal snow must survive through the summer. Milankovitch therefore focussed on the factors determining the climatic conditions during <strong>summer</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Ellipses-and-orbits">3. Ellipses and orbits<a class="anchor-link" href="#3.-Ellipses-and-orbits"> </a></h2><hr>
+<p>First, watch this neat animation from <a href="http://www.people.fas.harvard.edu/~phuybers">Peter Huybers</a> (Harvard University):</p>
+<p><a href="http://www.people.fas.harvard.edu/~phuybers/Inso/Orbit.mv4">http://www.people.fas.harvard.edu/~phuybers/Inso/Orbit.mv4</a></p>
+<p>Watch carefully and note the three ways that the orbit is varying simultaneously.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From Professor Huybers' web page:</p>
+<blockquote><p>A movie depicting Earth's changing orbit over the last 100Ky. The orientation is such that spring equinox (indicated by a vertical bar) is directly to the front with the sun behind it. Northern Hemisphere summer is to our right, and Northern Hemisphere winter is to the left. The apsidal (dashed) line connects perihelion (Earth's closest approach to the sun) to aphelion (the point when Earth is furthest from the sun). The rotaion of the apsidal line occurs because of the precession of the equinoxes and has a roughly twenty-two thousand year period. The semi-circle around the Earth indicates the location of the equator and the straight line is the polar axis. Obliquity is defined as the angle beetween the orbital and equatorial planes. The variations in Earth's obliquity and the eccentricity of Earth's orbit have both been increased in magnitude by a factor of ten. Also, the Earth's angular velocity has been decreased by a factor of five thousand. Note that Earth's angular velocity is slowest at aphelion and fastest at perihelion.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Earth’s orbit around the Sun traces out an <strong>ellipse</strong>, with the Sun at one focal point.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/ImbrieImbrie_Fig14.png' width=600></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>Imbrie, J. and Imbrie, K. P. (1986). Ice Ages: Solving the Mystery. Harvard University Press, Cambridge, Massachusetts.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-to-draw-an-ellipse">How to draw an ellipse<a class="anchor-link" href="#How-to-draw-an-ellipse"> </a></h3><ol>
+<li>Take any two points on a plane</li>
+<li>Attach the two ends of a piece of string to the two points. </li>
+<li>Pull the loose string out as far as it will go in any direction, and place a pencil mark at that point.</li>
+<li>Do the same for every possible direction.</li>
+<li>Congratulations, you have just drawn a perfect ellipse. The two points are called <strong>foci</strong> or focal points.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Keep this in mind, and you will always understand the <strong>mathematical definition of an ellipse</strong>:</p>
+<blockquote><p>An ellipse is a curve that is the locus of all points in the plane the sum of whose distances from two fixed points (the foci) is a positive constant.</p>
+</blockquote>
+<p>In our case, the positive constant is the total length of the string.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Perihelion-and-Aphelion">Perihelion and Aphelion<a class="anchor-link" href="#Perihelion-and-Aphelion"> </a></h3><p>The point in the orbit that is <strong>closest to the sun</strong> is called <strong>Perihelion</strong>.
+The farthest point is called <strong>Aphelion</strong>.</p>
+<p>Distances (present-day):</p>
+<ul>
+<li>Perihelion,  $ d_p = 1.47 \times 10^{11}$ m</li>
+<li>Aphelion,  $ d_a = 1.52 \times 10^{11}$ m</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Eccentricity">Eccentricity<a class="anchor-link" href="#Eccentricity"> </a></h3><p>The eccentricity of the orbit is defined as
+$$ e = \frac{d_a-d_p}{d_a+d_p} $$</p>
+<p>So for present-day values, $e = 0.017 = 1.7\%$</p>
+<p>Earth’s orbit is nearly circular, but not quite!</p>
+<p>(What value of $e$ would a purely circular orbit have?)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As the Earth travels around its orbit, the <strong>distance to the sun varies</strong>. The energy flux (W m$^{-2}$) is larger when the Earth is closer to the sun (i.e. near perihelion).</p>
+<p>At present, perihelion occurs on January 3. This is very close to the Northern Hemisphere winter solstice (Dec. 21).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>The Earth actually receives MORE total sunlight during Northern Winter than during Northern Summer.</strong></p>
+<p>It is thus critical to understand the relative timing of our seasons (which are determined by the axial tilt or obliquity) and the perehelion.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Obliquity">Obliquity<a class="anchor-link" href="#Obliquity"> </a></h3><p>The obliquity $\Phi$ is the <strong>tilt of the Earth’s axis of rotation with respect to a line normal to the plane of the Earth’s orbit around the Sun.</strong></p>
+<p>Currently $\Phi = 23.5^\circ$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Obliquity is the fundamental reason we have seasons, and would have seasons even with a perfectly circular orbit ($e=0$)</p>
+<p>Higher obliquity means:</p>
+<ul>
+<li>more summertime insolation at the poles</li>
+<li>less wintertime insolation in mid-latitudes</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Longitude-of-perihelion-and-precession-of-the-equinoxes">Longitude of perihelion and precession of the equinoxes<a class="anchor-link" href="#Longitude-of-perihelion-and-precession-of-the-equinoxes"> </a></h3><p>The <strong>longitude of perihelion</strong> is defined as the angle $\Lambda$ between the Earth-Sun line at vernal equinox and the line from the Sun to perihelion (see sketch).</p>
+<p>The current value is $\Lambda = 281^\circ$ (perihelion on January 3, shortly after NH winter solstice).</p>
+<p>We call the gradual change over time of the longitude of perihelion the <strong>precession of the equinoxes</strong> (or just precession).  It is the <strong>gradual change in the time of year at which the Earth is closest to the Sun</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Question">Question<a class="anchor-link" href="#Question"> </a></h4><p>Can there be any precession for a planet with a <em>perfectly circular</em> orbit (zero eccentricity)?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is important to understand that eccentricity modulates the precession. <em>Highly eccentric orbits lead to larger differences in the seasonal distribution of insolation.</em></p>
+<p>We quantify this with the <strong>precessional parameter</strong></p>
+$$ e \sin \Lambda $$<p>Large positive precessional parameter = Excess insolation during summer in the northern hemisphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-three-orbital-parameters">The three orbital parameters<a class="anchor-link" href="#The-three-orbital-parameters"> </a></h3><p>We have just identified three parameters that control the seasonal and latitudinal distribution of insolation: $e, \Lambda, \Phi$</p>
+<p>All three vary in predictable ways over time. They have been calculated very accurately from astronomical considerations (basically the gravity of the Earth, Sun, moon, and other solar system objects).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-Past-orbital-variations">4. Past orbital variations<a class="anchor-link" href="#4.-Past-orbital-variations"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are tools in <code>climlab</code> to look up orbital parameters for Earth over the last 5 million years.</p>
+<p>We will use the package</p>
+
+<pre><code>climlab.solar.orbital</code></pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.orbital</span> <span class="kn">import</span> <span class="n">OrbitalTable</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Data retrieved from http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLIMLAB/orbital/orbit91 and saved locally.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">OrbitalTable</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:     (kyear: 5001)
+Coordinates:
+  * kyear       (kyear) int64 0 -1 -2 -3 -4 -5 ... -4996 -4997 -4998 -4999 -5000
+Data variables:
+    ecc         (kyear) float64 0.01724 0.01764 0.01802 ... 0.02689 0.02685
+    long_peri   (kyear) float64 281.4 264.3 247.2 230.3 ... 288.4 273.9 259.4
+    obliquity   (kyear) float64 23.45 23.57 23.7 23.82 ... 22.55 22.52 22.52
+    precession  (kyear) float64 -0.0169 -0.01756 -0.01662 ... -0.02683 -0.02639
+    65NJul      (kyear) float64 426.8 430.1 434.7 440.2 ... 407.5 409.1 412.3
+    65SJan      (kyear) float64 455.6 455.5 454.1 451.6 ... 452.9 450.6 447.3
+    15NJul      (kyear) float64 440.6 442.5 445.6 449.8 ... 431.5 433.5 436.9
+    15SJan      (kyear) float64 470.4 468.6 465.5 461.4 ... 479.7 477.5 474.0
+Attributes:
+    Description:  The Berger and Loutre (1991) orbital data table
+    Citation:     https://doi.org/10.1016/0277-3791(91)90033-Q
+    Source:       /Users/br546577/anaconda3/envs/climlab-courseware/lib/pytho...
+    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Make reference plots of the variation in the three orbital parameter over the last 1 million years</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">kyears</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span> <span class="o">-</span><span class="mf">1000.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+<span class="n">orb</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=</span><span class="n">kyears</span><span class="p">)</span>
+<span class="n">orb</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:     (kyear: 1001)
+Coordinates:
+  * kyear       (kyear) float64 -1e+03 -999.0 -998.0 -997.0 ... -2.0 -1.0 0.0
+Data variables:
+    ecc         (kyear) float64 0.03576 0.03695 0.03811 ... 0.01764 0.01724
+    long_peri   (kyear) float64 482.5 498.3 514.2 530.1 ... 247.2 264.3 281.4
+    obliquity   (kyear) float64 23.78 23.84 23.88 23.9 ... 23.7 23.57 23.45
+    precession  (kyear) float64 0.03018 0.02458 0.0166 ... -0.01756 -0.0169
+    65NJul      (kyear) float64 478.7 479.0 476.4 470.9 ... 434.7 430.1 426.8
+    65SJan      (kyear) float64 414.9 416.2 419.9 425.8 ... 454.1 455.5 455.6
+    15NJul      (kyear) float64 489.6 489.1 485.9 480.0 ... 445.6 442.5 440.6
+    15SJan      (kyear) float64 424.4 425.0 428.3 434.0 ... 465.5 468.6 470.4
+Attributes:
+    Description:  The Berger and Loutre (1991) orbital data table
+    Citation:     https://doi.org/10.1016/0277-3791(91)90033-Q
+    Source:       /Users/br546577/anaconda3/envs/climlab-courseware/lib/pytho...
+    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The object called</p>
+
+<pre><code>orb</code></pre>
+<p>is an <code>xarray.Dataset</code> which now holds 1 million years worth of orbital data, total of 1001 data points for each element:</p>
+<ul>
+<li>eccentricity <code>ecc</code></li>
+<li>obliquity angle <code>obliquity</code></li>
+<li>solar longitude of perihelion <code>long_peri</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;ecc&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Eccentricity $e$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;ecc&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;long_peri&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Precessional parameter $e \sin(\Lambda)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span> <span class="s1">&#39;Thousands of years before present&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span> <span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;obliquity&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Obliquity (axial tilt) $\Phi$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Obliquity (axial tilt) $\\Phi$&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture16_47_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Timescales-of-orbital-variation:">Timescales of orbital variation:<a class="anchor-link" href="#Timescales-of-orbital-variation:"> </a></h3><ul>
+<li>Eccentricity varies slowly between nearly circular and slightly eccentric, with dominant periodicities of about 100 and 400 kyear. Current eccentricity is relatively small compared to previous few million years</li>
+<li>Longitude of perihelion has a period around 20 kyears, but effect is modulated by slow eccentricity variations. Precessional cycles are predicted to be small for the coming 50 kyears because of weak eccentricity.</li>
+<li>Obliquity varies between about 22.5º and 24.5º over a period of 40 kyears. It is currently near the middle of its range.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters">5. Using <code>climlab</code> to calculate insolation for arbitrary orbital parameters<a class="anchor-link" href="#5.-Using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use the function</p>
+
+<pre><code>climlab.solar.insolation.daily_insolation()</code></pre>
+<p>to calculate insolation for any arbitrary orbital parameters.</p>
+<p>We just need to pass a dictionary of orbital parameters. This works automatically when we slice or interpolate from the <code>xarray</code> object <code>OrbitalTable</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-example:-zero-obliquity">An example: zero obliquity<a class="anchor-link" href="#An-example:-zero-obliquity"> </a></h3><p>Calculate the insolation at the <strong>North Pole</strong> for a planet with <strong>zero obliquity</strong> and <strong>zero eccentricity</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">thisorb</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ecc&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;obliquity&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;long_peri&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">20.</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
+<span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">thisorb</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray (day: 50)&gt;
+array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
+Coordinates:
+  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compare this with the same calculation for default (present-day) orbital parameters:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray (day: 50)&gt;
+array([  0.      ,   0.      ,   0.      ,   0.      ,   0.      ,   0.      ,
+         0.      ,   0.      ,   0.      ,  18.862147,  85.006124, 149.064161,
+       210.143189, 267.437711, 320.234559, 367.914598, 409.95198 , 445.911553,
+       475.445007, 498.28632 , 514.246991, 523.211451, 525.133006, 520.030527,
+       507.98608 , 489.14354 , 463.70824 , 431.947545, 394.192247, 350.838546,
+       302.35036 , 249.261609, 192.178064, 131.778321,  68.813389,   4.104384,
+         0.      ,   0.      ,   0.      ,   0.      ,   0.      ,   0.      ,
+         0.      ,   0.      ,   0.      ,   0.      ,   0.      ,   0.      ,
+         0.      ,   0.      ])
+Coordinates:
+  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Do you understand what's going on here?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section6'></a></p>
+<h2 id="6.-Past-changes-in-insolation:-investigating-the-Milankovitch-hypothesis">6. Past changes in insolation: investigating the Milankovitch hypothesis<a class="anchor-link" href="#6.-Past-changes-in-insolation:-investigating-the-Milankovitch-hypothesis"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>Last Glacial Maximum</strong> or "LGM" occurred around 23,000 years before present, when the ice sheets were at their greatest extent.</p>
+<p>By 10,000 years ago, the ice sheets were mostly gone and the last ice age was over.</p>
+<p>If the <strong>Milankovitch hypothesis</strong> is correct, we should that <strong>summer insolation in the high northern latitudes</strong> increased substantially after the LGM.</p>
+<p>The classical way to plot this is the look at <strong>insolation at summer solstice at 65ºN</strong>.  Let's plot this for the last 100,000 years.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Plot summer solstice insolation at 65ºN</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>  <span class="c1">#  last 100 kyr</span>
+<span class="n">thisorb</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=</span><span class="n">years</span><span class="p">)</span>
+<span class="n">S65</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">172</span><span class="p">,</span> <span class="n">thisorb</span> <span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">S65</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Thousands of years before present&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W/m2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Summer solstice insolation at 65N&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture16_60_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Indeed, there was an increase of 60 W m$^{-2}$ over a 10 kyr interval following the LGM.</p>
+<p>Why?</p>
+<p>What orbital factors favor high insolation at 65ºN at summer solstice?</p>
+<ul>
+<li>high obliquity</li>
+<li>large, positive precessional parameter</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Looking back at our plots of the orbital parameters, it turns out that both were optimal around 10,000 years ago.</p>
+<p>Actually 10,000 years ago the climate was slightly warmer than today and the ice sheets had mostly disappeared already.</p>
+<p>The LGM occurred near a minimum in summer insolation in the north – mostly due to obliquity reaching a minimum, since we have been in a period of weak precession due to the nearly circular orbit. So this is consistent with the orbital theory.</p>
+<p>The hypothesis is incomplete, but compelling.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Comparing-insolation-at-10-kyr-and-23-kyr">Comparing insolation at 10 kyr and 23 kyr<a class="anchor-link" href="#Comparing-insolation-at-10-kyr-and-23-kyr"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">181</span><span class="p">)</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">50.</span><span class="p">)</span><span class="o">/</span><span class="mi">50</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
+
+<span class="n">orb_0</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># present-day orbital parameters</span>
+<span class="n">orb_10</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># orbital parameters for 10 kyrs before present</span>
+<span class="n">orb_23</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=-</span><span class="mi">23</span><span class="p">)</span>   <span class="c1"># 23 kyrs before present</span>
+<span class="n">Q_0</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">orb_0</span> <span class="p">)</span>    
+<span class="n">Q_10</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">orb_10</span> <span class="p">)</span>   <span class="c1"># insolation arrays for each of the three sets of orbital parameters</span>
+<span class="n">Q_23</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">orb_23</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="p">)</span>
+
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Qdiff</span> <span class="o">=</span> <span class="n">Q_10</span> <span class="o">-</span> <span class="n">Q_23</span>
+<span class="n">CS1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Qdiff</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">100.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS1</span><span class="p">,</span> <span class="n">CS1</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Qdiff</span><span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days since January 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Insolation differences: 10 kyrs - 23 kyrs&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">Qdiff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span> <span class="p">),</span> <span class="n">lat</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;W m$^{-2}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span> <span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39; Annual mean differences&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture16_65_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This figure shows that the <strong>insolation at summer solstice</strong> does not tell the whole story!</p>
+<p>For example, the insolation in <strong>late summer / early fall</strong> apparently got weaker between 23 and 10 kyr (in the high northern latitudes).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The annual mean plot is perfectly symmetric about the equator.</p>
+<p>This actually shows a classic obliquity signal: at 10 kyrs, the axis close to its maximum tilt, around 24.2º. At 23 kyrs, the tilt was much weaker, only about 22.7º. In the annual mean, a stronger tilt means more sunlight to the poles and less to the equator. This is very helpful if you are trying to melt an ice sheet.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Finally, take the <strong>global average</strong> of the difference:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Qdiff</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)))</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.0065104307832706005
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The difference is tiny (and due to very small changes in the eccentricity).</p>
+<p><strong>Ice ages are driven by seasonal and latitudinal redistributions of solar energy</strong>, NOT by changes in the total global amount of solar energy!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section7'></a></p>
+<h2 id="7.-Understanding-the-effects-of-orbital-variations-on-insolation">7. Understanding the effects of orbital variations on insolation<a class="anchor-link" href="#7.-Understanding-the-effects-of-orbital-variations-on-insolation"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are going to create a figure showing past time variations in three quantities:</p>
+<ol>
+<li>Global, annual mean insolation</li>
+<li>Annual mean insolation at high northern latitudes</li>
+<li>Summer solstice insolation at high northern latitudes</li>
+</ol>
+<p>which we will compare to the orbital variations we plotted earlier.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Create a large array of insolation over the whole globe, whole year, and for every set of orbital parameters.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">91</span><span class="p">)</span>
+<span class="n">num</span> <span class="o">=</span> <span class="mf">365.</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">num</span><span class="p">,</span><span class="mi">365</span><span class="p">)</span><span class="o">/</span><span class="n">num</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">orb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(91, 365, 1001)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Qann</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># time average over the year</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Qann</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">Qglobal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span> <span class="n">kyears</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">kyears</span><span class="o">.</span><span class="n">size</span> <span class="p">):</span>   <span class="c1"># global area-weighted average</span>
+    <span class="n">Qglobal</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span> <span class="n">Qann</span><span class="p">[:,</span><span class="n">n</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Qglobal</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>(91, 1001)
+(1001,)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;ecc&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Eccentricity $e$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;obliquity&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Obliquity (axial tilt) $\Phi$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;ecc&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span> <span class="n">orb</span><span class="p">[</span><span class="s1">&#39;long_peri&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Precessional parameter $e \sin(\Lambda)$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">Qglobal</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Global, annual mean insolation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span> <span class="n">useOffset</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">Qann</span><span class="p">[</span><span class="mi">80</span><span class="p">,:]</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Annual mean insolation at 70N&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">kyears</span><span class="p">,</span> <span class="n">Q</span><span class="p">[</span><span class="mi">80</span><span class="p">,</span><span class="mi">170</span><span class="p">,:]</span> <span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Summer solstice insolation at 70N&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span> <span class="s1">&#39;Thousands of years before present&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture16_76_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We see that</p>
+<ol>
+<li><strong>Global annual mean</strong> insolation <strong>varies only with eccentricity</strong> (slow), and the variations are <strong>very small</strong>!</li>
+<li><strong>Annual mean</strong> insolation <strong>varies with obliquity</strong> (medium). Annual mean insolation does NOT depend on precession!</li>
+<li>Summer solstice insolation at high northern latitudes is affected by both precession and obliquity. The variations are large.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section8'></a></p>
+<h2 id="8.-Summary">8. Summary<a class="anchor-link" href="#8.-Summary"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The annual, global mean insolation varies only as a result of eccentricity $e$. The changes are very small (about 0.1 % through a typical eccentricity cycle from more circular to more elliptical)</li>
+<li>Obliquity controls the annual-mean equator-to-pole insolation gradient.</li>
+<li>The precessional parameter $e \sin⁡\Lambda$ controls the modulation in seasonal insolation due to eccentricity and longitude of perihelion $\Lambda$.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The combined effects can result in 15% changes in high-latitude summer insolation</li>
+<li>Obliquity combined with eccentricity and longitude of perihelion control the amplitude of seasonal insolation variations at a point.</li>
+<li>Combined effects of the three orbital parameters can cause variations in seasonal insolation as large as 30% in high latitudes.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These geometrical considerations tell us that <strong>seasonal variations in $Q$ can be rather large</strong>, and will surely impact the climate. But to go from there to understanding how large ice sheets come and go is a difficult step, and requires climate models!</p>
+<p>One thing is clear: any serious astronomical theory of climate needs to take account of the climate response to seasonal variations in Q, because these are much larger than the variations in annual mean insolation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Jul 03 14:53:31 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
