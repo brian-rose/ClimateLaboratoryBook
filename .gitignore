@@ -1,0 +1,6 @@
+.ipynb_checkpoints/*
+*/.ipynb_checkpoints/*
+content/.ipynb_checkpoints/*
+content/*/.ipynb_checkpoints/*
+*.pyc
+

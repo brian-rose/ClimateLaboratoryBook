@@ -1,0 +1,2573 @@
+---
+redirect_from:
+  - "/courseware/lecture17"
+interact_link: content/courseware/Lecture17.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Heat transport
+pagenum: 20
+prev_page:
+  url: /courseware/Lecture16.html
+next_page:
+  url: /courseware/Lecture18.html
+suffix: .ipynb
+search: phi energy transport h mathcal partial heat pi budget frac toa e latitude ocean radiation atmosphere net cos text prime surface t total int insolation d big imbalance latent not both flux northward vapor where here very delta r id section temperature average tropics latitudes climate annual because our across fs o lets warm system equilibrium fluid band model different olr content above pole poleward evaporation v flow zonal temperatures same zero fluxes reanalysis asr cesm simulation data j global atmospheric dry seasonal high cycle north space radiative calculate using climlab sensible mean rce observations balance kg integral thus m
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Heat transport</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-Spatial-patterns-of-insolation-and-surface-temperature">1. Spatial patterns of insolation and surface temperature<a class="anchor-link" href="#1.-Spatial-patterns-of-insolation-and-surface-temperature"> </a></h2><hr>
+<p>Let's take a look at seasonal and spatial pattern of insolation and compare this to the zonal average surface temperatures.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">climlab</span>
+<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Calculate daily average insolation as function of latitude and time of year</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">,</span> <span class="mi">500</span> <span class="p">)</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span><span class="p">,</span> <span class="mi">365</span> <span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">solar</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">daily_insolation</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">days</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">##  daily surface temperature from  NCEP reanalysis</span>
+<span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
+<span class="n">ncep_temp</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/skt.sfc.day.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#url = &#39;http://apdrc.soest.hawaii.edu:80/dods/public_data/Reanalysis_Data/NCEP/NCEP/clima/&#39;</span>
+<span class="c1">#skt_path = &#39;surface_gauss/skt&#39;</span>
+<span class="c1">#ncep_temp = xr.open_dataset(url+skt_path)</span>
+<span class="n">ncep_temp_zon</span> <span class="o">=</span> <span class="n">ncep_temp</span><span class="o">.</span><span class="n">skt</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">600.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Daily average insolation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">contourf</span> <span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">100.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="p">(</span><span class="n">ncep_temp</span><span class="o">.</span><span class="n">time</span> <span class="o">-</span> <span class="n">ncep_temp</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">const</span><span class="o">.</span><span class="n">hours_per_day</span><span class="p">,</span> <span class="n">ncep_temp</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> 
+                 <span class="n">ncep_temp_zon</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">210.</span><span class="p">,</span> <span class="mf">310.</span><span class="p">,</span> <span class="mf">10.</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observed zonal average surface temperature&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days since January 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">90</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_5_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This figure reveals something fairly obvious, but still worth thinking about:</p>
+<p><strong>Warm temperatures are correlated with high insolation</strong>. It's warm where the sun shines.</p>
+<p>More specifically, we can see a few interesting details here:</p>
+<ul>
+<li>The seasonal cycle is weakest in the tropics and strongest in the high latitudes.</li>
+<li>The warmest temperatures occur slighly NORTH of the equator</li>
+<li>The highest insolation occurs at the poles at summer solstice.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The local surface temperature does not correlate perfectly with local insolation for two reasons:</p>
+<ul>
+<li>the climate system has heat capacity, which buffers some of the seasonal variations</li>
+<li>the climate system moves energy around in space!</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Calculating-Radiative-Convective-Equilibrium-as-a-function-of-latitude">2. Calculating Radiative-Convective Equilibrium as a function of latitude<a class="anchor-link" href="#2.-Calculating-Radiative-Convective-Equilibrium-as-a-function-of-latitude"> </a></h2><hr>
+<p>As a first step to understanding the effects of <strong>heat transport by fluid motions</strong> in the atmosphere and ocean, we can calculate <strong>what the surface temperature would be without any motion</strong>.</p>
+<p>Let's calculate a <strong>radiative-convective equilibrium</strong> state for every latitude band.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Putting-realistic-insolation-into-an-RCM">Putting realistic insolation into an RCM<a class="anchor-link" href="#Putting-realistic-insolation-into-an-RCM"> </a></h3><p>This code demonstrates how to create a model with both latitude and vertical dimensions.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># A two-dimensional domain</span>
+<span class="n">state</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">column_state</span><span class="p">(</span><span class="n">num_lev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">num_lat</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">water_depth</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
+<span class="c1">#  Specified relative humidity distribution</span>
+<span class="n">h2o</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">ManabeWaterVapor</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Fixed Relative Humidity&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+<span class="c1">#  Hard convective adjustment</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">ConvectiveAdjustment</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Convective Adjustment&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mf">6.5</span><span class="p">)</span>
+<span class="c1">#  Daily insolation as a function of latitude and time of year</span>
+<span class="n">sun</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">DailyInsolation</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Insolation&#39;</span><span class="p">,</span> <span class="n">domains</span><span class="o">=</span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+<span class="c1">#  Couple the radiation to insolation and water vapor processes</span>
+<span class="n">rad</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">RRTMG</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Radiation&#39;</span><span class="p">,</span>
+                             <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
+                             <span class="n">specific_humidity</span><span class="o">=</span><span class="n">h2o</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> 
+                             <span class="n">albedo</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span>
+                             <span class="n">insolation</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">insolation</span><span class="p">,</span>
+                             <span class="n">coszen</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">coszen</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">couple</span><span class="p">([</span><span class="n">rad</span><span class="p">,</span><span class="n">sun</span><span class="p">,</span><span class="n">h2o</span><span class="p">,</span><span class="n">conv</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;RCM&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">model</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (40, 1) 
+  Tatm: (40, 30) 
+The subprocess tree: 
+RCM: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   Radiation: &lt;class &#39;climlab.radiation.rrtm.rrtmg.RRTMG&#39;&gt;
+      SW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_sw.RRTMG_SW&#39;&gt;
+      LW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_lw.RRTMG_LW&#39;&gt;
+   Insolation: &lt;class &#39;climlab.radiation.insolation.DailyInsolation&#39;&gt;
+   Fixed Relative Humidity: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+   Convective Adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">insolation</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Insolation (W/m2)&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_12_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This new insolation process uses the same code we've already been working with to compute realistic distributions of insolation. Here we are using</p>
+
+<pre><code>climlab.radiation.DailyInsolation</code></pre>
+<p>but there is also</p>
+
+<pre><code>climlab.radiation.AnnualMeanInsolation</code></pre>
+<p>for models in which you prefer to suppress the seasonal cycle and prescribe a time-invariant insolation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following code will just integrate the model forward in four steps in order to get snapshots of insolation at the solstices and equinoxes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  model is initialized on Jan. 1</span>
+
+<span class="c1">#  integrate forward just under 1/4 year... should get about to the NH spring equinox</span>
+<span class="n">model</span><span class="o">.</span><span class="n">integrate_days</span><span class="p">(</span><span class="mi">31</span><span class="o">+</span><span class="mi">28</span><span class="o">+</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">Q_spring</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#  Then forward to NH summer solstice</span>
+<span class="n">model</span><span class="o">.</span><span class="n">integrate_days</span><span class="p">(</span><span class="mi">31</span><span class="o">+</span><span class="mi">30</span><span class="o">+</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">Q_summer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#  and on to autumnal equinox</span>
+<span class="n">model</span><span class="o">.</span><span class="n">integrate_days</span><span class="p">(</span><span class="mi">30</span><span class="o">+</span><span class="mi">31</span><span class="o">+</span><span class="mi">33</span><span class="p">)</span>
+<span class="n">Q_fall</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1">#  and finally to NH winter solstice</span>
+<span class="n">model</span><span class="o">.</span><span class="n">integrate_days</span><span class="p">(</span><span class="mi">30</span><span class="o">+</span><span class="mi">31</span><span class="o">+</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">Q_winter</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 81 steps, 81.0 days, or 0.22177064972229385 years.
+Total elapsed time is 0.22177064972229385 years.
+Integrating for 91 steps, 91.99999999999999 days, or 0.2518876515364325 years.
+Total elapsed time is 0.4709203920028956 years.
+Integrating for 94 steps, 94.00000000000001 days, or 0.2573634700480941 years.
+Total elapsed time is 0.7282838620509897 years.
+Integrating for 91 steps, 91.0 days, or 0.24914974228060174 years.
+Total elapsed time is 0.9774336043315914 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">Q_spring</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Spring&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">Q_summer</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Summer&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">Q_fall</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fall&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">Q_winter</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Winter&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Insolation (W/m2)&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_16_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This just serves to demonstrate that the <code>DailyInsolation</code> process is doing something sensible.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that we could also pass different orbital parameters to this subprocess. They default to present-day values, which is what we are using here.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Find-the-steady-seasonal-cycle-of-temperature-in-radiative-convective-equilibrium">Find the steady seasonal cycle of temperature in radiative-convective equilibrium<a class="anchor-link" href="#Find-the-steady-seasonal-cycle-of-temperature-in-radiative-convective-equilibrium"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 1460 steps, 1460.9688 days, or 4.0 years.
+Total elapsed time is 4.974781117844542 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 365 steps, 365.2422 days, or 1.0 years.
+Total elapsed time is 5.97411799622278 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>All climlab <code>Process</code> objects have an attribute called <code>timeave</code>.</p>
+<p>This is a dictionary of time-averaged diagnostics, which are automatically calculated during the most recent call to <code>integrate_years()</code> or <code>integrate_days()</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">timeave</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>dict_keys([&#39;Ts&#39;, &#39;Tatm&#39;, &#39;OLR&#39;, &#39;OLRclr&#39;, &#39;OLRcld&#39;, &#39;TdotLW&#39;, &#39;TdotLW_clr&#39;, &#39;LW_sfc&#39;, &#39;LW_sfc_clr&#39;, &#39;LW_flux_up&#39;, &#39;LW_flux_down&#39;, &#39;LW_flux_net&#39;, &#39;LW_flux_up_clr&#39;, &#39;LW_flux_down_clr&#39;, &#39;LW_flux_net_clr&#39;, &#39;ASR&#39;, &#39;ASRclr&#39;, &#39;ASRcld&#39;, &#39;TdotSW&#39;, &#39;TdotSW_clr&#39;, &#39;SW_sfc&#39;, &#39;SW_sfc_clr&#39;, &#39;SW_flux_up&#39;, &#39;SW_flux_down&#39;, &#39;SW_flux_net&#39;, &#39;SW_flux_up_clr&#39;, &#39;SW_flux_down_clr&#39;, &#39;SW_flux_net_clr&#39;, &#39;insolation&#39;, &#39;coszen&#39;, &#39;q&#39;])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we use the <code>timeave['insolation']</code> to plot the annual mean insolation.</p>
+<p>(We know it is the <em>annual</em> average because the last call to <code>model.integrate_years</code> was for exactly 1 year)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">timeave</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Insolation (W/m2)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0, 0.5, &#39;Insolation (W/m2)&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_25_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Compare-annual-average-temperature-in-RCE-to-the-zonal-,-annual-mean-observations.">Compare annual average temperature in RCE to the zonal-, annual mean observations.<a class="anchor-link" href="#Compare-annual-average-temperature-in-RCE-to-the-zonal-,-annual-mean-observations."> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot annual mean surface temperature in the model,</span>
+<span class="c1">#   compare to observed annual mean surface temperatures</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">timeave</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RCE&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ncep_temp_zon</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">ncep_temp_zon</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;obs&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_27_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our modeled RCE state is <strong>far too warm in the tropics</strong>, and <strong>too cold in the mid- to high latitudes.</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Vertical-structure-of-temperature:-comparing-RCE-to-observations">Vertical structure of temperature: comparing RCE to observations<a class="anchor-link" href="#Vertical-structure-of-temperature:-comparing-RCE-to-observations"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Observed air temperature from NCEP reanalysis</span>
+<span class="c1">## The NOAA ESRL server is shutdown! January 2019</span>
+<span class="n">ncep_air</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;pressure/air.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#air = xr.open_dataset(url+&#39;pressure/air&#39;)</span>
+<span class="c1">#ncep_air = air.rename({&#39;lev&#39;:&#39;level&#39;})</span>
+<span class="n">level_ncep_air</span> <span class="o">=</span> <span class="n">ncep_air</span><span class="o">.</span><span class="n">level</span>
+<span class="n">lat_ncep_air</span> <span class="o">=</span> <span class="n">ncep_air</span><span class="o">.</span><span class="n">lat</span>
+<span class="n">Tzon</span> <span class="o">=</span> <span class="n">ncep_air</span><span class="o">.</span><span class="n">air</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Compare temperature profiles in RCE and observations</span>
+<span class="n">contours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">180.</span><span class="p">,</span> <span class="mf">350.</span><span class="p">,</span> <span class="mf">15.</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">cax1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">lat_ncep_air</span><span class="p">,</span> <span class="n">level_ncep_air</span><span class="p">,</span> <span class="n">Tzon</span><span class="o">+</span><span class="n">const</span><span class="o">.</span><span class="n">tempCtoK</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">contours</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observered temperature (K)&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">field</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">timeave</span><span class="p">[</span><span class="s1">&#39;Tatm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">cax2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">contours</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RCE temperature (K)&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_31_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Again, this plot reveals temperatures that are too warm in the tropics, too cold at the poles throughout the troposphere.</p>
+<p>Note however that the <strong>vertical temperature gradients</strong> are largely dictated by the convective adjustment in our model. We have parameterized this gradient, and so we can change it by changing our parameter for the adjustment.</p>
+<p>We have (as yet) no parameterization for the <strong>horizontal</strong> redistribution of energy in the climate system.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="TOA-energy-budget-in-RCE-equilibrium">TOA energy budget in RCE equilibrium<a class="anchor-link" href="#TOA-energy-budget-in-RCE-equilibrium"> </a></h3><p>Because there is no horizontal energy transport in this model, the TOA radiation budget should be closed (net flux is zero) at all latitudes.</p>
+<p>Let's check this by plotting time-averaged shortwave and longwave radiation:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">timeave</span><span class="p">[</span><span class="s1">&#39;ASR&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ASR&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">timeave</span><span class="p">[</span><span class="s1">&#39;OLR&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W/m2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_34_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Indeed, the budget is (very nearly) closed everywhere. Each latitude is in energy balance, independent of every other column.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Observed-and-modeled-TOA-radiation-budget">3. Observed and modeled TOA radiation budget<a class="anchor-link" href="#3.-Observed-and-modeled-TOA-radiation-budget"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We are going to look at the (time average) TOA budget as a function of latitude to see how it differs from the RCE state we just plotted.</p>
+<p>Ideally we would look at actual satellite observations of SW and LW fluxes. Instead, here we will use the NCEP Reanalysis for convenience.</p>
+<p>But bear in mind that the radiative fluxes in the reanalysis are a model-generated product, they are not really observations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="TOA-budget-from-NCEP-Reanalysis">TOA budget from NCEP Reanalysis<a class="anchor-link" href="#TOA-budget-from-NCEP-Reanalysis"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get TOA radiative flux data from NCEP reanalysis</span>
+<span class="c1"># downwelling SW</span>
+<span class="n">dswrf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s1">&#39;/other_gauss/dswrf.ntat.mon.1981-2010.ltm.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#dswrf = xr.open_dataset(url + &#39;other_gauss/dswrf&#39;)</span>
+<span class="c1">#  upwelling SW</span>
+<span class="n">uswrf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s1">&#39;/other_gauss/uswrf.ntat.mon.1981-2010.ltm.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#uswrf = xr.open_dataset(url + &#39;other_gauss/uswrf&#39;)</span>
+<span class="c1">#  upwelling LW</span>
+<span class="n">ulwrf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s1">&#39;/other_gauss/ulwrf.ntat.mon.1981-2010.ltm.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#ulwrf = xr.open_dataset(url + &#39;other_gauss/ulwrf&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ASR</span> <span class="o">=</span> <span class="n">dswrf</span><span class="o">.</span><span class="n">dswrf</span> <span class="o">-</span> <span class="n">uswrf</span><span class="o">.</span><span class="n">uswrf</span>
+<span class="n">OLR</span> <span class="o">=</span> <span class="n">ulwrf</span><span class="o">.</span><span class="n">ulwrf</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ASRzon</span> <span class="o">=</span> <span class="n">ASR</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span>
+<span class="n">OLRzon</span> <span class="o">=</span> <span class="n">OLR</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="o">-</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">90</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ASRzon</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">ASRzon</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ASR&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">OLRzon</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">OLRzon</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W/m2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">310</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observed annual mean radiation at TOA&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_42_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We find that ASR does NOT balance OLR in most locations.</p>
+<p>Across the tropics the absorbed solar radiation exceeds the longwave emission to space.  The tropics have a <strong>net gain of energy by radiation</strong>.</p>
+<p>The opposite is true in mid- to high latitudes: <strong>the Earth is losing energy by net radiation to space</strong> at these latitudes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="TOA-budget-from-the-control-CESM-simulation">TOA budget from the control CESM simulation<a class="anchor-link" href="#TOA-budget-from-the-control-CESM-simulation"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  same thing from CESM control simulation</span>
+<span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
+<span class="n">atm_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_control/som_control.cam.h0.clim.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">atm_2xCO2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_2xCO2/som_2xCO2.cam.h0.clim.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat_cesm</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">lat</span>
+<span class="n">ASR_cesm</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">FSNT</span>
+<span class="n">OLR_cesm</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">FLNT</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ASR_cesm_zon</span> <span class="o">=</span> <span class="n">ASR_cesm</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="n">OLR_cesm_zon</span> <span class="o">=</span> <span class="n">OLR_cesm</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">ASR_cesm_zon</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ASR&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">OLR_cesm_zon</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W/m2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">310</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CESM control simulation: Annual mean radiation at TOA&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_48_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Essentially the same story as the reanalysis data: there is a <strong>surplus of energy across the tropics</strong> and a net <strong>energy deficit in mid- to high latitudes</strong>.</p>
+<p>There are two locations where ASR = OLR, near about 35º in both hemispheres.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-The-energy-budget-for-a-zonal-band">4. The energy budget for a zonal band<a class="anchor-link" href="#4.-The-energy-budget-for-a-zonal-band"> </a></h2><hr>
+<p>Let’s now consider a thin band of the climate system, of width $\delta \phi$ , and write down a careful energy budget for it.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/ZonalEnergyBudget_sketch.png' width=400></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let $\mathcal{H}(\phi)$ be the total rate of northward energy transport across the latitude line $\phi$, measured in Watts (usually PW).</p>
+<p>Let $T(\phi,t)$ be the zonal average surface temperature ("zonal average" = average around latitude circle).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can write the energy budget as</p>
+$$ \frac{\partial E}{\partial t} = \text{energy in} - \text{energy out} $$<p>where $E$ is the total energy content of the column, which is useful to write as</p>
+$$ E = \int_{bottom}^{top} \rho ~ e ~ dz $$<p>and $e$ is the local <strong>enthalpy</strong> of the fluid, in units of J kg$^{-1}$. The integral energy content $E$ thus has units of J m$^{-2}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have written the time tendency as a partial derivative now because $E$ varies in both space and time.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now there are two energy sources and two energy sinks to think about:
+Radiation and dynamics (horizontal transport)</p>
+$$ \frac{\partial E}{\partial t} = R_{TOA} - (\text{transport out} - \text{transport in})~/ ~\text{area of band} $$<p>where we define the net incoming radiation at the top of atmosphere as</p>
+$$ R_{TOA} = \text{ASR} - \text{OLR} = (1-\alpha) Q - \text{OLR} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The surface area of the latitude band is</p>
+$$ A = \text{Circumference} ~\times ~ \text{north-south width} $$$$ A = 2 \pi a \cos \phi  ~ \times ~  a \delta \phi  $$$$ A = 2 \pi a^2  \cos⁡\phi ~ \delta\phi $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will denote the energy transport in and out of the band respectively as $\mathcal{H}(\phi), \mathcal{H}(\phi + \delta\phi)$</p>
+<p>Then the budget can be written</p>
+$$ \frac{\partial E}{\partial t} = \text{ASR} - \text{OLR} - \frac{1}{2 \pi a^2  \cos⁡\phi ~ \delta\phi} \Big( \mathcal{H}(\phi + \delta\phi) - \mathcal{H}(\phi) \Big) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For thin bands where $\delta\phi$ is very small, we can write</p>
+$$ \frac{1}{\delta\phi} \Big( \mathcal{H}(\phi + \delta\phi) - \mathcal{H}(\phi) \Big) = \frac{\partial \mathcal{H}}{\partial \phi} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So the local budget at any latitude $\phi$ is</p>
+$$ \frac{\partial E}{\partial t} = \text{ASR} - \text{OLR} - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial \mathcal{H}}{\partial \phi} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>dynamical heating rate</strong> in W m$^{-2}$ is thus</p>
+$$ h = - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial \mathcal{H}}{\partial \phi} $$<p>which is the <strong>convergence of energy transport</strong> into this latitude band: the difference between what's coming in and what's going out.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Calculating-heat-transport-from-the-steady-state-energy-budget">Calculating heat transport from the steady-state energy budget<a class="anchor-link" href="#Calculating-heat-transport-from-the-steady-state-energy-budget"> </a></h3><p>Notice that if the above budget is in <strong>equilibrium</strong> then $\partial E/ \partial t = 0$ and the budget says that <strong>divergence of heat transport balances the net radiative heating</strong> at every latitude.</p>
+<p>If we can <strong>assume that the budget is balanced</strong>, i.e. assume that the system is at equilibrium and there is negligible heat storage, then we can use the budget to infer $\mathcal{H}$ from a measured (or modeled) TOA radiation imbalance.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Setting $\partial E/ \partial t = 0$ and rearranging:</p>
+$$ \frac{\partial \mathcal{H}}{\partial \phi}  = 2 \pi ~a^2  \cos⁡\phi ~ R_{TOA} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now integrate from the South Pole ($\phi = -\pi/2$):</p>
+$$ \int_{-\pi/2}^{\phi} \frac{\partial \mathcal{H}}{\partial \phi^\prime}  d\phi^\prime = 2 \pi ~a^2 \int_{-\pi/2}^{\phi} \cos⁡\phi^\prime ~ R_{TOA} d\phi^\prime  $$$$ \mathcal{H}(\phi) - \mathcal{H}(-\pi/2) = 2 \pi ~a^2 \int_{-\pi/2}^{\phi} \cos⁡\phi^\prime ~ R_{TOA} d\phi^\prime  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our boundary condition is that the transport must go to zero at the pole. We therefore have a formula for calculating the heat transport at any latitude, by integrating the imbalance from the South Pole:</p>
+$$ \mathcal{H}(\phi) = 2 \pi ~a^2 \int_{-\pi/2}^{\phi} \cos⁡\phi^\prime ~ R_{TOA} d\phi^\prime  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What about the boundary condition at the other pole? We must have $\mathcal{H}(\pi/2) = 0$ as well, because a non-zero transport at the pole is not physically meaningful.</p>
+<p>Notice that if we apply the above formula and integrate all the way to the other pole, we then have</p>
+$$ \mathcal{H}(\pi/2) = 2 \pi ~a^2 \int_{-\pi/2}^{\pi/2} \cos⁡\phi^\prime ~ R_{TOA} d\phi^\prime  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is an integral of the radiation imbalance weighted by cosine of latitude. In other words, this is <strong>proportional to the area-weighted global average energy imbalance</strong>.</p>
+<p>We started by assuming that this imbalance is zero.</p>
+<p>If the <strong>global budget is balanced</strong>, then the physical boundary condition of no-flux at the poles is satisfied.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Observed-and-modeled-poleward-heat-transport">5. Observed and modeled poleward heat transport<a class="anchor-link" href="#5.-Observed-and-modeled-poleward-heat-transport"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we will code up a function that performs the above integration.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">inferred_heat_transport</span><span class="p">(</span><span class="n">energy_in</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">latax</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;Compute heat transport as integral of local energy imbalance.</span>
+<span class="sd">    Required input:</span>
+<span class="sd">        energy_in: energy imbalance in W/m2, positive in to domain</span>
+<span class="sd">    As either numpy array or xarray.DataArray</span>
+<span class="sd">    If using plain numpy, need to supply these arguments:</span>
+<span class="sd">        lat: latitude in degrees</span>
+<span class="sd">        latax: axis number corresponding to latitude in the data</span>
+<span class="sd">            (axis over which to integrate)</span>
+<span class="sd">    returns the heat transport in PW.</span>
+<span class="sd">    Will attempt to return data in xarray.DataArray if possible.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+    <span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">lat</span> <span class="o">=</span> <span class="n">energy_in</span><span class="o">.</span><span class="n">lat</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">InputError</span><span class="p">(</span><span class="s1">&#39;Need to supply latitude array if input data is not self-describing.&#39;</span><span class="p">)</span>
+    <span class="n">lat_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">coslat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">)</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">coslat</span><span class="o">*</span><span class="n">energy_in</span>
+    <span class="k">if</span> <span class="n">latax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span> <span class="n">latax</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">get_axis_num</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Need to supply axis number for integral over latitude.&#39;</span><span class="p">)</span>
+    <span class="c1">#  result as plain numpy array</span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">cumtrapz</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lat_rad</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">latax</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1E-15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">integral</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">):</span>
+        <span class="n">result_xarray</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">result_xarray</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result_xarray</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's now use this to calculate the total northward heat transport from our control simulation with the CESM:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="n">ASR_cesm_zon</span> <span class="o">-</span> <span class="n">OLR_cesm_zon</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PW&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total northward heat transport inferred from CESM control simulation&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Total northward heat transport inferred from CESM control simulation&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_71_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The total heat transport is very nearly symmetric about the equator, with poleward transport of about 5 to 6 PW in both hemispheres.</p>
+<p>The transport peaks in magnitude near 35º latitude, the same latitude where we found that ASR = OLR. This is no coincidence!</p>
+<p>Equatorward of 35º (across the tropics) there is <strong>net heating by radiation</strong> and <strong>net cooling by dynamics</strong>. The opposite is true poleward of 35º.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>What about the "observations", i.e. the reanalysis data?</p>
+<p>We can try to do the same calculation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Need to flip the arrays because we want to start from the south pole</span>
+<span class="n">Rtoa_ncep</span> <span class="o">=</span> <span class="n">ASRzon</span><span class="o">-</span><span class="n">OLRzon</span>
+<span class="n">lat_ncep</span> <span class="o">=</span> <span class="n">ASRzon</span><span class="o">.</span><span class="n">lat</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_ncep</span><span class="p">,</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="n">Rtoa_ncep</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PW&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total northward heat transport inferred from NCEP reanalysis&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Total northward heat transport inferred from NCEP reanalysis&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_74_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our integral <strong>does NOT go to zero at the North Pole!</strong>. This means that the global energy budget is NOT balanced in the reanalysis data.</p>
+<p>Let's look at the global imbalance:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  global average of TOA radiation in reanalysis data</span>
+<span class="n">weight_ncep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat_ncep</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat_ncep</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">imbal_ncep</span> <span class="o">=</span> <span class="p">(</span><span class="n">Rtoa_ncep</span> <span class="o">*</span> <span class="n">weight_ncep</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The net downward TOA radiation flux in NCEP renalysis data is </span><span class="si">%0.1f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="k">imbal_ncep</span>)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The net downward TOA radiation flux in NCEP renalysis data is -12.0 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Evidently there is a substantial net flux out to space in this dataset.</p>
+<p>Before we can compute heat transport from this data, we need to <strong>balance the global data</strong>.</p>
+<p>To do this requires making assumptions about the spatial distribution of the imbalance.</p>
+<p>The simplest assumption we can make is that the imbalance is uniform across the Earth.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Rtoa_ncep_balanced</span> <span class="o">=</span> <span class="n">Rtoa_ncep</span> <span class="o">-</span> <span class="n">imbal_ncep</span>
+<span class="n">newimbalance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">((</span><span class="n">Rtoa_ncep_balanced</span> <span class="o">*</span> <span class="n">weight_ncep</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The net downward TOA radiation flux after balancing the data is </span><span class="si">%0.2e</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="k">newimbalance</span>)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The net downward TOA radiation flux after balancing the data is -2.10e-06 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_ncep</span><span class="p">,</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="n">Rtoa_ncep_balanced</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PW&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total northward heat transport inferred from NCEP reanalysis (after global balancing)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Total northward heat transport inferred from NCEP reanalysis (after global balancing)&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_79_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We now get a physically sensible result (zero at both poles).</p>
+<p>The heat transport is poleward everywhere, and very nearly anti-symmetric across the equator. The shape is very similar to what we found from the CESM simulation, with peaks near 35º.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>However the magnitude of the peaks is substantially smaller. <strong>Does this indicate a shortcoming of the CESM simulation?</strong></p>
+<p><strong>Probably not!</strong></p>
+<p>It turns out that our result here is <strong>very sensitive to the details</strong> of how we balance the radiation data.</p>
+<p>As an exercise, you might try applying different corrections other than the globally uniform correction we used above. E.g. try weighting the tropics or the mid-latitudes more strongly.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="An-example-of-a-recently-published-observational-estimate-of-meridional-heat-transport">An example of a recently published observational estimate of meridional heat transport<a class="anchor-link" href="#An-example-of-a-recently-published-observational-estimate-of-meridional-heat-transport"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/Fasullo_Trenberth_2008b_Fig7.jpg'></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>The ERBE period zonal mean annual cycle of the meridional energy transport in PW by (a) the atmosphere and ocean as inferred from ERBE $R_T$, NRA $\delta$A_E/$\delta$t, and GODAS $\delta$O_E/$\delta$t; (b) the atmosphere based on NRA; and (c) by the ocean as implied by ERBE + NRA $F_S$ and GODAS $\delta$O_E/$\delta$t. Stippling and hatching in (a)–(c) represent regions and times of year in which the standard deviation of the monthly mean values among estimates, some of which include the CERES period (see text), exceeds 0.5 and 1.0 PW, respectively. (d) The median annual mean transport by latitude for the total (gray), atmosphere (red), and ocean (blue) accompanied with the associated $\pm2\sigma$ range (shaded).</p>
+</blockquote>
+<p>This is a reproduction of Figure 7 from Fasullo and Trenberth (2008), "The Annual Cycle of the Energy Budget. Part II: Meridional Structures and Poleward Transports", J. Climate 21, doi:10.1175/2007JCLI1936.1</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This figure shows the breakdown of the heat transport by <strong>season</strong> as well as the <strong>partition between the atmosphere and ocean</strong>.</p>
+<p>Focussing just on the total, annual transport in panel (d) (black curve), we see that is quite consistent with what we computed from the CESM simulation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section6'></a></p>
+<h2 id="6.-Energy-budgets-for-the-atmosphere-and-ocean">6. Energy budgets for the atmosphere and ocean<a class="anchor-link" href="#6.-Energy-budgets-for-the-atmosphere-and-ocean"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The total transport (which we have been inferring from the TOA radiation imbalance) includes contributions from both the <strong>atmosphere</strong> and the <strong>ocean</strong>:</p>
+$$ \mathcal{H} = \mathcal{H}_{a} + \mathcal{H}_{o} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We have used the <strong>TOA imbalance</strong> to infer the total transport because TOA radiation is the only significant energy source / sink to the climate system as a whole.</p>
+<p>However, if we want to study (or model) the individual contributions from the atmosphere and ocean, we need to consider the energy budgets for <strong>each individual domain</strong>.</p>
+<p>We will therefore need to broaden our discussion to include the <strong>net surface heat flux</strong>, i.e. the total flux of energy between the surface and the atmosphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Surface-fluxes">Surface fluxes<a class="anchor-link" href="#Surface-fluxes"> </a></h3><p>Let's denote the <strong>net upward energy flux at the surface</strong> as $F_S$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>There are four principal contributions to $F_S$:</p>
+<ol>
+<li>Shortwave radiation</li>
+<li>Longwave radiation</li>
+<li>Sensible heat flux</li>
+<li>Evaporation or latent heat flux</li>
+</ol>
+<p>Sensible and latent heat fluxes involve turbulent exchanges in the planetary boundary layer. We will look at these in more detail later.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># monthly climatologies for surface flux data from reanalysis</span>
+<span class="c1">#  all defined as positive UP</span>
+<span class="n">ncep_nswrs</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/nswrs.sfc.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ncep_nlwrs</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/nlwrs.sfc.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ncep_shtfl</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/shtfl.sfc.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ncep_lhtfl</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/lhtfl.sfc.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1">#ncep_nswrs = xr.open_dataset(url + &#39;surface_gauss/nswrs&#39;)</span>
+<span class="c1">#ncep_nlwrs = xr.open_dataset(url + &#39;surface_gauss/nlwrs&#39;)</span>
+<span class="c1">#ncep_shtfl = xr.open_dataset(url + &#39;surface_gauss/shtfl&#39;)</span>
+<span class="c1">#ncep_lhtfl = xr.open_dataset(url + &#39;surface_gauss/lhtfl&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Calculate ANNUAL AVERAGE net upward surface flux</span>
+<span class="n">ncep_net_surface_up</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncep_nlwrs</span><span class="o">.</span><span class="n">nlwrs</span>
+                     <span class="o">+</span> <span class="n">ncep_nswrs</span><span class="o">.</span><span class="n">nswrs</span>
+                     <span class="o">+</span> <span class="n">ncep_shtfl</span><span class="o">.</span><span class="n">shtfl</span>
+                     <span class="o">+</span> <span class="n">ncep_lhtfl</span><span class="o">.</span><span class="n">lhtfl</span>
+                      <span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lon_ncep</span> <span class="o">=</span> <span class="n">ncep_net_surface_up</span><span class="o">.</span><span class="n">lon</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon_ncep</span><span class="p">,</span> <span class="n">lat_ncep</span><span class="p">,</span> <span class="n">ncep_net_surface_up</span><span class="p">,</span> 
+               <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">200.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">200.</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Net upward surface energy flux in NCEP Reanalysis data&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Net upward surface energy flux in NCEP Reanalysis data&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_93_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Discuss...  Large net fluxes over ocean, not over land.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Energy-budget-for-the-ocean">Energy budget for the ocean<a class="anchor-link" href="#Energy-budget-for-the-ocean"> </a></h3><p>Using exactly the same reasoning we used for the whole climate system, we can write a budget for the OCEAN ONLY:</p>
+$$ \frac{\partial E_o}{\partial t} = -F_S - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial \mathcal{H_o}}{\partial \phi} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In principle it is possible to calculate $\mathcal{H}_o$ from this budget, analagously to how we calculated the total $\mathcal{H}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Assuming that</p>
+<ul>
+<li>surface fluxes are well-known</li>
+<li>the ocean heat storage is negligible (a big assumption!)</li>
+</ul>
+<p>we can write</p>
+$$ \mathcal{H}_o(\phi) = 2 \pi ~a^2 \int_{-\pi/2}^{\phi} - \cos⁡\phi^\prime ~ F_S d\phi^\prime  $$<p>where the minus sign account for the fact that we defined $F_S$ as <strong>positive up</strong> (out of the ocean).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Energy-budget-for-the-atmosphere">Energy budget for the atmosphere<a class="anchor-link" href="#Energy-budget-for-the-atmosphere"> </a></h3><p>The net energy source to the atmosphere is the sum of the TOA flux and the surface flux. Thus we can write</p>
+$$ \frac{\partial E_a}{\partial t} = R_{TOA} + F_S - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial \mathcal{H_a}}{\partial \phi} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and we can similarly integrate to get the transport:</p>
+$$ \mathcal{H}_a(\phi) = 2 \pi ~a^2 \int_{-\pi/2}^{\phi} \cos⁡\phi^\prime ~ \big( R_{TOA} + F_S \big) d\phi^\prime  $$<p>Note that these formulas ensure that $\mathcal{H} = \mathcal{H}_a + \mathcal{H}_o$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Atmospheric-water-budget-and-latent-heat-transport">Atmospheric water budget and latent heat transport<a class="anchor-link" href="#Atmospheric-water-budget-and-latent-heat-transport"> </a></h3><p>Water vapor contributes to the atmopsheric energy transport because <strong>energy consumed through evaporation</strong> is converted back to <strong>sensible heat</strong> wherever the vapor subsequently condenses.</p>
+<p>If the evaporation and the condensation occur at different latitudes then there is a net transport of energy due to the <strong>movement of water vapor</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use the same kind of budget reasoning to compute this <strong>latent heat transport</strong>. But this time we will make a budget for water vapor only.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The only sources and sinks of water vapor to the atmosphere are surface evaporation and precipitation:</p>
+$$ L_v \frac{\partial Q}{\partial t} = L_v \big( Evap - Precip \big) - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial \mathcal{H}_{LH}}{\partial \phi} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here we are using</p>
+<ul>
+<li>$Q$ is the depth-integrated water vapor (the "precipitable water") in kg m$^{-2}$</li>
+<li>Evap and Precip are in kg m$^{-2}$ s$^{-1}$ (equivalent to mm/s)</li>
+<li>$L_v = 2.5 \times 10^6$ J kg$^{-1}$ is the latent heat of vaporization</li>
+<li>$\mathcal{H}_{LH}$ is the northward latent heat transport</li>
+</ul>
+<p>All terms in the above equation thus have units of W m$^{-2}$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Using the now-familiar equilibrium reasoning, we can use this water balance to compute the latent heat transport from the net surface evaporation minus precipitation:</p>
+$$ \mathcal{H}_{LH}(\phi) = 2 \pi ~a^2 \int_{-\pi/2}^{\phi} \cos⁡\phi^\prime ~ L_v ~\big( Evap - Precip \big) d\phi^\prime  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From this we can then infer all the energy transport associated with the motion of dry air as a residual:</p>
+$$\mathcal{H}_{Dry} = \mathcal{H}_a - \mathcal{H}_{LH} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section7'></a></p>
+<h2 id="7.-Calculating-the-partitioning-of-poleward-energy-transport-into-different-components">7. Calculating the partitioning of poleward energy transport into different components<a class="anchor-link" href="#7.-Calculating-the-partitioning-of-poleward-energy-transport-into-different-components"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This function implements the above formulas to calculate the following quantities from CESM simulation output:</p>
+<ul>
+<li>Total heat transport, $\mathcal{H}$</li>
+<li>Ocean heat transport, $\mathcal{H}_o$</li>
+<li>Atmospheric heat transport, $\mathcal{H}_a$</li>
+<li>Atmospheric latent heat transport, $\mathcal{H}_{LH}$</li>
+<li>Atmospheric dry heat transport, $\mathcal{H}_{Dry}$</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">CESM_heat_transport</span><span class="p">(</span><span class="n">run</span><span class="p">):</span>
+    <span class="c1">#  Take zonal averages of the necessary input fields</span>
+    <span class="n">fieldlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;FLNT&#39;</span><span class="p">,</span><span class="s1">&#39;FSNT&#39;</span><span class="p">,</span><span class="s1">&#39;LHFLX&#39;</span><span class="p">,</span><span class="s1">&#39;SHFLX&#39;</span><span class="p">,</span><span class="s1">&#39;FLNS&#39;</span><span class="p">,</span><span class="s1">&#39;FSNS&#39;</span><span class="p">,</span><span class="s1">&#39;PRECSC&#39;</span><span class="p">,</span><span class="s1">&#39;PRECSL&#39;</span><span class="p">,</span><span class="s1">&#39;QFLX&#39;</span><span class="p">,</span><span class="s1">&#39;PRECC&#39;</span><span class="p">,</span><span class="s1">&#39;PRECL&#39;</span><span class="p">]</span>
+    <span class="n">zon</span> <span class="o">=</span> <span class="n">run</span><span class="p">[</span><span class="n">fieldlist</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">)</span>
+    <span class="n">OLR</span> <span class="o">=</span> <span class="n">zon</span><span class="o">.</span><span class="n">FLNT</span>
+    <span class="n">ASR</span> <span class="o">=</span> <span class="n">zon</span><span class="o">.</span><span class="n">FSNT</span>
+    <span class="n">Rtoa</span> <span class="o">=</span> <span class="n">ASR</span> <span class="o">-</span> <span class="n">OLR</span>  <span class="c1"># net downwelling radiation</span>
+    <span class="c1">#  surface energy budget terms, all defined as POSITIVE UP</span>
+    <span class="c1">#    (from ocean to atmosphere)</span>
+    <span class="n">LHF</span> <span class="o">=</span> <span class="n">zon</span><span class="o">.</span><span class="n">LHFLX</span>
+    <span class="n">SHF</span> <span class="o">=</span> <span class="n">zon</span><span class="o">.</span><span class="n">SHFLX</span>
+    <span class="n">LWsfc</span> <span class="o">=</span> <span class="n">zon</span><span class="o">.</span><span class="n">FLNS</span>
+    <span class="n">SWsfc</span> <span class="o">=</span> <span class="o">-</span><span class="n">zon</span><span class="o">.</span><span class="n">FSNS</span>
+    <span class="n">SnowFlux</span> <span class="o">=</span>  <span class="p">((</span><span class="n">zon</span><span class="o">.</span><span class="n">PRECSC</span> <span class="o">+</span> <span class="n">zon</span><span class="o">.</span><span class="n">PRECSL</span><span class="p">)</span> <span class="o">*</span>
+                      <span class="n">const</span><span class="o">.</span><span class="n">rho_w</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">Lhfus</span><span class="p">)</span>
+    <span class="c1"># net upward radiation from surface</span>
+    <span class="n">SurfaceRadiation</span> <span class="o">=</span> <span class="n">LWsfc</span> <span class="o">+</span> <span class="n">SWsfc</span>
+    <span class="c1"># net upward surface heat flux</span>
+    <span class="n">SurfaceHeatFlux</span> <span class="o">=</span> <span class="n">SurfaceRadiation</span> <span class="o">+</span> <span class="n">LHF</span> <span class="o">+</span> <span class="n">SHF</span> <span class="o">+</span> <span class="n">SnowFlux</span>
+    <span class="c1"># net heat flux into atmosphere</span>
+    <span class="n">Fatmin</span> <span class="o">=</span> <span class="n">Rtoa</span> <span class="o">+</span> <span class="n">SurfaceHeatFlux</span>
+    <span class="c1">#  hydrological cycle, all terms in  kg/m2/s or mm/s</span>
+    <span class="n">Evap</span> <span class="o">=</span> <span class="n">zon</span><span class="o">.</span><span class="n">QFLX</span>
+    <span class="n">Precip</span> <span class="o">=</span> <span class="p">(</span><span class="n">zon</span><span class="o">.</span><span class="n">PRECC</span> <span class="o">+</span> <span class="n">zon</span><span class="o">.</span><span class="n">PRECL</span><span class="p">)</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">rho_w</span>
+    <span class="n">EminusP</span> <span class="o">=</span> <span class="n">Evap</span> <span class="o">-</span> <span class="n">Precip</span>
+        
+    <span class="c1"># heat transport terms</span>
+    <span class="n">HTmonthly</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="n">Rtoa</span><span class="p">)</span>
+    <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;atm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="n">Fatmin</span><span class="p">)</span>
+    <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;ocean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="o">-</span><span class="n">SurfaceHeatFlux</span><span class="p">)</span>
+    <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;latent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inferred_heat_transport</span><span class="p">(</span><span class="n">EminusP</span><span class="o">*</span><span class="n">const</span><span class="o">.</span><span class="n">Lhvap</span><span class="p">)</span> <span class="c1"># atm. latent heat transport from moisture imbal.</span>
+    <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;dse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;atm&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">HTmonthly</span><span class="p">[</span><span class="s1">&#39;latent&#39;</span><span class="p">]</span>  <span class="c1"># dry static energy transport as residual</span>
+
+    <span class="c1">#  annual averages</span>
+    <span class="n">HTann</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">HTmonthly</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">HTann</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">HTann</span><span class="p">,</span> <span class="n">HTmonthly</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Compute heat transport partition for both control and 2xCO2 simulations</span>
+<span class="n">HT_control</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">CESM_heat_transport</span><span class="p">(</span><span class="n">atm_control</span><span class="p">)</span>
+<span class="n">HT_2xCO2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">CESM_heat_transport</span><span class="p">(</span><span class="n">atm_2xCO2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">runs</span> <span class="o">=</span> <span class="p">[</span><span class="n">HT_control</span><span class="p">,</span> <span class="n">HT_2xCO2</span><span class="p">]</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">runs</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">HT</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">HT_control</span><span class="p">,</span> <span class="n">HT_2xCO2</span><span class="p">]):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">HT</span><span class="p">[</span><span class="s1">&#39;total&#39;</span><span class="p">],</span> <span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">HT</span><span class="p">[</span><span class="s1">&#39;atm&#39;</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;atm&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">HT</span><span class="p">[</span><span class="s1">&#39;dse&#39;</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dry&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">HT</span><span class="p">[</span><span class="s1">&#39;latent&#39;</span><span class="p">],</span> <span class="s1">&#39;r:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;latent&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat_cesm</span><span class="p">,</span> <span class="n">HT</span><span class="p">[</span><span class="s1">&#39;ocean&#39;</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ocean&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">ticks</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture17_110_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Discuss the shape of these curves.</p>
+<p>Actually very very similar before and after the global warming.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section8'></a></p>
+<h2 id="8.-Mechanisms-of-heat-transport">8. Mechanisms of heat transport<a class="anchor-link" href="#8.-Mechanisms-of-heat-transport"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Energy is transported across latitude lines whenever there is an exchange of fluids with different energy content: e.g. warm fluid moving northward while colder fluid moves southward.</p>
+<p>Thus energy transport always involves <strong>correlations between northward component of velocity $v$ and energy $e$</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The transport is an integral of these correlations, around a latitude circle and over the depth of the fluid:</p>
+$$ \mathcal{H} = \int_0^{2\pi} \int_{\text{bottom}}^{\text{top}} \rho ~ v ~ e ~ dz ~ a \cos\phi ~ d\lambda$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The total transport (which we have been inferring from the TOA radiation imbalance) includes contributions from both the <strong>atmosphere</strong> and the <strong>ocean</strong>:</p>
+$$ \mathcal{H} = \mathcal{H}_{a} + \mathcal{H}_{o} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can apply the above definition to both fluids (with appropriate values for bottom and top in the depth integral).</p>
+<p>The appropriate measure of energy content is different for the atmosphere and ocean.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the ocean, we usually use the <strong>enthalpy for an incompressible fluid</strong>:</p>
+$$ e_o \approx c_w ~ T $$<p>where $c_w \approx 4.2 \times 10^{3}$ J kg$^{-1}$ K$^{-1}$ is the specific heat for seawater.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For the atmosphere, it's a bit more complicated. We need to account for both the compressibility of air, and for its water vapor content. This is because of the latent energy associated with evaporation and condensation of vapor.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is convenient to define the <strong>moist static energy</strong> for the atmosphere:</p>
+$$ MSE = c_p ~T + g~ Z + L_v ~q  $$<p>whose terms are respectively the internal energy, the potential energy, and the latent heat of water vapor (see texts on atmopsheric thermodynamics for details).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will assume that $MSE$ is a good approximation to the total energy content of the atmosphere, so</p>
+$$ e_a \approx MSE $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that in both cases we have <strong>neglected the kinetic energy</strong> from this budget.</p>
+<p>The kinetic energy per unit mass is $e_k = |\vec{v}|^2/2$, where $\vec{v} = (u,v,w)$ is the velocity vector.</p>
+<p>In practice it is a very small component of the total energy content of the fluid and is usually neglected in analyses of poleward energy transport.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we have seen, we can further divide the atmospheric transport into transports due to the movement of <strong>dry air</strong> (the tranport of <strong>dry static energy</strong>) and transport associated with evaporation and condensation of <strong>water vapor</strong> (the <strong>latent heat transport</strong>)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Mechanisms-of-energy-transport-in-the-ocean">Mechanisms of energy transport in the ocean<a class="anchor-link" href="#Mechanisms-of-energy-transport-in-the-ocean"> </a></h3><p>Assuming the ocean extends from $z=-H$ to $z=0$ we can then write</p>
+$$ \mathcal{H}_o \approx a \cos\phi \int_0^{2\pi} \int_{-H}^{0}  c_w ~\rho ~ v ~ T ~ dz  ~ d\lambda$$<p>setting $v ~ T = 0$ at all land locations around the latitude circle.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The northward transport $\mathcal{H}_o$ is positive if there is a net northward flow of warm water and southward flow of cold water.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This can occur due to <strong>horizontal</strong> differences in currents and temperatures.</p>
+<p>The classic example is flow in the subtropical gyres and western boundary currents. In the subtropical North Atlantic, there is rapid northward flow of warm water in the Gulf Stream. This is compensated by a slow southward flow of cooler water across the interior of the basin.</p>
+<p><strong>Because the water masses are at different temperatures, equal and opposite north-south exchanges of mass result in net northward transport of energy.</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Energy transport can also result from <strong>vertical</strong> structure of the currents.</p>
+<p>There is a large-scale <strong>overturning circulation</strong> in the Atlantic that involves near-surface northward flow of warmer water, compensated by deeper southward flow of colder water.</p>
+<p>Again, equal exchange of water but net transport of energy.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="These-notes-are-not-really-finished..."><em>These notes are not really finished...</em><a class="anchor-link" href="#These-notes-are-not-really-finished..."> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, scipy, matplotlib, xarray, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 9.0.0 (tags/RELEASE_900/final)]</td></tr><tr><td>IPython</td><td>7.10.1</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.17.3</td></tr><tr><td>scipy</td><td>1.3.2</td></tr><tr><td>matplotlib</td><td>3.1.2</td></tr><tr><td>xarray</td><td>0.12.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Dec 11 13:58:14 2019 PST</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

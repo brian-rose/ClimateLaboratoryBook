@@ -22,8 +22,8 @@ email: brose@albany.edu
 description: >-
   Interactive lecture notes on climate dynamics and climate modeling
 
-baseurl: '' # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
-url: https://jupyterbook.org   # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/ClimateLaboratoryBook" # the subpath of your site, e.g. /blog. If there is no subpath for your site, use an empty string ""
+url: "https://brian-rose.github.io"  # the base hostname & protocol for your site, e.g. http://example.com
 
 
 #######################################################################################
@@ -35,10 +35,10 @@ footer_text: This page was created by <a href="https://github.com/jupyter/jupyte
 
 # Sidebar settings
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.
-collapse_inactive_chapters: false # Whether to collapse the inactive chapters in the sidebar
+collapse_inactive_chapters: true # Whether to collapse the inactive chapters in the sidebar
 collapse_inactive_sections: true  # Whether to collapse the sub-sections within a non-active section in the sidebar
 textbook_logo: images/logo/logo.png               # A logo to be displayed at the top of your textbook sidebar. Should be square
-textbook_logo_link: https://jupyterbook.org/intro.html          # A link for the logo.
+textbook_logo_link: "https://brian-rose.github.io/ClimateLaboratoryBook"          # A link for the logo.
 sidebar_footer_text: Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
 number_toc_chapters: true         # Whether to add numbers to chapterse in your Table of Contents. If true, you can control this at the Chapter level in _data/toc.yml
 
@@ -61,16 +61,16 @@ use_jupyterlab: false                     # If 'true', interact links will use J
 
 # Jupyterhub link settings
 use_jupyterhub_button: true               # If 'true', display a button that will direct users to a JupyterHub (that you provide)
-jupyterhub_url: https://lore.atmos.albany.edu:8000 # The URL for your JupyterHub. If no URL, use ""
-jupyterhub_interact_text: Interact             # The text that interact buttons will contain.
+jupyterhub_url: "https://lore.atmos.albany.edu:8000" # The URL for your JupyterHub. If no URL, use ""
+jupyterhub_interact_text: Interact (UAlbany only)    # The text that interact buttons will contain.
 
 # Binder link settings
-use_binder_button: true                  # If 'true', add a binder button for interactive links
-binderhub_url: https://mybinder.org                        # The URL for your BinderHub. If no URL, use ""
-binder_repo_base: https://github.com/                     # The site on which the textbook repository is hosted
-binder_repo_org: jupyter                      # The username or organization that owns this repository
-binder_repo_name: jupyter-book                     # The name of the repository on the web
-binder_repo_branch: gh-pages                   # The branch on which your textbook is hosted.
+use_binder_button: true                        # If 'true', add a binder button for interactive links
+binderhub_url: https://mybinder.org            # The URL for your BinderHub. If no URL, use ""
+binder_repo_base: https://github.com/          # The site on which the textbook repository is hosted
+binder_repo_org: brian-rose                    # The username or organization that owns this repository
+binder_repo_name: ClimateLaboratoryBook        # The name of the repository on the web
+binder_repo_branch: master                     # The branch on which your textbook is hosted.
 binderhub_interact_text: Interact              # The text that interact buttons will contain.
 
 # Thebelab settings

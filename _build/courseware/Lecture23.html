@@ -1,0 +1,1055 @@
+---
+redirect_from:
+  - "/courseware/lecture23"
+interact_link: content/courseware/Lecture23.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  The surface energy balance
+pagenum: 26
+prev_page:
+  url: /courseware/Lecture22.html
+next_page:
+  url: /courseware/Lecture24.html
+suffix: .ipynb
+search: surface heat ratio flux energy bowen q partial net radiation latent left right frac fs t air temperature text ts ocean fluxes budget warming equilibrium qs r boundary atmosphere transport sensible l cooling model layer cd ta reference qa through terms latitudes where rho le height humidity wet balance between ice very shortwave longwave moisture back also surfaces changes value cp u mixing saturation saturated id section climate because oceans upward lecture ipynb evaporation below storage release solar cesm mean after zero not level sh prime specific approx actual albany mechanisms land important either e snow small uptake simulations slab
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">The surface energy balance</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-Energy-exchange-mechanisms-at-the-Earth's-surface">1. Energy exchange mechanisms at the Earth's surface<a class="anchor-link" href="#1.-Energy-exchange-mechanisms-at-the-Earth's-surface"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The surface of the Earth is the boundary between the atmosphere and the land, ocean, or ice. Understanding the energy fluxes across the surface are very important for three main reasons:</p>
+<ol>
+<li>We are most interested in the climate at the surface because we live at the surface.</li>
+<li>The surface energy budget determines how much energy is available to evaporate water and moisten the atmosphere.</li>
+<li>Air-sea energy fluxes set the thermal structure of the oceans, which in turn act to redistribute energy around the planet, with many important consequences for climate.</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The energy budget at the surface is more complex that the budget at the top of the atmosphere. At the TOA the only energy transfer mechanisms are radiative (shortwave and longwave). At the surface, in addition to radiation we need to consider fluxes of energy by conduction and by convection of heat and moisture through turbulent fluid motion.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Major-terms-in-the-surface-energy-budget">Major terms in the surface energy budget<a class="anchor-link" href="#Major-terms-in-the-surface-energy-budget"> </a></h3><p>We will denote the <strong>net upward energy flux at the surface</strong> as $F_S$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As we mentioned back in <a href="./Lecture15 -- Heat transport.ipynb">Lecture 15 on heat transport</a>, there are four principal contributions to $F_S$:</p>
+<ol>
+<li>Shortwave radiation</li>
+<li>Longwave radiation</li>
+<li>Sensible heat flux</li>
+<li>Evaporation or latent heat flux</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wherever $F_S \ne 0$, there is a net flux of energy between the atmosphere and the surface below. This implies either that there is heat storage / release occuring below the surface (e.g. warming or cooling of water, melting of snow and ice), and/or there is horizontal heat transport by fluid motions occuring below the surface (ocean circulation, groundwater flow).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Minor-terms-in-the-surface-energy-budget">Minor terms in the surface energy budget<a class="anchor-link" href="#Minor-terms-in-the-surface-energy-budget"> </a></h3><p>All of these terms are small globally but can be significant locally or seasonally.</p>
+<ul>
+<li>Latent heat of fusion required for melting ice and snow</li>
+<li>Conversion of the kinetic energy of winds and waves to thermal energy</li>
+<li>Heat transport by precipitation, if precipitation is at a different temperature than the surface</li>
+<li>Biological uptake of solar energy through photosynthesis</li>
+<li>Biological release of energy through oxidation (respiration, decay, fires)</li>
+<li>Geothermal heat sources (hot springs, volcanoes, etc.)</li>
+<li>Anthropogenic heat released through fossil fuel burning and nuclear power generation.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-The-surface-energy-budget-in-CESM-simulations">2. The surface energy budget in CESM simulations<a class="anchor-link" href="#2.-The-surface-energy-budget-in-CESM-simulations"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will examine the surface budget in the CESM slab ocean simulations. The advantage of looking at surface fluxes in a model rather than observations is that the model fluxes are completely consistent with the model climate, so that the net flux $F_S$ will be a meaningful measure of the heat storage in the system.</p>
+<p>The model also gives us an opportunity to look at how the surface budget reponds to global warming under a doubling of CO$_2$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="First,-load-the-data">First, load the data<a class="anchor-link" href="#First,-load-the-data"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">datapath</span><span class="o">+</span><span class="s1">&#39;som_input/USGS-gtopo30_1.9x2.5_remap_c050602.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">runlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="s1">&#39;2xCO2&#39;</span><span class="p">]</span>
+<span class="n">runs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="n">runlist</span><span class="p">:</span>
+    <span class="n">runstr</span> <span class="o">=</span> <span class="s1">&#39;som_&#39;</span> <span class="o">+</span> <span class="n">run</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">datapath</span> <span class="o">+</span> <span class="n">runstr</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">runstr</span> <span class="o">+</span> <span class="s1">&#39;.cam.h0.clim.nc&#39;</span>
+    <span class="n">runs</span><span class="p">[</span><span class="n">run</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">runs</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lat</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">runs</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lon</span>
+<span class="n">lev</span> <span class="o">=</span> <span class="n">runs</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lev</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Annual-mean-surface-energy-budget">Annual mean surface energy budget<a class="anchor-link" href="#Annual-mean-surface-energy-budget"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Surface energy budget terms, all defined as positive up (from ocean to atmosphere)</span>
+<span class="n">surface_budget</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">run</span><span class="p">)</span> <span class="ow">in</span> <span class="n">runs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">budget</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;LHF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">LHFLX</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SHF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">SHFLX</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;LWsfc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">FLNS</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;LWsfc_clr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">run</span><span class="o">.</span><span class="n">FLNSC</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SWsfc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">FSNS</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SWsfc_clr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">run</span><span class="o">.</span><span class="n">FSNSC</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SnowFlux&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">run</span><span class="o">.</span><span class="n">PRECSC</span><span class="o">+</span><span class="n">run</span><span class="o">.</span><span class="n">PRECSL</span><span class="p">)</span>
+                           <span class="o">*</span><span class="n">const</span><span class="o">.</span><span class="n">rho_w</span><span class="o">*</span><span class="n">const</span><span class="o">.</span><span class="n">Lhfus</span><span class="p">)</span>
+    <span class="c1"># net upward radiation from surface</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;NetRad&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;LWsfc&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SWsfc&#39;</span><span class="p">]</span>  
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;NetRad_clr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;LWsfc_clr&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SWsfc_clr&#39;</span><span class="p">]</span>  
+    <span class="c1"># net upward surface heat flux</span>
+    <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;Net&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">budget</span><span class="p">[</span><span class="s1">&#39;NetRad&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;LHF&#39;</span><span class="p">]</span> <span class="o">+</span> 
+                     <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SHF&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">budget</span><span class="p">[</span><span class="s1">&#39;SnowFlux&#39;</span><span class="p">])</span>
+    <span class="n">surface_budget</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">budget</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Compute-anomalies-for-all-terms">Compute anomalies for all terms<a class="anchor-link" href="#Compute-anomalies-for-all-terms"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#   Here we take advantage of xarray!</span>
+<span class="c1">#   We can simply subtract the two xarray.Dataset objects </span>
+<span class="c1">#   to get anomalies for every term</span>
+<span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;anom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;2xCO2&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Also compute zonal averages</span>
+<span class="n">zonal_budget</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">run</span><span class="p">,</span> <span class="n">budget</span> <span class="ow">in</span> <span class="n">surface_budget</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">zonal_budget</span><span class="p">[</span><span class="n">run</span><span class="p">]</span> <span class="o">=</span> <span class="n">budget</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plot-the-annual-mean-net-upward-flux-$F_S$-(control-and-anomaly-after-warming)">Plot the annual mean net upward flux $F_S$ (control and anomaly after warming)<a class="anchor-link" href="#Plot-the-annual-mean-net-upward-flux-$F_S$-(control-and-anomaly-after-warming)"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">cax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">Net</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">),</span>
+                          <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">200.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">200.</span> <span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Annual mean net surface heat flux (+ up) - CESM control&#39;</span><span class="p">)</span>
+<span class="n">cax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;anom&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">Net</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">),</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">20.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">20.</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Anomaly after CO2 doubling&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">LANDFRAC</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture23_20_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some notable points about the control state:</p>
+<ul>
+<li>The net flux over all land surfaces is very close to zero!</li>
+<li>In the long-term annual mean, a non-zero $F_S$ must be balanced by heat transport. </li>
+<li>The spatial pattern of $F_S$ over the oceans is essentially just the prescribed q-flux that we have imposed on the slab ocean to represent ocean heat transport.</li>
+<li>We have looked at maps like this before, back in <a href="./Lecture15 -- Heat transport.ipynb">Lecture 15</a> and <a href="../Assignments/Assignment02 -- Introducing CESM.ipynb">Assignment 2</a>.</li>
+<li>Net heat uptake by the oceans occurs mostly along the equator and the cold tongues on the eastern sides of the tropical basins.</li>
+<li>Net heat release from oceans to atmosphere occurs mostly in mid- to high latitudes. Hot spots include the Gulf Stream and Kuroshio regions on the western sides of the mid-latitude basins, as well as the subpolar North Atlantic. These features are largely determined by ocean dynamics.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>After greenhouse warming</strong>:</p>
+<ul>
+<li>The net change in $F_S$ is very small in most locations. </li>
+<li>This indicates that the model has reached quasi-equilibrium. Non-zero changes in $F_S$ would indicate either<ul>
+<li>heat storage below the surface</li>
+<li>changes in ocean heat transport (not permitted in a slab ocean model).</li>
+</ul>
+</li>
+<li>Non-zero changes are found in areas where the sea ice cover is changing in the model.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Variation-of-energy-balance-components-with-latitude">Variation of energy balance components with latitude<a class="anchor-link" href="#Variation-of-energy-balance-components-with-latitude"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fieldlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SWsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;LWsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;LHF&#39;</span><span class="p">,</span> <span class="s1">&#39;SHF&#39;</span><span class="p">,</span> <span class="s1">&#39;Net&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">,</span> <span class="s1">&#39;anom&#39;</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">zonal_budget</span><span class="p">[</span><span class="n">run</span><span class="p">][</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Components of ANNUAL surface energy budget (+ up) - CESM control&#39;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Anomaly after CO2 doubling&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture23_24_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In these graphs, the curve labeled "Net" is the net flux $F_S$. It is just the zonal average of the maps from the previous figure, and shows the ocean heat uptake at the equator and release in mid- to high latitudes.</p>
+<p>More interestingly, these graphs show the contribution of the various terms to $F_S$. They are all plotted as positive up. A <strong>negative</strong> value thus indicates <strong>heating of the surface</strong>, and a <strong>positive</strong> value indicates a <strong>cooling of the surface</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Key points about the control simulation:</p>
+<ul>
+<li>Solar radiation acts to warm the surface everywhere. </li>
+<li>Note that this is a net shortwave flux, so it is the amount that is actually absorbed by the surface after accounting for the reflected fraction.</li>
+<li>All other mechanisms act to cool the surface. </li>
+<li>The dominant balance across the <strong>tropics</strong> is between <strong>warming by solar radiation</strong> and <strong>cooling by evaporation</strong> (latent heat flux or LHF).</li>
+<li>The latent heat flux decreases poleward.</li>
+<li>Latent heat flux is dominant over sensible heat flux at most latitudes except close to the poles.</li>
+<li>The net longwave radiation also acts to cool the surface.</li>
+<li>This is the residual between the surface emissions (essentially $\sigma~T_s^4$) and the back-radiation from the atmosphere.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>After greenhouse warming</strong></p>
+<ul>
+<li>The anomaly in net upward longwave radiation is negative at most latitudes.</li>
+<li>This implies that the downwelling back-radiation increases faster than the upwelling surface emissions.</li>
+<li>This is a signature of greenhouse warming! Both the upwelling and downwelling beams increase with warming. But the downwelling beam also increases because of the CO$_2$-induced increase in emissivity of the atmosphere.</li>
+<li>So the surface is warmed by excess longwave radiation.</li>
+<li>This warming is largely balanced by increased evaporation (red curve)!</li>
+<li>There are also significant changes in shortwave radiation. We could use the modeled clear-sky diagnostics to infer which of these changes are due to clouds.</li>
+<li>The negative shortwave anomalies in high latitudes are consistent with surface albedo feedback and loss of ice and snow.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Seasonal-variations">Seasonal variations<a class="anchor-link" href="#Seasonal-variations"> </a></h3><p>We will compute the budgets for the months of January and July, and plot their differences.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  July minus January</span>
+<span class="n">julminusjan_budget</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">budget</span> <span class="ow">in</span> <span class="n">surface_budget</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1">#  xarray.Dataset objects let you &quot;select&quot; a subset in various ways</span>
+    <span class="c1">#  Here we are using the integer time index (0-11)</span>
+    <span class="n">julminusjan_budget</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">budget</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span> <span class="o">-</span> <span class="n">budget</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fieldlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SWsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;LWsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;LHF&#39;</span><span class="p">,</span> <span class="s1">&#39;SHF&#39;</span><span class="p">,</span> <span class="s1">&#39;Net&#39;</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">julminusjan_budget</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">][</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Components of JUL-JAN surface energy budget (+ up) - CESM control&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fieldlist</span><span class="p">:</span>
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">julminusjan_budget</span><span class="p">[</span><span class="s1">&#39;anom&#39;</span><span class="p">][</span><span class="n">field</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">field</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Anomaly after CO2 doubling&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture23_30_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Seasonally, the dominant balance by far is between solar radiation and heat storage!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Sensible-and-Latent-Heat-Fluxes-in-the-boundary-layer">3. Sensible and Latent Heat Fluxes in the boundary layer<a class="anchor-link" href="#3.-Sensible-and-Latent-Heat-Fluxes-in-the-boundary-layer"> </a></h2><hr>
+<p>These notes largely follow Chapter 4 of Hartmann (1994) "Global Physical Climatology", Academic Press.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Turbulent fluxes of heat: eddy fluxes of heat and moisture at some level in the atmospheric boundary layer</p>
+$$ \text{SH} = c_p ~\rho ~ \overline{w^\prime T^\prime} $$$$ \text{LE} = L ~\rho ~\overline{w^\prime q^\prime} $$<p>where $c_p$ is the specific heat of air at constant pressure, $L$ is the latent heat of vaporization, $\text{SH}$ is the sensible heat flux and $\text{LE}$ is the latent heat flux.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bulk-aerodynamic-formulas">Bulk aerodynamic formulas<a class="anchor-link" href="#Bulk-aerodynamic-formulas"> </a></h3><p>From theory of boundary layer turbulence, we suppose that the eddy heat fluxes is related to boundary layer temperature gradients, as well as the mean wind speed:</p>
+$$ \text{SH} = c_p ~\rho ~ C_D ~ U \left( T_s - T_a \right) $$<p>where $T_s$ is the surface temperature and $T_a$ is the air temperature at some reference height above the surface. $U$ is the wind speed at the reference height, and $C_D$ is a dimensionless aerodynamic drag coefficient.</p>
+<p>$C_D$ will depend, among other things, on the roughness of the surface.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Similarly, we assume that the latent heat flux is related to boundary layer moisture gradients:</p>
+$$ \text{LE} = L ~\rho ~ C_D ~ U \left( q_s - q_a \right) $$<p>where $q_s$ is the specific humidity of air immediately above the surface, and $q_a$ is the specific humidity at the reference height.</p>
+<p>In general the transfer coefficients $C_D$ could be different for sensible and latent heat flux, but empirically they are found to be very similar to each other. We will assume they are equal here.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Bowen-ratio">The Bowen ratio<a class="anchor-link" href="#The-Bowen-ratio"> </a></h3><p>The <strong>Bowen ratio</strong> is a dimensionless number defined as</p>
+$$  B_o = \frac{\text{SH}}{\text{LE}} $$<p>i.e. the ratio of <strong>sensible heat loss</strong> to <strong>evaporative cooling</strong>.</p>
+<p>From the above plots, the Bowen ratio tends to be small in the low latitudes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Bowen-ratio-for-wet-surfaces">The Bowen ratio for wet surfaces<a class="anchor-link" href="#The-Bowen-ratio-for-wet-surfaces"> </a></h3><p>Over a water surface or a very wet land surface, we may assume that the mixing ratio of water vapor at the surface is equal to the saturation mixing ratio $q^*$ at the temperature of the surface:</p>
+$$ q_s = q^*(T_s) $$<p>Recall that the saturation vapor pressure $q^*$ is a sensitive function of temperature through the Clausius-Claperyon relation. (It also depends on pressure)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's approximate the mixing ratio for <strong>saturated air</strong> at the reference height through a first-order Taylor series expansion:</p>
+$$ q_a^* \approx q_s^*(T_s) + \frac{\partial q^*}{\partial T} \left( T_a - T_s \right) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The actual mixing ratio at the reference height can be expressed as</p>
+$$ q_a = r ~ q_a^* $$<p>where $r$ is the relative humidity at that level.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Then we have an appoximation for $q_a$ in terms of temperature gradients:</p>
+$$ q_a \approx r \left( q_s^*(T_s) + \frac{\partial q^*}{\partial T} \left( T_a - T_s \right) \right) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Substituting this into the bulk formula for latent heat flux, we get</p>
+$$ \text{LE} \approx L ~\rho ~ C_D ~ U \left( q_s^* - r \left( q_s^* + \frac{\partial q^*}{\partial T} \left( T_a - T_s \right) \right) \right) $$<p>or, rearranging a bit,</p>
+$$ \text{LE} \approx L ~\rho ~ C_D ~ U \left( (1-r) ~ q_s^* + r \frac{\partial q^*}{\partial T} \left( T_s - T_a \right) \right)  $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Bowen ratio is thus</p>
+$$ B_o = \frac{c_p}{ L \left( \frac{(1-r)}{\left( T_s - T_a \right)} q_s^* + r \frac{\partial q^*}{\partial T} \right)} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-equilibrium-Bowen-ratio-(for-saturated-air)">The equilibrium Bowen ratio (for saturated air)<a class="anchor-link" href="#The-equilibrium-Bowen-ratio-(for-saturated-air)"> </a></h3><p>Notice that <strong>if the boundary layer air is saturated</strong>, then $r=1$ and the Bowen ratio takes on a special value</p>
+$$ B_e = \frac{c_p}{ L \frac{\partial q^*}{\partial T} } $$<p>When the surface and the air at the reference level are saturated, the Bowen ratio approaches the value $B_e$, which is called the equilibrium Bowen ratio. We presume that the flux of moisture from the boundary layer to the free atmosphere is sufficient to just balance the upward flux of moisture from the surface so that the humidity at the reference height is in equilibrium at the saturation value.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that from the Clausius-Claperyon relation, the rate of change of the saturation mixing ratio is itself a strong function of temperature:</p>
+$$ \frac{\partial q^*}{\partial T} = q^*(T) \frac{L}{R_v ~ T^2} $$<p>Here the quasi-exponential dependence of $q^*$ on $T$ far outweighs the inverse square dependence, so the <strong>equilibrium Bowen ratio decreases roughly exponentially with temperature</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The following code reproduces Figure 4.10 of Hartmann (1994).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.utils.thermo</span> <span class="kn">import</span> <span class="n">qsat</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span> <span class="n">const</span><span class="o">.</span><span class="n">tempCtoK</span>
+<span class="n">qstar</span> <span class="o">=</span> <span class="n">qsat</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span>  <span class="c1"># in kg / kg</span>
+
+<span class="k">def</span> <span class="nf">Be</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">qstar</span> <span class="o">=</span> <span class="n">qsat</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span>  <span class="c1"># in kg / kg</span>
+    <span class="n">dqstardT</span> <span class="o">=</span> <span class="n">qstar</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">Lhvap</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">Rv</span> <span class="o">/</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">const</span><span class="o">.</span><span class="n">cp</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">Lhvap</span> <span class="o">/</span> <span class="n">dqstardT</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">T</span> <span class="o">+</span> <span class="n">const</span><span class="o">.</span><span class="n">tempKtoC</span><span class="p">,</span> <span class="n">qstar</span><span class="o">*</span><span class="mi">1000</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$q^*$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">T</span> <span class="o">+</span> <span class="n">const</span><span class="o">.</span><span class="n">tempKtoC</span><span class="p">,</span> <span class="n">Be</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$B_e$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degC)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Saturation specific humidity (g/kg) and equilibrium Bowen ratio&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture23_47_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Equilibrium Bowen ratio is near 1 at 0ºC, and decreases to about 0.2 at 30ºC.</li>
+<li>As relative humidity is decreased from 1 to smaller values, <strong>evaporative cooling increases</strong>.</li>
+<li>The equilibrium Bowen ratio is the <strong>maximum possible Bowen ratio for a wet surface</strong>.</li>
+<li>Actual Bowen ratio over a wet surface will generally be smaller than $B_e$, because the air is usually not saturated.</li>
+<li>Because of the strong temperature dependence of the saturation specific humidity:<ul>
+<li>Evaporative cooling (latent heat flux) dominates over sensible cooling of wet surfaces at <strong>tropical</strong> temperatures.</li>
+<li>Sensible heat flux becomes important wherever the surface is either <strong>cold</strong> or <strong>dry</strong>.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-Bowen-ratio-in-CESM-simulations">4. Bowen ratio in CESM simulations<a class="anchor-link" href="#4.-Bowen-ratio-in-CESM-simulations"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Bo_control</span> <span class="o">=</span> <span class="p">(</span><span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">SHF</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span> <span class="o">/</span> 
+              <span class="n">surface_budget</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">LHF</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="n">Be_control</span> <span class="o">=</span> <span class="n">Be</span><span class="p">(</span><span class="n">runs</span><span class="p">[</span><span class="s1">&#39;control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TS</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">cax1</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Bo_control</span><span class="p">,</span>
+                    <span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">5.</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax1</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$B_o$ (CESM control)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">cax2</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Be_control</span><span class="p">,</span>
+                    <span class="n">vmin</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">5.</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$B_e$ (CESM control)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">cax3</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="p">(</span><span class="n">Bo_control</span> <span class="o">-</span> <span class="n">Be_control</span><span class="p">),</span>
+                    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;seismic&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">10.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">10.</span> <span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax3</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$B_o - B_e$ (CESM control)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;LANDFRAC&#39;</span><span class="p">][:],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture23_50_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On the difference plot, the blue colors indicate the actual Bowen ratio is smaller than the equilibrium Bowen ratio. This will typically occur for <strong>wet surfaces</strong> with <strong>undersaturated air</strong>.</p>
+<p>The red colors indicate the actual Bowen ratio is larger than the equilibrium Bowen ratio. This typically occurs for <strong>dry surfaces</strong> where there is not enough water available to satisfy the energetic demand for evaporation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+
+[Back to ATM 623 notebook home](../index.ipynb)
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, xarray, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 9.0.0 (tags/RELEASE_900/final)]</td></tr><tr><td>IPython</td><td>7.10.1</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.17.3</td></tr><tr><td>matplotlib</td><td>3.1.2</td></tr><tr><td>xarray</td><td>0.12.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Dec 11 13:55:01 2019 PST</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

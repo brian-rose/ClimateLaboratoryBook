@@ -1,0 +1,873 @@
+---
+redirect_from:
+  - "/courseware/lecture09"
+interact_link: content/courseware/Lecture09.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Modeling non-scattering radiative transfer
+pagenum: 12
+prev_page:
+  url: /courseware/Lecture08.html
+next_page:
+  url: /courseware/Lecture10.html
+suffix: .ipynb
+search: t tau nu d big e layer u equations gas delta beam n bf frac align p kappa absorption exp band flux grey model section our optical upwelling epsilon radiation define k begin end sigma where frequency pressure temperature blackbody emissions j downwelling radiative transfer stream emissivity cross m transmissivity id climlab thickness depth greenhouse sum dependence int bj here layers g incident using vertical qk constant climate emission function pi text term fluxes grid vector well total beams let written planck b h times gases calculate understand spectral gives finite above level denoted discrete fraction index surface ti en
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Modeling non-scattering radiative transfer</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-The-two-stream-Schwarschild-equations">1. The two-stream Schwarschild equations<a class="anchor-link" href="#1.-The-two-stream-Schwarschild-equations"> </a></h2><hr>
+<p>Here we are going to introduce the governing equations of radiative transfer to put what we've been doing on a more solid theoretical footing.</p>
+<p>Our derivations here will also serve as a coherent documentation for how some of the radiation solvers are implemented in <code>climlab</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Optical-thickness">Optical thickness<a class="anchor-link" href="#Optical-thickness"> </a></h3><p>The <strong>optical thickness</strong> of a layer of absorbers is $\Delta \tau_\nu$. It is the emissivity and absorptivity of a layer of atmosphere.</p>
+<p>Passing to the limit of very thin layers, we define $\tau_\nu$ through</p>
+$$ \frac{d \tau_\nu}{dp} = -\frac{1}{g} \kappa_\nu $$<p>where <strong>$\kappa_\nu$ is an absorption cross-section</strong> per unit mass at frequency $\nu$. It has units m$^2$ kg$^{-1}$. $\kappa$ is a measure of the area taken out of the incident beam by absorbers in a unit mass of atmosphere.</p>
+<p>In general <strong>$\tau_\nu$ depends on the frequency of the radiation</strong>, as indicated here by the subscript $\nu$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Using-optical-depth-as-vertical-coordinate">Using optical depth as vertical coordinate<a class="anchor-link" href="#Using-optical-depth-as-vertical-coordinate"> </a></h3><p>Since pressure decreases with altitude, $\tau_\nu$ increases with altitude.</p>
+<p>The equations of radiative transfer can be simplified by using $\tau_\nu$ as vertical coordinate instead of pressure.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Absorption-cross-section">Absorption cross-section<a class="anchor-link" href="#Absorption-cross-section"> </a></h3><p>The specific absorption cross section $\kappa$ depends on the number of molecules of each greenhouse gas encountered by the beam and the absorption properties characteristic to each kind of greenhouse gas molecule. Letting $q_k$ be the mass-specific concentration of greenhouse gas $k$, we may write in general</p>
+$$ \kappa(\nu, p, T) = \sum_{k=1}^n \kappa_k\big(\nu, p, T \big) q_k(p) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For a well-mixed greenhouse gas, $q_k$ is a constant; for a non-well-mixed gas like water vapor we need to account for the vertical distribution of the gas through $q_k(p)$.</p>
+<p>The dependence of $\kappa_k$ on temperature and pressure arises from certain aspects of the physics of molecular absorption.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Two-stream-Schwarzschild-equations">Two-stream Schwarzschild equations<a class="anchor-link" href="#Two-stream-Schwarzschild-equations"> </a></h3><p>For climate modeling we almost always seperate the total flux into two beams: <strong>upward</strong> and <strong>downward</strong>.</p>
+<p>This involves taking integrals of the full angular dependence of the flux. We'll skip the details here.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let $U_\nu$ be the upward beam, and $D_\nu$ be the downward beam. The governing equations for these beams are the <em>Schwarzschild equations</em>:</p>
+\begin{align}
+\frac{d U_\nu}{d \tau_\nu} &amp;= -U_\nu + E\big( \nu, T(\tau_\nu) \big) \\
+\frac{d D_\nu}{d \tau_\nu} &amp;= D_\nu - E\big( \nu, T(\tau_\nu) \big) 
+\end{align}<p>where $E$ is the <strong>blackbody emission</strong> (both up and down), which in general depends on both <strong>frequency</strong> and <strong>temperature</strong>. We have written temperature as a function of the vertical coordinate (optical depth).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The emissions are governed by the <strong>Planck function</strong>:
+\begin{align}
+E &amp;= \pi~ B\big( \nu, T \big) \\
+B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \nu}{k T} \right) -1} 
+\end{align}</p>
+<p>with these fundamental physical constants:</p>
+<ul>
+<li>$h = 6.626 \times 10^{-34} ~\text{J s} $ is Planck's constant</li>
+<li>$c = 3.00 \times 10^8 ~\text{m s}^{-1} $ is the speed of light</li>
+<li>$k = 1.38 \times 10^{-23} ~\text{J K}^{-1} $ is the Boltzmann Thermodynamic Constant</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The two-stream equations basically say the beam is <strong>attenuated by absorption</strong> (first term) and <strong>augmented by emission</strong> (second term) in each thin layer of gas.</p>
+<p>These equations are valid for beam that are <strong>not affected by scattering</strong>. We may come back to that later.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-The-Grey-Gas-Model">2. The Grey Gas Model<a class="anchor-link" href="#2.-The-Grey-Gas-Model"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The absorption properties $\kappa_i$ of most atmospheric gases varies enormously with the frequency of the radiation. Hence the optical thickness $\tau_\nu$ also has an intricate dependence on wavenumber or frequency.</p>
+<p>Our job as climate modelers is to calculate and understand the net atmospheric absorption and transmission of radiation. To do this thoroughly and accurately, the fluxes must be solved for individually on a very dense grid of wavenumbers, and then the results integrated over all wavenumbers.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Actual radiative transfer codes (as used in GCMs) apply a lot of tricks and shortcuts to simplify this brute-force approach, but lead to sets of equations that are difficult to understand.</p>
+<p>However, there is a lot we can understand about the basics of radiative transfer and the greenhouse effect by ignoring the spectral dependence of the flux.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Specifically, we make the approximation</p>
+$$ \kappa(\nu, p, T) = \kappa(p) $$<p>so that the optical depth $\tau$ is now <strong>independent of frequency</strong>.</p>
+<p>This is known as the <strong>grey gas approximation</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Grey-gas-versions-of-the-Schwarzschild-equations">Grey gas versions of the Schwarzschild equations<a class="anchor-link" href="#Grey-gas-versions-of-the-Schwarzschild-equations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Integrating-the-Planck-function">Integrating the Planck function<a class="anchor-link" href="#Integrating-the-Planck-function"> </a></h3><p>If we assume $\tau_\nu$ is independent of frequency, we can then integrate the two-stream equations over all frequencies.</p>
+<p>The integral of the Planck function gives our familiar Stefan-Boltzmann blackbody radiation law</p>
+$$ E(T) = \int_0^{\infty} \pi B\big( \nu, T \big) d\nu = \sigma T^4  $$<p>with</p>
+$$ \sigma = \frac{2 \pi^5 k^4}{15 c^2 h^3} = 5.67 \times 10^{-8} ~\text{W m}^{-2}~\text{K}^{-4}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># climlab has these constants available, and actually calculates sigma from the above formula</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">climlab</span> 
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">kBoltzmann</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span> <span class="o">/</span> 
+         <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">c_light</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">hPlanck</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">==</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">sigma</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5.6703726225913323e-08
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-grey-gas-equations">The grey gas equations<a class="anchor-link" href="#The-grey-gas-equations"> </a></h3><p>This gives the governing equations for the grey gas model:</p>
+\begin{align}
+\frac{d U}{d \tau} &amp;= -U + \sigma T(\tau)^4 \\
+\frac{d D}{d \tau} &amp;= D - \sigma T(\tau)^4 
+\end{align}<p>These equations now say that the beam is diminished by absorption in a thin layer (first term) and augmented by blackbody emission, where both processes are assumed to be independent of frequency.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="How-do-the-fluxes-change-across-a-finite-layer-of-absorbers?">How do the fluxes change across a finite layer of absorbers?<a class="anchor-link" href="#How-do-the-fluxes-change-across-a-finite-layer-of-absorbers?"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The above equations are <strong>linear, first order ODEs</strong>, and they are uncoupled from each other (because we neglected scattering).</p>
+<p><strong>Consider a layer of atmosphere</strong> from optical level $\tau_{0}$ to $\tau_{1}$. The optical thickness of the layer is $\Delta \tau = \tau_{1} - \tau_{0}$.</p>
+<p>The incident upwelling beam from below is denoted $U_{0}$; the upwelling beam that leaves the top of our layer is denoted $U_{1}$. We want to calculate $U_{1}$, which we can get by integrating the equation for $dU/d\tau$ over our layer.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result is</p>
+$$ U_{1} = U_{0} \exp(-\Delta \tau) + \int_{\tau_{0}}^{\tau_{1}} E \exp \big( -(\tau_{1} - \tau) \big) d\tau $$<p>where $\tau$ is now a dummy variable of integration, and we've written the blackbody emissions as $E = \sigma T^4$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The change in the downwelling beam is similar:</p>
+$$ D_{0} = D_{1} \exp(-\Delta \tau ) + \int_{\tau_0}^{\tau_1} E \exp\big( -(\tau - \tau_{0}) \big) d\tau $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-Discretizing-the-Grey-gas-equations-on-a-finite-grid">3. Discretizing the Grey-gas equations on a finite grid<a class="anchor-link" href="#3.-Discretizing-the-Grey-gas-equations-on-a-finite-grid"> </a></h2><hr>
+<p>One particularly important reason to think about these changes over finite layers is that we will typically solve the radiative transfer equations in a numerical model where the temperature is represented on a discrete grid (often using pressure coordinates).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If we assume that <strong>temperature is uniform everywhere in our layer</strong> then the blackbody emission $E$ is also a constant across the layer, which we will denote $E_{0}$.</p>
+<p>It can come out the integral and the expressions simplify to</p>
+\begin{align}
+U_1 &amp;= U_0 ~ \exp(-\Delta \tau )  + E_{0} ~\Big( 1 - \exp(-\Delta \tau) \Big)  \\
+D_0 &amp;= D_1 ~ \exp(-\Delta \tau )  + E_{0} ~\Big( 1 - \exp(-\Delta \tau) \Big)
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Transmissitivity">Transmissitivity<a class="anchor-link" href="#Transmissitivity"> </a></h3><p>The first term is the <strong>transmission</strong> of radition from the bottom to the top of the layer (or vice-versa). We can define the <strong>transmissivity</strong> of the layer (denoted $t_{0}$) as the fraction of the incident beam that is passed on to the next layer:</p>
+\begin{align}
+t_{0} &amp;= \frac{U_{0} \exp(-\Delta \tau)}{U_{0}}  \\
+ &amp;= \exp(-\Delta \tau)\\
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Emissivity">Emissivity<a class="anchor-link" href="#Emissivity"> </a></h3><p>The second term is the net change in the beam due to <strong>emissions</strong> in the layer.</p>
+<p>We can the define the <strong>emissivity</strong> $\epsilon_0$ of the layer analogously</p>
+\begin{align}
+\epsilon_{0} &amp;=  1 - \exp(-\Delta \tau) \\
+  &amp;= 1 - t_{0} 
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-discrete-two-stream-equations-on-a-finite-pressure-grid">The discrete two-stream equations on a finite pressure grid<a class="anchor-link" href="#The-discrete-two-stream-equations-on-a-finite-pressure-grid"> </a></h3><p>Putting this all together gives us two simple equations that govern changes in the upwelling and downwelling beams across a discrete layer of optical depth $\Delta \tau$:</p>
+\begin{align}
+U_{1} &amp;= t_0 ~ U_{0} + \epsilon_{0} ~ E_{0}  \\
+D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Our model will typically be discretized in pressure coordinates. Suppose the thickness of the layer is $\Delta p$, then the optical depth is</p>
+$$ \Delta \tau  = -\frac{\kappa}{g} \Delta p$$<p>
+(the minus sign accounts for the opposite sign conventions of the two coordinates).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Thus the emissivity of the layer is</p>
+$$  \epsilon_{0} = 1 - \exp\big( \frac{\kappa}{g} \Delta p \big)  $$<p>In the grey gas approximation we ignore all spectral dependence of the flux, so $\kappa$ is a constant (we could let it vary in the vertical to represent non-well-mixed greenhouse gases like water vapor), and the blackbody emissions are simply</p>
+$$ E_0 = \sigma T_0^4 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-Matrix-equations-for-the-grey-gas-model">4. Matrix equations for the grey gas model<a class="anchor-link" href="#4.-Matrix-equations-for-the-grey-gas-model"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>climlab</code> implements the discretized two-stream equations as written above.</p>
+<p>We will now write out the equations on a discretized pressure grid with $N$ layers.</p>
+<p>Let the <strong>upwelling flux</strong> be a column vector</p>
+$${\bf{U}} = [U_0, U_1, ..., U_{N-1}, U_N]^T$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If there are $N$ levels then $\bf{U}$ has $N+1$ elements (i.e. the fluxes are defined at the boundaries between levels). We will number the layers starting from 0 following <code>numpy</code> index conventions.</p>
+<ul>
+<li>$U_0$ is the upwelling flux from surface to layer 0.</li>
+<li>$U_1$ is the upwelling flux layer 0 to layer 1, etc.</li>
+<li>$U_N$ is the upwelling flux from layer N-1 (the top level) to space.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Same for the <strong>downwelling flux</strong></p>
+$${\bf{D}} = [D_0, D_1, ..., D_N]^T$$<p>So $D_N$ is the flux down from space and $D_0$ is the back-radiation to the surface.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <strong>temperature</strong> and <strong>blackbody emissions</strong> are defined for each $N$ pressure level, and are related by</p>
+$$E_i = \sigma T_i^4$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Emissivity-and-Transmissivity-vectors">Emissivity and Transmissivity vectors<a class="anchor-link" href="#Emissivity-and-Transmissivity-vectors"> </a></h3><p>Let the vector of absorptivity / emissivity be</p>
+$$ {\bf{\epsilon}} = [\epsilon_0, \epsilon_1, ..., \epsilon_{N-1}] $$<p>where each element is determined by the thickness of the layer and the absorption cross-section for this particular spectral band:</p>
+$$ \epsilon_{i} = 1 - \exp\big( \frac{\kappa}{g} \Delta p_i \big) $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And the transmissivity of individual layers is</p>
+$$ t_{i} = 1 - \epsilon_{i} $$<p>It is convenient to define a vector of transmissivities ${\bf{t}}$ with $N+1$ elements:</p>
+$$ {\bf{t}} = [1, t_0, t_1, ..., t_{N-1}] $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-downwelling-beam">The downwelling beam<a class="anchor-link" href="#The-downwelling-beam"> </a></h3><p>For the downwelling beam, we define a column vector of emissions with $N+1$ elements:</p>
+$$ {\bf{E_{down}}} = [E_0, E_1, ..., E_{N-1}, E_N]^{T} $$<p>where we define the last element $E_N$ as the <strong>incident flux at the TOA</strong>.</p>
+<p>For a longwave model, we would usually set $E_N = 0$. For a shortwave model, this would be the incident solar radiation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want a matrix ${\bf{T_{down}}}$ that, when multiplied by $E_N$, gives the downwelling beam at each of the $N+1$ layer interfaces:</p>
+$${\bf{D}} = {\bf{T_{down}}} ~ {\bf{E_{down}}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-upwelling-beam">The upwelling beam<a class="anchor-link" href="#The-upwelling-beam"> </a></h3><p>Define a vector of emissions for the upwelling beam thus:</p>
+$$ {\bf{E_{up}}} = [up_{sfc}, E_0, E_1, ..., E_{N-1}] $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We need to add the reflected part of the downwelling beam at the surface to any emissions from the surface:</p>
+$$ up_{sfc} = E_{sfc} + \alpha_{sfc} ~ D[0] $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we want a matrix ${\bf{T_{up}}}$ such that the upwelling beam is</p>
+$${\bf{U}} = {\bf{T_{up}}} ~ {\bf{E_{up}}} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-transmissivity-matrices">The transmissivity matrices<a class="anchor-link" href="#The-transmissivity-matrices"> </a></h3>$$ {\bf{T_{up}}} = \left[ \begin{array}{ccccc} 1 &amp; 0 &amp; 0 &amp;... &amp; 0 &amp; 0 \\  
+                                             t_0 &amp; 1 &amp; 0 &amp; ... &amp; 0 &amp; 0 \\
+                                         t_1 t_0 &amp; t_1 &amp; 1 &amp; ... &amp; 0 &amp; 0 \\
+                                     t_2 t_1 t_0 &amp; t_2 t_1 &amp; t_2 &amp; ... &amp; 0 &amp; 0 \\
+                                     ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... \\
+ \prod_0^{N-1} t_i &amp; \prod_1^{N-1} t_i &amp; \prod_2^{N-1} t_i &amp; ... &amp; t_{N-1} &amp; 1 
+   \end{array} \right] $$<p>and</p>
+$$ {\bf{T_{down}}} = {\bf{T_{up}}}^T  $$<p>These formulas have been implemented in <code>climlab.radiation.transmissivity.Transmissivity()</code> using vectorized <code>numpy</code> array operations.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># example with N=2 layers and constant absorptivity</span>
+<span class="c1">#  we construct an array of absorptivities</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">])</span>
+<span class="c1">#  and pass these as argument to the Transmissivity class</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">transmissivity</span><span class="o">.</span><span class="n">Transmissivity</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Matrix Tup is &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">trans</span><span class="o">.</span><span class="n">Tup</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Matrix Tdown is &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">trans</span><span class="o">.</span><span class="n">Tdown</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Matrix Tup is 
+[[1.     0.42   0.1764]
+ [0.     1.     0.42  ]
+ [0.     0.     1.    ]]
+Matrix Tdown is 
+[[1.     0.     0.    ]
+ [0.42   1.     0.    ]
+ [0.1764 0.42   1.    ]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Band-averaged-radiation-models-in-climlab">5. Band-averaged radiation models in <code>climlab</code><a class="anchor-link" href="#5.-Band-averaged-radiation-models-in-climlab"> </a></h2><hr>
+<p>The Grey Gas model is a useful first step in understanding how radiation shapes the global energy balance. But we quickly run up against its limitations when trying to understand what really determines climate sensitivity.</p>
+<p>What's the next step in the model hierarchy?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Suppose we break up the spectrum into a discrete number $M$ of <strong>spectral bands</strong>. The idea is that we find parts of the spectrum in which the absorption characteristics of the important gases are relatively uniform. We then write the <strong>band-averaged absorption cross section</strong> for gas $k$ and band $j$ as</p>
+$$ \kappa_{kj} \big(p, T \big) = \frac{\int_{\nu_j} \kappa_j \big(\nu, p, T \big) d \nu }{  \int_{\nu_j} d \nu } $$<p>where we integrate over whatever part of the spectrum we have chosen to define band $j$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In our band models we will typically ignore any dependence of $\kappa$ on temperature. The total absorption cross section for our band is thus (summing over all absorbing gases):</p>
+$$ \kappa_j(p) = \sum_{k=1}^n \kappa_{kj}(p) q_k(p) $$<p>Notice that once we make this defintion, all of the formulas we wrote down above for the grey gas model can be written nearly identically for the fluxes in each band.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The optical depth in band $j$ is</p>
+$$ \Delta \tau_j  = -\frac{\kappa_j}{g} \Delta p$$<p></p>
+<p>from which we can define emissivity and transmissivity for band $j$ just as above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The only difference from the Grey Gas formulas is that the <strong>blackbody emission</strong> in band $j$ (denoted $E_j$) is now only a fraction of $\sigma T^4$.</p>
+<p>We will denote this fraction as $b_j$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The fraction $b_j$ is temperature-dependent, and can be solved by integrating the Planck function:</p>
+$$ E_j(T) = \int_{\nu_j} \pi B\big( \nu, T \big) d\nu $$<p>To simplify our band models, we might choose to fix $b_j$ in advance and just assume</p>
+$$ E_j(T) = b_j ~ \sigma ~ T^4 $$<p>which is sensible if the temperatures don't vary too much.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Regardless of how we calculate $b_j$, they must add up to one over all the bands in our model:</p>
+$$ \sum_0^{M-1} b_j = 1 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Once we've figured out this division of the total flux into multiple bands, and we know the absorption cross-sections of each band, we can calculate the upwelling and downwelling fluxes independently for each band, <strong>using the same formulas (same code!) as we use in the grey gas model</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To get the total flux, we just need to sum the beams over all bands:</p>
+\begin{align}
+U &amp;= \sum_0^{M-1} U_j  \\
+D &amp;= \sum_0^{M-1} D_j  
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='references'></a></p>
+<h2 id="References">References<a class="anchor-link" href="#References"> </a></h2><hr>
+<p>For many more details about radiative transfer and a more careful derivation of the two-stream equations, see</p>
+<blockquote><p>Pierrehumbert, R. T. (2010). Principles of Planetary Climate. Cambridge University Press.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Jul 03 14:51:42 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

@@ -1,0 +1,1032 @@
+---
+redirect_from:
+  - "/courseware/lecture03"
+interact_link: content/courseware/Lecture03.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Climate sensitivity and feedback
+pagenum: 6
+prev_page:
+  url: /courseware/Lecture02.html
+next_page:
+  url: /courseware/Lecture04.html
+suffix: .ipynb
+search: feedback climate delta t f lambda k positive model vapor m temperature our warming feedbacks text sensitivity frac energy olr system w albedo sum g processes co equilibrium models radiative negative planck id section forcing xco rate change process n report individual cloud r ecs planet ice lambdai lapse get response p c lets happens increase e zero must different question ti due input example ar fi www et al spread simple dimensional new same surface warm amount back global where later actual gives output added loop sign gain temperatures every full overall ipcc estimate figure cmip strongly alphao three
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Climate sensitivity and feedback</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-Radiative-forcing">1. Radiative forcing<a class="anchor-link" href="#1.-Radiative-forcing"> </a></h2><hr>
+<p>Let’s say we instantaneously double atmospheric CO$_2$. What happens?</p>
+<ul>
+<li>The atmosphere is less efficient at radiating energy away to space.</li>
+<li>OLR will decrease</li>
+<li>The climate system will begin gaining energy.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We will call this abrupt decrease in OLR the <strong>radiative forcing</strong>, a positive number in W m$^{-2}$</p>
+$$ \Delta R = OLR_i - OLR_{2xCO2} $$<p>$\Delta R$ is a measure of the rate at which energy begins to accumulate in the climate system after an abrupt increase in greenhouse gases, but <em>before any change in climate</em> (i.e. temperature).</p>
+<p>What happens next?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Climate-sensitivity-(without-feedback)">2. Climate sensitivity (without feedback)<a class="anchor-link" href="#2.-Climate-sensitivity-(without-feedback)"> </a></h2><hr>
+<p>Let’s use our simple zero-dimensional EBM to calculate the resulting change in <strong>equilibrium temperature</strong>.</p>
+<p>How much warming will we get once the climate system has adjusted to the radiative forcing?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First note that at equilibrium we must have</p>
+$$ASR = OLR$$<p>and in our very simple model, there is no change in ASR, so 
+$$ ASR_f = ASR_f $$
+(with  standing for final.)</p>
+<p>From this we infer that
+$$ OLR_f = OLR_i $$</p>
+<p>The new equilibrium will have <strong>exactly the same OLR</strong> as the old equilibrium, but a <strong>different surface temperature</strong>.</p>
+<p>The climate system must warm up by a certain amount to get the OLR back up to its original value! The question is, <strong>how much warming is necessary</strong>? In other words, <strong>what is the new equilibrium temperature</strong>?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Equilibrium-Climate-Sensitivity-(ECS)">Equilibrium Climate Sensitivity (ECS)<a class="anchor-link" href="#Equilibrium-Climate-Sensitivity-(ECS)"> </a></h3><p>We now define the Equilibrium Climate Sensitivity (denoted ECS or $\Delta T_{2xCO2}$):</p>
+<p><em>The global mean surface warming necessary to balance the planetary energy budget after a doubling of atmospheric CO$_2$.</em></p>
+<p>The temperature must increase so that the increase in OLR is exactly equal to the radiative forcing:</p>
+$$ OLR_f - OLR_{2xCO2} = \Delta R $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From last lecture, we have linearized our model for OLR with a slope $\lambda_0 = 3.3$ W m$^{-2}$ K$^{-1}$. This means that a global warming of 1 degree causes a 3.3 W m$^{-2}$ increase in the OLR. So we can write:</p>
+$$OLR_f \approx OLR_{2xCO2} + \lambda_0 \Delta T_0 $$<p>where we are writing the change in temperature as</p>
+$$ \Delta T_0 = T_f - T_i $$<p>(and the subscript zero will remind us that this is the response in the simplest model, in the absence of any feedbacks)</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To achieve energy balance, the planet must warm up by</p>
+$$ \Delta T_0 = \frac{\Delta R}{\lambda_0} $$<p>As we will see later, the actual radiative forcing due CO$_2$ doubling is about 4 W m$^{-2}$.</p>
+<p>So our model without feedback gives a prediction for climate sensitivity:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Repeating code from Lecture 2</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">5.67E-8</span>  <span class="c1">#  Stefan-Boltzmann constant in W/m2/K4</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">341.3</span>  <span class="c1">#  global mean insolation in W/m2</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">101.9</span> <span class="o">/</span> <span class="n">Q</span>    <span class="c1">#  observed planetary albedo</span>
+<span class="n">Te</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>  <span class="c1">#  Emission temperature (definition)</span>
+<span class="n">Tsbar</span> <span class="o">=</span> <span class="mf">288.</span>  <span class="c1"># global mean surface temperature in K</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">Te</span> <span class="o">/</span> <span class="n">Tsbar</span>   <span class="c1">#  Calculate value of beta from observations</span>
+<span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">beta</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">Tsbar</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">DeltaR</span> <span class="o">=</span> <span class="mf">4.</span>  <span class="c1"># Radiative forcing in W/m2</span>
+<span class="n">DeltaT0</span> <span class="o">=</span> <span class="n">DeltaR</span> <span class="o">/</span> <span class="n">lambda_0</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The Equilibrium Climate Sensitivity in the absence of feedback is </span><span class="si">{:.1f}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">DeltaT0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The Equilibrium Climate Sensitivity in the absence of feedback is 1.2 K.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Question: what are the current best estimates for the actual warming (including all feedbacks) in response to a doubling of CO$_2$?</p>
+<p>We’ll now look at the feedback concept. Climate feedbacks tend to amplify the response to increased CO$_2$. But $\Delta T_0$ is a meaningful climate sensitivity in the absence of feedback.</p>
+<p>$\Delta T_0 = 1.2$ K is the <strong> warming that we would have if the Earth radiated the excess energy away to space as a blackbody</strong>, and with no change in the planetary albedo.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-The-feedback-concept">3. The feedback concept<a class="anchor-link" href="#3.-The-feedback-concept"> </a></h2><hr>
+<p>A concept borrowed from electrical engineering. You have all heard or used the term before, but we’ll try take a more precise approach today.</p>
+<p>A feedback occurs when a portion of the output from the action of a system is added to the input and subsequently alters the output:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='../images/feedback_sketch.png' alt='feedback loop' width=500></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The result of a loop system can either be <strong>amplification</strong> or <strong>dampening</strong> of the process, depending on the sign of the gain in the loop, which we will denote $f$.</p>
+<p>We will call amplifying feedbacks <strong>positive</strong> ($f&gt;0$) and damping feedbacks <strong>negative</strong> ($f&lt;0$).</p>
+<p>We can think of the “process” here as the entire climate system, which contains many examples of both positive and negative feedback.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:-the-water-vapor-feedback">Example: the water vapor feedback<a class="anchor-link" href="#Example:-the-water-vapor-feedback"> </a></h3><p>The capacity of the atmosphere to hold water vapor (saturation specific humidity) increases exponentially with temperature. Warming is thus accompanied by moistening (more water vapor), which leads to more warming due to the enhanced water vapor greenhouse effect.</p>
+<p><strong>Positive or negative feedback?</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:-the-ice-albedo-feedback">Example: the ice-albedo feedback<a class="anchor-link" href="#Example:-the-ice-albedo-feedback"> </a></h3><p>Colder temperatures lead to expansion of the areas covered by ice and snow, which tend to be more reflective than water and vegetation. This causes a reduction in the absorbed solar radiation, which leads to more cooling.</p>
+<p><strong>Positive or negative feedback?</strong></p>
+<p><em>Make sure it’s clear that the sign of the feedback is the same whether we are talking about warming or cooling.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-Climate-feedback:-some-definitions">4. Climate feedback: some definitions<a class="anchor-link" href="#4.-Climate-feedback:-some-definitions"> </a></h2><hr>
+<p>We start with an initial radiative forcing , and get a response
+$$ \Delta T_0 = \frac{\Delta R}{\lambda_0} $$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now consider what happens in the presence of a feedback process. For a concrete example, let’s take the <strong>water vapor feedback</strong>. For every degree of warming, there is an additional increase in the greenhouse effect, and thus additional energy added to the system.</p>
+<p>Let’s denote this extra energy as 
+$$ f \lambda_0 \Delta T_0 $$</p>
+<p>where $f$ is the <strong>feedback amount</strong>, a number that represents what fraction of the output gets added back to the input. $f$ must be between $-\infty$ and +1.</p>
+<p>For the example of the water vapor feedback, $f$ is positive (between 0 and +1) – the process adds extra energy to the original radiative forcing.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The amount of energy in the full "input" is now
+$$ \Delta R + f \lambda_0 \Delta T_0 $$
+or
+$$ (1+f) \lambda_0 \Delta T_0 $$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>But now we need to consider the next loop. A fraction $f$ of the additional energy is also added to the input, giving us
+$$ (1+f+f^2) \lambda_0 \Delta T_0 $$</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>and we can go round and round, leading to the infinite series
+$$ (1+f+f^2+f^3+ ...) \lambda_0 \Delta T_0 = \lambda_0 \Delta T_0 \sum_{n=0}^{\infty} f^n $$</p>
+<p>Question: what happens if $f=1$?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It so happens that this infinite series has an exact solution</p>
+$$ \sum_{n=0}^{\infty} f^n = \frac{1}{1-f} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So the full response including all the effects of the feedback is actually</p>
+$$ \Delta T = \frac{1}{1-f} \Delta T_0 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is also sometimes written as 
+$$ \Delta T = g \Delta T_0 $$</p>
+<p>where</p>
+$$ g = \frac{1}{1-f} = \frac{\Delta T}{\Delta T_0} $$<p>is called the <strong>system gain</strong> -- the ratio of the actual warming (including all feedbacks) to the warming we would have in the absence of feedbacks.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So if the overall feedback is positive, then $f&gt;0$ and $g&gt;1$.</p>
+<p>And if the overall feedback is negative?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Climate-sensitivity-with-feedback">5. Climate sensitivity with feedback<a class="anchor-link" href="#5.-Climate-sensitivity-with-feedback"> </a></h2><hr>
+<p>ECS is an important number. A major goal of climate modeling is to provide better estimates of ECS and its uncertainty.</p>
+<p>Latest IPCC report AR5 gives a likely range of 1.5 to 4.5 K. (There is lots of uncertainty in these numbers – we will definitely come back to this question)</p>
+<p>So our simple estimate of the no-feedback change $\Delta T_0$ is apparently underestimating climate sensitivity.</p>
+<p>Saying the same thing another way: the overall net climate feedback is positive, amplifying the response, and the system gain $g&gt;1$.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let’s assume that the true value is $\Delta T_{2xCO2} = 3$ K (middle of the range). This implies that the gain is</p>
+$$ g = \frac{\Delta T_{2xCO2}}{\Delta T_0} = \frac{3}{1.2} = 2.5 $$<p>The actual warming is substantially amplified!</p>
+<p>There are lots of reasons for this, but the water vapor feedback is probably the most important.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Question:  if $g=2.5$, what is the feedback amount $f$?</p>
+$$ g = \frac{1}{1-f} $$<p>or rearranging,</p>
+$$ f = 1 - 1/g = 0.6 $$<p>The overall feedback (due to water vapor, clouds, etc.) is <strong>positive</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section6'></a></p>
+<h2 id="6.-Contribution-of-individual-feedback-processes-to-Equilibrium-Climate-Sensitivity">6. Contribution of individual feedback processes to Equilibrium Climate Sensitivity<a class="anchor-link" href="#6.-Contribution-of-individual-feedback-processes-to-Equilibrium-Climate-Sensitivity"> </a></h2><hr>
+<p>Now what if we have several individual feedback processes occurring simultaneously?</p>
+<p>We can think of individual feedback amounts $f_1, f_2, f_3, ...$, with each  representing a physically distinct mechanism, e.g. water vapor, surface snow and ice, cloud changes, etc.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Each individual process takes a fraction $f_i$ of the output and adds to the input. So the feedback amounts are additive,</p>
+$$ f = f_1 + f_2 + f_3 + ... = \sum_{i=0}^N f_i $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This gives us a way to compare the importance of individual feedback processes!</p>
+<p>The climate sensitivity is now</p>
+$$ \Delta T_{2xCO2} = \frac{1}{1- \sum_{i=0}^N f_i } \Delta T_0 $$<p>The climate sensitivity is thus <strong>increased by positive feedback processes</strong>, and <strong>decreased by negative feedback processes</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Climate-feedback-parameters">Climate feedback parameters<a class="anchor-link" href="#Climate-feedback-parameters"> </a></h3><p>We can also write this in terms of the original radiative forcing as</p>
+$$ \Delta T_{2xCO2} = \frac{\Delta R}{\lambda_0 - \sum_{i=1}^{N} \lambda_i} $$<p>where</p>
+$$ \lambda_i = \lambda_0 f_i $$<p>known as <strong>climate feedback parameters</strong>, in units of W m$^{-2}$ K$^{-1}$.</p>
+<p>With this choice of sign conventions, $\lambda_i &gt; 0$ for a positive feedback process.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Individual feedback parameters $\lambda_i$ are then additive, and can be compared to the no-feedback parameter $\lambda_0$.</p>
+<p>Based on our earlier numbers, the net feedback necessary to get a climate sensitivity of 3 K is</p>
+$$ \sum_{i=1}^N \lambda_i = \lambda_0 \sum_{i=1}^N f_i = (3.3 \text{ W m}^{-2} \text{ K}^{-1}) (0.6) = 2 \text{ W m}^{-2} \text{ K}^{-1} $$<p>We might decompose this net climate feedback into, for example</p>
+<ul>
+<li>longwave and shortwave processes</li>
+<li>cloud and non-cloud processes</li>
+</ul>
+<p>These individual feedback processes may be positive or negative. This is very powerful, because we can <strong>measure the relative importance of different feedback processes</strong> simply by comparing their $\lambda_i$ values.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Every-climate-model-has-a-Planck-feedback">Every climate model has a Planck feedback<a class="anchor-link" href="#Every-climate-model-has-a-Planck-feedback"> </a></h3><p>The "Planck feedback" represented by our reference parameter $\lambda_0$ is not really a feedback at all.</p>
+<p>It is the most basic and universal climate process, and is present in every climate model. It is simply an expression of the fact that a warm planet radiates more to space than a cold planet.</p>
+<p>As we will see, our estimate of $\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} $ is essentially the same as the Planck feedback diagnosed from complex GCMs. Unlike our simple zero-dimensional EBM, however, most other climate models (and the real climate system) have other radiative feedback processes, such that</p>
+$$\lambda = \lambda_0 - \sum_{i=1}^{N} \lambda_i \ne \lambda_0 $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section7'></a></p>
+<h2 id="7.-Feedbacks-diagnosed-from-complex-climate-models">7. Feedbacks diagnosed from complex climate models<a class="anchor-link" href="#7.-Feedbacks-diagnosed-from-complex-climate-models"> </a></h2><hr>
+<h3 id="Data-from-the-IPCC-AR5">Data from the IPCC AR5<a class="anchor-link" href="#Data-from-the-IPCC-AR5"> </a></h3><p>This figure is reproduced from the recent IPCC AR5 report. It shows the feedbacks diagnosed from the various models that contributed to the assessment.</p>
+<p>(Later in the term we will discuss how the feedback diagnosis is actually done)</p>
+<p>See below for complete citation information.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src='http://www.climatechange2013.org/images/figures/WGI_AR5_Fig9-43.jpg' width=800></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Figure 9.43</strong> | (a) Strengths of individual feedbacks for CMIP3 and CMIP5 models (left and right columns of symbols) for Planck (P), water vapour (WV), clouds (C), albedo (A), lapse rate (LR), combination of water vapour and lapse rate (WV+LR) and sum of all feedbacks except Planck (ALL), from Soden and Held (2006) and Vial et al. (2013), following Soden et al. (2008). CMIP5 feedbacks are derived from CMIP5 simulations for abrupt fourfold increases in CO2 concentrations (4 × CO2). (b) ECS obtained using regression techniques by Andrews et al. (2012) against ECS estimated from the ratio of CO2 ERF to the sum of all feedbacks. The CO2 ERF is one-half the 4 × CO2 forcings from Andrews et al. (2012), and the total feedback (ALL + Planck) is from Vial et al. (2013).</p>
+<p><em>Figure caption reproduced from the AR5 WG1 report</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Legend:</p>
+<ul>
+<li>P: Planck feedback</li>
+<li>WV: Water vapor feedback</li>
+<li>LR: Lapse rate feedback</li>
+<li>WV+LR: combined water vapor plus lapse rate feedback</li>
+<li>C: cloud feedback</li>
+<li>A: surface albedo feedback</li>
+<li>ALL: sum of all feedback except Plank, i.e. ALL = WV+LR+C+A</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Things to note:</p>
+<ul>
+<li>The models all agree strongly on the Planck feedback. </li>
+<li>The Planck feedback is about $\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} $ just like our above estimate (but with opposite sign convention -- watch carefully for that in the literature)</li>
+<li>The water vapor feedback is strongly positive in every model.</li>
+<li>The lapse rate feedback is something we will study later. It is slightly negative.</li>
+<li>For reasons we will discuss later, the best way to measure the water vapor feedback is to combine it with lapse rate feedback.</li>
+<li>Models agree strongly on the combined water vapor plus lapse rate feedback.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The albedo feedback is slightly positive but rather small globally.</li>
+<li>By far the largest spread across the models occurs in the cloud feedback.</li>
+<li>Global cloud feedback ranges from slighly negative to strongly positive across the models.</li>
+<li>Most of the spread in the total feedback is due to the spread in the cloud feedback.</li>
+<li>Therefore, most of the spread in the ECS across the models is due to the spread in the cloud feedback.</li>
+<li>Our estimate of $+2.0 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1}$ for all the missing processes is consistent with the GCM ensemble.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Citation">Citation<a class="anchor-link" href="#Citation"> </a></h3><p>This is Figure 9.43 from Chapter 9 of the IPCC AR5 Working Group 1 report.</p>
+<p>The report and images can be found online at
+<a href="http://www.climatechange2013.org/report/full-report/">http://www.climatechange2013.org/report/full-report/</a></p>
+<p>The full citation is:</p>
+<p>Flato, G., J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason and M. Rummukainen, 2013: Evaluation of Climate Models. In: Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Stocker, T.F., D. Qin, G.-K. Plattner, M. Tignor, S.K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex and P.M. Midgley (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 741–866, doi:10.1017/CBO9781107415324.020</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section8'></a></p>
+<h2 id="8.-The-zero-dimensional-model-with-variable-albedo">8. The zero-dimensional model with variable albedo<a class="anchor-link" href="#8.-The-zero-dimensional-model-with-variable-albedo"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-model">The model<a class="anchor-link" href="#The-model"> </a></h3><p>In homework you will be asked to include a new process in the zero-dimensional EBM: a temperature-dependent albedo.</p>
+<p>We use the following formula:</p>
+$$ \alpha(T) = \left\{ \begin{array}{ccc}
+\alpha_i &amp;   &amp; T \le T_i \\
+\alpha_o + (\alpha_i-\alpha_o) \frac{(T-T_o)^2}{(T_i-T_o)^2} &amp;   &amp; T_i &lt; T &lt; T_o \\
+\alpha_o &amp;   &amp; T \ge T_o \end{array} \right\}$$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>with parameter values:</p>
+<ul>
+<li>$\alpha_o = 0.289$ is the albedo of a warm, ice-free planet</li>
+<li>$\alpha_i = 0.7$ is the albedo of a very cold, completely ice-covered planet</li>
+<li>$T_o = 293$ K is the threshold temperature above which our model assumes the planet is ice-free</li>
+<li>$T_i = 260$ K is the threshold temperature below which our model assumes the planet is completely ice covered. </li>
+</ul>
+<p>For intermediate temperature, this formula gives a smooth variation in albedo with global mean temperature. It is tuned to reproduce the observed albedo $\alpha = 0.299$ for $T = 288$ K.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Coding-up-the-model-in-Python">Coding up the model in Python<a class="anchor-link" href="#Coding-up-the-model-in-Python"> </a></h3><p>This largely repeats what I asked you to do in your homework.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">albedo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">alpha_o</span> <span class="o">=</span> <span class="mf">0.289</span><span class="p">,</span> <span class="n">alpha_i</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">To</span> <span class="o">=</span> <span class="mf">293.</span><span class="p">,</span> <span class="n">Ti</span> <span class="o">=</span> <span class="mf">260.</span><span class="p">):</span>
+    <span class="n">alb1</span> <span class="o">=</span> <span class="n">alpha_o</span> <span class="o">+</span> <span class="p">(</span><span class="n">alpha_i</span><span class="o">-</span><span class="n">alpha_o</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="n">To</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ti</span> <span class="o">-</span> <span class="n">To</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">alb2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="o">&gt;</span><span class="n">Ti</span><span class="p">,</span> <span class="n">alb1</span><span class="p">,</span> <span class="n">alpha_i</span><span class="p">)</span>
+    <span class="n">alb3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="o">&lt;</span><span class="n">To</span><span class="p">,</span> <span class="n">alb2</span><span class="p">,</span> <span class="n">alpha_o</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">alb3</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ASR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mf">341.3</span><span class="p">):</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="n">albedo</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Q</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">5.67E-8</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">T</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="k">def</span> <span class="nf">Ftoa</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">ASR</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">220.</span><span class="p">,</span> <span class="mf">300.</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">albedo</span><span class="p">(</span><span class="n">T</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;albedo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Albedo as a function of global mean temperature&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0.5, 1.0, &#39;Albedo as a function of global mean temperature&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture03_48_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Graphical-solution:-TOA-fluxes-as-functions-of-temperature">Graphical solution: TOA fluxes as functions of temperature<a class="anchor-link" href="#Graphical-solution:-TOA-fluxes-as-functions-of-temperature"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">ASR</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ASR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Ftoa</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ftoa&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Surface temperature (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;TOA flux (W m$^{-2}$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.legend.Legend at 0x116f7dc18&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture03_50_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The graphs meet at three different points! That means there are actually three different possible equilibrium temperatures in this model.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Numerical-solution-to-get-the-three-equilibrium-temperatures">Numerical solution to get the three equilibrium temperatures<a class="anchor-link" href="#Numerical-solution-to-get-the-three-equilibrium-temperatures"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use numerical root-finding to get the equilibria</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">brentq</span>
+<span class="c1"># brentq is a root-finding function</span>
+<span class="c1">#  Need to give it a function and two end-points</span>
+<span class="c1">#  It will look for a zero of the function between those end-points</span>
+<span class="n">Teq1</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">Ftoa</span><span class="p">,</span> <span class="mf">280.</span><span class="p">,</span> <span class="mf">300.</span><span class="p">)</span>
+<span class="n">Teq2</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">Ftoa</span><span class="p">,</span> <span class="mf">260.</span><span class="p">,</span> <span class="mf">280.</span><span class="p">)</span>
+<span class="n">Teq3</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">Ftoa</span><span class="p">,</span> <span class="mf">200.</span><span class="p">,</span> <span class="mf">260.</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="n">Teq1</span><span class="p">,</span> <span class="n">Teq2</span><span class="p">,</span> <span class="n">Teq3</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>294.36555748584146 269.2079707067914 237.2465507655227
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bonus-exercise">Bonus exercise<a class="anchor-link" href="#Bonus-exercise"> </a></h3><p>Using numerical timestepping and different initial temperatures, can you get the model to converge on all three equilibria, or only some of them?</p>
+<p>What do you think this means?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, scipy, matplotlib
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>scipy</td><td>1.3.0</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td colspan='2'>Wed Jul 03 14:49:38 2019 EDT</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

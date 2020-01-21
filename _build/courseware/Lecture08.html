@@ -1,0 +1,3266 @@
+---
+redirect_from:
+  - "/courseware/lecture08"
+interact_link: content/courseware/Lecture08.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Grey radiation modeling with climlab
+pagenum: 11
+prev_page:
+  url: /courseware/Lecture07.html
+next_page:
+  url: /courseware/Lecture09.html
+suffix: .ipynb
+search: model climlab radiative ozone temperature k process observed id section layer absorptivity equilibrium convective text our radiation lets surface olr temperatures above column stratosphere shortwave grey modeling very sub new code brian rose set analytical align t object air adjustment rate pressure albany climate processes class also putting course github notebook already using greenhouse models want dictionary state through looks thats global observations near forcing increase warm tropopause mixing lapse km height take top absorption index www atmos edu introducing collection base called complex every physical given appropriate input classes easily defined run com leaky solution ipynb begin ts end
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Grey radiation modeling with climlab</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section1'></a></p>
+<h2 id="1.-Introducing-climlab">1. Introducing <code>climlab</code><a class="anchor-link" href="#1.-Introducing-climlab"> </a></h2><hr>
+<p><code>climlab</code> is a flexible engine for process-oriented climate modeling.
+It is based on a very general concept of a model as a collection of individual, 
+interacting processes. <code>climlab</code> defines a base class called <code>Process</code>, which
+can contain an arbitrarily complex tree of sub-processes (each also some 
+sub-class of <code>Process</code>). Every climate process (radiative, dynamical, 
+physical, turbulent, convective, chemical, etc.) can be simulated as a stand-alone
+process model given appropriate input, or as a sub-process of a more complex model. 
+New classes of model can easily be defined and run interactively by putting together an
+appropriate collection of sub-processes.</p>
+<p><code>climlab</code> is a work-in-progress, and the code base will evolve substantially over the course of this semester.
+The latest code can always be found on <code>github</code>:</p>
+<p><a href="https://github.com/brian-rose/climlab">https://github.com/brian-rose/climlab</a></p>
+<p>You are strongly encouraged to clone the <code>climlab</code> repository and use <code>git</code> to keep your local copy up-to-date.</p>
+<p>Running this notebook requires that <code>climlab</code> is already installed on your system.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">xarray.ufuncs</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">deg2rad</span><span class="p">,</span> <span class="n">log</span>
+<span class="kn">import</span> <span class="nn">climlab</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
+  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section2'></a></p>
+<h2 id="2.-Using-climlab-to-implement-the-two-layer-leaky-greenhouse-model">2. Using <code>climlab</code> to implement the two-layer leaky greenhouse model<a class="anchor-link" href="#2.-Using-climlab-to-implement-the-two-layer-leaky-greenhouse-model"> </a></h2><hr>
+<p>One of the things that <code>climlab</code> is set up to do is the grey-radiation modeling we have already been discussing.</p>
+<p>Since we already derived a <a href="Lecture06 -- Elementary greenhouse models.ipynb">complete analytical solution to the two-layer leaky greenhouse model</a>, we will use this to validate the <code>climlab</code> code.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Validation">Validation<a class="anchor-link" href="#Validation"> </a></h3><p>We want to verify that the model reproduces the observed OLR given observed temperatures, and the absorptivity that we tuned in the analytical model. The target numbers are:</p>
+\begin{align}
+T_s &amp;= 288 \text{ K} \\
+T_0 &amp;= 275 \text{ K} \\
+T_1 &amp;= 230 \text{ K} \\
+\end{align}$$ \epsilon = 0.586  $$$$ OLR = 238.5 \text{ W m}^{-2} $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Initialize-a-model-in-climlab">Initialize a model in <code>climlab</code><a class="anchor-link" href="#Initialize-a-model-in-climlab"> </a></h3><p>The first thing we do is create a new model.</p>
+<p>The following example code is sparsely commented but will hopefully orient you on the basics of defining and working with a <code>climlab Process</code> object.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Test in a 2-layer atmosphere</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">GreyRadiationModel</span><span class="p">(</span><span class="n">num_lev</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (2,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.greygas.GreyGasSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">subprocess</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;LW&#39;: &lt;climlab.radiation.greygas.GreyGas object at 0x123320cc0&gt;, &#39;SW&#39;: &lt;climlab.radiation.greygas.GreyGasSW object at 0x11a0476d8&gt;, &#39;insolation&#39;: &lt;climlab.radiation.insolation.FixedInsolation object at 0x10e893710&gt;})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Every item in the above dictionary is itself an instance of the <code>climlab.Process</code> object:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (2,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>state</code> dictionary holds the state variables of the model. In this case, temperatures:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([288.]), &#39;Tatm&#39;: Field([200., 278.])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Access these either through dictionary methods or as attributes of the model object:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">col</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
+<span class="n">col</span><span class="o">.</span><span class="n">Ts</span> <span class="ow">is</span> <span class="n">col</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[288.]
+[288.]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>True</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we are assigning the "observed" temperatures to our model state:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">Ts</span><span class="p">[:]</span> <span class="o">=</span> <span class="mf">288.</span>
+<span class="n">col</span><span class="o">.</span><span class="n">Tatm</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">230.</span><span class="p">,</span> <span class="mf">275.</span><span class="p">])</span>
+<span class="n">col</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([288.]), &#39;Tatm&#39;: Field([230., 275.])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LW</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">LW</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (2,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">LW</span><span class="o">.</span><span class="n">absorptivity</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0.47737425, 0.47737425])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  copying the tuned value of epsilon from Lecture 6 notes</span>
+<span class="n">LW</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="mf">0.586</span>
+<span class="n">LW</span><span class="o">.</span><span class="n">absorptivity</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0.586, 0.586])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  This does all the calculations that would be performed at each time step, </span>
+<span class="c1">#  but doesn&#39;t actually update the temperatures</span>
+<span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="c1">#  Print out the dictionary</span>
+<span class="n">col</span><span class="o">.</span><span class="n">diagnostics</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;flux_from_sfc&#39;: Field([102.0487]),
+ &#39;flux_to_sfc&#39;: array([341.3]),
+ &#39;flux_to_space&#39;: array([102.0487]),
+ &#39;absorbed&#39;: array([0., 0.]),
+ &#39;absorbed_total&#39;: 0.0,
+ &#39;emission&#39;: Field([0., 0.]),
+ &#39;emission_sfc&#39;: Field([0.]),
+ &#39;flux_reflected_up&#39;: array([  0.    ,   0.    , 102.0487]),
+ &#39;insolation&#39;: Field([341.3]),
+ &#39;coszen&#39;: Field([1.]),
+ &#39;OLR&#39;: array([238.5247311]),
+ &#39;LW_down_sfc&#39;: array([228.53426769]),
+ &#39;LW_up_sfc&#39;: Field([390.10502995]),
+ &#39;LW_absorbed_sfc&#39;: Field([-161.57076227]),
+ &#39;LW_absorbed_atm&#39;: array([ 20.02990881, -96.98387764]),
+ &#39;LW_emission&#39;: Field([ 92.98664086, 190.03779837]),
+ &#39;ASR&#39;: Field([239.2513]),
+ &#39;SW_absorbed_sfc&#39;: Field([239.2513]),
+ &#39;SW_absorbed_atm&#39;: array([0., 0.]),
+ &#39;SW_up_sfc&#39;: Field([102.0487]),
+ &#39;SW_up_TOA&#39;: array([102.0487]),
+ &#39;SW_down_TOA&#39;: Field([341.3]),
+ &#39;planetary_albedo&#39;: Field([0.299])}</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Check OLR against our analytical solution</span>
+<span class="n">col</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([238.5247311])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Like the state variables, the diagnostics can also be accessed in two different ways</span>
+<span class="n">col</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">[</span><span class="s1">&#39;OLR&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([238.5247311])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([288.]), &#39;Tatm&#39;: Field([230., 275.])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># perform a single time step</span>
+<span class="n">col</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([289.60514636]), &#39;Tatm&#39;: Field([230.33784312, 273.3641795 ])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We just stepped forward one discreet unit in time. Because we didn't specify a timestep when we created the model, it is set to a default value:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">timestep</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>86400.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>which is 1 day (expressed in seconds).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we will integrate the model out to equilibrium.</p>
+<p>We could easily write a loop to call the <code>step_forward()</code> method many times.</p>
+<p>Or use a handy shortcut that allows us to specify the integration length in physical time units:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># integrate out to radiative equilibrium</span>
+<span class="n">col</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">2.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 730 steps, 730.4844 days, or 2.0 years.
+Total elapsed time is 2.0014116660123062 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Check for equilibrium</span>
+<span class="n">col</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">col</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([-2.34514516e-07])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  The temperatures at radiative equilibrium</span>
+<span class="n">col</span><span class="o">.</span><span class="n">state</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>AttrDict({&#39;Ts&#39;: Field([296.38447748]), &#39;Tatm&#39;: Field([233.72131685, 262.28540231])})</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Compare these to the analytical solutions for radiative equilibrium with $\epsilon = 0.58$:</p>
+\begin{align}
+T_s &amp;= 296.4 \text{ K} \\
+T_0 &amp;= 262.3 \text{ K} \\
+T_1 &amp;= 233.8 \text{ K} \\
+\end{align}
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So it looks like <code>climlab</code> agrees with our analytical results to within 0.1 K. That's good.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section3'></a></p>
+<h2 id="3.-The-observed-annual,-global-mean-temperature-profile">3. The observed annual, global mean temperature profile<a class="anchor-link" href="#3.-The-observed-annual,-global-mean-temperature-profile"> </a></h2><hr>
+<p>We want to model the OLR in a column whose temperatures match observations. As we've done before, we'll calculate the global, annual mean air temperature from the NCEP Reanalysis data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## The NOAA ESRL server is shutdown! January 2019</span>
+<span class="c1">## This will try to read the data over the internet.</span>
+<span class="n">ncep_filename</span> <span class="o">=</span> <span class="s1">&#39;air.mon.1981-2010.ltm.nc&#39;</span>
+<span class="c1">##  to read over internet</span>
+<span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/pressure/&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">ncep_url</span>
+<span class="c1">##  Open handle to data</span>
+<span class="n">ncep_air</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">path</span> <span class="o">+</span> <span class="n">ncep_filename</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+
+<span class="c1">#url = &#39;http://apdrc.soest.hawaii.edu:80/dods/public_data/Reanalysis_Data/NCEP/NCEP/clima/pressure/air&#39;</span>
+<span class="c1">#air = xr.open_dataset(url)</span>
+<span class="c1"># The name of the vertical axis is different than the NOAA ESRL version..</span>
+<span class="c1">#ncep_air = air.rename({&#39;lev&#39;: &#39;level&#39;})</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">ncep_air</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:             (lat: 73, level: 17, lon: 144, nbnds: 2, time: 12)
+Coordinates:
+  * level               (level) float32 1000.0 925.0 850.0 ... 30.0 20.0 10.0
+  * lon                 (lon) float32 0.0 2.5 5.0 7.5 ... 352.5 355.0 357.5
+  * time                (time) float64 -6.571e+05 -6.57e+05 ... -6.567e+05
+  * lat                 (lat) float32 90.0 87.5 85.0 82.5 ... -85.0 -87.5 -90.0
+Dimensions without coordinates: nbnds
+Data variables:
+    climatology_bounds  (time, nbnds) float64 ...
+    air                 (time, level, lat, lon) float32 ...
+    valid_yr_count      (time, level, lat, lon) float32 ...
+Attributes:
+    description:                     Data from NCEP initialized reanalysis (4...
+    platform:                       Model
+    Conventions:                    COARDS
+    not_missing_threshold_percent:  minimum 3% values input to have non-missi...
+    history:                        Created 2011/07/12 by doMonthLTM\nConvert...
+    title:                          monthly ltm air from the NCEP Reanalysis
+    References:                     http://www.esrl.noaa.gov/psd/data/gridded...
+    dataset_title:                  NCEP-NCAR Reanalysis 1
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Take global, annual average and convert to Kelvin</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span> <span class="o">/</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">Tglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">air</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Tglobal</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray (level: 17)&gt;
+array([ 15.179084,  11.207003,   7.838327,   0.219941,  -6.448343, -14.888848,
+       -25.570469, -39.36969 , -46.797905, -53.652245, -60.56356 , -67.006065,
+       -65.53293 , -61.48664 , -55.853584, -51.593952, -43.21999 ],
+      dtype=float32)
+Coordinates:
+  * level    (level) float32 1000.0 925.0 850.0 700.0 ... 50.0 30.0 20.0 10.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We're going to convert this to degrees Kelvin, using a handy list of pre-defined constants in <code>climlab.constants</code></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>273.15</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tglobal</span> <span class="o">+=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Tglobal</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray (level: 17)&gt;
+array([288.32907, 284.357  , 280.9883 , 273.36993, 266.70166, 258.26114,
+       247.57953, 233.7803 , 226.35208, 219.49774, 212.58643, 206.14392,
+       207.61707, 211.66336, 217.29642, 221.55605, 229.93001], dtype=float32)
+Coordinates:
+  * level    (level) float32 1000.0 925.0 850.0 700.0 ... 50.0 30.0 20.0 10.0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  A handy re-usable routine for making a plot of the temperature profiles</span>
+<span class="c1">#  We will plot temperatures with respect to log(pressure) to get a height-like coordinate</span>
+
+<span class="k">def</span> <span class="nf">zstar</span><span class="p">(</span><span class="n">lev</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lev</span> <span class="o">/</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="n">plot_obs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fixed_range</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">color_cycle</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
+    <span class="c1"># col is either a column model object or a list of column model objects</span>
+    <span class="c1">#if isinstance(state_list, climlab.Process):</span>
+    <span class="c1">#    # make a list with a single item</span>
+    <span class="c1">#    collist = [collist]</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">plot_obs</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tglobal</span><span class="p">,</span> <span class="n">zstar</span><span class="p">(</span><span class="n">Tglobal</span><span class="o">.</span><span class="n">level</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observed&#39;</span><span class="p">)</span>    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">result_list</span><span class="p">):</span>
+        <span class="n">Tatm</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;Tatm&#39;</span><span class="p">]</span>
+        <span class="n">lev</span> <span class="o">=</span> <span class="n">Tatm</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="s1">&#39;lev&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">points</span>
+        <span class="n">Ts</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="s1">&#39;Ts&#39;</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tatm</span><span class="p">,</span> <span class="n">zstar</span><span class="p">(</span><span class="n">lev</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">color_cycle</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">name_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_cycle</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1">#ax.invert_yaxis()</span>
+    <span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1000.</span><span class="p">,</span> <span class="mf">750.</span><span class="p">,</span> <span class="mf">500.</span><span class="p">,</span> <span class="mf">250.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">yticks</span><span class="o">/</span><span class="mf">1000.</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (hPa)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">fixed_range</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">zstar</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1000.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">])))</span>
+    <span class="c1">#ax2 = ax.twinx()</span>
+    
+    <span class="k">return</span> <span class="n">ax</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_soundings</span><span class="p">([],[]</span> <span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_41_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section4'></a></p>
+<h2 id="4.-A-30-layer-model-using-the-observed-temperatures">4. A 30-layer model using the observed temperatures<a class="anchor-link" href="#4.-A-30-layer-model-using-the-observed-temperatures"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  initialize a grey radiation model with 30 levels</span>
+<span class="n">col</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">GreyRadiationModel</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (30,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.greygas.GreyGasSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">lev</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([ 16.66666667,  50.        ,  83.33333333, 116.66666667,
+       150.        , 183.33333333, 216.66666667, 250.        ,
+       283.33333333, 316.66666667, 350.        , 383.33333333,
+       416.66666667, 450.        , 483.33333333, 516.66666667,
+       550.        , 583.33333333, 616.66666667, 650.        ,
+       683.33333333, 716.66666667, 750.        , 783.33333333,
+       816.66666667, 850.        , 883.33333333, 916.66666667,
+       950.        , 983.33333333])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> <span class="n">col</span><span class="o">.</span><span class="n">lev_bounds</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([   0.        ,   33.33333333,   66.66666667,  100.        ,
+        133.33333333,  166.66666667,  200.        ,  233.33333333,
+        266.66666667,  300.        ,  333.33333333,  366.66666667,
+        400.        ,  433.33333333,  466.66666667,  500.        ,
+        533.33333333,  566.66666667,  600.        ,  633.33333333,
+        666.66666667,  700.        ,  733.33333333,  766.66666667,
+        800.        ,  833.33333333,  866.66666667,  900.        ,
+        933.33333333,  966.66666667, 1000.        ])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># interpolate to 30 evenly spaced pressure levels</span>
+<span class="n">lev</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">lev</span>
+<span class="n">Tinterp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">lev</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">Tglobal</span><span class="o">.</span><span class="n">level</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">Tglobal</span><span class="p">))</span>
+<span class="n">Tinterp</span>
+<span class="c1">#  Need to &#39;flipud&#39; because the interpolation routine </span>
+<span class="c1">#  needs the pressure data to be in increasing order</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([224.34736633, 211.6633606 , 206.96233453, 208.29142253,
+       212.58642578, 217.19396973, 221.78252157, 226.3520813 ,
+       231.30422974, 236.08017476, 240.67991638, 245.279658  ,
+       249.35979716, 252.92033386, 256.48087056, 259.66789246,
+       262.48139954, 265.29490662, 267.81303914, 270.03579712,
+       272.25855509, 274.21642049, 275.90939331, 277.60236613,
+       279.29533895, 280.98831177, 282.48550415, 283.98269653,
+       285.6810201 , 287.4463874 ])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Initialize model with observed temperatures</span>
+<span class="n">col</span><span class="o">.</span><span class="n">Ts</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">Tglobal</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">col</span><span class="o">.</span><span class="n">Tatm</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">Tinterp</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This should look just like the observations</span>
+<span class="n">result_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">state</span><span class="p">]</span>
+<span class="n">name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Observed, interpolated&#39;</span><span class="p">]</span>
+<span class="n">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_48_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Tune-absorptivity-to-get-observed-OLR">Tune absorptivity to get observed OLR<a class="anchor-link" href="#Tune-absorptivity-to-get-observed-OLR"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="n">col</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([263.15000104])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Need to tune absorptivity to get OLR = 238.5</span>
+<span class="n">epsarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">OLRarray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">epsarray</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epsarray</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="n">epsarray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+    <span class="n">OLRarray</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">OLR</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epsarray</span><span class="p">,</span> <span class="n">OLRarray</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epsilon&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Text(0, 0.5, &#39;OLR&#39;)</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_52_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The necessary value seems to lie near 0.055 or so.</p>
+<p>We can be more precise with a numerical root-finder.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">OLRanom</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="n">eps</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">col</span><span class="o">.</span><span class="n">OLR</span> <span class="o">-</span> <span class="mf">238.5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use numerical root-finding to get the equilibria</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">brentq</span>
+<span class="c1"># brentq is a root-finding function</span>
+<span class="c1">#  Need to give it a function and two end-points</span>
+<span class="c1">#  It will look for a zero of the function between those end-points</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">brentq</span><span class="p">(</span><span class="n">OLRanom</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">eps</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0.05369073166506245
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">LW</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="n">eps</span>
+<span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">LW</span><span class="o">.</span><span class="n">absorptivity</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0.05369073, 0.05369073, 0.05369073, 0.05369073, 0.05369073,
+       0.05369073, 0.05369073, 0.05369073, 0.05369073, 0.05369073,
+       0.05369073, 0.05369073, 0.05369073, 0.05369073, 0.05369073,
+       0.05369073, 0.05369073, 0.05369073, 0.05369073, 0.05369073,
+       0.05369073, 0.05369073, 0.05369073, 0.05369073, 0.05369073,
+       0.05369073, 0.05369073, 0.05369073, 0.05369073, 0.05369073])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="n">col</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([238.5])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section5'></a></p>
+<h2 id="5.-Radiative-forcing-in-the-30-layer-model">5. Radiative forcing in the 30-layer model<a class="anchor-link" href="#5.-Radiative-forcing-in-the-30-layer-model"> </a></h2><hr>
+<p>Let's compute radiative forcing for a <strong>2% increase in absorptivity</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  clone our model using a built-in climlab function</span>
+<span class="n">col2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">col2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (30,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.greygas.GreyGasSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">*=</span> <span class="mf">1.02</span>
+<span class="n">col2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0.05476455, 0.05476455, 0.05476455, 0.05476455, 0.05476455,
+       0.05476455, 0.05476455, 0.05476455, 0.05476455, 0.05476455,
+       0.05476455, 0.05476455, 0.05476455, 0.05476455, 0.05476455,
+       0.05476455, 0.05476455, 0.05476455, 0.05476455, 0.05476455,
+       0.05476455, 0.05476455, 0.05476455, 0.05476455, 0.05476455,
+       0.05476455, 0.05476455, 0.05476455, 0.05476455, 0.05476455])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Radiative forcing by definition is the change in TOA radiative flux,</span>
+<span class="c1"># HOLDING THE TEMPERATURES FIXED.</span>
+<span class="n">col2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">col</span><span class="o">.</span><span class="n">Ts</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0.])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col2</span><span class="o">.</span><span class="n">Tatm</span> <span class="o">-</span> <span class="n">col</span><span class="o">.</span><span class="n">Tatm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col2</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="n">col2</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([236.65384137])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The OLR decreased after we added the extra absorbers, as we expect. Now we can calculate the Radiative Forcing:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">RF</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">col2</span><span class="o">.</span><span class="n">OLR</span> <span class="o">-</span> <span class="n">col</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The radiative forcing is </span><span class="si">%.2f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="k">RF</span>)
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The radiative forcing is 1.85 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section6'></a></p>
+<h2 id="6.-Radiative-equilibrium-in-the-30-layer-model">6. Radiative equilibrium in the 30-layer model<a class="anchor-link" href="#6.-Radiative-equilibrium-in-the-30-layer-model"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">re</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  To get to equilibrium, we just time-step the model forward long enough</span>
+<span class="n">re</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 365 steps, 365.2422 days, or 1.0 years.
+Total elapsed time is 0.9993368783782377 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Check for energy balance</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The net downward radiative flux at TOA is </span><span class="si">%.4f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">re</span><span class="o">.</span><span class="n">OLR</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The net downward radiative flux at TOA is -0.0015 W/m2.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+<span class="n">name_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Radiative equilibrium (grey gas)&#39;</span><span class="p">)</span>
+<span class="n">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x128818668&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_70_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Some properties of the <strong>radiative equilibrium</strong> temperature profile:</p>
+<ul>
+<li>The surface is warmer than observed.</li>
+<li>The lower troposphere is colder than observed.</li>
+<li>Very cold air is sitting immediately above the warm surface.</li>
+<li>There is no tropopause, no stratosphere.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section7'></a></p>
+<h2 id="7.-Radiative-Convective-Equilibrium-in-the-30-layer-model">7. Radiative-Convective Equilibrium in the 30-layer model<a class="anchor-link" href="#7.-Radiative-Convective-Equilibrium-in-the-30-layer-model"> </a></h2><hr>
+<p>We recognize that the large drop in temperature just above the surface is unphysical. Parcels of air in direct contact with the ground will be warmed by mechansisms other than radiative transfer.</p>
+<p>These warm air parcels will then become buoyant, and will convect upward, mixing their heat content with the environment.</p>
+<p>We <strong>parameterize</strong> the statistical effects of this mixing through a <strong>convective adjustment</strong>.</p>
+<p>At each timestep, our model checks for any locations at which the <strong>lapse rate</strong> exceeds some threshold. Unstable layers are removed through an energy-conserving mixing formula.</p>
+<p>This process is assumed to be fast relative to radiative heating. In the model, it is instantaneous.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Add-the-convective-adjustment-as-an-additional-subprocess">Add the convective adjustment as an additional subprocess<a class="anchor-link" href="#Add-the-convective-adjustment-as-an-additional-subprocess"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Here is the existing model</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">re</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (30,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.greygas.GreyGasSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  First we make a new clone</span>
+<span class="n">rce</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
+<span class="c1">#  Then create a new ConvectiveAdjustment process</span>
+<span class="n">conv</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">ConvectiveAdjustment</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">rce</span><span class="o">.</span><span class="n">state</span><span class="p">,</span> 
+                                               <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mf">6.</span><span class="p">)</span>
+<span class="c1">#  And add it to our model</span>
+<span class="n">rce</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Convective Adjustment&#39;</span><span class="p">,</span> <span class="n">conv</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">rce</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (30,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.greygas.GreyGasSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+   Convective Adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This model is exactly like our previous models, except for one additional subprocess called <code>Convective Adjustment</code>.</p>
+<p>We passed a parameter <code>adj_lapse_rate</code> (in K / km) that sets the neutrally stable lapse rate -- in this case, 6 K / km.</p>
+<p>This number is chosed to very loosely represent the net effect of <strong>moist convection</strong>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Run out to equilibrium</span>
+<span class="n">rce</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 365 steps, 365.2422 days, or 1.0 years.
+Total elapsed time is 1.9986737567564754 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Check for energy balance</span>
+<span class="n">rce</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">rce</span><span class="o">.</span><span class="n">OLR</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Field([0.0007796])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rce</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+<span class="n">name_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Radiatve-Convective equilibrium (grey gas)&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1291c3f60&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_80_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Introducing convective adjustment into the model cools the surface quite a bit (compared to Radiative Equilibrium, in green here) -- and warms the lower troposphere. It gives us a MUCH better fit to observations.</p>
+<p>But of course we still have no stratosphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><a id='section8'></a></p>
+<h2 id="8.-Putting-stratospheric-ozone-in-the-grey-gas-model">8. Putting stratospheric ozone in the grey-gas model<a class="anchor-link" href="#8.-Putting-stratospheric-ozone-in-the-grey-gas-model"> </a></h2><hr>
+<p>Our model has no equivalent of the stratosphere, where temperature increases with height. That's because our model has been completely transparent to shortwave radiation up until now.</p>
+<p>We can load the observed ozone climatology from the input files for the CESM model:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
+<span class="n">ozone</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s2">&quot;som_input/ozone_1.9x2.5_L26_2000clim_c091112.nc&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">ozone</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:  (ilev: 27, lat: 96, lev: 26, lon: 144, slat: 95, slon: 144, time: 12)
+Coordinates:
+  * ilev     (ilev) float64 2.194 4.895 9.882 18.05 ... 903.3 956.0 985.1 1e+03
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+  * slat     (slat) float64 -89.05 -87.16 -85.26 -83.37 ... 85.26 87.16 89.05
+  * slon     (slon) float64 -1.25 1.25 3.75 6.25 ... 348.8 351.2 353.8 356.2
+  * time     (time) object 2000-01-15 00:00:00 ... 2000-12-15 00:00:00
+Data variables:
+    P0       float64 ...
+    date     (time) int32 ...
+    datesec  (time) int32 ...
+    gw       (lat) float64 ...
+    hyai     (ilev) float64 ...
+    hyam     (lev) float64 ...
+    hybi     (ilev) float64 ...
+    hybm     (lev) float64 ...
+    w_stag   (slat) float64 ...
+    O3       (time, lev, lat, lon) float32 ...
+    PS       (time, lat, lon) float32 ...
+Attributes:
+    Conventions:                     CF-1.0
+    source:                          CAM
+    case:                            ar5_cam_1850-2000_03
+    title:                           
+    logname:                         lamar
+    host:                            be0207en.ucar.ed
+    Version:                         $Name$
+    revision_Id:                     $Id$
+    initial_file:                    /ptmp/lamar/cam-inputs/ar5_cam_1850_06.c...
+    topography_file:                 /fs/cgd/csm/inputdata/atm/cam/topo/USGS-...
+    history:                         Wed Jan  5 14:56:28 2011: ncks -d time,1...
+    nco_openmp_thread_number:        1
+    NCO:                             4.0.5
+    DODS_EXTRA.Unlimited_Dimension:  time
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The pressure levels in this dataset are:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray &#39;lev&#39; (lev: 26)&gt;
+array([  3.544638,   7.388814,  13.967214,  23.944625,  37.23029 ,  53.114605,
+        70.05915 ,  85.439115, 100.514695, 118.250335, 139.115395, 163.66207 ,
+       192.539935, 226.513265, 266.481155, 313.501265, 368.81798 , 433.895225,
+       510.455255, 600.5242  , 696.79629 , 787.70206 , 867.16076 , 929.648875,
+       970.55483 , 992.5561  ])
+Coordinates:
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+Attributes:
+    long_name:      hybrid level at midpoints (1000*(A+B))
+    units:          level
+    positive:       down
+    standard_name:  atmosphere_hybrid_sigma_pressure_coordinate
+    formula_terms:  a: hyam b: hybm p0: P0 ps: PS
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Take-the-global-average-of-the-ozone-climatology,-and-plot-it-as-a-function-of-pressure-(or-height)">Take the global average of the ozone climatology, and plot it as a function of pressure (or height)<a class="anchor-link" href="#Take-the-global-average-of-the-ozone-climatology,-and-plot-it-as-a-function-of-pressure-(or-height)"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Take global, annual average and convert to Kelvin</span>
+<span class="n">weight_ozone</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span> <span class="o">/</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">O3_global</span> <span class="o">=</span> <span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">O3</span> <span class="o">*</span> <span class="n">weight_ozone</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">O3_global</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray (lev: 26)&gt;
+array([7.827929e-06, 8.641505e-06, 7.589400e-06, 5.245671e-06, 3.177616e-06,
+       1.823200e-06, 9.807570e-07, 6.228705e-07, 4.476205e-07, 3.344812e-07,
+       2.625703e-07, 2.078981e-07, 1.570746e-07, 1.124255e-07, 8.060050e-08,
+       6.278265e-08, 5.429906e-08, 4.995061e-08, 4.600757e-08, 4.229778e-08,
+       3.805591e-08, 3.387686e-08, 3.121716e-08, 2.978071e-08, 2.879810e-08,
+       2.754299e-08])
+Coordinates:
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">O3_global</span> <span class="o">*</span> <span class="mf">1.E6</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="o">/</span><span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Ozone (ppm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (hPa)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">yticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1000.</span><span class="p">,</span> <span class="mf">750.</span><span class="p">,</span> <span class="mf">500.</span><span class="p">,</span> <span class="mf">250.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">,</span> <span class="mf">20.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">yticks</span><span class="o">/</span><span class="mf">1000.</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">yticks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Global, annual mean ozone concentration&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">24</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_89_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This shows that most of the ozone is indeed in the stratosphere, and peaks near the top of the stratosphere.</p>
+<p>Now create a new column model object <strong>on the same pressure levels as the ozone data</strong>.  We are also going set an adjusted lapse rate of 6 K / km.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the RadiativeConvectiveModel is pre-defined in climlab</span>
+<span class="c1">#  It contains the same components are our previous model</span>
+<span class="c1">#   But here we are specifying a different set of vertical levels.</span>
+<span class="n">oz_col</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">RadiativeConvectiveModel</span><span class="p">(</span><span class="n">lev</span> <span class="o">=</span> <span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>climlab Process of type &lt;class &#39;climlab.model.column.RadiativeConvectiveModel&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (1,) 
+  Tatm: (26,) 
+The subprocess tree: 
+Untitled: &lt;class &#39;climlab.model.column.RadiativeConvectiveModel&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.greygas.GreyGasSW&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.FixedInsolation&#39;&gt;
+   convective adjustment: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we will do something new: let the column absorb some shortwave radiation. We will assume that the shortwave absorptivity is proportional to the ozone concentration we plotted above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now we need to weight the absorptivity by the pressure (mass) of each layer.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This number is an arbitrary parameter that scales how absorptive we are making the ozone</span>
+<span class="c1"># in our grey gas model</span>
+<span class="n">ozonefactor</span> <span class="o">=</span> <span class="mi">75</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">Tatm</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">lev</span><span class="o">.</span><span class="n">delta</span>
+<span class="n">epsSW</span> <span class="o">=</span> <span class="n">O3_global</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="n">dp</span> <span class="o">*</span> <span class="n">ozonefactor</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We want to use the field <code>epsSW</code> as the absorptivity for our SW radiation model.</p>
+<p>Let's see what the absorptivity is current set to:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+ 0. 0.]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It defaults to zero.</p>
+<p>Before changing this (putting in the ozone), let's take a look at the shortwave absorption in the column:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oz_col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oz_col</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">[</span><span class="s1">&#39;SW_absorbed_atm&#39;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0.])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's now put in the ozone:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="n">epsSW</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[3.20948549e-03 3.37750296e-03 4.71182551e-03 4.57614201e-03
+ 3.47591203e-03 2.24450924e-03 1.18884331e-03 7.11369788e-04
+ 5.50761612e-04 4.84170273e-04 4.47141487e-04 4.16507314e-04
+ 3.70212131e-04 3.11733073e-04 2.62922861e-04 2.40936639e-04
+ 2.45147939e-04 2.65307555e-04 2.87482272e-04 2.95567946e-04
+ 2.67120872e-04 2.16427978e-04 1.66169127e-04 1.15468088e-04
+ 6.79353134e-05 3.81013280e-05]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's check how this changes the SW absorption:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oz_col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
+<span class="n">oz_col</span><span class="o">.</span><span class="n">SW_absorbed_atm</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>array([1.40571621, 1.47671285, 2.05685574, 1.99236565, 1.50916587,
+       0.97239284, 0.51429089, 0.30750441, 0.23797743, 0.20913838,
+       0.19309134, 0.17981756, 0.1597929 , 0.13452308, 0.11343944,
+       0.10393806, 0.10574109, 0.11442201, 0.12396838, 0.12743553,
+       0.11515129, 0.09328389, 0.07161233, 0.04975714, 0.02927232,
+       0.01641659])</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is now non-zero, and largest near the top of the column (also top of the array) where the ozone concentration is highest.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now it's time to run the model out to radiative-convective equilibrium</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">oz_col</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Integrating for 365 steps, 365.2422 days, or 1.0 years.
+Total elapsed time is 0.9993368783782377 years.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[-0.00396053]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And let's now see what we got!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oz_col</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
+<span class="n">name_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Radiative-Convective equilibrium with O3&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Make a plot to compare observations, Radiative Equilibrium, Radiative-Convective Equilibrium, and RCE with ozone!</span>
+<span class="n">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1287d3828&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/Lecture08_110_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>And we finally have something that looks looks like the tropopause, with temperature increasing above at approximately the correct rate.</p>
+<p>There are still plenty of discrepancies between this model solution and the observations, including:</p>
+<ul>
+<li>Tropopause temperature is too warm, by about 15 degrees.</li>
+<li>Surface temperature is too cold</li>
+</ul>
+<p>There are a number of parameters we might adjust if we wanted to improve the fit, including:</p>
+<ul>
+<li>Longwave absorptivity</li>
+<li>Surface albedo</li>
+</ul>
+<p>Feel free to experiment! (That's what models are for, after all).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-take-home-message">The take home message<a class="anchor-link" href="#The-take-home-message"> </a></h3><p>The dominant effect of stratospheric ozone is to vastly increase the radiative equilibrium temperature in the ozone layer. The temperature needs to be higher so that the longwave emission can balance the shortwave absorption.</p>
+<p>Without ozone to absorb incoming solar radiation, the <strong>temperature does not increase with height</strong>.</p>
+<p>This simple grey-gas model illustrates this principle very clearly.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+[Back to ATM 623 notebook home](../index.ipynb)
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
+<span class="o">%</span><span class="k">version_information</span> numpy, scipy, matplotlib, xarray, climlab
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 9.0.0 (tags/RELEASE_900/final)]</td></tr><tr><td>IPython</td><td>7.10.1</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.17.3</td></tr><tr><td>scipy</td><td>1.3.2</td></tr><tr><td>matplotlib</td><td>3.1.2</td></tr><tr><td>xarray</td><td>0.12.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Dec 11 13:53:46 2019 PST</td></tr></table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
