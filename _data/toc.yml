@@ -19,15 +19,12 @@
 - url: /home
   not_numbered: true
 
-- title: Preamble
-  url: /preamble
-  not_numbered: true
-  expand_sections: true
+- url: /preamble
   sections:
-    - title: About 1
-      url: /about
-    - title: About 2
-      url: /about2
+    - url: /about
+    - url: /who-for
+    - url: /how-to
+    - url: /attribution
 
 - divider: true
 - header: Lectures

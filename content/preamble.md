@@ -1,3 +1,3 @@
 # Preamble
 
-Let's get going.
+Let's amble through the courseware amiably.

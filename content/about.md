@@ -1,3 +1,3 @@
 # About this Book
 
-Let's amble through the courseware.
+*under construction*
