@@ -1,0 +1,19 @@
+name: climlab-courseware
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - matplotlib
+  - xarray
+  - metpy
+  - cartopy
+  - sympy
+  - ffmpeg
+  - jupyter
+  - climlab
+  - version_information
+  - rise
+  - numba>=0.43.1  # older version will hang forever under python 3, https://github.com/brian-rose/climlab/issues/101
+  - netcdf4
