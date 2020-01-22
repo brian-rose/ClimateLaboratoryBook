@@ -7,7 +7,7 @@ prev_page:
 next_page:
   url: /attribution.html
 suffix: .md
-search: book under construction
+search: conda notes python code run work environment repo climatelaboratorybook book different ways option self contained jupyter notebooks through binder save our ualbany need source github create courseware under construction things flux essentially four just read designed fully explanatory readable however get material youll probably want interact three public currently broken working well simple examples require computational resources good tinkering easy back private jupyterhub restricted users preferred route students anyone login credentials server point click interface completely interactive version able pull new updates own open anybody package manager step clone repository once following commands everything mac linux windows within directory favorite
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -20,6 +20,37 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>under construction</em></p>
+<p>Things are in flux...</p>
+<p>There will be essentially <strong>four different ways</strong> to use the book:</p>
+<p><strong>Option 1: Just read it!</strong> The notes are designed to be fully self-explanatory and readable.
+However to get the most of the material, you'll probably want to
+<em>interact with the Python code</em> contained in the Jupyter notebooks.</p>
+<p>There will be <strong>three different ways</strong> to run the Python code:</p>
+<ol>
+<li><p>Through a public Binder <em>(currently broken -- working on it)</em>
+This will work well for many of the simple examples,
+but some of the notes require more computational resources.
+Binder is good for tinkering, but there is no easy way to save your work and come back to it.</p>
+</li>
+<li><p>Through our private JupyterHub <em>(restricted to UAlbany users)</em>
+This is the preferred route for UAlbany students. Anyone with login credentials
+to our server will have a point-and-click interface to a completely interactive
+version of the notes, and will be able to save their work and pull in new updates.</p>
+</li>
+<li><p>Run the code in your own Python environment.</p>
+</li>
+</ol>
+<p>Option 3 is open to anybody. You will need to use the conda package manager.</p>
+<p>The first step is to clone the <a href="https://github.com/brian-rose/ClimateLaboratoryBook">source repository on github</a>.</p>
+<p>Once you have the source repo,
+the following commands will create a self-contained conda environment
+with everything you need to run the notebooks (Mac, Linux and Windows).
+From within the <code>ClimateLaboratoryBook</code> directory
+in your favorite terminal, do this:</p>
+
+<pre><code>conda env create --file environment.yml
+conda activate climlab-courseware</code></pre>
+<p>Then find all the Jupyter notebook <code>*.ipynb</code> files in <code>ClimateLaboratoryBook/content/courseware</code></p>
 
 </div>
 </div>
