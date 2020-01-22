@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /courseware/zero-dim-ebm.html
 suffix: .ipynb
-search: python energy model function climate w m olr budget emission global surface flux space temperature fact sigma mean our lets system note atmosphere code try models e define text solar q just variables brian rose section not between longwave frac radiation alpha te value typing also anything us clouds much reflected where need end area interpreter array albany id used only understand earth shortwave off ice absorption greenhouse numbers terms align because incoming defined variable part github xkcd com question any made case through real detail definition planetary key observed fluxes things snow get later very blackbody k effect net
+search: python emission function climate model space olr energy temperature global surface w m fact sigma mean our code try models lets te tau budget brian rose between note much greenhouse value typing variables also not define anything us clouds atmosphere longwave just interpreter array e albany used understand system earth observed shortwave off absorption k effect numbers need part github xkcd com question statistics represents useful case through real detail definition key things ice snow get later very blackbody where under frac text interactively variable makes end line def defined print named happens fun notebook laboratory io climatelaboratorybook j www
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -278,157 +278,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<p><a id='section3'></a></p>
-<h2 id="3.-Quantifying-the-planetary-energy-budget">3. Quantifying the planetary energy budget<a class="anchor-link" href="#3.-Quantifying-the-planetary-energy-budget"> </a></h2><hr>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A budget for the <strong>energy content of the global atmosphere-ocean system</strong>:</p>
-\begin{align} 
-\frac{dE}{dt} &amp;= \text{net energy flux in to system} \\
- &amp;= \text{flux in – flux out}
-\end{align}<p>where $E$ is the <strong>enthalpy</strong> or <strong>heat content</strong> of the total system.</p>
-<p>We will express the budget <strong>per unit surface area</strong>, so each term above has units W m$^{-2}$</p>
-<p>Note: any <strong>internal exchanges</strong> of energy between different reservoirs (e.g. between ocean, land, ice, atmosphere) do not appear in this budget – because $E$ is the <strong>sum of all reservoirs</strong>.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Assumption:">Assumption:<a class="anchor-link" href="#Assumption:"> </a></h3><p><strong>The only quantitatively important energy sources to the whole system are radiative fluxes to and from space.</strong></p>
-<p>Let’s model those TOA (top-of-atmosphere) fluxes.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Flux in is <strong>incoming solar radiation</strong>
-The solar constant is</p>
-$$ S_0 = 1365.2 \text{ W m}^{-2}  $$<p>(all values will be consistent with Trenberth and Fasullo figure unless noted otherwise)</p>
-<p>This is the flux of energy from the sun incident on a unit area perpendicular to the beam direction.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The area-weighted global mean incoming solar flux is</p>
-$$ Q = S_0 \frac{A_{cross-section}}{A_{surface}}  $$<p>[ draw sketch of sphere and illuminated disk ]</p>
-<p>where</p>
-<ul>
-<li>$A_{cross-section}$ = area of the illuminated disk = $\pi a^2$</li>
-<li>$A_{surface}$ = surface area of sphere = $4 \pi a^2$</li>
-<li>$a$ = radius of Earth</li>
-</ul>
-<p>So flux in is $Q =  S_0 / 4 = 341.3$ W m$^{-2}$</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Flux out has two parts:</p>
-<ul>
-<li>Reflected solar radiation</li>
-<li>Emitted terrestrial (longwave) radiation</li>
-</ul>
-<p>Introduce terminology / notation:</p>
-<p><strong>OLR = outgoing longwave radiation = terrestrial emissions to space</strong></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Define the <strong>planetary albedo</strong>:</p>
-<ul>
-<li>$\alpha$ = reflected solar flux / incoming solar flux</li>
-<li>Or reflected flux = $\alpha Q$ = 101.9 W m$^{-2}$ from data</li>
-<li>So from data, $\alpha \approx 0.3$</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Define <strong>ASR = absorbed solar radiation</strong>
-\begin{align}
-ASR &amp;= \text{ incoming flux – reflected flux} \\
- &amp;= Q - \alpha Q \\
- &amp;= (1-\alpha) Q 
-\end{align}</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Our energy budget then says</p>
-$$ \frac{dE}{dt} = (1-\alpha) Q - OLR $$<p>Note: <strong>This is a generically true statement.</strong> We have just defined some terms, and made the [very good] assumption that the only significant energy sources are radiative exchanges with space.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>This equation is the starting point for EVERY CLIMATE MODEL.</strong></p>
-<p>But so far, we don’t actually have a MODEL. We just have a statement of a budget. To use this budget to make a model, we need to relate terms in the budget to state variables of the atmosphere-ocean system.</p>
-<p>For now, the state variable we are most interested in is <strong>temperature</strong> – because it is directly connected to the physics of each term above.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<p><a id='section4'></a></p>
-<h2 id="4.-Using-Python-to-compute-emission-to-space">4. Using Python to compute emission to space<a class="anchor-link" href="#4.-Using-Python-to-compute-emission-to-space"> </a></h2><hr>
+<h2 id="3.-Using-Python-to-compute-emission-to-space">3. Using Python to compute emission to space<a class="anchor-link" href="#3.-Using-Python-to-compute-emission-to-space"> </a></h2><hr>
 
 </div>
 </div>
@@ -730,7 +580,7 @@ What we really want to do is <strong>define a reusable function</strong></p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Python-fact-6">Python fact 6<a class="anchor-link" href="#Python-fact-6"> </a></h4><p><strong> The <code>#</code> symbol is used for comments in Python code. </strong></p>
+<h4 id="Python-fact-6">Python fact 6<a class="anchor-link" href="#Python-fact-6"> </a></h4><p><strong>The <code>#</code> symbol is used for comments in Python code.</strong></p>
 <p>The interpreter will ignore anything that follows <code>#</code> on a line of code.</p>
 
 </div>
@@ -754,8 +604,8 @@ What we really want to do is <strong>define a reusable function</strong></p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note also that we defined variables named sigma and epsilon inside our OLR function.</p>
-<p>What happens if you try to <code>print(epsilon)</code>?</p>
+<p>Note also that we defined variables named <code>sigma</code> and <code>tau</code> inside our OLR function.</p>
+<p>What happens if you try to <code>print(tau)</code>?</p>
 
 </div>
 </div>
@@ -806,7 +656,7 @@ What we really want to do is <strong>define a reusable function</strong></p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#import numpy as np</span>
 <span class="c1">#T = np.linspace(230, 300, 10)</span>
-<span class="c1">#print T</span>
+<span class="c1">#print(T)</span>
 </pre></div>
 
     </div>
@@ -955,6 +805,38 @@ What we really want to do is <strong>define a reusable function</strong></p>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is very handy. The Python console is taking notes for you!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="4.-Summary">4. Summary<a class="anchor-link" href="#4.-Summary"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Climate</strong> is essentially <strong>statistics of weather</strong>.</li>
+<li>The planet <strong>warms up</strong> or <strong>cools down</strong> in response to <strong>differences</strong> between <strong>energy absorbed from the sun</strong> and <strong>energy emitted to space</strong>.</li>
+<li>A <strong>climate model</strong> represents (mathematically of numerically) these <strong>exchanges of energy</strong> between the <strong>Earth system</strong> and <strong>space</strong>.</li>
+<li>The observed emission to space or <strong>Outgoing Longwave Radiation</strong> is consistent with an emission temperature $T_e = 255$ K -- <strong>much colder than Earth's surface</strong>.</li>
+<li>This is evidence of the <strong>greenhouse effect</strong>.</li>
+<li>We adopted a very simple greenhouse model, assuming a fixed <em>transmissivity</em> $\tau$ for the atmosphere. </li>
+<li>$\tau$ conceptually represents the <em>fraction of the emission from the <strong>surface</strong> that makes it all the way to space.</em> It is a number less than 1.</li>
+<li>Python is fun and useful.</li>
+</ul>
 
 </div>
 </div>
