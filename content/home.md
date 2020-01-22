@@ -16,6 +16,7 @@ and aims to be all of the following:
 - a **living document** *(content will continue to evolve, and collaboration is welcome)*
 
 [To view the book online, go here][book].
+
 The JupyterBook source and all book content (mostly Jupyter Notebook files)
 are all in [this github repository][repo].
 
@@ -23,8 +24,9 @@ Much of the content is made possible by [climlab][climlab], an open-source
 Python toolkit for interactive, process-oriented climate modeling.
 [Brian Rose][brian] is the principle developer of climlab as well as the author of this book.
 
-The contents of this book are licensed for free and open consumption under the following license:
+The contents of this book are licensed for free and open consumption under the
 [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+license.
 
 [brian]: http://www.atmos.albany.edu/facstaff/brose/index.html
 [env415]: http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/
