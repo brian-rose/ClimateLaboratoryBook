@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# This script is executed on Binder after building the environment
+# https://mybinder.readthedocs.io/en/latest/config_files.html
+python import_script.py
+#  What we are actually trying to do here is just trigger some dataset downloads
+#  that occur in the background upon first import.
+#  Then these datasets will be stored in the Docker image
+#  and users will have better performance.
