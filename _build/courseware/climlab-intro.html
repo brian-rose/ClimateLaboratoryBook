@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /courseware/climate-system-models.html
 suffix: .ipynb
-search: model climlab here climate state using id process forward section sub com brian rose temperature called github implement zero dimensional tau dictionary lets equilibrium change albany processes code ts single variables our current information timestep step course ams version www atmos edu models python modeling collection class complex also appropriate classes easily run source latest found install doing conda c energy balance recall going exact same convenience access object ebm its well methods steps take colder why diagnostics store scenario want investigate transmissitivity atmosphere albedo parameter property subprocess without resources notes software talk gave e not facstaff brose index national
+search: model climlab here climate state using id process brian rose forward section sub github com temperature called implement zero dimensional tau dictionary lets equilibrium change processes open source code ts single variables our current timestep step ams models python collection class complex also appropriate easily run latest found install doing conda c energy balance recall going exact same convenience access object ebm its well methods information steps take colder why diagnostics store scenario want investigate transmissitivity atmosphere albedo parameter property subprocess without resources course notes io software talk gave e version not albany under national science foundation building simple introducing
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -20,24 +20,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div id="page-info"><div id="page-title">Building simple climate models using `climlab`</div>
 </div>
     <div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Ensure compatibility with Python 2 and 3</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -293,8 +275,7 @@ $$ C \frac{dT_s}{dt} = (1-\alpha) Q - \tau \sigma T_s^4 $$<p></p>
 <div class="output_area">
 
 
-
-<div class="output_text output_subarea output_execute_result">
+<div class="output_html rendered_html output_subarea output_execute_result">
 <pre>&lt;xarray.Dataset&gt;
 Dimensions:       (depth: 1, depth_bounds: 2, lat: 1, lat_bounds: 2)
 Coordinates:
@@ -410,7 +391,7 @@ AbsorbedShortwave: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbso
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  couple them together into a single model</span>
-<span class="n">ebm</span> <span class="o">=</span> <span class="n">olr</span> <span class="o">+</span> <span class="n">asr</span>
+<span class="n">ebm</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">couple</span><span class="p">([</span><span class="n">olr</span><span class="p">,</span><span class="n">asr</span><span class="p">])</span>
 <span class="c1">#  Give the parent process name</span>
 <span class="n">ebm</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;EnergyBalanceModel&#39;</span>
 <span class="c1">#  Examine the model object</span>
@@ -1488,63 +1469,9 @@ Total elapsed time is 50.10373938170343 years.
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Version-information">Version information<a class="anchor-link" href="#Version-information"> </a></h2><hr>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> version_information
-<span class="o">%</span><span class="k">version_information</span> numpy, matplotlib, climlab
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Loading extensions from ~/.ipython/extensions is deprecated. We recommend managing extensions like any other Python packages, in site-packages.
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-<div class="output_html rendered_html output_subarea output_execute_result">
-<table><tr><th>Software</th><th>Version</th></tr><tr><td>Python</td><td>3.7.3 64bit [Clang 4.0.1 (tags/RELEASE_401/final)]</td></tr><tr><td>IPython</td><td>7.6.0</td></tr><tr><td>OS</td><td>Darwin 17.7.0 x86_64 i386 64bit</td></tr><tr><td>numpy</td><td>1.16.4</td></tr><tr><td>matplotlib</td><td>3.1.1</td></tr><tr><td>climlab</td><td>0.7.5</td></tr><tr><td colspan='2'>Wed Jul 03 14:49:48 2019 EDT</td></tr></table>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>The author of this notebook is <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
-<p>It was developed in support of <a href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2015/">ATM 623: Climate Modeling</a>, a graduate-level course in the <a href="http://www.albany.edu/atmos/index.php">Department of Atmospheric and Envionmental Sciences</a></p>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
 <p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
 <hr>
 
