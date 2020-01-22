@@ -32,7 +32,8 @@
 
 - url: /courseware/models-budgets-fun
 - url: /courseware/zero-dim-ebm
-- url: /courseware/analytical-efolding
+  sections:
+    - url: /courseware/analytical-efolding
 - url: /courseware/sensitivity-feedback
 - url: /courseware/climlab-intro
 - url: /courseware/climate-system-models
