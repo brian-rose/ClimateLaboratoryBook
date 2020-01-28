@@ -17,7 +17,7 @@ and aims to be all of the following:
 
 [To view the book online, go here][book].
 
-The JupyterBook source and all book content (mostly Jupyter Notebook files)
+The JupyterBook source and all book content (mostly [Jupyter Notebook][notebook] files)
 are all in [this github repository][repo].
 
 Much of the content is made possible by [climlab][climlab], an open-source
@@ -37,3 +37,4 @@ license.
 [climlab]: https://github.com/brian-rose/climlab
 [book]: https://brian-rose.github.io/ClimateLaboratoryBook/
 [repo]: https://github.com/brian-rose/ClimateLaboratoryBook
+[notebook]: https://jupyter-notebook.readthedocs.io/en/stable/
