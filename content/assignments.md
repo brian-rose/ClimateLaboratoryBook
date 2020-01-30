@@ -1,3 +1,0 @@
-# Assignments
-
-Nothing yet

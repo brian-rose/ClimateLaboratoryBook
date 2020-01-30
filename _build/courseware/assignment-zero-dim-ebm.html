@@ -1,0 +1,224 @@
+---
+interact_link: content/courseware/assignment-zero-dim-ebm.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Assignment: Climate change in the zero-dimensional EBM
+pagenum: 33
+prev_page:
+  url: /about-assignments.html
+next_page:
+  url: /references.html
+suffix: .ipynb
+search: temperature albedo k model t notebook climate brian rose equilibrium text code c alpha our ice not global mean planet change zero dimensional j albany energy balance numerical required tau heat planetary why graph array results new ti alphao function github e following feedback python answers problems bonus explain again problem defined ts q capacity times m transmissivity parameter class investigate repeat calculate temperatures formula alphai free very above open assignment part laboratory io climatelaboratorybook www atmos edu facstaff brose index html university skills familiarity jupyter timestepping own below interesting extra credit remember answer written just figures submit without errors
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Assignment: Climate change in the zero-dimensional EBM</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-goals">Learning goals<a class="anchor-link" href="#Learning-goals"> </a></h2><p>Students completing this assignment will gain the following skills and concepts:</p>
+<ul>
+<li>Familiarity with the Jupyter notebook</li>
+<li>Familiarity with the zero-dimensional Energy Balance Model</li>
+<li>Understanding of the adjustment toward equilibrium temperature</li>
+<li>Introduction to the concept of albedo feedback</li>
+<li>Use of numerical timestepping to find the equilibrium temperature</li>
+<li>Python programming skills: arrays, loops, and simple graphs</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Instructions">Instructions<a class="anchor-link" href="#Instructions"> </a></h2><ul>
+<li>In a local copy of this notebook (on the JupyterHub or your own device) <strong>add your answers in additional cells</strong>.</li>
+<li><strong>Complete the required problems</strong> below. </li>
+<li>Some assignments have <strong>optional bonus problems</strong>. These are meant to be interesting and thought-provoking, but are not required. Extra credit will be given for interesting answers to the bonus problems.</li>
+<li>Remember to set your cell types to <code>Markdown</code> for text, and <code>Code</code> for Python code!</li>
+<li><strong>Include comments</strong> in your code to explain your method as necessary.</li>
+<li>Remember to actually answer the questions. <strong>Written answers are required</strong> (not just code and figures!)</li>
+<li>Submit your solutions in <strong>a single Jupyter notebook</strong> that contains your text, your code, and your figures.</li>
+<li><em>Make sure that your notebook</em> <strong><em>runs cleanly without errors:</em></strong><ul>
+<li>Save your notebook</li>
+<li>From the <code>Kernel</code> menu, select <code>Restart &amp; Run All</code></li>
+<li>Did the notebook run from start to finish without error and produce the expected output?</li>
+<li>If yes, save again and submit your notebook file</li>
+<li>If no, fix the errors and try again.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-1:-Time-dependent-warming-in-the-zero-dimensional-Energy-Balance-Model">Problem 1: Time-dependent warming in the zero-dimensional Energy Balance Model<a class="anchor-link" href="#Problem-1:-Time-dependent-warming-in-the-zero-dimensional-Energy-Balance-Model"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In lecture we defined a zero-dimensional energy balance model for the global mean surface temperature $T_s$ as follows</p>
+$$ C  \frac{dT_s}{dt} = \text{ASR} - \text{OLR}$$$$ \text{ASR} = (1-\alpha) Q $$$$ \text{OLR} = \tau \sigma T_s^4$$<p>where we defined these terms:</p>
+<ul>
+<li>$C$ is a heat capacity for the atmosphere-ocean column</li>
+<li>$\alpha$ is the global mean planetary albedo</li>
+<li>$\sigma = 5.67 \times 10^{-8}$ W m$^{-2}$ K$^{-4}$ is the Stefan-Boltzmann constant</li>
+<li>$\tau$ is our transmissivity parameter for the atmosphere.</li>
+<li>$Q$ is the global-mean incoming solar radiation, or <em>insolation</em>.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Refer back to our class notes for parameter values.</p>
+<ol>
+<li>If the heat penetrated to twice as deep into the ocean, the value of $C$ would be twice as large. Would this affect the <strong>equilibrium temperature</strong>? Why or why not?</li>
+<li><p>In class we used numerical timestepping to investigate a <em>hypothetical climate change scenario</em> in which $\tau$ decreases to 0.57 and $\alpha$ increases to 0.32. We produced a graph of $T_s(t)$ over a twenty year period, starting from an initial temperature of 288 K. Here you will repeat this calculate with a larger value of $C$ and compare the warming rates. Specifically:</p>
+<ul>
+<li>Repeat our in-class time-stepping calculation with the same parameters we used before (including a heat capacity of $C = 4\times10^8$ J m$^{-2}$ K$^{-1}$), but extend it to 50 years. <strong>You should create an array of temperatures with 51 elements, beginning from 288 K</strong>.</li>
+<li>Now do it again, but use $C = 8\times10^8$ J m$^{-2}$ K$^{-1}$ (representing 200 meters of water). You should <strong>create another 51-element array</strong> of temperatures also beginning from 288 K.</li>
+<li><strong>Make a well-labeled graph</strong> that compares the two temperatures over the 50-year period.</li>
+</ul>
+</li>
+<li><p>What do your results show about the role of heat capacity on climate change? <strong>Give a short written answer.</strong></p>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-2:-Albedo-feedback-in-the-Energy-Balance-Model">Problem 2: Albedo feedback in the Energy Balance Model<a class="anchor-link" href="#Problem-2:-Albedo-feedback-in-the-Energy-Balance-Model"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this exercise, we will introduce a new physical process into our model by <strong>letting the planetary albedo depend on temperature</strong>. The idea is that a warmer planet has less ice and snow at the surface, and thus a lower planetary albedo.</p>
+<p>Represent the ice-albedo feedback through the following formula:</p>
+$$ \alpha(T) = \left\{ \begin{array}{ccc}
+\alpha_i &amp;   &amp; T \le T_i \\
+\alpha_o + (\alpha_i-\alpha_o) \frac{(T-T_o)^2}{(T_i-T_o)^2} &amp;   &amp; T_i &lt; T &lt; T_o \\
+\alpha_o &amp;   &amp; T \ge T_o \end{array} \right\}$$<p>with the following parameter values:</p>
+<ul>
+<li>$\alpha_o = 0.289$ is the albedo of a warm, ice-free planet</li>
+<li>$\alpha_i = 0.7$ is the albedo of a very cold, completely ice-covered planet</li>
+<li>$T_o = 293$ K is the threshold temperature above which our model assumes the planet is ice-free</li>
+<li>$T_i = 260$ K is the threshold temperature below which our model assumes the planet is completely ice covered. </li>
+</ul>
+<p>For intermediate temperature, this formula gives a smooth variation in albedo with global mean temperature. It is tuned to reproduce the observed albedo $\alpha = 0.299$ for $T = 288$ K.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li><ul>
+<li>Define a Python function that implements the above albedo formula. <em>There is definitely more than one way to do it. It doesn't matter how you do it as long as it works!</em></li>
+<li>Use your function to calculate albedos for a wide range on planetary temperature (e.g. from $T=250$ K to $T=300$ K.)</li>
+<li>Present your results (albedo as a function of global mean temperature, or $\alpha(T)$) in a nicely labeled graph.</li>
+</ul>
+</li>
+<li><p>Now investigate a climate change scenario with this new model:</p>
+<ul>
+<li>Suppose that the transmissivity decreases from 0.611 to 0.57 (same as before)</li>
+<li>Your task is to <strong>calculate the new equilibrium temperature</strong>. First, explain very briefly why you can't just solve for it analytically as we did when albedo was a fixed number.</li>
+<li>Instead, you will use numerical time-stepping to find the equilibrium temperature</li>
+<li>Repeat the procedure from Question 3 <em>(time-step forward for 50 years from an initial temperature of 288 K and make a graph of the results)</em>, but this time <strong>use the function you defined above to compute the albedo for the current temperature</strong>.</li>
+<li>Is the <strong>new equilibrium temperature larger or smaller</strong> than it was in the model with fixed albedo? <strong>Explain why in your own words.</strong></li>
+</ul>
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bonus-problem">Bonus problem<a class="anchor-link" href="#Bonus-problem"> </a></h2><p><em>Open-ended investigation for extra credit, not required</em></p>
+<p>Something very different occurs in this model if you introduce a strong negative radiative forcing, either by substantially reducing greenhouse gases (which we would represent as an increase in the transmissivity $\tau$), or by decreasing the incoming solar radiation $Q$.</p>
+<p>Investigate, using your numerical model code, and report your results along with your thoughts.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
