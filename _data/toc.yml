@@ -63,7 +63,7 @@
 
 - url: /about-assignments
   not_numbered: true
-- url: courseware/assignment-zero-dim-ebm
+- url: /courseware/assignment-zero-dim-ebm
   not_numbered: true
 
 - divider: true
