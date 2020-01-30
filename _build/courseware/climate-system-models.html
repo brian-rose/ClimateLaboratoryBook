@@ -1,17 +1,17 @@
 ---
 interact_link: content/courseware/climate-system-models.ipynb
-kernel_name: ATM415
+kernel_name: python3
 kernel_path: content/courseware
 has_widgets: false
 title: |-
   The climate system and climate models
-pagenum: 11
+pagenum: 9
 prev_page:
-  url: /courseware/climlab-intro.html
+  url: /courseware/analytical-efolding.html
 next_page:
-  url: /courseware/radiation.html
+  url: /courseware/sensitivity-feedback.html
 suffix: .ipynb
-search: climate models atmosphere model system e g processes ocean energy section surface ice changes circulation dimensional www earth include images resolution img src width equations vertical change global feedbacks process albany report between such land figures balance radiation cloud properties temperature represent horizontal complexity three brian rose components org figure radiative modeling simulation fluid gcm average atmos edu facstaff brose id ipcc solar sea snow climatechange atmospheric timescales coupled png parameterization physical might weather pyramid terms any science part j its interactions complex under both into our wgiarfig jpg swr olr output aerosols chemical lwr large m albedo vegetation well
+search: climate models atmosphere model system e g processes ocean energy section surface www ice changes circulation dimensional earth include images resolution img src width equations vertical brian rose change figures global feedbacks process albany report between such land balance radiation cloud properties temperature represent gcm horizontal complexity three components might org figure radiative modeling simulation fluid average github atmos edu facstaff brose id its ipcc solar sea snow climatechange atmospheric timescales coupled png parameterization physical weather pyramid terms any science part io climatelaboratorybook j interactions complex under both our wgiarfig jpg swr olr output aerosols chemical lwr large m albedo
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -47,7 +47,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Definition-of-the-&#8220;climate-system&#8221;:">Definition of the &#8220;climate system&#8221;:<a class="anchor-link" href="#Definition-of-the-&#8220;climate-system&#8221;:"> </a></h3><p>From the IPCC AR5 report:</p>
+<h3 id="Definition-of-the-&#8220;climate-system&#8221;-and-its-&#8220;spheres&#8221;">Definition of the &#8220;climate system&#8221; and its &#8220;spheres&#8221;<a class="anchor-link" href="#Definition-of-the-&#8220;climate-system&#8221;-and-its-&#8220;spheres&#8221;"> </a></h3><p>From the IPCC AR5 report:</p>
 <blockquote><p><strong>Climate System:</strong> “The climate system is the highly complex system consisting of five major components: the atmosphere, the hydrosphere, the cryosphere, the lithosphere and the biosphere, and the interactions between them. The climate system evolves in time under the influence of its own internal dynamics and because of external forcings such as volcanic eruptions, solar variations and anthropogenic forcings such as the changing composition of the atmosphere and land use change.”</p>
 </blockquote>
 
@@ -131,7 +131,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Let&#8217;s-think-about-WHY-we-should-want-to-include-all-these-&#8220;spheres&#8221;-into-our-models.">Let&#8217;s think about WHY we should want to include all these &#8220;spheres&#8221; into our models.<a class="anchor-link" href="#Let&#8217;s-think-about-WHY-we-should-want-to-include-all-these-&#8220;spheres&#8221;-into-our-models."> </a></h3><p>Here are two nice figures from the IPCC AR5 WG1 report:</p>
+<h3 id="WHY-might-we-want-to-include-all-these-&#8220;spheres&#8221;-in-our-models?">WHY might we want to include all these &#8220;spheres&#8221; in our models?<a class="anchor-link" href="#WHY-might-we-want-to-include-all-these-&#8220;spheres&#8221;-in-our-models?"> </a></h3><p>Here are two nice figures from the IPCC AR5 WG1 report:</p>
 
 </div>
 </div>
@@ -188,7 +188,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget.">The key is that all these processes ultimately affect the planetary energy budget.<a class="anchor-link" href="#The-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget."> </a></h3><p>Let’s talk about <strong>timescales</strong>.</p>
+<h3 id="The-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget">The key is that all these processes ultimately affect the planetary energy budget<a class="anchor-link" href="#The-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget"> </a></h3><p>Let’s talk about <strong>timescales</strong>.</p>
 <p>Note that the IPCC figure only goes out to centuries – deep ocean circulation – but there are many even longer timescales in the climate system.
 e.g. growth and decay of ice sheets, geological processes like chemical weathering, continental drift</p>
 <p>The choice of which processes to include in a model should therefore be <strong>guided by the timescales of interest</strong>. For example, the IPCC process is primarily concerned with the century timescale – because it is of special concern to human affairs.
@@ -203,7 +203,7 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src='../images/Primer_Table1.8.png' width="800"></p>
+<p><img src="https://brian-rose.github.io/ClimateLaboratoryBook/images/Primer_Table1.8.png" width="800"></p>
 
 </div>
 </div>
@@ -227,7 +227,7 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The <em>Climate Modelling Primer</em> (4th ed., page 124) defines <strong>parameterization</strong> as</p>
+<h3 id="Definitions">Definitions<a class="anchor-link" href="#Definitions"> </a></h3><p>The <em>Climate Modelling Primer</em> (4th ed., page 124) defines <strong>parameterization</strong> as</p>
 <blockquote><p>The process of capturing a physical process through some mathematical relationship between important parameters in the process, but without explicitly modeling all the actual processes. For example, the albedo of leaves might be related to the soil moisture (via some specification of wilting point) but the physical and biological mechanisms in the plant that happen when the leaf wilts are not modelled.</p>
 </blockquote>
 
@@ -278,7 +278,7 @@ $$ OLR = \tau \sigma T_s^4 $$<p>Use observed temperature and OLR to choose an ap
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Simulation:">Simulation:<a class="anchor-link" href="#Simulation:"> </a></h3><p>Solve a large set of coupled equations for the time-dependent behavior of the atmosphere:</p>
+<h3 id="Simulation">Simulation<a class="anchor-link" href="#Simulation"> </a></h3><p>Solve a large set of coupled equations for the time-dependent behavior of the atmosphere:</p>
 <ul>
 <li>Equations of radiative transfer, with detailed information about the various greenhouse gases</li>
 <li>Equations of fluid motion to predict growth and decay of weather system and movement of water vapor</li>
@@ -408,7 +408,7 @@ $$ OLR = \tau \sigma T_s^4 $$<p>Use observed temperature and OLR to choose an ap
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src='../images/Primer_Figure2.2.png' width="800"></p>
+<p><img src='https://brian-rose.github.io/ClimateLaboratoryBook/images/Primer_Figure2.2.png' width="800"></p>
 
 </div>
 </div>
@@ -495,7 +495,7 @@ $$ OLR = \tau \sigma T_s^4 $$<p>Use observed temperature and OLR to choose an ap
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Fun-fact">Fun fact<a class="anchor-link" href="#Fun-fact"> </a></h3><p>Depending on who you ask, <strong>GCM</strong> stands for any of the following:</p>
+<h4 id="Fun-fact">Fun fact<a class="anchor-link" href="#Fun-fact"> </a></h4><p>Depending on who you ask, <strong>GCM</strong> stands for any of the following:</p>
 <ul>
 <li><strong>General Circulation Model</strong> (the original)</li>
 <li><strong>Global Climate Model</strong> (more common these days)</li>
@@ -583,7 +583,7 @@ $$ OLR = \tau \sigma T_s^4 $$<p>Use observed temperature and OLR to choose an ap
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The aim of the GCM is the calculation of the <strong>full three-dimensional character</strong> of the atmosphere and ocean.</p>
+<h3 id="Ingredients-of-the-GCM">Ingredients of the GCM<a class="anchor-link" href="#Ingredients-of-the-GCM"> </a></h3><p>The aim of the GCM is the calculation of the <strong>full three-dimensional character</strong> of the atmosphere and ocean.</p>
 <p>To <strong>simulate</strong> the fluid flow and its effects on other components of the climate system, instead of <strong>parameterizing</strong> the flow.</p>
 
 </div>
@@ -842,12 +842,13 @@ $$ OLR = \tau \sigma T_s^4 $$<p>Use observed temperature and OLR to choose an ap
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Citation-information">Citation information<a class="anchor-link" href="#Citation-information"> </a></h2><p>The figures above are reproduced from Chapter 1 of the IPCC AR5 Working Group 1 report.
+<h2 id="Citation-information">Citation information<a class="anchor-link" href="#Citation-information"> </a></h2><p>Several figures above are reproduced from Chapter 1 of the IPCC AR5 Working Group 1 report.
 The report and images can be found online at <a href="http://www.climatechange2013.org/report/full-report/">http://www.climatechange2013.org/report/full-report/</a></p>
 <p>The full citation is:</p>
 <blockquote><p>Cubasch, U., D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald and J.-G. Winther, 2013: Introduction. In: Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Stocker, T.F., D. Qin, G.-K. Plattner, M. Tignor, S.K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex and P.M. Midgley (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 119–158, doi:10.1017/CBO9781107415324.007.</p>
-<hr>
 </blockquote>
+<p>Some other figures are reproduced from <a href="https://www.wiley.com/en-us/The+Climate+Modelling+Primer%2C+4th+Edition-p-9781119943365"><em>The Climate Modelling Primer</em> (4th ed)</a>  by Kendal McGuffie and Ann Henderson-Sellers, Wiley-Blackwell 2014.</p>
+<hr>
 
 </div>
 </div>
