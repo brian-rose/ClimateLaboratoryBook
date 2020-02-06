@@ -35,6 +35,7 @@
   sections:
     - url: /courseware/analytical-efolding
 - url: /courseware/climate-system-models
+- url: /courseware/introducing-cesm
 - url: /courseware/sensitivity-feedback
 - url: /courseware/climlab-intro
 - url: /courseware/radiation
