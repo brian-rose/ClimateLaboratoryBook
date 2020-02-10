@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /courseware/sensitivity-feedback.html
 suffix: .ipynb
-search: model ocean data here cesm atmosphere average plot run global grid control take flux e code surface sea ice called file albany going land energy heat xarray month edu different brian rose resolution radiation just input lets points latitude longitude community climate www atmos lots simulation solar every topography variable point annual x output part change co models available our momentum not radiative actually averages year another files very exercise budget temperature longwave notebook github facstaff brose html notes used software open information atmospheric recall equations also composition same fluxes prescribed several g should any folder contains netcdf org conditions
+search: average model data global ocean cesm atmosphere plot here xarray surface grid e sea ice energy control run take called flux code going land different heat output albany radiation variable month brian rose edu lots resolution not also simulation solar just file dataset points x latitude insolation temperature community climate www available averages every year lets any files topography point mean longitude exercise budget part atmos co using information models our momentum radiative change input another org very want array its annual field units above particular example compute longwave notebook github facstaff brose html software open new atmospheric recall equations
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -34,7 +34,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>WARNING: THESE NOTES ARE UNFINISHED AND WILL CHANGE IN THE NEAR FUTURE</strong></p>
+<hr>
+<h2 id="About-the-CESM">About the CESM<a class="anchor-link" href="#About-the-CESM"> </a></h2><hr>
 
 </div>
 </div>
@@ -215,7 +216,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Description-of-input">Description of input<a class="anchor-link" href="#Description-of-input"> </a></h2><p>First, let's take a look at some of the ingredients that go into the control run. <strong>All of the necessary data will be served up by a special data server sitting in the department</strong>, so you should be able to run this code to interact with the data on any computer that is connected to the internet.</p>
+<h2 id="Browsing-input-data-with-xarray">Browsing input data with xarray<a class="anchor-link" href="#Browsing-input-data-with-xarray"> </a></h2><p>First, let's take a look at some of the ingredients that go into the control run. <strong>All of the necessary data will be served up by a special data server sitting in the department</strong>, so you should be able to run this code to interact with the data on any computer that is connected to the internet.</p>
 
 </div>
 </div>
@@ -297,6 +298,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_input/USGS-gtopo30_1.9x2.5_remap_c050602.nc
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -313,6 +329,37 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:       (lat: 96, lon: 144)
+Coordinates:
+  * lat           (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 86.21 88.11 90.0
+  * lon           (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Data variables:
+    PHIS          (lat, lon) float64 ...
+    SGH           (lat, lon) float64 ...
+    SGH30         (lat, lon) float64 ...
+    LANDFRAC      (lat, lon) float64 ...
+    LANDM_COSLAT  (lat, lon) float64 ...
+Attributes:
+    history:    Written on date: 20050602\ndefinesurf -remap -t /fs/cgd/csm/i...
+    make_ross:  true
+    topofile:   /fs/cgd/csm/inputdata/atm/cam/topo/USGS-gtopo30_10min_c050419.nc
+    gridfile:   /fs/cgd/csm/inputdata/atm/cam/coords/fv_1.9x2.5.nc
+    landmask:   /fs/cgd/csm/inputdata/atm/cam2/hrtopo/landm_coslat.nc
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -355,6 +402,43 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;PHIS&#x27; (lat: 96, lon: 144)&gt;
+array([[2.796465e+04, 2.796465e+04, 2.796465e+04, ..., 2.796465e+04,
+        2.796465e+04, 2.796465e+04],
+       [2.718626e+04, 2.724515e+04, 2.730367e+04, ..., 2.699761e+04,
+        2.706319e+04, 2.712589e+04],
+       [2.562017e+04, 2.579349e+04, 2.595301e+04, ..., 2.497548e+04,
+        2.521368e+04, 2.542803e+04],
+       ...,
+       [1.720216e-02, 7.134989e-03, 2.748055e-03, ..., 1.569097e-01,
+        8.055879e-02, 3.857289e-02],
+       [5.444020e-02, 3.951677e-02, 2.799566e-02, ..., 1.231596e-01,
+        9.609957e-02, 7.320690e-02],
+       [0.000000e+00, 0.000000e+00, 0.000000e+00, ..., 0.000000e+00,
+        0.000000e+00, 0.000000e+00]])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    long_name:   surface geopotential
+    units:       m2/s2
+    from_hires:  true
+    filter:      remap</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -391,6 +475,40 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;height&#x27; (lat: 96, lon: 144)&gt;
+array([[2.85353559e+00, 2.85353559e+00, 2.85353559e+00, ...,
+        2.85353559e+00, 2.85353559e+00, 2.85353559e+00],
+       [2.77410830e+00, 2.78011779e+00, 2.78608862e+00, ...,
+        2.75485770e+00, 2.76155041e+00, 2.76794791e+00],
+       [2.61430262e+00, 2.63198888e+00, 2.64826593e+00, ...,
+        2.54851832e+00, 2.57282431e+00, 2.59469735e+00],
+       ...,
+       [1.75532270e-06, 7.28060055e-07, 2.80413809e-07, ...,
+        1.60111973e-05, 8.22028425e-06, 3.93600870e-06],
+       [5.55512288e-06, 4.03232300e-06, 2.85670028e-06, ...,
+        1.25673050e-05, 9.80607842e-06, 7.47009192e-06],
+       [0.00000000e+00, 0.00000000e+00, 0.00000000e+00, ...,
+        0.00000000e+00, 0.00000000e+00, 0.00000000e+00]])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    units:    km</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -416,6 +534,35 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.collections.QuadMesh at 0x1168ec130&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_24_1.png"
+>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -456,6 +603,24 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_26_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -489,6 +654,24 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_28_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -509,9 +692,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Ocean-boundary-conditions">Ocean boundary conditions<a class="anchor-link" href="#Ocean-boundary-conditions"> </a></h2><p>Another important input file contains information about the slab ocean. You can see this file in the data catalog here:</p>
-<p><a href="http://ramadda.atmos.albany.edu:8080/repository/entry/show/Top/Users/BrianRose/CESM_runs/som_input/pop_frc.1x1d.090130.nc">http://ramadda.atmos.albany.edu:8080/repository/entry/show/Top/Users/BrianRose/CESM_runs/som_input/pop_frc.1x1d.090130.nc</a></p>
-<p>Let's load it and take a look.</p>
+<h2 id="Ocean-boundary-conditions">Ocean boundary conditions<a class="anchor-link" href="#Ocean-boundary-conditions"> </a></h2><p>Let's load another file that contains some information about the ocean and its interaction with the atmosphere.</p>
 
 </div>
 </div>
@@ -525,11 +706,55 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">som_input</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">cesm_input_path</span> <span class="o">+</span> <span class="s2">&quot;pop_frc.1x1d.090130.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">som_input</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">cesm_input_path</span> <span class="o">+</span> <span class="s2">&quot;pop_frc.1x1d.090130.nc&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">som_input</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:  (lat: 180, lon: 360, time: 12)
+Coordinates:
+  * time     (time) object 0001-01-15 00:00:00 ... 0001-12-16 00:00:00
+Dimensions without coordinates: lat, lon
+Data variables:
+    area     (lat, lon) float64 ...
+    mask     (lat, lon) int32 ...
+    yc       (lat) float32 ...
+    xc       (lon) float32 ...
+    S        (time, lat, lon) float32 ...
+    T        (time, lat, lon) float32 ...
+    U        (time, lat, lon) float32 ...
+    V        (time, lat, lon) float32 ...
+    dhdx     (time, lat, lon) float32 ...
+    dhdy     (time, lat, lon) float32 ...
+    hblt     (time, lat, lon) float32 ...
+    qdp      (time, lat, lon) float32 ...
+Attributes:
+    creation_date:  Fri Jan 30 10:22:53 MST 2009
+    comment:        This data is on a standard 1x1d grid.
+    calendar:       standard
+    author:         D. Bailey
+    note3:          qdp is computed from depth summed ocean column
+    note2:          all fields interpolated to T-grid
+    note1:          fields computed from 20-yr monthly means from pop
+    description:    Input data for DOCN7 mixed layer model from b40.999
+    source:         pop_frc.ncl
+    conventions:    CCSM data model domain description
+    title:          Monthly averaged ocean forcing from POP output
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -551,8 +776,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we are going to look at the <strong>annual mean heat flux out of the ocean</strong>, which is the prescribed 'q-flux' that we give to the slab ocean model.</p>
-<p>It is stored in the field <code>qdp</code> in the input file.</p>
+<p>Now we are going to look at the <strong>annual mean heat flux out of the ocean</strong>.</p>
+<p>It is stored in the field <code>qdp</code> in the dataset we just opened.</p>
 <p>The sign convention in CESM is that <code>qdp &gt; 0</code> where <strong>heat is going IN to the ocean</strong>. We will change the sign to plot heat going OUT of the ocean INTO the atmosphere (a more atmosphere-centric viewpoint).</p>
 
 </div>
@@ -574,6 +799,28 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;qdp&#x27; (time: 12, lat: 180, lon: 360)&gt;
+[777600 values with dtype=float32]
+Coordinates:
+  * time     (time) object 0001-01-15 00:00:00 ... 0001-12-16 00:00:00
+Dimensions without coordinates: lat, lon
+Attributes:
+    spatial_op:  Bilinear remapping: 1st order: destarea: NCL: ./map_gx1v5_to...</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -581,7 +828,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Unfortunately, here is a case in which the metadata are not very useful. There is no text description of what variable <code>qdp</code> actually is, or what its units are.  (It is actually in units of W/m2)</p>
+<p>Unfortunately, here is a case in which the metadata are not very useful. There is no text description of what variable <code>qdp</code> actually is, or what its units are.  (It is actually in units of W m$^{-2}$)</p>
 <p>We can see that there are 12 x 180 x 360 data points. One 180 x 360 grid for each calendar month!</p>
 
 </div>
@@ -612,6 +859,45 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/xarray/core/nanops.py:140: RuntimeWarning: Mean of empty slice
+  return np.nanmean(a, axis=axis, dtype=dtype)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;matplotlib.collections.QuadMesh at 0x118e4a760&gt;</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_37_2.png"
+>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -655,6 +941,24 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_39_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -692,6 +996,35 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;qdp&#x27; (lat: 180, lon: 360)&gt;
+array([[      nan,       nan,       nan, ...,       nan,       nan,       nan],
+       [      nan,       nan,       nan, ...,       nan,       nan,       nan],
+       [      nan,       nan,       nan, ...,       nan,       nan,       nan],
+       ...,
+       [-5.75126 , -5.742314, -5.734764, ..., -5.792866, -5.774798, -5.761612],
+       [-5.533446, -5.537023, -5.540624, ..., -5.522859, -5.526363, -5.529893],
+       [-5.31631 , -5.314115, -5.311888, ..., -5.322703, -5.320605, -5.318473]],
+      dtype=float32)
+Coordinates:
+    time     object 0001-01-15 00:00:00
+Dimensions without coordinates: lat, lon
+Attributes:
+    spatial_op:  Bilinear remapping: 1st order: destarea: NCL: ./map_gx1v5_to...</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -707,6 +1040,35 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;qdp&#x27; (lat: 180, lon: 360)&gt;
+array([[      nan,       nan,       nan, ...,       nan,       nan,       nan],
+       [      nan,       nan,       nan, ...,       nan,       nan,       nan],
+       [      nan,       nan,       nan, ...,       nan,       nan,       nan],
+       ...,
+       [-5.75126 , -5.742314, -5.734764, ..., -5.792866, -5.774798, -5.761612],
+       [-5.533446, -5.537023, -5.540624, ..., -5.522859, -5.526363, -5.529893],
+       [-5.31631 , -5.314115, -5.311888, ..., -5.322703, -5.320605, -5.318473]],
+      dtype=float32)
+Coordinates:
+    time     object 0001-01-15 00:00:00
+Dimensions without coordinates: lat, lon
+Attributes:
+    spatial_op:  Bilinear remapping: 1st order: destarea: NCL: ./map_gx1v5_to...</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -748,6 +1110,36 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_44_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For lots more help with using xarray to slice and dice your dataset, look at the online documentation:</p>
+<p><a href="http://xarray.pydata.org">http://xarray.pydata.org</a></p>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -756,15 +1148,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="The-&quot;pre-industrial&quot;-control-run">The "pre-industrial" control run<a class="anchor-link" href="#The-&quot;pre-industrial&quot;-control-run"> </a></h2><p>Our control run is set up to simulate the climate of the "pre-industrial era", meaning before significant human-induced changes to the composition of the atmosphere, nominally the year 1850.</p>
-<p>Output from the control run is available on the same data server as above. Look in the folder called <code>som_1850_f19</code> (Here <code>som</code> stands for "slab ocean model", 1850 indicated pre-industrial conditions, and <code>f19</code> is a code for the horizontal grid resolution).</p>
-<p>There are climatology files for each active model component:</p>
+<p>Output from the control run is available on the same data server as above. Look in the folder called <code>cpl_1850_f19</code> (Here <code>cpl</code> stands for "coupled model" with interactive ocean, 1850 indicated pre-industrial conditions, and <code>f19</code> is a code for 2º the horizontal grid resolution).</p>
+<p>There are output files for each active model component:</p>
 <ul>
-<li>atmosphere, </li>
+<li>atmosphere</li>
+<li>ocean</li>
 <li>sea ice</li>
 <li>land surface </li>
 </ul>
-<p>I created these files by <strong>averaging over the last 10 years of the simulation</strong>. Let's take a look at the atmosphere file. The file is called</p>
-<p><code>som_1850_f19.cam.h0.clim.nc</code></p>
+<p>The model produces <strong>monthly average</strong> output files for each component. We can load datasets from individual months, but there are also large <strong>concatenated</strong> files available that contain the entire output.</p>
+<p>Let's take a look at the atmosphere file. The file is called</p>
+<p><code>cpl_1850_f19.cam.h0.nc</code></p>
 <p>(the file extension <code>.nc</code> is used to indicate NetCDF format).</p>
 
 </div>
@@ -787,6 +1181,177 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:       (ilev: 27, lat: 96, lev: 26, lon: 144, nbnd: 2, slat: 95, slon: 144, time: 240)
+Coordinates:
+  * lev           (lev) float64 3.545 7.389 13.97 23.94 ... 929.6 970.6 992.6
+  * ilev          (ilev) float64 2.194 4.895 9.882 18.05 ... 956.0 985.1 1e+03
+  * time          (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00
+  * lat           (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 86.21 88.11 90.0
+  * lon           (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+  * slat          (slat) float64 -89.05 -87.16 -85.26 ... 85.26 87.16 89.05
+  * slon          (slon) float64 -1.25 1.25 3.75 6.25 ... 351.2 353.8 356.2
+Dimensions without coordinates: nbnd
+Data variables:
+    hyam          (lev) float64 ...
+    hybm          (lev) float64 ...
+    hyai          (ilev) float64 ...
+    hybi          (ilev) float64 ...
+    P0            float64 ...
+    date          (time) int32 ...
+    datesec       (time) int32 ...
+    w_stag        (slat) float64 ...
+    time_bnds     (time, nbnd) object ...
+    date_written  (time) |S64 ...
+    time_written  (time) |S64 ...
+    ntrm          int32 ...
+    ntrn          int32 ...
+    ntrk          int32 ...
+    ndbase        int32 ...
+    nsbase        int32 ...
+    nbdate        int32 ...
+    nbsec         int32 ...
+    mdt           int32 ...
+    nlon          (lat) int32 ...
+    wnummax       (lat) int32 ...
+    gw            (lat) float64 ...
+    ndcur         (time) int32 ...
+    nscur         (time) int32 ...
+    co2vmr        (time) float64 ...
+    ch4vmr        (time) float64 ...
+    n2ovmr        (time) float64 ...
+    f11vmr        (time) float64 ...
+    f12vmr        (time) float64 ...
+    sol_tsi       (time) float64 ...
+    nsteph        (time) int32 ...
+    AEROD_v       (time, lat, lon) float32 ...
+    CLDHGH        (time, lat, lon) float32 ...
+    CLDICE        (time, lev, lat, lon) float32 ...
+    CLDLIQ        (time, lev, lat, lon) float32 ...
+    CLDLOW        (time, lat, lon) float32 ...
+    CLDMED        (time, lat, lon) float32 ...
+    CLDTOT        (time, lat, lon) float32 ...
+    CLOUD         (time, lev, lat, lon) float32 ...
+    CONCLD        (time, lev, lat, lon) float32 ...
+    DCQ           (time, lev, lat, lon) float32 ...
+    DTCOND        (time, lev, lat, lon) float32 ...
+    DTV           (time, lev, lat, lon) float32 ...
+    EMIS          (time, lev, lat, lon) float32 ...
+    FICE          (time, lev, lat, lon) float32 ...
+    FLDS          (time, lat, lon) float32 ...
+    FLDSC         (time, lat, lon) float32 ...
+    FLNS          (time, lat, lon) float32 ...
+    FLNSC         (time, lat, lon) float32 ...
+    FLNT          (time, lat, lon) float32 ...
+    FLNTC         (time, lat, lon) float32 ...
+    FLUT          (time, lat, lon) float32 ...
+    FLUTC         (time, lat, lon) float32 ...
+    FSDS          (time, lat, lon) float32 ...
+    FSDSC         (time, lat, lon) float32 ...
+    FSDTOA        (time, lat, lon) float32 ...
+    FSNS          (time, lat, lon) float32 ...
+    FSNSC         (time, lat, lon) float32 ...
+    FSNT          (time, lat, lon) float32 ...
+    FSNTC         (time, lat, lon) float32 ...
+    FSNTOA        (time, lat, lon) float32 ...
+    FSNTOAC       (time, lat, lon) float32 ...
+    FSUTOA        (time, lat, lon) float32 ...
+    ICEFRAC       (time, lat, lon) float32 ...
+    ICIMR         (time, lev, lat, lon) float32 ...
+    ICWMR         (time, lev, lat, lon) float32 ...
+    LANDFRAC      (time, lat, lon) float32 ...
+    LHFLX         (time, lat, lon) float32 ...
+    LWCF          (time, lat, lon) float32 ...
+    MSKtem        (time, lat, lon) float32 ...
+    OCNFRAC       (time, lat, lon) float32 ...
+    OMEGA         (time, lev, lat, lon) float32 ...
+    OMEGAT        (time, lev, lat, lon) float32 ...
+    PBLH          (time, lat, lon) float32 ...
+    PHIS          (time, lat, lon) float32 ...
+    PRECC         (time, lat, lon) float32 ...
+    PRECL         (time, lat, lon) float32 ...
+    PRECSC        (time, lat, lon) float32 ...
+    PRECSL        (time, lat, lon) float32 ...
+    PS            (time, lat, lon) float32 ...
+    PSL           (time, lat, lon) float32 ...
+    Q             (time, lev, lat, lon) float32 ...
+    QFLX          (time, lat, lon) float32 ...
+    QREFHT        (time, lat, lon) float32 ...
+    QRL           (time, lev, lat, lon) float32 ...
+    QRS           (time, lev, lat, lon) float32 ...
+    RELHUM        (time, lev, lat, lon) float32 ...
+    SFCLDICE      (time, lat, lon) float32 ...
+    SFCLDLIQ      (time, lat, lon) float32 ...
+    SHFLX         (time, lat, lon) float32 ...
+    SNOWHICE      (time, lat, lon) float32 ...
+    SNOWHLND      (time, lat, lon) float32 ...
+    SOLIN         (time, lat, lon) float32 ...
+    SWCF          (time, lat, lon) float32 ...
+    T             (time, lev, lat, lon) float32 ...
+    TAUX          (time, lat, lon) float32 ...
+    TAUY          (time, lat, lon) float32 ...
+    TGCLDCWP      (time, lat, lon) float32 ...
+    TGCLDIWP      (time, lat, lon) float32 ...
+    TGCLDLWP      (time, lat, lon) float32 ...
+    TH            (time, ilev, lat, lon) float32 ...
+    TH2d          (time, lat, lon) float32 ...
+    TMQ           (time, lat, lon) float32 ...
+    TREFHT        (time, lat, lon) float32 ...
+    TS            (time, lat, lon) float32 ...
+    TSMN          (time, lat, lon) float32 ...
+    TSMX          (time, lat, lon) float32 ...
+    U             (time, lev, lat, lon) float32 ...
+    U10           (time, lat, lon) float32 ...
+    U2d           (time, lat, lon) float32 ...
+    UTGWORO       (time, lev, lat, lon) float32 ...
+    UU            (time, lev, lat, lon) float32 ...
+    UV2d          (time, lat, lon) float32 ...
+    UV3d          (time, ilev, lat, lon) float32 ...
+    UW2d          (time, lat, lon) float32 ...
+    UW3d          (time, ilev, lat, lon) float32 ...
+    V             (time, lev, lat, lon) float32 ...
+    V2d           (time, lat, lon) float32 ...
+    VD01          (time, lev, lat, lon) float32 ...
+    VQ            (time, lev, lat, lon) float32 ...
+    VT            (time, lev, lat, lon) float32 ...
+    VTH2d         (time, lat, lon) float32 ...
+    VTH3d         (time, ilev, lat, lon) float32 ...
+    VU            (time, lev, lat, lon) float32 ...
+    VV            (time, lev, lat, lon) float32 ...
+    W2d           (time, lat, lon) float32 ...
+    WTH3d         (time, ilev, lat, lon) float32 ...
+    Z3            (time, lev, lat, lon) float32 ...
+Attributes:
+    Conventions:                     CF-1.0
+    source:                          CAM
+    case:                            cpl_1850_f19
+    title:                           UNSET
+    logname:                         br546577
+    host:                            snow-30.rit.alba
+    Version:                         $Name$
+    revision_Id:                     $Id$
+    initial_file:                    b40.1850.track1.2deg.003.cam.i.0501-01-0...
+    topography_file:                 /data/rose_scr/cesm_inputdata/atm/cam/to...
+    history:                         Tue Feb 26 17:17:15 2019: ncrcat atm/his...
+    NCO:                             4.6.8
+    nco_openmp_thread_number:        1
+    DODS.strlen:                     8
+    DODS.dimName:                    chars
+    DODS_EXTRA.Unlimited_Dimension:  time
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -794,7 +1359,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lots of different stuff! These are all the different quantities that are calculated as part of the model simulation. <strong>Every quantity represents a long-term average for a particular month</strong>.</p>
+<p>Lots of different stuff! These are all the different quantities that are calculated as part of the model simulation. <strong>Every quantity represents a monthly average</strong>.</p>
 <p>Want to get more information about a particular variable?</p>
 
 </div>
@@ -816,6 +1381,27 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;co2vmr&#x27; (time: 240)&gt;
+array([0.000285, 0.000285, 0.000285, ..., 0.000285, 0.000285, 0.000285])
+Coordinates:
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00
+Attributes:
+    long_name:  co2 volume mixing ratio</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -823,7 +1409,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is the (prescribed) amount of CO2 in the atmosphere (about 285 parts per million by volume).</p>
+<p>This is the amount of CO2 in the atmosphere (about 285 parts per million by volume). It is prescribed in these simulations and does not change.</p>
 <p>One nice thing about <code>xarray.DataArray</code> objects is that we can do simple arithmetic with them (already seen several examples of this in the notes above). For example, change the units of CO2 amount to ppm:</p>
 
 </div>
@@ -842,6 +1428,51 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;co2vmr&#x27; (time: 240)&gt;
+array([284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7, 284.7,
+       284.7, 284.7, 284.7, 284.7, 284.7, 284.7])
+Coordinates:
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -873,6 +1504,32 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;SOLIN&#x27; (time: 240, lat: 96, lon: 144)&gt;
+[3317760 values with dtype=float32]
+Coordinates:
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Solar insolation
+    cell_methods:       time: mean</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -892,8 +1549,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h2><p><strong>Taking a time average</strong></p>
-<hr>
+<h2 id="Exercise:-Taking-a-time-average">Exercise: Taking a time average<a class="anchor-link" href="#Exercise:-Taking-a-time-average"> </a></h2><hr>
 
 </div>
 </div>
@@ -904,9 +1560,86 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Take the <strong>time average</strong> of the <code>SOLIN</code> field. Store the result as a new variable.</li>
+<li>What are the <strong>dimensions</strong> of the resulting data array? What would be a good way to visualize this quantity?</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;SOLIN&#x27; (lat: 96, lon: 144)&gt;
+array([[172.81734, 172.81734, 172.81734, ..., 172.81734, 172.81734,
+        172.81734],
+       [173.0204 , 173.0204 , 173.02022, ..., 173.01988, 173.02003,
+        173.02028],
+       [173.62914, 173.62895, 173.62877, ..., 173.62932, 173.6288 ,
+        173.62898],
+       ...,
+       [172.12259, 172.123  , 172.123  , ..., 172.12276, 172.12286,
+        172.12274],
+       [171.51128, 171.51137, 171.5114 , ..., 171.51158, 171.51155,
+        171.5115 ],
+       [171.30817, 171.30817, 171.30817, ..., 171.30817, 171.30817,
+        171.30817]], dtype=float32)
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h2><p><strong>Plotting the time average insolation</strong></p>
-<hr>
+<h2 id="Exercise:-Plotting-the-time-average-insolation">Exercise: Plotting the time average insolation<a class="anchor-link" href="#Exercise:-Plotting-the-time-average-insolation"> </a></h2><hr>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Make a well-labeled plot of the time-averaged insolation (using the variable you stored above).</li>
+<li>Is there a way to <strong>further reduce the dimensionality</strong> of the data, and plot the information in a different way?</li>
+</ol>
+<p>Remember that you can apply the <code>.mean()</code> operation across any number of named dimensions in a data array.</p>
 
 </div>
 </div>
@@ -939,9 +1672,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-global-average">The global average<a class="anchor-link" href="#The-global-average"> </a></h3><p>In order to compare these numbers with the control run, <strong>we need to take global averages</strong> of the data.</p>
-<p>A global average <strong>must be weighted by the area of each grid cell</strong>. We cannot simply average over each data point on a latitude-longitude grid.</p>
-<p><strong>WHY?</strong></p>
+<hr>
+<h2 id="Exercise:-Thinking-about-how-to-compute-a-global-average">Exercise: Thinking about how to compute a global average<a class="anchor-link" href="#Exercise:-Thinking-about-how-to-compute-a-global-average"> </a></h2><hr>
+<p>In order to compare these numbers with the control run, <strong>we need to take global averages</strong> of the data. What do we mean by <strong>global average</strong>?</p>
+<p>Before proceeding with these notes, try to answer the following question:</p>
+<p><strong>Why does it not make sense to simply average over each data point on a latitude-longitude grid?</strong></p>
 
 </div>
 </div>
@@ -952,8 +1687,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Weighting-for-global-average">Weighting for global average<a class="anchor-link" href="#Weighting-for-global-average"> </a></h2><p>The global average needs to weighted by the <strong>cosine of latitude</strong> (do you understand why?)</p>
-<p>We can implement this in <code>xarray</code> as follows:</p>
+<h2 id="Weighting-for-global-average">Weighting for global average<a class="anchor-link" href="#Weighting-for-global-average"> </a></h2><p>The global average needs to weighted by the area of each grid cell, which is proportional to the <strong>cosine of latitude</strong> (do you understand why?)</p>
+<p>We can implement this in xarray as follows:</p>
 
 </div>
 </div>
@@ -969,11 +1704,51 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Take the cosine of latitude (first converting to radians)</span>
 <span class="n">coslat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span>
-<span class="c1">#  And divide by its mean value</span>
-<span class="n">weight_factor</span> <span class="o">=</span> <span class="n">coslat</span> <span class="o">/</span> <span class="n">coslat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">coslat</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray &#39;lat&#39; (lat: 96)&gt;
+array([6.12323400e-17, 3.30633693e-02, 6.60905843e-02, 9.90455303e-02,
+       1.31892171e-01, 1.64594590e-01, 1.97117027e-01, 2.29423920e-01,
+       2.61479941e-01, 2.93250037e-01, 3.24699469e-01, 3.55793847e-01,
+       3.86499169e-01, 4.16781860e-01, 4.46608807e-01, 4.75947393e-01,
+       5.04765538e-01, 5.33031729e-01, 5.60715057e-01, 5.87785252e-01,
+       6.14212713e-01, 6.39968541e-01, 6.65024572e-01, 6.89353409e-01,
+       7.12928448e-01, 7.35723911e-01, 7.57714870e-01, 7.78877279e-01,
+       7.99187997e-01, 8.18624815e-01, 8.37166478e-01, 8.54792713e-01,
+       8.71484244e-01, 8.87222819e-01, 9.01991230e-01, 9.15773327e-01,
+       9.28554038e-01, 9.40319390e-01, 9.51056516e-01, 9.60753676e-01,
+       9.69400266e-01, 9.76986831e-01, 9.83505075e-01, 9.88947871e-01,
+       9.93309266e-01, 9.96584493e-01, 9.98769969e-01, 9.99863305e-01,
+       9.99863305e-01, 9.98769969e-01, 9.96584493e-01, 9.93309266e-01,
+       9.88947871e-01, 9.83505075e-01, 9.76986831e-01, 9.69400266e-01,
+       9.60753676e-01, 9.51056516e-01, 9.40319390e-01, 9.28554038e-01,
+       9.15773327e-01, 9.01991230e-01, 8.87222819e-01, 8.71484244e-01,
+       8.54792713e-01, 8.37166478e-01, 8.18624815e-01, 7.99187997e-01,
+       7.78877279e-01, 7.57714870e-01, 7.35723911e-01, 7.12928448e-01,
+       6.89353409e-01, 6.65024572e-01, 6.39968541e-01, 6.14212713e-01,
+       5.87785252e-01, 5.60715057e-01, 5.33031729e-01, 5.04765538e-01,
+       4.75947393e-01, 4.46608807e-01, 4.16781860e-01, 3.86499169e-01,
+       3.55793847e-01, 3.24699469e-01, 2.93250037e-01, 2.61479941e-01,
+       2.29423920e-01, 1.97117027e-01, 1.64594590e-01, 1.31892171e-01,
+       9.90455303e-02, 6.60905843e-02, 3.30633693e-02, 6.12323400e-17])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -987,11 +1762,54 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Want to see what we just created?</span>
-<span class="n">weight_factor</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  And divide by its mean value</span>
+<span class="n">weight_factor</span> <span class="o">=</span> <span class="n">coslat</span> <span class="o">/</span> <span class="n">coslat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span> 
+<span class="c1">#  Want to see what we just created?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">weight_factor</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray &#39;lat&#39; (lat: 96)&gt;
+array([9.72048516e-17, 5.24872953e-02, 1.04917196e-01, 1.57232372e-01,
+       2.09375617e-01, 2.61289912e-01, 3.12918491e-01, 3.64204898e-01,
+       4.15093052e-01, 4.65527308e-01, 5.15452516e-01, 5.64814085e-01,
+       6.13558038e-01, 6.61631075e-01, 7.08980627e-01, 7.55554920e-01,
+       8.01303024e-01, 8.46174915e-01, 8.90121527e-01, 9.33094803e-01,
+       9.75047755e-01, 1.01593451e+00, 1.05571035e+00, 1.09433178e+00,
+       1.13175659e+00, 1.16794383e+00, 1.20285394e+00, 1.23644875e+00,
+       1.26869152e+00, 1.29954700e+00, 1.32898144e+00, 1.35696266e+00,
+       1.38346006e+00, 1.40844466e+00, 1.43188916e+00, 1.45376790e+00,
+       1.47405697e+00, 1.49273418e+00, 1.50977911e+00, 1.52517311e+00,
+       1.53889936e+00, 1.55094285e+00, 1.56129040e+00, 1.56993071e+00,
+       1.57685432e+00, 1.58205366e+00, 1.58552305e+00, 1.58725870e+00,
+       1.58725870e+00, 1.58552305e+00, 1.58205366e+00, 1.57685432e+00,
+       1.56993071e+00, 1.56129040e+00, 1.55094285e+00, 1.53889936e+00,
+       1.52517311e+00, 1.50977911e+00, 1.49273418e+00, 1.47405697e+00,
+       1.45376790e+00, 1.43188916e+00, 1.40844466e+00, 1.38346006e+00,
+       1.35696266e+00, 1.32898144e+00, 1.29954700e+00, 1.26869152e+00,
+       1.23644875e+00, 1.20285394e+00, 1.16794383e+00, 1.13175659e+00,
+       1.09433178e+00, 1.05571035e+00, 1.01593451e+00, 9.75047755e-01,
+       9.33094803e-01, 8.90121527e-01, 8.46174915e-01, 8.01303024e-01,
+       7.55554920e-01, 7.08980627e-01, 6.61631075e-01, 6.13558038e-01,
+       5.64814085e-01, 5.15452516e-01, 4.65527308e-01, 4.15093052e-01,
+       3.64204898e-01, 3.12918491e-01, 2.61289912e-01, 2.09375617e-01,
+       1.57232372e-01, 1.04917196e-01, 5.24872953e-02, 9.72048516e-17])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1034,15 +1852,51 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Compare our two weights</span>
-<span class="nb">print</span><span class="p">(</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">FLNT</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">FLNT</span> <span class="o">*</span> <span class="n">weight_factor2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weight_factor2</span>
 </pre></div>
 
     </div>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;gw&#x27; (lat: 96)&gt;
+array([0.00656136, 0.05248012, 0.10490285, 0.15721088, 0.209347  ,
+       0.26125419, 0.31287572, 0.36415511, 0.41503631, 0.46546367,
+       0.51538206, 0.56473688, 0.61347417, 0.66154063, 0.70888371,
+       0.75545164, 0.80119349, 0.84605925, 0.88999985, 0.93296725,
+       0.97491447, 1.01579563, 1.05556604, 1.09418219, 1.13160188,
+       1.16778418, 1.20268952, 1.23627974, 1.2685181 , 1.29936936,
+       1.32879977, 1.35677717, 1.38327095, 1.40825214, 1.43169343,
+       1.45356918, 1.47385547, 1.49253013, 1.50957273, 1.52496463,
+       1.538689  , 1.55073084, 1.56107698, 1.56971611, 1.57663877,
+       1.5818374 , 1.58530632, 1.58704173, 1.58704173, 1.58530632,
+       1.5818374 , 1.57663877, 1.56971611, 1.56107698, 1.55073084,
+       1.538689  , 1.52496463, 1.50957273, 1.49253013, 1.47385547,
+       1.45356918, 1.43169343, 1.40825214, 1.38327095, 1.35677717,
+       1.32879977, 1.29936936, 1.2685181 , 1.23627974, 1.20268952,
+       1.16778418, 1.13160188, 1.09418219, 1.05556604, 1.01579563,
+       0.97491447, 0.93296725, 0.88999985, 0.84605925, 0.80119349,
+       0.75545164, 0.70888371, 0.66154063, 0.61347417, 0.56473688,
+       0.51538206, 0.46546367, 0.41503631, 0.36415511, 0.31287572,
+       0.26125419, 0.209347  , 0.15721088, 0.10490285, 0.05248012,
+       0.00656136])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1050,7 +1904,56 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>These numbers should be very close to each other.</p>
+<h3 id="Compute-the-global,-time-average-insolation">Compute the global, time average insolation<a class="anchor-link" href="#Compute-the-global,-time-average-insolation"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Compute the global, time average insolation using our two different weight factors</span>
+<span class="c1">#  Notice that we can apply the .mean() operation simultaneously over several dimensions!</span>
+<span class="nb">print</span><span class="p">(</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span> <span class="o">*</span> <span class="n">weight_factor2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray ()&gt;
+array(340.32886375)
+&lt;xarray.DataArray ()&gt;
+array(340.30586262)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>These numbers should both be very close to 340.3</p>
+<p>This value is the global average insolation in units of W m$^{-2}$.</p>
 
 </div>
 </div>
@@ -1062,9 +1965,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h2><p>Make sure you can take a global average, testing on <strong>surface temperature</strong> in the control run.</p>
-<p>Surface temperature is called <code>'TS'</code> in the control run data file.</p>
-<p><strong>Calculate annual, global average <code>'TS'</code></strong></p>
+<h2 id="Exercise:-plotting-a-global-average-timeseries">Exercise: plotting a global average timeseries<a class="anchor-link" href="#Exercise:-plotting-a-global-average-timeseries"> </a></h2><p>Plot a <strong>timeseries</strong> of the <strong>global average surface temperature</strong> in the control simulation.</p>
+<p>Surface temperature is called <code>'TS'</code> in the dataset.</p>
+<p>Make a plot of the global average <code>TS</code> with time on the x axis. <em>Make sure your global average is properly weighted as discussed above.</em></p>
 <hr>
 
 </div>
@@ -1074,10 +1977,198 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TSglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">TS</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
+<span class="n">TSglobal</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray (time: 240)&gt;
+array([285.72898682, 285.49401299, 286.27904211, 287.41386972,
+       288.27003459, 289.09844124, 289.31503214, 289.14779089,
+       288.48446959, 287.43825379, 286.30005108, 285.4822201 ,
+       285.52587345, 285.70978305, 286.51907145, 287.39663259,
+       288.43036138, 289.27239843, 289.49334981, 289.2270018 ,
+       288.56324199, 287.45506122, 286.36152137, 285.68297431,
+       285.64115059, 286.02903336, 286.66517814, 287.57771538,
+       288.5114103 , 289.15209553, 289.58562369, 289.51435914,
+       288.63846921, 287.62349476, 286.53952026, 285.71252715,
+       285.37900612, 285.68432086, 286.42280295, 287.53516323,
+       288.52624785, 289.36963343, 289.70397247, 289.38845523,
+       288.56153317, 287.61485545, 286.58915711, 286.02656523,
+       285.6876509 , 285.80444733, 286.77147652, 287.6000804 ,
+       288.47466646, 289.30900949, 289.54640526, 289.27115635,
+       288.60119008, 287.59500245, 286.47227001, 285.94176738,
+       285.50164567, 286.04132674, 286.69947865, 287.55425306,
+       288.51615009, 289.240104  , 289.53590774, 289.28245353,
+       288.4526808 , 287.4798987 , 286.32498383, 285.64667703,
+       285.53638463, 285.85984702, 286.48845149, 287.36777131,
+       288.34274536, 289.12537178, 289.46937558, 289.41924937,
+       288.61655765, 287.40151533, 286.28782655, 285.79730328,
+       285.47434696, 285.83371116, 286.68937901, 287.58281369,
+       288.48305642, 289.17915338, 289.56414738, 289.3474457 ,
+       288.5188223 , 287.46706499, 286.57005838, 285.85468223,
+       285.81704907, 285.87627279, 286.66344963, 287.70857528,
+       288.67857469, 289.50675421, 289.71547988, 289.50590308,
+       288.66520361, 287.7337405 , 286.82450202, 285.86399544,
+       285.64840642, 286.38554112, 286.81263946, 287.625683  ,
+       288.60214053, 289.38637745, 289.69951028, 289.50196295,
+       288.5890091 , 287.66726678, 286.52647044, 285.71431708,
+       285.59343165, 285.81193535, 286.46563041, 287.4109196 ,
+       288.4213604 , 289.07636063, 289.26782103, 289.2508547 ,
+       288.43152749, 287.32427766, 286.3678477 , 285.70483342,
+       285.43503691, 285.59956313, 286.38100501, 287.39582532,
+       288.47340893, 289.1211484 , 289.50444345, 289.37257943,
+       288.48567965, 287.51407854, 286.28164917, 285.7628817 ,
+       285.55357891, 285.74468361, 286.57943169, 287.35649233,
+       288.49574888, 289.29506616, 289.49529077, 289.35187822,
+       288.34844953, 287.55571738, 286.48258892, 285.79633138,
+       285.76017025, 286.03802836, 286.6773511 , 287.56888471,
+       288.66900064, 289.31232564, 289.71310487, 289.44685327,
+       288.71353149, 287.64889492, 286.73669719, 285.88254536,
+       285.93817813, 286.05794423, 286.63321729, 287.70598391,
+       288.73680573, 289.24659283, 289.6523757 , 289.31808086,
+       288.48550632, 287.3645237 , 286.46258606, 285.84163214,
+       285.38701708, 285.81055181, 286.62392007, 287.61150279,
+       288.43171261, 289.12028406, 289.4036265 , 289.16730135,
+       288.38935887, 287.26655169, 286.38843632, 285.56931263,
+       285.34475367, 285.70284077, 286.53049737, 287.37161667,
+       288.31928104, 288.98644684, 289.40416911, 289.18403561,
+       288.53231764, 287.34320592, 286.2297441 , 285.59461117,
+       285.26074355, 285.66897701, 286.59709518, 287.33668608,
+       288.406746  , 289.1222094 , 289.49321334, 289.45735775,
+       288.57569049, 287.47754096, 286.72450398, 286.1310169 ,
+       285.91070994, 286.24678875, 286.69563966, 287.79494103,
+       288.87472496, 289.55314895, 289.76593884, 289.43723345,
+       288.66578906, 287.63208369, 286.60205948, 286.15867963,
+       285.85908296, 285.81623454, 286.62021016, 287.67040383,
+       288.6576103 , 289.17532218, 289.57529292, 289.43251147,
+       288.62634617, 287.4513469 , 286.34874094, 285.93312728])
+Coordinates:
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TSglobal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x11a724a60&gt;]</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_74_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Finding-the-radiative-fluxes-in-the-model-output">Finding the radiative fluxes in the model output<a class="anchor-link" href="#Finding-the-radiative-fluxes-in-the-model-output"> </a></h3><p>Now that you have a working function to take global averages, we can compare some energy budget values against observations.</p>
-<p>The model output contains lots of diagnostics about the radiative fluxes. Here some CESM naming conventions to help you find the appropriate output fields:</p>
+<h3 id="Discussion-point">Discussion point<a class="anchor-link" href="#Discussion-point"> </a></h3><p>What do you see in this graph? Do you have any ideas about why the global average temperature looks like this?</p>
+<p>Also, what is the <strong>time average</strong> global-average surface temperature in this simulation?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">TSglobal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray ()&gt;
+array(287.54590571)</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Finding-the-radiative-fluxes-in-the-model-output">Finding the radiative fluxes in the model output<a class="anchor-link" href="#Finding-the-radiative-fluxes-in-the-model-output"> </a></h3><p>Now that you can take global averages and time averages, we can compare some energy budget values against observations.</p>
+<p>The model output contains lots of diagnostics about the radiative fluxes. Here are some CESM naming conventions to help you find the appropriate output fields:</p>
 <ul>
 <li>All variables whose names being with <code>'F'</code> are an <strong>energy flux</strong> of some kind. </li>
 <li>Most have a four-letter code, e.g. <code>'FLNT'</code></li>
@@ -1094,7 +2185,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <li><code>'S'</code> = surface</li>
 </ul>
 </li>
-<li>So <code>'FLNT'</code> means 'net longwave flux at the top of atmosphere', i.e. the outgoing longwave radiation.</li>
+<li>So <code>'FLNT'</code> means 'net longwave flux at the top of atmosphere', i.e. the outgoing longwave radiation or OLR.</li>
 </ul>
 <p>You wil see that these are all 240 x 96 x 144 -- i.e. a two-dimensional grid for every month in the simulation.</p>
 
@@ -1117,6 +2208,32 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;FLNT&#x27; (time: 240, lat: 96, lon: 144)&gt;
+[3317760 values with dtype=float32]
+Coordinates:
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    Sampling_Sequence:  rad_lwsw
+    units:              W/m2
+    long_name:          Net longwave flux at top of model
+    cell_methods:       time: mean</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1125,12 +2242,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h2 id="Exercise">Exercise<a class="anchor-link" href="#Exercise"> </a></h2><p>Compute annual, global averages of the following four quantities.</p>
+<h2 id="Exercise:-compute-terms-in-the-planetary-energy-budget">Exercise: compute terms in the planetary energy budget<a class="anchor-link" href="#Exercise:-compute-terms-in-the-planetary-energy-budget"> </a></h2><p>Compute annual, global averages of the following four quantities.</p>
 <ol>
 <li>Incoming solar radiation (or insolation)</li>
-<li>Absorbed solar radiation</li>
-<li>Planetary albedo</li>
-<li>Outgoing longwave radiation</li>
+<li>Absorbed solar radiation (ASR)</li>
+<li>Planetary albedo <em>(remember this is a <strong>ratio</strong> of outgoing to incoming solar radiation)</em></li>
+<li>Outgoing longwave radiation (OLR)</li>
 </ol>
 <p>Compare your results briefly to the observations.</p>
 <hr>
@@ -1146,7 +2263,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="A-few-more-tidbits">A few more tidbits<a class="anchor-link" href="#A-few-more-tidbits"> </a></h2><p>Feel free to keep exploring the data!</p>
 <p>Many other fields are four-dimensional (time, level, latitude, longitude).</p>
-<p>For example, here is the shape of the array that hold the <strong>air temperature</strong> at every point and every month:</p>
+<p>For example, here the <strong>air temperature</strong> at every point and every month:</p>
 
 </div>
 </div>
@@ -1160,10 +2277,37 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;T&#x27; (time: 240, lev: 26, lat: 96, lon: 144)&gt;
+[86261760 values with dtype=float32]
+Coordinates:
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    mdims:         1
+    units:         K
+    long_name:     Temperature
+    cell_methods:  time: mean</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1174,7 +2318,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And here is some code to plot the average sounding (temperature as function of pressure) at a particular point in the first month, which is January.</p>
+<p>Often we want to sample the data <strong>at a particular place and time</strong>. xarray gives us simple ways to do that.</p>
+<p>For example, we can <strong>interpolate</strong> to a particular location in latitude and longitude (here it's the coordinates of Albany NY):</p>
 
 </div>
 </div>
@@ -1188,13 +2333,49 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,</span><span class="mi">70</span><span class="p">,</span><span class="mi">115</span><span class="p">],</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">lev</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (hPa)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tlocal</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">42.75</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">73.8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tlocal</span><span class="p">)</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray &#39;T&#39; (time: 240, lev: 26)&gt;
+array([[231.55347435, 230.88840778, 225.30258457, ..., 268.2404776 ,
+        269.52409576, 269.43490089],
+       [228.10008728, 223.95615376, 221.31091049, ..., 274.1026815 ,
+        275.9925309 , 275.95261742],
+       [233.83040749, 227.64979877, 222.90131077, ..., 273.13557961,
+        275.45856834, 276.13333687],
+       ...,
+       [232.50221451, 228.86013168, 225.24411854, ..., 285.83419807,
+        288.1594445 , 287.90178192],
+       [224.24851162, 221.39988674, 219.95343647, ..., 277.54828316,
+        279.91035378, 279.59760986],
+       [220.30998913, 218.22460804, 217.92282791, ..., 268.73481789,
+        270.65231613, 270.98946404]])
+Coordinates:
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+  * time     (time) object 0001-02-01 00:00:00 ... 0021-01-01 00:00:00
+    lat      float64 42.75
+    lon      float64 286.2
+Attributes:
+    mdims:         1
+    units:         K
+    long_name:     Temperature
+    cell_methods:  time: mean
+</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1205,7 +2386,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>What was the location we just used for that plot? Let's check by indexing the latitude and longitude arrays:</p>
+<p>We can also use <strong>time indexing</strong> to pick out a particular year and month:</p>
 
 </div>
 </div>
@@ -1219,11 +2400,45 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">lat</span><span class="p">[</span><span class="mi">70</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">lon</span><span class="p">[</span><span class="mi">115</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  The .sel notation mean &quot;select&quot; along the given coordinate</span>
+<span class="c1">#  The string that follows is year-month. Our simulation begins in year 0001.</span>
+<span class="n">Tlocal</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;0020-01&#39;</span><span class="p">)</span>  <span class="c1"># a particular January</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.DataArray &#x27;T&#x27; (time: 1, lev: 26)&gt;
+array([[222.22812035, 218.28293472, 216.42282665, 215.97889965,
+        216.2183744 , 215.51508125, 214.45609436, 212.85779438,
+        212.8932338 , 213.25322216, 213.16839024, 213.62496151,
+        214.18230812, 216.96137932, 222.24211334, 228.96922817,
+        236.70113045, 244.78092411, 252.25793308, 258.92818031,
+        263.91473778, 266.81556206, 268.95294579, 268.96147919,
+        270.59828033, 270.51311325]])
+Coordinates:
+  * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
+  * time     (time) object 0020-01-01 00:00:00
+    lat      float64 42.75
+    lon      float64 286.2
+Attributes:
+    mdims:         1
+    units:         K
+    long_name:     Temperature
+    cell_methods:  time: mean</pre>
+</div>
+
+</div>
+</div>
 </div>
 </div>
 
@@ -1234,10 +2449,56 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>These are actually the coordinates of the Albany area (read longitude in degrees east).</p>
+<p>Now, for example, we can plot the temperature as a function of pressure at this place and time:</p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tlocal</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;0020-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&lt;matplotlib.lines.Line2D at 0x124cf1b50&gt;]</pre>
+</div>
+
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/introducing-cesm_87_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
