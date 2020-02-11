@@ -1,0 +1,318 @@
+---
+interact_link: content/courseware/assignment-cesm-control.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Assignment: Exploring the CESM pre-industrial control simulation
+pagenum: 35
+prev_page:
+  url: /courseware/assignment-zero-dim-ebm.html
+next_page:
+  url: /references.html
+suffix: .ipynb
+search: radiation surface data simulation notebook global cesm observations temperature solar brian rose code atmosphere control budget annual cycle not file called reanalysis air www albany html output energy dataset reflected found ncep climate github e following atmospheric python own average observed notes top absorbed calculate think our derived catalog assignment part laboratory io climatelaboratorybook j atmos edu facstaff brose index university skills jupyter complete against gridded answers required remember text necessary answer questions figures submit contains without errors save run again try problem absorption longwave emission fluxes heat flux field note need near words mean verify also numerical model averaged
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Assignment: Exploring the CESM pre-industrial control simulation</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-goals">Learning goals<a class="anchor-link" href="#Learning-goals"> </a></h2><p>Students completing this assignment will gain the following skills and concepts:</p>
+<ul>
+<li>Continued practice working with the Jupyter notebook</li>
+<li>Familiarity with atmospheric output from the CESM simulation</li>
+<li>More complete comparison of the global energy budget in the CESM control simulation to the observations</li>
+<li>Validation of the annual cycle of surface temperature against observations</li>
+<li>Opportunity to formulate a hypothesis about these global temperature variations</li>
+<li>Python programming skills: basic xarray usage: opening gridded dataset and taking averages</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Instructions">Instructions<a class="anchor-link" href="#Instructions"> </a></h2><ul>
+<li>In a local copy of this notebook (on the JupyterHub or your own device) <strong>add your answers in additional cells</strong>.</li>
+<li><strong>Complete the required problems</strong> below. </li>
+<li>Remember to set your cell types to <code>Markdown</code> for text, and <code>Code</code> for Python code!</li>
+<li><strong>Include comments</strong> in your code to explain your method as necessary.</li>
+<li>Remember to actually answer the questions. <strong>Written answers are required</strong> (not just code and figures!)</li>
+<li>Submit your solutions in <strong>a single Jupyter notebook</strong> that contains your text, your code, and your figures.</li>
+<li><em>Make sure that your notebook</em> <strong><em>runs cleanly without errors:</em></strong><ul>
+<li>Save your notebook</li>
+<li>From the <code>Kernel</code> menu, select <code>Restart &amp; Run All</code></li>
+<li>Did the notebook run from start to finish without error and produce the expected output?</li>
+<li>If yes, save again and submit your notebook file</li>
+<li>If no, fix the errors and try again.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-1:-The-global-energy-budget-in-the-CESM-control-simulation">Problem 1: The global energy budget in the CESM control simulation<a class="anchor-link" href="#Problem-1:-The-global-energy-budget-in-the-CESM-control-simulation"> </a></h2><p>Compute the <strong>global, time average</strong> of each of the following quantities, and compare them to the observed values from the Trenberth and Fasullo (2012) figure in the course notes:</p>
+<ul>
+<li><p>Solar Radiation budget:</p>
+<ul>
+<li>Incoming Solar Radiation, or Insolation</li>
+<li>Reflected Solar Radiation at the top of atmosphere</li>
+<li>Solar Radiation Reflected by Surface</li>
+<li>Solar Radiation Absorbed by Surface</li>
+<li>Solar Radiation Refelected by Clouds and Atmosphere <em>(you can calculate this as the difference between the reflected radiation at the top of atmosphere and reflected radiation at the surface)</em></li>
+<li>Total Absorbed Solar Radiation (ASR) at the top of atmosphere</li>
+<li>Solar Radiation Absorbed by Atmosphere <em>(you can calculate this as the residual of your budget, i.e. what's left over after accounting for all other absorption and reflection)</em></li>
+</ul>
+</li>
+<li><p>Longwave Radiation budget:</p>
+<ul>
+<li>Outgoing Longwave Radiation</li>
+<li>Upward emission from the surface</li>
+<li>Downwelling radiation at the surface</li>
+</ul>
+</li>
+<li><p>Other surface fluxes:</p>
+<ul>
+<li>"Thermals", or <em>sensible heat flux</em>. <em>You will find this in the field called <code>SHFLX</code> in your dataset.</em></li>
+<li>"Evapotranspiration", or <em>latent heat flux</em>. <em>You will find this in the field called <code>LHFLX</code> in your dataset.</em></li>
+</ul>
+</li>
+</ul>
+<p><em>Note we will look more carefully at atmospheric absorption and emission processes later. You do not need to try to calculate terms such as "Emitted by Atmosphere" or "Atmospheric Window"</em></p>
+<p><strong>Based on your results above, answer the following questions:</strong></p>
+<ul>
+<li>Is the CESM control simulation at (or near) <strong>energy balance</strong>? </li>
+<li>Do you think this simulation is near equilibrium?</li>
+<li>Summarize in your own words what you think are the most important similarities and differences of the global energy budgets in the CESM simulation and the observations.</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Problem-2:-Verifying-the-annual-cycle-in-global-mean-surface-temperature-against-observations">Problem 2: Verifying the annual cycle in global mean surface temperature against observations<a class="anchor-link" href="#Problem-2:-Verifying-the-annual-cycle-in-global-mean-surface-temperature-against-observations"> </a></h2><p>In the class notes we plotted the <strong>timeseries of global mean surface temperature</strong> in the CESM control simulation, and found an <strong>annual cycle</strong>. The purpose of this exercise is to verify that this phenomenon is also found in the observed temperature record. If so, then we can conclude that it is a real feature of Earth's climate and not an artifact of the numerical model.</p>
+<p>For observations, we will use the <strong>NCEP Reanalysis data</strong>.</p>
+<p><em>Reanalysis data is really a blend of observations and output from numerical weather prediction models. It represents our “best guess” at conditions over the whole globe, including regions where observations are very sparse.</em></p>
+<p>The necessary data are all served up over the internet. We will look at monthly climatologies averaged over the 30 year period 1981 - 2010.</p>
+<p>You can browse the available data here: 
+<a href="https://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.derived.html">https://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.derived.html</a></p>
+<p><strong>Surface air temperature</strong> is contained in a file called <code>air.2m.mon.ltm.nc</code>, which is found in the collection called <code>Surface Fluxes</code>.</p>
+<p>Here's a link directly to the catalog page for this data file:
+<a href="https://www.esrl.noaa.gov/psd/thredds/catalog/Datasets/ncep.reanalysis.derived/surface_gauss/catalog.html?dataset=Datasets/ncep.reanalysis.derived/surface_gauss/air.2m.day.ltm.nc">https://www.esrl.noaa.gov/psd/thredds/catalog/Datasets/ncep.reanalysis.derived/surface_gauss/catalog.html?dataset=Datasets/ncep.reanalysis.derived/surface_gauss/air.2m.day.ltm.nc</a></p>
+<p>Now click on the <code>OPeNDAP</code> link. A page opens up with lots of information about the contents of the file. The <code>Data URL</code> is what we need to read the data into our Python session. For example, this code opens the file and displays a list of the variables it contains:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/surface_gauss/air.2m.mon.ltm.nc&quot;</span>
+<span class="n">ncep_air2m</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ncep_air2m</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:             (lat: 94, lon: 192, nbnds: 2, time: 12)
+Coordinates:
+  * lon                 (lon) float32 0.0 1.875 3.75 ... 354.375 356.25 358.125
+  * time                (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:00:00
+  * lat                 (lat) float32 88.542 86.6531 ... -86.6531 -88.542
+Dimensions without coordinates: nbnds
+Data variables:
+    climatology_bounds  (time, nbnds) datetime64[ns] ...
+    air                 (time, lat, lon) float32 ...
+    valid_yr_count      (time, lat, lon) float32 ...
+Attributes:
+    Conventions:                    COARDS
+    title:                          mean daily NMC reanalysis (1958)
+    description:                    Data is from NMC initialized reanalysis\n...
+    platform:                       Model
+    not_missing_threshold_percent:  minimum 3% values input to have non-missi...
+    history:                        Created 2011/07/12 by doMonthLTM\nConvert...
+    References:                     http://www.esrl.noaa.gov/psd/data/gridded...
+    dataset_title:                  NCEP-NCAR Reanalysis 1
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/xarray/coding/times.py:426: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/numpy/core/_asarray.py:85: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  return array(a, dtype, copy=False, order=order)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The temperature data is called <code>air</code>. Take a look at the details:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ncep_air2m</span><span class="o">.</span><span class="n">air</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;xarray.DataArray &#39;air&#39; (time: 12, lat: 94, lon: 192)&gt;
+[216576 values with dtype=float32]
+Coordinates:
+  * lon      (lon) float32 0.0 1.875 3.75 5.625 ... 352.5 354.375 356.25 358.125
+  * time     (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:00:00
+  * lat      (lat) float32 88.542 86.6531 84.7532 ... -84.7532 -86.6531 -88.542
+Attributes:
+    long_name:     Monthly Long Term Mean of Air Temperature
+    valid_range:   [150. 400.]
+    units:         degK
+    precision:     2
+    GRIB_id:       11
+    GRIB_name:     TMP
+    var_desc:      Air temperature
+    level_desc:    2 m
+    statistic:     Long Term Mean
+    parent_stat:   Mean
+    actual_range:  [198.33992 311.8952 ]
+    dataset:       NCEP Reanalysis Derived Products
+    _ChunkSizes:   [  1  94 192]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that the dimensions are <code>(time: 12, lat: 94, lon: 192)</code>. The time dimension is calendar months. But note that the lat/lon grid is not the same as our model output!</p>
+<p>Think about how you will handle calculating the global average of these data.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Your-task:">Your task:<a class="anchor-link" href="#Your-task:"> </a></h3><ul>
+<li>Make a well-labeled graph of the global-averaged observed average surface air temperature climatology. </li>
+<li>Verify that the annual cycle we found in the CESM simulation also exists in the observations.</li>
+<li>In your own words, suggest a plausible physical explanation for why this annual cycle exists. </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

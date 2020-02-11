@@ -66,6 +66,8 @@
   not_numbered: true
 - url: /courseware/assignment-zero-dim-ebm
   not_numbered: true
+- url: /courseware/assignment-cesm-control
+  not_numbered: true
 
 - divider: true
 - url: /references
