@@ -4,20 +4,20 @@ kernel_name: python3
 kernel_path: content/courseware
 has_widgets: false
 title: |-
-  Assignment: Exploring the CESM pre-industrial control simulation
+  Assignment: Global average budgets in the CESM pre-industrial control simulation
 pagenum: 35
 prev_page:
   url: /courseware/assignment-zero-dim-ebm.html
 next_page:
   url: /references.html
 suffix: .ipynb
-search: radiation surface data simulation notebook global cesm observations temperature solar brian rose code atmosphere control budget annual cycle not file called reanalysis air www albany html output energy dataset reflected found ncep climate github e following atmospheric python own average observed notes top absorbed calculate think our derived catalog assignment part laboratory io climatelaboratorybook j atmos edu facstaff brose index university skills jupyter complete against gridded answers required remember text necessary answer questions figures submit contains without errors save run again try problem absorption longwave emission fluxes heat flux field note need near words mean verify also numerical model averaged
+search: radiation surface data global simulation notebook cesm observations temperature solar brian rose code atmosphere control budget annual cycle not file called reanalysis air average www albany html output energy dataset reflected found ncep climate github e following atmospheric python own observed notes top absorbed calculate think our derived catalog assignment budgets part laboratory io climatelaboratorybook j atmos edu facstaff brose index university skills jupyter complete against gridded answers required remember text necessary answer questions figures submit contains without errors save run again try problem absorption longwave emission fluxes heat flux field note need near words mean timeseries verify also numerical
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
     <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Assignment: Exploring the CESM pre-industrial control simulation</div>
+    <div id="page-info"><div id="page-title">Assignment: Global average budgets in the CESM pre-industrial control simulation</div>
 </div>
     <div class="jb_cell">
 
@@ -81,8 +81,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Problem-1:-The-global-energy-budget-in-the-CESM-control-simulation">Problem 1: The global energy budget in the CESM control simulation<a class="anchor-link" href="#Problem-1:-The-global-energy-budget-in-the-CESM-control-simulation"> </a></h2><p>Compute the <strong>global, time average</strong> of each of the following quantities, and compare them to the observed values from the Trenberth and Fasullo (2012) figure in the course notes:</p>
 <ul>
-<li><p>Solar Radiation budget:</p>
-<ul>
+<li>Solar Radiation budget:<ul>
 <li>Incoming Solar Radiation, or Insolation</li>
 <li>Reflected Solar Radiation at the top of atmosphere</li>
 <li>Solar Radiation Reflected by Surface</li>
@@ -92,15 +91,13 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <li>Solar Radiation Absorbed by Atmosphere <em>(you can calculate this as the residual of your budget, i.e. what's left over after accounting for all other absorption and reflection)</em></li>
 </ul>
 </li>
-<li><p>Longwave Radiation budget:</p>
-<ul>
+<li>Longwave Radiation budget:<ul>
 <li>Outgoing Longwave Radiation</li>
 <li>Upward emission from the surface</li>
 <li>Downwelling radiation at the surface</li>
 </ul>
 </li>
-<li><p>Other surface fluxes:</p>
-<ul>
+<li>Other surface fluxes:<ul>
 <li>"Thermals", or <em>sensible heat flux</em>. <em>You will find this in the field called <code>SHFLX</code> in your dataset.</em></li>
 <li>"Evapotranspiration", or <em>latent heat flux</em>. <em>You will find this in the field called <code>LHFLX</code> in your dataset.</em></li>
 </ul>
@@ -273,7 +270,7 @@ Attributes:
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that the dimensions are <code>(time: 12, lat: 94, lon: 192)</code>. The time dimension is calendar months. But note that the lat/lon grid is not the same as our model output!</p>
-<p>Think about how you will handle calculating the global average of these data.</p>
+<p><em>Think about how you will handle calculating the global average of these data.</em></p>
 
 </div>
 </div>
@@ -285,7 +282,7 @@ Attributes:
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Your-task:">Your task:<a class="anchor-link" href="#Your-task:"> </a></h3><ul>
-<li>Make a well-labeled graph of the global-averaged observed average surface air temperature climatology. </li>
+<li>Make a well-labeled timeseries graph of the global-averaged observed average surface air temperature climatology. </li>
 <li>Verify that the annual cycle we found in the CESM simulation also exists in the observations.</li>
 <li>In your own words, suggest a plausible physical explanation for why this annual cycle exists. </li>
 </ul>
