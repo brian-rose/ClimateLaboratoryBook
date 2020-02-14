@@ -68,6 +68,8 @@
   not_numbered: true
 - url: /courseware/assignment-cesm-control
   not_numbered: true
+  sections:
+    - url: /courseware/assignment-cesm-control-hints
 
 - divider: true
 - url: /references
