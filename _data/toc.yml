@@ -40,6 +40,8 @@
 - url: /courseware/sensitivity-feedback
 - url: /courseware/radiation
 - url: /courseware/elementary-greenhouse
+  sections:
+    - url: /courseware/sympy-greenhouse
 - url: /courseware/grey-radiation-climlab
 - url: /courseware/radiative-transfer
 - url: /courseware/spectral-bands

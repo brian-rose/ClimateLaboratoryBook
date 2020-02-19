@@ -5,13 +5,13 @@ kernel_path: content/courseware
 has_widgets: false
 title: |-
   Elementary greenhouse models
-pagenum: 13
+pagenum: 14
 prev_page:
   url: /courseware/radiation.html
 next_page:
-  url: /courseware/grey-radiation-climlab.html
+  url: /courseware/sympy-greenhouse.html
 suffix: .ipynb
-search: epsilon layer atmosphere radiative surface model olr t radiation our temperature sigma greenhouse longwave ts temperatures e forcing energy emission equilibrium just absorptivity absorbers flux lapse te observed increase text level ta above emissions grey rate w m change need gas lets beam contributions section single effect align must very three id solve k not fraction u terms between mean climate brian rose shortwave alpha q begin frac since absorption layers same where sympy upwelling d given set system assumptions absorbs means us thus here top upward levels value global get because add delta decrease zero key net albany balance
+search: epsilon olr sigma layer t atmosphere surface model ts delta radiative temperature radiation greenhouse level our align temperatures forcing longwave emission observed energy above absorbers text ta u increase brian rose begin just emissions absorptivity contributions effect end fraction same mean change e single must k not lets beam value global lapse add github approx grey gas upward flux three get rate olrs part io climatelaboratorybook html absorbs need solve te small does very think expression levels graph w m using decrease left right albany assumptions alpha q balance equilibrium means term gives why absorption hpa incident here every emissivity
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -48,7 +48,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src='../images/1layerAtm_sketch.png'></p>
+<p><img src="../images/1layerAtm_sketch.png"></p>
 
 </div>
 </div>
@@ -139,7 +139,7 @@ $$T_s = 303 ~\text{K}$$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>BUT our model now overpredicts the surface temperature by about 15ºC (or K).</p>
+<h3 id="Why-does-this-model-overpredict-the-surface-temperature">Why does this model overpredict the surface temperature<a class="anchor-link" href="#Why-does-this-model-overpredict-the-surface-temperature"> </a></h3><p>Our model now overpredicts the surface temperature by about 15ºC (303 K versus the observed 288 K).</p>
 <p>Ideas about why?</p>
 
 </div>
@@ -202,11 +202,11 @@ $$T_s = 303 ~\text{K}$$</p>
 <h3 id="Assumptions">Assumptions<a class="anchor-link" href="#Assumptions"> </a></h3><ul>
 <li>The atmosphere is <strong>transparent to shortwave radiation</strong> (still)</li>
 <li>Divide the atmosphere up into <strong>two layers of equal mass</strong> (the dividing line is thus at 500 hPa pressure level)</li>
-<li>Each layer <strong>absorbs only a fraction $\epsilon$ </strong> of whatever longwave radiation is incident upon it.</li>
+<li>Each layer <strong>absorbs only a fraction $\epsilon$</strong> of whatever longwave radiation is incident upon it.</li>
 <li>We will call the fraction $\epsilon$ the <strong>absorptivity</strong> of the layer.</li>
 <li>Assume $\epsilon$ is the same in each layer</li>
 </ul>
-<p>This is called the <strong>grey gas</strong> model, where grey here means the emission and absorption have no spectral dependence.</p>
+<p>This is called the <strong>grey gas</strong> model, where <strong>grey</strong> here means the emission and absorption have <strong>no spectral dependence</strong> (same at every wavelength).</p>
 <p>We can think of this model informally as a "leaky greenhouse".</p>
 
 </div>
@@ -235,8 +235,8 @@ $$T_s = 303 ~\text{K}$$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In order to build our model, we need to introduce one additional piece of physics known as <strong>Kirchoff's Law</strong>:</p>
-$$ \text{absorptivity} = \text{emissivity} $$<p>So if a layer of atmosphere at temperature $T$ absorbs a fraction $\epsilon$ of incident longwave radiation, it must emit</p>
+<h3 id="Kirchoff's-Law">Kirchoff's Law<a class="anchor-link" href="#Kirchoff's-Law"> </a></h3><p>In order to build our model, we need to introduce one additional piece of physics known as <strong>Kirchoff's Law</strong>:</p>
+$$ \text{absorptivity} = \text{emissivity} $$<p>So <strong>if a layer of atmosphere at temperature $T$ absorbs a fraction $\epsilon$</strong> of incident longwave radiation, it must <strong>emit</strong></p>
 $$ \epsilon ~\sigma ~T^4 $$<p>both up and down.</p>
 
 </div>
@@ -288,90 +288,11 @@ $$ \epsilon ~\sigma ~T^4 $$<p>both up and down.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="A-fun-aside:-symbolic-math-with-the-sympy-package">A fun aside: symbolic math with the <code>sympy</code> package<a class="anchor-link" href="#A-fun-aside:-symbolic-math-with-the-sympy-package"> </a></h3><p>This two-layer grey gas model is simple enough that we can work out all the details algebraically. There are three temperatures to keep track of $(T_s, T_0, T_1)$, so we will have 3x3 matrix equations.</p>
-<p>We all know how to work these things out with pencil and paper. But it can be tedious and error-prone.</p>
-<p>Symbolic math software lets us use the computer to automate a lot of tedious algebra.</p>
-<p>The <a href="http://www.sympy.org/en/index.html">sympy</a> package is a powerful open-source symbolic math library that is well-integrated into the scientific Python ecosystem.</p>
+<hr>
+<h2 id="3.-Tracing-the-upwelling-beam-of-longwave-radiation">3. Tracing the upwelling beam of longwave radiation<a class="anchor-link" href="#3.-Tracing-the-upwelling-beam-of-longwave-radiation"> </a></h2><hr>
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
-<span class="c1">#  Allow sympy to produce nice looking equations as output</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
-<span class="c1">#  Define some symbols for mathematical quantities</span>
-<span class="c1">#  Assume all quantities are positive (which will help simplify some expressions)</span>
-<span class="n">epsilon</span><span class="p">,</span> <span class="n">T_e</span><span class="p">,</span> <span class="n">T_s</span><span class="p">,</span> <span class="n">T_0</span><span class="p">,</span> <span class="n">T_1</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> \
-    <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;epsilon, T_e, T_s, T_0, T_1, sigma&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1">#  So far we have just defined some symbols, e.g.</span>
-<span class="n">T_s</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{s}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  We have hard-coded the assumption that the temperature is positive</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">ask</span><span class="p">(</span><span class="n">T_s</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -379,56 +300,12 @@ $\displaystyle T_{s}$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Longwave-emissions">Longwave emissions<a class="anchor-link" href="#Longwave-emissions"> </a></h3><p>Let's denote the emissions from each layer as
-\begin{align}
-E_s &amp;= \sigma T_s^4 \\
-E_0 &amp;= \epsilon \sigma T_0^4 \\
-E_1 &amp;= \epsilon \sigma T_1^4 
-\end{align}</p>
-<p>recognizing that $E_0$ and $E_1$ contribute to <strong>both</strong> the upwelling and downwelling beams.</p>
+<p>Let's think about the upwelling beam of longwave radiation, which we denote $U$.</p>
+<h3 id="Surface-to-layer-0">Surface to layer 0<a class="anchor-link" href="#Surface-to-layer-0"> </a></h3><p>We start at the surface. The upward flux <strong>from the surface to layer 0</strong> is</p>
+$$U_0 = \sigma T_s^4$$<p>(just the emission from the suface).</p>
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Define these operations as sympy symbols </span>
-<span class="c1">#  And display as a column vector:</span>
-<span class="n">E_s</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">*</span><span class="n">T_s</span><span class="o">**</span><span class="mi">4</span>
-<span class="n">E_0</span> <span class="o">=</span> <span class="n">epsilon</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">T_0</span><span class="o">**</span><span class="mi">4</span>
-<span class="n">E_1</span> <span class="o">=</span> <span class="n">epsilon</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">T_1</span><span class="o">**</span><span class="mi">4</span>
-<span class="n">E</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">E_s</span><span class="p">,</span> <span class="n">E_0</span><span class="p">,</span> <span class="n">E_1</span><span class="p">])</span>
-<span class="n">E</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma\\T_{0}^{4} \epsilon \sigma\\T_{1}^{4} \epsilon \sigma\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -436,53 +313,16 @@ $\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma\\T_{0}^{4} \epsilon \sigma\\
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Shortwave-radiation">Shortwave radiation<a class="anchor-link" href="#Shortwave-radiation"> </a></h3><p>Since we have assumed the atmosphere is transparent to shortwave, the incident beam $Q$ passes unchanged from the top to the surface, where a fraction $\alpha$ is reflected upward out to space.</p>
-
+<h3 id="Layer-0-to-layer-1">Layer 0 to layer 1<a class="anchor-link" href="#Layer-0-to-layer-1"> </a></h3><p>Now <strong>following this beam upward</strong>, we first recognize that a fraction $\epsilon$ of this beam is <strong>absorbed</strong> in layer 0.</p>
+<p>The upward flux from layer 0 to layer 1 consists of the sum of two parts:</p>
+<ol>
+<li>The <strong>transmitted part</strong> of whatever is incident from below (i.e. the part that is <strong>not absorbed</strong>)</li>
+<li><strong>New upward emissions</strong> from layer 0</li>
+</ol>
+<p>We can write this upward flux from layer 0 to layer 1 as:</p>
+$$U_1 = (1-\epsilon) \sigma T_s^4 + \epsilon \sigma T_0^4$$
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Define some new symbols for shortwave radiation</span>
-<span class="n">Q</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;Q, alpha&#39;</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1">#  Create a dictionary to hold our numerical values</span>
-<span class="n">tuned</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">tuned</span><span class="p">[</span><span class="n">Q</span><span class="p">]</span> <span class="o">=</span> <span class="mf">341.3</span>  <span class="c1">#  global mean insolation in W/m2</span>
-<span class="n">tuned</span><span class="p">[</span><span class="n">alpha</span><span class="p">]</span> <span class="o">=</span> <span class="mf">101.9</span><span class="o">/</span><span class="n">Q</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">)</span>  <span class="c1">#  observed planetary albedo</span>
-<span class="n">tuned</span><span class="p">[</span><span class="n">sigma</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.67E-8</span>  <span class="c1">#  Stefan-Boltzmann constant in W/m2/K4</span>
-<span class="n">tuned</span>
-<span class="c1">#  Numerical value for emission temperature</span>
-<span class="c1">#T_e.subs(tuned)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left\{ Q : 341.3, \  \alpha : 0.298564312921184, \  \sigma : 5.67e-08\right\}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -490,48 +330,11 @@ $\displaystyle \left\{ Q : 341.3, \  \alpha : 0.298564312921184, \  \sigma : 5.6
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Upwelling-beam">Upwelling beam<a class="anchor-link" href="#Upwelling-beam"> </a></h3><p>Let $U$ be the upwelling flux of longwave radiation.</p>
-<p>The upward flux from the surface to layer 0 is
-$$ U_0 = E_s $$
-(just the emission from the suface).</p>
-
+<h3 id="Beyond-layer-1">Beyond layer 1<a class="anchor-link" href="#Beyond-layer-1"> </a></h3><p>Continuing to follow the same beam, we follow the same logic! A fraction $\epsilon$ of $U_1$ is absorbed in layer 1, and therefore the transmitted part is $(1-\epsilon) U_1$.</p>
+<p>Including new emissions from layer 1, the upwelling flux above layer 1 is</p>
+$$U_2 = (1-\epsilon) U_1 + \epsilon \sigma T_1^4$$
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U_0</span> <span class="o">=</span> <span class="n">E_s</span>
-<span class="n">U_0</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{s}^{4} \sigma$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -539,45 +342,12 @@ $\displaystyle T_{s}^{4} \sigma$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Following this beam upward, we can write the upward flux from layer 0 to layer 1 as the sum of the transmitted component that originated below layer 0 and the new emissions from layer 0:</p>
-$$ U_1 = (1-\epsilon) U_0 + E_0 $$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">U_0</span> <span class="o">+</span> <span class="n">E_0</span>
-<span class="n">U_1</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)$
-</div>
+<h3 id="Outgoing-Longwave-Radiation">Outgoing Longwave Radiation<a class="anchor-link" href="#Outgoing-Longwave-Radiation"> </a></h3><p>Since there is <strong>no more atmosphere above layer 1</strong>, this upwelling beam is our OLR for this model:</p>
+$$OLR = U_2 = (1-\epsilon) U_1 + \epsilon \sigma T_1^4$$<p>which, plugging in the above expression for $U_1$, works out to</p>
+$$OLR= (1-\epsilon)^2 \sigma T_s^4 + \epsilon(1-\epsilon)\sigma T_0^4 + \epsilon \sigma T_1^4$$<p>Here the three terms represent <strong>contributions to the total OLR</strong> that <strong>originate from each of the three levels</strong></p>
 
 </div>
 </div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -585,28 +355,14 @@ $\displaystyle T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\r
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Continuing to follow the same beam, the upwelling flux above layer 1 is
-$$ U_2 = (1-\epsilon) U_1 + E_1 $$</p>
+<h3 id="Limits-of-large-and-small-absorptivity/emissivity">Limits of large and small absorptivity/emissivity<a class="anchor-link" href="#Limits-of-large-and-small-absorptivity/emissivity"> </a></h3><p>Think about the following two questions:</p>
+<ul>
+<li>What happens to this expression if $\epsilon=1$? <em>What does this represent physically?</em></li>
+<li>What about $\epsilon=0$?</li>
+</ul>
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U_2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span> <span class="o">*</span> <span class="n">U_1</span> <span class="o">+</span> <span class="n">E_1</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -614,236 +370,7 @@ $$ U_2 = (1-\epsilon) U_1 + E_1 $$</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Since there is no more atmosphere above layer 1, this upwelling flux is our Outgoing Longwave Radiation for this model:</p>
-$$ OLR = U_2 $$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">U_2</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{1}^{4} \epsilon \sigma + \left(1 - \epsilon\right) \left(T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)\right)$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The three terms in the above expression represent the <strong>contributions to the total OLR that originate from each of the three levels</strong>.</p>
-<p>Let's code this up explicitly for future reference:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Define the contributions to OLR originating from each level</span>
-<span class="n">OLR_s</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">T_s</span><span class="o">**</span><span class="mi">4</span>
-<span class="n">OLR_0</span> <span class="o">=</span> <span class="n">epsilon</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">T_0</span><span class="o">**</span><span class="mi">4</span>
-<span class="n">OLR_1</span> <span class="o">=</span> <span class="n">epsilon</span><span class="o">*</span><span class="n">sigma</span><span class="o">*</span><span class="n">T_1</span><span class="o">**</span><span class="mi">4</span>
-
-<span class="n">OLR</span> <span class="o">=</span> <span class="n">OLR_s</span> <span class="o">+</span> <span class="n">OLR_0</span> <span class="o">+</span> <span class="n">OLR_1</span>
-
-<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The expression for OLR is&#39;</span><span class="p">)</span>
-<span class="n">OLR</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The expression for OLR is
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{0}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{1}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)^{2}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Downwelling-beam">Downwelling beam<a class="anchor-link" href="#Downwelling-beam"> </a></h3><p>Let $D$ be the downwelling longwave beam. Since there is no longwave radiation coming in from space, we begin with</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fromspace</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">D_2</span> <span class="o">=</span> <span class="n">fromspace</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Between layer 1 and layer 0 the beam contains emissions from layer 1:</p>
-$$ D_1 = (1-\epsilon)D_2 + E_1 = E_1 $$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">D_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">D_2</span> <span class="o">+</span> <span class="n">E_1</span>
-<span class="n">D_1</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{1}^{4} \epsilon \sigma$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Finally between layer 0 and the surface the beam contains a transmitted component and the emissions from layer 0:</p>
-$$ D_0 = (1-\epsilon) D_1 + E_0 = \epsilon(1-\epsilon) \sigma T_1^4 + \epsilon \sigma T_0^4$$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">D_0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">D_1</span> <span class="o">+</span> <span class="n">E_0</span>
-<span class="n">D_0</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle T_{0}^{4} \epsilon \sigma + T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right)$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This $D_0$ is what we call the <strong>back radiation</strong>, i.e. the longwave radiation from the atmosphere to the surface.</p>
+<p>By allowing the atmosphere to partially absorb emissions from other levels, we now see that the Outgoing Longwave Radiation to space <strong>includes emissions from every level</strong> - and therefore <strong>affected by temperature at every level</strong>!</p>
 
 </div>
 </div>
@@ -855,8 +382,7 @@ $\displaystyle T_{0}^{4} \epsilon \sigma + T_{1}^{4} \epsilon \sigma \left(1 - \
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<p><a id='section3'></a></p>
-<h2 id="3.-Tuning-the-grey-gas-model-to-observations">3. Tuning the grey gas model to observations<a class="anchor-link" href="#3.-Tuning-the-grey-gas-model-to-observations"> </a></h2><hr>
+<h2 id="4.-Tuning-the-grey-gas-model-to-observations">4. Tuning the grey gas model to observations<a class="anchor-link" href="#4.-Tuning-the-grey-gas-model-to-observations"> </a></h2><hr>
 
 </div>
 </div>
@@ -867,9 +393,9 @@ $\displaystyle T_{0}^{4} \epsilon \sigma + T_{1}^{4} \epsilon \sigma \left(1 - \
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In building our new model we have introduced exactly one parameter, the absorptivity $\epsilon$. We need to choose a value for $\epsilon$.</p>
+<p>In building our new model we have introduced exactly <strong>one parameter</strong>, the absorptivity $\epsilon$. We need to choose a value for $\epsilon$.</p>
 <p>We will tune our model so that it <strong>reproduces the observed global mean OLR</strong> given <strong>observed global mean temperatures</strong>.</p>
-<p>To get appropriate temperatures for $T_s, T_0, T_1$, let's revisit the <a href="Lecture06 -- Radiation.ipynb">global, annual mean lapse rate plot from NCEP Reanalysis data</a> from the previous lecture.</p>
+<h3 id="Global-mean-air-temperature-observations">Global mean air temperature observations<a class="anchor-link" href="#Global-mean-air-temperature-observations"> </a></h3><p>To get appropriate temperatures for $T_s, T_0, T_1$, let's revisit the global, annual mean lapse rate plot from NCEP Reanalysis data we first encountered in the <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html">Radiation notes</a>.</p>
 
 </div>
 </div>
@@ -878,9 +404,78 @@ $\displaystyle T_{0}^{4} \epsilon \sigma + T_{1}^{4} \epsilon \sigma \left(1 - \
 
 <div class="jb_cell">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  This code is used just to create the skew-T plot of global, annual mean air temperature</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+<span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
+<span class="n">ncep_air</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;pressure/air.mon.1981-2010.ltm.nc&quot;</span><span class="p">)</span>
+<span class="c1">#  Take global, annual average and convert to Kelvin</span>
+<span class="n">coslat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">coslat</span> <span class="o">/</span> <span class="n">coslat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">Tglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">air</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tglobal</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="n">Tglobal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observations&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1050</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="c1"># Add the relevant special lines</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_dry_adiabats</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_moist_adiabats</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#skew.plot_mixing_lines()</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Global, annual mean sounding from NCEP Reanalysis&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/xarray/coding/times.py:426: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/numpy/core/_asarray.py:85: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  return array(a, dtype, copy=False, order=order)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/courseware/elementary-greenhouse_27_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Temperatures">Temperatures<a class="anchor-link" href="#Temperatures"> </a></h3><p>First, we set 
+<h3 id="Target-temperatures-for-our-model-tuning">Target temperatures for our model tuning<a class="anchor-link" href="#Target-temperatures-for-our-model-tuning"> </a></h3><p>First, we set 
 $$T_s = 288 \text{ K}  $$</p>
 <p>From the lapse rate plot, an average temperature for the layer between 1000 and 500 hPa is</p>
 $$ T_0 = 275 \text{ K}$$<p>Defining an average temperature for the layer between 500 and 0 hPa is more ambiguous because of the lapse rate reversal at the tropopause. We will choose</p>
@@ -893,48 +488,10 @@ $$ T_1 = 230 \text{ K}$$<p>From the graph, this is approximately the observed gl
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  add to our dictionary of values:</span>
-<span class="n">tuned</span><span class="p">[</span><span class="n">T_s</span><span class="p">]</span> <span class="o">=</span> <span class="mf">288.</span>
-<span class="n">tuned</span><span class="p">[</span><span class="n">T_0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">275.</span>
-<span class="n">tuned</span><span class="p">[</span><span class="n">T_1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">230.</span>
-<span class="n">tuned</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left\{ Q : 341.3, \  T_{0} : 275.0, \  T_{1} : 230.0, \  T_{s} : 288.0, \  \alpha : 0.298564312921184, \  \sigma : 5.67e-08\right\}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="OLR">OLR<a class="anchor-link" href="#OLR"> </a></h3><p>From the <a href="Lecture01 -- Planetary energy budget.ipynb">observed global energy budget</a> we set</p>
-$$ OLR = 238.5 \text{ W m}^{-2} $$
+<h3 id="OLR">OLR<a class="anchor-link" href="#OLR"> </a></h3><p>From the <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/models-budgets-fun.html#2.-The-observed-global-energy-budget">observed global energy budget</a> we set</p>
+$$OLR = 238.5 \text{ W m}^{-2}$$
 </div>
 </div>
 </div>
@@ -945,8 +502,9 @@ $$ OLR = 238.5 \text{ W m}^{-2} $$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Solving-for-$\epsilon$">Solving for $\epsilon$<a class="anchor-link" href="#Solving-for-$\epsilon$"> </a></h3><p>We wrote down the expression for OLR as a function of temperatures and absorptivity in our model above.</p>
-<p>We just need to equate this to the observed value and solve a <strong>quadratic equation</strong> for $\epsilon$.</p>
-<p>This is where the real power of the symbolic math toolkit comes in.</p>
+<p>All we need to do is plug the observed values into the above expression for OLR, and solve for $\epsilon$.</p>
+<p>It is a <strong>quadratic equation</strong> for the unknown $\epsilon$. We could work out the exact solution using the quadratic formula.</p>
+<p>But let's do it <strong>graphically</strong>, using Python!</p>
 
 </div>
 </div>
@@ -957,105 +515,19 @@ $$ OLR = 238.5 \text{ W m}^{-2} $$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Subsitute in the numerical values we are interested in:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the .subs() method for a sympy symbol means</span>
-<span class="c1">#  substitute values in the expression using the supplied dictionary</span>
-<span class="c1">#  Here we use observed values of Ts, T0, T1 </span>
-<span class="n">OLR2</span> <span class="o">=</span> <span class="n">OLR</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">)</span>
-<span class="n">OLR2</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle 324.2752734375 \epsilon \left(1 - \epsilon\right) + 158.669847 \epsilon + 390.0793946112 \left(1 - \epsilon\right)^{2}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We have a quadratic equation for $\epsilon$.</p>
-<p>Now use the <code>sympy.solve</code> function to solve the quadratic:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  The sympy.solve method takes an expression equal to zero</span>
-<span class="c1">#  So in this case we subtract the tuned value of OLR from our expression</span>
-<span class="n">eps_solution</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">OLR2</span> <span class="o">-</span> <span class="mf">238.5</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">)</span>
-<span class="n">eps_solution</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[ 0.586041150248834, \  3.93060102175677\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>There are two roots, but the second one is unphysical since we must have $0 &lt; \epsilon &lt; 1$.</p>
+<h3 id="Exercise:-graphical-solution-to-find-the-best-fit-value-of-$\epsilon$">Exercise: graphical solution to find the best fit value of $\epsilon$<a class="anchor-link" href="#Exercise:-graphical-solution-to-find-the-best-fit-value-of-$\epsilon$"> </a></h3><p>The OLR formula for the leaky greenhouse that we derived above is</p>
+$$OLR= (1-\epsilon)^2 \sigma T_s^4 + \epsilon(1-\epsilon)\sigma T_0^4 + \epsilon \sigma T_1^4$$<p>Do the following:</p>
+<ul>
+<li>Write a Python function that implements this formula</li>
+<li>The function should accept <strong>four input parameters</strong>:<ul>
+<li>The three temperatures $T_s, T_0, T_1$</li>
+<li>The emissivity $\epsilon$</li>
+</ul>
+</li>
+<li>Using this function, make a <strong>graph of OLR vs. $\epsilon$</strong> for the observed temperature values $T_s = 288, T_0 = 275, T_1 = 230$</li>
+<li>For the graph, $\epsilon$ should range between 0 and 1.</li>
+<li>From your graph, find the approximate value of $\epsilon$ that gives $OLR = 238.5$</li>
+</ul>
 
 </div>
 </div>
@@ -1066,278 +538,15 @@ $\displaystyle \left[ 0.586041150248834, \  3.93060102175677\right]$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Just for fun, here is a simple of example of <em>filtering a list</em> using powerful Python <em>list comprehension</em> syntax:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Give me only the roots that are between zero and 1!</span>
-<span class="n">list_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">eps</span> <span class="k">for</span> <span class="n">eps</span> <span class="ow">in</span> <span class="n">eps_solution</span> <span class="k">if</span> <span class="mi">0</span><span class="o">&lt;</span><span class="n">eps</span><span class="o">&lt;</span><span class="mi">1</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">list_result</span><span class="p">)</span>
-<span class="c1"># The result is a list with a single element.</span>
-<span class="c1">#  We need to slice the list to get just the number:</span>
-<span class="n">eps_tuned</span> <span class="o">=</span> <span class="n">list_result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">eps_tuned</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[0.586041150248834]
-0.586041150248834
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We conclude that our tuned value is</p>
-$$ \epsilon = 0.586 $$<p>This is the absorptivity that guarantees that our model reproduces the observed OLR given the observed tempertures.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">tuned</span><span class="p">[</span><span class="n">epsilon</span><span class="p">]</span> <span class="o">=</span> <span class="n">eps_tuned</span>
-<span class="n">tuned</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left\{ Q : 341.3, \  T_{0} : 275.0, \  T_{1} : 230.0, \  T_{s} : 288.0, \  \alpha : 0.298564312921184, \  \epsilon : 0.586041150248834, \  \sigma : 5.67e-08\right\}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<p><a id='section4'></a></p>
-<h2 id="4.-Level-of-emission">4. Level of emission<a class="anchor-link" href="#4.-Level-of-emission"> </a></h2><hr>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Even in this very simple greenhouse model, there is <strong>no single level</strong> at which the OLR is generated.</p>
-<p>The three terms in our formula for OLR tell us the contributions from each level.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">OLRterms</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">OLR_s</span><span class="p">,</span> <span class="n">OLR_0</span><span class="p">,</span> <span class="n">OLR_1</span><span class="p">])</span>
-<span class="n">OLRterms</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma \left(1 - \epsilon\right)^{2}\\T_{0}^{4} \epsilon \sigma \left(1 - \epsilon\right)\\T_{1}^{4} \epsilon \sigma\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now evaluate these expressions for our tuned temperature and absorptivity:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">OLRtuned</span> <span class="o">=</span> <span class="n">OLRterms</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">)</span>
-<span class="n">OLRtuned</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}66.8447576358007\\78.6681827185129\\92.9870596456864\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So we are getting about 67 W m$^{-2}$ from the surface, 79 W m$^{-2}$ from layer 0, and 93 W m$^{-2}$ from the top layer.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In terms of fractional contributions to the total OLR, we have (limiting the output to two decimal places):</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">OLRtuned</span> <span class="o">/</span> <span class="mf">239.</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}0.28\\0.33\\0.39\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Notice that the largest single contribution is coming from the top layer. This is in spite of the fact that the emissions from this layer are weak, because it is so cold.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Comparing to observations, the actual contribution to OLR from the surface is about 22 W m$^{-2}$ (or about 9% of the total), not 67 W m$^{-2}$. So we certainly don't have all the details worked out yet!</p>
-<p>As we will see later, to really understand what sets that observed 22 W m$^{-2}$, we will need to start thinking about the spectral dependence of the longwave absorptivity.</p>
+<p>Note if you solve the quadratic equation algebraically you will get two solutions:</p>
+<ul>
+<li>$\epsilon \approx 0.586$ </li>
+<li>$\epsilon \approx 3.93$</li>
+</ul>
+<p>(for details, see <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sympy-greenhouse.html">the advanced notes here</a>)</p>
+<p><strong>Why is the second solution not physically meaningful?</strong></p>
+<p>Hopefully your graph shows that $\epsilon = 0.586$ gives the correct value of OLR.</p>
+<p>This is the absorptivity that guarantees that <strong>our model reproduces the observed OLR given the observed temperatures</strong>.</p>
 
 </div>
 </div>
@@ -1349,8 +558,7 @@ $\displaystyle \left[\begin{matrix}0.28\\0.33\\0.39\end{matrix}\right]$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<p><a id='section5'></a></p>
-<h2 id="5.-Radiative-forcing-in-the-2-layer-grey-gas-model">5. Radiative forcing in the 2-layer grey gas model<a class="anchor-link" href="#5.-Radiative-forcing-in-the-2-layer-grey-gas-model"> </a></h2><hr>
+<h2 id="5.-Level-of-emission">5. Level of emission<a class="anchor-link" href="#5.-Level-of-emission"> </a></h2><hr>
 
 </div>
 </div>
@@ -1361,7 +569,90 @@ $\displaystyle \left[\begin{matrix}0.28\\0.33\\0.39\end{matrix}\right]$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Adding some extra greenhouse absorbers will mean that a greater fraction of incident longwave radiation is absorbed in each layer.</p>
+<h3 id="Contributions-from-each-level-to-the-outgoing-radiation">Contributions from each level to the outgoing radiation<a class="anchor-link" href="#Contributions-from-each-level-to-the-outgoing-radiation"> </a></h3><p>Now that we have tuned up our model, we can see exactly how strongly each level contributes to the OLR.</p>
+<p>The three components of the OLR are</p>
+\begin{align*}
+OLR_s &amp;= (1-\epsilon)^2 \sigma T_s^4  \\
+OLR_0 &amp;= \epsilon(1-\epsilon)\sigma T_0^4 \\
+OLR_1 &amp;= \epsilon \sigma T_1^4 
+\end{align*}<p>which of course add up to the total OLR we wrote down above.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Exercise:-calculate-contributions-to-OLR">Exercise: calculate contributions to OLR<a class="anchor-link" href="#Exercise:-calculate-contributions-to-OLR"> </a></h3><p><strong>Write some simple Python code to calculate each term in the OLR using the observed temperatures and the tuned value $\epsilon = 0.586$. Fill out the list below using your calculated numbers.</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Contributions to the OLR originating from each level, in W/m2:</strong></p>
+<ul>
+<li>Surface: </li>
+<li>Level 0: </li>
+<li>Level 1: </li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># now sum up the numbers to verify you get something very close to 238.5</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that the largest single contribution is coming from the top layer.</p>
+<p><em>This is in spite of the fact that the emissions from this layer are weak, because it is so cold.</em></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Changing-the-level-of-emission-by-adding-absorbers">Changing the level of emission by adding absorbers<a class="anchor-link" href="#Changing-the-level-of-emission-by-adding-absorbers"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Adding some <strong>extra greenhouse absorbers</strong> will mean that a <strong>greater fraction</strong> of incident longwave radiation is <strong>absorbed in each layer</strong>.</p>
 <p>Thus <strong>$\epsilon$ must increase</strong> as we add greenhouse gases.</p>
 
 </div>
@@ -1373,10 +664,20 @@ $\displaystyle \left[\begin{matrix}0.28\\0.33\\0.39\end{matrix}\right]$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Suppose we have $\epsilon$ initially, and the absorptivity increases to $\epsilon_2 = \epsilon + \delta_\epsilon$.</p>
+<p>Suppose we have $\epsilon$ initially, and the absorptivity increases to $\epsilon_2 = \epsilon + \Delta \epsilon$.</p>
 <p>Suppose further that this increase happens <strong>abruptly</strong> so that there is no time for the temperatures to respond to this change. <strong>We hold the temperatures fixed</strong> in the column and ask how the radiative fluxes change.</p>
-<p><strong>Do you expect the OLR to increase or decrease?</strong></p>
-<p>Let's use our two-layer leaky greenhouse model to investigate the answer.</p>
+<p><strong>Question: Do you expect the OLR to increase or decrease?</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Calculating-the-change-in-level-of-emission">Calculating the change in level of emission<a class="anchor-link" href="#Calculating-the-change-in-level-of-emission"> </a></h3><p>Let's use our two-layer leaky greenhouse model to investigate the answer.</p>
 
 </div>
 </div>
@@ -1388,43 +689,13 @@ $\displaystyle \left[\begin{matrix}0.28\\0.33\\0.39\end{matrix}\right]$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The components of the OLR before the perturbation are</p>
-
+\begin{align*}
+OLR_s &amp;= (1-\epsilon)^2 \sigma T_s^4  \\
+OLR_0 &amp;= \epsilon(1-\epsilon)\sigma T_0^4 \\
+OLR_1 &amp;= \epsilon \sigma T_1^4 
+\end{align*}
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">OLRterms</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma \left(1 - \epsilon\right)^{2}\\T_{0}^{4} \epsilon \sigma \left(1 - \epsilon\right)\\T_{1}^{4} \epsilon \sigma\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1432,46 +703,14 @@ $\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma \left(1 - \epsilon\right)^{2
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>After the perturbation we have</p>
-
+<p>and after the perturbation we have</p>
+\begin{align*}
+OLR_s &amp;= (1-\epsilon - \Delta \epsilon)^2 \sigma T_s^4  \\
+OLR_0 &amp;= (\epsilon + \Delta \epsilon)(1-\epsilon - \Delta \epsilon)\sigma T_0^4 \\
+OLR_1 &amp;= (\epsilon + \Delta \epsilon) \sigma T_1^4 
+\end{align*}
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">delta_epsilon</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;delta_epsilon&#39;</span><span class="p">)</span>
-<span class="n">OLRterms_pert</span> <span class="o">=</span> <span class="n">OLRterms</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">+</span><span class="n">delta_epsilon</span><span class="p">)</span>
-<span class="n">OLRterms_pert</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma \left(- \delta_{\epsilon} - \epsilon + 1\right)^{2}\\T_{0}^{4} \sigma \left(\delta_{\epsilon} + \epsilon\right) \left(- \delta_{\epsilon} - \epsilon + 1\right)\\T_{1}^{4} \sigma \left(\delta_{\epsilon} + \epsilon\right)\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1479,100 +718,7 @@ $\displaystyle \left[\begin{matrix}T_{s}^{4} \sigma \left(- \delta_{\epsilon} - 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's take the difference</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">deltaOLR</span> <span class="o">=</span> <span class="n">OLRterms_pert</span> <span class="o">-</span> <span class="n">OLRterms</span>
-<span class="n">deltaOLR</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}- T_{s}^{4} \sigma \left(1 - \epsilon\right)^{2} + T_{s}^{4} \sigma \left(- \delta_{\epsilon} - \epsilon + 1\right)^{2}\\- T_{0}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{0}^{4} \sigma \left(\delta_{\epsilon} + \epsilon\right) \left(- \delta_{\epsilon} - \epsilon + 1\right)\\- T_{1}^{4} \epsilon \sigma + T_{1}^{4} \sigma \left(\delta_{\epsilon} + \epsilon\right)\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>To make things simpler, we will neglect the terms in $\delta_\epsilon^2$. This is perfectly reasonably because we are dealing with <strong>small perturbations</strong> where $\delta_\epsilon &lt;&lt; \epsilon$.</p>
-<p>Telling <code>sympy</code> to set the quadratic terms to zero gives us</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">deltaOLR_linear</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">deltaOLR</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">delta_epsilon</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="n">deltaOLR_linear</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}2 T_{s}^{4} \delta_{\epsilon} \epsilon \sigma - 2 T_{s}^{4} \delta_{\epsilon} \sigma\\- 2 T_{0}^{4} \delta_{\epsilon} \epsilon \sigma + T_{0}^{4} \delta_{\epsilon} \sigma\\T_{1}^{4} \delta_{\epsilon} \sigma\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Recall that the three terms are the contributions to the OLR from the three different levels. In this case, the <strong>changes</strong> in those contributions after adding more absorbers.</p>
+<p>Let's subtract off the original components to get the contributions to the <strong>change in OLR</strong> from each layer:</p>
 
 </div>
 </div>
@@ -1583,8 +729,11 @@ $\displaystyle \left[\begin{matrix}2 T_{s}^{4} \delta_{\epsilon} \epsilon \sigma
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now let's divide through by $\delta_\epsilon$ to get the normalized change in OLR per unit change in absorptivity:</p>
-
+\begin{align*}
+\Delta OLR_s &amp;= \left[(1-\epsilon - \Delta \epsilon)^2 - (1-\epsilon)^2\right]\sigma T_s^4  \\
+\Delta OLR_0 &amp;= \left[(\epsilon + \Delta \epsilon)(1-\epsilon - \Delta \epsilon) - \epsilon(1-\epsilon)  \right] \sigma T_0^4 \\
+\Delta OLR_1 &amp;= \left[(\epsilon + \Delta \epsilon) - \epsilon \right] \sigma T_1^4 
+\end{align*}
 </div>
 </div>
 </div>
@@ -1592,37 +741,16 @@ $\displaystyle \left[\begin{matrix}2 T_{s}^{4} \delta_{\epsilon} \epsilon \sigma
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">deltaOLR_per_deltaepsilon</span> <span class="o">=</span> \
-    <span class="n">sympy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">deltaOLR_linear</span> <span class="o">/</span> <span class="n">delta_epsilon</span><span class="p">)</span>
-<span class="n">deltaOLR_per_deltaepsilon</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now expand this out, but to make things easier to deal with, neglect term in $\Delta \epsilon^2$ (very small - we will be considering changes of less than 10% in $\epsilon$):</p>
+\begin{align*}
+\Delta OLR_s &amp;\approx (\Delta \epsilon) \left[ -2(1-\epsilon) \right] \sigma T_s^4  \\
+\Delta OLR_0 &amp;\approx (\Delta \epsilon) (1 - 2 \epsilon) \sigma T_0^4 \\
+\Delta OLR_1 &amp;\approx (\Delta \epsilon) \sigma T_1^4 
+\end{align*}
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}2 T_{s}^{4} \sigma \left(\epsilon - 1\right)\\T_{0}^{4} \sigma \left(1 - 2 \epsilon\right)\\T_{1}^{4} \sigma\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1654,8 +782,8 @@ $\displaystyle \left[\begin{matrix}2 T_{s}^{4} \sigma \left(\epsilon - 1\right)\
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&quot;Radiative-forcing&quot;-is-the-change-in-radiative-flux-at-TOA-after-adding-absorbers">"Radiative forcing" is the change in radiative flux at TOA after adding absorbers<a class="anchor-link" href="#&quot;Radiative-forcing&quot;-is-the-change-in-radiative-flux-at-TOA-after-adding-absorbers"> </a></h3><p>In this model, only the longwave flux can change, so we define the radiative forcing as</p>
-$$ R = - \delta OLR $$<p>(with the minus sign so that $R$ is positive when the climate system is gaining extra energy).</p>
+<hr>
+<h2 id="6.-Radiative-forcing-in-the-2-layer-grey-gas-model">6. Radiative forcing in the 2-layer grey gas model<a class="anchor-link" href="#6.-Radiative-forcing-in-the-2-layer-grey-gas-model"> </a></h2><hr>
 
 </div>
 </div>
@@ -1666,7 +794,31 @@ $$ R = - \delta OLR $$<p>(with the minus sign so that $R$ is positive when the c
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We just worked out that whenever we add some extra absorbers, the emissions to space (on average) will originate from higher levels in the atmosphere.</p>
+<h3 id="Definition-of-Radiative-Forcing">Definition of Radiative Forcing<a class="anchor-link" href="#Definition-of-Radiative-Forcing"> </a></h3><p>We now define a very important quantity:</p>
+<p><strong>"Radiative forcing" is the change in total radiative flux at TOA after adding absorbers</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this model, <strong>only the longwave flux can change</strong>, so we calculate the radiative forcing as</p>
+$$ R = - \Delta OLR $$<p>(with the minus sign so that $R$ is <strong>positive when the climate system is gaining extra energy</strong>).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Connection-between-radiative-forcing-and-level-of-emission">Connection between radiative forcing and level of emission<a class="anchor-link" href="#Connection-between-radiative-forcing-and-level-of-emission"> </a></h3><p>We just worked out that whenever we <strong>add some extra absorbers</strong>, the <strong>emissions to space</strong> (on average) will originate from <strong>higher levels</strong> in the atmosphere.</p>
 <p>What does this mean for OLR? Will it increase or decrease?</p>
 <p>To get the answer, we just have to sum up the three contributions we wrote above:</p>
 
@@ -1677,36 +829,14 @@ $$ R = - \delta OLR $$<p>(with the minus sign so that $R$ is positive when the c
 
 <div class="jb_cell">
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">deltaOLR_per_deltaepsilon</span><span class="p">)</span>
-<span class="n">R</span>
-</pre></div>
-
-    </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+\begin{align*}
+R &amp;= -\Delta OLR_s - \Delta OLR_0 - \Delta OLR_1  \\
+  &amp;= -\Delta \epsilon \left[  -2(1-\epsilon) \sigma T_s^4 + (1 - 2 \epsilon) \sigma T_0^4  + \sigma T_1^4 \right]
+\end{align*}
 </div>
 </div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle - T_{0}^{4} \sigma \left(1 - 2 \epsilon\right) - T_{1}^{4} \sigma - 2 T_{s}^{4} \sigma \left(\epsilon - 1\right)$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1740,43 +870,10 @@ $\displaystyle - T_{0}^{4} \sigma \left(1 - 2 \epsilon\right) - T_{1}^{4} \sigma
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Let's-solve-the-isothermal-case">Let's solve the isothermal case<a class="anchor-link" href="#Let's-solve-the-isothermal-case"> </a></h4><p>We will just set $T_s = T_0 = T_1$ in the above expression for the radiative forcing.</p>
+<p>What do you get?</p>
 
 </div>
 </div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">T_s</span><span class="p">),</span> <span class="p">(</span><span class="n">T_1</span><span class="p">,</span> <span class="n">T_s</span><span class="p">)])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle - T_{s}^{4} \sigma \left(1 - 2 \epsilon\right) - 2 T_{s}^{4} \sigma \left(\epsilon - 1\right) - T_{s}^{4} \sigma$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1784,52 +881,7 @@ $\displaystyle - T_{s}^{4} \sigma \left(1 - 2 \epsilon\right) - 2 T_{s}^{4} \sig
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>which then simplifies to</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">simplify</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">T_0</span><span class="p">,</span> <span class="n">T_s</span><span class="p">),</span> <span class="p">(</span><span class="n">T_1</span><span class="p">,</span> <span class="n">T_s</span><span class="p">)]))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle 0$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="The-answer-is-zero">The answer is zero<a class="anchor-link" href="#The-answer-is-zero"> </a></h4><p>For an isothermal atmosphere, there is <strong>no change</strong> in OLR when we add extra greenhouse absorbers. Hence, no radiative forcing and no greenhouse effect.</p>
+<h4 id="The-answer-is-$R=0$">The answer is $R=0$<a class="anchor-link" href="#The-answer-is-$R=0$"> </a></h4><p>For an isothermal atmosphere, there is <strong>no change</strong> in OLR when we add extra greenhouse absorbers. Hence, no radiative forcing and no greenhouse effect.</p>
 <p>Why?</p>
 <p>The level of emission still must go up. But since the temperature at the upper level is the <strong>same</strong> as everywhere else, the emissions are exactly the same.</p>
 
@@ -1852,10 +904,9 @@ $\displaystyle 0$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For a more realistic example of radiative forcing due to an increase in greenhouse absorbers, we can substitute in our tuned values for temperature and $\epsilon$.</p>
-<p>We'll express the answer in W m$^{-2}$ for a 1% increase in $\epsilon$.</p>
-<p>The three components of the OLR change are</p>
-
+<p>For a more realistic example of radiative forcing due to an increase in greenhouse absorbers, we use our observed temperatures and the tuned value for $\epsilon$.</p>
+<p>We'll express the answer in W m$^{-2}$ for a 2% increase in $\epsilon$:</p>
+$$ \Delta \epsilon = 0.02 \times 0.58 $$
 </div>
 </div>
 </div>
@@ -1868,7 +919,9 @@ $\displaystyle 0$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">deltaOLR_per_deltaepsilon</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.586041150248834</span>
+<span class="n">delta_epsilon</span> <span class="o">=</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="n">epsilon</span>
+<span class="n">delta_epsilon</span>
 </pre></div>
 
     </div>
@@ -1883,8 +936,8 @@ $\displaystyle 0$
 
 
 
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}-3.22953635009767\\-0.55802035047635\\1.58669847\end{matrix}\right]$
+<div class="output_text output_subarea output_execute_result">
+<pre>0.011720823004976679</pre>
 </div>
 
 </div>
@@ -1899,7 +952,7 @@ $\displaystyle \left[\begin{matrix}-3.22953635009767\\-0.55802035047635\\1.58669
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>And the net radiative forcing is</p>
+<p>Calculate the three components of the radiative forcing:</p>
 
 </div>
 </div>
@@ -1913,7 +966,29 @@ $\displaystyle \left[\begin{matrix}-3.22953635009767\\-0.55802035047635\\1.58669
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.01</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigma</span> <span class="o">=</span> <span class="mf">5.67E-8</span>
+<span class="n">Ts</span> <span class="o">=</span> <span class="mf">288.</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mf">275.</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="mf">230.</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Component originating from the surface</span>
+<span class="n">Rs</span> <span class="o">=</span> <span class="o">-</span><span class="n">delta_epsilon</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">epsilon</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">Ts</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">Rs</span>
 </pre></div>
 
     </div>
@@ -1928,8 +1003,80 @@ $\displaystyle \left[\begin{matrix}-3.22953635009767\\-0.55802035047635\\1.58669
 
 
 
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle 2.20085823057402$
+<div class="output_text output_subarea output_execute_result">
+<pre>3.78528239476332</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Component originating from level 0</span>
+<span class="n">R0</span> <span class="o">=</span> <span class="o">-</span><span class="n">delta_epsilon</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">epsilon</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">T0</span><span class="o">**</span><span class="mi">4</span>
+<span class="n">R0</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.6540457761108388</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Component originating from level 1</span>
+<span class="n">R1</span> <span class="o">=</span> <span class="o">-</span><span class="n">delta_epsilon</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">T1</span><span class="o">**</span><span class="mi">4</span>
+<span class="n">R1</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>-1.8597411929137297</pre>
 </div>
 
 </div>
@@ -1944,10 +1091,56 @@ $\displaystyle 2.20085823057402$
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>So in our example, <strong>the OLR decreases by 2.2 W m$^{-2}$</strong>, or equivalently, the radiative forcing is +2.2 W m$^{-2}$.</p>
+<p>So just add them up to get the total radiative forcing:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="n">Rs</span> <span class="o">+</span> <span class="n">R0</span> <span class="o">+</span> <span class="n">R1</span> 
+<span class="n">R</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>2.579586977960429</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So in our example, <strong>the OLR decreases by 2.6 W m$^{-2}$</strong>, or equivalently, the <strong>radiative forcing is +2.6 W m$^{-2}$.</strong></p>
 <p>What we have just calculated is this:</p>
-<p><em>Given the observed lapse rates, a small increase in absorbers will cause a small decrease in OLR.</em></p>
-<p>The greenhouse effect thus gets stronger, and energy will begin to accumulate in the system -- which will eventually cause temperatures to increase as the system adjusts to a new equilibrium.</p>
+<p><strong>Given the observed lapse rates, a small increase in absorbers will cause a small decrease in OLR.</strong></p>
+<p>The <strong>greenhouse effect</strong> thus gets <strong>stronger</strong>, and energy will begin to accumulate in the system -- which will eventually <strong>cause temperatures to increase</strong> as the system adjusts to a new equilibrium.</p>
 
 </div>
 </div>
@@ -1959,612 +1152,6 @@ $\displaystyle 2.20085823057402$
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<p><a id='section6'></a></p>
-<h2 id="6.-Radiative-equilibrium-in-the-2-layer-grey-gas-model">6. Radiative equilibrium in the 2-layer grey gas model<a class="anchor-link" href="#6.-Radiative-equilibrium-in-the-2-layer-grey-gas-model"> </a></h2><hr>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In the previous section we:</p>
-<ul>
-<li>made no assumptions about the processes that actually set the temperatures. </li>
-<li>used the model to calculate radiative fluxes, <strong>given observed temperatures</strong>. </li>
-<li>stressed the importance of knowing the lapse rates in order to know how an increase in emission level would affect the OLR, and thus determine the radiative forcing.</li>
-</ul>
-<p>A key question in climate dynamics is therefore this:</p>
-<p><strong>What sets the lapse rate?</strong></p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>It turns out that lots of different physical processes contribute to setting the lapse rate.</p>
-<p>Understanding how these processes acts together and how they change as the climate changes is one of the key reasons for which we need more complex climate models.</p>
-<p>For now, we will use our prototype greenhouse model to do the most basic lapse rate calculation: the <strong>radiative equilibrium temperature</strong>.</p>
-<p>We assume that</p>
-<ul>
-<li>the only exchange of energy between layers is longwave radiation</li>
-<li>equilibrium is achieved when the <strong>net radiative flux convergence</strong> in each layer is zero.</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Compute-the-radiative-flux-convergence">Compute the radiative flux convergence<a class="anchor-link" href="#Compute-the-radiative-flux-convergence"> </a></h3><p>First, the <strong>net upwelling flux</strong> is just the difference between flux up and flux down:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Upwelling and downwelling beams as matrices</span>
-<span class="n">U</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">U_0</span><span class="p">,</span> <span class="n">U_1</span><span class="p">,</span> <span class="n">U_2</span><span class="p">])</span>
-<span class="n">D</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">D_0</span><span class="p">,</span> <span class="n">D_1</span><span class="p">,</span> <span class="n">D_2</span><span class="p">])</span>
-<span class="c1"># Net flux, positive up</span>
-<span class="n">F</span> <span class="o">=</span> <span class="n">U</span><span class="o">-</span><span class="n">D</span>
-<span class="n">F</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}- T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)\\T_{1}^{4} \epsilon \sigma + \left(1 - \epsilon\right) \left(T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)\right)\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Net-absorption-is-the-flux-convergence-in-each-layer">Net absorption is the flux convergence in each layer<a class="anchor-link" href="#Net-absorption-is-the-flux-convergence-in-each-layer"> </a></h4><p>(difference between what's coming in the bottom and what's going out the top of each layer)</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># define a vector of absorbed radiation -- same size as emissions</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">E</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="c1">#  absorbed radiation at surface</span>
-<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">F</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="c1"># Compute the convergence</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">F</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
-
-<span class="n">A</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}- T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\- 2 T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{1}^{4} \epsilon \sigma - T_{s}^{4} \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\T_{0}^{4} \epsilon \sigma - 2 T_{1}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right) - \left(1 - \epsilon\right) \left(T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)\right)\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Radiative-equilibrium-means-net-absorption-is-ZERO-in-the-atmosphere">Radiative equilibrium means net absorption is ZERO in the atmosphere<a class="anchor-link" href="#Radiative-equilibrium-means-net-absorption-is-ZERO-in-the-atmosphere"> </a></h4><p>The only other heat source is the <strong>shortwave heating</strong> at the <strong>surface</strong>.</p>
-<p>In matrix form, here is the system of equations to be solved:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">radeq</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Equality</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
-<span class="n">radeq</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}- T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\- 2 T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{1}^{4} \epsilon \sigma - T_{s}^{4} \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\T_{0}^{4} \epsilon \sigma - 2 T_{1}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right) - \left(1 - \epsilon\right) \left(T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)\right)\end{matrix}\right] = \left[\begin{matrix}Q \left(1 - \alpha\right)\\0\\0\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Just as we did for the 1-layer model, it is helpful to rewrite this system using the definition of the <strong>emission temperture</strong> $T_e$</p>
-$$ (1-\alpha) Q = \sigma T_e^4 $$
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">radeq2</span> <span class="o">=</span> <span class="n">radeq</span><span class="o">.</span><span class="n">subs</span><span class="p">([((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span><span class="p">,</span> <span class="n">sigma</span><span class="o">*</span><span class="n">T_e</span><span class="o">**</span><span class="mi">4</span><span class="p">)])</span>
-<span class="n">radeq2</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}- T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\- 2 T_{0}^{4} \epsilon \sigma - T_{1}^{4} \epsilon \sigma \left(1 - \epsilon\right) + T_{1}^{4} \epsilon \sigma - T_{s}^{4} \sigma \left(1 - \epsilon\right) + T_{s}^{4} \sigma\\T_{0}^{4} \epsilon \sigma - 2 T_{1}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right) - \left(1 - \epsilon\right) \left(T_{0}^{4} \epsilon \sigma + T_{s}^{4} \sigma \left(1 - \epsilon\right)\right)\end{matrix}\right] = \left[\begin{matrix}T_{e}^{4} \sigma\\0\\0\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In this form we can see that we actually have a <strong>linear system</strong> of equations for a set of variables $T_s^4, T_0^4, T_1^4$.</p>
-<p>We can solve this matrix problem to get these as functions of $T_e^4$.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Solve for radiative equilibrium </span>
-<span class="n">fourthpower</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">radeq2</span><span class="p">,</span> <span class="p">[</span><span class="n">T_s</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">T_1</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">T_0</span><span class="o">**</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">fourthpower</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left\{ T_{0}^{4} : - \frac{T_{e}^{4} \left(\epsilon + 1\right)}{\epsilon - 2}, \  T_{1}^{4} : - \frac{T_{e}^{4}}{\epsilon - 2}, \  T_{s}^{4} : - \frac{T_{e}^{4} \left(\epsilon + 2\right)}{\epsilon - 2}\right\}$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This produces a dictionary of solutions for the fourth power of the temperatures!</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A little manipulation gets us the solutions for temperatures that we want:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># need the symbolic fourth root operation</span>
-<span class="kn">from</span> <span class="nn">sympy.simplify.simplify</span> <span class="kn">import</span> <span class="n">nthroot</span>
-
-<span class="n">fourthpower_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">fourthpower</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="n">T_s</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">T_0</span><span class="o">**</span><span class="mi">4</span><span class="p">,</span> <span class="n">T_1</span><span class="o">**</span><span class="mi">4</span><span class="p">]]</span>
-<span class="n">solution</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">nthroot</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fourthpower_list</span><span class="p">])</span>
-<span class="c1">#  Display result as matrix equation!</span>
-<span class="n">T</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Matrix</span><span class="p">([</span><span class="n">T_s</span><span class="p">,</span> <span class="n">T_0</span><span class="p">,</span> <span class="n">T_1</span><span class="p">])</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">Equality</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">solution</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}\\T_{0}\\T_{1}\end{matrix}\right] = \left[\begin{matrix}T_{e} \sqrt[4]{- \frac{1}{\epsilon - 2}} \sqrt[4]{\epsilon + 2}\\T_{e} \sqrt[4]{- \frac{1}{\epsilon - 2}} \sqrt[4]{\epsilon + 1}\\T_{e} \sqrt[4]{- \frac{1}{\epsilon - 2}}\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>In more familiar notation, the radiative equilibrium solution is thus</p>
-\begin{align} 
-T_s &amp;= T_e \left( \frac{2+\epsilon}{2-\epsilon} \right)^{1/4} \\
-T_0 &amp;= T_e \left( \frac{1+\epsilon}{2-\epsilon} \right)^{1/4} \\
-T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
-\end{align}
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Plugging in the tuned value $\epsilon = 0.586$ gives</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tsolution</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">)</span>
-<span class="c1">#  Display result as matrix equation!</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">Equality</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Tsolution</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}\\T_{0}\\T_{1}\end{matrix}\right] = \left[\begin{matrix}1.16291953299473 T_{e}\\1.02912806093786 T_{e}\\0.917045338028656 T_{e}\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Now we just need to know the Earth's emission temperature $T_e$!</p>
-<p>(Which we already know is about 255 K)</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Here&#39;s how to calculate T_e from the observed values</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">solve</span><span class="p">(((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span> <span class="o">-</span> <span class="n">sigma</span><span class="o">*</span><span class="n">T_e</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">),</span> <span class="n">T_e</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[ 254.909060186948\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Need to unpack the list</span>
-<span class="n">Te_value</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">solve</span><span class="p">(((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span> <span class="o">-</span> <span class="n">sigma</span><span class="o">*</span><span class="n">T_e</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">),</span> <span class="n">T_e</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">Te_value</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle 254.909060186948$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Now-we-finally-get-our-solution-for-radiative-equilibrium">Now we finally get our solution for radiative equilibrium<a class="anchor-link" href="#Now-we-finally-get-our-solution-for-radiative-equilibrium"> </a></h4>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Output 4 significant digits</span>
-<span class="n">Trad</span> <span class="o">=</span> <span class="n">sympy</span><span class="o">.</span><span class="n">N</span><span class="p">(</span><span class="n">Tsolution</span><span class="o">.</span><span class="n">subs</span><span class="p">([(</span><span class="n">T_e</span><span class="p">,</span> <span class="n">Te_value</span><span class="p">)]),</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">sympy</span><span class="o">.</span><span class="n">Equality</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Trad</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}\\T_{0}\\T_{1}\end{matrix}\right] = \left[\begin{matrix}296.4\\262.3\\233.8\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Compare these to the values we derived from the <strong>observed lapse rates</strong>:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">Equality</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">tuned</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left[\begin{matrix}T_{s}\\T_{0}\\T_{1}\end{matrix}\right] = \left[\begin{matrix}288.0\\275.0\\230.0\end{matrix}\right]$
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The <strong>radiative equilibrium</strong> solution is substantially <strong>warmer at the surface</strong> and <strong>colder in the lower troposphere</strong> than reality.</p>
-<p>This is a very general feature of radiative equilibrium, and we will see it again very soon in this course.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<hr>
-<p><a id='section7'></a></p>
 <h2 id="7.-Summary">7. Summary<a class="anchor-link" href="#7.-Summary"> </a></h2><hr>
 
 </div>
@@ -2576,7 +1163,7 @@ $\displaystyle \left[\begin{matrix}T_{s}\\T_{0}\\T_{1}\end{matrix}\right] = \lef
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Key-physical-lessons">Key physical lessons<a class="anchor-link" href="#Key-physical-lessons"> </a></h2><ul>
+<h3 id="Key-physical-lessons">Key physical lessons<a class="anchor-link" href="#Key-physical-lessons"> </a></h3><ul>
 <li>Putting a <strong>layer of longwave absorbers</strong> above the surface keeps the <strong>surface substantially warmer</strong>, because of the <strong>backradiation</strong> from the atmosphere (greenhouse effect).</li>
 <li>The <strong>grey gas</strong> model assumes that each layer absorbs and emits a fraction $\epsilon$ of its blackbody value, independent of wavelength.</li>
 </ul>
@@ -2608,34 +1195,8 @@ $\displaystyle \left[\begin{matrix}T_{s}\\T_{0}\\T_{1}\end{matrix}\right] = \lef
 <ul>
 <li>The <strong>radiative forcing</strong> caused by an increase in absorbers <strong>depends on the lapse rate</strong>.</li>
 <li>For an <strong>isothermal atmosphere</strong> the radiative forcing is zero and there is <strong>no greenhouse effect</strong></li>
-<li>The radiative forcing is positive for our atmosphere <strong>because tropospheric temperatures tends to decrease with height</strong>.</li>
-<li>Pure <strong>radiative equilibrium</strong> produces a <strong>warm surface</strong> and <strong>cold lower troposphere</strong>.</li>
-<li>This is unrealistic, and suggests that crucial heat transfer mechanisms are missing from our model.</li>
+<li>The radiative forcing is positive for our atmosphere <strong>because tropospheric temperatures tend to decrease with height</strong>.</li>
 </ul>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="And-on-the-Python-side...">And on the Python side...<a class="anchor-link" href="#And-on-the-Python-side..."> </a></h3><p>Did we need <code>sympy</code> to work all this out? No, of course not. We could have solved the 3x3 matrix problems by hand. But computer algebra can be very useful and save you a lot of time and error, so it's good to invest some effort into learning how to use it.</p>
-<p>Hopefully these notes provide a useful starting point.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="A-follow-up-assignment">A follow-up assignment<a class="anchor-link" href="#A-follow-up-assignment"> </a></h3><p>You are now ready to tackle <a href="../Assignments/Assignment05 -- Radiative forcing in a grey radiation atmosphere.ipynb">Assignment 5</a>, where you are asked to extend this grey-gas analysis to many layers.</p>
-<p>For more than a few layers, the analytical approach we used here is no longer very useful. You will code up a numerical solution to calculate OLR given temperatures and absorptivity, and look at how the lapse rate determines radiative forcing for a given increase in absorptivity.</p>
 
 </div>
 </div>
