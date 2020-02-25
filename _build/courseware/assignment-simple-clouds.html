@@ -1,0 +1,168 @@
+---
+interact_link: content/courseware/assignment-simple-clouds.ipynb
+kernel_name: python3
+kernel_path: content/courseware
+has_widgets: false
+title: |-
+  Assignment: Clouds in the Leaky Greenhouse Model
+pagenum: 38
+prev_page:
+  url: /courseware/assignment-cesm-control-hints.html
+next_page:
+  url: /references.html
+suffix: .ipynb
+search: cloud layer brian rose question low high epsilonc t clouds notebook e radiation assignment greenhouse model github albany shortwave effect leaky climate io climatelaboratorybook html notes effects longwave atmosphere cooling absorptivity epsilon additional ts k part laboratory j www atmos edu facstaff brose index university following instructions clearly answers lecture here reflect suppose alphac words different represent due olr warming open under climlab national science foundation learning goals students completing gain skills concepts continued practice working jupyter familiarity toy conceptual understanding role planetary energy budget requires mathematics present work hand written paper combination just sure communicate belong presented follow usual
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Assignment: Clouds in the Leaky Greenhouse Model</div>
+</div>
+    <div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-goals">Learning goals<a class="anchor-link" href="#Learning-goals"> </a></h2><p>Students completing this assignment will gain the following skills and concepts:</p>
+<ul>
+<li>Continued practice working with the Jupyter notebook</li>
+<li>Familiarity with the toy "leaky greenhouse" model</li>
+<li>Conceptual understanding of the role of clouds in the planetary energy budget</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Instructions">Instructions<a class="anchor-link" href="#Instructions"> </a></h2><p><strong><em>This assignment requires some mathematics. You can present your work in this notebook, on hand-written paper, or a combination. Just make sure you communicate clearly which answers belong to which question.</em></strong></p>
+<p>For answers presented in the notebook, follow the usual procedures to ensure that your code is well commented and runs clearly without errors (see previous assignment instructions).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction"> </a></h2><p>Consider the two-layer "leaky greenhouse" (or grey radiation) model from <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html">these lecture notes</a>.</p>
+<p>Here you will use this model to investigate the <strong>radiative effects of clouds</strong>.</p>
+<p>Clouds simultaneously <strong>reflect shortwave radiation</strong> and <strong>absorb longwave radiation</strong>. These two effects often oppose each other in nature, and which one is stronger depends (among other things) on whether the clouds are <strong>low</strong> or <strong>high</strong> (i.e. in layer 0 or layer 1).</p>
+<p>For this question we will suppose (as we did in the lecture notes) that there is <strong>no absorption of shortwave radiation</strong> in the atmosphere.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-1">Question 1<a class="anchor-link" href="#Question-1"> </a></h2><p>Suppose a cloud reflects a fraction $\alpha_c$ of the shortwave beam incoming from above. $\alpha_c$ is a number between 0 and 1. Provide a coherent argument (in words, sketches, and/or equations) for why the <strong>shortwave</strong> effects cloud should alway be a <strong>cooling</strong> on the surface. Is this cooling effect different if the cloud is low or high? Explain.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-2">Question 2<a class="anchor-link" href="#Question-2"> </a></h2><p>Because the liquid water droplets in a cloud are effective absorbers of longwave radiation, a cloud will <strong>increase the longwave absorptivity / emissivity</strong> of the layer in which it resides.</p>
+<p>We can represent this in the two-layer atmosphere by letting the absorptivity of a cloudy layer be $\epsilon + \epsilon_c$, where $\epsilon_c$ is an additional absorptivity due to the cloud. Derive a formula (i.e. an algebraic expression) for the OLR in terms of the temperatures $T_s, T_0, T_1$ and the emissivities $\epsilon, \epsilon_c$ for two different cases:</p>
+<ul>
+<li>a low cloud (the additional $\epsilon_c$ is in layer 0)</li>
+<li>a high cloud (the additional $\epsilon_c$ is in layer 1)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-3">Question 3<a class="anchor-link" href="#Question-3"> </a></h2><p>Now use the tuned numerical values we used in class:</p>
+<ul>
+<li>$T_s = 288$ K</li>
+<li>$T_0 = 275$ K</li>
+<li>$T_1 = 230$ K</li>
+<li>$\epsilon = 0.586$</li>
+</ul>
+<p>and take $\epsilon_c = 0.2$</p>
+<p>(a) Repeat the following for both a high cloud and a low cloud:</p>
+<ul>
+<li>Calculate the <strong>difference in OLR</strong> due to the presence of the cloud, compared to the case with no cloud. </li>
+<li>Does this represent a warming or cooling effect?</li>
+</ul>
+<p>(b) Which one has a larger effect, the low cloud or the high cloud?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-4">Question 4<a class="anchor-link" href="#Question-4"> </a></h2><p>Based on your results in questions 1-3, which do you think is more likely to produce a <strong>net warming effect</strong> on the climate: a low cloud or a high cloud? Give an explanation in words.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Question-5">Question 5<a class="anchor-link" href="#Question-5"> </a></h2><p>How would your answer change if the atmosphere were <strong>isothermal</strong>, i.e. $T_s = T_0 = T_1$?</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<h2 id="Credits">Credits<a class="anchor-link" href="#Credits"> </a></h2><p>This notebook is part of <a href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
