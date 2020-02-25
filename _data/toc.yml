@@ -73,6 +73,7 @@
   sections:
     - url: /courseware/assignment-cesm-control-hints
 - url: /courseware/assignment-simple-clouds
+  not_numbered: true
 
 - divider: true
 - url: /references
