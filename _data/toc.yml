@@ -37,7 +37,6 @@
 - url: /courseware/climate-system-models
 - url: /courseware/introducing-cesm
 - url: /courseware/climlab-intro
-- url: /courseware/sensitivity-feedback
 - url: /courseware/radiation
 - url: /courseware/elementary-greenhouse
   sections:
@@ -47,6 +46,9 @@
 - url: /courseware/spectral-bands
 - url: /courseware/radeq
 - url: /courseware/rce
+- url: /courseware/sensitivity-feedback
+  sections:
+    - url: /courseware/advanced-sensitivity-feedback
 - url: /courseware/transient-cesm
 - url: /courseware/transient-toy
 - url: /courseware/clouds
