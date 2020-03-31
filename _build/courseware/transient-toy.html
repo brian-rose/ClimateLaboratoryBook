@@ -5,13 +5,13 @@ kernel_path: content/courseware
 has_widgets: false
 title: |-
   Toy models of transient warming
-pagenum: 22
+pagenum: 23
 prev_page:
   url: /courseware/transient-cesm.html
 next_page:
   url: /courseware/clouds.html
 suffix: .ipynb
-search: warming models climate ocean co heat model global equilibrium years year going transient different lapse gamma brian rose albany rate uptake deep surface radiative our temperatures temperature its m levels www atmos edu facstaff brose change set between here column every km under just github j think feedbacks control both build feedback humidity k much rates larger sensitive not identical coupled scenario increases future concentration x level forcing blue red pre industrial curve preindustrial toy notebook part laboratory io climatelaboratorybook e index html university notes discussed slowly effects sensitivity timescales convective single begin same done times before vapor profile into
+search: warming models climate ocean co heat model global equilibrium years year going transient brian rose different lapse gamma albany rate uptake deep surface radiative our temperatures temperature its m levels github www atmos edu facstaff brose change set between here column feedback every km under just io climatelaboratorybook j html think feedbacks control both build humidity k much rates larger sensitive not identical coupled scenario increases future concentration x level forcing blue red pre industrial curve preindustrial toy notebook part laboratory e index university notes homework discussed slowly effects sensitivity timescales convective single begin same done times before rcm vapor
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -82,22 +82,6 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
-  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -108,12 +92,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Get the water vapor data</span>
-<span class="c1">#datapath = &quot;http://ramadda.atmos.albany.edu:8080/repository/opendap/latest/Top/Users/BrianRose/CESM_runs/&quot;</span>
-<span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
-<span class="c1">#endstr = &quot;/entry.das&quot;</span>
-<span class="n">atm_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_1850_f19/som_1850_f19.cam.h0.clim.nc&#39;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">Qglobal</span> <span class="o">=</span> <span class="p">((</span><span class="n">atm_control</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="p">)</span><span class="o">/</span><span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get the water vapor data from CESM output</span>
+<span class="n">cesm_data_path</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/&quot;</span>
+<span class="n">atm_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">cesm_data_path</span> <span class="o">+</span> <span class="s2">&quot;cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc&quot;</span><span class="p">)</span>
+<span class="c1"># Take global, annual average of the specific humidity</span>
+<span class="n">weight_factor</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span> <span class="o">/</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">Qglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -144,8 +128,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
                                                <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span>
                                                <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mf">6.5</span><span class="p">,</span>
                                                <span class="n">timestep</span><span class="o">=</span><span class="n">rad</span><span class="o">.</span><span class="n">timestep</span><span class="p">,)</span>
-<span class="n">rcm_control</span> <span class="o">=</span> <span class="n">rad</span> <span class="o">+</span> <span class="n">conv</span>
-<span class="n">rcm_control</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Radiative-Convective Model&#39;</span>
+<span class="n">rcm_control</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">couple</span><span class="p">([</span><span class="n">rad</span><span class="p">,</span><span class="n">conv</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Radiative-Convective Model&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -159,7 +142,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
 </pre>
 </div>
 </div>
@@ -215,7 +198,7 @@ Total elapsed time is 5.000000000000044 years.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>Field([7.49372842e-06])</pre>
+<pre>Field([-5.7127636e-12])</pre>
 </div>
 
 </div>
@@ -332,7 +315,7 @@ Total elapsed time is 5.000000000000044 years.
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now here is where our two models will differ:</p>
 <p>We are going to assign them <strong>different lapse rate feedbacks</strong>.</p>
-<p>Similar to the exercise in Assignment 3, we are going to assume</p>
+<p>Similar to the exercise in <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-rcm-feedback.html">this homework assignment</a>, we are going to assume</p>
 $$ \Gamma = \Gamma_{ref} + \gamma * \Delta T_s $$<p>where $\Gamma_{ref} = 6.5 K/km$ is the critical lapse rate in our control climate, and $\gamma$ is a number in units of km$^{-1}$ that determines how much the critical lapse rate should change per degree warming.</p>
 <p>We are going to investigate two different assumptions:</p>
 <ul>
@@ -400,12 +383,12 @@ $$ \Gamma = \Gamma_{ref} + \gamma * \Delta T_s $$<p>where $\Gamma_{ref} = 6.5 K/
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Integrating High-sensitivity RCM
-The TOA imbalance is -0.00006 W/m2
-The ECS is 3.559 K
+The TOA imbalance is 0.00003 W/m2
+The ECS is 3.566 K
 
 Integrating Low-sensitivity RCM
-The TOA imbalance is 0.00010 W/m2
-The ECS is 2.217 K
+The TOA imbalance is 0.00022 W/m2
+The ECS is 2.216 K
 
 </pre>
 </div>
@@ -581,7 +564,7 @@ The ECS is 2.217 K
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+<pre>Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
 
 climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
 State variables and domain shapes: 
@@ -597,7 +580,7 @@ RCM with high sensitivity and efficient heat uptake: &lt;class &#39;climlab.proc
    Ocean Heat Uptake: &lt;class &#39;climlab.dynamics.advection_diffusion.Diffusion&#39;&gt;
 
 
-Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
+Opened data from /Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/radiation/data/ozone/apeozone_cam3_5_54.nc
 
 climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
 State variables and domain shapes: 
