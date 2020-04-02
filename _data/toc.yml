@@ -79,6 +79,8 @@
   not_numbered: true
 - url: /courseware/assignment-rcm-feedback
   not_numbered: true
+- url: /courseware/assignment-cesm-climate-change
+  not_numbered: true
 
 - divider: true
 - url: /references
