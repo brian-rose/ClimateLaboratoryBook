@@ -81,6 +81,8 @@
   not_numbered: true
 - url: /courseware/assignment-cesm-climate-change
   not_numbered: true
+- url: /courseware/assignment-insolation-orbit
+  not_numbered: true
 
 - divider: true
 - url: /references
