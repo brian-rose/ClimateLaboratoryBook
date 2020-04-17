@@ -55,6 +55,8 @@
 - url: /courseware/insolation
 - url: /courseware/orbital
 - url: /courseware/heat-transport
+  sections:
+    - url: /courseware/advanced-heat-transport
 - url: /courseware/one-dim-ebm
 - url: /courseware/seasonal-cycle
 - url: /courseware/numerical-diffusion
