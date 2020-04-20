@@ -5,13 +5,13 @@ kernel_path: content/courseware
 has_widgets: false
 title: |-
   Ice albedo feedback in the EBM
-pagenum: 30
+pagenum: 32
 prev_page:
   url: /courseware/numerical-diffusion.html
 next_page:
   url: /courseware/snowball-earth.html
 suffix: .ipynb
-search: ice phi warming source albedo heat ebm brian rose partial t d feedback frac left temperature model albany id section mean alpha right tf our function delta notebook github index line annual polar amplified add effects diffusivity response point part climate laboratory io climatelaboratorybook e j www atmos edu facstaff brose html university snow begin align c ts cos end below array ai parameter process called radiative forcing also lets free uniform class repeat lecture diffusive energy ipynb transport calculate latitudes not div alert open under climlab national science foundation interactive equation q bts dependent let surface larger wherever threshold
+search: ice heat albedo ebm source phi warming feedback d brian rose effects partial t temperature diffusivity frac left right transport point github albany line mean alpha tf our model function delta io climatelaboratorybook www atmos html id section annual climlab step polar amplified add radiative forcing free science response notebook part climate laboratory e j edu facstaff brose index university interactive snow begin align c ts cos end below array ai adding parameter process called also regime lets uniform repeat notes mathcal h max graph increased due maximum energy com without latitudes not open under national foundation equation q bts
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -47,7 +47,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="The-annual-mean-EBM">The annual mean EBM<a class="anchor-link" href="#The-annual-mean-EBM"> </a></h3><p>the equation is</p>
+<h3 id="The-annual-mean-EBM">The annual mean EBM<a class="anchor-link" href="#The-annual-mean-EBM"> </a></h3><p>The equation is</p>
 \begin{align*}
 C(\phi) \frac{\partial T_s}{\partial t} = &amp; ~(1-\alpha) ~ Q - \left( A + B~T_s \right) +  \\
 &amp; \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(\cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right)
@@ -61,11 +61,21 @@ C(\phi) \frac{\partial T_s}{\partial t} = &amp; ~(1-\alpha) ~ Q - \left( A + B~T
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Temperature-dependent-ice-line">Temperature-dependent ice line<a class="anchor-link" href="#Temperature-dependent-ice-line"> </a></h3><p>Let the surface albedo be larger wherever the temperature is below some threshold $T_f$:</p>
+<h3 id="Temperature-dependent-ice-line-parameterization">Temperature-dependent ice line parameterization<a class="anchor-link" href="#Temperature-dependent-ice-line-parameterization"> </a></h3><p>Let the surface albedo be larger wherever the temperature is below some threshold $T_f$:</p>
 $$ \alpha\left(\phi, T(\phi) \right) = \left\{\begin{array}{ccc} 
 \alpha_0 + \alpha_2 P_2(\sin\phi) &amp; ~ &amp; T(\phi) &gt; T_f \\
 a_i &amp; ~ &amp; T(\phi) \le T_f \\
 \end{array} \right. $$
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Adding-the-interactive-ice-line-to-the-EBM-in-climlab">Adding the interactive ice line to the EBM in climlab<a class="anchor-link" href="#Adding-the-interactive-ice-line-to-the-EBM-in-climlab"> </a></h3>
 </div>
 </div>
 </div>
@@ -159,7 +169,7 @@ Annual EBM with ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">model1</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -215,7 +225,7 @@ Annual EBM with ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
     <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">OLR</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LW&#39;</span> <span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">,</span> <span class="s1">&#39;c-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;net rad&#39;</span> <span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">heat_transport_convergence</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dyn&#39;</span> <span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">net_radiation</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">net_radiation</span>
                         <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">heat_transport_convergence</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;total&#39;</span> <span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">latlimits</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">radlimits</span><span class="p">)</span>
@@ -277,7 +287,7 @@ Total elapsed time is 5.000000000000044 years.
 
 
 <div class="output_png output_subarea ">
-<img src="../images/courseware/albedo-feedback_9_1.png"
+<img src="../images/courseware/albedo-feedback_10_1.png"
 >
 </div>
 
@@ -378,7 +388,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&lt;matplotlib.lines.Line2D at 0x1270492b0&gt;]</pre>
+<pre>[&lt;matplotlib.lines.Line2D at 0x128ad44c0&gt;]</pre>
 </div>
 
 </div>
@@ -389,7 +399,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/courseware/albedo-feedback_13_1.png"
+<img src="../images/courseware/albedo-feedback_14_1.png"
 >
 </div>
 
@@ -463,7 +473,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's do some more greenhouse warming:</p>
+<h3 id="Effects-of-further-radiative-forcing-in-the-ice-free-regime">Effects of further radiative forcing in the ice-free regime<a class="anchor-link" href="#Effects-of-further-radiative-forcing-in-the-ice-free-regime"> </a></h3><p>Let's do some more greenhouse warming:</p>
 
 </div>
 </div>
@@ -501,7 +511,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/courseware/albedo-feedback_18_0.png"
+<img src="../images/courseware/albedo-feedback_19_0.png"
 >
 </div>
 
@@ -541,7 +551,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="In-class-investigation:">In-class investigation:<a class="anchor-link" href="#In-class-investigation:"> </a></h3><p>We will repeat the exercise from <a href="./Lecture16 -- Diffusive energy balance model.ipynb">Lecture 16</a>, but this time with albedo feedback included in our model.</p>
+<h3 id="In-class-investigation:-Effects-of-diffusivity-with-albedo-feedback">In-class investigation: Effects of diffusivity with albedo feedback<a class="anchor-link" href="#In-class-investigation:-Effects-of-diffusivity-with-albedo-feedback"> </a></h3><p>We will repeat the diffusivity-tuning exercise from the <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/one-dim-ebm.html">notes on the 1D EBM</a>, but this time with albedo feedback included in our model.</p>
 <ul>
 <li>Solve the annual-mean EBM (integrate out to equilibrium) over a range of different diffusivity parameters.</li>
 <li>Make three plots:<ul>
@@ -706,7 +716,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 
 <div class="output_png output_subarea ">
-<img src="../images/courseware/albedo-feedback_27_0.png"
+<img src="../images/courseware/albedo-feedback_28_0.png"
 >
 </div>
 
@@ -722,8 +732,22 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Discuss!</p>
+<p>The heat transport is no longer stricly monotonic in diffusivity $D$. The kink in the graph results from competing effects of increased transport efficiency and decreased temperature gradients due to ice loss.</p>
+<p>Realistic present-day conditions seem to occur right near the local maximum of the $\mathcal{H}_{max}$ graph, showing that total heat transport is relatively insensitive to details of the atmosphere-ocean dynamics.</p>
+<p>This actually reproduces a result from a classic paper:</p>
+<p><a href="https://www.sciencedirect.com/science/article/pii/0377026578900064">Stone (1978), Constraints on dynamical transports of energy on a spherical planet. <em>Dyn. Atmos. Oceans</em> 2, 123--139</a></p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<p><a id='section4'></a></p>
 <h2 id="4.-Diffusive-response-to-a-point-source-of-energy">4. Diffusive response to a point source of energy<a class="anchor-link" href="#4.-Diffusive-response-to-a-point-source-of-energy"> </a></h2><hr>
 
 </div>
@@ -735,7 +759,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's add a point heat source to the EBM and see what sets the spatial structure of the response.</p>
+<h3 id="Step-1:-Adding-a-point-heat-source-to-the-EBM-without-albedo-feedback">Step 1: Adding a point heat source to the EBM without albedo feedback<a class="anchor-link" href="#Step-1:-Adding-a-point-heat-source-to-the-EBM-without-albedo-feedback"> </a></h3><p>Let's add a point heat source to the EBM and see what sets the spatial structure of the response.</p>
 <p>We will add a heat source at about 45º latitude.</p>
 <p>First, we will calculate the response in a model <strong>without albedo feedback</strong>.</p>
 
@@ -753,7 +777,7 @@ $$ A \rightarrow A - \delta A $$<p>where $\delta A = 4$ W m$^{-2}$.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">param_noalb</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mi">210</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.55</span><span class="p">,</span> <span class="s1">&#39;Tf&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="s1">&#39;a0&#39;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">:</span> <span class="mf">0.078</span><span class="p">}</span>
 <span class="n">m1</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">EBM_annual</span><span class="p">(</span><span class="n">num_lat</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="o">**</span><span class="n">param_noalb</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">m1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -944,7 +968,7 @@ Total elapsed time is 9.999999999999863 years.
 
 
 <div class="output_png output_subarea ">
-<img src="../images/courseware/albedo-feedback_35_0.png"
+<img src="../images/courseware/albedo-feedback_37_0.png"
 >
 </div>
 
@@ -973,7 +997,7 @@ $$  \sqrt{\frac{D}{B}} $$<p>so increases with the diffusivity.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Now repeat this calculate <strong>with ice albedo feedback</strong></p>
+<h3 id="Step-2:-Effects-of-point-heat-source-with-albedo-feedback">Step 2: Effects of point heat source with albedo feedback<a class="anchor-link" href="#Step-2:-Effects-of-point-heat-source-with-albedo-feedback"> </a></h3><p>Now repeat this calculation <strong>with ice albedo feedback</strong></p>
 
 </div>
 </div>
@@ -1046,7 +1070,7 @@ Total elapsed time is 9.999999999999863 years.
 
 
 <div class="output_png output_subarea ">
-<img src="../images/courseware/albedo-feedback_39_0.png"
+<img src="../images/courseware/albedo-feedback_41_0.png"
 >
 </div>
 
@@ -1066,20 +1090,6 @@ Total elapsed time is 9.999999999999863 years.
 <p>Our heat source has led to melting of snow and ice, which induces an additional heat source in the high northern latitudes.</p>
 <p><strong>Heat transport communicates the external warming to the ice cap, and also commuicates the increased shortwave absorption due to ice melt globally!</strong></p>
 
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="alert alert-success">
-
-[Back to ATM 623 notebook home](../index.ipynb)
-
-</div>
 </div>
 </div>
 </div>
