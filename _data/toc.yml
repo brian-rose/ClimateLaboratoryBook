@@ -60,8 +60,10 @@
 - url: /courseware/one-dim-ebm
 - url: /courseware/seasonal-cycle
 - url: /courseware/numerical-diffusion
-- url: /courseware/albedo-feedback
-- url: /courseware/snowball-earth
+- url: /courseware/albedo-snowball
+  sections:
+    - url: /courseware/advanced-albedo-feedback
+    - url: /courseware/advanced-snowball-earth
 - url: /courseware/surface-energy-balance
 - url: /courseware/land-ocean-contrast
 - url: /courseware/water-water-everywhere
