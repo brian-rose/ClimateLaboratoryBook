@@ -11,7 +11,7 @@ prev_page:
 next_page:
   url: /courseware/insolation.html
 suffix: .ipynb
-search: cloud f delta clear c cloudy feedback clouds cre lambda sky t properties fraction change longwave top surface asr olr temperature effect radiation radiative frac id section effects left right feedbacks climate brian rose optical lwp shortwave flux sum big r albedo because net here changes et al co albany liquid where increases thin thick height energy depends not different components above model lambdai planck cmip part github e j www depend path m layer key both img src images thus greenhouse its warm increase planetary budget cirrus warming stratus toa break into lw sw our following just gcm compute
+search: cloud f delta clear c cloudy feedback clouds cre lambda sky t properties fraction change longwave top surface asr olr temperature effect radiation radiative frac brian rose id section effects left right feedbacks climate optical lwp shortwave flux sum big r albedo because net here changes et al co github albany liquid where increases thin thick height energy depends not different components above model lambdai planck cmip part io climatelaboratorybook e j www html depend path m layer key both img src images thus greenhouse its warm increase planetary budget cirrus warming stratus toa break into lw sw our following
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -700,7 +700,7 @@ $$ CRE = c \big( F_{cloudy} - F_{clear} \big) $$<p>In our above examples, $CRE$ 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Following the notation in <a href="./Lecture03 -- Climate sensitivity and feedback.ipynb">Lecture 3</a>, we can write the change in the top-of-atmosphere energy budget after the response to a radiative forcing $\Delta R$ as</p>
+<p>Following the notation in <a href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html">the lecture on climate sensitivity and feedback</a>, we can write the change in the top-of-atmosphere energy budget after the response to a radiative forcing $\Delta R$ as</p>
 $$ \Delta F = \Delta R - \Delta T \left( \lambda_0 - \sum_{i=1}^N \lambda_i \right)  $$<p>where $\lambda_0$ is the "Planck feedback", or, more precisely, the no-feedback response parameter, while the $\lambda_i$ are all the additive feedback parameters.</p>
 
 </div>
@@ -854,7 +854,7 @@ $$ \Delta CRE = -c \Delta F_{clear}  + \Delta T \lambda_{cloud} $$<p>The <strong
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="So-how-do-we-compute-$\lambda_{cloud}$?">So how do we compute $\lambda_{cloud}$?<a class="anchor-link" href="#So-how-do-we-compute-$\lambda_{cloud}$?"> </a></h4><p>So long as $\lambda_{clear}$ is known, it's easy:</p>
 <p>Just measure  $\frac{\Delta CRE}{\Delta T}$ and the cloud fraction $c$ from the model, and solve the above formula to get</p>
-$$ \lambda_{cloud}  = \frac{\Delta CRE}{\Delta T} + \frac{\Delta F_{clear}}{\Delta T} + \lambda_{clear} - \lambda_0 + \frac{\Delta R}{\Delta T}$$<p>This is how we can "correct" the change in $CRE$ to get the actual cloud feedback.</p>
+$$ \lambda_{cloud}  = \frac{\Delta CRE}{\Delta T} + \frac{\Delta F_{clear}}{\Delta T} + \lambda_{0} - \lambda_{clear} - \frac{\Delta R}{\Delta T}$$<p>This is how we can "correct" the change in $CRE$ to get the actual cloud feedback.</p>
 
 </div>
 </div>
