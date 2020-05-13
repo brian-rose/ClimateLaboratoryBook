@@ -5,7 +5,7 @@ kernel_path: content/courseware
 has_widgets: false
 title: |-
   Grey radiation modeling with climlab
-pagenum: 16
+pagenum: 15
 prev_page:
   url: /courseware/sympy-greenhouse.html
 next_page:
@@ -68,27 +68,11 @@ The latest code can always be found on <code>github</code>:</p>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">xarray.ufuncs</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">deg2rad</span><span class="p">,</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">deg2rad</span><span class="p">,</span> <span class="n">log</span>
 <span class="kn">import</span> <span class="nn">climlab</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/core/merge.py:17: FutureWarning: The Panel class is removed from pandas. Accessing it from the top-level namespace will also be removed in the next version
-  PANDAS_TYPES = (pd.Series, pd.DataFrame, pd.Panel)
-</pre>
-</div>
-</div>
-</div>
 </div>
 </div>
 
@@ -203,7 +187,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>AttrDict({&#39;LW&#39;: &lt;climlab.radiation.greygas.GreyGas object at 0x123320cc0&gt;, &#39;SW&#39;: &lt;climlab.radiation.greygas.GreyGasSW object at 0x11a0476d8&gt;, &#39;insolation&#39;: &lt;climlab.radiation.insolation.FixedInsolation object at 0x10e893710&gt;})</pre>
+<pre>AttrDict({&#39;LW&#39;: &lt;climlab.radiation.greygas.GreyGas object at 0x104c67fa0&gt;, &#39;SW&#39;: &lt;climlab.radiation.greygas.GreyGasSW object at 0x11df6e550&gt;, &#39;insolation&#39;: &lt;climlab.radiation.insolation.FixedInsolation object at 0x11df6e940&gt;})</pre>
 </div>
 
 </div>
@@ -281,7 +265,7 @@ Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">state</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -295,9 +279,17 @@ Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
 <div class="output_area">
 
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>AttrDict({&#39;Ts&#39;: Field([288.]), &#39;Tatm&#39;: Field([200., 278.])})</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:       (depth: 1, depth_bounds: 2, lev: 2, lev_bounds: 3)
+Coordinates:
+  * depth         (depth) float64 0.5
+  * depth_bounds  (depth_bounds) float64 0.0 1.0
+  * lev           (lev) float64 250.0 750.0
+  * lev_bounds    (lev_bounds) float64 0.0 500.0 1e+03
+Data variables:
+    Ts            (depth) float64 288.0
+    Tatm          (lev) float64 200.0 278.0</pre>
 </div>
 
 </div>
@@ -385,7 +377,7 @@ Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">Ts</span><span class="p">[:]</span> <span class="o">=</span> <span class="mf">288.</span>
 <span class="n">col</span><span class="o">.</span><span class="n">Tatm</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">230.</span><span class="p">,</span> <span class="mf">275.</span><span class="p">])</span>
-<span class="n">col</span><span class="o">.</span><span class="n">state</span>
+<span class="n">climlab</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">state</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -399,9 +391,17 @@ Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
 <div class="output_area">
 
 
-
-<div class="output_text output_subarea output_execute_result">
-<pre>AttrDict({&#39;Ts&#39;: Field([288.]), &#39;Tatm&#39;: Field([230., 275.])})</pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<pre>&lt;xarray.Dataset&gt;
+Dimensions:       (depth: 1, depth_bounds: 2, lev: 2, lev_bounds: 3)
+Coordinates:
+  * depth         (depth) float64 0.5
+  * depth_bounds  (depth_bounds) float64 0.0 1.0
+  * lev           (lev) float64 250.0 750.0
+  * lev_bounds    (lev_bounds) float64 0.0 500.0 1e+03
+Data variables:
+    Ts            (depth) float64 288.0
+    Tatm          (lev) float64 230.0 275.0</pre>
 </div>
 
 </div>
@@ -420,7 +420,7 @@ Untitled: &lt;class &#39;climlab.radiation.greygas.GreyGas&#39;&gt;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">LW</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">LW</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">LW</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1003,8 +1003,8 @@ Attributes:
     not_missing_threshold_percent:  minimum 3% values input to have non-missi...
     history:                        Created 2011/07/12 by doMonthLTM\nConvert...
     title:                          monthly ltm air from the NCEP Reanalysis
-    References:                     http://www.esrl.noaa.gov/psd/data/gridded...
     dataset_title:                  NCEP-NCAR Reanalysis 1
+    References:                     http://www.psl.noaa.gov/data/gridded/data...
 </pre>
 </div>
 </div>
@@ -1040,10 +1040,11 @@ Attributes:
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&lt;xarray.DataArray (level: 17)&gt;
-array([ 15.179084,  11.207003,   7.838327,   0.219941,  -6.448343, -14.888848,
-       -25.570469, -39.36969 , -46.797905, -53.652245, -60.56356 , -67.006065,
-       -65.53293 , -61.48664 , -55.853584, -51.593952, -43.21999 ],
-      dtype=float32)
+array([ 15.179084  ,  11.207003  ,   7.8383274 ,   0.21994135,
+        -6.4483433 , -14.888848  , -25.570469  , -39.36969   ,
+       -46.797905  , -53.652245  , -60.56356   , -67.006065  ,
+       -65.53293   , -61.48664   , -55.853584  , -51.593952  ,
+       -43.21999   ], dtype=float32)
 Coordinates:
   * level    (level) float32 1000.0 925.0 850.0 700.0 ... 50.0 30.0 20.0 10.0
 </pre>
@@ -1109,7 +1110,7 @@ Coordinates:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Tglobal</span> <span class="o">+=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">Tglobal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tglobal</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1126,7 +1127,8 @@ Coordinates:
 <pre>&lt;xarray.DataArray (level: 17)&gt;
 array([288.32907, 284.357  , 280.9883 , 273.36993, 266.70166, 258.26114,
        247.57953, 233.7803 , 226.35208, 219.49774, 212.58643, 206.14392,
-       207.61707, 211.66336, 217.29642, 221.55605, 229.93001], dtype=float32)
+       207.61707, 211.66336, 217.29642, 221.55605, 229.93001],
+      dtype=float32)
 Coordinates:
   * level    (level) float32 1000.0 925.0 850.0 700.0 ... 50.0 30.0 20.0 10.0
 </pre>
@@ -1247,7 +1249,7 @@ Coordinates:
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  initialize a grey radiation model with 30 levels</span>
 <span class="n">col</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">GreyRadiationModel</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1329,7 +1331,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> <span class="n">col</span><span class="o">.</span><span class="n">lev_bounds</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">lev_bounds</span>
 </pre></div>
 
     </div>
@@ -1752,7 +1754,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  clone our model using a built-in climlab function</span>
 <span class="n">col2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">col2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2098,7 +2100,7 @@ Total elapsed time is 0.9993368783782377 years.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x128818668&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x123016700&gt;</pre>
 </div>
 
 </div>
@@ -2174,7 +2176,7 @@ Total elapsed time is 0.9993368783782377 years.
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Here is the existing model</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">re</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">re</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2380,7 +2382,7 @@ Total elapsed time is 1.9986737567564754 years.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1291c3f60&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x12362b580&gt;</pre>
 </div>
 
 </div>
@@ -2437,7 +2439,7 @@ Total elapsed time is 1.9986737567564754 years.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/&quot;</span>
 <span class="n">ozone</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s2">&quot;som_input/ozone_1.9x2.5_L26_2000clim_c091112.nc&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -2455,7 +2457,7 @@ Total elapsed time is 1.9986737567564754 years.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">ozone</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ozone</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2534,7 +2536,7 @@ Attributes:
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2592,7 +2594,7 @@ Attributes:
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#  Take global, annual average and convert to Kelvin</span>
 <span class="n">weight_ozone</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span> <span class="o">/</span> <span class="n">cos</span><span class="p">(</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
 <span class="n">O3_global</span> <span class="o">=</span> <span class="p">(</span><span class="n">ozone</span><span class="o">.</span><span class="n">O3</span> <span class="o">*</span> <span class="n">weight_ozone</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">O3_global</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">O3_global</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2607,12 +2609,13 @@ Attributes:
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>&lt;xarray.DataArray (lev: 26)&gt;
-array([7.827929e-06, 8.641505e-06, 7.589400e-06, 5.245671e-06, 3.177616e-06,
-       1.823200e-06, 9.807570e-07, 6.228705e-07, 4.476205e-07, 3.344812e-07,
-       2.625703e-07, 2.078981e-07, 1.570746e-07, 1.124255e-07, 8.060050e-08,
-       6.278265e-08, 5.429906e-08, 4.995061e-08, 4.600757e-08, 4.229778e-08,
-       3.805591e-08, 3.387686e-08, 3.121716e-08, 2.978071e-08, 2.879810e-08,
-       2.754299e-08])
+array([7.82792878e-06, 8.64150529e-06, 7.58940028e-06, 5.24567145e-06,
+       3.17761574e-06, 1.82320006e-06, 9.80756960e-07, 6.22870516e-07,
+       4.47620550e-07, 3.34481169e-07, 2.62570302e-07, 2.07898125e-07,
+       1.57074555e-07, 1.12425545e-07, 8.06004999e-08, 6.27826498e-08,
+       5.42990561e-08, 4.99506089e-08, 4.60075681e-08, 4.22977789e-08,
+       3.80559071e-08, 3.38768568e-08, 3.12171619e-08, 2.97807119e-08,
+       2.87980968e-08, 2.75429934e-08])
 Coordinates:
   * lev      (lev) float64 3.545 7.389 13.97 23.94 ... 867.2 929.6 970.6 992.6
 </pre>
@@ -2691,7 +2694,7 @@ Coordinates:
 <span class="c1">#  It contains the same components are our previous model</span>
 <span class="c1">#   But here we are specifying a different set of vertical levels.</span>
 <span class="n">oz_col</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">RadiativeConvectiveModel</span><span class="p">(</span><span class="n">lev</span> <span class="o">=</span> <span class="n">ozone</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="n">adj_lapse_rate</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">oz_col</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2788,7 +2791,7 @@ Untitled: &lt;class &#39;climlab.model.column.RadiativeConvectiveModel&#39;&gt;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2897,7 +2900,7 @@ Untitled: &lt;class &#39;climlab.model.column.RadiativeConvectiveModel&#39;&gt;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="n">epsSW</span>
-<span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">oz_col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;SW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3041,7 +3044,7 @@ Total elapsed time is 0.9993368783782377 years.
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">oz_col</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">oz_col</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -3119,7 +3122,7 @@ Total elapsed time is 0.9993368783782377 years.
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1287d3828&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1230c4280&gt;</pre>
 </div>
 
 </div>
