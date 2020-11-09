@@ -1,5 +1,7 @@
 # The Climate Laboratory
 
+[![DOI](https://zenodo.org/badge/231609808.svg)](https://zenodo.org/badge/latestdoi/231609808)
+
 ***A hands-on approach to climate physics and climate modeling***
 
 **By [Brian E. J. Rose][brian], University at Albany**
@@ -35,4 +37,4 @@ The contents of this book are licensed for free and open consumption under the f
 [climlab]: https://github.com/brian-rose/climlab
 [book]: https://brian-rose.github.io/ClimateLaboratoryBook/
 [repo]: https://github.com/brian-rose/ClimateLaboratoryBook
-[notebook]: https://jupyter-notebook.readthedocs.io/en/stable/ 
+[notebook]: https://jupyter-notebook.readthedocs.io/en/stable/
