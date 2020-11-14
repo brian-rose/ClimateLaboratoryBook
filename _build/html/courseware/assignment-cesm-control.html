@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment: Global average budgets in the CESM pre-industrial control simulation &#8212; The Climate Laboratory</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-cesm-control.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Additional hints and guidance for CESM budgets assignment" href="assignment-cesm-control-hints.html" />
+    <link rel="prev" title="Assignment: Climate change in the zero-dimensional EBM" href="assignment-zero-dim-ebm.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-cesm-control.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Assignment: Global average budgets in the CESM pre-industrial control simulation" />
+<meta property="og:description" content="Assignment: Global average budgets in the CESM pre-industrial control simulation  This notebook is part of The Climate Laboratory by Brian E. J. Rose, Universit" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">The Climate Laboratory</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../home.html">
+   The Climate Laboratory
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about.html">
+   About this Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../who-for.html">
+   Who is the book for?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../how-to.html">
+   How to use this book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   How to cite and reuse this material
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="models-budgets-fun.html">
+   1. Climate models, the global energy budget, and Fun with Python
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="zero-dim-ebm.html">
+   2. Modeling the global energy budget
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="analytical-efolding.html">
+     2.10.1. Advanced topic: Analytical solution of the global Energy Balance Model
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climate-system-models.html">
+   3. The climate system and climate models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="introducing-cesm.html">
+   4. Introducing the Community Earth System Model (CESM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climlab-intro.html">
+   5. Building simple climate models using climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiation.html">
+   6. A Brief Review of Radiation
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="elementary-greenhouse.html">
+   7. Elementary greenhouse models
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sympy-greenhouse.html">
+     7.8.1. Advanced topic: Solving the two-layer grey gas model analytically with sympy
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grey-radiation-climlab.html">
+   8. Grey radiation modeling with climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiative-transfer.html">
+   9. Modeling non-scattering radiative transfer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spectral-bands.html">
+   10. Who needs spectral bands? We do. Some baby steps…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radeq.html">
+   11. Radiative Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rce.html">
+   12. Radiative-Convective Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="sensitivity-feedback.html">
+   13. Climate sensitivity and feedback
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-sensitivity-feedback.html">
+     13.8.1. Advanced topic: Climate sensitivity and feedback
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-cesm.html">
+   14. Examing the transient and equilibrium CO
+   <span class="math notranslate nohighlight">
+    \(_2\)
+   </span>
+   response in the CESM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-toy.html">
+   15. Toy models of transient warming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clouds.html">
+   16. Clouds and cloud feedback
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="insolation.html">
+   17. Insolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="orbital.html">
+   18. Orbital variations, insolation, and the ice ages
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="heat-transport.html">
+   19. Heat transport
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-heat-transport.html">
+     19.7.1. Advanced topic: Heat transport decomposition
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="one-dim-ebm.html">
+   20. The one-dimensional energy balance model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="seasonal-cycle.html">
+   21. Modeling the seasonal cycle of surface temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numerical-diffusion.html">
+   22. A peek at numerical methods for diffusion models
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="albedo-snowball.html">
+   23. Ice-albedo feedback and Snowball Earth in the EBM
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-albedo-feedback.html">
+     23.9.1. Advanced topic: Ice albedo feedback in the EBM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-snowball-earth.html">
+     23.9.2. Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surface-energy-balance.html">
+   24. The surface energy balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land-ocean-contrast.html">
+   25. Land-Ocean contrasts under climate change
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="water-water-everywhere.html">
+   26. Water, water everywhere!
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-assignments.html">
+   About the assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-zero-dim-ebm.html">
+   Assignment: Climate change in the zero-dimensional EBM
+  </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
+   Assignment: Global average budgets in the CESM pre-industrial control simulation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="assignment-cesm-control-hints.html">
+     Additional hints and guidance for CESM budgets assignment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-simple-clouds.html">
+   Assignment: Clouds in the Leaky Greenhouse Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-rcm-feedback.html">
+   Assignment: Feedbacks in the Radiative-Convective Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-cesm-climate-change.html">
+   Assignment: Climate change in the CESM simulations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-insolation-orbit.html">
+   Assignment: Insolation and orbital parameters
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/courseware/assignment-cesm-control.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/master?urlpath=tree/courseware/assignment-cesm-control.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/assignment-cesm-control.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-goals">
+   Learning goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instructions">
+   Instructions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1-the-global-energy-budget-in-the-cesm-control-simulation">
+   Problem 1: The global energy budget in the CESM control simulation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2-verifying-the-annual-cycle-in-global-mean-surface-temperature-against-observations">
+   Problem 2: Verifying the annual cycle in global mean surface temperature against observations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#your-task">
+     Your task:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="assignment-global-average-budgets-in-the-cesm-pre-industrial-control-simulation">
+<h1>Assignment: Global average budgets in the CESM pre-industrial control simulation<a class="headerlink" href="#assignment-global-average-budgets-in-the-cesm-pre-industrial-control-simulation" title="Permalink to this headline">¶</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<div class="section" id="learning-goals">
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<p>Students completing this assignment will gain the following skills and concepts:</p>
+<ul class="simple">
+<li><p>Continued practice working with the Jupyter notebook</p></li>
+<li><p>Familiarity with atmospheric output from the CESM simulation</p></li>
+<li><p>More complete comparison of the global energy budget in the CESM control simulation to the observations</p></li>
+<li><p>Validation of the annual cycle of surface temperature against observations</p></li>
+<li><p>Opportunity to formulate a hypothesis about these global temperature variations</p></li>
+<li><p>Python programming skills: basic xarray usage: opening gridded dataset and taking averages</p></li>
+</ul>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>In a local copy of this notebook (on the JupyterHub or your own device) <strong>add your answers in additional cells</strong>.</p></li>
+<li><p><strong>Complete the required problems</strong> below.</p></li>
+<li><p>Remember to set your cell types to <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> for text, and <code class="docutils literal notranslate"><span class="pre">Code</span></code> for Python code!</p></li>
+<li><p><strong>Include comments</strong> in your code to explain your method as necessary.</p></li>
+<li><p>Remember to actually answer the questions. <strong>Written answers are required</strong> (not just code and figures!)</p></li>
+<li><p>Submit your solutions in <strong>a single Jupyter notebook</strong> that contains your text, your code, and your figures.</p></li>
+<li><p><em>Make sure that your notebook</em> <em><strong>runs cleanly without errors:</strong></em></p>
+<ul>
+<li><p>Save your notebook</p></li>
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> menu, select <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">&amp;</span> <span class="pre">Run</span> <span class="pre">All</span></code></p></li>
+<li><p>Did the notebook run from start to finish without error and produce the expected output?</p></li>
+<li><p>If yes, save again and submit your notebook file</p></li>
+<li><p>If no, fix the errors and try again.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="problem-1-the-global-energy-budget-in-the-cesm-control-simulation">
+<h2>Problem 1: The global energy budget in the CESM control simulation<a class="headerlink" href="#problem-1-the-global-energy-budget-in-the-cesm-control-simulation" title="Permalink to this headline">¶</a></h2>
+<p>Compute the <strong>global, time average</strong> of each of the following quantities, and compare them to the observed values from the Trenberth and Fasullo (2012) figure in the course notes:</p>
+<ul class="simple">
+<li><p>Solar Radiation budget:</p>
+<ul>
+<li><p>Incoming Solar Radiation, or Insolation</p></li>
+<li><p>Reflected Solar Radiation at the top of atmosphere</p></li>
+<li><p>Solar Radiation Reflected by Surface</p></li>
+<li><p>Solar Radiation Absorbed by Surface</p></li>
+<li><p>Solar Radiation Refelected by Clouds and Atmosphere <em>(you can calculate this as the difference between the reflected radiation at the top of atmosphere and reflected radiation at the surface)</em></p></li>
+<li><p>Total Absorbed Solar Radiation (ASR) at the top of atmosphere</p></li>
+<li><p>Solar Radiation Absorbed by Atmosphere <em>(you can calculate this as the residual of your budget, i.e. what’s left over after accounting for all other absorption and reflection)</em></p></li>
+</ul>
+</li>
+<li><p>Longwave Radiation budget:</p>
+<ul>
+<li><p>Outgoing Longwave Radiation</p></li>
+<li><p>Upward emission from the surface</p></li>
+<li><p>Downwelling radiation at the surface</p></li>
+</ul>
+</li>
+<li><p>Other surface fluxes:</p>
+<ul>
+<li><p>“Thermals”, or <em>sensible heat flux</em>. <em>You will find this in the field called <code class="docutils literal notranslate"><span class="pre">SHFLX</span></code> in your dataset.</em></p></li>
+<li><p>“Evapotranspiration”, or <em>latent heat flux</em>. <em>You will find this in the field called <code class="docutils literal notranslate"><span class="pre">LHFLX</span></code> in your dataset.</em></p></li>
+</ul>
+</li>
+</ul>
+<p><em>Note we will look more carefully at atmospheric absorption and emission processes later. You do not need to try to calculate terms such as “Emitted by Atmosphere” or “Atmospheric Window”</em></p>
+<p><strong>Based on your results above, answer the following questions:</strong></p>
+<ul class="simple">
+<li><p>Is the CESM control simulation at (or near) <strong>energy balance</strong>?</p></li>
+<li><p>Do you think this simulation is near equilibrium?</p></li>
+<li><p>Summarize in your own words what you think are the most important similarities and differences of the global energy budgets in the CESM simulation and the observations.</p></li>
+</ul>
+</div>
+<div class="section" id="problem-2-verifying-the-annual-cycle-in-global-mean-surface-temperature-against-observations">
+<h2>Problem 2: Verifying the annual cycle in global mean surface temperature against observations<a class="headerlink" href="#problem-2-verifying-the-annual-cycle-in-global-mean-surface-temperature-against-observations" title="Permalink to this headline">¶</a></h2>
+<p>In the class notes we plotted the <strong>timeseries of global mean surface temperature</strong> in the CESM control simulation, and found an <strong>annual cycle</strong>. The purpose of this exercise is to verify that this phenomenon is also found in the observed temperature record. If so, then we can conclude that it is a real feature of Earth’s climate and not an artifact of the numerical model.</p>
+<p>For observations, we will use the <strong>NCEP Reanalysis data</strong>.</p>
+<p><em>Reanalysis data is really a blend of observations and output from numerical weather prediction models. It represents our “best guess” at conditions over the whole globe, including regions where observations are very sparse.</em></p>
+<p>The necessary data are all served up over the internet. We will look at monthly climatologies averaged over the 30 year period 1981 - 2010.</p>
+<p>You can browse the available data here:
+https://www.esrl.noaa.gov/psd/data/gridded/data.ncep.reanalysis.derived.html</p>
+<p><strong>Surface air temperature</strong> is contained in a file called <code class="docutils literal notranslate"><span class="pre">air.2m.mon.ltm.nc</span></code>, which is found in the collection called <code class="docutils literal notranslate"><span class="pre">Surface</span> <span class="pre">Fluxes</span></code>.</p>
+<p>Here’s a link directly to the catalog page for this data file:
+https://www.esrl.noaa.gov/psd/thredds/catalog/Datasets/ncep.reanalysis.derived/surface_gauss/catalog.html?dataset=Datasets/ncep.reanalysis.derived/surface_gauss/air.2m.day.ltm.nc</p>
+<p>Now click on the <code class="docutils literal notranslate"><span class="pre">OPeNDAP</span></code> link. A page opens up with lots of information about the contents of the file. The <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">URL</span></code> is what we need to read the data into our Python session. For example, this code opens the file and displays a list of the variables it contains:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/surface_gauss/air.2m.mon.ltm.nc&quot;</span>
+<span class="n">ncep_air2m</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">ncep_air2m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:             (lat: 94, lon: 192, nbnds: 2, time: 12)
+Coordinates:
+  * lon                 (lon) float32 0.0 1.875 3.75 ... 354.375 356.25 358.125
+  * time                (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:0...
+  * lat                 (lat) float32 88.542 86.6531 ... -86.6531 -88.542
+Dimensions without coordinates: nbnds
+Data variables:
+    climatology_bounds  (time, nbnds) datetime64[ns] ...
+    air                 (time, lat, lon) float32 ...
+    valid_yr_count      (time, lat, lon) float32 ...
+Attributes:
+    Conventions:                    COARDS
+    title:                          mean daily NMC reanalysis (1958)
+    description:                    Data is from NMC initialized reanalysis\n...
+    platform:                       Model
+    not_missing_threshold_percent:  minimum 3% values input to have non-missi...
+    history:                        Created 2011/07/12 by doMonthLTM\nConvert...
+    dataset_title:                  NCEP-NCAR Reanalysis 1
+    References:                     http://www.psl.noaa.gov/data/gridded/data...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/xarray/coding/times.py:427: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.7/site-packages/numpy/core/_asarray.py:83: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  return array(a, dtype, copy=False, order=order)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The temperature data is called <code class="docutils literal notranslate"><span class="pre">air</span></code>. Take a look at the details:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ncep_air2m</span><span class="o">.</span><span class="n">air</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;air&#39; (time: 12, lat: 94, lon: 192)&gt;
+[216576 values with dtype=float32]
+Coordinates:
+  * lon      (lon) float32 0.0 1.875 3.75 5.625 ... 352.5 354.375 356.25 358.125
+  * time     (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:00:00
+  * lat      (lat) float32 88.542 86.6531 84.7532 ... -84.7532 -86.6531 -88.542
+Attributes:
+    long_name:     Monthly Long Term Mean of Air Temperature
+    valid_range:   [150. 400.]
+    units:         degK
+    precision:     2
+    GRIB_id:       11
+    GRIB_name:     TMP
+    var_desc:      Air temperature
+    level_desc:    2 m
+    statistic:     Long Term Mean
+    parent_stat:   Mean
+    actual_range:  [198.33992 311.8952 ]
+    dataset:       NCEP Reanalysis Derived Products
+    _ChunkSizes:   [  1  94 192]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the dimensions are <code class="docutils literal notranslate"><span class="pre">(time:</span> <span class="pre">12,</span> <span class="pre">lat:</span> <span class="pre">94,</span> <span class="pre">lon:</span> <span class="pre">192)</span></code>. The time dimension is calendar months. But note that the lat/lon grid is not the same as our model output!</p>
+<p><em>Think about how you will handle calculating the global average of these data.</em></p>
+<div class="section" id="your-task">
+<h3>Your task:<a class="headerlink" href="#your-task" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Make a well-labeled timeseries graph of the global-averaged observed average surface air temperature climatology.</p></li>
+<li><p>Verify that the annual cycle we found in the CESM simulation also exists in the observations.</p></li>
+<li><p>In your own words, suggest a plausible physical explanation for why this annual cycle exists.</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="assignment-zero-dim-ebm.html" title="previous page">Assignment: Climate change in the zero-dimensional EBM</a>
+    <a class='right-next' id="next-link" href="assignment-cesm-control-hints.html" title="next page">Additional hints and guidance for CESM budgets assignment</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian E. J. Rose<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-43758959-2', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
