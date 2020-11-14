@@ -2,8 +2,6 @@
 
 *under construction*
 
-This is a work in progress! The book first went live on Monday January 20, 2020.
-The content is likely to change rapidly for the next few weeks,
-and then start to settle down.
+Let's amble through the courseware amiably.
 
 *This book is dedicated to my children, Eleanor and Annabel.*
