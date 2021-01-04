@@ -1,5 +1,6 @@
 name: climlab-courseware
 channels:
+  - eoas-ubc
   - conda-forge
   - defaults
 dependencies:
