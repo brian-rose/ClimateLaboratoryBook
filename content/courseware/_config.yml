@@ -1,28 +1,25 @@
 # Book settings
 ######################################################################################
 # Book settings
-title: "ATSC 301"
-author: Philip Austin
+title: "Climate Laboratory Book"
+author: Brian Rose
 email: paustin@eoas.ubc.ca
 description: >- # this means to ignore newlines until "baseurl:"
-  Website for EOAS ATSC 301
+  Climate Laboratory
 
 execute:
-  execute_notebooks: cache
+  execute_notebooks: off
 
 exclude_patterns: ["*ipynb"]
 
-execute:
-  timeout: 100
-
 repository:
-  url: https://github.com/phaustin/a301_2020
-  branch: master
-  path_to_book: notebooks
+  url: https://github.com/phaustin/ClimateLaboratoryBook
+  branch: jb
+  path_to_book: content/courseware
 
 launch_buttons:
-  notebook_interface: "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
-  jupyterhub_url: https://a301_hub.eoas.ubc.ca
+  notebook_interface: "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+  jupyterhub_url: http://127.0.0.1:8082
   
 html:
   home_page_in_navbar: true

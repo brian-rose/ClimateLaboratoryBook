@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.6.0
+    jupytext_version: 1.9.1
 kernelspec:
   display_name: Python 3
   language: python
@@ -306,7 +306,6 @@ $$\delta q_L = \gamma \delta q_O $$
 where the constant can be evaluated from the reference climate:
 
 $$ \gamma = \frac{\overline{q_L}}{\overline{q_O}} $$
-
 
 +++
 

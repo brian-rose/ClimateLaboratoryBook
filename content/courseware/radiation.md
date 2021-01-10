@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.6.0
+    jupytext_version: 1.9.1
 kernelspec:
   display_name: Python 3
   language: python
@@ -144,7 +144,7 @@ We can infer that much of the outgoing longwave radiation actually originates fa
 
 Recall that our observed global energy budget diagram shows 217 out of 239 W m$^{-2}$ total OLR emitted by the atmosphere and clouds, only 22 W m$^{-2}$ directly from the surface.
 
-This is due to the **greenhouse effect**. 
+This is due to the **greenhouse effect**.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -343,7 +343,7 @@ Now look at the atmospheric **absorption spectra**.
     - 78% N$_2$
     - 21% O$_2$
     - 1% Ar
-    - H$_2$O (variable) 
+    - H$_2$O (variable)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
