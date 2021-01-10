@@ -1,93 +1,75 @@
-# This file contains the order and numbering for all sections in the book.
-#
-# Each entry has the following schema:
-#
-# - title: mytitle   # Title of chapter or section
-#   url: /myurl  # URL of section relative to the /content/ folder.
-#   sections:  # Contains a list of more entries that make up the chapter's sections
-#   not_numbered: true  # if the section shouldn't have a number in the sidebar
-#     (e.g. Introduction or appendices)
-#   expand_sections: true  # if you'd like the sections of this chapter to always
-#     be expanded in the sidebar.
-#   external: true  # Whether the URL is an external link or points to content in the book
-#
-# Below are some special values that trigger specific behavior:
-# - search: true  # Will provide a link to a search page
-# - divider: true  # Will insert a divider in the sidebar
-# - header: My Header  # Will insert a header with no link in the sidebar
-
-- url: /home
+- file: /home
   not_numbered: true
 
-- url: /preamble
+- file: /preamble
   not_numbered: true
   sections:
-    - url: /about
-    - url: /who-for
-    - url: /how-to
-    - url: /attribution
+    - file: /about
+    - file: /who-for
+    - file: /how-to
+    - file: /attribution
 
 - divider: true
 - header: Lectures
 
-- url: /courseware/models-budgets-fun
-- url: /courseware/zero-dim-ebm
+- file: /courseware/models-budgets-fun
+- file: /courseware/zero-dim-ebm
   sections:
-    - url: /courseware/analytical-efolding
-- url: /courseware/climate-system-models
-- url: /courseware/introducing-cesm
-- url: /courseware/climlab-intro
-- url: /courseware/radiation
-- url: /courseware/elementary-greenhouse
+    - file: /courseware/analytical-efolding
+- file: /courseware/climate-system-models
+- file: /courseware/introducing-cesm
+- file: /courseware/climlab-intro
+- file: /courseware/radiation
+- file: /courseware/elementary-greenhouse
   sections:
-    - url: /courseware/sympy-greenhouse
-- url: /courseware/grey-radiation-climlab
-- url: /courseware/radiative-transfer
-- url: /courseware/spectral-bands
-- url: /courseware/radeq
-- url: /courseware/rce
-- url: /courseware/sensitivity-feedback
+    - file: /courseware/sympy-greenhouse
+- file: /courseware/grey-radiation-climlab
+- file: /courseware/radiative-transfer
+- file: /courseware/spectral-bands
+- file: /courseware/radeq
+- file: /courseware/rce
+- file: /courseware/sensitivity-feedback
   sections:
-    - url: /courseware/advanced-sensitivity-feedback
-- url: /courseware/transient-cesm
-- url: /courseware/transient-toy
-- url: /courseware/clouds
-- url: /courseware/insolation
-- url: /courseware/orbital
-- url: /courseware/heat-transport
+    - file: /courseware/advanced-sensitivity-feedback
+- file: /courseware/transient-cesm
+- file: /courseware/transient-toy
+- file: /courseware/clouds
+- file: /courseware/insolation
+- file: /courseware/orbital
+- file: /courseware/heat-transport
   sections:
-    - url: /courseware/advanced-heat-transport
-- url: /courseware/one-dim-ebm
-- url: /courseware/seasonal-cycle
-- url: /courseware/numerical-diffusion
-- url: /courseware/albedo-snowball
+    - file: /courseware/advanced-heat-transport
+- file: /courseware/one-dim-ebm
+- file: /courseware/seasonal-cycle
+- file: /courseware/numerical-diffusion
+- file: /courseware/albedo-snowball
   sections:
-    - url: /courseware/advanced-albedo-feedback
-    - url: /courseware/advanced-snowball-earth
-- url: /courseware/surface-energy-balance
-- url: /courseware/land-ocean-contrast
-- url: /courseware/water-water-everywhere
+    - file: /courseware/advanced-albedo-feedback
+    - file: /courseware/advanced-snowball-earth
+- file: /courseware/surface-energy-balance
+- file: /courseware/land-ocean-contrast
+- file: /courseware/water-water-everywhere
 
 - divider: true
 - header: Assignments
 
-- url: /about-assignments
+- file: /about-assignments
   not_numbered: true
-- url: /courseware/assignment-zero-dim-ebm
+- file: /courseware/assignment-zero-dim-ebm
   not_numbered: true
-- url: /courseware/assignment-cesm-control
+- file: /courseware/assignment-cesm-control
   not_numbered: true
   sections:
-    - url: /courseware/assignment-cesm-control-hints
-- url: /courseware/assignment-simple-clouds
+    - file: /courseware/assignment-cesm-control-hints
+- file: /courseware/assignment-simple-clouds
   not_numbered: true
-- url: /courseware/assignment-rcm-feedback
+- file: /courseware/assignment-rcm-feedback
   not_numbered: true
-- url: /courseware/assignment-cesm-climate-change
+- file: /courseware/assignment-cesm-climate-change
   not_numbered: true
-- url: /courseware/assignment-insolation-orbit
+- file: /courseware/assignment-insolation-orbit
   not_numbered: true
 
 - divider: true
-- url: /references
+- file: /references
   not_numbered: true
