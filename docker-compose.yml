@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  webserver:
+    build: apache_image
+    image: phaustin/apache:jan10
+    container_name: apache_jan10
+    ports:
+      - "${TEXT_PORT}:80"
+    volumes:
+      - ./notebooks/_build/html:/usr/local/share/a301
+      - ./settings:/srv/settings
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: bash -c
+            "cp -a /srv/settings/httpd.conf /usr/local/apache2/conf/httpd.conf
+             && httpd-foreground
+            "
+
+  jupyterhub_jan10:
+    build: hub_image
+    image: phaustin/climhub:jan10
+    container_name: jupyterhub_jan10
+    depends_on: [climbook_jan10]
+    ports:
+      - ${NB_PORT}:8000
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - net_jan10
+
+  climbook_jan10:
+    image: phaustin/climbook:jan10
+    build:
+      context: notebook_image
+    container_name: climbook_jan10
+
+# force the network name to be "jupyterhub"
+# this needs to be matched in jupyterhub_config.py by:
+# c.DockerSpawner.network_name = 'jupyterhub'
+networks:
+    net_jan10:
+      driver: bridge
+      name: net_jan10

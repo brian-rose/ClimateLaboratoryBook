@@ -2,11 +2,12 @@
 # ---
 # jupyter:
 #   jupytext:
+#     formats: md:myst,py:percent
 #     text_representation:
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.8.0
+#       jupytext_version: 1.9.1
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -14,7 +15,7 @@
 # ---
 
 # %% [markdown] slideshow={"slide_type": "slide"}
-# # Advanced topic: Ice albedo feedback in the EBM
+# # Advanced topic: Ice albedo feedback in the EBM -- test2
 #
 # This notebook is part of [The Climate Laboratory](https://brian-rose.github.io/ClimateLaboratoryBook) by [Brian E. J. Rose](http://www.atmos.albany.edu/facstaff/brose/index.html), University at Albany.
 
@@ -27,7 +28,6 @@
 #
 # ## 1. Interactive snow and ice line in the EBM
 # ____________
-#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### The annual mean EBM
@@ -38,9 +38,6 @@
 # C(\phi) \frac{\partial T_s}{\partial t} = & ~(1-\alpha) ~ Q - \left( A + B~T_s \right) +  \\
 # & \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(\cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right)
 # \end{align*}
-#
-#
-#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### Temperature-dependent ice line parameterization
@@ -51,7 +48,6 @@
 # \alpha_0 + \alpha_2 P_2(\sin\phi) & ~ & T(\phi) > T_f \\
 # a_i & ~ & T(\phi) \le T_f \\
 # \end{array} \right. $$
-#
 
 # %% [markdown]
 # ### Adding the interactive ice line to the EBM in climlab
@@ -137,8 +133,6 @@ model1.icelat
 #
 # ## 2. Polar-amplified warming in the EBM
 # ____________
-#
-#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### Add a small radiative forcing
@@ -148,7 +142,6 @@ model1.icelat
 # $$ A \rightarrow A - \delta A $$
 #
 # where $\delta A = 4$ W m$^{-2}$.
-#
 
 # %% slideshow={"slide_type": "slide"}
 deltaA = 4.
@@ -198,8 +191,6 @@ plt.grid()
 #
 # ## 3. Effects of diffusivity in the annual mean EBM with albedo feedback
 # ____________
-#
-#
 
 # %% [markdown] slideshow={"slide_type": "slide"}
 # ### In-class investigation: Effects of diffusivity with albedo feedback

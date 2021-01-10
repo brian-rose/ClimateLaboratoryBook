@@ -1,0 +1,3 @@
+dockerspawner
+jupyterhub-dummyauthenticator
+

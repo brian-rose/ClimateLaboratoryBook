@@ -12,6 +12,9 @@ execute:
 
 exclude_patterns: ["*ipynb"]
 
+execute:
+  timeout: 100
+
 repository:
   url: https://github.com/phaustin/a301_2020
   branch: master

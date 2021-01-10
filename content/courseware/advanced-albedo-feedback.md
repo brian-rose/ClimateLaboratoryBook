@@ -1,10 +1,11 @@
 ---
 jupytext:
+  formats: md:myst,py:percent
   text_representation:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.6.0
+    jupytext_version: 1.9.1
 kernelspec:
   display_name: Python 3
   language: python
@@ -13,7 +14,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-# Advanced topic: Ice albedo feedback in the EBM
+# Advanced topic: Ice albedo feedback in the EBM -- test2
 
 This notebook is part of [The Climate Laboratory](https://brian-rose.github.io/ClimateLaboratoryBook) by [Brian E. J. Rose](http://www.atmos.albany.edu/facstaff/brose/index.html), University at Albany.
 
@@ -39,8 +40,6 @@ The equation is
 C(\phi) \frac{\partial T_s}{\partial t} = & ~(1-\alpha) ~ Q - \left( A + B~T_s \right) +  \\
 & \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(\cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right)
 \end{align*}
-
-
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -161,7 +160,6 @@ ____________
 ## 2. Polar-amplified warming in the EBM
 ____________
 
-
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ### Add a small radiative forcing
@@ -230,7 +228,6 @@ ____________
 
 ## 3. Effects of diffusivity in the annual mean EBM with albedo feedback
 ____________
-
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

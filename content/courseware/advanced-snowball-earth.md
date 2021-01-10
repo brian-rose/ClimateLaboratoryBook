@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.12
-    jupytext_version: 1.6.0
+    jupytext_version: 1.9.0
 kernelspec:
   display_name: Python 3
   language: python
@@ -46,7 +46,6 @@ ____________
 
 ## 1. The Neoproterozoic Snowball Earth events
 ____________
-
 
 +++ {"slideshow": {"slide_type": "skip"}}
 
@@ -343,7 +342,7 @@ ____________
 
 The ice edge in our model is always where the temperature crosses $T_f = -10^\circ$C. The system is at **equilibrium** when the temperature is such that there is a balance between ASR, OLR, and heat transport convergence everywhere. 
 
-Suppose that sun was hotter or cooler at different times (in fact it was significantly cooler during early Earth history). That would mean that the solar constant $S_0 = 4Q$ was larger or smaller. We should expect that the temperature (and thus the ice edge) should increase and decrease as we change $S_0$. 
+Suppose that sun was hotter or cooler at different times (in fact it was significantly cooler during early Earth history). That would mean that the solar constant $S_0 = 4Q$ was larger or smaller. We should expect that the temperature (and thus the ice edge) should increase and decrease as we change $S_0$.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
