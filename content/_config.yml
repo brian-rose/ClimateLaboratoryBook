@@ -1,0 +1,26 @@
+# Book settings
+######################################################################################
+# Book settings
+title: "Climate Laboratory Book"
+author: Brian Rose
+email: paustin@eoas.ubc.ca
+description: >- # this means to ignore newlines until "baseurl:"
+  Climate Laboratory
+
+execute:
+  execute_notebooks: off
+
+exclude_patterns: ["*ipynb"]
+
+repository:
+  url: https://github.com/phaustin/ClimateLaboratoryBook
+  branch: jb
+  path_to_book: content/courseware
+
+launch_buttons:
+  notebook_interface: "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
+  jupyterhub_url: http://jupyterhub-1.eoas.ubc.ca:8082
+
+html:
+  home_page_in_navbar: true
+  baseurl: https://a301_web.eoas.ubc.ca

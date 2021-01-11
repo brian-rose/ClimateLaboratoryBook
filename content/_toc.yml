@@ -1,0 +1,64 @@
+- file: home.md
+
+- part: Front matter
+  chapters:
+  - file: preamble.md
+  - file: about.md
+  - file: who-for.md
+  - file: how-to.md
+  - file: attribution.md
+
+- part: Lectures
+  numbered: true
+  chapters:
+  - file: courseware/models-budgets-fun.md
+  - file: courseware/zero-dim-ebm.md
+    sections:
+      - file: courseware/analytical-efolding.md
+  - file: courseware/climate-system-models.md
+  - file: courseware/introducing-cesm.md
+  - file: courseware/climlab-intro.md
+  - file: courseware/radiation.md
+  - file: courseware/elementary-greenhouse.md
+  - file: courseware/sympy-greenhouse.md
+  - file: courseware/grey-radiation-climlab.md
+  - file: courseware/radiative-transfer.md
+  - file: courseware/spectral-bands.md
+  - file: courseware/radeq.md
+  - file: courseware/rce.md
+  - file: courseware/sensitivity-feedback.md
+    sections:
+      - file: courseware/advanced-sensitivity-feedback.md
+  - file: courseware/transient-cesm.md
+  - file: courseware/transient-toy.md
+  - file: courseware/clouds.md
+  - file: courseware/insolation.md
+  - file: courseware/orbital.md
+  - file: courseware/heat-transport.md
+    sections:
+      - file: courseware/advanced-heat-transport.md
+  - file: courseware/one-dim-ebm.md
+  - file: courseware/seasonal-cycle.md
+  - file: courseware/numerical-diffusion.md
+  - file: courseware/albedo-snowball.md
+    sections:
+      - file: courseware/advanced-albedo-feedback.md
+      - file: courseware/advanced-snowball-earth.md
+  - file: courseware/surface-energy-balance.md
+  - file: courseware/land-ocean-contrast.md
+  - file: courseware/water-water-everywhere.md
+
+- part: Assignments
+  chapters:
+  - file: about-assignments.md
+  - file: courseware/assignment-zero-dim-ebm.md
+  - file: courseware/assignment-cesm-control.md
+  - file: courseware/assignment-cesm-control-hints.md
+  - file: courseware/assignment-simple-clouds.md
+  - file: courseware/assignment-rcm-feedback.md
+  - file: courseware/assignment-cesm-climate-change.md
+  - file: courseware/assignment-insolation-orbit.md
+    
+- part: References
+  chapters:
+  - file: references.md
