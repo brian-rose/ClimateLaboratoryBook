@@ -8,7 +8,7 @@
   - file: how-to.md
   - file: attribution.md
 
-- part: Lectures
+- part: Lectures    
   numbered: true
   chapters:
   - file: courseware/models-budgets-fun.md

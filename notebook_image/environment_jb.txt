@@ -1,0 +1,34 @@
+name: climlab-courseware
+channels:
+  - eoas_ubc
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy>1.19
+  - matplotlib
+  - sphinx
+  - xarray
+  - pip
+  - metpy
+  - cartopy
+  - sympy
+  - ffmpeg
+  - jupyterhub=1.3
+  - jupyterlab=3.0.3
+  - jupyterlab_widgets
+  - sphinx~=3.4
+  - ipywidgets
+  - ipython
+  - ipykernel
+  - jupytext>1.9
+  - jupyter_core~=4.7
+  - climlab>0.8
+  - alabaster
+  - attrs
+  - Babel
+  - numba>=0.43.1  # older version will hang forever under python 3, https://github.com/brian-rose/climlab/issues/101
+  - netcdf4
+  - nc-time-axis
+  - conda-lock
+# conda-lock -f environment.yml -p linux-64
