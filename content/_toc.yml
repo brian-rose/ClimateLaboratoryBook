@@ -1,5 +1,9 @@
 - file: home.md
 
+- part: Syllabus
+  chapters:
+  - file: syllabus.md
+
 - part: Front matter
   chapters:
   - file: preamble.md
