@@ -2,6 +2,10 @@
 
 **All these items are provisional, expect some iteration as we test this out**
 
+## Python/coding resources
+
+
+
 ## Week 1 (11-17th Jan): Introduction _(Phil/Rachel)_
 - Introduction to course
 - Set class times
