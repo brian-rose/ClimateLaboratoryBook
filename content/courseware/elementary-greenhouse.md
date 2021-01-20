@@ -13,6 +13,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(nb:elementary-greenhouse)=
 # Elementary greenhouse models
 
 This notebook is part of [The Climate Laboratory](https://brian-rose.github.io/ClimateLaboratoryBook) by [Brian E. J. Rose](http://www.atmos.albany.edu/facstaff/brose/index.html), University at Albany.
@@ -62,10 +63,12 @@ We call this the **back radiation**.
 
 ### Energy balance for the atmosphere
 
+$$
 \begin{align}
 \text{energy in} &= \text{energy out} \\
 \sigma T_s^4 &= A\uparrow + A\downarrow = 2 \sigma T_a^4 \\
 \end{align}
+$$
 
 which means that 
 $$ T_s = 2^\frac{1}{4} T_a \approx 1.2 T_a $$

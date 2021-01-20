@@ -8,31 +8,34 @@
 - Troubleshoot any issues with jupyter notebooks
 - Set up slack channel
 - Reading: Chapter 1 of Hartmann (Introduction to the Climate System)
-- Notebooks: Notebook 1 [Climate models, the global energy budget, and Fun with Python](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/models-budgets-fun.html)
+- Notebooks: Notebook 1: {ref}`nb:models`
 
 
 ## Week 2 (18-24th Jan): Intro to climate models and the Global Energy Budget _(Phil)_
 ### Reading:
 - Hartmann Chapters 1 (Introduction to the Climate System) and 2 (Global Energy Balance) of Hartmann
 ### Notebooks:
-- [Notebook 2: Modeling the global energy budget](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/zero-dim-ebm.html)
-- [Notebook 3: The climate system and climate models](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climate-system-models.html)
-- [Notebook 4: Introducing the Community Earth System Model (CESM)](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/introducing-cesm.html) - **currently downloading the data doesn't work - we may need data locally**
+- Notebook 2: {ref}`nb:modeling`
+- Notebook 3: {ref}`nb:system`
 
 ### Assignments:
-[Assignment 1: Climate change in the zero-dimensional EBM](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-zero-dim-ebm.html)
+
+- Assignment 1: {ref}`assignment-zero`
 
 
 ## Week 3 (25-31st Jan): Radiative Transfer _(Phil)_
 ### Reading:
+
 - Hartmann chapters 3 (Atmospheric Radiative Transfer and Climate) and 4 (Energy Balance of the Surface)
-### Notebooks:
-- [??? Notebook 5: Climlab](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climlab-intro.html)  - or do we want to use the other climate model building notebooks?
-- [Notebook 6: Radiation](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html)
-- [Notebook 7: Greenhouse effect](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html)
+
+### Notebooks
+- Notebook 5: {ref}`nb:climlab`
+- Notebook 6: {ref}`nb:radiation` 
+- Notebook 7: {ref}`nb:elementary-greenhouse`
 
 ### Assignments:
-[Assignment 2: Global average budgets in the CESM pre-industrial control simulation](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-cesm-control.html)
+
+- Assignment 2: {ref}`nb:assignment-cesm`
 
 ## Week 4 (1-7th Feb): Radiative equilibrium and Climate Change _(Phil)_
 ### Reading:

@@ -10,16 +10,19 @@ description: >- # this means to ignore newlines until "baseurl:"
 execute:
   execute_notebooks: off
 
+parse:
+  myst_extended_syntax: true
+  
 exclude_patterns: ["*ipynb"]
 
 repository:
   url: https://github.com/phaustin/ClimateLaboratoryBook
   branch: jb
-  path_to_book: content/courseware
+  path_to_book: content
 
 launch_buttons:
-  notebook_interface: "jupyterlab" # The interface interactive links will activate ["classic", "jupyterlab"]
-  jupyterhub_url: http://jupyterhub-1.eoas.ubc.ca:8082
+  notebook_interface: "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
+  jupyterhub_url: http://jupyter-1.eoas.ubc.ca:8082
 
 html:
   home_page_in_navbar: true
