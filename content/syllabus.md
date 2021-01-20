@@ -24,7 +24,7 @@
 
 ### Assignments:
 
-- Assignment 1: {ref}`assignment-zero`
+- Assignment 1: {ref}`nb:assignment-zero`
 
 
 ## Week 3 (25-31st Jan): Radiative Transfer _(Phil)_
@@ -39,7 +39,7 @@
 
 ### Assignments:
 
-- Assignment 2: {ref}`nb:assignment-cesm`
+- Assignment 2: {ref}`nb:assignment-cesm-control`
 
 ## Week 4 (1-7th Feb): Radiative equilibrium and Climate Change _(Phil)_
 ### Reading:
