@@ -26,7 +26,6 @@
 
 - Assignment 1: {ref}`nb:assignment-zero`
 
-
 ## Week 3 (25-31st Jan): Radiative Transfer _(Phil)_
 ### Reading:
 
@@ -47,11 +46,11 @@
 
 ### Notebooks:
 **Maybe don't want to assign ALL of these notebooks in one week? Or one of them becomes an assignment?**
-- [???Notebook 8: Grey radiation with climlab](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/grey-radiation-climlab.html)
-- [Notebook 9: Radiative transfer](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html)
-- [Notebook 10: Spectral bands](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/spectral-bands.html)
-- [Notebook 11: Radiative equilibrium](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radeq.html)
-- [Notebook 12: Radiative-convective equilibrium](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/rce.html)
+- Notebook 8: {ref}`nb:grey-radiation` 
+- Notebook 9: {ref}`nb:radiative-transfer`
+- Notebook 10: {ref}`nb:spectral-bands`
+- Notebook 11: {ref}`nb:radeq`
+- Notebook 12: {ref}`nb:rce`
 
 ### Assignments:
 
