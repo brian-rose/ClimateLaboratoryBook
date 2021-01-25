@@ -4,6 +4,17 @@
 
   - Dennis Hartmann: [Global physical climatology](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0001767901&title=Global%20physical%20climatology)  
   - Roland Stull: [Boundary Layer Meteorology](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000806834&title=An%20introduction%20to%20boundary%20layer%20meteorology)  
+  - Roland Stull: [Practical meteorology](https://www.eoas.ubc.ca/books/Practical_Meteorology/)
+
+
+- Journal articles
+
+  - First demonstration of water vapor feedback: Manbe and Weatherald, 1967
+    - [most influential paper?](https://www.carbonbrief.org/prof-john-mitchell-how-a-1967-study-greatly-influenced-climate-change-science)  
+    - [JAS pdf](https://journals.ametsoc.org/view/journals/atsc/24/3/1520-0469_1967_024_0241_teotaw_2_0_co_2.xml)
+  - New book: Clouds and climate (2020), by Siebesma, Bony, Jakob and Stevens
+    - Chapter 6: Parameterizing clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
+    - Chapter 7: Evaluating clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
 
 - Python/programming
 
@@ -21,3 +32,12 @@
 - Source code repositories
 
   - [this course](https://github.com/phaustin/ClimateLaboratoryBook/tree/jb)
+
+- Coding
+
+  - clone the repository and checkout the branch
+
+        git clone https://github.com/phaustin/ClimateLaboratoryBook
+        cd ClimateLaboratoryBook
+        git checkout jb
+	
