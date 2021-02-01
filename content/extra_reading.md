@@ -12,9 +12,13 @@
   - First demonstration of water vapor feedback: Manbe and Weatherald, 1967
     - [most influential paper?](https://www.carbonbrief.org/prof-john-mitchell-how-a-1967-study-greatly-influenced-climate-change-science)  
     - [JAS pdf](https://journals.ametsoc.org/view/journals/atsc/24/3/1520-0469_1967_024_0241_teotaw_2_0_co_2.xml)
+  - CGILS cloud feedback project
+    - [Initial single column intercomparison paper (2013)](https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/2013MS000246)
+    - [Tan et al. with slab ocean (2016)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016MS000804)
   - New book: Clouds and climate (2020), by Siebesma, Bony, Jakob and Stevens
     - Chapter 6: Parameterizing clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
     - Chapter 7: Evaluating clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
+    - Chapter 8: Tropical and subtropical clouds systems [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
 
 - Python/programming
 
