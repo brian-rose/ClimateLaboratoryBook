@@ -32,7 +32,14 @@
   - [Lagrangian reference frame](https://www.dropbox.com/s/29itq49fw2d3bdk/lagrangian.pdf?dl=0)  
   - [thermodynamics](https://www.dropbox.com/s/9fzwukhcbad70n7/thermo.pdf?dl=0)  
   - [David Randall: Quick Studies](http://hogback.atmos.colostate.edu/group/dave/QuickStudies.html)
-  
+
+- Radiation links
+  - [Bohren on mean free path](https://github.com/phaustin/ClimateLaboratoryBook/blob/jb/docs/bohren_mean_free_path.pdf)
+  - [Atmospheric scale heights](https://a301_web.eoas.ubc.ca/week5/hydrostat.html#hydro)
+  - [US standard atmospheres](https://a301_web.eoas.ubc.ca/week5/hydrostatic_balance.html)
+  - [Calculating the atmospheric heating rate](https://a301_web.eoas.ubc.ca/week12/assign7b_solution.html#assign7b-solution)
+
+
 - Source code repositories
 
   - [this course](https://github.com/phaustin/ClimateLaboratoryBook/tree/jb)
