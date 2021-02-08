@@ -10,8 +10,14 @@ description: >- # this means to ignore newlines until "baseurl:"
 execute:
   execute_notebooks: off
 
-parse:
-  myst_extended_syntax: true
+myst_enable_extensions = [
+    "amsmath",
+    "colon_fence",
+    "deflist",
+    "dollarmath",
+    "html_image",
+]
+
   
 exclude_patterns: ["*ipynb"]
 

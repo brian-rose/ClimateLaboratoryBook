@@ -10,6 +10,7 @@ dependencies:
   - myst-nb >=0.10
   - nbconvert
   - nbformat
+  - jupytext
   - python =3.8
   - pyyaml
   - sphinx <3
