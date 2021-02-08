@@ -1,8 +1,9 @@
 FROM phaustin/base-image:jan09
 USER ${NB_USER}
 
-RUN mkdir -p ${HOME}/work/shared_files
-RUN mkdir -p ${HOME}/work/content
+RUN mkdir -p ${HOME}/shared_files
+RUN mkdir -p ${HOME}/content
+RUN mkdir -p ${HOME}/work
 
 RUN echo "conda activate ${CONDA_ENV}" >> ${HOME}/.bashrc
 COPY jupyter_notebook_config.py /etc/jupyter/

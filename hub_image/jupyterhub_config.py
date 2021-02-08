@@ -8,21 +8,21 @@ c.JupyterHub.spawner_class = 'dockerspawner.DockerSpawner'
 c.JupyterHub.hub_ip = '0.0.0.0'
 # the hostname/ip that should be used to connect to the hub
 # this is usually the hub container's name
-c.JupyterHub.hub_connect_ip = 'jupyterhub_jan27'
+c.JupyterHub.hub_connect_ip = 'jupyterhub_feb09'
 
 # pick a docker image. This should have the same version of jupyterhub
 # in it as our Hub.
-c.DockerSpawner.image = 'phaustin/climbook:jan27'
+c.DockerSpawner.image = 'phaustin/climbook:feb09'
 notebook_dir = "/home/jovyan"
 c.DockerSpawner.notebook_dir = notebook_dir
 
 # tell the user containers to connect to our docker network
-c.DockerSpawner.network_name = 'net_jan27'
+c.DockerSpawner.network_name = 'net_feb09'
 c.DockerSpawner.volumes = {"jupyterhub-user-{username}": notebook_dir,
                             "/home/phil/repos/ClimateLaboratoryBook/shared_files": 
-                            {"bind": '/home/jovyan/work/shared_files', "mode": "rw"},
+                            {"bind": '/home/jovyan/shared_files', "mode": "rw"},
                             "/home/phil/repos/ClimateLaboratoryBook/content":
-                            {"bind": '/home/jovyan/work/content', "mode": "ro"}
+                            {"bind": '/home/jovyan/content', "mode": "ro"}
                            }
 
 

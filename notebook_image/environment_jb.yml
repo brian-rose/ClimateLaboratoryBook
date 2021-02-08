@@ -7,7 +7,6 @@ dependencies:
   - attrs >=19.3,<20
   - click
   - docutils >=0.15
-  - linkify-it-py
   - jupyter-sphinx ~=0.3.1
   - nbconvert
   - jupytext
