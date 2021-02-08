@@ -3,10 +3,11 @@
 # prepare a folder for bind mount
 #
 NBDIR=/home/phil/repos/ClimateLaboratoryBook/shared_files
-mkdir "$NBDIR"
+mkdir -p "$NBDIR"
 # make it owned by the GID of the notebook containers.
 # This is 100 in the jupyter docker-stacks,
 # but should be whatever GID your containers run as
+chown jovyan "$NBDIR"
 chown :2005 "$NBDIR"
 # make it group-setgid-writable
 chmod g+rws "$NBDIR"
