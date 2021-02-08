@@ -9,15 +9,14 @@ description: >- # this means to ignore newlines until "baseurl:"
 
 execute:
   execute_notebooks: off
-
-myst_enable_extensions = [
-    "amsmath",
-    "colon_fence",
-    "deflist",
-    "dollarmath",
-    "html_image",
-]
-
+parse:
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    - dollarmath
+    - html_admonition
+    - html_image
+    
   
 exclude_patterns: ["*ipynb"]
 
