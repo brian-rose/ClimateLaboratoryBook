@@ -5,7 +5,7 @@
   - Dennis Hartmann: [Global physical climatology](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0001767901&title=Global%20physical%20climatology)  
   - Roland Stull: [Boundary Layer Meteorology](https://gw2jh3xr2c.search.serialssolutions.com/?sid=sersol&SS_jc=TC0000806834&title=An%20introduction%20to%20boundary%20layer%20meteorology)  
   - Roland Stull: [Practical meteorology](https://www.eoas.ubc.ca/books/Practical_Meteorology/)
-
+  - Roland Stull: [Thermodynamic diagrams](https://www.eoas.ubc.ca/books/Practical_Meteorology/common/thermo-diagrams.html) (also see Practical Meteorology, Chapter 3, Thermodynamics)
 
 - Journal articles
 
@@ -19,6 +19,9 @@
     - Chapter 6: Parameterizing clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
     - Chapter 7: Evaluating clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
     - Chapter 8: Tropical and subtropical clouds systems [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
+    - [Hartmann and Larson, 2009, FAT hypothesis](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2002GL015835)
+    - [FAT or FiTT, Seeley et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GL080096)
+    - [Roe, 2009 on Feedback](https://www-annualreviews-org.ezproxy.library.ubc.ca/doi/10.1146/annurev.earth.061008.134734)
 
 - Python/programming
 
