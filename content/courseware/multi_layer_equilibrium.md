@@ -12,6 +12,7 @@ kernelspec:
   name: python3
 ---
 
+(nb:multi-layer)=
 # Radiative equilibrium
 
 This script calculates pure radiative equilbrium for an nlayer atmosphere over a black surface, where

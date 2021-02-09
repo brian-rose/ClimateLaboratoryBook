@@ -44,15 +44,18 @@
 ### Reading:
 - Hartmann chapers 3 (Atmospheric Radiative Transfer and Climate) and 13 (Anthropogenic Climate Change)
 
+### Assignments:
+
+
+
 ### Notebooks:
-**Maybe don't want to assign ALL of these notebooks in one week? Or one of them becomes an assignment?**
 - Notebook 8: {ref}`nb:grey-radiation` 
 - Notebook 9: {ref}`nb:radiative-transfer`
 - Notebook 10: {ref}`nb:spectral-bands`
-- Notebook 11: {ref}`nb:radeq`
-- Notebook 12: {ref}`nb:rce`
+- Extra notebook: {ref}`nb:multi-layer`
 
 ### Assignments:
+- Assignment 3: {ref}`nb:simple-clouds`
 
 ### Week 5: 8-14th Feb: Modelling feedbacks and transient warming _(Phil)_
 #### Reading:
@@ -60,10 +63,13 @@
 - [Causes of Higher Climate Sensitivity in CMIP6 Models](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019GL085782)
 
 #### Notebooks:
+- Notebook 11: {ref}`nb:radeq`
+- Notebook 12: {ref}`nb:rce`
 - [Notebook 13: Climate sensitivity](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html)
 - [Notebook 14: Transient warming in CESM](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html)
 - [Notebook 15: Toy models of transient warming](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-toy.html)
 #### Assignments:
+- Assignment 4: {ref}`nb:rcm-feedback`
 
 ### 15-21st Feb
 ---MID-TERM BREAK---

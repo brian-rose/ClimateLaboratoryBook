@@ -14,14 +14,14 @@ kernelspec:
 
 +++
 
-### Stock and flow with feedback
+# Stock and flow with feedback
 
 ---
 
-Below we use the approach of Math 102 chapters 11 and 12 to show that for our stock and flow equation with
-constant climate sensitivity $\lambda$ and forcing $\Delta F$ the temperature response is given by
+Below we derive Hartmann equation 13.7  with
+constant climate sensitivity $\lambda$ and forcing $Q_0$ the temperature response is given by
 
-$$\Delta T = \lambda \Delta F \left (1 - \exp (-t/\tau ) \right )$$
+$$\Delta T = \lambda Q_0 \left (1 - \exp (-t/\tau ) \right )$$
 
 1\.  Start with the definition for the energy in a 1 $m^2$ column of the ocean mixed layer, compared to a reference
 temperature $T_{ref}$ like the average temperature between 1960-1980:
@@ -38,11 +38,11 @@ since $T_{ref}$ is a constant, $\frac{d\Delta T}{dt} = \frac{d (T - T_{ref})}{dt
 
 2\. We know that the energy in the column is going to change due to the combination of forcing and feedbacks:
 
-$$\frac{dE}{dt} = \Delta F - \frac{\Delta T}{\lambda}$$
+$$\frac{dE}{dt} = Q_0 - \frac{\Delta T}{\lambda}$$
 
 or expanding E:
 
-$$\rho_w c_p H \frac{\Delta T}{dt} =\Delta F - \frac{\Delta T}{\lambda}$$
+$$\rho_w c_p H \frac{\Delta T}{dt} =Q_0 - \frac{\Delta T}{\lambda}$$
 
 ---
 
@@ -50,15 +50,15 @@ $$\rho_w c_p H \frac{\Delta T}{dt} =\Delta F - \frac{\Delta T}{\lambda}$$
 
 3\. First rearrange the terms:
 
-$$\frac{d \Delta T}{dt} = \frac{\lambda \Delta F}{\tau} - \frac{\Delta T}{\tau}$$
+$$\frac{d \Delta T}{dt} = \frac{\lambda Q_0}{\tau} - \frac{\Delta T}{\tau}$$
 
 where we define the time constant $\tau = \lambda \rho_w c_p H$.
 
 Then transform to the new variable $z$:
 
-$$z = \lambda \Delta F - \Delta T$$  
+$$z = \lambda Q_0 - \Delta T$$  
 
-where, since $\lambda \Delta F$ is constant:
+where, since $\lambda Q_0$ is constant:
 
 $$\frac{dz}{dt} = - \frac{\Delta T}{dt}$$
 
@@ -71,17 +71,17 @@ $$\frac{dz}{dt} = -\frac{z}{\tau}$$
 +++
 
 4\. Substitute $z = C \exp(-t/\tau)$.   To find the constant $C$ recognize
-that at time $t=0$ $\Delta T = 0$, so $z(0) = C = \lambda \Delta F$.   That means that:
+that at time $t=0$ $\Delta T = 0$, so $z(0) = C = \lambda Q_0$.   That means that:
 
-$$z = C \exp(-t/\tau) = \lambda \Delta F \exp (-t/\tau) = \lambda \Delta F - \Delta T$$
+$$z = C \exp(-t/\tau) = \lambda Q_0 \exp (-t/\tau) = \lambda Q_0 - \Delta T$$
 
 and solving for $\Delta T$:
 
-$$ \lambda \Delta F \left ( \exp (-t/\tau) - 1 \right ) = - \Delta T$$
+$$ \lambda Q_0 \left ( \exp (-t/\tau) - 1 \right ) = - \Delta T$$
 
 and rearranging gives the answer:
 
 
-$$ \Delta T = \lambda \Delta F \left (1 - \exp (-t/\tau) \right ) $$
+$$ \Delta T = \lambda Q_0 \left (1 - \exp (-t/\tau) \right ) $$
 
 
