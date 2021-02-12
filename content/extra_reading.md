@@ -22,7 +22,9 @@
     - [Hartmann and Larson, 2009, FAT hypothesis](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2002GL015835)
     - [FAT or FiTT, Seeley et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GL080096)
     - [Roe, 2009 on Feedback](https://www-annualreviews-org.ezproxy.library.ubc.ca/doi/10.1146/annurev.earth.061008.134734)
-
+    - [Zelinka, Klein, and Hartmann,2012 -- radiative kernels](https://journals.ametsoc.org/view/journals/clim/25/11/jcli-d-11-00249.1.xml)
+    - [feedback slides](./docs/e595_feedback.pdf)
+    
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)
