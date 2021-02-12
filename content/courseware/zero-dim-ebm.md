@@ -13,6 +13,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(nb:modeling)=
 # Modeling the global energy budget
 
 ## Introducing the zero-dimensional Energy Balance Model
@@ -272,11 +273,13 @@ In fact almost all climate models are **time-dependent**, meaning the model calc
 
 We will write the **total energy budget** of the Earth system as
 
+$$
 \begin{align} 
-\frac{dE}{dt} &= \text{net energy flux in to system} \\
+ \frac{dE}{dt} &= \text{net energy flux in to system} \\
  &= \text{flux in – flux out} \\
  &= \text{ASR} - \text{OLR}
 \end{align}
+$$
 
 where $E$ is the **enthalpy** or **heat content** of the total system.
 

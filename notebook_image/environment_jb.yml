@@ -1,0 +1,34 @@
+name: jupyterbook
+channels:
+  - eoas_ubc
+  - conda-forge
+  - defaults
+dependencies:
+  - attrs >=19.3,<20
+  - click
+  - docutils >=0.15
+  - jupyter-sphinx ~=0.3.1
+  - nbconvert
+  - jupytext
+  - sqlalchemy
+  - nbformat
+  - python =3.8
+  - pyyaml
+  - sphinx >3
+  - jupyter
+  - jsonschema
+  - bs4
+  - myst-parser ~=0.13
+  - sphinx-comments
+  - sphinx-copybutton
+  - sphinx-thebe >=0.0.6
+  - pip
+  - sphinxcontrib-bibtex
+# conda-lock -f environment.yml -p linux-64
+                                                        
+# sphinx-panels             0.5.2                    pypi_0    pypi
+# jupyter-book              0.10.0                   pypi_0    pypi
+# nested-lookup             0.2.21                   pypi_0    pypi
+# pydata-sphinx-theme       0.4.3                    pypi_0    pypi
+# sphinx-book-theme         0.0.39                   pypi_0    pypi
+

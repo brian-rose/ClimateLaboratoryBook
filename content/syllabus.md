@@ -2,51 +2,60 @@
 
 **All these items are provisional, expect some iteration as we test this out**
 
+## Python/coding resources
+
+
+
 ## Week 1 (11-17th Jan): Introduction _(Phil/Rachel)_
 - Introduction to course
 - Set class times
 - Troubleshoot any issues with jupyter notebooks
 - Set up slack channel
 - Reading: Chapter 1 of Hartmann (Introduction to the Climate System)
-- Notebooks: Notebook 1 [Climate models, the global energy budget, and Fun with Python](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/models-budgets-fun.html)
+- Notebooks: Notebook 1: {ref}`nb:models`
 
 
 ## Week 2 (18-24th Jan): Intro to climate models and the Global Energy Budget _(Phil)_
 ### Reading:
 - Hartmann Chapters 1 (Introduction to the Climate System) and 2 (Global Energy Balance) of Hartmann
 ### Notebooks:
-- [Notebook 2: Modeling the global energy budget](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/zero-dim-ebm.html)
-- [Notebook 3: The climate system and climate models](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climate-system-models.html)
-- [Notebook 4: Introducing the Community Earth System Model (CESM)](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/introducing-cesm.html) - **currently downloading the data doesn't work - we may need data locally**
+- Notebook 2: {ref}`nb:modeling`
+- Notebook 3: {ref}`nb:system`
 
 ### Assignments:
-[Assignment 1: Climate change in the zero-dimensional EBM](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-zero-dim-ebm.html)
 
+- Assignment 1: {ref}`nb:assignment-zero`
 
 ## Week 3 (25-31st Jan): Radiative Transfer _(Phil)_
 ### Reading:
+
 - Hartmann chapters 3 (Atmospheric Radiative Transfer and Climate) and 4 (Energy Balance of the Surface)
-### Notebooks:
-- [??? Notebook 5: Climlab](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climlab-intro.html)  - or do we want to use the other climate model building notebooks?
-- [Notebook 6: Radiation](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html)
-- [Notebook 7: Greenhouse effect](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html)
+
+### Notebooks
+- Notebook 5: {ref}`nb:climlab`
+- Notebook 6: {ref}`nb:radiation` 
+- Notebook 7: {ref}`nb:elementary-greenhouse`
 
 ### Assignments:
-[Assignment 2: Global average budgets in the CESM pre-industrial control simulation](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-cesm-control.html)
+
+- Assignment 2: {ref}`nb:assignment-cesm-control`
 
 ## Week 4 (1-7th Feb): Radiative equilibrium and Climate Change _(Phil)_
 ### Reading:
 - Hartmann chapers 3 (Atmospheric Radiative Transfer and Climate) and 13 (Anthropogenic Climate Change)
 
+### Assignments:
+
+
+
 ### Notebooks:
-**Maybe don't want to assign ALL of these notebooks in one week? Or one of them becomes an assignment?**
-- [???Notebook 8: Grey radiation with climlab](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/grey-radiation-climlab.html)
-- [Notebook 9: Radiative transfer](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html)
-- [Notebook 10: Spectral bands](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/spectral-bands.html)
-- [Notebook 11: Radiative equilibrium](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radeq.html)
-- [Notebook 12: Radiative-convective equilibrium](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/rce.html)
+- Notebook 8: {ref}`nb:grey-radiation` 
+- Notebook 9: {ref}`nb:radiative-transfer`
+- Notebook 10: {ref}`nb:spectral-bands`
+- Extra notebook: {ref}`nb:multi-layer`
 
 ### Assignments:
+- Assignment 3: {ref}`nb:simple-clouds`
 
 ### Week 5: 8-14th Feb: Modelling feedbacks and transient warming _(Phil)_
 #### Reading:
@@ -54,10 +63,13 @@
 - [Causes of Higher Climate Sensitivity in CMIP6 Models](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019GL085782)
 
 #### Notebooks:
+- Notebook 11: {ref}`nb:radeq`
+- Notebook 12: {ref}`nb:rce`
 - [Notebook 13: Climate sensitivity](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html)
 - [Notebook 14: Transient warming in CESM](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html)
 - [Notebook 15: Toy models of transient warming](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-toy.html)
 #### Assignments:
+- Assignment 4: {ref}`nb:rcm-feedback`
 
 ### 15-21st Feb
 ---MID-TERM BREAK---

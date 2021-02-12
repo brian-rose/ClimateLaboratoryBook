@@ -11,6 +11,7 @@ kernelspec:
   name: python3
 ---
 
+(nb:assignment-cesm-control)=
 # Assignment: Global average budgets in the CESM pre-industrial control simulation
 
 This notebook is part of [The Climate Laboratory](https://brian-rose.github.io/ClimateLaboratoryBook) by [Brian E. J. Rose](http://www.atmos.albany.edu/facstaff/brose/index.html), University at Albany.

@@ -11,6 +11,7 @@
   - file: who-for.md
   - file: how-to.md
   - file: attribution.md
+  - file: extra_reading.md
 
 - part: Lectures
   numbered: true
@@ -62,6 +63,14 @@
   - file: courseware/assignment-rcm-feedback.md
   - file: courseware/assignment-cesm-climate-change.md
   - file: courseware/assignment-insolation-orbit.md
+
+- part: Extra notebooks
+  chapters:
+  - file: courseware/schwarz.rst
+  - file: courseware/hydrostat.rst
+  - file: courseware/hydrostatic_balance.md
+  - file: courseware/multi_layer_equilibrium.md
+  - file: courseware/solving-the-stock-and-flow-equation.md
     
 - part: References
   chapters:

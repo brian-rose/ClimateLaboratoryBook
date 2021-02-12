@@ -1,0 +1,23 @@
+name: jupyterbook
+channels:
+  - eoas_ubc
+  - conda-forge
+  - defaults
+dependencies:
+  - attrs >=19.3,<20
+  - click
+  - docutils >=0.15
+  - myst-nb >=0.10
+  - nbconvert
+  - nbformat
+  - jupytext
+  - python =3.8
+  - pyyaml
+  - sphinx <3
+  - sphinx-comments
+  - sphinx-copybutton
+  - sphinx-thebe >=0.0.6
+  - pip
+  - sphinxcontrib-bibtex
+# conda-lock -f environment.yml -p linux-64
+                                                        

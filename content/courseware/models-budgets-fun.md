@@ -13,6 +13,7 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+(nb:models)=
 # Climate models, the global energy budget, and Fun with Python
 
 This notebook is part of [The Climate Laboratory](https://brian-rose.github.io/ClimateLaboratoryBook) by [Brian E. J. Rose](http://www.atmos.albany.edu/facstaff/brose/index.html), University at Albany.
@@ -276,6 +277,11 @@ Answer: 13.5 W m$^{-2}$. Okay but this is tedious and prone to error.
 What we really want to do is **define a reusable function**
 
 ```{code-cell} ipython3
+def OLR(T):
+    sigma=5.67E-8
+    tau=238.5 / sigma / 288**4
+    OLR=tau*sigma*T**4
+    return(OLR)
 
 ```
 
