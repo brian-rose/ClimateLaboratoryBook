@@ -61,6 +61,8 @@
 #### Reading:
 - Hartmann chapters 10 (Climate sensitivity) and 11 (Global Climate Models) 
 - [Causes of Higher Climate Sensitivity in CMIP6 Models](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019GL085782)
+- Finish [FAT or FiTT, Seeley et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GL080096) and [Roe, 2009 on Feedback](https://www-annualreviews-org.ezproxy.library.ubc.ca/doi/10.1146/annurev.earth.061008.134734)
+- [feedback slides](https://github.com/phaustin/ClimateLaboratoryBook/blob/jb/docs/e595_feedback.pdf) covering [Zelinka, Klein, and Hartmann,2012 -- radiative kernels](https://journals.ametsoc.org/view/journals/clim/25/11/jcli-d-11-00249.1.xml)
 
 #### Notebooks:
 - Notebook 11: {ref}`nb:radeq`
