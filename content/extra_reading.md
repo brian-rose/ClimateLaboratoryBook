@@ -19,12 +19,15 @@
     - Chapter 6: Parameterizing clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
     - Chapter 7: Evaluating clouds, in [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
     - Chapter 8: Tropical and subtropical clouds systems [Clouds and Climate](https://www-cambridge-org.ezproxy.library.ubc.ca/core/books/clouds-and-climate/7B47159F7B050B71625111E40795D182)
+  - Raditive convective equilibrium 
     - [Hartmann and Larson, 2009, FAT hypothesis](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2002GL015835)
     - [FAT or FiTT, Seeley et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GL080096)
+  - Climate sensitivity
     - [Roe, 2009 on Feedback](https://www-annualreviews-org.ezproxy.library.ubc.ca/doi/10.1146/annurev.earth.061008.134734)
     - [Zelinka, Klein, and Hartmann,2012 -- radiative kernels](https://journals.ametsoc.org/view/journals/clim/25/11/jcli-d-11-00249.1.xml)
-    - [feedback slides](./docs/e595_feedback.pdf)
-    
+    - [Sherwood et al., 2019 -- climate sensitivity review](https://agupubs-onlinelibrary-wiley-com.ezproxy.library.ubc.ca/doi/10.1029/2019RG000678)
+    - [feedback slides](https://github.com/phaustin/ClimateLaboratoryBook/blob/jb/docs/e595_feedback.pdf)
+
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)
