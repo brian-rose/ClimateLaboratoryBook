@@ -28,6 +28,9 @@
     - [Sherwood et al., 2019 -- climate sensitivity review](https://agupubs-onlinelibrary-wiley-com.ezproxy.library.ubc.ca/doi/10.1029/2019RG000678)
     - [feedback slides](https://github.com/phaustin/ClimateLaboratoryBook/blob/jb/docs/e595_feedback.pdf)
 
+  - Ocean/atmosphere heat transport
+    - [Trenberth and Caron 2001, Meridional heat transport](https://journals.ametsoc.org/view/journals/clim/14/16/1520-0442_2001_014_3433_eomaao_2.0.co_2.xml)
+
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)

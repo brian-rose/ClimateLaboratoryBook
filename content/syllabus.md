@@ -49,9 +49,9 @@
 
 
 ### Notebooks:
-- Notebook 8: {ref}`nb:grey-radiation` 
-- Notebook 9: {ref}`nb:radiative-transfer`
-- Notebook 10: {ref}`nb:spectral-bands`
+- Notebook 9: {ref}`nb:grey-radiation` 
+- Notebook 10: {ref}`nb:radiative-transfer`
+- Notebook 11: {ref}`nb:spectral-bands`
 - Extra notebook: {ref}`nb:multi-layer`
 
 ### Assignments:
@@ -61,15 +61,13 @@
 #### Reading:
 - Hartmann chapters 10 (Climate sensitivity) and 11 (Global Climate Models) 
 - [Causes of Higher Climate Sensitivity in CMIP6 Models](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019GL085782)
-- Finish [FAT or FiTT, Seeley et al., 2019](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018GL080096) and [Roe, 2009 on Feedback](https://www-annualreviews-org.ezproxy.library.ubc.ca/doi/10.1146/annurev.earth.061008.134734)
-- [feedback slides](https://github.com/phaustin/ClimateLaboratoryBook/blob/jb/docs/e595_feedback.pdf) covering [Zelinka, Klein, and Hartmann,2012 -- radiative kernels](https://journals.ametsoc.org/view/journals/clim/25/11/jcli-d-11-00249.1.xml)
 
 #### Notebooks:
-- Notebook 11: {ref}`nb:radeq`
-- Notebook 12: {ref}`nb:rce`
-- [Notebook 13: Climate sensitivity](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html)
-- [Notebook 14: Transient warming in CESM](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html)
-- [Notebook 15: Toy models of transient warming](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-toy.html)
+- Notebook 12: {ref}`nb:radeq`
+- Notebook 13: {ref}`nb:rce`
+- Notebook 14: {ref}`nb:sens`
+- Notebook 15: {ref}`nb:transCESM` 
+- Notebook 16: {ref}`nb:transtoy` 
 #### Assignments:
 - Assignment 4: {ref}`nb:rcm-feedback`
 
@@ -81,11 +79,13 @@
 - Hartmann chapter 13 (Anthropogenic Climate Change)
 - [Context for interpreting equilibrium climate sensitivity and transient climate response from the CMIP6 Earth system models](https://advances.sciencemag.org/content/6/26/eaba1981)
 #### Notebooks:
-- [Notebook 19: Heat transport](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/heat-transport.html)
-- 
+- Notebook 17: {ref}`nb:clouds`
+- Notebook 18: {ref}`nb:insolation`
+- Notebook 19: {ref}`nb:orbital`
+- Notebook 20: {ref}`nb:heat-transport`
 
 #### Assignments: 
-Mid-term
+Assignment 5: {ref}`nb:aclimchange`
 
 ### Week 7: (1-7th Mar) Modelling atmospheric general circulation _(Rachel)_
 #### Reading:
@@ -94,10 +94,10 @@ Mid-term
 
 
 #### Notebooks:
-- [Notebook 20: The one-dimensional energy balance model](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/one-dim-ebm.html)
-- [Notebook 21: Modeling the seasonal cycle of surface temperature](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/seasonal-cycle.html)
---
-- New notebook: Atmospheric circulation in the CESM **need to create!!**
+- Notebook 21: {ref}`nb:atmdyn`
+- Notebook 22: {ref}`nb:1DEBM` 
+- Notebook 23: {ref}`nb:tas-seas` 
+- Notebook 24: {ref}`nb:nummeth`
 
 #### Assignments:
 Students choose and summarize final project (we will give each student resources over next few weeks to help them individually with their projects)
@@ -108,8 +108,9 @@ Hartmann chapters 7 (Ocean General Circulation and Climate) and 8 (Intraseasonal
 [The Community Earth System Model (CESM) Large Ensemble Project: A Community Resource for Studying Climate Change in the Presence of Internal Climate Variability](https://journals.ametsoc.org/view/journals/bams/96/8/bams-d-13-00255.1.xml)
 
 #### Notebooks:
-- analysis of ocean variability and circulation **need to create!!**
-- analysis of CESM large ensemble data **need to create!!**
+- Notebook 24: {ref}`nb:snowball`
+- analysis of ocean variability and circulation
+- analysis of CESM large ensemble data
 
 #### Assignments: 
 - Proof of concept for projects: download/read in data; get basic model setup running etc - time to troubleshoot.
@@ -121,9 +122,9 @@ Hartmann chapters 9 (Paleoclimate), 12 (Natural Climate Change) and 13 (Anthropo
 [A perspective on climate model hierarchies](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017MS001038)
 
 #### Notebooks:
-- [Notebook 23: Ice-albedo feedback and Snowball Earth in the EBM](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/albedo-snowball.html)
-- [Notebook 24: The surface energy balance](https://brian-rose.github.io/ClimateLaboratoryBook/courseware/surface-energy-balance.html)
-
+- Notebook 25: {ref}`nb:surfEB`
+- Notebook 26: {ref}`nb:landocean`
+- Notebook 27: {ref}`nb:water`
 
 ### Week 10 (22-28th Mar): Course summary and work on individual projects _(Phil/Rachel)_
 

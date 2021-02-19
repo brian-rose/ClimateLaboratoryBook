@@ -12,7 +12,7 @@ kernelspec:
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
-
+(nb:water)=
 # Water, water everywhere! 
 
 ##  A brief look at the effects of evaporation on global climate
