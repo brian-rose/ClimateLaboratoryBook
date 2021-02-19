@@ -10,7 +10,7 @@ kernelspec:
   language: python
   name: python3
 ---
-
+(nb:transtoy)=
 # Toy models of transient warming
 
 This notebook is part of [The Climate Laboratory](https://brian-rose.github.io/ClimateLaboratoryBook) by [Brian E. J. Rose](http://www.atmos.albany.edu/facstaff/brose/index.html), University at Albany.
