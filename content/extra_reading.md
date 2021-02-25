@@ -31,6 +31,13 @@
   - Ocean/atmosphere heat transport
     - [Trenberth and Caron 2001, Meridional heat transport](https://journals.ametsoc.org/view/journals/clim/14/16/1520-0442_2001_014_3433_eomaao_2.0.co_2.xml)
 
+  - Milankovic and Ice Ages
+    - [Cvijanovic et al. 2020, One hundred years of Milankovic cycles](https://www.nature.com/articles/s41561-020-0621-2)
+
+  - Climate change and Precipitation
+    - [Held and Soden 2006, Robust responses of the Hydrological Cycle to Global warming](https://journals.ametsoc.org/view/journals/clim/19/21/jcli3990.1.xml)
+    - [Allan and Soden 2008, Atmospheric warming and precipitation extremes](https://science-sciencemag-org.ezproxy.library.ubc.ca/content/321/5895/1481.full)
+
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)
