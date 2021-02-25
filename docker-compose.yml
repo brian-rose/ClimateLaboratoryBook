@@ -16,28 +16,28 @@ services:
              && httpd-foreground
             "
 
-  jupyterhub_feb09:
+  jupyterhub_feb21:
     build: hub_image
-    image: phaustin/climhub:feb09
-    container_name: jupyterhub_feb09
-    depends_on: [climbook_feb09]
+    image: phaustin/climhub:feb21
+    container_name: jupyterhub_feb21
+    depends_on: [climbook_feb21]
     ports:
       - ${NB_PORT}:8000
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
-      - net_feb09
+      - net_feb21
 
-  climbook_feb09:
-    image: phaustin/climbook:feb09
+  climbook_feb21:
+    image: phaustin/climbook:feb21
     build:
       context: notebook_image
-    container_name: climbook_feb09
+    container_name: climbook_feb21
 
 # force the network name to be "jupyterhub"
 # this needs to be matched in jupyterhub_config.py by:
 # c.DockerSpawner.network_name = 'jupyterhub'
 networks:
-    net_feb09:
+    net_feb21:
       driver: bridge
-      name: net_feb09
+      name: net_feb21
