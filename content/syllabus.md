@@ -94,8 +94,8 @@ Assignment 5: {ref}`nb:aclimchange`
 
 
 #### Notebooks:
-- Notebook 21: {ref}`nb:atmdyn`
-- Notebook 22: {ref}`nb:1DEBM` 
+- Notebook 21: {ref}`nb:1DEBM`
+- Notebook 22: {ref}`nb:atmdyn`
 - Notebook 23: {ref}`nb:tas-seas` 
 - Notebook 24: {ref}`nb:nummeth`
 
