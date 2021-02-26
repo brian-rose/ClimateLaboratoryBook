@@ -39,6 +39,16 @@
     - [Held and Soden 2006, Robust responses of the Hydrological Cycle to Global warming](https://journals.ametsoc.org/view/journals/clim/19/21/jcli3990.1.xml)
     - [Allan and Soden 2008, Atmospheric warming and precipitation extremes](https://science-sciencemag-org.ezproxy.library.ubc.ca/content/321/5895/1481.full)
 
+  - Model hierachies, overtuning and the pitfalls of complex models
+    - [Held 2005, The gap between simulation and understanding in climate modelling](https://journals.ametsoc.org/view/journals/bams/86/11/bams-86-11-1609.xml) 
+    - [Hourdin et al. 2017, The art and science of climate model tuning](https://journals.ametsoc.org/view/journals/bams/98/3/bams-d-15-00135.1.xml)
+    - [Emanuel 2020, The relevance of theory for contemporary research in atmospheres, oceans and climate](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019AV000129)
+    - [ISCA model hierachy](https://execlim.github.io/Isca/latest/html/) A framework for a comprenhensive model hierachy available on github.
+
+  - Atmospheric Dynamics
+    - [Vallis et al. 2014: Response of the large-scale structure of the atmosphere to global warming](https://rmets-onlinelibrary-wiley-com.ezproxy.library.ubc.ca/doi/full/10.1002/qj.2456) A thorough review.
+    - [Isaac Held's blog](https://www.gfdl.noaa.gov/blog_held/). This is no longer being updated but has some good summaries and perspectives on relatively recent issues in dynamics and climate change.
+
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)
