@@ -32,7 +32,7 @@ Look at the observed seasonal cycle in the NCEP reanalysis data.
 
 Read in the necessary data from the online server.
 
-The catalog is here: <http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/catalog.html>
+The catalog is here: <https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis.derived/catalog.html> 
 
 ```{code-cell} ipython3
 %matplotlib inline
