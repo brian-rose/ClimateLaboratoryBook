@@ -42,8 +42,8 @@
   - file: courseware/heat-transport.md
     sections:
       - file: courseware/advanced-heat-transport.md
-  - file: courseware/cesm-atmospheric-dynamics.md
   - file: courseware/one-dim-ebm.md
+  - file: courseware/cesm-atmospheric-dynamics.md
   - file: courseware/seasonal-cycle.md
   - file: courseware/numerical-diffusion.md
   - file: courseware/albedo-snowball.md

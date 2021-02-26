@@ -35,6 +35,7 @@
     - [Cvijanovic et al. 2020, One hundred years of Milankovic cycles](https://www.nature.com/articles/s41561-020-0621-2)
 
   - Climate change and Precipitation
+    - [Allen and Ingram 2002, Constraints on future changes in climate and the hydrologic cycle](https://www.nature.com/articles/nature01092)
     - [Held and Soden 2006, Robust responses of the Hydrological Cycle to Global warming](https://journals.ametsoc.org/view/journals/clim/19/21/jcli3990.1.xml)
     - [Allan and Soden 2008, Atmospheric warming and precipitation extremes](https://science-sciencemag-org.ezproxy.library.ubc.ca/content/321/5895/1481.full)
 
