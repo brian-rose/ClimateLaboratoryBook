@@ -49,6 +49,10 @@
     - [Vallis et al. 2014: Response of the large-scale structure of the atmosphere to global warming](https://rmets-onlinelibrary-wiley-com.ezproxy.library.ubc.ca/doi/full/10.1002/qj.2456) A thorough review.
     - [Isaac Held's blog](https://www.gfdl.noaa.gov/blog_held/). This is no longer being updated but has some good summaries and perspectives on relatively recent issues in dynamics and climate change.
 
+  - Machine Learning and Climate Modelling
+    - [O'Gorman and Dwyer 2018: Using Machine Learning to Parameterize Moist Convection, Climate, Climate Change and Extremes](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018MS001351)
+    - [McGovern et al. 2019: Understanding the Physical Implications of Machine Learning](https://journals.ametsoc.org/view/journals/bams/100/11/bams-d-18-0195.1.xml)
+
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)

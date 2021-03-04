@@ -109,7 +109,7 @@ Hartmann chapters 7 (Ocean General Circulation and Climate) and 8 (Intraseasonal
 
 #### Notebooks:
 - Notebook 24: {ref}`nb:snowball`
-- analysis of ocean variability and circulation
+- Notebook 25: {ref}`nb:coupdyn`
 - analysis of CESM large ensemble data
 
 #### Assignments: 
@@ -122,9 +122,9 @@ Hartmann chapters 9 (Paleoclimate), 12 (Natural Climate Change) and 13 (Anthropo
 [A perspective on climate model hierarchies](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2017MS001038)
 
 #### Notebooks:
-- Notebook 25: {ref}`nb:surfEB`
-- Notebook 26: {ref}`nb:landocean`
-- Notebook 27: {ref}`nb:water`
+- Notebook 27: {ref}`nb:surfEB`
+- Notebook 28: {ref}`nb:landocean`
+- Notebook 29: {ref}`nb:water`
 
 ### Week 10 (22-28th Mar): Course summary and work on individual projects _(Phil/Rachel)_
 

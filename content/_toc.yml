@@ -50,6 +50,7 @@
     sections:
       - file: courseware/advanced-albedo-feedback.md
       - file: courseware/advanced-snowball-earth.md
+  - file: courseware/cesm-coupled-dynamics.md
   - file: courseware/surface-energy-balance.md
   - file: courseware/land-ocean-contrast.md
   - file: courseware/water-water-everywhere.md
