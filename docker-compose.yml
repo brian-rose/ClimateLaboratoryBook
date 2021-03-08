@@ -20,7 +20,7 @@ services:
     build: hub_image
     image: phaustin/climhub:feb21
     container_name: jupyterhub_feb21
-    depends_on: [climbook_feb21]
+    depends_on: [climbook_mar04]
     ports:
       - ${NB_PORT}:8000
     volumes:
@@ -28,11 +28,11 @@ services:
     networks:
       - net_feb21
 
-  climbook_feb21:
-    image: phaustin/climbook:feb21
+  climbook_mar04:
+    image: phaustin/climbook:mar04
     build:
       context: notebook_image
-    container_name: climbook_feb21
+    container_name: climbook_mar04
 
 # force the network name to be "jupyterhub"
 # this needs to be matched in jupyterhub_config.py by:

@@ -17,6 +17,10 @@ dependencies:
   - jupyterhub=1.3
   - jupyterlab=3.0.3
   - jupytext>1.9
+  - eofs
+  - intake
+  - gcsfs
+  - proplot
   - climlab~=0.7
   - numba>=0.43.1  # older version will hang forever under python 3, https://github.com/brian-rose/climlab/issues/101
   - netcdf4
