@@ -53,6 +53,10 @@
     - [O'Gorman and Dwyer 2018: Using Machine Learning to Parameterize Moist Convection, Climate, Climate Change and Extremes](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018MS001351)
     - [McGovern et al. 2019: Understanding the Physical Implications of Machine Learning](https://journals.ametsoc.org/view/journals/bams/100/11/bams-d-18-0195.1.xml)
 
+  - Ocean and coupled Atmosphere-Ocean dynamics
+    - [Wunsch and Ferrari 2018: 100 Years of the Ocean General Circulation](https://journals.ametsoc.org/view/journals/amsm/59/1/amsmonographs-d-18-0002.1.xml#bib167). A nice review of the history of the physical oceanography as well as an overview of the circulation itself.
+
+
 - Python/programming
 
   - [Peter Kazarinof: Problem solving with python](https://atsc_web.eoas.ubc.ca/)

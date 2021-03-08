@@ -102,7 +102,7 @@ Assignment 5: {ref}`nb:aclimchange`
 #### Assignments:
 Students choose and summarize final project (we will give each student resources over next few weeks to help them individually with their projects)
 
-### Week 8 (8-14th Mar) Modelling ocean circulation and internal variability _(Rachel)_
+### Week 8 (8-14th Mar) Modelling coupled atmosphere-ocean circulation and internal variability _(Rachel)_
 #### Reading:
 Hartmann chapters 7 (Ocean General Circulation and Climate) and 8 (Intraseasonal and Interannual variability) 
 [The Community Earth System Model (CESM) Large Ensemble Project: A Community Resource for Studying Climate Change in the Presence of Internal Climate Variability](https://journals.ametsoc.org/view/journals/bams/96/8/bams-d-13-00255.1.xml)
@@ -110,7 +110,7 @@ Hartmann chapters 7 (Ocean General Circulation and Climate) and 8 (Intraseasonal
 #### Notebooks:
 - Notebook 24: {ref}`nb:snowball`
 - Notebook 25: {ref}`nb:coupdyn`
-- analysis of CESM large ensemble data
+- analysis of CESM large ensemble data: https://github.com/NCAR/cesm-lens-aws
 
 #### Assignments: 
 - Proof of concept for projects: download/read in data; get basic model setup running etc - time to troubleshoot.
