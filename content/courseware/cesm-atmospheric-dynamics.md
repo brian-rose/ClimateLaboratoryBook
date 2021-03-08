@@ -147,10 +147,11 @@ ncep_uwnd = xr.open_dataset(ncep_url + "pressure/uwnd.mon.1981-2010.ltm.nc")
 
 # This is already a long term mean (ltm) but we still need to calculate means for each season:
 ncep_uwnd_seas = {}
-for label,data in ncep_uwnd.uwnd.groupby('time.season'):
-    ncep_uwnd_seas[label] = data.mean(dim='time').mean(dim='lon')
+ncep_uwnd_seas['DJF'] = ncep_uwnd.uwnd.isel(time=[0,1,11]).mean(dim='time').mean(dim='lon') # selecting months 0 (Jan), 1 (Feb), and 11 (Dec)
+ncep_uwnd_seas['JJA'] = ncep_uwnd.uwnd.isel(time=[5,6,7]).mean(dim='time').mean(dim='lon') # selecting months 5 (Jun), 6 (Jul), and 7 (Aug)
 
 plot_zonal_mean(ncep_uwnd_seas,'NCEP reanalysis')
+
 ```
 
 When completing model evaluation like this, it is often useful to plot both the model and the re-analysis or observations on the same plot, so you can better evaluate model biases. Even better is to plot the model bias itself, but this involves re-gridding the datasets to be on the same grid (same latitudes, longitudes and pressure levels).
