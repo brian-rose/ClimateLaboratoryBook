@@ -267,8 +267,8 @@ omega_cpl_pres = hybrid2pres(atmfile_cpl,omega_cpl,PS_cpl,pnew,timedim=False).me
 
 ```{code-cell} ipython3
 # Plot the equatorial cross-section
-omega.plot.contour(levels = np.arange(0,0.1,0.02),colors='r')
-omega.plot.contour(levels = np.arange(-0.1,0,0.02),colors='b',linestyles='-')
+omega_pres.plot.contour(levels = np.arange(0,0.1,0.02),colors='r')
+omega_pres.plot.contour(levels = np.arange(-0.1,0,0.02),colors='b',linestyles='-')
 plt.yscale('log')
 # invert the axis so it represents height, but shows pressure
 plt.gca().invert_yaxis()
@@ -277,8 +277,8 @@ plt.ylim(1000,100)
 plt.title('Slab ocean equatorial vertical pressure velocity, annual mean')
 plt.show()
 
-omega_cpl.plot.contour(levels = np.arange(0,0.1,0.02),colors='r')
-omega_cpl.plot.contour(levels = np.arange(-0.1,0,0.02),colors='b',linestyles='-')
+omega_cpl_pres.plot.contour(levels = np.arange(0,0.1,0.02),colors='r')
+omega_cpl_pres.plot.contour(levels = np.arange(-0.1,0,0.02),colors='b',linestyles='-')
 plt.yscale('log')
 # invert the axis so it represents height, but shows pressure
 plt.gca().invert_yaxis()

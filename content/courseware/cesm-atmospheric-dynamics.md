@@ -134,7 +134,6 @@ def plot_zonal_mean(plotvar,title):
         # add a title
         plt.title(title + ' ' + seas + ' zonal mean zonal wind')
         plt.show()
-
 ```
 
 ```{code-cell} ipython3
@@ -203,7 +202,6 @@ Similar to matlab, if there is a variable you want to calculate, it is likely so
 that calculate it. In this case we can use a function from the TropD package: https://tropd.github.io/pytropd/index.html
 This function is shown below.
 
-
 ```{code-cell} ipython3
 def TropD_Calculate_StreamFunction(V, lat, lev):
     ''' Calculate streamfunction by integrating meridional wind from top of the atmosphere to surface
@@ -267,6 +265,7 @@ for iseas in ['DJF','JJA','ANN']:
 
     plt.show()
 ```
+
 **Exercise:** _Alter this code to improve this figure. Access the NCEP v field, calculate meridional streamfunction, and add in the NCEP meridional overturning streamfunction to this plot._
 
 **Discussion point:** _How well does the model do in comparison with the observations?_
