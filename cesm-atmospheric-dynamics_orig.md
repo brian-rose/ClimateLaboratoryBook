@@ -104,102 +104,47 @@ Let's make a plot! Remember `xarray` is able to automatically generate labeled p
 zmU_seas['DJF'].plot()
 ```
 
-But this is not the best way to look at zonal cross-sections. For a start, the plot is upside down, as pressure decreases with height. We can make a function to create a nicer looking plot:
+But we need to make some changes to make this easily comparable to figure 6.4 in the Hartmann book
 
 ```{code-cell} ipython3
-def plot_zonal_mean(plotvar,title):
-    # We can change the size/aspect ratio of our plot
-    # Note that these change values globally, i.e. throughout your notebook
-    matplotlib.rcParams['figure.figsize']=(10,4)
-    # and change the default font size
-    matplotlib.rcParams.update({'font.size':16})
+# We can change the size/aspect ratio of our plot
+# Note that these change values globally, i.e. throughout your notebook
+matplotlib.rcParams['figure.figsize']=(10,4)
+# and change the default font size
+matplotlib.rcParams.update({'font.size':16})
 
-    # Plot DJF and then JJA
-    for seas in ['DJF','JJA']:
-        # use contourf to plot filled contours
-        # set the contour levels to be plotted as an array from -70 to 70 at intervals of 5
-        # note that to include to top value of 70, you must select a value slightly above 70
-        plotvar[seas].plot.contourf(levels=np.arange(-70, 71,5),extend='both')
+# Plot DJF and then JJA
+for seas in ['DJF','JJA']:
+    # use contourf to plot filled contours
+    # set the contour levels to be plotted as an array from -70 to 70 at intervals of 5
+    # note that to include to top value of 70, you must select a value slightly above 70
+    zmU_seas[seas].plot.contourf(levels=np.arange(-70, 71,5),extend='both')
+    # Add in black contours, also at 5m/s intervals. Note plot.contour automatically plots
+    # negative contours as dashed
+    zmU_seas[seas].plot.contour(levels=np.arange(-70, 70,5),extend='both',colors='k')
 
-        # change the y scale to be logarithmic
-        plt.yscale('log')
-        # invert the axis so it represents height, but shows pressure
-        plt.gca().invert_yaxis()
-        # set the top and bottom pressure of the plot
-        plt.ylim(1000,10)
-        # set the y axis tick labels
-        plt.gca().set_yticks([1000,500,200,100,50,20,10])
-        plt.gca().set_yticklabels(['1000','500','200','100','50','20','10'])
+    # change the y scale to be logarithmic
+    plt.yscale('log') 
+    # invert the axis so it represents height, but shows pressure
+    plt.gca().invert_yaxis()
+    # set the top and bottom pressure of the plot
+    plt.ylim(1000,10)
+    # set the y axis tick labels
+    plt.gca().set_yticks([1000,500,200,100,50,20,10])
+    plt.gca().set_yticklabels(['1000','500','200','100','50','20','10'])
 
-        # add a title
-        plt.title(title + ' ' + seas + ' zonal mean zonal wind')
-        plt.show()
+    # add a title
+    plt.title(seas + ' zonal mean zonal wind')
+    plt.show()
 ```
 
-```{code-cell} ipython3
-plot_zonal_mean(zmU_seas,'CESM')
-```
-
-```{code-cell} ipython3
-## Compare to a plot created from NCER re-analysis data
-ncep_url = "http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/"
-ncep_uwnd = xr.open_dataset(ncep_url + "pressure/uwnd.mon.1981-2010.ltm.nc")
-
-# This is already a long term mean (ltm) but we still need to calculate means for each season:
-ncep_uwnd_seas = {}
-ncep_uwnd_seas['DJF'] = ncep_uwnd.uwnd.isel(time=[0,1,11]).mean(dim='time').mean(dim='lon') # selecting months 0 (Jan), 1 (Feb), and 11 (Dec)
-ncep_uwnd_seas['JJA'] = ncep_uwnd.uwnd.isel(time=[5,6,7]).mean(dim='time').mean(dim='lon') # selecting months 5 (Jun), 6 (Jul), and 7 (Aug)
-
-plot_zonal_mean(ncep_uwnd_seas,'NCEP reanalysis')
-
-```
-
-When completing model evaluation like this, it is often useful to plot both the model and the re-analysis or observations on the same plot, so you can better evaluate model biases. Even better is to plot the model bias itself, but this involves re-gridding the datasets to be on the same grid (same latitudes, longitudes and pressure levels).
-
-```{code-cell} ipython3
-def plot_zonal_mean_comp(plotvarmodel,plotvarNCEP,title):
-    # We can change the size/aspect ratio of our plot
-    # Note that these change values globally, i.e. throughout your notebook
-    matplotlib.rcParams['figure.figsize']=(10,4)
-    # and change the default font size
-    matplotlib.rcParams.update({'font.size':16})
-
-    # Plot DJF and then JJA
-    for seas in ['DJF','JJA']:
-        # use contourf to plot filled contours
-        # set the contour levels to be plotted as an array from -70 to 70 at intervals of 5
-        # note that to include to top value of 70, you must select a value slightly above 70
-        plotvarmodel[seas].plot.contourf(levels=np.arange(-70, 71,5),extend='both')
-        plotvarmodel[seas].plot.contour(levels=np.arange(-70, 71,5),extend='both',colors='lightgrey')
-
-
-        plotvarNCEP[seas].plot.contour(levels=np.arange(-70, 71,5),extend='both',colors='k')
-
-        # change the y scale to be logarithmic
-        plt.yscale('log')
-        # invert the axis so it represents height, but shows pressure
-        plt.gca().invert_yaxis()
-        # set the top and bottom pressure of the plot
-        plt.ylim(1000,10)
-        # set the y axis tick labels
-        plt.gca().set_yticks([1000,500,200,100,50,20,10])
-        plt.gca().set_yticklabels(['1000','500','200','100','50','20','10'])
-
-        # add a title
-        plt.title(title + ' ' + seas + ' zonal mean zonal wind')
-        plt.show()
-```
-
-```{code-cell} ipython3
-plot_zonal_mean_comp(zmU_seas,ncep_uwnd_seas,'CESM and NCEP')
-```
-
-**Discussion point:** _Compare the model to the re-analysis "observations". How well does the model do? What might affect the model results - think about what we know about the experiment cpl_1850_f19 from before._
+**Discussion point:** _Compare this to the observations in figure 6.4. How well does the model do? What might affect the model results - think about what we know about the experiment cpl_1850_f19 from before._
 
 **Extra exercise:** try calculating an exact seasonal mean, and compare the differences.
 
-Now let's look at the meridional mass streamfunction, as in figure 6.5 in the Hartmann book. This is a measure of the strength of the meridional overturning circulation. Meridional mass streamfunction isn't an output of the model. So we need to calculate it.
-Similar to matlab, if there is a variable you want to calculate, it is likely someone has already made a package
+
+Now let's look at the meridional mass streamfunction, as in figure 6.5. Meridional mass streamfunction isn't an output of the model. So we need to calculate it.
+Similar to matlab, if there is a variable you want to calculate, it is likely someone has made a package
 that calculate it. In this case we can use a function from the TropD package: https://tropd.github.io/pytropd/index.html
 This function is shown below.
 
@@ -247,7 +192,7 @@ psi_cesm={}
 for iseas in ['DJF','JJA']:
     psi_cesm[iseas] = TropD_Calculate_StreamFunction(zmV_seas[iseas], zmV_seas[iseas].lat, zmV_seas[iseas].lev)
 
-# now add the annual mean:
+# new add the annual mean:
 psi_cesm['ANN'] = TropD_Calculate_StreamFunction(zmV.mean(dim='time'), zmV.lat, zmV.lev)
 ```
 
@@ -260,14 +205,19 @@ or 2. plot by hand since we're going to have to adjust the plot anyway.
 matplotlib.rcParams['figure.figsize']=(8,4)
 matplotlib.rcParams.update({'font.size':16})
 
+# We could define a series of colors to correspond with the levels array, such that all negative contours
+# were associated with blue, the 0 contour was associated with black, and all positive contours with red
+# But it is simpler to just overlay 3 plots:
+
 for iseas in ['DJF','JJA','ANN']:
-    plt.contourf(zmV.lat, zmV.lev,psi_cesm[iseas],levels = np.arange(-20E10,21E10,2E10),cmap='RdBu_r')
-    plt.contour(zmV.lat, zmV.lev,psi_cesm[iseas],levels = np.arange(-20E10,21E10,2E10),colors='lightgrey',linewidths=1)
+    plt.contour(zmV.lat, zmV.lev,psi_cesm[iseas],levels = np.arange(0,20E10,2E10),colors='red')
+    plt.contour(zmV.lat, zmV.lev,psi_cesm[iseas],levels = np.arange(-20E10,0,2E10),colors='blue',linestyles='-')
+    plt.contour(zmV.lat, zmV.lev,psi_cesm[iseas],levels = [0],colors='k',linewidths=2)
 
     plt.show()
 ```
 
-**Exercise:** _Alter this code to improve this figure. Access the NCEP v field, calculate meridional streamfunction, and add in the NCEP meridional overturning streamfunction to this plot._
+**Exercise:** _Alter the code above to make the figures match Figure 6.5 as best you can._
 
 **Discussion point:** _How well does the model do in comparison with the observations?_
 
@@ -298,7 +248,7 @@ psi_cesm_xr.sel(time='ANN').plot.contour()
 
 ### Eddy transport in CESM
 
-Moving away from zonal means, we can look at eddy transports. We can calculate the total vT from the model output:
+Moving away from zonal means, we can look at eddy transports. We can calculate the total vT from the model output (not that these cells may take a while to run as we are doing quite a few calculations):
 
 ```{code-cell} ipython3
 vT = (atmfile.V * atmfile.T).mean(dim='lon')
