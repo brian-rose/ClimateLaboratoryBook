@@ -110,8 +110,8 @@ Hartmann chapters 7 (Ocean General Circulation and Climate) and 8 (Intraseasonal
 #### Notebooks:
 - Notebook 24: {ref}`nb:snowball`
 - Notebook 25: {ref}`nb:coupdyn`
-- analysis of CESM large ensemble data: https://github.com/NCAR/cesm-lens-aws
-
+- analysis of CESM large ensemble data: [https://github.com/NCAR/cesm-lens-aws](https://github.com/NCAR/cesm-lens-aws)
+    - [link to jupyter notebook on Pangeo](https://aws-uswest2-binder.pangeo.io/v2/gh/NCAR/cesm-lens-aws/binder-config?urlpath=git-pull?repo=https://github.com/NCAR/cesm-lens-aws%26amp%3Bbranch=main%26amp%3Burlpath=lab/tree/cesm-lens-aws/%3Fautodecode) (log in with github account - create one for free if you don't already have one)
 #### Assignments: 
 - Proof of concept for projects: download/read in data; get basic model setup running etc - time to troubleshoot.
 
