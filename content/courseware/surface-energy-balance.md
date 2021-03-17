@@ -105,15 +105,20 @@ from climlab import constants as const
 slideshow:
   slide_type: '-'
 ---
-datapath = "http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/"
-topo = xr.open_dataset(datapath+'som_input/USGS-gtopo30_1.9x2.5_remap_c050602.nc', decode_times=False)
+datapath = "http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/"
 
-runlist = ['control', '2xCO2']
+topo = xr.open_dataset(datapath+'som_input/USGS-gtopo30_1.9x2.5_remap_c050602.nc')
+
+runlist=['control','2xCO2']
+runnames = {}
+runnames['control'] = '1850_f19'
+runnames['2xCO2'] = '1850_2xCO2'
 runs = {}
 for run in runlist:
-    runstr = 'som_' + run
-    path = datapath + runstr + '/' + runstr + '.cam.h0.clim.nc'
+    runstr = 'som_' + runnames[run]
+    path = datapath + runstr + '/clim/' + runstr + '.cam.h0.clim.nc'
     runs[run] = xr.open_dataset(path, decode_times=False)
+
 ```
 
 ```{code-cell} ipython3
