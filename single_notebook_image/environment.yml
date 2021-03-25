@@ -1,0 +1,17 @@
+name: climlab-courseware
+channels:
+  - eoas_ubc
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - numpy>1.19
+  - matplotlib
+  - xarray
+  - pip
+  - jupyter
+  - jupyterlab
+  - git
+  - pymc3
+  - conda-lock  
+# conda-lock -f environment.yml -p linux-64

@@ -34,6 +34,21 @@ services:
       context: notebook_image
     container_name: climbook_mar04
 
+  single_notebook:
+    image: phaustin/single:mar04
+    build:
+      context: single_notebook_image
+    container_name: single_mar04
+    ports:
+      - ${SINGLE_NB_PORT}:8888
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/home/jupyter/data_share:/home/jupyter/data_share"
+    command: ["jupyter","lab"]
+    networks:
+      - net_feb21
+
+    
 # force the network name to be "jupyterhub"
 # this needs to be matched in jupyterhub_config.py by:
 # c.DockerSpawner.network_name = 'jupyterhub'

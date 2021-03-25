@@ -1,0 +1,12 @@
+jupyter-book ~=0.10
+linkify-it-py
+pydata-sphinx-theme
+sphinx-panels
+myst-nb >=0.11
+nested_lookup
+sphinx_togglebutton
+jupyter_cache
+sphinx_book_theme
+
+
+
