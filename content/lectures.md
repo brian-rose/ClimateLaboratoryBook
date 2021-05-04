@@ -1,3 +1,0 @@
-# Lecture notes
-
-Nothing yet
