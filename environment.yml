@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.7
+  - python=3.8
   - numpy
   - matplotlib
   - xarray
@@ -12,7 +12,8 @@ dependencies:
   - sympy
   - ffmpeg
   - jupyter
-  - climlab
+  - climlab>=0.7.11
   - numba>=0.43.1  # older version will hang forever under python 3, https://github.com/brian-rose/climlab/issues/101
   - netcdf4
   - nc-time-axis
+  - jupyter-book
