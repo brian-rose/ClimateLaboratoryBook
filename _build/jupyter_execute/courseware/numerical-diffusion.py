@@ -170,7 +170,7 @@
 # 
 # 
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -181,7 +181,7 @@ from IPython.display import display, Math, Latex
 
 # Here we will divide our domain up into 20 grid points.
 
-# In[2]:
+# In[3]:
 
 
 J1 = 20
@@ -195,7 +195,7 @@ display(Math(r'\Delta x = %0.3f' %deltax))
 # 
 # $u$ will be solved on the 20 point grid.
 
-# In[3]:
+# In[4]:
 
 
 xstag = np.linspace(0., 1., J+1)
@@ -203,7 +203,7 @@ x = xstag[:-1] + deltax/2
 print( x)
 
 
-# In[4]:
+# In[5]:
 
 
 u = np.zeros_like(x)
@@ -211,13 +211,13 @@ u = np.zeros_like(x)
 
 # Here's one way to implement the finite difference, using array indexing.
 
-# In[5]:
+# In[6]:
 
 
 dudx = (u[1:] - u[:-1]) / (x[1:] - x[:-1])
 
 
-# In[6]:
+# In[7]:
 
 
 dudx.shape
@@ -225,13 +225,13 @@ dudx.shape
 
 # We can also use the function `numpy.diff()` to accomplish the same thing: 
 
-# In[7]:
+# In[8]:
 
 
 help(np.diff)
 
 
-# In[8]:
+# In[9]:
 
 
 np.diff(u).shape
@@ -239,7 +239,7 @@ np.diff(u).shape
 
 # Here is a function that computes the diffusive flux $F$ on the staggered grid, including the boundaries.
 
-# In[9]:
+# In[10]:
 
 
 def diffusive_flux(u, deltax, K=1):
@@ -253,7 +253,7 @@ def diffusive_flux(u, deltax, K=1):
     return -K*F
 
 
-# In[10]:
+# In[11]:
 
 
 diffusive_flux(u,deltax).shape
@@ -261,7 +261,7 @@ diffusive_flux(u,deltax).shape
 
 # The time tendency of $u$ is just the convergence of this flux, which requires one more finite difference:
 
-# In[11]:
+# In[12]:
 
 
 def diffusion(u, deltax, K=1):
@@ -277,14 +277,14 @@ def diffusion(u, deltax, K=1):
 # 
 # The gaussian (bell curve) function is a convenient way to create such a field.
 
-# In[12]:
+# In[13]:
 
 
 def gaussian(x, mean, std):
     return np.exp(-(x-mean)**2/(2*std**2))/np.sqrt(2*np.pi*std**2)
 
 
-# In[13]:
+# In[14]:
 
 
 K = 0.01
@@ -302,7 +302,7 @@ ax.legend()
 # 
 # Use a random number generator to create some noisy initial conditions.
 
-# In[14]:
+# In[15]:
 
 
 fig = plt.figure(figsize=(10,8))
@@ -343,7 +343,7 @@ for n in range(4):
 # 
 # It is very simple to implement in `numpy` code.
 
-# In[15]:
+# In[16]:
 
 
 def step_forward(u, deltax, deltat, K=1):
@@ -351,7 +351,7 @@ def step_forward(u, deltax, deltat, K=1):
     return u + deltat * dudt
 
 
-# In[16]:
+# In[17]:
 
 
 K = 0.01
@@ -368,7 +368,7 @@ ax.legend()
 
 # Let's loop through a number of timesteps.
 
-# In[17]:
+# In[18]:
 
 
 #  regular resolution
@@ -378,7 +378,7 @@ xstag = np.linspace(0., 1., J+1)
 x = xstag[:-1] + deltax/2
 
 
-# In[18]:
+# In[19]:
 
 
 u = gaussian(x, 0.5, 0.08)
@@ -397,7 +397,7 @@ plt.legend()
 # 
 # What happens?
 
-# In[19]:
+# In[20]:
 
 
 #  double the resolution
@@ -408,7 +408,7 @@ xstag = np.linspace(0., 1., J+1)
 x = xstag[:-1] + deltax/2
 
 
-# In[20]:
+# In[21]:
 
 
 u = gaussian(x, 0.5, 0.08)
@@ -499,7 +499,7 @@ plt.legend()
 # Going back to our Gaussian example, let's double the resolution but shorten the timestep by a factor of 4.
 # 
 
-# In[21]:
+# In[22]:
 
 
 #  double the resolution
@@ -509,7 +509,7 @@ xstag = np.linspace(0., 1., J+1)
 x = xstag[:-1] + deltax/2
 
 
-# In[22]:
+# In[23]:
 
 
 K = 0.01
@@ -521,7 +521,7 @@ deltat = deltat1 / scaling_factor**2
 print( '4x the previous timestep is %f' %deltat)
 
 
-# In[23]:
+# In[24]:
 
 
 u = gaussian(x, 0.5, 0.08)

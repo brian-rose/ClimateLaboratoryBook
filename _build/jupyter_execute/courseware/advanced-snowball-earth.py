@@ -95,7 +95,7 @@ import climlab
 
 # Here we will use the 1-dimensional diffusive Energy Balance Model (EBM) to explore the effects of albedo feedback and heat transport on climate sensitivity.
 
-# In[2]:
+# In[4]:
 
 
 #  for convenience, set up a dictionary with our reference parameters
@@ -104,7 +104,7 @@ model1 = climlab.EBM_annual(name='Annual Mean EBM with ice line', num_lat=180, *
 print(model1)
 
 
-# In[3]:
+# In[5]:
 
 
 model1.integrate_years(5)
@@ -116,7 +116,7 @@ ASRequil = np.array(model1.ASR)
 
 # Let's look at what happens if we perturb the temperature -- make it 20ºC colder everywhere!
 
-# In[4]:
+# In[6]:
 
 
 model1.Ts -= 20.
@@ -125,7 +125,7 @@ model1.compute_diagnostics()
 
 # Let's take a look at how we have just perturbed the absorbed shortwave:
 
-# In[5]:
+# In[7]:
 
 
 my_ticks = [-90,-60,-30,0,30,60,90]
@@ -156,7 +156,7 @@ ax2.set_ylabel('ASR (W m$^{-2}$)')
 
 # So there is less absorbed shortwave now, because of the increased albedo. The global mean difference is:
 
-# In[6]:
+# In[8]:
 
 
 climlab.global_mean( model1.ASR - ASRequil )
@@ -205,7 +205,7 @@ climlab.global_mean( model1.ASR - ASRequil )
 
 # Let's let the temperature evolve one year at a time and add extra lines to the graph:
 
-# In[7]:
+# In[9]:
 
 
 plt.plot( lat, Tequil, 'k--', label='equil' )
@@ -220,7 +220,7 @@ for n in range(5):
 
 # What if we cool the climate **so much** that the entire planet is ice covered?
 
-# In[8]:
+# In[10]:
 
 
 model1.Ts -= 40.
@@ -229,7 +229,7 @@ model1.compute_diagnostics()
 
 # Look again at the change in absorbed shortwave:
 
-# In[9]:
+# In[11]:
 
 
 climlab.global_mean( model1.ASR - ASRequil )
@@ -243,7 +243,7 @@ climlab.global_mean( model1.ASR - ASRequil )
 # 
 # What? Looks like the **positive** albedo feedback is so strong here that it has outweighed the **negative** longwave feedback. What will happen to the system now? Let's find out...
 
-# In[10]:
+# In[12]:
 
 
 plt.plot( lat, Tequil, 'k--', label='equil' )
@@ -274,38 +274,38 @@ for n in range(5):
 # 
 # We are going to look at how the **equilibrium** ice edge depends on $S_0$, by integrating the model out to equilibrium for lots of different values of $S_0$. We will start by slowly decreasing $S_0$, and then slowly increasing $S_0$.
 
-# In[11]:
+# In[13]:
 
 
 model2 = climlab.EBM_annual(num_lat = 360, **param)
 
 
-# In[12]:
+# In[14]:
 
 
 S0array = np.linspace(1400., 1200., 200)
 
 
-# In[13]:
+# In[15]:
 
 
 model2.integrate_years(5)
 
 
-# In[14]:
+# In[16]:
 
 
 print( model2.icelat)
 
 
-# In[15]:
+# In[17]:
 
 
 icelat_cooling = np.empty_like(S0array)
 icelat_warming = np.empty_like(S0array)
 
 
-# In[16]:
+# In[18]:
 
 
 # First cool....

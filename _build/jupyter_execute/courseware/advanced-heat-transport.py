@@ -848,7 +848,7 @@ ax.set_title('Net upward surface energy flux in NCEP Reanalysis data')
 # - Atmospheric latent heat transport, $\mathcal{H}_{LH}$
 # - Atmospheric dry heat transport, $\mathcal{H}_{Dry}$
 
-# In[35]:
+# In[38]:
 
 
 def CESM_heat_transport(run, timeslice=clim_slice_cpl):
@@ -888,7 +888,7 @@ def CESM_heat_transport(run, timeslice=clim_slice_cpl):
     return HT
 
 
-# In[36]:
+# In[39]:
 
 
 #  Compute heat transport partition for both control and 2xCO2 simulations
@@ -896,7 +896,7 @@ HT_control = CESM_heat_transport(atm['cpl_control'])
 HT_2xCO2 = CESM_heat_transport(atm['cpl_CO2ramp'])
 
 
-# In[37]:
+# In[40]:
 
 
 fig = plt.figure(figsize=(16,6))

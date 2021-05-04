@@ -57,7 +57,7 @@
 # 
 # Note that since we are using explicit surface flux parameterizations, we will now use the convective adjustment only on the **atmospheric** air temperatures. Previous our adjustment has also modified the **surface** temperature, which was implicitly taking account of the turbulent heat fluxes. 
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -68,7 +68,7 @@ import climlab
 from climlab import constants as const
 
 
-# In[2]:
+# In[3]:
 
 
 def inferred_heat_transport( energy_in, lat_deg ):
@@ -81,7 +81,7 @@ def inferred_heat_transport( energy_in, lat_deg ):
             x=lat_rad, initial=0. ) )
 
 
-# In[3]:
+# In[4]:
 
 
 # A two-dimensional domain
@@ -94,7 +94,7 @@ lev = state.Tatm.domain.axes['lev'].points
 # 
 # We will specify the same clouds everywhere for simplicity. A more thorough investigation would incorporate some meridional variations in cloud properties.
 
-# In[4]:
+# In[5]:
 
 
 #  Define two types of cloud, high and low
@@ -122,7 +122,7 @@ mycloud = {'cldfrac': cldfrac,
           'r_liq': r_liq}
 
 
-# In[5]:
+# In[6]:
 
 
 plt.plot(cldfrac[0,:], lev)
@@ -133,7 +133,7 @@ plt.title('Prescribed cloud fraction in the column model')
 plt.show()
 
 
-# In[6]:
+# In[7]:
 
 
 #  The top-level model
@@ -163,7 +163,7 @@ print( model)
 
 # Here we add a diffusive heat transport process. The `climlab` code is set up to handle meridional diffusion level-by-level with a constant coefficient.
 
-# In[7]:
+# In[8]:
 
 
 from climlab.dynamics import MeridionalDiffusion
@@ -183,7 +183,7 @@ model.add_subprocess('Diffusion', d)
 # 
 # The bulk formulas depend on a wind speed $U$. In this model, $U$ is specified as a constant. In a model with more complete dynamics, $U$ would be interactively calculated from the equations of motion.
 
-# In[8]:
+# In[9]:
 
 
 #  Add surface heat fluxes
@@ -197,7 +197,7 @@ model.add_subprocess('LHF', lhf)
 
 # ### The complete model, ready to use!
 
-# In[9]:
+# In[10]:
 
 
 print( model)
@@ -207,20 +207,20 @@ print( model)
 # Although this is a "simple" model, it has a 60 x 30 point grid and is **by far the most complex model** we have built so far in these notes. These runs will probably take 15 minutes or more to execute, depending on the speed of your computer.
 # </div>
 
-# In[10]:
+# In[11]:
 
 
 model.integrate_years(4.)
 
 
-# In[11]:
+# In[12]:
 
 
 #  One more year to get annual-mean diagnostics
 model.integrate_years(1.)
 
 
-# In[12]:
+# In[13]:
 
 
 ticks = [-90, -60, -30, 0, 30, 60, 90]
@@ -260,7 +260,7 @@ for ax in axes.flatten():
 # 
 # Just need to clone our model, and modify $C_D$ in the latent heat flux subprocess.
 
-# In[13]:
+# In[14]:
 
 
 model2 = climlab.process_like(model)
@@ -269,7 +269,7 @@ model2.integrate_years(4.)
 model2.integrate_years(1.)
 
 
-# In[14]:
+# In[15]:
 
 
 fig, axes = plt.subplots(2,2,figsize=(14,10))
@@ -345,7 +345,7 @@ print ('The global mean surface temperature anomaly is %0.2f K.'
 # Here we will compare a control simulation with a perturbation simulation in which we have once again **reduced the drag coefficient by a factor of 2**.
 # 
 
-# In[15]:
+# In[16]:
 
 
 # Load the climatologies from the CAM4 aquaplanet runs
@@ -355,7 +355,7 @@ ctrl = xr.open_dataset(datapath + 'aquaplanet_som/QAqu_ctrl.cam.h0.clim.nc' + en
 halfEvap = xr.open_dataset(datapath + 'aquaplanet_som/QAqu_halfEvap.cam.h0.clim.nc' + endstr, decode_times=False).mean(dim='time')
 
 
-# In[16]:
+# In[17]:
 
 
 lat = ctrl.lat
@@ -363,7 +363,7 @@ lon = ctrl.lon
 lev = ctrl.lev
 
 
-# In[17]:
+# In[18]:
 
 
 TS_anom = halfEvap.TS - ctrl.TS
@@ -372,7 +372,7 @@ Tatm_anom = halfEvap['T'] - ctrl['T']
 
 # ### Temperature anomalies
 
-# In[18]:
+# In[19]:
 
 
 fig, (ax1,ax2) = plt.subplots(1,2,figsize=(14,5))
@@ -394,7 +394,7 @@ print ('The global mean surface temperature anomaly is %0.2f K.' %((TS_anom*ctrl
 # ### Compute all the terms in the TOA and surface energy and water budget anomalies
 # 
 
-# In[19]:
+# In[20]:
 
 
 energy_budget = {}
@@ -430,7 +430,7 @@ for name, run in zip(['ctrl','halfEvap'],[ctrl,halfEvap]):
     energy_budget[name] = budget
 
 
-# In[20]:
+# In[21]:
 
 
 #   Here we take advantage of xarray!
@@ -443,7 +443,7 @@ zonanom = anom.mean(dim='lon')
 
 # ### Energy budget anomalies at TOA and surface
 
-# In[21]:
+# In[22]:
 
 
 fig, (ax1,ax2) = plt.subplots(1,2,figsize=(14,5))
@@ -494,7 +494,7 @@ for ax in [ax1, ax2]:
 
 # ###  Vertical structure of relative humidity and cloud changes
 
-# In[22]:
+# In[23]:
 
 
 fig, (ax1,ax2) = plt.subplots(1,2,figsize=(12,5))
@@ -509,7 +509,7 @@ for ax in [ax1, ax2]:
 # ###  Meridional heat transport anomalies
 # 
 
-# In[23]:
+# In[24]:
 
 
 HT = {}
@@ -519,7 +519,7 @@ HT['latent'] = inferred_heat_transport(anom.EminusP.mean(dim='lon') * const.Lhva
 HT['dse'] = HT['atm'] - HT['latent']
 
 
-# In[24]:
+# In[25]:
 
 
 fig, ax = plt.subplots()

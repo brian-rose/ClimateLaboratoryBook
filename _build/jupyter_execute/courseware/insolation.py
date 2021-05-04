@@ -140,7 +140,7 @@
 
 # ### Using the `daily_insolation` function
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -152,7 +152,7 @@ from climlab.solar.insolation import daily_insolation
 
 # First, get a little help on using the `daily_insolation` function:
 
-# In[2]:
+# In[3]:
 
 
 help(daily_insolation)
@@ -162,7 +162,7 @@ help(daily_insolation)
 # 
 # First, compute the daily average insolation at 45ºN on January 1:
 
-# In[3]:
+# In[4]:
 
 
 daily_insolation(45,1)
@@ -170,7 +170,7 @@ daily_insolation(45,1)
 
 # Same location, July 1:
 
-# In[4]:
+# In[5]:
 
 
 daily_insolation(45,181)
@@ -178,7 +178,7 @@ daily_insolation(45,181)
 
 # We could give an array of values. Let's calculate and plot insolation at all latitudes on the spring equinox = March 21 = Day 80
 
-# In[5]:
+# In[6]:
 
 
 lat = np.linspace(-90., 90., 30)
@@ -209,7 +209,7 @@ ax.set_title('Daily average insolation on March 21')
 
 # Calculate an array of insolation over the year and all latitudes (for present-day orbital parameters). We'll use a dense grid in order to make a nice contour plot
 
-# In[6]:
+# In[7]:
 
 
 lat = np.linspace( -90., 90., 500)
@@ -219,7 +219,7 @@ Q = daily_insolation( lat, days )
 
 # And make a contour plot of Q as function of latitude and time of year.
 
-# In[7]:
+# In[8]:
 
 
 fig, ax = plt.subplots(figsize=(10,8))
@@ -235,7 +235,7 @@ ax.contourf ( days, lat, Q, levels=[-1000., 0.], colors='k' )
 
 # Take the area-weighted global, annual average of Q...
 
-# In[8]:
+# In[9]:
 
 
 Qaverage = np.average(np.mean(Q, axis=1), weights=np.cos(np.deg2rad(lat)))
@@ -244,7 +244,7 @@ print( 'The annual, global average insolation is %.2f W/m2.' %Qaverage)
 
 # Also plot the zonally averaged insolation at a few different times of the year:
 
-# In[9]:
+# In[10]:
 
 
 summer_solstice = 170

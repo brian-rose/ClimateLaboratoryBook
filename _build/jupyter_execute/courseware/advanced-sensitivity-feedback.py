@@ -81,7 +81,7 @@
 # 
 # So our model without feedback gives a prediction for climate sensitivity:
 
-# In[1]:
+# In[2]:
 
 
 #  Repeating code from Lecture 2
@@ -94,7 +94,7 @@ beta = Te / Tsbar   #  Calculate value of beta from observations
 lambda_0 = 4 * sigma * beta**4 * Tsbar**3
 
 
-# In[2]:
+# In[3]:
 
 
 DeltaR = 4.  # Radiative forcing in W/m2
@@ -372,7 +372,7 @@ print( 'The Equilibrium Climate Sensitivity in the absence of feedback is {:.1f}
 # 
 # This largely repeats what I asked you to do in your homework.
 
-# In[3]:
+# In[4]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -380,7 +380,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# In[4]:
+# In[5]:
 
 
 def albedo(T, alpha_o = 0.289, alpha_i = 0.7, To = 293., Ti = 260.):
@@ -390,7 +390,7 @@ def albedo(T, alpha_o = 0.289, alpha_i = 0.7, To = 293., Ti = 260.):
     return alb3
 
 
-# In[5]:
+# In[6]:
 
 
 def ASR(T, Q=341.3):
@@ -404,7 +404,7 @@ def Ftoa(T):
     return ASR(T) - OLR(T)
 
 
-# In[6]:
+# In[7]:
 
 
 T = np.linspace(220., 300., 100)
@@ -418,7 +418,7 @@ plt.title('Albedo as a function of global mean temperature')
 
 # ### Graphical solution: TOA fluxes as functions of temperature
 
-# In[7]:
+# In[8]:
 
 
 plt.plot(T, OLR(T), label='OLR')
@@ -434,7 +434,7 @@ plt.legend(loc='upper left')
 
 # ### Numerical solution to get the three equilibrium temperatures
 
-# In[8]:
+# In[9]:
 
 
 # Use numerical root-finding to get the equilibria

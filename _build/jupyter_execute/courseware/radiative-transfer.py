@@ -110,7 +110,7 @@
 # 
 # $$ \sigma = \frac{2 \pi^5 k^4}{15 c^2 h^3} = 5.67 \times 10^{-8} ~\text{W m}^{-2}~\text{K}^{-4}$$
 
-# In[1]:
+# In[2]:
 
 
 # climlab has these constants available, and actually calculates sigma from the above formula
@@ -302,7 +302,7 @@ sigma == climlab.constants.sigma
 # 
 # These formulas have been implemented in `climlab.radiation.transmissivity.Transmissivity()` using vectorized `numpy` array operations.
 
-# In[2]:
+# In[3]:
 
 
 # example with N=2 layers and constant absorptivity

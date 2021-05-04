@@ -148,7 +148,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="analytical-efolding.html">
-     2.10.1. Advanced topic: Analytical solution of the global Energy Balance Model
+     Advanced topic: Analytical solution of the global Energy Balance Model
     </a>
    </li>
   </ul>
@@ -182,7 +182,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="sympy-greenhouse.html">
-     7.8.1. Advanced topic: Solving the two-layer grey gas model analytically with sympy
+     Advanced topic: Solving the two-layer grey gas model analytically with sympy
     </a>
    </li>
   </ul>
@@ -221,7 +221,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-sensitivity-feedback.html">
-     13.8.1. Advanced topic: Climate sensitivity and feedback
+     Advanced topic: Climate sensitivity and feedback
     </a>
    </li>
   </ul>
@@ -264,7 +264,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-heat-transport.html">
-     19.7.1. Advanced topic: Heat transport decomposition
+     Advanced topic: Heat transport decomposition
     </a>
    </li>
   </ul>
@@ -293,12 +293,12 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-albedo-feedback.html">
-     23.9.1. Advanced topic: Ice albedo feedback in the EBM
+     Advanced topic: Ice albedo feedback in the EBM
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-snowball-earth.html">
-     23.9.2. Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
+     Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
     </a>
    </li>
   </ul>
@@ -479,17 +479,17 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-one-dimensional-diffusion-equation">
-   22.1. 1. The one-dimensional diffusion equation
+   1. The one-dimensional diffusion equation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#discretizing-the-diffusion-operator-in-space">
-   22.2. 2. Discretizing the diffusion operator in space
+   2. Discretizing the diffusion operator in space
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-notation-for-discretization-of-u-x-t">
-     22.2.1. Some notation for discretization of
+     Some notation for discretization of
      <span class="math notranslate nohighlight">
       \(u(x,t)\)
      </span>
@@ -497,29 +497,29 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#discretizing-the-diffusive-flux">
-     22.2.2. Discretizing the diffusive flux
+     Discretizing the diffusive flux
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#no-flux-boundary-conditions">
-     22.2.3. No-flux boundary conditions
+     No-flux boundary conditions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-staggered-grid">
-     22.2.4. The staggered grid
+     The staggered grid
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#implementing-the-boundary-condition-on-the-staggered-grid">
-     22.2.5. Implementing the boundary condition on the staggered grid
+     Implementing the boundary condition on the staggered grid
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coding-the-discretized-diffusion-operator-in-numpy">
-   22.3. 3. Coding the discretized diffusion operator in
+   3. Coding the discretized diffusion operator in
    <code class="docutils literal notranslate">
     <span class="pre">
      numpy
@@ -529,24 +529,24 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-smooth-example">
-     22.3.1. A smooth example
+     A smooth example
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-non-smooth-examples">
-     22.3.2. Some non-smooth examples
+     Some non-smooth examples
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#discretizing-the-time-derivative">
-   22.4. 4. Discretizing the time derivative
+   4. Discretizing the time derivative
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-suppose-that-you-wanted-to-double-the-spatial-resolution">
-     22.4.1. Now, suppose that you wanted to
+     Now, suppose that you wanted to
      <strong>
       double
      </strong>
@@ -557,63 +557,63 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stability-analysis-of-the-ftcs-scheme">
-   22.5. 5. Stability analysis of the FTCS scheme
+   5. Stability analysis of the FTCS scheme
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-wavy-solution-must-not-grow-with-time">
-     22.5.1. The wavy solution must not grow with time
+     The wavy solution must not grow with time
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#we-have-just-discovered-an-important-constraint-on-the-allowable-timestep">
-     22.5.2. We have just discovered an important constraint on the allowable timestep
+     We have just discovered an important constraint on the allowable timestep
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numerical-tests-with-a-shorter-timestep">
-   22.6. 6. Numerical tests with a shorter timestep
+   6. Numerical tests with a shorter timestep
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-need-for-a-more-efficient-method">
-   22.7. 7. The need for a more efficient method
+   7. The need for a more efficient method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implicit-time-method">
-   22.8. 8. Implicit time method
+   8. Implicit time method
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-implicit-scheme-as-a-matrix-problem">
-     22.8.1. The implicit scheme as a matrix problem
+     The implicit scheme as a matrix problem
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stability-analysis-of-the-implicit-scheme">
-     22.8.2. Stability analysis of the implicit scheme
+     Stability analysis of the implicit scheme
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#your-homework-assignment">
-   22.9. 9. Your homework assignment
+   9. Your homework assignment
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#some-final-thoughts">
-     22.9.1. Some final thoughts:
+     Some final thoughts:
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#credits">
-   22.10. Credits
+   Credits
   </a>
  </li>
 </ul>
@@ -634,7 +634,7 @@
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <div class="section" id="the-one-dimensional-diffusion-equation">
-<h2><span class="section-number">22.1. </span>1. The one-dimensional diffusion equation<a class="headerlink" href="#the-one-dimensional-diffusion-equation" title="Permalink to this headline">¶</a></h2>
+<h2>1. The one-dimensional diffusion equation<a class="headerlink" href="#the-one-dimensional-diffusion-equation" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Suppose that a quantity <span class="math notranslate nohighlight">\(u(x)\)</span> is mixed down-gradient by a diffusive process.</p>
 <p>The diffusive flux is</p>
@@ -655,12 +655,12 @@
 <p><a id='section2'></a></p>
 </div>
 <div class="section" id="discretizing-the-diffusion-operator-in-space">
-<h2><span class="section-number">22.2. </span>2. Discretizing the diffusion operator in space<a class="headerlink" href="#discretizing-the-diffusion-operator-in-space" title="Permalink to this headline">¶</a></h2>
+<h2>2. Discretizing the diffusion operator in space<a class="headerlink" href="#discretizing-the-diffusion-operator-in-space" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Solving a differential equation on a computer always requires some approximation to represent the continuous function <span class="math notranslate nohighlight">\(u(x,t)\)</span> and its derivatives in terms of discrete quantities (arrays of numbers).</p>
 <p>We have already dealt with simple discretization of the time derivative back in [Lecture 2](./Lecture02 – Solving the zero-dimensional EBM.ipynb). We used the <strong>forward Euler</strong> method to step all our of radiation models forward in time so far.</p>
 <div class="section" id="some-notation-for-discretization-of-u-x-t">
-<h3><span class="section-number">22.2.1. </span>Some notation for discretization of <span class="math notranslate nohighlight">\(u(x,t)\)</span><a class="headerlink" href="#some-notation-for-discretization-of-u-x-t" title="Permalink to this headline">¶</a></h3>
+<h3>Some notation for discretization of <span class="math notranslate nohighlight">\(u(x,t)\)</span><a class="headerlink" href="#some-notation-for-discretization-of-u-x-t" title="Permalink to this headline">¶</a></h3>
 <p>We will discretize time and space on grids</p>
 <div class="math notranslate nohighlight">
 \[ x_j , ~~~ t^n \]</div>
@@ -669,7 +669,7 @@
 \[ u_j^n = u(x_j, ~t^n) \]</div>
 </div>
 <div class="section" id="discretizing-the-diffusive-flux">
-<h3><span class="section-number">22.2.2. </span>Discretizing the diffusive flux<a class="headerlink" href="#discretizing-the-diffusive-flux" title="Permalink to this headline">¶</a></h3>
+<h3>Discretizing the diffusive flux<a class="headerlink" href="#discretizing-the-diffusive-flux" title="Permalink to this headline">¶</a></h3>
 <p>The governing equation can be written in terms of the convergence of the diffusive flux:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{\partial u}{\partial t} = - \frac{\partial F}{\partial x} \]</div>
@@ -699,7 +699,7 @@
 \[ \frac{\partial u}{\partial t} \bigg|_j  \approx K \frac{ u_{j+1} - 2 u_{j} + u_{j-1}}{\Delta x^2} \]</div>
 </div>
 <div class="section" id="no-flux-boundary-conditions">
-<h3><span class="section-number">22.2.3. </span>No-flux boundary conditions<a class="headerlink" href="#no-flux-boundary-conditions" title="Permalink to this headline">¶</a></h3>
+<h3>No-flux boundary conditions<a class="headerlink" href="#no-flux-boundary-conditions" title="Permalink to this headline">¶</a></h3>
 <p>Suppose the domain is <span class="math notranslate nohighlight">\(0 \le x \le 1\)</span>, with solid walls at <span class="math notranslate nohighlight">\(x=0, 1\)</span>.</p>
 <p>The physical boundary condition at the walls is that there can be no flux in or out of the walls:</p>
 <div class="math notranslate nohighlight">
@@ -709,7 +709,7 @@
 \[ \frac{\partial u}{\partial x} = 0 ~~~ \text{at} ~~~ x=0,1 \]</div>
 </div>
 <div class="section" id="the-staggered-grid">
-<h3><span class="section-number">22.2.4. </span>The staggered grid<a class="headerlink" href="#the-staggered-grid" title="Permalink to this headline">¶</a></h3>
+<h3>The staggered grid<a class="headerlink" href="#the-staggered-grid" title="Permalink to this headline">¶</a></h3>
 <p>Suppose we have a grid of <span class="math notranslate nohighlight">\(J+1\)</span> total points between <span class="math notranslate nohighlight">\(x=0\)</span> and <span class="math notranslate nohighlight">\(x=1\)</span>, <strong>including the boundaries</strong>:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x^*_0 = 0 \)</span></p></li>
@@ -738,7 +738,7 @@
 </ul>
 </div>
 <div class="section" id="implementing-the-boundary-condition-on-the-staggered-grid">
-<h3><span class="section-number">22.2.5. </span>Implementing the boundary condition on the staggered grid<a class="headerlink" href="#implementing-the-boundary-condition-on-the-staggered-grid" title="Permalink to this headline">¶</a></h3>
+<h3>Implementing the boundary condition on the staggered grid<a class="headerlink" href="#implementing-the-boundary-condition-on-the-staggered-grid" title="Permalink to this headline">¶</a></h3>
 <p>At <span class="math notranslate nohighlight">\(x_0\)</span> we have</p>
 <div class="math notranslate nohighlight">
 \[ \frac{\partial u}{\partial t} \bigg|_0  \approx -\frac{ F_1 - F_0}{\Delta x} \]</div>
@@ -760,7 +760,7 @@
 </div>
 </div>
 <div class="section" id="coding-the-discretized-diffusion-operator-in-numpy">
-<h2><span class="section-number">22.3. </span>3. Coding the discretized diffusion operator in <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#coding-the-discretized-diffusion-operator-in-numpy" title="Permalink to this headline">¶</a></h2>
+<h2>3. Coding the discretized diffusion operator in <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#coding-the-discretized-diffusion-operator-in-numpy" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,7 +847,7 @@
 diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
     Calculate the n-th discrete difference along the given axis.
     
-    The first difference is given by ``out[i] = a[i+1] - a[i]`` along
+    The first difference is given by ``out[n] = a[n+1] - a[n]`` along
     the given axis, higher differences are calculated by using `diff`
     recursively.
     
@@ -862,13 +862,11 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
         The axis along which the difference is taken, default is the
         last axis.
     prepend, append : array_like, optional
-        Values to prepend or append to `a` along axis prior to
+        Values to prepend or append to &quot;a&quot; along axis prior to
         performing the difference.  Scalar values are expanded to
         arrays with length 1 in the direction of axis and the shape
         of the input array in along all other axes.  Otherwise the
-        dimension and shape must match `a` except along axis.
-    
-        .. versionadded:: 1.16.0
+        dimension and shape must match &quot;a&quot; except along axis.
     
     Returns
     -------
@@ -898,7 +896,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
     &gt;&gt;&gt; np.diff(u8_arr)
     array([255], dtype=uint8)
     &gt;&gt;&gt; u8_arr[1,...] - u8_arr[0,...]
-    255
+    array(255, np.uint8)
     
     If this is not desirable, then the array should be cast to a larger
     integer type first:
@@ -982,7 +980,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="section" id="a-smooth-example">
-<h3><span class="section-number">22.3.1. </span>A smooth example<a class="headerlink" href="#a-smooth-example" title="Permalink to this headline">¶</a></h3>
+<h3>A smooth example<a class="headerlink" href="#a-smooth-example" title="Permalink to this headline">¶</a></h3>
 <p>Suppose we have an initial <span class="math notranslate nohighlight">\(u\)</span> field that has a local maximum in the interior.</p>
 <p>The gaussian (bell curve) function is a convenient way to create such a field.</p>
 <div class="cell docutils container">
@@ -1006,7 +1004,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f887ed04880&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x11465d7b8&gt;
 </pre></div>
 </div>
 <img alt="../_images/numerical-diffusion_45_1.png" src="../_images/numerical-diffusion_45_1.png" />
@@ -1015,7 +1013,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p>Hopefully this makes sense. The diffusion is acting to smooth out <span class="math notranslate nohighlight">\(u\)</span> by reducing the peak and increasing <span class="math notranslate nohighlight">\(u\)</span> on the flanks of the gaussian bump.</p>
 </div>
 <div class="section" id="some-non-smooth-examples">
-<h3><span class="section-number">22.3.2. </span>Some non-smooth examples<a class="headerlink" href="#some-non-smooth-examples" title="Permalink to this headline">¶</a></h3>
+<h3>Some non-smooth examples<a class="headerlink" href="#some-non-smooth-examples" title="Permalink to this headline">¶</a></h3>
 <p>Use a random number generator to create some noisy initial conditions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1038,7 +1036,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="section" id="discretizing-the-time-derivative">
-<h2><span class="section-number">22.4. </span>4. Discretizing the time derivative<a class="headerlink" href="#discretizing-the-time-derivative" title="Permalink to this headline">¶</a></h2>
+<h2>4. Discretizing the time derivative<a class="headerlink" href="#discretizing-the-time-derivative" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>The simplest way to discretize the time derivative is the <strong>forward Euler</strong> method:</p>
 <div class="math notranslate nohighlight">
@@ -1078,7 +1076,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f887f6510d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114bf5eb8&gt;
 </pre></div>
 </div>
 <img alt="../_images/numerical-diffusion_55_1.png" src="../_images/numerical-diffusion_55_1.png" />
@@ -1108,7 +1106,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f887ed9eee0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114ab64e0&gt;
 </pre></div>
 </div>
 <img alt="../_images/numerical-diffusion_58_1.png" src="../_images/numerical-diffusion_58_1.png" />
@@ -1116,7 +1114,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 <p>The numerics were easy to implement, and the scheme seems to work very well! The results are physically sensible.</p>
 <div class="section" id="now-suppose-that-you-wanted-to-double-the-spatial-resolution">
-<h3><span class="section-number">22.4.1. </span>Now, suppose that you wanted to <strong>double</strong> the spatial resolution<a class="headerlink" href="#now-suppose-that-you-wanted-to-double-the-spatial-resolution" title="Permalink to this headline">¶</a></h3>
+<h3>Now, suppose that you wanted to <strong>double</strong> the spatial resolution<a class="headerlink" href="#now-suppose-that-you-wanted-to-double-the-spatial-resolution" title="Permalink to this headline">¶</a></h3>
 <p>Try setting <span class="math notranslate nohighlight">\(J=40\)</span> and repeat the above procedure.</p>
 <p>What happens?</p>
 <div class="cell docutils container">
@@ -1142,7 +1140,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f887f1981f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114d1a470&gt;
 </pre></div>
 </div>
 <img alt="../_images/numerical-diffusion_62_1.png" src="../_images/numerical-diffusion_62_1.png" />
@@ -1156,7 +1154,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="section" id="stability-analysis-of-the-ftcs-scheme">
-<h2><span class="section-number">22.5. </span>5. Stability analysis of the FTCS scheme<a class="headerlink" href="#stability-analysis-of-the-ftcs-scheme" title="Permalink to this headline">¶</a></h2>
+<h2>5. Stability analysis of the FTCS scheme<a class="headerlink" href="#stability-analysis-of-the-ftcs-scheme" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Following Press et al. (1988), “Numerical Recipes in C: The Art of Scientific Computing”, Cambridge University Press.</p>
 <p>This is an example of the so-called <strong>von Neumann Stability Analysis</strong>. It is a form of <em>normal mode</em> analysis for a discrete system.</p>
@@ -1181,7 +1179,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <div class="math notranslate nohighlight">
 \[ \frac{\xi^{n+1}}{\xi^n} = 1 - \frac{4 K \Delta t}{\Delta x^2} \sin^2 \left( \frac{k~\Delta x}{2} \right)  \]</div>
 <div class="section" id="the-wavy-solution-must-not-grow-with-time">
-<h3><span class="section-number">22.5.1. </span>The wavy solution must not grow with time<a class="headerlink" href="#the-wavy-solution-must-not-grow-with-time" title="Permalink to this headline">¶</a></h3>
+<h3>The wavy solution must not grow with time<a class="headerlink" href="#the-wavy-solution-must-not-grow-with-time" title="Permalink to this headline">¶</a></h3>
 <p>We need to prevent growing normal modes. So successive amplitudes should be</p>
 <div class="math notranslate nohighlight">
 \[ \bigg| \frac{\xi^{n+1}}{\xi^n} \bigg| \le 1 \]</div>
@@ -1197,7 +1195,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 \[ \Delta t \le \frac{\Delta x^2}{2 K} \]</div>
 </div>
 <div class="section" id="we-have-just-discovered-an-important-constraint-on-the-allowable-timestep">
-<h3><span class="section-number">22.5.2. </span>We have just discovered an important constraint on the allowable timestep<a class="headerlink" href="#we-have-just-discovered-an-important-constraint-on-the-allowable-timestep" title="Permalink to this headline">¶</a></h3>
+<h3>We have just discovered an important constraint on the allowable timestep<a class="headerlink" href="#we-have-just-discovered-an-important-constraint-on-the-allowable-timestep" title="Permalink to this headline">¶</a></h3>
 <p>The maximum timestep we can use with the FTCS scheme for the diffusion equation is proportional to <span class="math notranslate nohighlight">\(\Delta x^2\)</span>.</p>
 <p><strong>A doubling of the spatial resolution would require a 4x shorter timestep to preserve numerical stability.</strong></p>
 <p>Physically, the restriction is that the maximum allowable timestep is approximately the diffusion time across a grid cell of width <span class="math notranslate nohighlight">\(\Delta x\)</span>.</p>
@@ -1206,7 +1204,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="section" id="numerical-tests-with-a-shorter-timestep">
-<h2><span class="section-number">22.6. </span>6. Numerical tests with a shorter timestep<a class="headerlink" href="#numerical-tests-with-a-shorter-timestep" title="Permalink to this headline">¶</a></h2>
+<h2>6. Numerical tests with a shorter timestep<a class="headerlink" href="#numerical-tests-with-a-shorter-timestep" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Going back to our Gaussian example, let’s double the resolution but shorten the timestep by a factor of 4.</p>
 <div class="cell docutils container">
@@ -1251,7 +1249,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f887ff16430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x114e55a58&gt;
 </pre></div>
 </div>
 <img alt="../_images/numerical-diffusion_86_1.png" src="../_images/numerical-diffusion_86_1.png" />
@@ -1264,7 +1262,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p><a id='section7'></a></p>
 </div>
 <div class="section" id="the-need-for-a-more-efficient-method">
-<h2><span class="section-number">22.7. </span>7. The need for a more efficient method<a class="headerlink" href="#the-need-for-a-more-efficient-method" title="Permalink to this headline">¶</a></h2>
+<h2>7. The need for a more efficient method<a class="headerlink" href="#the-need-for-a-more-efficient-method" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>In practice the condition</p>
 <div class="math notranslate nohighlight">
@@ -1290,7 +1288,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p><a id='section8'></a></p>
 </div>
 <div class="section" id="implicit-time-method">
-<h2><span class="section-number">22.8. </span>8. Implicit time method<a class="headerlink" href="#implicit-time-method" title="Permalink to this headline">¶</a></h2>
+<h2>8. Implicit time method<a class="headerlink" href="#implicit-time-method" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>With numerical methods for partial differential equations, it often turns out that a small change in the discretization can make an enormous difference in the results.</p>
 <p>The <strong>implicit time</strong> scheme applies exactly the same centered difference scheme to the spatial derivatives in the diffusion operator.</p>
@@ -1316,7 +1314,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <div class="math notranslate nohighlight">
 \[ K^* = \frac{K \Delta t}{\Delta x^2} \]</div>
 <div class="section" id="the-implicit-scheme-as-a-matrix-problem">
-<h3><span class="section-number">22.8.1. </span>The implicit scheme as a matrix problem<a class="headerlink" href="#the-implicit-scheme-as-a-matrix-problem" title="Permalink to this headline">¶</a></h3>
+<h3>The implicit scheme as a matrix problem<a class="headerlink" href="#the-implicit-scheme-as-a-matrix-problem" title="Permalink to this headline">¶</a></h3>
 <p>We can write this as a matrix equation</p>
 <div class="math notranslate nohighlight">
 \[ \mathbf{A} ~ \mathbf{U}^{n+1} = \mathbf{U}^n \]</div>
@@ -1351,7 +1349,7 @@ u^n_{J-1} \\
 <p>Solving a tridiagonal matrix problem like this is a very common operation in computer science, and efficient numerical routines are available in many languages (including Python / <code class="docutils literal notranslate"><span class="pre">numpy</span></code>!)</p>
 </div>
 <div class="section" id="stability-analysis-of-the-implicit-scheme">
-<h3><span class="section-number">22.8.2. </span>Stability analysis of the implicit scheme<a class="headerlink" href="#stability-analysis-of-the-implicit-scheme" title="Permalink to this headline">¶</a></h3>
+<h3>Stability analysis of the implicit scheme<a class="headerlink" href="#stability-analysis-of-the-implicit-scheme" title="Permalink to this headline">¶</a></h3>
 <p>We’ll skip the details, but the amplification factor for this scheme is (see <em>Numerical Recipes</em> book or other text on numerical methods):</p>
 <div class="math notranslate nohighlight">
 \[ \frac{\xi^{n+1}}{\xi^n} = \frac{1}{1+4 K^* \sin^2 \left( \frac{k \Delta x}{2} \right) } \]</div>
@@ -1363,11 +1361,11 @@ u^n_{J-1} \\
 </div>
 </div>
 <div class="section" id="your-homework-assignment">
-<h2><span class="section-number">22.9. </span>9. Your homework assignment<a class="headerlink" href="#your-homework-assignment" title="Permalink to this headline">¶</a></h2>
+<h2>9. Your homework assignment<a class="headerlink" href="#your-homework-assignment" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Write Python code to solve the diffusion equation using this implicit time method. Demonstrate that it is numerically stable for much larger timesteps than we were able to use with the forward-time method. One way to do this is to use a much higher spatial resolution.</p>
 <div class="section" id="some-final-thoughts">
-<h3><span class="section-number">22.9.1. </span>Some final thoughts:<a class="headerlink" href="#some-final-thoughts" title="Permalink to this headline">¶</a></h3>
+<h3>Some final thoughts:<a class="headerlink" href="#some-final-thoughts" title="Permalink to this headline">¶</a></h3>
 <p>We have just scratched the surface of the wonders and sorrows of numerical methods here. The implicit method is very <strong>stable</strong> but is not the most <strong>accurate</strong> method for a diffusion problem, particularly when you are interested in some of the faster dynamics of the system (as opposed to just getting the system quickly to its equilibrium state).</p>
 <p>There are always trade-offs in the choice of a numerical method.</p>
 <p>The equations for most climate models are sufficiently complex that more than one numerical method is necessary. Even in the simple diffusive EBM, the radiation terms are handled by a forward-time method while the diffusion term is solved implicitly.</p>
@@ -1376,7 +1374,7 @@ u^n_{J-1} \\
 </div>
 <hr class="docutils" />
 <div class="section" id="credits">
-<h2><span class="section-number">22.10. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

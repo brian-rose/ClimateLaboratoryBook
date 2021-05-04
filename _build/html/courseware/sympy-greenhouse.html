@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7.8.1. Advanced topic: Solving the two-layer grey gas model analytically with sympy &#8212; The Climate Laboratory</title>
+    <title>Advanced topic: Solving the two-layer grey gas model analytically with sympy &#8212; The Climate Laboratory</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -148,7 +148,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="analytical-efolding.html">
-     2.10.1. Advanced topic: Analytical solution of the global Energy Balance Model
+     Advanced topic: Analytical solution of the global Energy Balance Model
     </a>
    </li>
   </ul>
@@ -182,7 +182,7 @@
   <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     7.8.1. Advanced topic: Solving the two-layer grey gas model analytically with sympy
+     Advanced topic: Solving the two-layer grey gas model analytically with sympy
     </a>
    </li>
   </ul>
@@ -221,7 +221,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-sensitivity-feedback.html">
-     13.8.1. Advanced topic: Climate sensitivity and feedback
+     Advanced topic: Climate sensitivity and feedback
     </a>
    </li>
   </ul>
@@ -264,7 +264,7 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-heat-transport.html">
-     19.7.1. Advanced topic: Heat transport decomposition
+     Advanced topic: Heat transport decomposition
     </a>
    </li>
   </ul>
@@ -293,12 +293,12 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-albedo-feedback.html">
-     23.9.1. Advanced topic: Ice albedo feedback in the EBM
+     Advanced topic: Ice albedo feedback in the EBM
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="advanced-snowball-earth.html">
-     23.9.2. Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
+     Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
     </a>
    </li>
   </ul>
@@ -479,66 +479,66 @@
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-symbolic-computation-with-sympy">
-   7.8.1.1. 1. Introducing symbolic computation with sympy
+   1. Introducing symbolic computation with sympy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#symbolic-math-with-the-sympy-package">
-     7.8.1.1.1. Symbolic math with the sympy package
+     Symbolic math with the sympy package
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#getting-started-with-sympy">
-     7.8.1.1.2. Getting started with sympy
+     Getting started with sympy
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#coding-up-the-2-layer-grey-gas-model-in-sympy">
-   7.8.1.2. 2. Coding up the 2-layer grey gas model in sympy
+   2. Coding up the 2-layer grey gas model in sympy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#longwave-emissions">
-     7.8.1.2.1. Longwave emissions
+     Longwave emissions
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#shortwave-radiation">
-     7.8.1.2.2. Shortwave radiation
+     Shortwave radiation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#tracing-the-upwelling-beam-of-longwave-radiation">
-     7.8.1.2.3. Tracing the upwelling beam of longwave radiation
+     Tracing the upwelling beam of longwave radiation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#downwelling-beam">
-     7.8.1.2.4. Downwelling beam
+     Downwelling beam
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tuning-the-grey-gas-model-to-observations">
-   7.8.1.3. 3. Tuning the grey gas model to observations
+   3. Tuning the grey gas model to observations
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#temperatures">
-     7.8.1.3.1. Temperatures
+     Temperatures
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#olr">
-     7.8.1.3.2. OLR
+     OLR
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#solving-for-epsilon">
-     7.8.1.3.3. Solving for
+     Solving for
      <span class="math notranslate nohighlight">
       \(\epsilon\)
      </span>
@@ -548,66 +548,66 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#level-of-emission">
-   7.8.1.4. 4. Level of emission
+   4. Level of emission
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#radiative-forcing-in-the-2-layer-grey-gas-model">
-   7.8.1.5. 5. Radiative forcing in the 2-layer grey gas model
+   5. Radiative forcing in the 2-layer grey gas model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#radiative-forcing-is-the-change-in-radiative-flux-at-toa-after-adding-absorbers">
-     7.8.1.5.1. “Radiative forcing” is the change in radiative flux at TOA after adding absorbers
+     “Radiative forcing” is the change in radiative flux at TOA after adding absorbers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#greenhouse-effect-for-an-isothermal-atmosphere">
-     7.8.1.5.2. Greenhouse effect for an isothermal atmosphere
+     Greenhouse effect for an isothermal atmosphere
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#let-s-solve-the-isothermal-case">
-       7.8.1.5.2.1. Let’s solve the isothermal case
+       Let’s solve the isothermal case
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#the-answer-is-zero">
-       7.8.1.5.2.2. The answer is zero
+       The answer is zero
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-radiative-forcing-change-in-olr-depends-on-the-lapse-rate">
-     7.8.1.5.3. The radiative forcing (change in OLR) depends on the lapse rate!
+     The radiative forcing (change in OLR) depends on the lapse rate!
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#radiative-equilibrium-in-the-2-layer-grey-gas-model">
-   7.8.1.6. 6. Radiative equilibrium in the 2-layer grey gas model
+   6. Radiative equilibrium in the 2-layer grey gas model
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-radiative-flux-convergence">
-     7.8.1.6.1. Compute the radiative flux convergence
+     Compute the radiative flux convergence
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#net-absorption-is-the-flux-convergence-in-each-layer">
-       7.8.1.6.1.1. Net absorption is the flux convergence in each layer
+       Net absorption is the flux convergence in each layer
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#radiative-equilibrium-means-net-absorption-is-zero-in-the-atmosphere">
-       7.8.1.6.1.2. Radiative equilibrium means net absorption is ZERO in the atmosphere
+       Radiative equilibrium means net absorption is ZERO in the atmosphere
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#now-we-finally-get-our-solution-for-radiative-equilibrium">
-       7.8.1.6.1.3. Now we finally get our solution for radiative equilibrium
+       Now we finally get our solution for radiative equilibrium
       </a>
      </li>
     </ul>
@@ -616,29 +616,29 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
-   7.8.1.7. 7. Summary
+   7. Summary
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#key-physical-lessons">
-   7.8.1.8. Key physical lessons
+   Key physical lessons
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and-on-the-python-side">
-     7.8.1.8.1. And on the Python side…
+     And on the Python side…
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#a-follow-up-assignment">
-     7.8.1.8.2. A follow-up assignment
+     A follow-up assignment
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#credits">
-   7.8.1.9. Credits
+   Credits
   </a>
  </li>
 </ul>
@@ -654,22 +654,22 @@
               <div>
                 
   <div class="section" id="advanced-topic-solving-the-two-layer-grey-gas-model-analytically-with-sympy">
-<h1><span class="section-number">7.8.1. </span>Advanced topic: Solving the two-layer grey gas model analytically with sympy<a class="headerlink" href="#advanced-topic-solving-the-two-layer-grey-gas-model-analytically-with-sympy" title="Permalink to this headline">¶</a></h1>
+<h1>Advanced topic: Solving the two-layer grey gas model analytically with sympy<a class="headerlink" href="#advanced-topic-solving-the-two-layer-grey-gas-model-analytically-with-sympy" title="Permalink to this headline">¶</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <div class="section" id="introducing-symbolic-computation-with-sympy">
-<h2><span class="section-number">7.8.1.1. </span>1. Introducing symbolic computation with sympy<a class="headerlink" href="#introducing-symbolic-computation-with-sympy" title="Permalink to this headline">¶</a></h2>
+<h2>1. Introducing symbolic computation with sympy<a class="headerlink" href="#introducing-symbolic-computation-with-sympy" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>These notes elaborate on material in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html">lecture on elementary greenhouse models</a>, demonstrating use of a computer algebra system to make precise calculations.</p>
 <div class="section" id="symbolic-math-with-the-sympy-package">
-<h3><span class="section-number">7.8.1.1.1. </span>Symbolic math with the sympy package<a class="headerlink" href="#symbolic-math-with-the-sympy-package" title="Permalink to this headline">¶</a></h3>
+<h3>Symbolic math with the sympy package<a class="headerlink" href="#symbolic-math-with-the-sympy-package" title="Permalink to this headline">¶</a></h3>
 <p>The two-layer grey gas model is simple enough that we can work out all the details algebraically. There are three temperatures to keep track of <span class="math notranslate nohighlight">\((T_s, T_0, T_1)\)</span>, so we will have 3x3 matrix equations.</p>
 <p>We all know how to work these things out with pencil and paper. But it can be tedious and error-prone.</p>
 <p>Symbolic math software lets us use the computer to automate a lot of tedious algebra.</p>
 <p>The <a class="reference external" href="http://www.sympy.org/en/index.html">sympy</a> package is a powerful open-source symbolic math library that is well-integrated into the scientific Python ecosystem.</p>
 </div>
 <div class="section" id="getting-started-with-sympy">
-<h3><span class="section-number">7.8.1.1.2. </span>Getting started with sympy<a class="headerlink" href="#getting-started-with-sympy" title="Permalink to this headline">¶</a></h3>
+<h3>Getting started with sympy<a class="headerlink" href="#getting-started-with-sympy" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
@@ -705,10 +705,10 @@
 </div>
 <hr class="docutils" />
 <div class="section" id="coding-up-the-2-layer-grey-gas-model-in-sympy">
-<h2><span class="section-number">7.8.1.2. </span>2. Coding up the 2-layer grey gas model in sympy<a class="headerlink" href="#coding-up-the-2-layer-grey-gas-model-in-sympy" title="Permalink to this headline">¶</a></h2>
+<h2>2. Coding up the 2-layer grey gas model in sympy<a class="headerlink" href="#coding-up-the-2-layer-grey-gas-model-in-sympy" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <div class="section" id="longwave-emissions">
-<h3><span class="section-number">7.8.1.2.1. </span>Longwave emissions<a class="headerlink" href="#longwave-emissions" title="Permalink to this headline">¶</a></h3>
+<h3>Longwave emissions<a class="headerlink" href="#longwave-emissions" title="Permalink to this headline">¶</a></h3>
 <p>Let’s denote the emissions from each layer as
 \begin{align}
 E_s &amp;= \sigma T_s^4 \
@@ -734,7 +734,7 @@ E_1 &amp;= \epsilon \sigma T_1^4
 </div>
 </div>
 <div class="section" id="shortwave-radiation">
-<h3><span class="section-number">7.8.1.2.2. </span>Shortwave radiation<a class="headerlink" href="#shortwave-radiation" title="Permalink to this headline">¶</a></h3>
+<h3>Shortwave radiation<a class="headerlink" href="#shortwave-radiation" title="Permalink to this headline">¶</a></h3>
 <p>Since we have assumed the atmosphere is transparent to shortwave, the incident beam <span class="math notranslate nohighlight">\(Q\)</span> passes unchanged from the top to the surface, where a fraction <span class="math notranslate nohighlight">\(\alpha\)</span> is reflected upward out to space.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -757,7 +757,7 @@ E_1 &amp;= \epsilon \sigma T_1^4
 </div>
 </div>
 <div class="section" id="tracing-the-upwelling-beam-of-longwave-radiation">
-<h3><span class="section-number">7.8.1.2.3. </span>Tracing the upwelling beam of longwave radiation<a class="headerlink" href="#tracing-the-upwelling-beam-of-longwave-radiation" title="Permalink to this headline">¶</a></h3>
+<h3>Tracing the upwelling beam of longwave radiation<a class="headerlink" href="#tracing-the-upwelling-beam-of-longwave-radiation" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(U\)</span> be the upwelling flux of longwave radiation.</p>
 <p>The upward flux <strong>from the surface to layer 0</strong> is</p>
 <div class="math notranslate nohighlight">
@@ -835,7 +835,7 @@ $<span class="math notranslate nohighlight">\( U_2 = (1-\epsilon) U_1 + E_1 \)</
 </div>
 </div>
 <div class="section" id="downwelling-beam">
-<h3><span class="section-number">7.8.1.2.4. </span>Downwelling beam<a class="headerlink" href="#downwelling-beam" title="Permalink to this headline">¶</a></h3>
+<h3>Downwelling beam<a class="headerlink" href="#downwelling-beam" title="Permalink to this headline">¶</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(D\)</span> be the downwelling longwave beam. Since there is no longwave radiation coming in from space, we begin with</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -879,13 +879,13 @@ $<span class="math notranslate nohighlight">\( U_2 = (1-\epsilon) U_1 + E_1 \)</
 </div>
 </div>
 <div class="section" id="tuning-the-grey-gas-model-to-observations">
-<h2><span class="section-number">7.8.1.3. </span>3. Tuning the grey gas model to observations<a class="headerlink" href="#tuning-the-grey-gas-model-to-observations" title="Permalink to this headline">¶</a></h2>
+<h2>3. Tuning the grey gas model to observations<a class="headerlink" href="#tuning-the-grey-gas-model-to-observations" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>In building our new model we have introduced exactly one parameter, the absorptivity <span class="math notranslate nohighlight">\(\epsilon\)</span>. We need to choose a value for <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <p>We will tune our model so that it <strong>reproduces the observed global mean OLR</strong> given <strong>observed global mean temperatures</strong>.</p>
 <p>To get appropriate temperatures for <span class="math notranslate nohighlight">\(T_s, T_0, T_1\)</span>, revisit the global, annual mean lapse rate plot from NCEP Reanalysis data we first encountered in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html">Radiation notes</a>.</p>
 <div class="section" id="temperatures">
-<h3><span class="section-number">7.8.1.3.1. </span>Temperatures<a class="headerlink" href="#temperatures" title="Permalink to this headline">¶</a></h3>
+<h3>Temperatures<a class="headerlink" href="#temperatures" title="Permalink to this headline">¶</a></h3>
 <p>First, we set
 $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p>
 <p>From the lapse rate plot, an average temperature for the layer between 1000 and 500 hPa is</p>
@@ -911,13 +911,13 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <div class="section" id="olr">
-<h3><span class="section-number">7.8.1.3.2. </span>OLR<a class="headerlink" href="#olr" title="Permalink to this headline">¶</a></h3>
+<h3>OLR<a class="headerlink" href="#olr" title="Permalink to this headline">¶</a></h3>
 <p>From the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/models-budgets-fun.html#2.-The-observed-global-energy-budget">observed global energy budget</a> we set</p>
 <div class="math notranslate nohighlight">
 \[ OLR = 238.5 \text{ W m}^{-2} \]</div>
 </div>
 <div class="section" id="solving-for-epsilon">
-<h3><span class="section-number">7.8.1.3.3. </span>Solving for <span class="math notranslate nohighlight">\(\epsilon\)</span><a class="headerlink" href="#solving-for-epsilon" title="Permalink to this headline">¶</a></h3>
+<h3>Solving for <span class="math notranslate nohighlight">\(\epsilon\)</span><a class="headerlink" href="#solving-for-epsilon" title="Permalink to this headline">¶</a></h3>
 <p>We wrote down the expression for OLR as a function of temperatures and absorptivity in our model above.</p>
 <p>We just need to equate this to the observed value and solve a <strong>quadratic equation</strong> for <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <p>This is where the real power of the symbolic math toolkit comes in.</p>
@@ -992,7 +992,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <div class="section" id="level-of-emission">
-<h2><span class="section-number">7.8.1.4. </span>4. Level of emission<a class="headerlink" href="#level-of-emission" title="Permalink to this headline">¶</a></h2>
+<h2>4. Level of emission<a class="headerlink" href="#level-of-emission" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Even in this very simple greenhouse model, there is <strong>no single level</strong> at which the OLR is generated.</p>
 <p>The three terms in our formula for OLR tell us the contributions from each level.</p>
@@ -1038,7 +1038,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <p><a id='section5'></a></p>
 </div>
 <div class="section" id="radiative-forcing-in-the-2-layer-grey-gas-model">
-<h2><span class="section-number">7.8.1.5. </span>5. Radiative forcing in the 2-layer grey gas model<a class="headerlink" href="#radiative-forcing-in-the-2-layer-grey-gas-model" title="Permalink to this headline">¶</a></h2>
+<h2>5. Radiative forcing in the 2-layer grey gas model<a class="headerlink" href="#radiative-forcing-in-the-2-layer-grey-gas-model" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Adding some extra greenhouse absorbers will mean that a greater fraction of incident longwave radiation is absorbed in each layer.</p>
 <p>Thus <strong><span class="math notranslate nohighlight">\(\epsilon\)</span> must increase</strong> as we add greenhouse gases.</p>
@@ -1114,7 +1114,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <p>The contribution from the <strong>surface</strong> must <strong>decrease</strong>, while the contribution from the <strong>top layer</strong> must <strong>increase</strong>.</p>
 <p><strong>When we add absorbers, the average level of emission goes up!</strong></p>
 <div class="section" id="radiative-forcing-is-the-change-in-radiative-flux-at-toa-after-adding-absorbers">
-<h3><span class="section-number">7.8.1.5.1. </span>“Radiative forcing” is the change in radiative flux at TOA after adding absorbers<a class="headerlink" href="#radiative-forcing-is-the-change-in-radiative-flux-at-toa-after-adding-absorbers" title="Permalink to this headline">¶</a></h3>
+<h3>“Radiative forcing” is the change in radiative flux at TOA after adding absorbers<a class="headerlink" href="#radiative-forcing-is-the-change-in-radiative-flux-at-toa-after-adding-absorbers" title="Permalink to this headline">¶</a></h3>
 <p>In this model, only the longwave flux can change, so we define the radiative forcing as</p>
 <div class="math notranslate nohighlight">
 \[ R = - \delta OLR \]</div>
@@ -1137,12 +1137,12 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <p><strong>It depends on the temperatures, i.e. on the lapse rate.</strong></p>
 </div>
 <div class="section" id="greenhouse-effect-for-an-isothermal-atmosphere">
-<h3><span class="section-number">7.8.1.5.2. </span>Greenhouse effect for an isothermal atmosphere<a class="headerlink" href="#greenhouse-effect-for-an-isothermal-atmosphere" title="Permalink to this headline">¶</a></h3>
+<h3>Greenhouse effect for an isothermal atmosphere<a class="headerlink" href="#greenhouse-effect-for-an-isothermal-atmosphere" title="Permalink to this headline">¶</a></h3>
 <p>Stop and think about this question:</p>
 <p>If the <strong>surface and atmosphere are all at the same temperature</strong>, does the OLR go up or down when <span class="math notranslate nohighlight">\(\epsilon\)</span> increases (i.e. we add more absorbers)?</p>
 <p>Understanding this question is key to understanding how the greenhouse effect works.</p>
 <div class="section" id="let-s-solve-the-isothermal-case">
-<h4><span class="section-number">7.8.1.5.2.1. </span>Let’s solve the isothermal case<a class="headerlink" href="#let-s-solve-the-isothermal-case" title="Permalink to this headline">¶</a></h4>
+<h4>Let’s solve the isothermal case<a class="headerlink" href="#let-s-solve-the-isothermal-case" title="Permalink to this headline">¶</a></h4>
 <p>We will just set <span class="math notranslate nohighlight">\(T_s = T_0 = T_1\)</span> in the above expression for the radiative forcing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1167,14 +1167,14 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <div class="section" id="the-answer-is-zero">
-<h4><span class="section-number">7.8.1.5.2.2. </span>The answer is zero<a class="headerlink" href="#the-answer-is-zero" title="Permalink to this headline">¶</a></h4>
+<h4>The answer is zero<a class="headerlink" href="#the-answer-is-zero" title="Permalink to this headline">¶</a></h4>
 <p>For an isothermal atmosphere, there is <strong>no change</strong> in OLR when we add extra greenhouse absorbers. Hence, no radiative forcing and no greenhouse effect.</p>
 <p>Why?</p>
 <p>The level of emission still must go up. But since the temperature at the upper level is the <strong>same</strong> as everywhere else, the emissions are exactly the same.</p>
 </div>
 </div>
 <div class="section" id="the-radiative-forcing-change-in-olr-depends-on-the-lapse-rate">
-<h3><span class="section-number">7.8.1.5.3. </span>The radiative forcing (change in OLR) depends on the lapse rate!<a class="headerlink" href="#the-radiative-forcing-change-in-olr-depends-on-the-lapse-rate" title="Permalink to this headline">¶</a></h3>
+<h3>The radiative forcing (change in OLR) depends on the lapse rate!<a class="headerlink" href="#the-radiative-forcing-change-in-olr-depends-on-the-lapse-rate" title="Permalink to this headline">¶</a></h3>
 <p>For a more realistic example of radiative forcing due to an increase in greenhouse absorbers, we can substitute in our tuned values for temperature and <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <p>We’ll express the answer in W m<span class="math notranslate nohighlight">\(^{-2}\)</span> for a 2% increase in <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <div class="cell docutils container">
@@ -1219,7 +1219,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <div class="section" id="radiative-equilibrium-in-the-2-layer-grey-gas-model">
-<h2><span class="section-number">7.8.1.6. </span>6. Radiative equilibrium in the 2-layer grey gas model<a class="headerlink" href="#radiative-equilibrium-in-the-2-layer-grey-gas-model" title="Permalink to this headline">¶</a></h2>
+<h2>6. Radiative equilibrium in the 2-layer grey gas model<a class="headerlink" href="#radiative-equilibrium-in-the-2-layer-grey-gas-model" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>In the previous section we:</p>
 <ul class="simple">
@@ -1238,7 +1238,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <li><p>equilibrium is achieved when the <strong>net radiative flux convergence</strong> in each layer is zero.</p></li>
 </ul>
 <div class="section" id="compute-the-radiative-flux-convergence">
-<h3><span class="section-number">7.8.1.6.1. </span>Compute the radiative flux convergence<a class="headerlink" href="#compute-the-radiative-flux-convergence" title="Permalink to this headline">¶</a></h3>
+<h3>Compute the radiative flux convergence<a class="headerlink" href="#compute-the-radiative-flux-convergence" title="Permalink to this headline">¶</a></h3>
 <p>First, the <strong>net upwelling flux</strong> is just the difference between flux up and flux down:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1256,7 +1256,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <div class="section" id="net-absorption-is-the-flux-convergence-in-each-layer">
-<h4><span class="section-number">7.8.1.6.1.1. </span>Net absorption is the flux convergence in each layer<a class="headerlink" href="#net-absorption-is-the-flux-convergence-in-each-layer" title="Permalink to this headline">¶</a></h4>
+<h4>Net absorption is the flux convergence in each layer<a class="headerlink" href="#net-absorption-is-the-flux-convergence-in-each-layer" title="Permalink to this headline">¶</a></h4>
 <p>(difference between what’s coming in the bottom and what’s going out the top of each layer)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1279,7 +1279,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <div class="section" id="radiative-equilibrium-means-net-absorption-is-zero-in-the-atmosphere">
-<h4><span class="section-number">7.8.1.6.1.2. </span>Radiative equilibrium means net absorption is ZERO in the atmosphere<a class="headerlink" href="#radiative-equilibrium-means-net-absorption-is-zero-in-the-atmosphere" title="Permalink to this headline">¶</a></h4>
+<h4>Radiative equilibrium means net absorption is ZERO in the atmosphere<a class="headerlink" href="#radiative-equilibrium-means-net-absorption-is-zero-in-the-atmosphere" title="Permalink to this headline">¶</a></h4>
 <p>The only other heat source is the <strong>shortwave heating</strong> at the <strong>surface</strong>.</p>
 <p>In matrix form, here is the system of equations to be solved:</p>
 <div class="cell docutils container">
@@ -1386,7 +1386,7 @@ T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
 </div>
 </div>
 <div class="section" id="now-we-finally-get-our-solution-for-radiative-equilibrium">
-<h4><span class="section-number">7.8.1.6.1.3. </span>Now we finally get our solution for radiative equilibrium<a class="headerlink" href="#now-we-finally-get-our-solution-for-radiative-equilibrium" title="Permalink to this headline">¶</a></h4>
+<h4>Now we finally get our solution for radiative equilibrium<a class="headerlink" href="#now-we-finally-get-our-solution-for-radiative-equilibrium" title="Permalink to this headline">¶</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Output 4 significant digits</span>
@@ -1418,11 +1418,11 @@ T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
 </div>
 </div>
 <div class="section" id="summary">
-<h2><span class="section-number">7.8.1.7. </span>7. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2>7. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
 </div>
 <hr class="docutils" />
 <div class="section" id="key-physical-lessons">
-<h2><span class="section-number">7.8.1.8. </span>Key physical lessons<a class="headerlink" href="#key-physical-lessons" title="Permalink to this headline">¶</a></h2>
+<h2>Key physical lessons<a class="headerlink" href="#key-physical-lessons" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Putting a <strong>layer of longwave absorbers</strong> above the surface keeps the <strong>surface substantially warmer</strong>, because of the <strong>backradiation</strong> from the atmosphere (greenhouse effect).</p></li>
 <li><p>The <strong>grey gas</strong> model assumes that each layer absorbs and emits a fraction <span class="math notranslate nohighlight">\(\epsilon\)</span> of its blackbody value, independent of wavelength.</p></li>
@@ -1440,19 +1440,19 @@ T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
 <li><p>This is unrealistic, and suggests that crucial heat transfer mechanisms are missing from our model.</p></li>
 </ul>
 <div class="section" id="and-on-the-python-side">
-<h3><span class="section-number">7.8.1.8.1. </span>And on the Python side…<a class="headerlink" href="#and-on-the-python-side" title="Permalink to this headline">¶</a></h3>
+<h3>And on the Python side…<a class="headerlink" href="#and-on-the-python-side" title="Permalink to this headline">¶</a></h3>
 <p>Did we need <code class="docutils literal notranslate"><span class="pre">sympy</span></code> to work all this out? No, of course not. We could have solved the 3x3 matrix problems by hand. But computer algebra can be very useful and save you a lot of time and error, so it’s good to invest some effort into learning how to use it.</p>
 <p>Hopefully these notes provide a useful starting point.</p>
 </div>
 <div class="section" id="a-follow-up-assignment">
-<h3><span class="section-number">7.8.1.8.2. </span>A follow-up assignment<a class="headerlink" href="#a-follow-up-assignment" title="Permalink to this headline">¶</a></h3>
+<h3>A follow-up assignment<a class="headerlink" href="#a-follow-up-assignment" title="Permalink to this headline">¶</a></h3>
 <p>You are now ready to tackle [Assignment 5](../Assignments/Assignment05 – Radiative forcing in a grey radiation atmosphere.ipynb), where you are asked to extend this grey-gas analysis to many layers.</p>
 <p>For more than a few layers, the analytical approach we used here is no longer very useful. You will code up a numerical solution to calculate OLR given temperatures and absorptivity, and look at how the lapse rate determines radiative forcing for a given increase in absorptivity.</p>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="credits">
-<h2><span class="section-number">7.8.1.9. </span>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

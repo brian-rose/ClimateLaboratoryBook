@@ -19,7 +19,7 @@
 # 
 # The catalog is here: <http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/catalog.html>
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -31,7 +31,7 @@ from climlab import constants as const
 import cartopy.crs as ccrs  # use cartopy to make some maps
 
 
-# In[2]:
+# In[3]:
 
 
 ## The NOAA ESRL server is shutdown! January 2019
@@ -46,7 +46,7 @@ print( Ts_ncep.shape)
 
 # Make two maps: one of annual mean surface temperature, another of the seasonal range (max minus min).
 
-# In[3]:
+# In[4]:
 
 
 maxTs = Ts_ncep.max(dim='time')
@@ -54,7 +54,7 @@ minTs = Ts_ncep.min(dim='time')
 meanTs = Ts_ncep.mean(dim='time')
 
 
-# In[4]:
+# In[5]:
 
 
 fig = plt.figure( figsize=(16,6) )
@@ -77,7 +77,7 @@ for ax in [ax1,ax2]:
 
 # Make a contour plot of the zonal mean temperature as a function of time
 
-# In[5]:
+# In[6]:
 
 
 Tmax = 65; Tmin = -Tmax; delT = 10
@@ -335,14 +335,14 @@ ax.set_title('Zonal mean surface temperature (degC)', fontsize=20)
 
 # ### Plot the full solution for a range of water depths
 
-# In[6]:
+# In[7]:
 
 
 omega = 2*np.pi / const.seconds_per_year
 omega
 
 
-# In[7]:
+# In[8]:
 
 
 B = 2.
@@ -352,7 +352,7 @@ amp = 1./((Ctilde**2+1)*np.cos(np.arctan(Ctilde)))
 Phi = np.arctan(Ctilde)
 
 
-# In[8]:
+# In[9]:
 
 
 color1 = 'b'
@@ -388,7 +388,7 @@ ax1.plot([2.5, 2.5], [0, 1], 'k-');
 # 
 # Of course we are already familiar with this phase shift from our day-to-day experience. Our calendar says that summer "begins" at the solstice and last until the equinox. 
 
-# In[9]:
+# In[10]:
 
 
 fig, ax = plt.subplots()
@@ -442,7 +442,7 @@ ax.legend(); ax.grid()
 # 
 # All other parameters will be [as chosen in Lecture 16](./Lecture16 -- Diffusive energy balance model.ipynb) (which focussed on tuning the EBM to the annual mean energy budget).
 
-# In[10]:
+# In[11]:
 
 
 #  for convenience, set up a dictionary with our reference parameters
@@ -450,7 +450,7 @@ param = {'A':210, 'B':2, 'a0':0.354, 'a2':0.25, 'D':0.6}
 param
 
 
-# In[11]:
+# In[12]:
 
 
 #  We can pass the entire dictionary as keyword arguments using the ** notation
@@ -460,7 +460,7 @@ print( model1)
 
 # Notice that this model has an insolation subprocess called `DailyInsolation`, rather than `AnnualMeanInsolation`. These should be fairly self-explanatory.
 
-# In[12]:
+# In[13]:
 
 
 #  We will try three different water depths
@@ -480,7 +480,7 @@ for n in range(num_depths):
 
 # All models should have the same annual mean temperature:
 
-# In[13]:
+# In[14]:
 
 
 lat = model1.lat
@@ -497,7 +497,7 @@ ax.legend( water_depths )
 # 
 # Instead we'll step through one year "by hand" and save all the temperatures.
 
-# In[14]:
+# In[15]:
 
 
 num_steps_per_year = int(model1.time['num_steps_per_year'])
@@ -510,7 +510,7 @@ for n in range(num_depths):
 
 # Make a figure to compare the observed zonal mean seasonal temperature cycle to what we get from the EBM with different heat capacities:
 
-# In[15]:
+# In[16]:
 
 
 fig = plt.figure( figsize=(16,10) )
@@ -542,7 +542,7 @@ for n in range(num_depths):
 # 
 # Let's animate the seasonal cycle of insolation and temperature in our models with the three different water depths
 
-# In[16]:
+# In[17]:
 
 
 def initial_figure(models):
@@ -575,7 +575,7 @@ def initial_figure(models):
     return fig, axes, lines
 
 
-# In[17]:
+# In[18]:
 
 
 def animate(step, models, lines):
@@ -587,14 +587,14 @@ def animate(step, models, lines):
     return lines
 
 
-# In[18]:
+# In[19]:
 
 
 #  Plot initial data
 fig, axes, lines = initial_figure(models)
 
 
-# In[19]:
+# In[20]:
 
 
 #  Some imports needed to make and display animations
@@ -609,7 +609,7 @@ ani = animation.FuncAnimation(fig, animate,
         )
 
 
-# In[20]:
+# In[21]:
 
 
 HTML(ani.to_html5_video())
@@ -624,7 +624,7 @@ HTML(ani.to_html5_video())
 
 # The EBM code uses our familiar `insolation.py` code to calculate insolation, and therefore it's easy to set up a model with different orbital parameters. Here is an example with **very** different orbital parameters: 90º obliquity. We looked at the distribution of insolation by latitude and season for this type of planet in the last homework.
 
-# In[21]:
+# In[22]:
 
 
 orb_highobl = {'ecc':0., 
@@ -637,7 +637,7 @@ print( model_highobl.param['orb'])
 
 # Repeat the same procedure to calculate and store temperature throughout one year, after letting the models run out to equilibrium.
 
-# In[22]:
+# In[23]:
 
 
 Tann_highobl = np.empty( [lat.size, num_depths] )
@@ -661,7 +661,7 @@ for n in range(num_depths):
 
 # And plot the seasonal temperature cycle same as we did above:
 
-# In[23]:
+# In[24]:
 
 
 fig = plt.figure( figsize=(16,5) )
@@ -683,7 +683,7 @@ for n in range(num_depths):
 # 
 # To see the reason, let's plot the annual mean insolation at 90º obliquity, alongside the present-day annual mean insolation:
 
-# In[24]:
+# In[25]:
 
 
 lat2 = np.linspace(-90, 90, 181)
@@ -694,7 +694,7 @@ Q_present_ann = np.mean( Q_present, axis=1 )
 Q_highobl_ann = np.mean( Q_highobl, axis=1 )
 
 
-# In[25]:
+# In[26]:
 
 
 fig, ax = plt.subplots()

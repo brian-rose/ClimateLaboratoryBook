@@ -8,7 +8,7 @@
   - file: attribution
 
 - part: Lectures
-  numbered: true
+  numbered: 1
   chapters:
   - file: courseware/models-budgets-fun
   - file: courseware/zero-dim-ebm

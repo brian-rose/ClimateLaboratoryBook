@@ -35,7 +35,7 @@
 # 
 # More precisely:
 
-# In[1]:
+# In[ ]:
 
 
 OLRobserved = 238.5  # in W/m2
@@ -57,7 +57,7 @@ print(tau)
 # 
 # Let's denote this quantity by $Q$.
 
-# In[2]:
+# In[ ]:
 
 
 Q = 341.3  # the insolation
@@ -69,7 +69,7 @@ Q = 341.3  # the insolation
 # 
 # From observations we have:
 
-# In[3]:
+# In[ ]:
 
 
 Freflected = 101.9  #  reflected shortwave flux in W/m2
@@ -82,7 +82,7 @@ Freflected = 101.9  #  reflected shortwave flux in W/m2
 # 
 # From the observations:
 
-# In[4]:
+# In[ ]:
 
 
 alpha = Freflected / Q
@@ -101,7 +101,7 @@ print(alpha)
 
 # From the observations:
 
-# In[5]:
+# In[ ]:
 
 
 ASRobserved = Q - Freflected
@@ -150,7 +150,7 @@ print(ASRobserved)
 
 # Plugging the observed values back in, we compute:
 
-# In[6]:
+# In[ ]:
 
 
 #  define a reusable function!
@@ -176,7 +176,7 @@ print(Teq_observed)
 
 # For this very simple model, we can work out the answer exactly:
 
-# In[7]:
+# In[ ]:
 
 
 Teq_new = equilibrium_temperature(0.32,Q,0.57)
@@ -279,7 +279,7 @@ print('The equilibrium temperature increased by about {:.1f} K.'.format(Teq_new-
 # 
 # $H$ is an effective depth of water that is heated or cooled.
 
-# In[8]:
+# In[ ]:
 
 
 c_w = 4E3  #  Specific heat of water in J/kg/K
@@ -356,13 +356,13 @@ print('The effective heat capacity is {:.1e} J/m2/K'.format(C))
 # 
 # Here we're going to use a timestep of 1 year:
 
-# In[9]:
+# In[ ]:
 
 
 dt = 60. * 60. * 24. * 365.   # one year expressed in seconds
 
 
-# In[10]:
+# In[ ]:
 
 
 # Try a single timestep, assuming we have working functions for ASR and OLR
@@ -375,7 +375,7 @@ print(T2)
 
 # Try another timestep
 
-# In[11]:
+# In[ ]:
 
 
 T1 = T2
@@ -387,7 +387,7 @@ print(T2)
 
 # But this is tedious typing. Time to **define a function** to make things easier and more reliable:
 
-# In[12]:
+# In[ ]:
 
 
 def step_forward(T):
@@ -396,7 +396,7 @@ def step_forward(T):
 
 # Try it out with an arbitrary temperature:
 
-# In[13]:
+# In[ ]:
 
 
 step_forward(300.)
@@ -410,7 +410,7 @@ step_forward(300.)
 
 # Now let's really harness the power of the computer by **making a loop** (and storing values in arrays):
 
-# In[14]:
+# In[ ]:
 
 
 import numpy as np
@@ -440,7 +440,7 @@ print(Tsteps)
 # 
 # Now let's draw a picture of our result!
 
-# In[15]:
+# In[ ]:
 
 
 # a special instruction for the Jupyter notebook
@@ -450,7 +450,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 import matplotlib.pyplot as plt
 
 
-# In[16]:
+# In[ ]:
 
 
 plt.plot(Years, Tsteps)

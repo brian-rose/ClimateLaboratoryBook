@@ -102,7 +102,7 @@
 # 
 # The data are all stored in `NetCDF` files, a standard file format for self-describing gridded data.
 
-# In[1]:
+# In[ ]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -119,7 +119,7 @@ import xarray as xr
 # 
 # In this case we are passing it a URL to our online dataserver. We'll put the URL in a string variable called `datapath` to simplify things later on.
 
-# In[2]:
+# In[ ]:
 
 
 cesm_data_path = "http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/"
@@ -129,7 +129,7 @@ fullURL = cesm_input_path + "USGS-gtopo30_1.9x2.5_remap_c050602.nc"
 print( fullURL)
 
 
-# In[3]:
+# In[ ]:
 
 
 #  Now we actually open the dataset
@@ -141,7 +141,7 @@ print(topo)
 
 # We can access individual variables within the `xarray.Dataset` object as follows:
 
-# In[4]:
+# In[ ]:
 
 
 topo.PHIS
@@ -153,7 +153,7 @@ topo.PHIS
 # 
 # Execute this code exactly as written first, and then play around with it to see how you might customize the graph. 
 
-# In[5]:
+# In[ ]:
 
 
 g = 9.8  # gravity in m/s2
@@ -168,7 +168,7 @@ height
 
 # Let's make a plot! `xarray` is able to automatically generate labeled plots. This is very handy for "quick and dirty" investigation of the data:
 
-# In[6]:
+# In[ ]:
 
 
 height.plot()
@@ -176,7 +176,7 @@ height.plot()
 
 # If we want more control over the appearance of the plot, we can use features of `matplotlib`
 
-# In[7]:
+# In[ ]:
 
 
 #  A filled contour plot of topography with contours every 500 m
@@ -195,7 +195,7 @@ cbar1 = fig1.colorbar(cax1)
 # 
 # Here let's plot the land-sea mask itself so we can see where there is at least "some" water:
 
-# In[8]:
+# In[ ]:
 
 
 fig2, ax2 = plt.subplots()
@@ -218,7 +218,7 @@ cbar2 = fig2.colorbar(cax2);
 # 
 # Let's load another file that contains some information about the ocean and its interaction with the atmosphere.
 
-# In[9]:
+# In[ ]:
 
 
 som_input = xr.open_dataset( cesm_input_path + "pop_frc.1x1d.090130.nc")
@@ -233,7 +233,7 @@ print(som_input)
 # 
 # The sign convention in CESM is that `qdp > 0` where **heat is going IN to the ocean**. We will change the sign to plot heat going OUT of the ocean INTO the atmosphere (a more atmosphere-centric viewpoint). 
 
-# In[10]:
+# In[ ]:
 
 
 som_input.qdp
@@ -247,7 +247,7 @@ som_input.qdp
 # 
 # We will use the power of `xarray` here to take the average over the time dimension, leaving us with a single grid on 180 latitude points by 360 longitude points:
 
-# In[11]:
+# In[ ]:
 
 
 (-som_input.qdp.mean(dim='time')).plot()
@@ -255,7 +255,7 @@ som_input.qdp
 
 # Now make a nice plot of the annual mean q-flux. 
 
-# In[12]:
+# In[ ]:
 
 
 #  We can always set a non-standard size for our figure window
@@ -284,14 +284,14 @@ ax3.contour(topo.lon, topo.lat, topo.LANDFRAC, levels=[0.5], colors='k');
 # 
 # This pattern changes throughout the year. Recall that we just averaged over all months to make this plot. We might want to look at just one month:
 
-# In[13]:
+# In[ ]:
 
 
 # select by month index (0 through 11)
 som_input.qdp.isel(time=0)
 
 
-# In[14]:
+# In[ ]:
 
 
 #  select by array slicing (but for this you have to know the axis order!)
@@ -300,7 +300,7 @@ som_input.qdp[0,:,:]
 
 # Here we got just the first month (January) by specifying `[0,:,:]` after the variable name. This is called *slicing* or *indexing* an array. We are saying "give me everything for month number 0". Now make the plot:
 
-# In[15]:
+# In[ ]:
 
 
 fig4, ax4 = plt.subplots(figsize=(10,4)) 
@@ -341,7 +341,7 @@ ax4.contour(topo.lon, topo.lat, topo.LANDFRAC, levels=[0.5], colors='k');
 # 
 # (the file extension `.nc` is used to indicate NetCDF format).
 
-# In[16]:
+# In[ ]:
 
 
 atm_control = xr.open_dataset(cesm_data_path + "cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc")
@@ -352,7 +352,7 @@ print(atm_control)
 # 
 # Want to get more information about a particular variable?
 
-# In[17]:
+# In[ ]:
 
 
 atm_control.co2vmr
@@ -362,7 +362,7 @@ atm_control.co2vmr
 # 
 # One nice thing about `xarray.DataArray` objects is that we can do simple arithmetic with them (already seen several examples of this in the notes above). For example, change the units of CO2 amount to ppm:
 
-# In[18]:
+# In[ ]:
 
 
 atm_control.co2vmr * 1E6
@@ -370,7 +370,7 @@ atm_control.co2vmr * 1E6
 
 # Here's another variable:
 
-# In[19]:
+# In[ ]:
 
 
 atm_control.SOLIN
@@ -385,7 +385,7 @@ atm_control.SOLIN
 # - Take the **time average** of the `SOLIN` field. Store the result as a new variable.
 # - What are the **dimensions** of the resulting data array? What would be a good way to visualize this quantity?
 
-# In[20]:
+# In[ ]:
 
 
 atm_control.SOLIN.mean(dim='time')
@@ -430,7 +430,7 @@ atm_control.SOLIN.mean(dim='time')
 # 
 # We can implement this in xarray as follows:
 
-# In[21]:
+# In[ ]:
 
 
 #  Take the cosine of latitude (first converting to radians)
@@ -438,7 +438,7 @@ coslat = np.cos(np.deg2rad(atm_control.lat))
 print(coslat)
 
 
-# In[22]:
+# In[ ]:
 
 
 #  And divide by its mean value
@@ -459,13 +459,13 @@ print(weight_factor)
 # 
 # In the case of the CESM output, the field is called `gw`
 
-# In[23]:
+# In[ ]:
 
 
 weight_factor2 = atm_control.gw / atm_control.gw.mean(dim='lat')
 
 
-# In[24]:
+# In[ ]:
 
 
 weight_factor2
@@ -473,7 +473,7 @@ weight_factor2
 
 # ### Compute the global, time average insolation
 
-# In[25]:
+# In[ ]:
 
 
 #  Compute the global, time average insolation using our two different weight factors
@@ -496,14 +496,14 @@ print( (atm_control.SOLIN * weight_factor2).mean(dim=('time', 'lon', 'lat')))
 # Make a plot of the global average `TS` with time on the x axis. *Make sure your global average is properly weighted as discussed above.*
 # ____________________________
 
-# In[26]:
+# In[ ]:
 
 
 TSglobal = (atm_control.TS * weight_factor).mean(dim=('lon','lat'))
 TSglobal
 
 
-# In[27]:
+# In[ ]:
 
 
 TSglobal.plot()
@@ -515,7 +515,7 @@ TSglobal.plot()
 # 
 # Also, what is the **time average** global-average surface temperature in this simulation?
 
-# In[28]:
+# In[ ]:
 
 
 TSglobal.mean(dim='time')
@@ -542,7 +542,7 @@ TSglobal.mean(dim='time')
 # 
 # You wil see that these are all 240 x 96 x 144 -- i.e. a two-dimensional grid for every month in the simulation.
 
-# In[29]:
+# In[ ]:
 
 
 atm_control.FLNT
@@ -575,7 +575,7 @@ atm_control.FLNT
 # 
 # For example, here the **air temperature** at every point and every month:
 
-# In[30]:
+# In[ ]:
 
 
 atm_control.T
@@ -585,7 +585,7 @@ atm_control.T
 # 
 # For example, we can **interpolate** to a particular location in latitude and longitude (here it's the coordinates of Albany NY):
 
-# In[31]:
+# In[ ]:
 
 
 Tlocal = atm_control.T.interp(lat=42.75, lon=(360-73.8))
@@ -594,7 +594,7 @@ print(Tlocal)
 
 # We can also use **time indexing** to pick out a particular year and month:
 
-# In[32]:
+# In[ ]:
 
 
 #  The .sel notation mean "select" along the given coordinate
@@ -604,7 +604,7 @@ Tlocal.sel(time='0020-01')  # a particular January
 
 # Now, for example, we can plot the temperature as a function of pressure at this place and time:
 
-# In[33]:
+# In[ ]:
 
 
 Tlocal.sel(time='0020-01').plot()

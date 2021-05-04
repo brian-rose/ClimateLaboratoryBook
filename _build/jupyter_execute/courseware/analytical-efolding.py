@@ -58,7 +58,7 @@
 
 # Putting in our observational values, we get 
 
-# In[1]:
+# In[ ]:
 
 
 lambda_0 = 4 * sigma * tau * Teq_observed**3
@@ -119,7 +119,7 @@ print( 'lambda_0 = {:.2f} W m-2 K-1'.format(lambda_0)  )
 # 
 # Now calculate the e-folding time for the surface temperature:
 
-# In[2]:
+# In[ ]:
 
 
 tstar = C / lambda_0   #  Calculated value of relaxation time constant

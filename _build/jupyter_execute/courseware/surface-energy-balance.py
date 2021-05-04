@@ -56,7 +56,7 @@
 
 # ### First, load the data
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -66,7 +66,7 @@ import xarray as xr
 from climlab import constants as const
 
 
-# In[2]:
+# In[3]:
 
 
 datapath = "http://thredds.atmos.albany.edu:8080/thredds/dodsC/cesm/"
@@ -80,7 +80,7 @@ for run in runlist:
     runs[run] = xr.open_dataset(path, decode_times=False)
 
 
-# In[3]:
+# In[4]:
 
 
 lat = runs['control'].lat
@@ -90,7 +90,7 @@ lev = runs['control'].lev
 
 # ### Annual mean surface energy budget
 
-# In[4]:
+# In[5]:
 
 
 #  Surface energy budget terms, all defined as positive up (from ocean to atmosphere)
@@ -117,7 +117,7 @@ for (name, run) in runs.items():
 
 # ### Compute anomalies for all terms
 
-# In[5]:
+# In[6]:
 
 
 #   Here we take advantage of xarray!
@@ -126,7 +126,7 @@ for (name, run) in runs.items():
 surface_budget['anom'] = surface_budget['2xCO2'] - surface_budget['control']
 
 
-# In[6]:
+# In[7]:
 
 
 #  Also compute zonal averages
@@ -137,7 +137,7 @@ for run, budget in surface_budget.items():
 
 # ### Plot the annual mean net upward flux $F_S$ (control and anomaly after warming)
 
-# In[7]:
+# In[8]:
 
 
 fig, axes = plt.subplots(1,2, figsize=(16,5))
@@ -171,7 +171,7 @@ for ax in axes:
 
 # ### Variation of energy balance components with latitude
 
-# In[8]:
+# In[9]:
 
 
 fieldlist = ['SWsfc', 'LWsfc', 'LHF', 'SHF', 'Net']
@@ -213,7 +213,7 @@ axes[1].set_title('Anomaly after CO2 doubling');
 # 
 # We will compute the budgets for the months of January and July, and plot their differences.
 
-# In[9]:
+# In[10]:
 
 
 #  July minus January
@@ -224,7 +224,7 @@ for name, budget in surface_budget.items():
     julminusjan_budget[name] = budget.isel(time=6) - budget.isel(time=0)
 
 
-# In[10]:
+# In[11]:
 
 
 fieldlist = ['SWsfc', 'LWsfc', 'LHF', 'SHF', 'Net']
@@ -340,7 +340,7 @@ for ax in axes:
 
 # The following code reproduces Figure 4.10 of Hartmann (1994). 
 
-# In[11]:
+# In[12]:
 
 
 from climlab.utils.thermo import qsat
@@ -353,7 +353,7 @@ def Be(T):
     return const.cp / const.Lhvap / dqstardT
 
 
-# In[12]:
+# In[13]:
 
 
 fig, ax = plt.subplots()
@@ -379,7 +379,7 @@ ax.set_title('Saturation specific humidity (g/kg) and equilibrium Bowen ratio');
 # ## 4. Bowen ratio in CESM simulations
 # ____________
 
-# In[13]:
+# In[14]:
 
 
 Bo_control = (surface_budget['control'].SHF.mean(dim='time') / 

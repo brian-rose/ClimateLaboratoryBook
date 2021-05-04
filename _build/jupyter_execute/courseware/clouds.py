@@ -136,7 +136,7 @@
 
 # We are now going to use the `RRTMG` radiation model to compute the cloud radiative effect in a single column, and look at how the CRE depends on cloud properties and the height of the cloud layer.
 
-# In[1]:
+# In[2]:
 
 
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -148,7 +148,7 @@ from climlab.radiation import RRTMG
 
 # ### Global average observed temperature and specific humidity
 
-# In[2]:
+# In[3]:
 
 
 #  Get temperature and humidity data from NCEP Reanalysis
@@ -165,7 +165,7 @@ ncep_shum = xr.open_dataset(path + 'shum.mon.1981-2010.ltm.nc', decode_times=Fal
 #ncep_shum = shum.rename({'lev': 'level'})
 
 
-# In[3]:
+# In[4]:
 
 
 #  Take global, annual average and convert to correct units (Kelvin and kg/kg)
@@ -176,7 +176,7 @@ SHglobal = (ncep_shum.shum * weight).mean(dim=('lat','lon','time')) * 1E-3  # kg
 
 # Since we will be creating a radiative model with a different set of pressure levels than the data, we will need to do some interpolating.
 
-# In[4]:
+# In[5]:
 
 
 #  Create a state dictionary with 50 levels
@@ -184,7 +184,7 @@ state = climlab.column_state(num_lev=50)
 lev = state.Tatm.domain.axes['lev'].points
 
 
-# In[5]:
+# In[6]:
 
 
 # interpolate to model pressure levels
@@ -194,7 +194,7 @@ SHinterp = np.interp(lev, np.flipud(SHglobal.level), np.flipud(SHglobal))
 #  needs the pressure data to be in increasing order
 
 
-# In[6]:
+# In[7]:
 
 
 #  Plot the temperature and humidity profiles
@@ -214,14 +214,14 @@ ax2.tick_params('x', colors=SHcolor)
 fig.suptitle('Global mean air temperature and specific humidity', y=1.03, fontsize=14)
 
 
-# In[7]:
+# In[8]:
 
 
 #  Set the temperature to the observed values
 state.Tatm[:] = Tinterp
 
 
-# In[8]:
+# In[9]:
 
 
 #  Define some local cloud characteristics
@@ -236,7 +236,7 @@ clwp = {'thin': 20.,
         'thick': 200.,}
 
 
-# In[9]:
+# In[10]:
 
 
 #  Loop through three types of cloud
@@ -270,7 +270,7 @@ for thickness in clwp:
     CRE_SW[thickness] = (ASR - ASRclr)
 
 
-# In[10]:
+# In[11]:
 
 
 #  Make some plots of the CRE dependence on cloud height
