@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17. Insolation &#8212; The Climate Laboratory</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/insolation.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="18. Orbital variations, insolation, and the ice ages" href="orbital.html" />
+    <link rel="prev" title="16. Clouds and cloud feedback" href="clouds.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/insolation.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Insolation" />
+<meta property="og:description" content="Insolation  This notebook is part of The Climate Laboratory by Brian E. J. Rose, University at Albany.    &lt;a id=&#39;section1&#39;&gt;&lt;/a&gt;  1. Distribution of insolation  " />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">The Climate Laboratory</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../home.html">
+   The Climate Laboratory
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about.html">
+   About this Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../who-for.html">
+   Who is the book for?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../how-to.html">
+   How to use this book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   How to cite and reuse this material
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="models-budgets-fun.html">
+   1. Climate models, the global energy budget, and Fun with Python
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="zero-dim-ebm.html">
+   2. Modeling the global energy budget
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="analytical-efolding.html">
+     Advanced topic: Analytical solution of the global Energy Balance Model
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climate-system-models.html">
+   3. The climate system and climate models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="introducing-cesm.html">
+   4. Introducing the Community Earth System Model (CESM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climlab-intro.html">
+   5. Building simple climate models using climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiation.html">
+   6. A Brief Review of Radiation
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="elementary-greenhouse.html">
+   7. Elementary greenhouse models
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sympy-greenhouse.html">
+     Advanced topic: Solving the two-layer grey gas model analytically with sympy
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grey-radiation-climlab.html">
+   8. Grey radiation modeling with climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiative-transfer.html">
+   9. Modeling non-scattering radiative transfer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spectral-bands.html">
+   10. Who needs spectral bands? We do. Some baby steps…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radeq.html">
+   11. Radiative Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rce.html">
+   12. Radiative-Convective Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="sensitivity-feedback.html">
+   13. Climate sensitivity and feedback
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-sensitivity-feedback.html">
+     Advanced topic: Climate sensitivity and feedback
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-cesm.html">
+   14. Examing the transient and equilibrium CO
+   <span class="math notranslate nohighlight">
+    \(_2\)
+   </span>
+   response in the CESM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-toy.html">
+   15. Toy models of transient warming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clouds.html">
+   16. Clouds and cloud feedback
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   17. Insolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="orbital.html">
+   18. Orbital variations, insolation, and the ice ages
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="heat-transport.html">
+   19. Heat transport
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-heat-transport.html">
+     Advanced topic: Heat transport decomposition
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="one-dim-ebm.html">
+   20. The one-dimensional energy balance model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="seasonal-cycle.html">
+   21. Modeling the seasonal cycle of surface temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numerical-diffusion.html">
+   22. A peek at numerical methods for diffusion models
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="albedo-snowball.html">
+   23. Ice-albedo feedback and Snowball Earth in the EBM
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-albedo-feedback.html">
+     Advanced topic: Ice albedo feedback in the EBM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-snowball-earth.html">
+     Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surface-energy-balance.html">
+   24. The surface energy balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land-ocean-contrast.html">
+   25. Land-Ocean contrasts under climate change
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="water-water-everywhere.html">
+   26. Water, water everywhere!
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-assignments.html">
+   About the assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-zero-dim-ebm.html">
+   Assignment: Climate change in the zero-dimensional EBM
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="assignment-cesm-control.html">
+   Assignment: Global average budgets in the CESM pre-industrial control simulation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="assignment-cesm-control-hints.html">
+     Additional hints and guidance for CESM budgets assignment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-simple-clouds.html">
+   Assignment: Clouds in the Leaky Greenhouse Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-rcm-feedback.html">
+   Assignment: Feedbacks in the Radiative-Convective Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-cesm-climate-change.html">
+   Assignment: Climate change in the CESM simulations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-insolation-orbit.html">
+   Assignment: Insolation and orbital parameters
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/courseware/insolation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/master?urlpath=tree/courseware/insolation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/insolation.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distribution-of-insolation">
+   1. Distribution of insolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solar-zenith-angle">
+     Solar zenith angle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instantaneous-solar-flux">
+     Instantaneous solar flux
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-the-zenith-angle">
+     Calculating the zenith angle
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#declination-angle">
+       Declination angle
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hour-angle">
+       Hour angle
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#formula-for-zenith-angle">
+       Formula for zenith angle
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sunrise-and-sunset">
+       Sunrise and sunset
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#polar-night">
+       Polar night
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#daily-average-insolation">
+     Daily average insolation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-daily-average-zenith-angle">
+     The daily average zenith angle
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-daily-insolation-with-climlab">
+   2. Computing daily insolation with
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     climlab
+    </span>
+   </code>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-the-daily-insolation-function">
+     Using the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       daily_insolation
+      </span>
+     </code>
+     function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-class-exercises">
+     In-class exercises
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#global-seasonal-distribution-of-insolation-present-day-orbital-parameters">
+   3. Global, seasonal distribution of insolation (present-day orbital parameters)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-and-space-averages">
+     Time and space averages
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="insolation">
+<h1><span class="section-number">17. </span>Insolation<a class="headerlink" href="#insolation" title="Permalink to this headline">¶</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<hr class="docutils" />
+<p><a id='section1'></a></p>
+<div class="section" id="distribution-of-insolation">
+<h2>1. Distribution of insolation<a class="headerlink" href="#distribution-of-insolation" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p><em>These notes closely follow section 2.7 of Dennis L. Hartmann, “Global Physical Climatology”, Academic Press 1994.</em></p>
+<p>The <strong>amount of solar radiation</strong> incident on the top of the atmosphere (what we call the “insolation”) depends on</p>
+<ul class="simple">
+<li><p>latitude</p></li>
+<li><p>season</p></li>
+<li><p>time of day</p></li>
+</ul>
+<p>This insolation is the primary driver of the climate system. Here we will examine the geometric factors that determine insolation, focussing primarily on the <strong>daily average</strong> values.</p>
+<div class="section" id="solar-zenith-angle">
+<h3>Solar zenith angle<a class="headerlink" href="#solar-zenith-angle" title="Permalink to this headline">¶</a></h3>
+<p>We define the <strong>solar zenith angle</strong> <span class="math notranslate nohighlight">\(\theta_s\)</span> as the angle between the local normal to Earth’s surface and a line between a point on Earth’s surface and the sun.</p>
+<img src='../images/Hartmann_Fig2.5.png'><p>From the above figure (reproduced from Hartmann’s book), the ratio of the shadow area to the surface area is equal to the cosine of the solar zenith angle.</p>
+</div>
+<div class="section" id="instantaneous-solar-flux">
+<h3>Instantaneous solar flux<a class="headerlink" href="#instantaneous-solar-flux" title="Permalink to this headline">¶</a></h3>
+<p>We can write the solar flux per unit surface area as</p>
+<div class="math notranslate nohighlight">
+\[ Q = S_0 \left( \frac{\overline{d}}{d} \right)^2 \cos \theta_s \]</div>
+<p>where <span class="math notranslate nohighlight">\(\overline{d}\)</span> is the mean distance for which the flux density <span class="math notranslate nohighlight">\(S_0\)</span> (i.e. the solar constant) is measured, and <span class="math notranslate nohighlight">\(d\)</span> is the actual distance from the sun.</p>
+<p>Question:</p>
+<ul class="simple">
+<li><p>what factors determine <span class="math notranslate nohighlight">\(\left( \frac{\overline{d}}{d} \right)^2\)</span> ?</p></li>
+<li><p>under what circumstances would this ratio always equal 1?</p></li>
+</ul>
+</div>
+<div class="section" id="calculating-the-zenith-angle">
+<h3>Calculating the zenith angle<a class="headerlink" href="#calculating-the-zenith-angle" title="Permalink to this headline">¶</a></h3>
+<p>Just like the flux itself, the solar zenith angle depends latitude, season, and time of day.</p>
+<div class="section" id="declination-angle">
+<h4>Declination angle<a class="headerlink" href="#declination-angle" title="Permalink to this headline">¶</a></h4>
+<p>The seasonal dependence can be expressed in terms of the <strong>declination angle</strong> of the sun: the latitude of the point on the surface of Earth directly under the sun at noon (denoted by <span class="math notranslate nohighlight">\(\delta\)</span>).</p>
+<p><span class="math notranslate nohighlight">\(\delta\)</span> currenly varies between +23.45º at northern summer solstice (June 21) to -23.45º at northern winter solstice (Dec. 21).</p>
+</div>
+<div class="section" id="hour-angle">
+<h4>Hour angle<a class="headerlink" href="#hour-angle" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>hour angle</strong> <span class="math notranslate nohighlight">\(h\)</span> is defined as the longitude of the subsolar point relative to its position at noon.</p>
+</div>
+<div class="section" id="formula-for-zenith-angle">
+<h4>Formula for zenith angle<a class="headerlink" href="#formula-for-zenith-angle" title="Permalink to this headline">¶</a></h4>
+<p>With these definitions and some spherical geometry (see Appendix A of Hartmann’s book), we can express the solar zenith angle for any latitude <span class="math notranslate nohighlight">\(\phi\)</span>, season, and time of day as</p>
+<div class="math notranslate nohighlight">
+\[ \cos \theta_s = \sin \phi \sin \delta + \cos\phi \cos\delta \cos h \]</div>
+</div>
+<div class="section" id="sunrise-and-sunset">
+<h4>Sunrise and sunset<a class="headerlink" href="#sunrise-and-sunset" title="Permalink to this headline">¶</a></h4>
+<p>If <span class="math notranslate nohighlight">\(\cos\theta_s &lt; 0\)</span> then the sun is below the horizon and the insolation is zero (i.e. it’s night time!)</p>
+<p>Sunrise and sunset occur when the solar zenith angle is 90º and thus <span class="math notranslate nohighlight">\(\cos\theta_s=0\)</span>. The above formula then gives</p>
+<div class="math notranslate nohighlight">
+\[ \cos h_0 = - \tan\phi \tan\delta \]</div>
+<p>where <span class="math notranslate nohighlight">\(h_0\)</span> is the hour angle at sunrise and sunset.</p>
+</div>
+<div class="section" id="polar-night">
+<h4>Polar night<a class="headerlink" href="#polar-night" title="Permalink to this headline">¶</a></h4>
+<p>Near the poles special conditions prevail. Latitudes poleward of 90º-<span class="math notranslate nohighlight">\(\delta\)</span> are constantly illuminated in summer, when <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span> are of the same sign.  Right at the pole there is 6 months of perpetual daylight in which the sun moves around the compass at a constant angle <span class="math notranslate nohighlight">\(\delta\)</span> above the horizon.</p>
+<p>In the winter, <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\delta\)</span> are of opposite sign, and latitudes poleward of 90º-<span class="math notranslate nohighlight">\(|\delta|\)</span> are in perpetual darkness. At the poles, six months of daylight alternate with six months of daylight.</p>
+<p>At the equator day and night are both 12 hours long throughout the year.</p>
+</div>
+</div>
+<div class="section" id="daily-average-insolation">
+<h3>Daily average insolation<a class="headerlink" href="#daily-average-insolation" title="Permalink to this headline">¶</a></h3>
+<p>Substituting the expression for solar zenith angle into the insolation formula gives the instantaneous insolation as a function of latitude, season, and time of day:</p>
+<div class="math notranslate nohighlight">
+\[ Q = S_0 \left( \frac{\overline{d}}{d} \right)^2 \Big( \sin \phi \sin \delta + \cos\phi \cos\delta \cos h  \Big) \]</div>
+<p>which is valid only during daylight hours, <span class="math notranslate nohighlight">\(|h| &lt; h_0\)</span>, and <span class="math notranslate nohighlight">\(Q=0\)</span> otherwise (night).</p>
+<p>To get the daily average insolation, we integrate this expression between sunrise and sunset and divide by 24 hours (or <span class="math notranslate nohighlight">\(2\pi\)</span> radians since we express the time of day in terms of hour angle):</p>
+<div class="math notranslate nohighlight">
+\[ \overline{Q}^{day} = \frac{1}{2\pi} \int_{-h_0}^{h_0} Q ~dh\]</div>
+<div class="math notranslate nohighlight">
+\[ = \frac{S_0}{2\pi} \left( \frac{\overline{d}}{d} \right)^2 \int_{-h_0}^{h_0} \Big( \sin \phi \sin \delta + \cos\phi \cos\delta \cos h  \Big) ~ dh \]</div>
+<p>which is easily integrated to get our formula for daily average insolation:</p>
+<div class="math notranslate nohighlight">
+\[ \overline{Q}^{day} = \frac{S_0}{\pi} \left( \frac{\overline{d}}{d} \right)^2 \Big( h_0 \sin\phi \sin\delta + \cos\phi \cos\delta \sin h_0 \Big)\]</div>
+<p>where the hour angle at sunrise/sunset <span class="math notranslate nohighlight">\(h_0\)</span> must be in radians.</p>
+</div>
+<div class="section" id="the-daily-average-zenith-angle">
+<h3>The daily average zenith angle<a class="headerlink" href="#the-daily-average-zenith-angle" title="Permalink to this headline">¶</a></h3>
+<p>It turns out that, due to optical properties of the Earth’s surface (particularly bodies of water), the surface albedo depends on the solar zenith angle. It is therefore useful to consider the average solar zenith angle during daylight hours as a function of latidude and season.</p>
+<p>The appropriate daily average here is weighted with respect to the insolation, rather than weighted by time. The formula is</p>
+<div class="math notranslate nohighlight">
+\[ \overline{\cos\theta_s}^{day} = \frac{\int_{-h_0}^{h_0} Q \cos\theta_s~dh}{\int_{-h_0}^{h_0} Q ~dh} \]</div>
+<img src='../images/Hartmann_Fig2.8.png'><p>The average zenith angle is much higher at the poles than in the tropics. This contributes to the very high surface albedos observed at high latitudes.</p>
+<hr class="docutils" />
+<p><a id='section2'></a></p>
+</div>
+</div>
+<div class="section" id="computing-daily-insolation-with-climlab">
+<h2>2. Computing daily insolation with <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#computing-daily-insolation-with-climlab" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>Here are some examples calculating daily average insolation at different locations and times.</p>
+<p>These all use a function called</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">daily_insolation</span>
+</pre></div>
+</div>
+<p>in the package</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">solar</span><span class="o">.</span><span class="n">insolation</span>
+</pre></div>
+</div>
+<p>to do the calculation. The code implements the above formulas to calculates daily average insolation anywhere on Earth at any time of year.</p>
+<p>The code takes account of <em>orbital parameters</em> to calculate current Sun-Earth distance.</p>
+<p>We can look up <em>past orbital variations</em> to compute their effects on insolation using the package</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">solar</span><span class="o">.</span><span class="n">orbital</span>
+</pre></div>
+</div>
+<p>See the [next lecture](./Lecture14 – Orbital variations.ipynb)!</p>
+<div class="section" id="using-the-daily-insolation-function">
+<h3>Using the <code class="docutils literal notranslate"><span class="pre">daily_insolation</span></code> function<a class="headerlink" href="#using-the-daily-insolation-function" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, get a little help on using the <code class="docutils literal notranslate"><span class="pre">daily_insolation</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">daily_insolation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function daily_insolation in module climlab.solar.insolation:
+
+daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 281.37, &#39;obliquity&#39;: 23.446}, S0=1365.2, day_type=1)
+    Compute daily average insolation given latitude, time of year and orbital parameters.
+    
+    Orbital parameters can be interpolated to any time in the last 5 Myears with
+    ``climlab.solar.orbital.OrbitalTable`` (see example above).
+    
+    Longer orbital tables are available with ``climlab.solar.orbital.LongOrbitalTable``
+    
+    Inputs can be scalar, ``numpy.ndarray``, or ``xarray.DataArray``.
+    
+    The return value will be ``numpy.ndarray`` if **all** the inputs are ``numpy``.
+    Otherwise ``xarray.DataArray``.
+    
+    **Function-call argument** 
+    
+    
+    :param array lat:       Latitude in degrees (-90 to 90).
+    :param array day:       Indicator of time of year. See argument ``day_type``
+                            for details about format.
+    :param dict orb:        a dictionary with three members (as provided by
+                            ``climlab.solar.orbital.OrbitalTable``)
+    
+                            * ``&#39;ecc&#39;`` - eccentricity
+    
+                                * unit: dimensionless
+                                * default value: ``0.017236``
+    
+                            * ``&#39;long_peri&#39;`` - longitude of perihelion (precession angle)
+    
+                                * unit: degrees
+                                * default value: ``281.37``
+    
+                            * ``&#39;obliquity&#39;`` - obliquity angle
+    
+                                * unit: degrees
+                                * default value: ``23.446``
+    
+    :param float S0:        solar constant                                  
+    
+                            - unit: :math:`\textrm{W}/\textrm{m}^2`       
+    
+                            - default value: ``1365.2``
+    :param int day_type:    Convention for specifying time of year (+/- 1,2) [optional].
+    
+                            *day_type=1* (default):
+                             day input is calendar day (1-365.24), where day 1
+                             is January first. The calendar is referenced to the
+                             vernal equinox which always occurs at day 80.
+    
+                            *day_type=2:*
+                             day input is solar longitude (0-360 degrees). Solar
+                             longitude is the angle of the Earth&#39;s orbit measured from spring
+                             equinox (21 March). Note that calendar days and solar longitude are
+                             not linearly related because, by Kepler&#39;s Second Law, Earth&#39;s
+                             angular velocity varies according to its distance from the sun.
+    :raises: :exc:`ValueError`
+                            if day_type is neither 1 nor 2
+    :returns:               Daily average solar radiation in unit
+                            :math:`\textrm{W}/\textrm{m}^2`.
+    
+                            Dimensions of output are ``(lat.size, day.size, ecc.size)``
+    :rtype:                 array
+    
+    
+    Code is fully vectorized to handle array input for all arguments.       
+    
+    Orbital arguments should all have the same sizes.
+    This is automatic if computed from
+    :func:`~climlab.solar.orbital.OrbitalTable.lookup_parameters`
+    
+        For more information about computation of solar insolation see the
+        :ref:`Tutorial` chapter.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are a few simple examples.</p>
+<p>First, compute the daily average insolation at 45ºN on January 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_insolation</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123.9532155180746
+</pre></div>
+</div>
+</div>
+</div>
+<p>Same location, July 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_insolation</span><span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="mi">181</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>482.356497522712
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could give an array of values. Let’s calculate and plot insolation at all latitudes on the spring equinox = March 21 = Day 80</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span><span class="n">Q</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">90</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W/m2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Daily average insolation on March 21&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Daily average insolation on March 21&#39;)
+</pre></div>
+</div>
+<img alt="../_images/insolation_32_1.png" src="../_images/insolation_32_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="in-class-exercises">
+<h3>In-class exercises<a class="headerlink" href="#in-class-exercises" title="Permalink to this headline">¶</a></h3>
+<p>Try to answer the following questions <strong>before reading the rest of these notes</strong>.</p>
+<ul class="simple">
+<li><p>What is the daily insolation today here at Albany (latitude 42.65ºN)?</p></li>
+<li><p>What is the <strong>annual mean</strong> insolation at the latitude of Albany?</p></li>
+<li><p>At what latitude and at what time of year does the <strong>maximum daily insolation</strong> occur?</p></li>
+<li><p>What latitude is experiencing either <strong>polar sunrise</strong> or <strong>polar sunset</strong> today?</p></li>
+</ul>
+<hr class="docutils" />
+<p><a id='section3'></a></p>
+</div>
+</div>
+<div class="section" id="global-seasonal-distribution-of-insolation-present-day-orbital-parameters">
+<h2>3. Global, seasonal distribution of insolation (present-day orbital parameters)<a class="headerlink" href="#global-seasonal-distribution-of-insolation-present-day-orbital-parameters" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>Calculate an array of insolation over the year and all latitudes (for present-day orbital parameters). We’ll use a dense grid in order to make a nice contour plot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span><span class="p">,</span> <span class="mi">365</span> <span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">days</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And make a contour plot of Q as function of latitude and time of year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">600.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days since January 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Daily average insolation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">contourf</span> <span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">1000.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x1269a34e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/insolation_38_1.png" src="../_images/insolation_38_1.png" />
+</div>
+</div>
+<div class="section" id="time-and-space-averages">
+<h3>Time and space averages<a class="headerlink" href="#time-and-space-averages" title="Permalink to this headline">¶</a></h3>
+<p>Take the area-weighted global, annual average of Q…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Qaverage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The annual, global average insolation is </span><span class="si">%.2f</span><span class="s1"> W/m2.&#39;</span> <span class="o">%</span><span class="k">Qaverage</span>)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The annual, global average insolation is 341.38 W/m2.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Also plot the zonally averaged insolation at a few different times of the year:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summer_solstice</span> <span class="o">=</span> <span class="mi">170</span>
+<span class="n">winter_solstice</span> <span class="o">=</span> <span class="mi">353</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span><span class="p">[:,(</span><span class="n">summer_solstice</span><span class="p">,</span> <span class="n">winter_solstice</span><span class="p">)]</span> <span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xbound</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Insolation (W m$^{-2}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/insolation_43_0.png" src="../_images/insolation_43_0.png" />
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="clouds.html" title="previous page"><span class="section-number">16. </span>Clouds and cloud feedback</a>
+    <a class='right-next' id="next-link" href="orbital.html" title="next page"><span class="section-number">18. </span>Orbital variations, insolation, and the ice ages</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian E. J. Rose<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-43758959-2', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

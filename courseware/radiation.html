@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. A Brief Review of Radiation &#8212; The Climate Laboratory</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Elementary greenhouse models" href="elementary-greenhouse.html" />
+    <link rel="prev" title="5. Building simple climate models using climlab" href="climlab-intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="A Brief Review of Radiation" />
+<meta property="og:description" content="A Brief Review of Radiation  This notebook is part of The Climate Laboratory by Brian E. J. Rose, University at Albany.    &lt;a id=&#39;section1&#39;&gt;&lt;/a&gt;  1. Emission te" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">The Climate Laboratory</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../home.html">
+   The Climate Laboratory
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about.html">
+   About this Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../who-for.html">
+   Who is the book for?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../how-to.html">
+   How to use this book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   How to cite and reuse this material
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="models-budgets-fun.html">
+   1. Climate models, the global energy budget, and Fun with Python
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="zero-dim-ebm.html">
+   2. Modeling the global energy budget
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="analytical-efolding.html">
+     Advanced topic: Analytical solution of the global Energy Balance Model
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climate-system-models.html">
+   3. The climate system and climate models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="introducing-cesm.html">
+   4. Introducing the Community Earth System Model (CESM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climlab-intro.html">
+   5. Building simple climate models using climlab
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   6. A Brief Review of Radiation
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="elementary-greenhouse.html">
+   7. Elementary greenhouse models
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sympy-greenhouse.html">
+     Advanced topic: Solving the two-layer grey gas model analytically with sympy
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grey-radiation-climlab.html">
+   8. Grey radiation modeling with climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiative-transfer.html">
+   9. Modeling non-scattering radiative transfer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spectral-bands.html">
+   10. Who needs spectral bands? We do. Some baby steps…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radeq.html">
+   11. Radiative Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rce.html">
+   12. Radiative-Convective Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="sensitivity-feedback.html">
+   13. Climate sensitivity and feedback
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-sensitivity-feedback.html">
+     Advanced topic: Climate sensitivity and feedback
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-cesm.html">
+   14. Examing the transient and equilibrium CO
+   <span class="math notranslate nohighlight">
+    \(_2\)
+   </span>
+   response in the CESM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-toy.html">
+   15. Toy models of transient warming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clouds.html">
+   16. Clouds and cloud feedback
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="insolation.html">
+   17. Insolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="orbital.html">
+   18. Orbital variations, insolation, and the ice ages
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="heat-transport.html">
+   19. Heat transport
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-heat-transport.html">
+     Advanced topic: Heat transport decomposition
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="one-dim-ebm.html">
+   20. The one-dimensional energy balance model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="seasonal-cycle.html">
+   21. Modeling the seasonal cycle of surface temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numerical-diffusion.html">
+   22. A peek at numerical methods for diffusion models
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="albedo-snowball.html">
+   23. Ice-albedo feedback and Snowball Earth in the EBM
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-albedo-feedback.html">
+     Advanced topic: Ice albedo feedback in the EBM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-snowball-earth.html">
+     Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surface-energy-balance.html">
+   24. The surface energy balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land-ocean-contrast.html">
+   25. Land-Ocean contrasts under climate change
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="water-water-everywhere.html">
+   26. Water, water everywhere!
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-assignments.html">
+   About the assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-zero-dim-ebm.html">
+   Assignment: Climate change in the zero-dimensional EBM
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="assignment-cesm-control.html">
+   Assignment: Global average budgets in the CESM pre-industrial control simulation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="assignment-cesm-control-hints.html">
+     Additional hints and guidance for CESM budgets assignment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-simple-clouds.html">
+   Assignment: Clouds in the Leaky Greenhouse Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-rcm-feedback.html">
+   Assignment: Feedbacks in the Radiative-Convective Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-cesm-climate-change.html">
+   Assignment: Climate change in the CESM simulations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-insolation-orbit.html">
+   Assignment: Insolation and orbital parameters
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/courseware/radiation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/master?urlpath=tree/courseware/radiation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/radiation.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#emission-temperature-and-lapse-rates">
+   1. Emission temperature and lapse rates
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#where-in-the-atmosphere-do-we-find-t-t-e-255-k">
+     Where in the atmosphere do we find
+     <span class="math notranslate nohighlight">
+      \(T = T_e = 255\)
+     </span>
+     K?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solar-radiation">
+   2. Solar Radiation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terrestrial-radiation-and-absorption-spectra">
+   3. Terrestrial Radiation and absorption spectra
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terrestrial-versus-solar-wavelengths">
+   Terrestrial versus solar wavelengths
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atmospheric-absorption-spectra">
+     Atmospheric absorption spectra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="a-brief-review-of-radiation">
+<h1><span class="section-number">6. </span>A Brief Review of Radiation<a class="headerlink" href="#a-brief-review-of-radiation" title="Permalink to this headline">¶</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<hr class="docutils" />
+<p><a id='section1'></a></p>
+<div class="section" id="emission-temperature-and-lapse-rates">
+<h2>1. Emission temperature and lapse rates<a class="headerlink" href="#emission-temperature-and-lapse-rates" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>Planetary energy balance is the foundation for all climate modeling. So far we have expressed this through a globally averaged budget</p>
+<div class="math notranslate nohighlight">
+\[C \frac{d T_s}{dt} = (1-\alpha) Q - OLR\]</div>
+<p>and we have written the OLR in terms of an emission temperature <span class="math notranslate nohighlight">\(T_e\)</span> where by definition</p>
+<div class="math notranslate nohighlight">
+\[ OLR = \sigma T_e^4 \]</div>
+<p>Using values from the observed planetary energy budget, we found that <span class="math notranslate nohighlight">\(T_e = 255\)</span> K</p>
+<p>The emission temperature of the planet is thus about 33 K colder than the mean surface temperature (288 K).</p>
+<div class="section" id="where-in-the-atmosphere-do-we-find-t-t-e-255-k">
+<h3>Where in the atmosphere do we find <span class="math notranslate nohighlight">\(T = T_e = 255\)</span> K?<a class="headerlink" href="#where-in-the-atmosphere-do-we-find-t-t-e-255-k" title="Permalink to this headline">¶</a></h3>
+<p>That’s about -18ºC.</p>
+<p>Let’s plot <strong>global, annual average observed air temperature</strong> from NCEP reanalysis data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## The NOAA ESRL server is shutdown! January 2019</span>
+<span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
+<span class="n">ncep_air</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;pressure/air.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span>
+                          <span class="n">use_cftime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#url = &#39;http://apdrc.soest.hawaii.edu:80/dods/public_data/Reanalysis_Data/NCEP/NCEP/clima/pressure/air&#39;</span>
+<span class="c1">#air = xr.open_dataset(url)</span>
+<span class="c1">## The name of the vertical axis is different than the NOAA ESRL version..</span>
+<span class="c1">#ncep_air = air.rename({&#39;lev&#39;: &#39;level&#39;})</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">ncep_air</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+Dimensions:             (lat: 73, level: 17, lon: 144, nbnds: 2, time: 12)
+Coordinates:
+  * level               (level) float32 1000.0 925.0 850.0 ... 30.0 20.0 10.0
+  * lon                 (lon) float32 0.0 2.5 5.0 7.5 ... 352.5 355.0 357.5
+  * time                (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:00:00
+  * lat                 (lat) float32 90.0 87.5 85.0 82.5 ... -85.0 -87.5 -90.0
+Dimensions without coordinates: nbnds
+Data variables:
+    climatology_bounds  (time, nbnds) object ...
+    air                 (time, level, lat, lon) float32 ...
+    valid_yr_count      (time, level, lat, lon) float32 ...
+Attributes:
+    description:                     Data from NCEP initialized reanalysis (4...
+    platform:                       Model
+    Conventions:                    COARDS
+    not_missing_threshold_percent:  minimum 3% values input to have non-missi...
+    history:                        Created 2011/07/12 by doMonthLTM\nConvert...
+    title:                          monthly ltm air from the NCEP Reanalysis
+    References:                     http://www.esrl.noaa.gov/psd/data/gridded...
+    dataset_title:                  NCEP-NCAR Reanalysis 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Take global, annual average and convert to Kelvin</span>
+<span class="n">coslat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">coslat</span> <span class="o">/</span> <span class="n">coslat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="n">Tglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">air</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="n">Tglobal</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>&lt;xarray.DataArray (level: 17)&gt;
+array([ 15.179084  ,  11.207003  ,   7.8383274 ,   0.21994135,
+        -6.4483433 , -14.888848  , -25.570469  , -39.36969   ,
+       -46.797905  , -53.652245  , -60.56356   , -67.006065  ,
+       -65.53293   , -61.48664   , -55.853584  , -51.593952  ,
+       -43.21999   ], dtype=float32)
+Coordinates:
+  * level    (level) float32 1000.0 925.0 850.0 700.0 ... 50.0 30.0 20.0 10.0</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  a &quot;quick and dirty&quot; visualization of the data</span>
+<span class="n">Tglobal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x116c59760&gt;]
+</pre></div>
+</div>
+<img alt="../_images/radiation_8_1.png" src="../_images/radiation_8_1.png" />
+</div>
+</div>
+<p>Let’s make a better plot.</p>
+<p>Here we’re going to use a package called <code class="docutils literal notranslate"><span class="pre">metpy</span></code> to automate plotting this temperature profile in a way that’s more familiar to meteorologists: a so-called <em>skew-T</em> plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tglobal</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="n">Tglobal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observations&#39;</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">1050</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="c1"># Add the relevant special lines</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_dry_adiabats</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">plot_moist_adiabats</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="c1">#skew.plot_mixing_lines()</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Global, annual mean sounding from NCEP Reanalysis&#39;</span><span class="p">,</span> 
+             <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Global, annual mean sounding from NCEP Reanalysis&#39;)
+</pre></div>
+</div>
+<img alt="../_images/radiation_11_1.png" src="../_images/radiation_11_1.png" />
+</div>
+</div>
+<p>Note that surface temperature in global mean is indeed about 288 K or 15ºC as we keep saying.</p>
+<p>So where do we find temperature <span class="math notranslate nohighlight">\(T_e=255\)</span> K or -18ºC?</p>
+<p>Actually in mid-troposphere, near 500 hPa or about 5 km height.</p>
+<p>We can infer that much of the outgoing longwave radiation actually originates far above the surface.</p>
+<p>Recall that our observed global energy budget diagram shows 217 out of 239 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> total OLR emitted by the atmosphere and clouds, only 22 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> directly from the surface.</p>
+<p>This is due to the <strong>greenhouse effect</strong>.</p>
+<p>So far we have dealt with the greenhouse in a very artificial way in our energy balance model by simply assuming</p>
+<div class="math notranslate nohighlight">
+\[ \text{OLR} = \tau \sigma T_s^4 \]</div>
+<p>i.e., the OLR is reduced by a constant factor from the value it would have if the Earth emitted as a blackbody at the surface temperature.</p>
+<p>Now it’s time to start thinking a bit more about how the radiative transfer process actually occurs in the atmosphere, and how to model it.</p>
+<hr class="docutils" />
+<p><a id='section2'></a></p>
+</div>
+</div>
+<div class="section" id="solar-radiation">
+<h2>2. Solar Radiation<a class="headerlink" href="#solar-radiation" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>Let’s plot a spectrum of solar radiation.</p>
+<p>For Python details, click to expand the code blocks (or see the code in the notebook).</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Using pre-defined code for the Planck function from the climlab package</span>
+<span class="kn">from</span> <span class="nn">climlab.utils.thermo</span> <span class="kn">import</span> <span class="n">Planck_wavelength</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># approximate emission temperature of the sun in Kelvin</span>
+<span class="n">Tsun</span> <span class="o">=</span> <span class="mf">5780.</span>
+<span class="c1"># boundaries of visible region in nanometers</span>
+<span class="n">UVbound</span> <span class="o">=</span> <span class="mf">390.</span>
+<span class="n">IRbound</span> <span class="o">=</span> <span class="mf">700.</span>
+<span class="c1">#  array of wavelengths</span>
+<span class="n">wavelength_nm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="mf">3500.</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">to_meters</span> <span class="o">=</span> <span class="mf">1E-9</span>  <span class="c1"># conversion factor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_size</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength_nm</span><span class="p">,</span> 
+         <span class="n">Planck_wavelength</span><span class="p">(</span><span class="n">wavelength_nm</span> <span class="o">*</span> <span class="n">to_meters</span><span class="p">,</span> <span class="n">Tsun</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (nm)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Spectral radiance (W sr$^{-1}$ m$^{-3}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="c1">#  Mask out points outside of this range</span>
+<span class="n">wavelength_vis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_outside</span><span class="p">(</span><span class="n">wavelength_nm</span><span class="p">,</span> <span class="n">UVbound</span><span class="p">,</span> <span class="n">IRbound</span><span class="p">)</span>
+<span class="c1">#  Shade the visible region</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">wavelength_vis</span><span class="p">,</span> <span class="n">Planck_wavelength</span><span class="p">(</span><span class="n">wavelength_vis</span> <span class="o">*</span> <span class="n">to_meters</span><span class="p">,</span> <span class="n">Tsun</span><span class="p">))</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Blackbody emission curve for the sun (T = </span><span class="si">{:.0f}</span><span class="s1"> K)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Tsun</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">280</span><span class="p">,</span> <span class="mf">0.8E13</span><span class="p">,</span> <span class="s1">&#39;Ultraviolet&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mf">0.8E13</span><span class="p">,</span> <span class="s1">&#39;Visible&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mf">0.8E13</span><span class="p">,</span> <span class="s1">&#39;Infrared&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/radiation_18_0.png" src="../_images/radiation_18_0.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Spectrum peaks in the visible range</p></li>
+<li><p>most energy at these wavelength.</p></li>
+<li><p>No coincidence that our eyes are sensitive to this range of wavelengths!</p></li>
+<li><p>Longer wavelengths called “infrared”, shorter wavelengths called “ultraviolet”.</p></li>
+</ul>
+<p>The shape of the spectrum is a fundamental characteristic of radiative emissions
+(think about the color of burning coals in a fire – cooler = red, hotter = white)</p>
+<p>Theory and experiments tell us that both the total flux of emitted radiation, and the wavelength of maximum emission, depend only on the temperature of the source!</p>
+<p>The theoretical spectrum was worked out by Max Planck and is therefore known as the “Planck” spectrum (or simply blackbody spectrum).</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">wavelength_um</span> <span class="o">=</span> <span class="n">wavelength_nm</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">24000</span><span class="p">,</span><span class="mi">12000</span><span class="p">,</span><span class="mi">6000</span><span class="p">,</span><span class="mi">3000</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">wavelength_um</span><span class="p">,</span> 
+         <span class="p">(</span><span class="n">Planck_wavelength</span><span class="p">(</span><span class="n">wavelength_nm</span> <span class="o">*</span> <span class="n">to_meters</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">T</span><span class="o">**</span><span class="mi">4</span><span class="p">),</span>
+           <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; K&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (um)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized spectral radiance (W sr$^{-1}$ m$^{-3}$ K$^{-4}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Normalized blackbody emission spectra $T^{-4} B_{\lambda}$ for different temperatures&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/radiation_21_0.png" src="../_images/radiation_21_0.png" />
+</div>
+</div>
+<p>Going from cool to warm:</p>
+<ul class="simple">
+<li><p>total emission increases</p></li>
+<li><p>maximum emission occurs at shorter wavelengths.</p></li>
+</ul>
+<p>The <strong>integral of these curves over all wavelengths</strong> gives us our familiar <span class="math notranslate nohighlight">\(\sigma T^4\)</span></p>
+<p>Mathematically it turns out that</p>
+<div class="math notranslate nohighlight">
+\[ λ_{max} T = \text{constant} \]</div>
+<p>(known as Wien’s displacement law).</p>
+<p>By fitting the observed solar emission to a blackbody curve, we can deduce that the emission temperature of the sun is about 6000 K.</p>
+<p>Knowing this, and knowing that the solar spectrum peaks at 0.6 micrometers, we can calculate the wavelength of maximum terrestrial radiation as</p>
+<div class="math notranslate nohighlight">
+\[ λ_{max}^{Earth} = 0.6 ~ \mu m \frac{6000}{255} = 14 ~ \mu m \]</div>
+<p>This is in the far-infrared part of the spectrum.</p>
+<hr class="docutils" />
+<p><a id='section3'></a></p>
+</div>
+<div class="section" id="terrestrial-radiation-and-absorption-spectra">
+<h2>3. Terrestrial Radiation and absorption spectra<a class="headerlink" href="#terrestrial-radiation-and-absorption-spectra" title="Permalink to this headline">¶</a></h2>
+</div>
+<hr class="docutils" />
+<div class="section" id="terrestrial-versus-solar-wavelengths">
+<h2>Terrestrial versus solar wavelengths<a class="headerlink" href="#terrestrial-versus-solar-wavelengths" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s look at normalized blackbody curves for Sun and Earth:</p>
+<div class="cell tag_hide_input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">wavelength_um</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+<span class="n">wavelength_meters</span> <span class="o">=</span> <span class="n">wavelength_um</span> <span class="o">/</span> <span class="mf">1E6</span>
+
+<span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">6000</span><span class="p">,</span> <span class="mi">255</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">wavelength_um</span><span class="p">,</span> 
+         <span class="p">(</span><span class="n">Planck_wavelength</span><span class="p">(</span><span class="n">wavelength_meters</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">T</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">wavelength_meters</span><span class="p">),</span>
+           <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; K&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Wavelength (um)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized spectral radiance (W sr$^{-1}$ m$^{-2}$ K$^{-4}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Normalized blackbody emission spectra $T^{-4} \lambda B_{\lambda}$ for the sun ($T_e = 6000$ K) and Earth ($T_e = 255$ K)&quot;</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="n">label_size</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/radiation_27_0.png" src="../_images/radiation_27_0.png" />
+</div>
+</div>
+<p>There is essentially no overlap between the two spectra.</p>
+<p><strong>This is the fundamental reason we can discuss the solar “shortwave” and terrestrial “longwave” radiation as two distinct phenomena.</strong></p>
+<p>In reality all radiation exists on a continuum of different wavelengths. But in climate science we can get a long way by thinking in terms of a very simple “two-stream” approximation (short and longwave). We’ve already been doing this throughout the course so far!</p>
+<div class="section" id="atmospheric-absorption-spectra">
+<h3>Atmospheric absorption spectra<a class="headerlink" href="#atmospheric-absorption-spectra" title="Permalink to this headline">¶</a></h3>
+<p>Now look at the atmospheric <strong>absorption spectra</strong>.</p>
+<p>(fraction of radiation at each wavelength that is absorbed on a single vertical path through the atmosphere)</p>
+<img src='../images/MarshallPlumbFig2.5.png'><p><em>Figure reproduced from Marshall and Plumb (2008): Atmosphere, Ocean, and Climate Dynamics</em></p>
+<ul class="simple">
+<li><p>Atmosphere is almost completely transparent in the visible range, right at the peak of the solar spectrum</p></li>
+<li><p>Atmosphere is very opaque in the UV</p></li>
+<li><p>Opacity across the IR spectrum is highly variable!</p></li>
+<li><p>Look at the gases associated with various absorption features:</p></li>
+<li><p>Main players include H<span class="math notranslate nohighlight">\(_2\)</span>O, CO<span class="math notranslate nohighlight">\(_2\)</span>, N<span class="math notranslate nohighlight">\(_2\)</span>O, O<span class="math notranslate nohighlight">\(_2\)</span>.</p></li>
+<li><p>Compare to major constituents of atmosphere, in decreasing order:</p>
+<ul>
+<li><p>78% N<span class="math notranslate nohighlight">\(_2\)</span></p></li>
+<li><p>21% O<span class="math notranslate nohighlight">\(_2\)</span></p></li>
+<li><p>1% Ar</p></li>
+<li><p>H<span class="math notranslate nohighlight">\(_2\)</span>O (variable)</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>The dominant constituent gases N<span class="math notranslate nohighlight">\(_2\)</span> and O<span class="math notranslate nohighlight">\(_2\)</span> are nearly completely transparent across the entire spectrum (there are O<span class="math notranslate nohighlight">\(_2\)</span> absorption features in far UV, but little energy at these wavelengths).</p></li>
+<li><p>The greenhouse effect mostly involves trace constituents:</p>
+<ul>
+<li><p>O<span class="math notranslate nohighlight">\(_3\)</span> = 500 ppb</p></li>
+<li><p>N<span class="math notranslate nohighlight">\(_2\)</span>O = 310 ppb</p></li>
+<li><p>CO<span class="math notranslate nohighlight">\(_2\)</span> = 400 ppm (but rapidly increasing!)</p></li>
+<li><p>CH<span class="math notranslate nohighlight">\(_4\)</span> = 1.7 ppm</p></li>
+</ul>
+</li>
+<li><p>Note that most of these are tri-atomic molecules! There are fundamental reasons for this: these molecules have modes of rotational and vibration that are easily excited at IR wavelengths. See courses in radiative transfer!</p></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="climlab-intro.html" title="previous page"><span class="section-number">5. </span>Building simple climate models using climlab</a>
+    <a class='right-next' id="next-link" href="elementary-greenhouse.html" title="next page"><span class="section-number">7. </span>Elementary greenhouse models</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian E. J. Rose<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-43758959-2', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

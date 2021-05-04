@@ -1,0 +1,1332 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4. Introducing the Community Earth System Model (CESM) &#8212; The Climate Laboratory</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/introducing-cesm.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Building simple climate models using climlab" href="climlab-intro.html" />
+    <link rel="prev" title="3. The climate system and climate models" href="climate-system-models.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+<!-- Opengraph tags -->
+<meta property="og:url"         content="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/introducing-cesm.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Introducing the Community Earth System Model (CESM)" />
+<meta property="og:description" content="Introducing the Community Earth System Model (CESM)  This notebook is part of The Climate Laboratory by Brian E. J. Rose, University at Albany.    About the CES" />
+
+
+<meta name="twitter:card" content="summary" />
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">The Climate Laboratory</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../home.html">
+   The Climate Laboratory
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Preamble
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about.html">
+   About this Book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../who-for.html">
+   Who is the book for?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../how-to.html">
+   How to use this book
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../attribution.html">
+   How to cite and reuse this material
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Lectures
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="models-budgets-fun.html">
+   1. Climate models, the global energy budget, and Fun with Python
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="zero-dim-ebm.html">
+   2. Modeling the global energy budget
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="analytical-efolding.html">
+     Advanced topic: Analytical solution of the global Energy Balance Model
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climate-system-models.html">
+   3. The climate system and climate models
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   4. Introducing the Community Earth System Model (CESM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="climlab-intro.html">
+   5. Building simple climate models using climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiation.html">
+   6. A Brief Review of Radiation
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="elementary-greenhouse.html">
+   7. Elementary greenhouse models
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sympy-greenhouse.html">
+     Advanced topic: Solving the two-layer grey gas model analytically with sympy
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="grey-radiation-climlab.html">
+   8. Grey radiation modeling with climlab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiative-transfer.html">
+   9. Modeling non-scattering radiative transfer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="spectral-bands.html">
+   10. Who needs spectral bands? We do. Some baby steps…
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radeq.html">
+   11. Radiative Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rce.html">
+   12. Radiative-Convective Equilibrium
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="sensitivity-feedback.html">
+   13. Climate sensitivity and feedback
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-sensitivity-feedback.html">
+     Advanced topic: Climate sensitivity and feedback
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-cesm.html">
+   14. Examing the transient and equilibrium CO
+   <span class="math notranslate nohighlight">
+    \(_2\)
+   </span>
+   response in the CESM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="transient-toy.html">
+   15. Toy models of transient warming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="clouds.html">
+   16. Clouds and cloud feedback
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="insolation.html">
+   17. Insolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="orbital.html">
+   18. Orbital variations, insolation, and the ice ages
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="heat-transport.html">
+   19. Heat transport
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-heat-transport.html">
+     Advanced topic: Heat transport decomposition
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="one-dim-ebm.html">
+   20. The one-dimensional energy balance model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="seasonal-cycle.html">
+   21. Modeling the seasonal cycle of surface temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numerical-diffusion.html">
+   22. A peek at numerical methods for diffusion models
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="albedo-snowball.html">
+   23. Ice-albedo feedback and Snowball Earth in the EBM
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-albedo-feedback.html">
+     Advanced topic: Ice albedo feedback in the EBM
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="advanced-snowball-earth.html">
+     Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="surface-energy-balance.html">
+   24. The surface energy balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land-ocean-contrast.html">
+   25. Land-Ocean contrasts under climate change
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="water-water-everywhere.html">
+   26. Water, water everywhere!
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about-assignments.html">
+   About the assignments
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-zero-dim-ebm.html">
+   Assignment: Climate change in the zero-dimensional EBM
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="assignment-cesm-control.html">
+   Assignment: Global average budgets in the CESM pre-industrial control simulation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="assignment-cesm-control-hints.html">
+     Additional hints and guidance for CESM budgets assignment
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-simple-clouds.html">
+   Assignment: Clouds in the Leaky Greenhouse Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-rcm-feedback.html">
+   Assignment: Feedbacks in the Radiative-Convective Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-cesm-climate-change.html">
+   Assignment: Climate change in the CESM simulations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="assignment-insolation-orbit.html">
+   Assignment: Insolation and orbital parameters
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  References
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../references.html">
+   References
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/courseware/introducing-cesm.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/master?urlpath=tree/courseware/introducing-cesm.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        <a class="jupyterhub-button" href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/introducing-cesm.ipynb&branch=master"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
+                data-placement="left"><img class="jupyterhub-button-logo"
+                    src="../_static/images/logo_jupyterhub.svg"
+                    alt="Interact on JupyterHub">JupyterHub</button></a>
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-cesm">
+   About the CESM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-it">
+     What is it?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-components-of-cesm">
+     Key components of CESM:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#our-numerical-experiments-with-cesm">
+   Our numerical experiments with CESM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#atmosphere">
+     Atmosphere
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sea-ice">
+     Sea ice
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#land-surface-model">
+     Land surface model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ocean">
+     Ocean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#experimental-setup">
+     Experimental setup
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#browsing-input-data-with-xarray">
+   Browsing input data with xarray
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#you-need-to-be-connected-to-the-internet-to-run-the-code-in-this-notebook">
+     You need to be connected to the internet to run the code in this notebook
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boundary-conditions-continents-and-topography">
+     Boundary conditions: continents and topography
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-topography">
+     Plotting the topography
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#making-nicer-maps">
+     Making nicer maps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ocean-boundary-conditions">
+   Ocean boundary conditions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-pre-industrial-control-run">
+   The “pre-industrial” control run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-taking-a-time-average">
+   Exercise: Taking a time average
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-plotting-the-time-average-insolation">
+   Exercise: Plotting the time average insolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-the-control-run-with-the-observed-energy-budget">
+   Comparing the control run with the observed energy budget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-thinking-about-how-to-compute-a-global-average">
+   Exercise: Thinking about how to compute a global average
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weighting-for-global-average">
+   Weighting for global average
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-alternative-use-weights-already-provided-in-the-dataset">
+     An alternative: use weights already provided in the dataset
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-the-global-time-average-insolation">
+     Compute the global, time average insolation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-plotting-a-global-average-timeseries">
+   Exercise: plotting a global average timeseries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-point">
+     Discussion point
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-the-radiative-fluxes-in-the-model-output">
+     Finding the radiative fluxes in the model output
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-compute-terms-in-the-planetary-energy-budget">
+   Exercise: compute terms in the planetary energy budget
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-few-more-tidbits">
+   A few more tidbits
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introducing-the-community-earth-system-model-cesm">
+<h1><span class="section-number">4. </span>Introducing the Community Earth System Model (CESM)<a class="headerlink" href="#introducing-the-community-earth-system-model-cesm" title="Permalink to this headline">¶</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<hr class="docutils" />
+<div class="section" id="about-the-cesm">
+<h2>About the CESM<a class="headerlink" href="#about-the-cesm" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="what-is-it">
+<h3>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>CESM is one of a handful of complex coupled GCMs that are used as part of the IPCC process.</p></li>
+<li><p>Developed and maintained at NCAR (Boulder CO) by a group of climate scientists and software engineers.</p></li>
+<li><p>“Community” refers to the fact that the code is open-source, with new pieces contributed by a wide variety of users.</p></li>
+</ul>
+<p>I use CESM in my own research. We are going to be using CESM in this course. For lots more information about CESM:</p>
+<p><a class="reference external" href="http://www.cesm.ucar.edu/models/">http://www.cesm.ucar.edu/models/</a></p>
+</div>
+<div class="section" id="key-components-of-cesm">
+<h3>Key components of CESM:<a class="headerlink" href="#key-components-of-cesm" title="Permalink to this headline">¶</a></h3>
+<p>see <a class="reference external" href="http://www.cesm.ucar.edu/models/cesm1.2/">http://www.cesm.ucar.edu/models/cesm1.2/</a> for more info</p>
+<ul class="simple">
+<li><p>Atmospheric model (AGCM)</p>
+<ul>
+<li><p>Community Atmsophere Model (CAM)</p></li>
+</ul>
+</li>
+<li><p>Ocean model (OGCM)</p>
+<ul>
+<li><p>Parallel Ocean Program (POP)</p></li>
+</ul>
+</li>
+<li><p>Land surface model</p>
+<ul>
+<li><p>Community Land Model (CLM)</p></li>
+</ul>
+</li>
+<li><p>Sea ice model</p>
+<ul>
+<li><p>Community Ice CodE (CICE)</p></li>
+</ul>
+</li>
+</ul>
+<p>The software is somewhat modular, so different submodels can be combined together depending on the nature of the scientific problem at hand and the available computer power.</p>
+<p>Recall that we saw this schematic of different ways to represent the ocean in climate models:</p>
+<hr class="docutils" />
+<p><a id='section6'></a></p>
+</div>
+</div>
+<div class="section" id="our-numerical-experiments-with-cesm">
+<h2>Our numerical experiments with CESM<a class="headerlink" href="#our-numerical-experiments-with-cesm" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<div class="section" id="atmosphere">
+<h3>Atmosphere<a class="headerlink" href="#atmosphere" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Horizontal resolution about 2º lat/lon</p></li>
+<li><p>AGCM solves the fundamental equations:</p>
+<ul>
+<li><p>Conservation of momentum, mass, energy, water, equation of state</p></li>
+</ul>
+</li>
+<li><p>At 2º we resolve the <strong>synoptic-scale dynamics</strong></p>
+<ul>
+<li><p>storm tracks and cyclones.</p></li>
+</ul>
+</li>
+<li><p>We do NOT resolve the mesoscale and smaller</p>
+<ul>
+<li><p>thunderstorms, individual convective events, clouds</p></li>
+</ul>
+</li>
+<li><p>These all must be parameterized.</p></li>
+<li><p>Model also solves equations of radiative transfer. This takes account of</p>
+<ul>
+<li><p>composition of the atmosphere and the absorption properties of different gases</p></li>
+<li><p>radiative effects of clouds.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="sea-ice">
+<h3>Sea ice<a class="headerlink" href="#sea-ice" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Resolution of 1º.</p></li>
+<li><p>Thermodynamics (conservation of energy, water and salt)</p>
+<ul>
+<li><p>determines freezing and melting</p></li>
+</ul>
+</li>
+<li><p>Dynamics (momentum equations)</p>
+<ul>
+<li><p>determine ice motion and deformation.</p></li>
+</ul>
+</li>
+<li><p>Complex! Sea ice is sort of a mixture of a fluid and a solid.</p></li>
+</ul>
+</div>
+<div class="section" id="land-surface-model">
+<h3>Land surface model<a class="headerlink" href="#land-surface-model" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Same resolution as atmosphere.</p></li>
+<li><p>Determines surface fluxes of heat, water, momentum (friction) based on prescribed vegetation types.</p></li>
+<li><p>Don’t actually know much about how it works!</p></li>
+<li><p>Great topic for someone to dig in to for their term project.</p></li>
+</ul>
+</div>
+<div class="section" id="ocean">
+<h3>Ocean<a class="headerlink" href="#ocean" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Same grid as sea ice, 1º.</p></li>
+<li><p>Exchanges heat, water, and momentum with the atmosphere and sea ice</p></li>
+<li><p>Receives runoff from the land surface (rivers)</p></li>
+<li><p>Full 3D simulation of the currents.</p></li>
+</ul>
+</div>
+<div class="section" id="experimental-setup">
+<h3>Experimental setup<a class="headerlink" href="#experimental-setup" title="Permalink to this headline">¶</a></h3>
+<p>Model is given realistic atmospheric composition, realistic solar radiation, etc.</p>
+<p>We perform a <strong>preindustrial control run</strong> to get a baseline simulation, and take <strong>averages of several years</strong> (because the model has internal variability – every year is a little bit different)</p>
+<p>We then (later) we will change something, e.g. double the atmospheric <span class="math notranslate nohighlight">\(CO_2\)</span>!</p>
+<p>And allow the model to adjust toward a new equilibrium, just as we did with the toy energy balance model.</p>
+</div>
+</div>
+<div class="section" id="browsing-input-data-with-xarray">
+<h2>Browsing input data with xarray<a class="headerlink" href="#browsing-input-data-with-xarray" title="Permalink to this headline">¶</a></h2>
+<p>First, let’s take a look at some of the ingredients that go into the control run. <strong>All of the necessary data will be served up by a special data server sitting in the department</strong>, so you should be able to run this code to interact with the data on any computer that is connected to the internet.</p>
+<div class="section" id="you-need-to-be-connected-to-the-internet-to-run-the-code-in-this-notebook">
+<h3>You need to be connected to the internet to run the code in this notebook<a class="headerlink" href="#you-need-to-be-connected-to-the-internet-to-run-the-code-in-this-notebook" title="Permalink to this headline">¶</a></h3>
+<p>You can browse the available data through a web interface here:</p>
+<p><a class="reference external" href="http://thredds.atmos.albany.edu:8080/thredds/catalog.html">http://thredds.atmos.albany.edu:8080/thredds/catalog.html</a></p>
+<p>Within this folder called <code class="docutils literal notranslate"><span class="pre">CESM</span> <span class="pre">archive</span></code>, you will find another folder called <code class="docutils literal notranslate"><span class="pre">som_input</span></code> which contains all the input files.</p>
+<p>The data are all stored in <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> files, a standard file format for self-describing gridded data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are going to use a package called <a class="reference external" href="http://xarray.pydata.org">xarray</a> (abbreviated here as <code class="docutils literal notranslate"><span class="pre">xr</span></code>) to work with the datasets.</p>
+</div>
+<div class="section" id="boundary-conditions-continents-and-topography">
+<h3>Boundary conditions: continents and topography<a class="headerlink" href="#boundary-conditions-continents-and-topography" title="Permalink to this headline">¶</a></h3>
+<p>Here we are going to load the input topography file and take a look at what’s inside.</p>
+<p>In this case we are passing it a URL to our online dataserver. We’ll put the URL in a string variable called <code class="docutils literal notranslate"><span class="pre">datapath</span></code> to simplify things later on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cesm_data_path</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/&quot;</span>
+<span class="n">cesm_input_path</span> <span class="o">=</span> <span class="n">cesm_data_path</span> <span class="o">+</span> <span class="s2">&quot;som_input/&quot;</span>
+<span class="c1">#  Notice that in Python we can easily concatenate strings together just by `adding` them</span>
+<span class="n">fullURL</span> <span class="o">=</span> <span class="n">cesm_input_path</span> <span class="o">+</span> <span class="s2">&quot;USGS-gtopo30_1.9x2.5_remap_c050602.nc&quot;</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">fullURL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Now we actually open the dataset</span>
+<span class="n">topo</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">fullURL</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">topo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object has several important attributes. Much of this should look familiar if you have worked with <code class="docutils literal notranslate"><span class="pre">netCDF</span></code> data before. The <code class="docutils literal notranslate"><span class="pre">xarray</span></code> package gives a very powerful and easy to use interface to the data.</p>
+<p>We can access individual variables within the <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> object as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topo</span><span class="o">.</span><span class="n">PHIS</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-the-topography">
+<h3>Plotting the topography<a class="headerlink" href="#plotting-the-topography" title="Permalink to this headline">¶</a></h3>
+<p>We will now read the geopotential and make a plot of the topography of the Earth’s surface as represented on the 2º grid. The code below makes a colorful plot of the topography. We also use the land-sea mask in order to plot nothing at grid points that are entirely ocean-covered.</p>
+<p>Execute this code exactly as written first, and then play around with it to see how you might customize the graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.8</span>  <span class="c1"># gravity in m/s2</span>
+<span class="n">meters_per_kilometer</span> <span class="o">=</span> <span class="mf">1E3</span> 
+<span class="n">height</span> <span class="o">=</span> <span class="n">topo</span><span class="o">.</span><span class="n">PHIS</span> <span class="o">/</span> <span class="n">g</span> <span class="o">/</span> <span class="n">meters_per_kilometer</span>  <span class="c1"># in kilometers</span>
+<span class="c1">#  Note that we have just created a new xarray.DataArray object that preserves the axis labels</span>
+<span class="c1">#  Let&#39;s go ahead and give it some useful metadata:</span>
+<span class="n">height</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;km&#39;</span>
+<span class="n">height</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;height&#39;</span>
+<span class="n">height</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s make a plot! <code class="docutils literal notranslate"><span class="pre">xarray</span></code> is able to automatically generate labeled plots. This is very handy for “quick and dirty” investigation of the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want more control over the appearance of the plot, we can use features of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  A filled contour plot of topography with contours every 500 m</span>
+<span class="n">lev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="c1"># Here we are masking the data to exclude points where the land fraction is zero (water only)</span>
+<span class="n">cax1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span> <span class="n">height</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">height</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> 
+                    <span class="n">height</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">topo</span><span class="o">.</span><span class="n">LANDFRAC</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">),</span> <span class="n">levels</span><span class="o">=</span><span class="n">lev</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Topography (km) and land-sea mask in CESM&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">cbar1</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that at 2º resolution we can see many smaller features (e.g. Pacific islands). The model is given a fractional land cover for each grid point.</p>
+<p>Here let’s plot the land-sea mask itself so we can see where there is at least “some” water:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">cax2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span> <span class="n">topo</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">LANDFRAC</span> <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ocean mask in CESM&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">cbar2</span> <span class="o">=</span> <span class="n">fig2</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax2</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="making-nicer-maps">
+<h3>Making nicer maps<a class="headerlink" href="#making-nicer-maps" title="Permalink to this headline">¶</a></h3>
+<p>Notice that to make these plots we’ve just plotted the lat-lon array without using any map projection.</p>
+<p>There are nice tools available to make better maps. We’ll leave that as a topic for another day. But if you’re keen to read ahead, check out:</p>
+<p><a class="reference external" href="http://scitools.org.uk/cartopy/">http://scitools.org.uk/cartopy/</a></p>
+</div>
+</div>
+<div class="section" id="ocean-boundary-conditions">
+<h2>Ocean boundary conditions<a class="headerlink" href="#ocean-boundary-conditions" title="Permalink to this headline">¶</a></h2>
+<p>Let’s load another file that contains some information about the ocean and its interaction with the atmosphere.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_input</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">cesm_input_path</span> <span class="o">+</span> <span class="s2">&quot;pop_frc.1x1d.090130.nc&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">som_input</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The ocean / sea ice models exist on different grids than the atmosphere (1º instead of 2º resolution).</p>
+<p>Now we are going to look at the <strong>annual mean heat flux out of the ocean</strong>.</p>
+<p>It is stored in the field <code class="docutils literal notranslate"><span class="pre">qdp</span></code> in the dataset we just opened.</p>
+<p>The sign convention in CESM is that <code class="docutils literal notranslate"><span class="pre">qdp</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> where <strong>heat is going IN to the ocean</strong>. We will change the sign to plot heat going OUT of the ocean INTO the atmosphere (a more atmosphere-centric viewpoint).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">som_input</span><span class="o">.</span><span class="n">qdp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unfortunately, here is a case in which the metadata are not very useful. There is no text description of what variable <code class="docutils literal notranslate"><span class="pre">qdp</span></code> actually is, or what its units are.  (It is actually in units of W m<span class="math notranslate nohighlight">\(^{-2}\)</span>)</p>
+<p>We can see that there are 12 x 180 x 360 data points. One 180 x 360 grid for each calendar month!</p>
+<p>Now we are going to take the average over the year at each point.</p>
+<p>We will use the power of <code class="docutils literal notranslate"><span class="pre">xarray</span></code> here to take the average over the time dimension, leaving us with a single grid on 180 latitude points by 360 longitude points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="n">som_input</span><span class="o">.</span><span class="n">qdp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now make a nice plot of the annual mean q-flux.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  We can always set a non-standard size for our figure window</span>
+<span class="n">fig3</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">lev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">700.</span><span class="p">,</span> <span class="mf">750.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">)</span>
+<span class="n">cax3</span> <span class="o">=</span> <span class="n">ax3</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">som_input</span><span class="o">.</span><span class="n">xc</span><span class="p">,</span> <span class="n">som_input</span><span class="o">.</span><span class="n">yc</span><span class="p">,</span> 
+                    <span class="o">-</span><span class="n">som_input</span><span class="o">.</span><span class="n">qdp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">),</span> 
+                    <span class="n">levels</span><span class="o">=</span><span class="n">lev</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">bwr</span><span class="p">)</span>
+<span class="n">cbar3</span> <span class="o">=</span> <span class="n">fig3</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax3</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span> <span class="s1">&#39;CESM: Prescribed heat flux out of ocean (W m$^{-2}$), annual mean&#39;</span><span class="p">,</span> 
+              <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span> <span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Annual&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">topo</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">LANDFRAC</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice all the spatial structure here:</p>
+<ul class="simple">
+<li><p>Lots of heat is going in to the oceans at the equator, particularly in the eastern Pacific Ocean.</p></li>
+<li><p>The red hot spots show where lots of heat is coming out of the ocean.</p></li>
+<li><p>Hot spots include the mid-latitudes off the eastern coasts of Asia and North America</p></li>
+<li><p>And also the northern North Atlantic.</p></li>
+</ul>
+<p><strong>All this structure is determined by ocean circulation, which we are not modeling here.</strong> Instead, we are prescribing these heat flux patterns as an input to the atmosphere.</p>
+<p>This pattern changes throughout the year. Recall that we just averaged over all months to make this plot. We might want to look at just one month:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select by month index (0 through 11)</span>
+<span class="n">som_input</span><span class="o">.</span><span class="n">qdp</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  select by array slicing (but for this you have to know the axis order!)</span>
+<span class="n">som_input</span><span class="o">.</span><span class="n">qdp</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we got just the first month (January) by specifying <code class="docutils literal notranslate"><span class="pre">[0,:,:]</span></code> after the variable name. This is called <em>slicing</em> or <em>indexing</em> an array. We are saying “give me everything for month number 0”. Now make the plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig4</span><span class="p">,</span> <span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span> 
+<span class="n">cax4</span> <span class="o">=</span> <span class="n">ax4</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span> <span class="n">som_input</span><span class="o">.</span><span class="n">xc</span><span class="p">,</span> <span class="n">som_input</span><span class="o">.</span><span class="n">yc</span><span class="p">,</span> 
+                    <span class="o">-</span><span class="n">som_input</span><span class="o">.</span><span class="n">qdp</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> 
+                      <span class="n">levels</span><span class="o">=</span><span class="n">lev</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">bwr</span><span class="p">)</span>
+<span class="n">cbar4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cax4</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span> <span class="s1">&#39;CESM: Prescribed heat flux out of ocean (W m$^{-2}$)&#39;</span><span class="p">,</span> 
+              <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span> <span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Longitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">65</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;January&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span> <span class="p">);</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">topo</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">topo</span><span class="o">.</span><span class="n">LANDFRAC</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For lots more help with using xarray to slice and dice your dataset, look at the online documentation:</p>
+<p><a class="reference external" href="http://xarray.pydata.org">http://xarray.pydata.org</a></p>
+</div>
+<div class="section" id="the-pre-industrial-control-run">
+<h2>The “pre-industrial” control run<a class="headerlink" href="#the-pre-industrial-control-run" title="Permalink to this headline">¶</a></h2>
+<p>Our control run is set up to simulate the climate of the “pre-industrial era”, meaning before significant human-induced changes to the composition of the atmosphere, nominally the year 1850.</p>
+<p>Output from the control run is available on the same data server as above. Look in the folder called <code class="docutils literal notranslate"><span class="pre">cpl_1850_f19</span></code> (Here <code class="docutils literal notranslate"><span class="pre">cpl</span></code> stands for “coupled model” with interactive ocean, 1850 indicated pre-industrial conditions, and <code class="docutils literal notranslate"><span class="pre">f19</span></code> is a code for 2º the horizontal grid resolution).</p>
+<p>There are output files for each active model component:</p>
+<ul class="simple">
+<li><p>atmosphere</p></li>
+<li><p>ocean</p></li>
+<li><p>sea ice</p></li>
+<li><p>land surface</p></li>
+</ul>
+<p>The model produces <strong>monthly average</strong> output files for each component. We can load datasets from individual months, but there are also large <strong>concatenated</strong> files available that contain the entire output.</p>
+<p>Let’s take a look at the atmosphere file. The file is called</p>
+<p><code class="docutils literal notranslate"><span class="pre">cpl_1850_f19.cam.h0.nc</span></code></p>
+<p>(the file extension <code class="docutils literal notranslate"><span class="pre">.nc</span></code> is used to indicate NetCDF format).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">cesm_data_path</span> <span class="o">+</span> <span class="s2">&quot;cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">atm_control</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lots of different stuff! These are all the different quantities that are calculated as part of the model simulation. <strong>Every quantity represents a monthly average</strong>.</p>
+<p>Want to get more information about a particular variable?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">co2vmr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the amount of CO2 in the atmosphere (about 285 parts per million by volume). It is prescribed in these simulations and does not change.</p>
+<p>One nice thing about <code class="docutils literal notranslate"><span class="pre">xarray.DataArray</span></code> objects is that we can do simple arithmetic with them (already seen several examples of this in the notes above). For example, change the units of CO2 amount to ppm:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">co2vmr</span> <span class="o">*</span> <span class="mf">1E6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here’s another variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Apparently this is the incoming solar radiation or <strong>insolation</strong>, with shape (240,96,144) meaning it’s got 240 months, 96 latitude points and 144 longitude points.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercise-taking-a-time-average">
+<h2>Exercise: Taking a time average<a class="headerlink" href="#exercise-taking-a-time-average" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Take the <strong>time average</strong> of the <code class="docutils literal notranslate"><span class="pre">SOLIN</span></code> field. Store the result as a new variable.</p></li>
+<li><p>What are the <strong>dimensions</strong> of the resulting data array? What would be a good way to visualize this quantity?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercise-plotting-the-time-average-insolation">
+<h2>Exercise: Plotting the time average insolation<a class="headerlink" href="#exercise-plotting-the-time-average-insolation" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<ol class="simple">
+<li><p>Make a well-labeled plot of the time-averaged insolation (using the variable you stored above).</p></li>
+<li><p>Is there a way to <strong>further reduce the dimensionality</strong> of the data, and plot the information in a different way?</p></li>
+</ol>
+<p>Remember that you can apply the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> operation across any number of named dimensions in a data array.</p>
+</div>
+<div class="section" id="comparing-the-control-run-with-the-observed-energy-budget">
+<h2>Comparing the control run with the observed energy budget<a class="headerlink" href="#comparing-the-control-run-with-the-observed-energy-budget" title="Permalink to this headline">¶</a></h2>
+<p>Recall that our investigations so far have been guided by this figure of the observed <strong>annual, global mean energy budget</strong>:</p>
+<p><img alt="Observed global energy budget" src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/GlobalEnergyBudget.png" /></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercise-thinking-about-how-to-compute-a-global-average">
+<h2>Exercise: Thinking about how to compute a global average<a class="headerlink" href="#exercise-thinking-about-how-to-compute-a-global-average" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>In order to compare these numbers with the control run, <strong>we need to take global averages</strong> of the data. What do we mean by <strong>global average</strong>?</p>
+<p>Before proceeding with these notes, try to answer the following question:</p>
+<p><strong>Why does it not make sense to simply average over each data point on a latitude-longitude grid?</strong></p>
+</div>
+<div class="section" id="weighting-for-global-average">
+<h2>Weighting for global average<a class="headerlink" href="#weighting-for-global-average" title="Permalink to this headline">¶</a></h2>
+<p>The global average needs to weighted by the area of each grid cell, which is proportional to the <strong>cosine of latitude</strong> (do you understand why?)</p>
+<p>We can implement this in xarray as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Take the cosine of latitude (first converting to radians)</span>
+<span class="n">coslat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coslat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  And divide by its mean value</span>
+<span class="n">weight_factor</span> <span class="o">=</span> <span class="n">coslat</span> <span class="o">/</span> <span class="n">coslat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span> 
+<span class="c1">#  Want to see what we just created?</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">weight_factor</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="an-alternative-use-weights-already-provided-in-the-dataset">
+<h3>An alternative: use weights already provided in the dataset<a class="headerlink" href="#an-alternative-use-weights-already-provided-in-the-dataset" title="Permalink to this headline">¶</a></h3>
+<p>You will find that many gridded datasets already provide a field that gives accurate area weighting.</p>
+<p>In the case of the CESM output, the field is called <code class="docutils literal notranslate"><span class="pre">gw</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight_factor2</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span> <span class="o">/</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight_factor2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="compute-the-global-time-average-insolation">
+<h3>Compute the global, time average insolation<a class="headerlink" href="#compute-the-global-time-average-insolation" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Compute the global, time average insolation using our two different weight factors</span>
+<span class="c1">#  Notice that we can apply the .mean() operation simultaneously over several dimensions!</span>
+<span class="nb">print</span><span class="p">(</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">SOLIN</span> <span class="o">*</span> <span class="n">weight_factor2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These numbers should both be very close to 340.3</p>
+<p>This value is the global average insolation in units of W m<span class="math notranslate nohighlight">\(^{-2}\)</span>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercise-plotting-a-global-average-timeseries">
+<h2>Exercise: plotting a global average timeseries<a class="headerlink" href="#exercise-plotting-a-global-average-timeseries" title="Permalink to this headline">¶</a></h2>
+<p>Plot a <strong>timeseries</strong> of the <strong>global average surface temperature</strong> in the control simulation.</p>
+<p>Surface temperature is called <code class="docutils literal notranslate"><span class="pre">'TS'</span></code> in the dataset.</p>
+<p>Make a plot of the global average <code class="docutils literal notranslate"><span class="pre">TS</span></code> with time on the x axis. <em>Make sure your global average is properly weighted as discussed above.</em></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TSglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">TS</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
+<span class="n">TSglobal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TSglobal</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="discussion-point">
+<h3>Discussion point<a class="headerlink" href="#discussion-point" title="Permalink to this headline">¶</a></h3>
+<p>What do you see in this graph? Do you have any ideas about why the global average temperature looks like this?</p>
+<p>Also, what is the <strong>time average</strong> global-average surface temperature in this simulation?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">TSglobal</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-the-radiative-fluxes-in-the-model-output">
+<h3>Finding the radiative fluxes in the model output<a class="headerlink" href="#finding-the-radiative-fluxes-in-the-model-output" title="Permalink to this headline">¶</a></h3>
+<p>Now that you can take global averages and time averages, we can compare some energy budget values against observations.</p>
+<p>The model output contains lots of diagnostics about the radiative fluxes. Here are some CESM naming conventions to help you find the appropriate output fields:</p>
+<ul class="simple">
+<li><p>All variables whose names being with <code class="docutils literal notranslate"><span class="pre">'F'</span></code> are an <strong>energy flux</strong> of some kind.</p></li>
+<li><p>Most have a four-letter code, e.g. <code class="docutils literal notranslate"><span class="pre">'FLNT'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'FL'</span></code> means <strong>longwave flux</strong> (i.e. terrestrial)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'FS'</span></code> means <strong>shortwave flux</strong> (i.e. solar)</p></li>
+<li><p>The third letter indicates <strong>direction</strong> of the flux:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'U'</span></code> = up</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'D'</span></code> = down</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'N'</span></code> = net</p></li>
+</ul>
+</li>
+<li><p>The fourth letter indicates the <strong>location</strong> of the flux:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'T'</span></code> = top of atmosphere</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'S'</span></code> = surface</p></li>
+</ul>
+</li>
+<li><p>So <code class="docutils literal notranslate"><span class="pre">'FLNT'</span></code> means ‘net longwave flux at the top of atmosphere’, i.e. the outgoing longwave radiation or OLR.</p></li>
+</ul>
+<p>You wil see that these are all 240 x 96 x 144 – i.e. a two-dimensional grid for every month in the simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">FLNT</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="exercise-compute-terms-in-the-planetary-energy-budget">
+<h2>Exercise: compute terms in the planetary energy budget<a class="headerlink" href="#exercise-compute-terms-in-the-planetary-energy-budget" title="Permalink to this headline">¶</a></h2>
+<p>Compute annual, global averages of the following four quantities.</p>
+<ol class="simple">
+<li><p>Incoming solar radiation (or insolation)</p></li>
+<li><p>Absorbed solar radiation (ASR)</p></li>
+<li><p>Planetary albedo <em>(remember this is a <strong>ratio</strong> of outgoing to incoming solar radiation)</em></p></li>
+<li><p>Outgoing longwave radiation (OLR)</p></li>
+</ol>
+<p>Compare your results briefly to the observations.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="a-few-more-tidbits">
+<h2>A few more tidbits<a class="headerlink" href="#a-few-more-tidbits" title="Permalink to this headline">¶</a></h2>
+<p>Feel free to keep exploring the data!</p>
+<p>Many other fields are four-dimensional (time, level, latitude, longitude).</p>
+<p>For example, here the <strong>air temperature</strong> at every point and every month:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atm_control</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Often we want to sample the data <strong>at a particular place and time</strong>. xarray gives us simple ways to do that.</p>
+<p>For example, we can <strong>interpolate</strong> to a particular location in latitude and longitude (here it’s the coordinates of Albany NY):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tlocal</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mf">42.75</span><span class="p">,</span> <span class="n">lon</span><span class="o">=</span><span class="p">(</span><span class="mi">360</span><span class="o">-</span><span class="mf">73.8</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tlocal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use <strong>time indexing</strong> to pick out a particular year and month:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  The .sel notation mean &quot;select&quot; along the given coordinate</span>
+<span class="c1">#  The string that follows is year-month. Our simulation begins in year 0001.</span>
+<span class="n">Tlocal</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;0020-01&#39;</span><span class="p">)</span>  <span class="c1"># a particular January</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, for example, we can plot the temperature as a function of pressure at this place and time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tlocal</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;0020-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="climate-system-models.html" title="previous page"><span class="section-number">3. </span>The climate system and climate models</a>
+    <a class='right-next' id="next-link" href="climlab-intro.html" title="next page"><span class="section-number">5. </span>Building simple climate models using climlab</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Brian E. J. Rose<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-43758959-2', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
