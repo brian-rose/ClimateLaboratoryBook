@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>23. Ice-albedo feedback and Snowball Earth in the EBM &#8212; The Climate Laboratory</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,20 +34,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,6 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/albedo-snowball.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -401,21 +400,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -433,16 +432,16 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -467,13 +466,14 @@
     </div>
 </div>
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -595,6 +595,7 @@
 
         </nav>
         
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -1122,7 +1123,8 @@ dl.xr-attrs {
   grid-template-columns: 125px auto;
 }
 
-.xr-attrs dt, dd {
+.xr-attrs dt,
+.xr-attrs dd {
   padding: 0;
   margin: 0;
   float: left;
@@ -1201,7 +1203,7 @@ array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
          65.97923958,  65.84761924,  65.76244835,  65.71797553]])
 Coordinates:
   * depth    (depth) float64 5.0
-  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>lat</span>: 180</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-6ec2d269-220d-42d1-9089-f162bacf4ad2' class='xr-array-in' type='checkbox' checked><label for='section-6ec2d269-220d-42d1-9089-f162bacf4ad2' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>65.72 65.76 65.85 65.98 66.15 66.37 ... 66.15 65.98 65.85 65.76 65.72</span></div><div class='xr-array-data'><pre>array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>lat</span>: 180</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-df33ce49-5c31-416b-9f1a-e6449af2661b' class='xr-array-in' type='checkbox' checked><label for='section-df33ce49-5c31-416b-9f1a-e6449af2661b' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>65.72 65.76 65.85 65.98 66.15 66.37 ... 66.15 65.98 65.85 65.76 65.72</span></div><div class='xr-array-data'><pre>array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
          66.15142104,  66.36917776,  66.63263704,  66.93823592,
          67.2910667 ,  67.69112601,  68.13642192,  68.63061992,
          69.17502064,  69.76984994,  70.41686003,  71.11806553,
@@ -1241,7 +1243,7 @@ Coordinates:
          71.11806573,  70.41686023,  69.76985014,  69.17502084,
          68.63062012,  68.13642212,  67.69112621,  67.2910669 ,
          66.93823612,  66.63263724,  66.36917797,  66.15142124,
-         65.97923958,  65.84761924,  65.76244835,  65.71797553]])</pre></div></div></li><li class='xr-section-item'><input id='section-d5a94344-b50e-4b5e-95bf-438f34c86f3e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d5a94344-b50e-4b5e-95bf-438f34c86f3e' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.0</div><input id='attrs-503037bd-dc45-468f-a083-f31a4fafb9db' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-503037bd-dc45-468f-a083-f31a4fafb9db' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-88876d02-6403-442e-9f87-fed0cf8562b1' class='xr-var-data-in' type='checkbox'><label for='data-88876d02-6403-442e-9f87-fed0cf8562b1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([5.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-f3f6acd1-da7f-47ab-b757-9d508466dcfd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f3f6acd1-da7f-47ab-b757-9d508466dcfd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-16d1daf0-91b3-47db-8a9b-949db2c12065' class='xr-var-data-in' type='checkbox'><label for='data-16d1daf0-91b3-47db-8a9b-949db2c12065' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
+         65.97923958,  65.84761924,  65.76244835,  65.71797553]])</pre></div></div></li><li class='xr-section-item'><input id='section-816b964f-5676-4d4b-8897-368a1e2853d8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-816b964f-5676-4d4b-8897-368a1e2853d8' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.0</div><input id='attrs-3a4f3755-f659-498a-b32b-45bbac9614ba' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3a4f3755-f659-498a-b32b-45bbac9614ba' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-02c06a91-78b5-47a4-93f3-438b93ed2522' class='xr-var-data-in' type='checkbox'><label for='data-02c06a91-78b5-47a4-93f3-438b93ed2522' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([5.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-215cea62-cedc-4291-8d2b-6457d5897e81' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-215cea62-cedc-4291-8d2b-6457d5897e81' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-20737254-96f3-4cbb-b281-c17309aaadae' class='xr-var-data-in' type='checkbox'><label for='data-20737254-96f3-4cbb-b281-c17309aaadae' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
        -79.5, -78.5, -77.5, -76.5, -75.5, -74.5, -73.5, -72.5, -71.5, -70.5,
        -69.5, -68.5, -67.5, -66.5, -65.5, -64.5, -63.5, -62.5, -61.5, -60.5,
        -59.5, -58.5, -57.5, -56.5, -55.5, -54.5, -53.5, -52.5, -51.5, -50.5,
@@ -1258,7 +1260,7 @@ Coordinates:
         50.5,  51.5,  52.5,  53.5,  54.5,  55.5,  56.5,  57.5,  58.5,  59.5,
         60.5,  61.5,  62.5,  63.5,  64.5,  65.5,  66.5,  67.5,  68.5,  69.5,
         70.5,  71.5,  72.5,  73.5,  74.5,  75.5,  76.5,  77.5,  78.5,  79.5,
-        80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e8d9695d-387f-479b-a327-aead553f0b4b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e8d9695d-387f-479b-a327-aead553f0b4b' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+        80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d98bf7bc-b837-474e-b797-b1735f8977ed' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d98bf7bc-b837-474e-b797-b1735f8977ed' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>There is a built-in utility to take properly area-weighted global averages!</p>
 <p>This gives us the net global energy imbalance:</p>
@@ -1402,7 +1404,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa871ec4f90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fb0ec566f10&gt;
 </pre></div>
 </div>
 <img alt="../_images/albedo-snowball_40_1.png" src="../_images/albedo-snowball_40_1.png" />
@@ -1720,6 +1722,73 @@ The calculations in this section may take a long time to complete, depending on 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total elapsed time is 5.000000000000044 years.
 </pre></div>
 </div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">29</span><span class="o">-</span><span class="mi">7</span><span class="n">ff78b43bdab</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S0array</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">model2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">S0array</span><span class="p">)[</span><span class="n">n</span><span class="p">]</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">icelat_warming</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># For completeness -- also start from present-day conditions and warm up.</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/process/time_dependent_process.py</span> in <span class="ni">integrate_years</span><span class="nt">(self, years, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span>         <span class="k">for</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numsteps</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span>             <span class="c1"># Compute the timestep</span>
+<span class="ne">--&gt; </span><span class="mi">419</span>             <span class="bp">self</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">420</span>             <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">421</span>                 <span class="c1"># on first step only...</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/process/time_dependent_process.py</span> in <span class="ni">step_forward</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">331</span> 
+<span class="g g-Whitespace">    </span><span class="mi">332</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">333</span><span class="sd">         tenddict = self.compute()</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd">         #  Total tendency is applied as an explicit forward timestep</span>
+<span class="nn">    335         # (already accounting properly for order of operations</span> in <span class="ni">compute</span><span class="nt">() )</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/process/time_dependent_process.py</span> in <span class="ni">compute</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="sd">             var += tendencies[&#39;explicit&#39;][name] * self.timestep</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span><span class="sd">         # Now compute all implicit processes -- matrix inversions</span>
+<span class="ne">--&gt; </span><span class="mi">220</span><span class="sd">         tendencies[&#39;implicit&#39;] = self._compute_type(&#39;implicit&#39;)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span><span class="sd">         #  Same deal ... temporarily apply tendencies from implicit step</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span><span class="sd">         for name, var in self.state.items():</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/process/time_dependent_process.py</span> in <span class="ni">_compute_type</span><span class="nt">(self, proctype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span><span class="sd">             if self.time[&#39;steps&#39;] % step_ratio == 0:</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span><span class="sd">                 proc.time[&#39;active_now&#39;] = True</span>
+<span class="ne">--&gt; </span><span class="mi">261</span><span class="sd">                 tenddict = proc.compute()</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span><span class="sd">             else:</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span><span class="sd">                 # proc.tendencies is unchanged from last subprocess timestep if we didn&#39;t recompute it above</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/process/time_dependent_process.py</span> in <span class="ni">compute</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="sd">                 self.tendencies[varname] += tend</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd">         # Finally compute my own tendencies, if any</span>
+<span class="ne">--&gt; </span><span class="mi">235</span><span class="sd">         self_tend = self._compute()</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span><span class="sd">         #  Adjustment processes _compute method returns absolute adjustment</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span><span class="sd">         #  Needs to be converted to rate of change</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/process/implicit.py</span> in <span class="ni">_compute</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">47</span>         <span class="n">newstate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_implicit_solver</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>         <span class="n">adjustment</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">tendencies</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/dynamics/advection_diffusion.py</span> in <span class="ni">_implicit_solver</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span>         <span class="k">for</span> <span class="n">varname</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span>             <span class="n">field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">diffusion_axis_index</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">193</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">adv_diff_numerics</span><span class="o">.</span><span class="n">implicit_step_forward</span><span class="p">(</span><span class="n">field</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">194</span>                         <span class="bp">self</span><span class="o">.</span><span class="n">_advdiffTriDiag</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_source</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestep</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">195</span>                         <span class="n">use_banded_solver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_banded_solver</span><span class="p">)</span>
+
+<span class="nn">~/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/dynamics/adv_diff_numerics.py</span> in <span class="ni">implicit_step_forward</span><span class="nt">(initial_field, tridiag, source, timestep, use_banded_solver)</span>
+<span class="g g-Whitespace">    </span><span class="mi">425</span>         <span class="n">I</span> <span class="o">=</span> <span class="mf">0.</span><span class="o">*</span><span class="n">tridiag</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span>         <span class="n">I</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="n">inds_main</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">inds_main</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">1.</span>  <span class="c1"># stacked identity matrix</span>
+<span class="ne">--&gt; </span><span class="mi">427</span>         <span class="n">IminusTdt</span> <span class="o">=</span> <span class="n">I</span><span class="o">-</span><span class="n">tridiag</span><span class="o">*</span><span class="n">timestep</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span>         <span class="k">return</span> <span class="n">solve</span><span class="p">(</span><span class="n">IminusTdt</span><span class="p">,</span> <span class="n">RHS</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1897,15 +1966,15 @@ Total elapsed time is 4054.999999977441 years.
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="numerical-diffusion.html" title="previous page"><span class="section-number">22. </span>A peek at numerical methods for diffusion models</a>
     <a class='right-next' id="next-link" href="advanced-albedo-feedback.html" title="next page"><span class="section-number">23.9.1. </span>Advanced topic: Ice albedo feedback in the EBM</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -1913,7 +1982,7 @@ Total elapsed time is 4054.999999977441 years.
         
           By Brian E. J. Rose<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -1924,7 +1993,7 @@ Total elapsed time is 4054.999999977441 years.
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

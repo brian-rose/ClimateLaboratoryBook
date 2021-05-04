@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>5. Building simple climate models using climlab &#8212; The Climate Laboratory</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,20 +34,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,6 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climlab-intro.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -401,21 +400,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -433,16 +432,16 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -467,13 +466,14 @@
     </div>
 </div>
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -578,6 +578,7 @@
 
         </nav>
         
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -606,7 +607,7 @@ process model given appropriate input, or as a sub-process of a more complex mod
 New classes of model can easily be defined and run interactively by putting together an
 appropriate collection of sub-processes.</p>
 <p>climlab is an open-source community project. The latest code can always be found on github:</p>
-<p>https://github.com/brian-rose/climlab</p>
+<p><a class="reference external" href="https://github.com/brian-rose/climlab">https://github.com/brian-rose/climlab</a></p>
 </div>
 <div class="section" id="installing-climlab">
 <h2><span class="section-number">5.3. </span>Installing climlab<a class="headerlink" href="#installing-climlab" title="Permalink to this headline">¶</a></h2>
@@ -1009,7 +1010,8 @@ dl.xr-attrs {
   grid-template-columns: 125px auto;
 }
 
-.xr-attrs dt, dd {
+.xr-attrs dt,
+.xr-attrs dd {
   padding: 0;
   margin: 0;
   float: left;
@@ -1052,7 +1054,7 @@ Coordinates:
   * depth_bounds  (depth_bounds) float64 0.0 100.0
   * lat_bounds    (lat_bounds) float64 -90.0 90.0
 Data variables:
-    Ts            (depth, lat) float64 32.0</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-d5df817f-098e-4371-9fee-ca46095bca01' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d5df817f-098e-4371-9fee-ca46095bca01' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>depth_bounds</span>: 2</li><li><span class='xr-has-index'>lat</span>: 1</li><li><span class='xr-has-index'>lat_bounds</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f5f690ef-9e02-41b4-9b5e-f57623d9cd8c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f5f690ef-9e02-41b4-9b5e-f57623d9cd8c' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>50.0</div><input id='attrs-4ac11e42-8064-4adc-b8e8-03ae470a6365' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4ac11e42-8064-4adc-b8e8-03ae470a6365' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7c38613-7687-44a8-b4a2-805143d9e093' class='xr-var-data-in' type='checkbox'><label for='data-e7c38613-7687-44a8-b4a2-805143d9e093' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([50.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-58cf74b6-c57b-4371-8dc6-a9b77e072072' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-58cf74b6-c57b-4371-8dc6-a9b77e072072' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-21d1dada-a37f-45b2-9acb-d8db93bffd98' class='xr-var-data-in' type='checkbox'><label for='data-21d1dada-a37f-45b2-9acb-d8db93bffd98' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([0.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth_bounds</span></div><div class='xr-var-dims'>(depth_bounds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 100.0</div><input id='attrs-821595bd-809b-49eb-b847-0d52688fe327' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-821595bd-809b-49eb-b847-0d52688fe327' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8d6e9abe-5be6-4546-b598-4bcad4e76145' class='xr-var-data-in' type='checkbox'><label for='data-8d6e9abe-5be6-4546-b598-4bcad4e76145' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([  0., 100.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat_bounds</span></div><div class='xr-var-dims'>(lat_bounds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-90.0 90.0</div><input id='attrs-41614cd1-42b3-4590-9a7b-0b9c5d681061' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-41614cd1-42b3-4590-9a7b-0b9c5d681061' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8ed590f1-3653-473b-9053-2e2fa63231e3' class='xr-var-data-in' type='checkbox'><label for='data-8ed590f1-3653-473b-9053-2e2fa63231e3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-90.,  90.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-646d5184-205c-4913-a7d4-c008eae6f02a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-646d5184-205c-4913-a7d4-c008eae6f02a' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Ts</span></div><div class='xr-var-dims'>(depth, lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>32.0</div><input id='attrs-205861f7-ab8f-4382-b628-8da5db400134' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-205861f7-ab8f-4382-b628-8da5db400134' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f2df186d-eaad-4384-8c7b-e2bb642f4611' class='xr-var-data-in' type='checkbox'><label for='data-f2df186d-eaad-4384-8c7b-e2bb642f4611' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[32.]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fc71f75f-9a8a-414c-bd62-c9c1f65802cf' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fc71f75f-9a8a-414c-bd62-c9c1f65802cf' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+    Ts            (depth, lat) float64 32.0</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-97a5ce7a-10a8-4a57-8192-15d095cd21a1' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-97a5ce7a-10a8-4a57-8192-15d095cd21a1' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>depth_bounds</span>: 2</li><li><span class='xr-has-index'>lat</span>: 1</li><li><span class='xr-has-index'>lat_bounds</span>: 2</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-89d616cb-9917-48f6-bce4-db98ddcdca98' class='xr-section-summary-in' type='checkbox'  checked><label for='section-89d616cb-9917-48f6-bce4-db98ddcdca98' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>50.0</div><input id='attrs-9f257f92-5d41-4290-93ae-0d2b87aac032' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9f257f92-5d41-4290-93ae-0d2b87aac032' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-466a19b7-b1bf-4f3d-8648-82949aa252e0' class='xr-var-data-in' type='checkbox'><label for='data-466a19b7-b1bf-4f3d-8648-82949aa252e0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([50.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-a201f65c-963f-4a9f-b0a3-2312d77a11fe' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a201f65c-963f-4a9f-b0a3-2312d77a11fe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c4ef2f10-4144-4e6b-b3fa-c552629a2a0b' class='xr-var-data-in' type='checkbox'><label for='data-c4ef2f10-4144-4e6b-b3fa-c552629a2a0b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([0.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth_bounds</span></div><div class='xr-var-dims'>(depth_bounds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 100.0</div><input id='attrs-5691847a-4973-400e-a577-d31654f5a097' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5691847a-4973-400e-a577-d31654f5a097' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-658a02c9-34f6-4c87-9c35-88c93d563162' class='xr-var-data-in' type='checkbox'><label for='data-658a02c9-34f6-4c87-9c35-88c93d563162' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([  0., 100.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat_bounds</span></div><div class='xr-var-dims'>(lat_bounds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-90.0 90.0</div><input id='attrs-53920a1b-28e5-427e-978d-e59ce10c3371' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-53920a1b-28e5-427e-978d-e59ce10c3371' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7c84e9cc-1fc3-4859-9010-a0e01a6dbb4b' class='xr-var-data-in' type='checkbox'><label for='data-7c84e9cc-1fc3-4859-9010-a0e01a6dbb4b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-90.,  90.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3e9120ed-3b1f-457e-97c5-dbba199549c1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3e9120ed-3b1f-457e-97c5-dbba199549c1' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>Ts</span></div><div class='xr-var-dims'>(depth, lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>32.0</div><input id='attrs-d1e52a51-7809-437a-b90c-c37e4ab00970' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-d1e52a51-7809-437a-b90c-c37e4ab00970' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9efaa696-e1ec-4461-9c89-b7646dd3a5b3' class='xr-var-data-in' type='checkbox'><label for='data-9efaa696-e1ec-4461-9c89-b7646dd3a5b3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[32.]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f0925e2c-a9c4-4820-8c83-79ab5724a4b8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f0925e2c-a9c4-4820-8c83-79ab5724a4b8' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 </div>
 <div class="section" id="create-the-subcomponents-of-the-model">
@@ -1420,9 +1422,7 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 608 steps, 18262.11 days, or 50 years.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total elapsed time is 50.10373938170343 years.
+Total elapsed time is 50.10373938170343 years.
 </pre></div>
 </div>
 </div>
@@ -1534,15 +1534,15 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="introducing-cesm.html" title="previous page"><span class="section-number">4. </span>Introducing the Community Earth System Model (CESM)</a>
     <a class='right-next' id="next-link" href="radiation.html" title="next page"><span class="section-number">6. </span>A Brief Review of Radiation</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -1550,7 +1550,7 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
         
           By Brian E. J. Rose<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -1561,7 +1561,7 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

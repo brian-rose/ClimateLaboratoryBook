@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>25. Land-Ocean contrasts under climate change &#8212; The Climate Laboratory</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,20 +34,17 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script src="../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,6 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/land-ocean-contrast.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -401,21 +400,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -433,16 +432,16 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -467,13 +466,14 @@
     </div>
 </div>
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
         <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
+            <i class="fas fa-list"></i>
+            Contents
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
@@ -572,6 +572,7 @@
 
         </nav>
         
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -603,7 +604,7 @@
 <blockquote>
 <div><p>A–C) Surface-air annual (A) temperature, (B) specific humidity, and (C) relative humidity anomalies averaged from 40∘S to 40∘N and best-fit trends (1979–2016) over land (red solid lines and asterisks) and ocean (blue lines and asterisks). The best-fit trends in the land–ocean contrasts in temperature and specific humidity (δTL−δTO and δqL−δqO, respectively) are also plotted (black asterisks). Land values are from the HadISDH dataset (13, 14) and ocean values are from the ERA-Interim reanalysis (15). Ocean specific humidity anomalies are calculated assuming fixed climatological relative humidity (Materials and Methods). Also shown are land anomalies and associated trends (dashed lines and circles) estimated using the simple theory (Eqs. 2–4) and subsampled to the months and gridboxes for which HadISDH observations are available. Error bars on the trends indicate the 90% confidence intervals corrected to account for serial correlation (Materials and Methods).</p>
 </div></blockquote>
-<p>Byrne and O’Gorman (2018): Trends in continental temperature and humidity directly linked to ocean warming, PNAS 115 (19) 4863-4868, https://doi.org/10.1073/pnas.1722312115</p>
+<p>Byrne and O’Gorman (2018): Trends in continental temperature and humidity directly linked to ocean warming, PNAS 115 (19) 4863-4868, <a class="reference external" href="https://doi.org/10.1073/pnas.1722312115">https://doi.org/10.1073/pnas.1722312115</a></p>
 </div>
 <div class="section" id="looking-at-land-ocean-warming-patterns-in-the-cesm">
 <h2><span class="section-number">25.3. </span>Looking at land-ocean warming patterns in the CESM<a class="headerlink" href="#looking-at-land-ocean-warming-patterns-in-the-cesm" title="Permalink to this headline">¶</a></h2>
@@ -645,13 +646,11 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_CO2ramp_f19/concatenated/cpl_CO2ramp_f19.cam.h0.nc
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_CO2ramp_f19/concatenated/cpl_CO2ramp_f19.cam.h0.nc
-Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_f19/concatenated/som_1850_f19.cam.h0.nc
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_2xCO2/concatenated/som_1850_2xCO2.cam.h0.nc
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_f19/concatenated/som_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_2xCO2/concatenated/som_1850_2xCO2.cam.h0.nc
 </pre></div>
 </div>
 </div>
@@ -824,9 +823,9 @@ The Transient Climate Response is 1.67 K.
 <h2><span class="section-number">25.6. </span>A simple theory for land-ocean warming contrast<a class="headerlink" href="#a-simple-theory-for-land-ocean-warming-contrast" title="Permalink to this headline">¶</a></h2>
 <p>This section is based on a series of papers by Byrne and O’Gorman:</p>
 <ul class="simple">
-<li><p>Byrne and O’Gorman (2013): Land–Ocean Warming Contrast over a Wide Range of Climates: Convective Quasi-Equilibrium Theory and Idealized Simulations. J. Clim. 26, https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</p></li>
-<li><p>Byrne and O’Gorman (2016): Understanding Decreases in Land Relative Humidity with Global Warming: Conceptual Model and GCM Simulations. J. Clim. 29, https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</p></li>
-<li><p>Byrne and O’Gorman (2018): Trends in continental temperature and humidity directly linked to ocean warming, PNAS 115 (19) 4863-4868, https://doi.org/10.1073/pnas.1722312115</p></li>
+<li><p>Byrne and O’Gorman (2013): Land–Ocean Warming Contrast over a Wide Range of Climates: Convective Quasi-Equilibrium Theory and Idealized Simulations. J. Clim. 26, <a class="reference external" href="https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1">https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</a></p></li>
+<li><p>Byrne and O’Gorman (2016): Understanding Decreases in Land Relative Humidity with Global Warming: Conceptual Model and GCM Simulations. J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p></li>
+<li><p>Byrne and O’Gorman (2018): Trends in continental temperature and humidity directly linked to ocean warming, PNAS 115 (19) 4863-4868, <a class="reference external" href="https://doi.org/10.1073/pnas.1722312115">https://doi.org/10.1073/pnas.1722312115</a></p></li>
 </ul>
 <div class="section" id="the-atmospheric-dynamics-constraint">
 <h3><span class="section-number">25.6.1. </span>The atmospheric dynamics constraint<a class="headerlink" href="#the-atmospheric-dynamics-constraint" title="Permalink to this headline">¶</a></h3>
@@ -842,7 +841,7 @@ The Transient Climate Response is 1.67 K.
 <div><p>Fig. 1. Schematic diagram of potential temperature vs height for moist adiabats over land and ocean and equal temperatures at upper levels. A land–ocean surface air temperature contrast is implied by different LCLs over land and ocean.</p>
 </div></blockquote>
 <blockquote>
-<div><p>Byrne and O’Gorman (2013) J. Clim. 26, https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</p>
+<div><p>Byrne and O’Gorman (2013) J. Clim. 26, <a class="reference external" href="https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1">https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</a></p>
 </div></blockquote>
 <p>A consequence of these constraints is that, under a climate change, the near-surface <strong>moist static energy</strong> content over land and ocean are equal:</p>
 <div class="math notranslate nohighlight">
@@ -861,7 +860,7 @@ The Transient Climate Response is 1.67 K.
 </div>
 <div class="section" id="the-surface-moisture-constraint">
 <h3><span class="section-number">25.6.2. </span>The surface moisture constraint<a class="headerlink" href="#the-surface-moisture-constraint" title="Permalink to this headline">¶</a></h3>
-<p>This section is drawn directly from Byrne and O’Gorman (2016) J. Clim. 29, https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</p>
+<p>This section is drawn directly from Byrne and O’Gorman (2016) J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p>
 <p>Consider the following simple moisture budgets for the boundary layers over ocean and over land:</p>
 <img src='https://journals.ametsoc.org/na101/home/literatum/publisher/ams/journals/content/clim/2016/15200442-29.24/jcli-d-16-0351.1/20161201/images/large/jcli-d-16-0351.1-f2.jpeg' width="500">
 <blockquote>
@@ -1107,7 +1106,7 @@ $<span class="math notranslate nohighlight">\( A = 1 + \frac{L_v}{c_p} (1-\gamma
 <blockquote>
 <div><p>Fig. B1. The CMIP5 multimodel mean (a) land–ocean warming contrast (expressed as an amplification factor) and (b) surface-air land pseudo relative humidity change normalized by the global-mean surface-air temperature change (solid lines) and as estimated by the combined moisture and dynamic constraints (dashed lines). The amplification factor and land relative humidity changes are estimated for each land grid point and for each month of the year before taking the zonal and annual means.</p>
 </div></blockquote>
-<p>Byrne and O’Gorman (2016) J. Clim. 29, https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</p>
+<p>Byrne and O’Gorman (2016) J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p>
 <p>Our results are consistent with Byrne and O’Gorman in that the simple theory captures the amplification signal in the <strong>southern subtropics</strong> quite well, but strongly overestimates the amplifcation in the <strong>northern subtropics</strong>.</p>
 <p>The simple “ocean influence” theory works best in the hemisphere dominated by ocean!</p>
 <p>We may get more insight into the weaknesses of the theory by looking more carefully at the relative humidity changes, and the role of land-surface evaporation changes (neglected under the “ocean-influence” theory).</p>
@@ -1214,15 +1213,15 @@ $<span class="math notranslate nohighlight">\( A = 1 + \frac{L_v}{c_p} (1-\gamma
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="surface-energy-balance.html" title="previous page"><span class="section-number">24. </span>The surface energy balance</a>
     <a class='right-next' id="next-link" href="water-water-everywhere.html" title="next page"><span class="section-number">26. </span>Water, water everywhere!</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -1230,7 +1229,7 @@ $<span class="math notranslate nohighlight">\( A = 1 + \frac{L_v}{c_p} (1-\gamma
         
           By Brian E. J. Rose<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -1241,7 +1240,7 @@ $<span class="math notranslate nohighlight">\( A = 1 + \frac{L_v}{c_p} (1-\gamma
     </div>
 
     
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     
