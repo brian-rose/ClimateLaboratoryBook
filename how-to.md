@@ -73,7 +73,7 @@ conda activate climlab-courseware
 Then find all the Jupyter notebook `*.ipynb` files in `ClimateLaboratoryBook/content/courseware`
 
 You may find it useful to do all your work in a separate git branch,
-and leave your `master` branch untouched so you can keep it up to date with
+and leave your `main` branch untouched so you can keep it up to date with
 the source repository.
 
 [repo]: https://github.com/brian-rose/ClimateLaboratoryBook
