@@ -809,7 +809,9 @@ $<span class="math notranslate nohighlight">\( e = \frac{d_a-d_p}{d_a+d_p} \)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data retrieved from http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLIMLAB/orbital/orbit91 and saved locally.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokenization took: 2.23 ms
+Type conversion took: 1.39 ms
+Parser memory cleanup took: 0.01 ms
 </pre></div>
 </div>
 </div>
@@ -821,13 +823,364 @@ $<span class="math notranslate nohighlight">\( e = \frac{d_a-d_p}{d_a+d_p} \)</s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:     (kyear: 5001)
 Coordinates:
   * kyear       (kyear) int64 0 -1 -2 -3 -4 -5 ... -4996 -4997 -4998 -4999 -5000
 Data variables:
     ecc         (kyear) float64 0.01724 0.01764 0.01802 ... 0.02689 0.02685
-    long_peri   (kyear) float64 281.4 264.3 247.2 230.3 ... 288.4 273.9 259.4
+    long_peri   (kyear) float64 281.4 264.3 247.2 ... -8.361e+04 -8.362e+04
     obliquity   (kyear) float64 23.45 23.57 23.7 23.82 ... 22.55 22.52 22.52
     precession  (kyear) float64 -0.0169 -0.01756 -0.01662 ... -0.02683 -0.02639
     65NJul      (kyear) float64 426.8 430.1 434.7 440.2 ... 407.5 409.1 412.3
@@ -837,11 +1190,9 @@ Data variables:
 Attributes:
     Description:  The Berger and Loutre (1991) orbital data table
     Citation:     https://doi.org/10.1016/0277-3791(91)90033-Q
-    Source:       /Users/br546577/anaconda3/envs/climlab-courseware/lib/pytho...
-    Note:         Longitude of perihelion is defined to be 0 degrees at North...
-</pre></div>
-</div>
-</div>
+    Source:       http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLI...
+    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-a9e91d97-4c2a-4a3c-9bfd-a645126841b6' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-a9e91d97-4c2a-4a3c-9bfd-a645126841b6' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>kyear</span>: 5001</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-912e5513-9735-490b-88c2-b83b8d682e97' class='xr-section-summary-in' type='checkbox'  checked><label for='section-912e5513-9735-490b-88c2-b83b8d682e97' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>kyear</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 -1 -2 -3 ... -4998 -4999 -5000</div><input id='attrs-f8197e06-b308-480e-857f-b8f576521812' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f8197e06-b308-480e-857f-b8f576521812' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-95ae9999-2eaa-4ada-8d54-1dc552bdda51' class='xr-var-data-in' type='checkbox'><label for='data-95ae9999-2eaa-4ada-8d54-1dc552bdda51' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([    0,    -1,    -2, ..., -4998, -4999, -5000])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d6034525-7308-4063-85c6-e2225daf27fa' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d6034525-7308-4063-85c6-e2225daf27fa' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ecc</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.01724 0.01764 ... 0.02689 0.02685</div><input id='attrs-38fb5b83-a2f3-4767-b1d1-bd74b6291ec6' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-38fb5b83-a2f3-4767-b1d1-bd74b6291ec6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a69a85f8-2340-4c43-86d2-1f0b701f991a' class='xr-var-data-in' type='checkbox'><label for='data-a69a85f8-2340-4c43-86d2-1f0b701f991a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.017236, 0.017644, 0.018024, ..., 0.026988, 0.026892, 0.026851])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>long_peri</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>281.4 264.3 ... -8.362e+04</div><input id='attrs-3fa99c67-5374-41b5-b1b6-faa2f58ba093' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3fa99c67-5374-41b5-b1b6-faa2f58ba093' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cdc1752f-58e3-4c1c-bf9f-dc161542ef53' class='xr-var-data-in' type='checkbox'><label for='data-cdc1752f-58e3-4c1c-bf9f-dc161542ef53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([   281.37,    264.26,    247.23, ..., -83591.56, -83606.08,
+       -83620.57])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>obliquity</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>23.45 23.57 23.7 ... 22.52 22.52</div><input id='attrs-8dcffe35-8734-48ed-b9c9-78e15fb44125' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8dcffe35-8734-48ed-b9c9-78e15fb44125' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2a43f90d-5528-436f-adf7-db2388d0f384' class='xr-var-data-in' type='checkbox'><label for='data-2a43f90d-5528-436f-adf7-db2388d0f384' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([23.446, 23.573, 23.697, ..., 22.546, 22.525, 22.525])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precession</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.0169 -0.01756 ... -0.02639</div><input id='attrs-8d75990c-0553-4676-9a57-95838f4f8883' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8d75990c-0553-4676-9a57-95838f4f8883' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2fcd6329-a271-4be3-9257-41e82c426047' class='xr-var-data-in' type='checkbox'><label for='data-2fcd6329-a271-4be3-9257-41e82c426047' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-0.0169 , -0.01756, -0.01662, ..., -0.0256 , -0.02683, -0.02639])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>426.8 430.1 434.7 ... 409.1 412.3</div><input id='attrs-af5eb9e7-759e-4104-b005-20a3382e4805' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-af5eb9e7-759e-4104-b005-20a3382e4805' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-72dd80ad-d674-4674-a208-adf92c011b94' class='xr-var-data-in' type='checkbox'><label for='data-72dd80ad-d674-4674-a208-adf92c011b94' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([426.76, 430.12, 434.69, ..., 407.47, 409.12, 412.29])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>455.6 455.5 454.1 ... 450.6 447.3</div><input id='attrs-8a23a90e-cc79-4c42-843d-393ab05a5cef' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8a23a90e-cc79-4c42-843d-393ab05a5cef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ac3b7677-9542-4d66-8833-4009958620ac' class='xr-var-data-in' type='checkbox'><label for='data-ac3b7677-9542-4d66-8833-4009958620ac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([455.58, 455.48, 454.07, ..., 452.94, 450.63, 447.34])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>440.6 442.5 445.6 ... 433.5 436.9</div><input id='attrs-51285015-bc25-410d-bde1-206ee68bc176' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-51285015-bc25-410d-bde1-206ee68bc176' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6d11a8b0-6213-4fdd-8577-5d881de1a3f4' class='xr-var-data-in' type='checkbox'><label for='data-6d11a8b0-6213-4fdd-8577-5d881de1a3f4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([440.6 , 442.48, 445.62, ..., 431.53, 433.54, 436.89])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>470.4 468.6 465.5 ... 477.5 474.0</div><input id='attrs-d5feef05-547a-4d0f-9d60-00c3f26695b2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-d5feef05-547a-4d0f-9d60-00c3f26695b2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b92799dd-44a4-4fbb-a43a-0408b023b3b6' class='xr-var-data-in' type='checkbox'><label for='data-b92799dd-44a4-4fbb-a43a-0408b023b3b6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([470.35, 468.57, 465.49, ..., 479.68, 477.53, 474.03])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-62f92b9e-c03f-43f1-a98f-93e60408138c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-62f92b9e-c03f-43f1-a98f-93e60408138c' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>The Berger and Loutre (1991) orbital data table</dd><dt><span>Citation :</span></dt><dd>https://doi.org/10.1016/0277-3791(91)90033-Q</dd><dt><span>Source :</span></dt><dd>http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLIMLAB/orbital/orbit91</dd><dt><span>Note :</span></dt><dd>Longitude of perihelion is defined to be 0 degrees at Northern Vernal Equinox. This differs by 180 degrees from orbit91 source file.</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Make reference plots of the variation in the three orbital parameter over the last 1 million years</p>
 <div class="cell docutils container">
@@ -853,13 +1204,364 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
 Dimensions:     (kyear: 1001)
 Coordinates:
   * kyear       (kyear) float64 -1e+03 -999.0 -998.0 -997.0 ... -2.0 -1.0 0.0
 Data variables:
     ecc         (kyear) float64 0.03576 0.03695 0.03811 ... 0.01764 0.01724
-    long_peri   (kyear) float64 482.5 498.3 514.2 530.1 ... 247.2 264.3 281.4
+    long_peri   (kyear) float64 -1.644e+04 -1.642e+04 -1.641e+04 ... 264.3 281.4
     obliquity   (kyear) float64 23.78 23.84 23.88 23.9 ... 23.7 23.57 23.45
     precession  (kyear) float64 0.03018 0.02458 0.0166 ... -0.01756 -0.0169
     65NJul      (kyear) float64 478.7 479.0 476.4 470.9 ... 434.7 430.1 426.8
@@ -869,11 +1571,9 @@ Data variables:
 Attributes:
     Description:  The Berger and Loutre (1991) orbital data table
     Citation:     https://doi.org/10.1016/0277-3791(91)90033-Q
-    Source:       /Users/br546577/anaconda3/envs/climlab-courseware/lib/pytho...
-    Note:         Longitude of perihelion is defined to be 0 degrees at North...
-</pre></div>
-</div>
-</div>
+    Source:       http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLI...
+    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-3d77cf81-aca1-4af3-b729-bdafee1ed4f2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3d77cf81-aca1-4af3-b729-bdafee1ed4f2' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>kyear</span>: 1001</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-e72e4ea2-329a-47c6-9d7f-ecff4c3dfac0' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e72e4ea2-329a-47c6-9d7f-ecff4c3dfac0' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>kyear</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1e+03 -999.0 -998.0 ... -1.0 0.0</div><input id='attrs-9fe5c0b5-6004-4648-9459-70dbfa131b72' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-9fe5c0b5-6004-4648-9459-70dbfa131b72' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dbf159bf-7c2b-405d-a9e2-5ac184e5de28' class='xr-var-data-in' type='checkbox'><label for='data-dbf159bf-7c2b-405d-a9e2-5ac184e5de28' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-1000.,  -999.,  -998., ...,    -2.,    -1.,     0.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-be0ba486-d4a4-4b18-867c-1992c281eb92' class='xr-section-summary-in' type='checkbox'  checked><label for='section-be0ba486-d4a4-4b18-867c-1992c281eb92' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ecc</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03576 0.03695 ... 0.01764 0.01724</div><input id='attrs-9631123e-600d-46a1-a1be-e1cb423537cb' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-9631123e-600d-46a1-a1be-e1cb423537cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cb0e2472-d744-4f20-a1db-404132ca6a21' class='xr-var-data-in' type='checkbox'><label for='data-cb0e2472-d744-4f20-a1db-404132ca6a21' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.035765, 0.036953, 0.038114, ..., 0.018024, 0.017644, 0.017236])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>long_peri</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1.644e+04 -1.642e+04 ... 281.4</div><input id='attrs-699ff04a-06aa-4ab0-b869-70325adeadc1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-699ff04a-06aa-4ab0-b869-70325adeadc1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6ac4d78d-2d48-4682-b820-94b8551709c3' class='xr-var-data-in' type='checkbox'><label for='data-6ac4d78d-2d48-4682-b820-94b8551709c3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-16437.54, -16421.71, -16405.83, ...,    247.23,    264.26,
+          281.37])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>obliquity</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>23.78 23.84 23.88 ... 23.57 23.45</div><input id='attrs-b3dc7a23-0d69-4b03-ac79-f1985f11977e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b3dc7a23-0d69-4b03-ac79-f1985f11977e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cbcef26b-5817-494e-8184-320a1b91f3ed' class='xr-var-data-in' type='checkbox'><label for='data-cbcef26b-5817-494e-8184-320a1b91f3ed' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([23.778, 23.835, 23.877, ..., 23.697, 23.573, 23.446])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precession</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03018 0.02458 ... -0.0169</div><input id='attrs-5a2bd7d4-f7da-4db6-9b2a-c429beee9954' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5a2bd7d4-f7da-4db6-9b2a-c429beee9954' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-aa426a5e-f3b2-422f-a2c1-81767090897d' class='xr-var-data-in' type='checkbox'><label for='data-aa426a5e-f3b2-422f-a2c1-81767090897d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 0.03018,  0.02458,  0.0166 , ..., -0.01662, -0.01756, -0.0169 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>478.7 479.0 476.4 ... 430.1 426.8</div><input id='attrs-674c228c-ac85-4650-ad17-bf53aadfe826' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-674c228c-ac85-4650-ad17-bf53aadfe826' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a878aee0-0cd4-4b72-9faf-21a1b2d1e8a2' class='xr-var-data-in' type='checkbox'><label for='data-a878aee0-0cd4-4b72-9faf-21a1b2d1e8a2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([478.69, 478.97, 476.36, ..., 434.69, 430.12, 426.76])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>414.9 416.2 419.9 ... 455.5 455.6</div><input id='attrs-75dd8819-b643-4547-99e0-fc5bec34d14e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-75dd8819-b643-4547-99e0-fc5bec34d14e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4d4419c0-c54a-4cf8-86fe-3a269215c243' class='xr-var-data-in' type='checkbox'><label for='data-4d4419c0-c54a-4cf8-86fe-3a269215c243' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([414.92, 416.23, 419.89, ..., 454.07, 455.48, 455.58])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>489.6 489.1 485.9 ... 442.5 440.6</div><input id='attrs-58a4557a-688b-40f9-8602-bb218df638a5' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-58a4557a-688b-40f9-8602-bb218df638a5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-828cadc3-1daf-4f30-9f92-8c8a9ad37445' class='xr-var-data-in' type='checkbox'><label for='data-828cadc3-1daf-4f30-9f92-8c8a9ad37445' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([489.61, 489.11, 485.86, ..., 445.62, 442.48, 440.6 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>424.4 425.0 428.3 ... 468.6 470.4</div><input id='attrs-36de2be3-6270-4a44-b1f8-3d513c37550c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-36de2be3-6270-4a44-b1f8-3d513c37550c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4963011a-8e6d-4c32-93b5-600ffa879db1' class='xr-var-data-in' type='checkbox'><label for='data-4963011a-8e6d-4c32-93b5-600ffa879db1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([424.37, 425.04, 428.27, ..., 465.49, 468.57, 470.35])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a21848c7-94bf-4d06-88fb-84029315c163' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a21848c7-94bf-4d06-88fb-84029315c163' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>The Berger and Loutre (1991) orbital data table</dd><dt><span>Citation :</span></dt><dd>https://doi.org/10.1016/0277-3791(91)90033-Q</dd><dt><span>Source :</span></dt><dd>http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLIMLAB/orbital/orbit91</dd><dt><span>Note :</span></dt><dd>Longitude of perihelion is defined to be 0 degrees at Northern Vernal Equinox. This differs by 180 degrees from orbit91 source file.</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The object called</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orb</span>
@@ -953,15 +1653,373 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray (day: 50)&gt;
-array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (day: 50)&gt;
+array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
 Coordinates:
-  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2
-</pre></div>
-</div>
-</div>
+  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>day</span>: 50</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-0bb94410-d9d2-4384-97c4-bd2e1cbcb3c1' class='xr-array-in' type='checkbox' checked><label for='section-0bb94410-d9d2-4384-97c4-bd2e1cbcb3c1' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</span></div><div class='xr-array-data'><pre>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])</pre></div></div></li><li class='xr-section-item'><input id='section-92e8d7a1-72a4-407a-994f-14f29d59d3c5' class='xr-section-summary-in' type='checkbox'  checked><label for='section-92e8d7a1-72a4-407a-994f-14f29d59d3c5' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>day</span></div><div class='xr-var-dims'>(day)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.26 25.34 32.42 ... 358.2 365.2</div><input id='attrs-ff8327a8-5cc9-4a2f-9eae-784e1e5cee0f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ff8327a8-5cc9-4a2f-9eae-784e1e5cee0f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-709b4593-8b2b-4d20-a7f5-35f6d13dc0b6' class='xr-var-data-in' type='checkbox'><label for='data-709b4593-8b2b-4d20-a7f5-35f6d13dc0b6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.26211 ,  25.343336,  32.424563,  39.505789,  46.587015,  53.668242,
+        60.749468,  67.830694,  74.911921,  81.993147,  89.074373,  96.1556  ,
+       103.236826, 110.318052, 117.399279, 124.480505, 131.561731, 138.642958,
+       145.724184, 152.80541 , 159.886637, 166.967863, 174.049089, 181.130316,
+       188.211542, 195.292768, 202.373994, 209.455221, 216.536447, 223.617673,
+       230.6989  , 237.780126, 244.861352, 251.942579, 259.023805, 266.105031,
+       273.186258, 280.267484, 287.34871 , 294.429937, 301.511163, 308.592389,
+       315.673616, 322.754842, 329.836068, 336.917295, 343.998521, 351.079747,
+       358.160974, 365.2422  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d465d165-7c91-40d1-81ae-abfc40effe0b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d465d165-7c91-40d1-81ae-abfc40effe0b' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Compare this with the same calculation for default (present-day) orbital parameters:</p>
 <div class="cell docutils container">
@@ -971,21 +2029,393 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray (day: 50)&gt;
-array([  0.      ,   0.      ,   0.      ,   0.      ,   0.      ,   0.      ,
-         0.      ,   0.      ,   0.      ,  18.862147,  85.006124, 149.064161,
-       210.143189, 267.437711, 320.234559, 367.914598, 409.95198 , 445.911553,
-       475.445007, 498.28632 , 514.246991, 523.211451, 525.133006, 520.030527,
-       507.98608 , 489.14354 , 463.70824 , 431.947545, 394.192247, 350.838546,
-       302.35036 , 249.261609, 192.178064, 131.778321,  68.813389,   4.104384,
-         0.      ,   0.      ,   0.      ,   0.      ,   0.      ,   0.      ,
-         0.      ,   0.      ,   0.      ,   0.      ,   0.      ,   0.      ,
-         0.      ,   0.      ])
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (day: 50)&gt;
+array([  0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,  18.86214697,  85.00612352, 149.06416099,
+       210.14318852, 267.43771123, 320.2345592 , 367.91459762,
+       409.95198005, 445.91155305, 475.44500661, 498.28632029,
+       514.24699096, 523.21145124, 525.13300552, 520.03052731,
+       507.9860795 , 489.14354007, 463.70823983, 431.94754511,
+       394.19224658, 350.83854561, 302.35036042, 249.26160895,
+       192.17806354, 131.7783206 ,  68.81338909,   4.10438408,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ])
 Coordinates:
-  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2
-</pre></div>
-</div>
-</div>
+  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>day</span>: 50</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-959d8f4b-7ab0-4dc1-96ff-4f4a415e8757' class='xr-array-in' type='checkbox' checked><label for='section-959d8f4b-7ab0-4dc1-96ff-4f4a415e8757' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</span></div><div class='xr-array-data'><pre>array([  0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,  18.86214697,  85.00612352, 149.06416099,
+       210.14318852, 267.43771123, 320.2345592 , 367.91459762,
+       409.95198005, 445.91155305, 475.44500661, 498.28632029,
+       514.24699096, 523.21145124, 525.13300552, 520.03052731,
+       507.9860795 , 489.14354007, 463.70823983, 431.94754511,
+       394.19224658, 350.83854561, 302.35036042, 249.26160895,
+       192.17806354, 131.7783206 ,  68.81338909,   4.10438408,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ,   0.        ,   0.        ,
+         0.        ,   0.        ])</pre></div></div></li><li class='xr-section-item'><input id='section-acbf91d7-dec0-4380-aceb-1f60a06d638d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-acbf91d7-dec0-4380-aceb-1f60a06d638d' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>day</span></div><div class='xr-var-dims'>(day)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.26 25.34 32.42 ... 358.2 365.2</div><input id='attrs-98fd5c60-1a6f-4f0c-89b5-1b917910d81a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-98fd5c60-1a6f-4f0c-89b5-1b917910d81a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e7d7c15-8909-4555-ba4a-15f632f661c7' class='xr-var-data-in' type='checkbox'><label for='data-7e7d7c15-8909-4555-ba4a-15f632f661c7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.26211 ,  25.343336,  32.424563,  39.505789,  46.587015,  53.668242,
+        60.749468,  67.830694,  74.911921,  81.993147,  89.074373,  96.1556  ,
+       103.236826, 110.318052, 117.399279, 124.480505, 131.561731, 138.642958,
+       145.724184, 152.80541 , 159.886637, 166.967863, 174.049089, 181.130316,
+       188.211542, 195.292768, 202.373994, 209.455221, 216.536447, 223.617673,
+       230.6989  , 237.780126, 244.861352, 251.942579, 259.023805, 266.105031,
+       273.186258, 280.267484, 287.34871 , 294.429937, 301.511163, 308.592389,
+       315.673616, 322.754842, 329.836068, 336.917295, 343.998521, 351.079747,
+       358.160974, 365.2422  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ccdd8258-74bc-44b5-9c11-8de063099483' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-ccdd8258-74bc-44b5-9c11-8de063099483' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Do you understand what’s going on here?</p>
 <hr class="docutils" />
@@ -1086,7 +2516,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0065104307832706005
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0065104307832676315
 </pre></div>
 </div>
 </div>

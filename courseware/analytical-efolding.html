@@ -597,6 +597,18 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a3ce85800550</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">Teq_observed</span><span class="o">**</span><span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#  This is an example of formatted text output in Python</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;lambda_0 = </span><span class="si">{:.2f}</span><span class="s1"> W m-2 K-1&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lambda_0</span><span class="p">)</span>  <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sigma&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>This is actually our first estimate of what is often called the <strong>Planck feedback</strong>. It is the tendency for a warm surface to cool by increased longwave radiation to space.</p>
 <p>It may also be refered to as the “no-feedback” climate response parameter. As we will see, <span class="math notranslate nohighlight">\(\lambda_0\)</span> quantifies the sensitivity of the climate system in the absence of any actual feedback processes.</p>
@@ -646,6 +658,18 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tstar</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">lambda_0</span>   <span class="c1">#  Calculated value of relaxation time constant</span>
 <span class="n">seconds_per_year</span> <span class="o">=</span> <span class="mf">60.</span><span class="o">*</span><span class="mf">60.</span><span class="o">*</span><span class="mf">24.</span><span class="o">*</span><span class="mf">365.</span>
 <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The e-folding time is </span><span class="si">{:1.2e}</span><span class="s1"> seconds or about </span><span class="si">{:1.0f}</span><span class="s1"> years.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tstar</span><span class="p">,</span> <span class="n">tstar</span> <span class="o">/</span> <span class="n">seconds_per_year</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">0</span><span class="n">ac00e98a0c7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tstar</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">lambda_0</span>   <span class="c1">#  Calculated value of relaxation time constant</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">seconds_per_year</span> <span class="o">=</span> <span class="mf">60.</span><span class="o">*</span><span class="mf">60.</span><span class="o">*</span><span class="mf">24.</span><span class="o">*</span><span class="mf">365.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The e-folding time is </span><span class="si">{:1.2e}</span><span class="s1"> seconds or about </span><span class="si">{:1.0f}</span><span class="s1"> years.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tstar</span><span class="p">,</span> <span class="n">tstar</span> <span class="o">/</span> <span class="n">seconds_per_year</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;C&#39; is not defined
 </pre></div>
 </div>
 </div>

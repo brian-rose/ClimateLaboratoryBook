@@ -688,6 +688,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6114139923687016
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s now deal with the shortwave (solar) side of the energy budget.</p>
 </div>
@@ -727,6 +732,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.29856431292118374
+</pre></div>
+</div>
+</div>
 </div>
 <p>That is, about 30% of the incoming radiation is reflected back to space.</p>
 </div>
@@ -741,6 +751,11 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ASRobserved</span> <span class="o">=</span> <span class="n">Q</span> <span class="o">-</span> <span class="n">Freflected</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ASRobserved</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>239.4
 </pre></div>
 </div>
 </div>
@@ -791,6 +806,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>288.27131447889224
+</pre></div>
+</div>
+</div>
 </div>
 <p>And this equilibrium temperature is <em>just slightly warmer</em> than 288 K.  Why?</p>
 </div>
@@ -811,6 +831,12 @@
 <span class="c1">#  an example of formatted print output, limiting to two or one decimal places</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The new equilibrium temperature is </span><span class="si">{:.2f}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Teq_new</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The equilibrium temperature increased by about </span><span class="si">{:.1f}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">Teq_new</span><span class="o">-</span><span class="n">Teq_observed</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The new equilibrium temperature is 291.10 K.
+The equilibrium temperature increased by about 2.8 K.
 </pre></div>
 </div>
 </div>
@@ -892,6 +918,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The effective heat capacity is 4.0e+08 J/m2/K
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="solving-the-energy-balance-model">
@@ -966,6 +997,19 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">e45ef08587df</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Try a single timestep, assuming we have working functions for ASR and OLR</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">T1</span> <span class="o">=</span> <span class="mf">288.</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ASR&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>What happened? Why?</p>
 <p>Try another timestep</p>
@@ -974,6 +1018,18 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T1</span> <span class="o">=</span> <span class="n">T2</span>
 <span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">78</span><span class="n">d4301314c6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">T1</span> <span class="o">=</span> <span class="n">T2</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">T2</span> <span class="o">=</span> <span class="n">T1</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">T2</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;T2&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -995,6 +1051,20 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">1</span><span class="n">ced446077e8</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">step_forward</span><span class="p">(</span><span class="mf">300.</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-12-bfffb80f9213&gt;</span> in <span class="ni">step_forward</span><span class="nt">(T)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">step_forward</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">T</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ASR&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice that our function calls other functions and variables we have already defined.</p>
 <div class="section" id="python-fact-10-functions-can-access-variables-and-other-functions-defined-outside-of-the-function">
@@ -1013,6 +1083,23 @@
     <span class="n">Years</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
     <span class="n">Tsteps</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span> <span class="n">Tsteps</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Tsteps</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="mf">04e9</span><span class="n">a6661927</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numsteps</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">Years</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">9</span>     <span class="n">Tsteps</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_forward</span><span class="p">(</span> <span class="n">Tsteps</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="nb">print</span><span class="p">(</span><span class="n">Tsteps</span><span class="p">)</span>
+
+<span class="nn">&lt;ipython-input-12-bfffb80f9213&gt;</span> in <span class="ni">step_forward</span><span class="nt">(T)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">step_forward</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">T</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;ASR&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1052,6 +1139,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Global mean temperature (K)&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/zero-dim-ebm_74_0.png" src="../_images/zero-dim-ebm_74_0.png" />
 </div>
 </div>
 <p>Note how the temperature <em>adjusts smoothly toward the equilibrium temperature</em>, that is, the temperature at which
