@@ -15,7 +15,7 @@ exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoin
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks         : auto  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  execute_notebooks         : off  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacs. Defaults to `_build/.jupyter_cache/`
   exclude_patterns          : []    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
   timeout                   : 600    # The maximum time (in seconds) each notebook cell is allowed to run.
@@ -29,7 +29,10 @@ execute:
 parse:
   myst_extended_syntax      : false  # enable MyST extended syntax support (see documents for details)
   myst_url_schemes          : [mailto, http, https]  # URI schemes that will be recognised as external URLs in Markdown links
-
+  # myst_enable_extensions:
+  #   # don't forget to list any other extensions you want enabled,
+  #   # including those that are enabled by default!
+  #   - amsmath  # needed for LaTeX-style math blocks like \begin{align*} \end{align*} with $$ delimitations
 #######################################################################################
 # HTML-specific settings
 html:
