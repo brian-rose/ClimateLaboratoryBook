@@ -65,7 +65,7 @@
 <meta property="og:url"         content="https://brian-rose.github.io/ClimateLaboratoryBook/README.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="The Climate Laboratory" />
-<meta property="og:description" content="The Climate Laboratory  DOI  A hands-on approach to climate physics and climate modeling  By Brian E. J. Rose, University at Albany  This will evolve into the t" />
+<meta property="og:description" content="The Climate Laboratory  DOI  A hands-on approach to climate physics and climate modeling  By Brian E. J. Rose, University at Albany  About the book  This book i" />
 
 
 <meta name="twitter:card" content="summary" />
@@ -444,6 +444,31 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-book">
+   About the book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-contribute-or-modify-the-book">
+   How to contribute or modify the book
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-is-the-book-published">
+   How is the book published
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -457,9 +482,8 @@
 <p><a class="reference external" href="https://zenodo.org/badge/latestdoi/231609808"><img alt="DOI" src="https://zenodo.org/badge/231609808.svg" /></a></p>
 <p><em><strong>A hands-on approach to climate physics and climate modeling</strong></em></p>
 <p><strong>By <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany</strong></p>
-<p>This will evolve into the textbook for both
-<a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/">ENV 415: Climate Laboratory</a> and <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2019/">ATM 623: Climate Modeling</a>
-at the <a class="reference external" href="https://www.albany.edu">University at Albany</a>.</p>
+<div class="section" id="about-the-book">
+<h2>About the book<a class="headerlink" href="#about-the-book" title="Permalink to this headline">¶</a></h2>
 <p>This book is powered by <a class="reference external" href="https://jupyterbook.org">JupyterBook</a>,
 and aims to be all of the following:</p>
 <ul class="simple">
@@ -468,6 +492,9 @@ and aims to be all of the following:</p>
 <li><p><strong>interactive</strong> <em>(integration with JupyterHub and Binder will allow readers to run and modify code examples)</em></p></li>
 <li><p>a <strong>living document</strong> <em>(content will continue to evolve, and collaboration is welcome)</em></p></li>
 </ul>
+<p>The material is mostly based on lecture notes for
+<a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/">ENV 415: Climate Laboratory</a> and <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2019/">ATM 623: Climate Modeling</a>
+at the <a class="reference external" href="https://www.albany.edu">University at Albany</a>.</p>
 <p><a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/">To view the book online, go here</a>.
 The JupyterBook source and all book content (mostly <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/">Jupyter Notebook</a> files)
 are all in <a class="reference external" href="https://github.com/brian-rose/ClimateLaboratoryBook">this github repository</a>.</p>
@@ -476,6 +503,33 @@ Python toolkit for interactive, process-oriented climate modeling.
 <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian Rose</a> is the principle developer of climlab as well as the author of this book.</p>
 <p>The contents of this book are licensed for free and open consumption under the following license:
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a></p>
+</div>
+<div class="section" id="how-to-contribute-or-modify-the-book">
+<h2>How to contribute or modify the book<a class="headerlink" href="#how-to-contribute-or-modify-the-book" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/brian-rose/ClimateLaboratoryBook">source repository on github</a> contains everything you need to build your own local version of the book.</p>
+<p>From a local clone of the source, set up a self-contained conda environment with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">--</span><span class="n">file</span> <span class="n">environment</span><span class="o">.</span><span class="n">yml</span>
+<span class="n">conda</span> <span class="n">activate</span> <span class="n">climlab</span><span class="o">-</span><span class="n">courseware</span>
+</pre></div>
+</div>
+<p>This environment contains all dependencies for <em>both</em> building the book and running all the code in the book.</p>
+<p>To build a local copy of the book, do this from the source root</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>You will then find the built book in <code class="docutils literal notranslate"><span class="pre">_build/html/</span></code>, which you can open in a web browser e.g. with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span> <span class="n">_build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>Note that building the book creates the html from the <code class="docutils literal notranslate"><span class="pre">*.md</span></code> and <code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code> sources, but does <em><strong>not</strong></em> re-run the notebooks. When building the book, we assume that all notebooks are already up-to-date!
+<em>(You can change this behavior by modifying the <code class="docutils literal notranslate"><span class="pre">execute_notebooks</span></code> flag in <code class="docutils literal notranslate"><span class="pre">_config.yml</span></code>, but beware that some of the notebooks take a very long time to execute.)</em></p>
+<p>Anyone is welcome to suggest edits or improvements by opening pull requests on the <a class="reference external" href="https://github.com/brian-rose/ClimateLaboratoryBook">github repository</a>. If you are editing any code in a notebook, please make sure you execute the modified notebook cleanly before submitting the PR.</p>
+</div>
+<div class="section" id="how-is-the-book-published">
+<h2>How is the book published<a class="headerlink" href="#how-is-the-book-published" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/">The book</a> is just the rendered html that results from running <code class="docutils literal notranslate"><span class="pre">jupyter-book</span> <span class="pre">build</span></code>. Currently I use the <a class="reference external" href="https://github.com/c-w/ghp-import">ghp-import</a> tool to copy the built html to the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch on <a class="reference external" href="https://github.com/brian-rose/ClimateLaboratoryBook">github</a>.</p>
+<p>See the <a class="reference external" href="https://jupyterbook.org/publish/gh-pages.html">JupyterBook docs</a> for more info on this.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
