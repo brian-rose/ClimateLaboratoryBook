@@ -634,11 +634,13 @@
 <p>First note that at equilibrium we must have</p>
 <div class="math notranslate nohighlight">
 \[ASR = OLR\]</div>
-<p>and in our very simple model, there is no change in ASR, so
-$<span class="math notranslate nohighlight">\( ASR_f = ASR_f \)</span>$
-(with  standing for final.)</p>
-<p>From this we infer that
-$<span class="math notranslate nohighlight">\( OLR_f = OLR_i \)</span>$</p>
+<p>and in our very simple model, there is no change in ASR, so</p>
+<div class="math notranslate nohighlight">
+\[ ASR_f = ASR_f \]</div>
+<p>(with  standing for final.)</p>
+<p>From this we infer that</p>
+<div class="math notranslate nohighlight">
+\[ OLR_f = OLR_i \]</div>
 <p>The new equilibrium will have <strong>exactly the same OLR</strong> as the old equilibrium, but a <strong>different surface temperature</strong>.</p>
 <p>The climate system must warm up by a certain amount to get the OLR back up to its original value! The question is, <strong>how much warming is necessary</strong>? In other words, <strong>what is the new equilibrium temperature</strong>?</p>
 <div class="section" id="equilibrium-climate-sensitivity-ecs">
@@ -648,7 +650,7 @@ $<span class="math notranslate nohighlight">\( OLR_f = OLR_i \)</span>$</p>
 <p>The temperature must increase so that the increase in OLR is exactly equal to the radiative forcing:</p>
 <div class="math notranslate nohighlight">
 \[ OLR_f - OLR_{2xCO2} = \Delta R \]</div>
-<p>From last lecture, we have linearized our model for OLR with a slope <span class="math notranslate nohighlight">\(\lambda_0 = 3.3\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>. This means that a global warming of 1 degree causes a 3.3 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> increase in the OLR. So we can write:</p>
+<p>From the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/analytical-efolding.html">lecture on analytical solutions of the global EBM</a>, we have linearized our model for OLR with a slope <span class="math notranslate nohighlight">\(\lambda_0 = 3.3\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>. This means that a global warming of 1 degree causes a 3.3 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> increase in the OLR. So we can write:</p>
 <div class="math notranslate nohighlight">
 \[OLR_f \approx OLR_{2xCO2} + \lambda_0 \Delta T_0 \]</div>
 <p>where we are writing the change in temperature as</p>
@@ -690,7 +692,7 @@ $<span class="math notranslate nohighlight">\( OLR_f = OLR_i \)</span>$</p>
 </div>
 <p>Question: what are the current best estimates for the actual warming (including all feedbacks) in response to a doubling of CO<span class="math notranslate nohighlight">\(_2\)</span>?</p>
 <p>We’ll now look at the feedback concept. Climate feedbacks tend to amplify the response to increased CO<span class="math notranslate nohighlight">\(_2\)</span>. But <span class="math notranslate nohighlight">\(\Delta T_0\)</span> is a meaningful climate sensitivity in the absence of feedback.</p>
-<p><span class="math notranslate nohighlight">\(\Delta T_0 = 1.2\)</span> K is the ** warming that we would have if the Earth radiated the excess energy away to space as a blackbody**, and with no change in the planetary albedo.</p>
+<p><span class="math notranslate nohighlight">\(\Delta T_0 = 1.2\)</span> K is the <strong>warming that we would have if the Earth radiated the excess energy away to space as a blackbody</strong>, and with no change in the planetary albedo.</p>
 <hr class="docutils" />
 <p><a id='section3'></a></p>
 </div>
@@ -819,9 +821,9 @@ $<span class="math notranslate nohighlight">\( OLR_f = OLR_i \)</span>$</p>
 </div>
 <div class="section" id="every-climate-model-has-a-planck-feedback">
 <h3>Every climate model has a Planck feedback<a class="headerlink" href="#every-climate-model-has-a-planck-feedback" title="Permalink to this headline">¶</a></h3>
-<p>The “Planck feedback” represented by our reference parameter <span class="math notranslate nohighlight">\(\lambda_0\)</span> is not really a feedback at all.</p>
+<p>The “Planck feedback” represented by the negative of our reference parameter <span class="math notranslate nohighlight">\(-\lambda_0\)</span> is not really a feedback at all.</p>
 <p>It is the most basic and universal climate process, and is present in every climate model. It is simply an expression of the fact that a warm planet radiates more to space than a cold planet.</p>
-<p>As we will see, our estimate of <span class="math notranslate nohighlight">\(\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} \)</span> is essentially the same as the Planck feedback diagnosed from complex GCMs. Unlike our simple zero-dimensional EBM, however, most other climate models (and the real climate system) have other radiative feedback processes, such that</p>
+<p>As we will see, our estimate of <span class="math notranslate nohighlight">\(-\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} \)</span> is essentially the same as the Planck feedback diagnosed from complex GCMs. Unlike our simple zero-dimensional EBM, however, most other climate models (and the real climate system) have other radiative feedback processes, such that</p>
 <div class="math notranslate nohighlight">
 \[\lambda = \lambda_0 - \sum_{i=1}^{N} \lambda_i \ne \lambda_0 \]</div>
 <hr class="docutils" />
@@ -851,7 +853,7 @@ $<span class="math notranslate nohighlight">\( OLR_f = OLR_i \)</span>$</p>
 <p>Things to note:</p>
 <ul class="simple">
 <li><p>The models all agree strongly on the Planck feedback.</p></li>
-<li><p>The Planck feedback is about <span class="math notranslate nohighlight">\(\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} \)</span> just like our above estimate (but with opposite sign convention – watch carefully for that in the literature)</p></li>
+<li><p>The Planck feedback is about <span class="math notranslate nohighlight">\(-\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} \)</span> just like our above estimate (but with opposite sign convention – watch carefully for that in the literature)</p></li>
 <li><p>The water vapor feedback is strongly positive in every model.</p></li>
 <li><p>The lapse rate feedback is something we will study later. It is slightly negative.</p></li>
 <li><p>For reasons we will discuss later, the best way to measure the water vapor feedback is to combine it with lapse rate feedback.</p></li>
