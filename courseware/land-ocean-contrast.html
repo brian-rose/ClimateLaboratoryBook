@@ -647,9 +647,7 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc
 Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_CO2ramp_f19/concatenated/cpl_CO2ramp_f19.cam.h0.nc
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_f19/concatenated/som_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_f19/concatenated/som_1850_f19.cam.h0.nc
 Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_2xCO2/concatenated/som_1850_2xCO2.cam.h0.nc
 </pre></div>
 </div>
@@ -880,16 +878,22 @@ The Transient Climate Response is 1.67 K.
 </ul>
 <p>The source terms on the RHS are respectively horizontal mixing of boundary layer air, horizontal mixing of free-tropospheric air, vertical mixing, and surface fluxes.</p>
 <p>Now assume that free-tropospheric moisture is proportional to boundary layer moisture:</p>
-<p>\begin{align*}
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
 q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
-\end{align*}</p>
+\end{align*}
+\]</div>
 <p>Setting the LHS of the moisture budget to zero, we can solve the steady-state budget for land specific humidity <span class="math notranslate nohighlight">\(q_L\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ q_L = \frac{\left[ h_O + \lambda_O ( h_L - h_O)\right] \tau_2}{h_L\left[\tau_1(1-\lambda_L) + \tau_2 \right]} q_O + \frac{\tau_1 \tau_2 }{\rho_a h_L \left[ \tau_1(1-\lambda_L) + \tau_2 \right]} E_L \]</div>
 <p>where for convenience we have defined horizontal and vertical mixing timescales</p>
-<p>\begin{align*}
-\tau_1 &amp;= \frac{l}{v_1}  &amp;  \tau_2 &amp;= \frac{h_L}{v_2}
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{align*}
+\tau_1 &amp;= \frac{l}{v_1}  &amp;  \tau_2 &amp;= \frac{h_L}{v_2} 
+\end{align*}
+\]</div>
 <p>The two terms above quantify the relative importance of remote ocean specific humidity and local evapotransipiration on land specific humidity. We can rewrite this as</p>
 <div class="math notranslate nohighlight">
 \[ q_L = \gamma q_O + q_E \]</div>
@@ -957,16 +961,19 @@ q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
 </ol>
 <div class="math notranslate nohighlight">
 \[ A \equiv \frac{\delta T_L}{\delta T_O} = 1 + \frac{L_v}{c_p} \frac{\delta q_O - \delta q_L}{\delta T_O} \]</div>
-<p>while</p>
 <ol class="simple">
 <li><p>the moisture constraint (in its simplest form) gives</p></li>
 </ol>
-<p>\begin{align*}
-\delta q_L &amp;= \gamma \delta q_O  \
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\delta q_L &amp;= \gamma \delta q_O  \\
 \gamma &amp;= \frac{\overline{q_L}}{\overline{q_O}}
-\end{align*}</p>
-<p>so that the amplification factor is simply
-$<span class="math notranslate nohighlight">\( A = 1 + \frac{L_v}{c_p} (1-\gamma) \frac{\delta q_O}{\delta T_O} \)</span>$</p>
+\end{align*}
+\end{split}\]</div>
+<p>so that the amplification factor is simply</p>
+<div class="math notranslate nohighlight">
+\[ A = 1 + \frac{L_v}{c_p} (1-\gamma) \frac{\delta q_O}{\delta T_O} \]</div>
 <p>We are going to evaluate this theory quantitatively against the CESM simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

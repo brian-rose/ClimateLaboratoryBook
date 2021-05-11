@@ -591,21 +591,19 @@
 <p>Putting in our observational values, we get</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">Teq_observed</span><span class="o">**</span><span class="mi">3</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OLRobserved</span> <span class="o">=</span> <span class="mf">238.5</span>  <span class="c1"># in W/m2</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">5.67E-8</span>  <span class="c1"># S-B constant</span>
+<span class="n">Tsobserved</span> <span class="o">=</span> <span class="mf">288.</span>  <span class="c1"># global average surface temperature</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">OLRobserved</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">Tsobserved</span><span class="o">**</span><span class="mi">4</span>  <span class="c1"># solve for tuned value of transmissivity</span>
+
+<span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">Tsobserved</span><span class="o">**</span><span class="mi">3</span>
 <span class="c1">#  This is an example of formatted text output in Python</span>
 <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;lambda_0 = </span><span class="si">{:.2f}</span><span class="s1"> W m-2 K-1&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lambda_0</span><span class="p">)</span>  <span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">a3ce85800550</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">Teq_observed</span><span class="o">**</span><span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#  This is an example of formatted text output in Python</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;lambda_0 = </span><span class="si">{:.2f}</span><span class="s1"> W m-2 K-1&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lambda_0</span><span class="p">)</span>  <span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sigma&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lambda_0 = 3.31 W m-2 K-1
 </pre></div>
 </div>
 </div>
@@ -655,21 +653,19 @@
 <p>Now calculate the e-folding time for the surface temperature:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tstar</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">lambda_0</span>   <span class="c1">#  Calculated value of relaxation time constant</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_w</span> <span class="o">=</span> <span class="mf">4E3</span>  <span class="c1">#  Specific heat of water in J/kg/K</span>
+<span class="n">rho_w</span> <span class="o">=</span> <span class="mf">1E3</span>  <span class="c1">#  Density of water in kg/m3</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mf">100.</span>   <span class="c1">#  Depth of water in m</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">c_w</span> <span class="o">*</span> <span class="n">rho_w</span> <span class="o">*</span> <span class="n">H</span>   <span class="c1">#  Heat capacity of the model </span>
+
+<span class="n">tstar</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">lambda_0</span>   <span class="c1">#  Calculated value of relaxation time constant</span>
 <span class="n">seconds_per_year</span> <span class="o">=</span> <span class="mf">60.</span><span class="o">*</span><span class="mf">60.</span><span class="o">*</span><span class="mf">24.</span><span class="o">*</span><span class="mf">365.</span>
 <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The e-folding time is </span><span class="si">{:1.2e}</span><span class="s1"> seconds or about </span><span class="si">{:1.0f}</span><span class="s1"> years.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tstar</span><span class="p">,</span> <span class="n">tstar</span> <span class="o">/</span> <span class="n">seconds_per_year</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">0</span><span class="n">ac00e98a0c7</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tstar</span> <span class="o">=</span> <span class="n">C</span> <span class="o">/</span> <span class="n">lambda_0</span>   <span class="c1">#  Calculated value of relaxation time constant</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">seconds_per_year</span> <span class="o">=</span> <span class="mf">60.</span><span class="o">*</span><span class="mf">60.</span><span class="o">*</span><span class="mf">24.</span><span class="o">*</span><span class="mf">365.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The e-folding time is </span><span class="si">{:1.2e}</span><span class="s1"> seconds or about </span><span class="si">{:1.0f}</span><span class="s1"> years.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tstar</span><span class="p">,</span> <span class="n">tstar</span> <span class="o">/</span> <span class="n">seconds_per_year</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;C&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The e-folding time is 1.21e+08 seconds or about 4 years.
 </pre></div>
 </div>
 </div>

@@ -723,19 +723,25 @@
 </div>
 <div class="section" id="energy-balance-at-the-surface">
 <h3>Energy balance at the surface<a class="headerlink" href="#energy-balance-at-the-surface" title="Permalink to this headline">¶</a></h3>
-<p>\begin{align}
-\text{energy in} &amp;= \text{energy out} \
-(1-\alpha) Q + \sigma T_a^4 &amp;= \sigma T_s^4 \
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\text{energy in} &amp;= \text{energy out} \\
+(1-\alpha) Q + \sigma T_a^4 &amp;= \sigma T_s^4 \\
+\end{align*}
+\end{split}\]</div>
 <p>The presence of the atmosphere above means there is an additional source term: downwelling infrared radiation from the atmosphere.</p>
 <p>We call this the <strong>back radiation</strong>.</p>
 </div>
 <div class="section" id="energy-balance-for-the-atmosphere">
 <h3>Energy balance for the atmosphere<a class="headerlink" href="#energy-balance-for-the-atmosphere" title="Permalink to this headline">¶</a></h3>
-<p>\begin{align}
-\text{energy in} &amp;= \text{energy out} \
-\sigma T_s^4 &amp;= A\uparrow + A\downarrow = 2 \sigma T_a^4 \
-\end{align}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{energy in} &amp;= \text{energy out} \\
+\sigma T_s^4 &amp;= A\uparrow + A\downarrow = 2 \sigma T_a^4 \\
+\end{align}
+\end{split}\]</div>
 <p>which means that
 $<span class="math notranslate nohighlight">\( T_s = 2^\frac{1}{4} T_a \approx 1.2 T_a \)</span>$</p>
 <p>So we have just determined that, in order to have a purely <strong>radiative equilibrium</strong>, we must have <span class="math notranslate nohighlight">\(T_s &gt; T_a\)</span>.</p>
@@ -750,10 +756,12 @@ $<span class="math notranslate nohighlight">\( T_s = 2^\frac{1}{4} T_a \approx 1
 <div class="math notranslate nohighlight">
 \[ (1-\alpha) Q = \sigma T_e^4 \]</div>
 <p><em>In fact, in this model, <span class="math notranslate nohighlight">\(T_e\)</span> is identical to the atmospheric temperature <span class="math notranslate nohighlight">\(T_a\)</span>, since all the OLR originates from this layer.</em></p>
-<p>Solve for the surface temperature:
-$<span class="math notranslate nohighlight">\( T_s = 2^\frac{1}{4} T_e \)</span>$</p>
-<p>Putting in observed numbers, <span class="math notranslate nohighlight">\(T_e = 255\)</span> K gives a surface temperature of
-$<span class="math notranslate nohighlight">\(T_s = 303 ~\text{K}\)</span>$</p>
+<p>Solve for the surface temperature:</p>
+<div class="math notranslate nohighlight">
+\[ T_s = 2^\frac{1}{4} T_e \]</div>
+<p>Putting in observed numbers, <span class="math notranslate nohighlight">\(T_e = 255\)</span> K gives a surface temperature of</p>
+<div class="math notranslate nohighlight">
+\[T_s = 303 ~\text{K}\]</div>
 <p>This model is one small step closer to reality: surface is warmer than atmosphere, emissions to space generated in the atmosphere, atmosphere heated from below and helping to keep surface warm.</p>
 </div>
 <div class="section" id="why-does-this-model-overpredict-the-surface-temperature">
@@ -859,10 +867,10 @@ $<span class="math notranslate nohighlight">\(T_s = 303 ~\text{K}\)</span>$</p>
 <h3>Outgoing Longwave Radiation<a class="headerlink" href="#outgoing-longwave-radiation" title="Permalink to this headline">¶</a></h3>
 <p>Since there is <strong>no more atmosphere above layer 1</strong>, this upwelling beam is our OLR for this model:</p>
 <div class="math notranslate nohighlight">
-\[OLR = U_2 = (1-\epsilon) U_1 + \epsilon \sigma T_1^4\]</div>
+\[\text{OLR} = U_2 = (1-\epsilon) U_1 + \epsilon \sigma T_1^4\]</div>
 <p>which, plugging in the above expression for <span class="math notranslate nohighlight">\(U_1\)</span>, works out to</p>
 <div class="math notranslate nohighlight">
-\[OLR= (1-\epsilon)^2 \sigma T_s^4 + \epsilon(1-\epsilon)\sigma T_0^4 + \epsilon \sigma T_1^4\]</div>
+\[\text{OLR} = (1-\epsilon)^2 \sigma T_s^4 + \epsilon(1-\epsilon)\sigma T_0^4 + \epsilon \sigma T_1^4\]</div>
 <p>Here the three terms represent <strong>contributions to the total OLR</strong> that <strong>originate from each of the three levels</strong></p>
 </div>
 <div class="section" id="limits-of-large-and-small-absorptivity-emissivity">
@@ -933,7 +941,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <h3>OLR<a class="headerlink" href="#olr" title="Permalink to this headline">¶</a></h3>
 <p>From the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/models-budgets-fun.html#2.-The-observed-global-energy-budget">observed global energy budget</a> we set</p>
 <div class="math notranslate nohighlight">
-\[OLR = 238.5 \text{ W m}^{-2}\]</div>
+\[\text{OLR} = 238.5 \text{ W m}^{-2}\]</div>
 </div>
 <div class="section" id="solving-for-epsilon">
 <h3>Solving for <span class="math notranslate nohighlight">\(\epsilon\)</span><a class="headerlink" href="#solving-for-epsilon" title="Permalink to this headline">¶</a></h3>
@@ -946,7 +954,7 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <h3>Exercise: graphical solution to find the best fit value of <span class="math notranslate nohighlight">\(\epsilon\)</span><a class="headerlink" href="#exercise-graphical-solution-to-find-the-best-fit-value-of-epsilon" title="Permalink to this headline">¶</a></h3>
 <p>The OLR formula for the leaky greenhouse that we derived above is</p>
 <div class="math notranslate nohighlight">
-\[OLR= (1-\epsilon)^2 \sigma T_s^4 + \epsilon(1-\epsilon)\sigma T_0^4 + \epsilon \sigma T_1^4\]</div>
+\[\text{OLR} = (1-\epsilon)^2 \sigma T_s^4 + \epsilon(1-\epsilon)\sigma T_0^4 + \epsilon \sigma T_1^4\]</div>
 <p>Do the following:</p>
 <ul class="simple">
 <li><p>Write a Python function that implements this formula</p></li>
@@ -979,11 +987,14 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <h3>Contributions from each level to the outgoing radiation<a class="headerlink" href="#contributions-from-each-level-to-the-outgoing-radiation" title="Permalink to this headline">¶</a></h3>
 <p>Now that we have tuned up our model, we can see exactly how strongly each level contributes to the OLR.</p>
 <p>The three components of the OLR are</p>
-<p>\begin{align*}
-OLR_s &amp;= (1-\epsilon)^2 \sigma T_s^4  \
-OLR_0 &amp;= \epsilon(1-\epsilon)\sigma T_0^4 \
-OLR_1 &amp;= \epsilon \sigma T_1^4
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\text{OLR}_s &amp;= (1-\epsilon)^2 \sigma T_s^4  \\
+\text{OLR}_0 &amp;= \epsilon(1-\epsilon)\sigma T_0^4 \\
+\text{OLR}_1 &amp;= \epsilon \sigma T_1^4 
+\end{align*}
+\end{split}\]</div>
 <p>which of course add up to the total OLR we wrote down above.</p>
 </div>
 <div class="section" id="exercise-calculate-contributions-to-olr">
@@ -1017,29 +1028,41 @@ OLR_1 &amp;= \epsilon \sigma T_1^4
 <h3>Calculating the change in level of emission<a class="headerlink" href="#calculating-the-change-in-level-of-emission" title="Permalink to this headline">¶</a></h3>
 <p>Let’s use our two-layer leaky greenhouse model to investigate the answer.</p>
 <p>The components of the OLR before the perturbation are</p>
-<p>\begin{align*}
-OLR_s &amp;= (1-\epsilon)^2 \sigma T_s^4  \
-OLR_0 &amp;= \epsilon(1-\epsilon)\sigma T_0^4 \
-OLR_1 &amp;= \epsilon \sigma T_1^4
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\text{OLR}_s &amp;= (1-\epsilon)^2 \sigma T_s^4  \\
+\text{OLR}_0 &amp;= \epsilon(1-\epsilon)\sigma T_0^4 \\
+\text{OLR}_1 &amp;= \epsilon \sigma T_1^4 
+\end{align*}
+\end{split}\]</div>
 <p>and after the perturbation we have</p>
-<p>\begin{align*}
-OLR_s &amp;= (1-\epsilon - \Delta \epsilon)^2 \sigma T_s^4  \
-OLR_0 &amp;= (\epsilon + \Delta \epsilon)(1-\epsilon - \Delta \epsilon)\sigma T_0^4 \
-OLR_1 &amp;= (\epsilon + \Delta \epsilon) \sigma T_1^4
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\text{OLR}_s &amp;= (1-\epsilon - \Delta \epsilon)^2 \sigma T_s^4  \\
+\text{OLR}_0 &amp;= (\epsilon + \Delta \epsilon)(1-\epsilon - \Delta \epsilon)\sigma T_0^4 \\
+\text{OLR}_1 &amp;= (\epsilon + \Delta \epsilon) \sigma T_1^4 
+\end{align*}
+\end{split}\]</div>
 <p>Let’s subtract off the original components to get the contributions to the <strong>change in OLR</strong> from each layer:</p>
-<p>\begin{align*}
-\Delta OLR_s &amp;= \left[(1-\epsilon - \Delta \epsilon)^2 - (1-\epsilon)^2\right]\sigma T_s^4  \
-\Delta OLR_0 &amp;= \left[(\epsilon + \Delta \epsilon)(1-\epsilon - \Delta \epsilon) - \epsilon(1-\epsilon)  \right] \sigma T_0^4 \
-\Delta OLR_1 &amp;= \left[(\epsilon + \Delta \epsilon) - \epsilon \right] \sigma T_1^4
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\Delta \text{OLR}_s &amp;= \left[(1-\epsilon - \Delta \epsilon)^2 - (1-\epsilon)^2\right]\sigma T_s^4  \\
+\Delta \text{OLR}_0 &amp;= \left[(\epsilon + \Delta \epsilon)(1-\epsilon - \Delta \epsilon) - \epsilon(1-\epsilon)  \right] \sigma T_0^4 \\
+\Delta \text{OLR}_1 &amp;= \left[(\epsilon + \Delta \epsilon) - \epsilon \right] \sigma T_1^4 
+\end{align*}
+\end{split}\]</div>
 <p>Now expand this out, but to make things easier to deal with, neglect term in <span class="math notranslate nohighlight">\(\Delta \epsilon^2\)</span> (very small - we will be considering changes of less than 10% in <span class="math notranslate nohighlight">\(\epsilon\)</span>):</p>
-<p>\begin{align*}
-\Delta OLR_s &amp;\approx (\Delta \epsilon) \left[ -2(1-\epsilon) \right] \sigma T_s^4  \
-\Delta OLR_0 &amp;\approx (\Delta \epsilon) (1 - 2 \epsilon) \sigma T_0^4 \
-\Delta OLR_1 &amp;\approx (\Delta \epsilon) \sigma T_1^4
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\Delta \text{OLR}_s &amp;\approx (\Delta \epsilon) \left[ -2(1-\epsilon) \right] \sigma T_s^4  \\
+\Delta \text{OLR}_0 &amp;\approx (\Delta \epsilon) (1 - 2 \epsilon) \sigma T_0^4 \\
+\Delta \text{OLR}_1 &amp;\approx (\Delta \epsilon) \sigma T_1^4 
+\end{align*}
+\end{split}\]</div>
 <p>Now look at the <strong>sign</strong> of each term. Recall that <span class="math notranslate nohighlight">\(0 &lt; \epsilon &lt; 1\)</span>. <strong>Which terms in the OLR go up and which go down?</strong></p>
 <p><strong>THIS IS VERY IMPORTANT, SO STOP AND THINK ABOUT IT.</strong></p>
 <p>The contribution from the <strong>surface</strong> must <strong>decrease</strong>, while the contribution from the <strong>top layer</strong> must <strong>increase</strong>.</p>
@@ -1056,7 +1079,7 @@ OLR_1 &amp;= (\epsilon + \Delta \epsilon) \sigma T_1^4
 <p><strong>“Radiative forcing” is the change in total radiative flux at TOA after adding absorbers</strong></p>
 <p>In this model, <strong>only the longwave flux can change</strong>, so we calculate the radiative forcing as</p>
 <div class="math notranslate nohighlight">
-\[ R = - \Delta OLR \]</div>
+\[ R = - \Delta \text{OLR} \]</div>
 <p>(with the minus sign so that <span class="math notranslate nohighlight">\(R\)</span> is <strong>positive when the climate system is gaining extra energy</strong>).</p>
 </div>
 <div class="section" id="connection-between-radiative-forcing-and-level-of-emission">
@@ -1064,10 +1087,13 @@ OLR_1 &amp;= (\epsilon + \Delta \epsilon) \sigma T_1^4
 <p>We just worked out that whenever we <strong>add some extra absorbers</strong>, the <strong>emissions to space</strong> (on average) will originate from <strong>higher levels</strong> in the atmosphere.</p>
 <p>What does this mean for OLR? Will it increase or decrease?</p>
 <p>To get the answer, we just have to sum up the three contributions we wrote above:</p>
-<p>\begin{align*}
-R &amp;= -\Delta OLR_s - \Delta OLR_0 - \Delta OLR_1  \
-&amp;= -\Delta \epsilon \left[  -2(1-\epsilon) \sigma T_s^4 + (1 - 2 \epsilon) \sigma T_0^4  + \sigma T_1^4 \right]
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R &amp;= -\Delta \text{OLR}_s - \Delta \text{OLR}_0 - \Delta \text{OLR}_1  \\
+  &amp;= -\Delta \epsilon \left[  -2(1-\epsilon) \sigma T_s^4 + (1 - 2 \epsilon) \sigma T_0^4  + \sigma T_1^4 \right]
+\end{align*}
+\end{split}\]</div>
 <p>Is this a positive or negative number? The key point is this:</p>
 <p><strong>It depends on the temperatures, i.e. on the lapse rate.</strong></p>
 </div>

@@ -617,9 +617,9 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.Dataset&gt;
 Dimensions:             (lat: 94, lon: 192, nbnds: 2, time: 12)
 Coordinates:
-  * lon                 (lon) float32 0.0 1.875 3.75 5.625 ... 354.4 356.2 358.1
-  * time                (time) datetime64[ns] NaT NaT NaT NaT ... NaT NaT NaT
-  * lat                 (lat) float32 88.54 86.65 84.75 ... -84.75 -86.65 -88.54
+  * lon                 (lon) float32 0.0 1.875 3.75 ... 354.375 356.25 358.125
+  * time                (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:00:00
+  * lat                 (lat) float32 88.542 86.6531 ... -86.6531 -88.542
 Dimensions without coordinates: nbnds
 Data variables:
     climatology_bounds  (time, nbnds) datetime64[ns] ...
@@ -632,12 +632,14 @@ Attributes:
     platform:                       Model
     not_missing_threshold_percent:  minimum 3% values input to have non-missi...
     history:                        Created 2011/07/12 by doMonthLTM\nConvert...
+    References:                     http://www.esrl.noaa.gov/psd/data/gridded...
     dataset_title:                  NCEP-NCAR Reanalysis 1
-    References:                     http://www.psl.noaa.gov/data/gridded/data...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/xarray/coding/times.py:113: SerializationWarning: Ambiguous reference date string: 1-1-1 00:00:0.0. The first value is assumed to be the year hence will be padded with zeros to remove the ambiguity (the padded reference date string is: 0001-1-1 00:00:0.0). To remove this message, remove the ambiguity by padding your reference date strings with zeros.
-  warnings.warn(warning_msg, SerializationWarning)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/xarray/coding/times.py:426: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  dtype = _decode_cf_datetime_dtype(data, units, calendar, self.use_cftime)
+/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/numpy/core/_asarray.py:85: SerializationWarning: Unable to decode time axis into full numpy.datetime64 objects, continuing using cftime.datetime objects instead, reason: dates out of range
+  return array(a, dtype, copy=False, order=order)
 </pre></div>
 </div>
 </div>
@@ -653,17 +655,17 @@ Attributes:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;air&#39; (time: 12, lat: 94, lon: 192)&gt;
 [216576 values with dtype=float32]
 Coordinates:
-  * lon      (lon) float32 0.0 1.875 3.75 5.625 7.5 ... 352.5 354.4 356.2 358.1
-  * time     (time) datetime64[ns] NaT NaT NaT NaT NaT ... NaT NaT NaT NaT NaT
-  * lat      (lat) float32 88.54 86.65 84.75 82.85 ... -84.75 -86.65 -88.54
-Attributes: (12/13)
+  * lon      (lon) float32 0.0 1.875 3.75 5.625 ... 352.5 354.375 356.25 358.125
+  * time     (time) object 0001-01-01 00:00:00 ... 0001-12-01 00:00:00
+  * lat      (lat) float32 88.542 86.6531 84.7532 ... -84.7532 -86.6531 -88.542
+Attributes:
     long_name:     Monthly Long Term Mean of Air Temperature
     valid_range:   [150. 400.]
     units:         degK
     precision:     2
     GRIB_id:       11
     GRIB_name:     TMP
-    ...            ...
+    var_desc:      Air temperature
     level_desc:    2 m
     statistic:     Long Term Mean
     parent_stat:   Mean

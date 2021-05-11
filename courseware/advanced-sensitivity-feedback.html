@@ -720,21 +720,27 @@ $<span class="math notranslate nohighlight">\( OLR_f = OLR_i \)</span>$</p>
 <div class="section" id="climate-feedback-some-definitions">
 <h2>4. Climate feedback: some definitions<a class="headerlink" href="#climate-feedback-some-definitions" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>We start with an initial radiative forcing , and get a response
-$<span class="math notranslate nohighlight">\( \Delta T_0 = \frac{\Delta R}{\lambda_0} \)</span>$</p>
+<p>We start with an initial radiative forcing , and get a response</p>
+<div class="math notranslate nohighlight">
+\[ \Delta T_0 = \frac{\Delta R}{\lambda_0} \]</div>
 <p>Now consider what happens in the presence of a feedback process. For a concrete example, let’s take the <strong>water vapor feedback</strong>. For every degree of warming, there is an additional increase in the greenhouse effect, and thus additional energy added to the system.</p>
-<p>Let’s denote this extra energy as
-$<span class="math notranslate nohighlight">\( f \lambda_0 \Delta T_0 \)</span>$</p>
+<p>Let’s denote this extra energy as</p>
+<div class="math notranslate nohighlight">
+\[ f \lambda_0 \Delta T_0 \]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the <strong>feedback amount</strong>, a number that represents what fraction of the output gets added back to the input. <span class="math notranslate nohighlight">\(f\)</span> must be between <span class="math notranslate nohighlight">\(-\infty\)</span> and +1.</p>
 <p>For the example of the water vapor feedback, <span class="math notranslate nohighlight">\(f\)</span> is positive (between 0 and +1) – the process adds extra energy to the original radiative forcing.</p>
-<p>The amount of energy in the full “input” is now
-$<span class="math notranslate nohighlight">\( \Delta R + f \lambda_0 \Delta T_0 \)</span><span class="math notranslate nohighlight">\(
-or
-\)</span><span class="math notranslate nohighlight">\( (1+f) \lambda_0 \Delta T_0 \)</span>$</p>
-<p>But now we need to consider the next loop. A fraction <span class="math notranslate nohighlight">\(f\)</span> of the additional energy is also added to the input, giving us
-$<span class="math notranslate nohighlight">\( (1+f+f^2) \lambda_0 \Delta T_0 \)</span>$</p>
-<p>and we can go round and round, leading to the infinite series
-$<span class="math notranslate nohighlight">\( (1+f+f^2+f^3+ ...) \lambda_0 \Delta T_0 = \lambda_0 \Delta T_0 \sum_{n=0}^{\infty} f^n \)</span>$</p>
+<p>The amount of energy in the full “input” is now</p>
+<div class="math notranslate nohighlight">
+\[ \Delta R + f \lambda_0 \Delta T_0 \]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[ (1+f) \lambda_0 \Delta T_0 \]</div>
+<p>But now we need to consider the next loop. A fraction <span class="math notranslate nohighlight">\(f\)</span> of the additional energy is also added to the input, giving us</p>
+<div class="math notranslate nohighlight">
+\[ (1+f+f^2) \lambda_0 \Delta T_0 \]</div>
+<p>and we can go round and round, leading to the infinite series</p>
+<div class="math notranslate nohighlight">
+\[ (1+f+f^2+f^3+ ...) \lambda_0 \Delta T_0 = \lambda_0 \Delta T_0 \sum_{n=0}^{\infty} f^n \]</div>
 <p>Question: what happens if <span class="math notranslate nohighlight">\(f=1\)</span>?</p>
 <p>It so happens that this infinite series has an exact solution</p>
 <div class="math notranslate nohighlight">
@@ -742,8 +748,9 @@ $<span class="math notranslate nohighlight">\( (1+f+f^2+f^3+ ...) \lambda_0 \Del
 <p>So the full response including all the effects of the feedback is actually</p>
 <div class="math notranslate nohighlight">
 \[ \Delta T = \frac{1}{1-f} \Delta T_0 \]</div>
-<p>This is also sometimes written as
-$<span class="math notranslate nohighlight">\( \Delta T = g \Delta T_0 \)</span>$</p>
+<p>This is also sometimes written as</p>
+<div class="math notranslate nohighlight">
+\[ \Delta T = g \Delta T_0 \]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[ g = \frac{1}{1-f} = \frac{\Delta T}{\Delta T_0} \]</div>
@@ -963,7 +970,7 @@ $<span class="math notranslate nohighlight">\( \Delta T = g \Delta T_0 \)</span>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fea81836b20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10c725fd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/advanced-sensitivity-feedback_50_1.png" src="../_images/advanced-sensitivity-feedback_50_1.png" />
