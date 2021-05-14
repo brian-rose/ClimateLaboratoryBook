@@ -628,8 +628,8 @@
 <h2>1. The observed seasonal cycle from NCEP Reanalysis data<a class="headerlink" href="#the-observed-seasonal-cycle-from-ncep-reanalysis-data" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Look at the observed seasonal cycle in the NCEP reanalysis data.</p>
-<p>Read in the necessary data from the online server.</p>
-<p>The catalog is here: <a class="reference external" href="http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/catalog.html">http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/catalog.html</a></p>
+<p>Read in the necessary data from the online server <em>courtesy of the <a class="reference external" href="https://psl.noaa.gov">NOAA Physical Sciences Laboratory</a></em></p>
+<p>The catalog is here: <a class="reference external" href="https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis.derived/catalog.html">https://psl.noaa.gov/thredds/catalog/Datasets/ncep.reanalysis.derived/catalog.html</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -645,9 +645,9 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## The NOAA ESRL server is shutdown! January 2019</span>
-<span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://psl.noaa.gov/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
 <span class="n">ncep_Ts</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/skt.sfc.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="c1"># Alternative source from the University of Hawai&#39;i</span>
 <span class="c1">#url = &quot;http://apdrc.soest.hawaii.edu:80/dods/public_data/Reanalysis_Data/NCEP/NCEP/clima/&quot;</span>
 <span class="c1">#ncep_Ts = xr.open_dataset(url + &#39;surface_gauss/skt&#39;)</span>
 <span class="n">lat_ncep</span> <span class="o">=</span> <span class="n">ncep_Ts</span><span class="o">.</span><span class="n">lat</span><span class="p">;</span> <span class="n">lon_ncep</span> <span class="o">=</span> <span class="n">ncep_Ts</span><span class="o">.</span><span class="n">lon</span>
@@ -1048,7 +1048,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;climlab.model.ebm.EBM_seasonal at 0x1669e50a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;climlab.model.ebm.EBM_seasonal at 0x168f66520&gt;
 </pre></div>
 </div>
 </div>
@@ -1088,7 +1088,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x166a584c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x168fe5040&gt;
 </pre></div>
 </div>
 <img alt="../_images/seasonal-cycle_57_1.png" src="../_images/seasonal-cycle_57_1.png" />
