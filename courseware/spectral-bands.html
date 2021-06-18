@@ -625,13 +625,13 @@
 <h2>1. What if CO<span class="math notranslate nohighlight">\(_2\)</span> actually behaved like a Grey Gas?<a class="headerlink" href="#what-if-co-2-actually-behaved-like-a-grey-gas" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>Suppose that CO<span class="math notranslate nohighlight">\(_2\)</span> actually behaved as a grey gas. In other words, no spectral dependence in absorptivity.</p>
-<p>If we then <strong>double the CO2 concentration</strong> in the atmosphere, we double the number of absorbers. This should imply that we also <strong>double the absorption cross-section</strong> <span class="math notranslate nohighlight">\(\kappa\)</span>. Following the notation from our <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html#2.-The-Grey-Gas-Model">lecture on grey-gas radiative transfer</a>, we have:</p>
+<p>If we then <strong>double the CO2 concentration</strong> in the atmosphere, we double the number of absorbers. This should imply that we also <strong>double the absorption cross-section</strong> <span class="math notranslate nohighlight">\(\kappa\)</span>. Following the notation from our <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#introducing-the-two-layer-grey-gas-model">lecture on grey-gas radiative transfer</a>, we have:</p>
 <div class="math notranslate nohighlight">
 \[ \kappa^\prime = 2 ~ \kappa \]</div>
 <p>This would imply that we <strong>double the optical thickness of every layer</strong>:</p>
 <div class="math notranslate nohighlight">
 \[ \Delta \tau^\prime  = 2 \left( -\frac{\kappa}{g} \Delta p \right) = 2 ~ \Delta \tau\]</div>
-<p>And since <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html#Emissivity">the absorptivity / emissivity of each layer</a> is</p>
+<p>And since <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html#emissivity">the absorptivity / emissivity of each layer</a> is</p>
 <div class="math notranslate nohighlight">
 \[  \epsilon = 1 - \exp\big( - \Delta \tau \big)  \]</div>
 <p>the <strong>modified absorptivity</strong> is</p>
@@ -643,7 +643,7 @@
 <p>(Note that <span class="math notranslate nohighlight">\(\epsilon^\prime = 2 \epsilon\)</span> for very thin layers, for which <span class="math notranslate nohighlight">\(\epsilon\)</span> is small).</p>
 <div class="section" id="what-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing">
 <h3>What does our 2-layer analytical model then say about the radiative forcing?<a class="headerlink" href="#what-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing" title="Permalink to this headline">¶</a></h3>
-<p>Recall that <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#4.-Tuning-the-grey-gas-model-to-observations">we tuned the two-layer grey gas model</a> with</p>
+<p>Recall that <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#tuning-the-grey-gas-model-to-observations">we tuned the two-layer grey gas model</a> with</p>
 <div class="math notranslate nohighlight">
 \[ \epsilon = 0.586 \]</div>
 <p>to get the observed OLR with observed temperatures.</p>
@@ -662,7 +662,7 @@
 </div>
 </div>
 <p><strong>If CO2 behaved like a grey gas</strong>, doubling it would cause a huge increase in the absorptivity of each layer!</p>
-<p><a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#The-radiative-forcing-(change-in-OLR)-depends-on-the-lapse-rate%21">We previously worked out that the radiative forcing in this model</a> (with the observed lapse rate) is about +2.6 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> for a 2% increase in <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<p><a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#the-radiative-forcing-change-in-olr-depends-on-the-lapse-rate">We previously worked out that the radiative forcing in this model</a> (with the observed lapse rate) is about +2.6 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> for a 2% increase in <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forcing_rate</span> <span class="o">=</span> <span class="mf">2.6</span> <span class="o">/</span> <span class="mf">0.02</span>   <span class="c1"># W/m2 forcing per fractional increase in epsilon</span>
@@ -693,7 +693,7 @@
 </div>
 </div>
 <p><strong>Our hypothetical doubling of “grey CO<span class="math notranslate nohighlight">\(_2\)</span>” gives a radiative forcing greater than 50 W m<span class="math notranslate nohighlight">\(^{-2}\)</span>.</strong></p>
-<p>This is an absolutely enormous number. Assuming a <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html#7.-Feedbacks-diagnosed-from-complex-climate-models">net climate feedback of -1.3 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span></a> (consistent with the CMIP5 model ensemble)
+<p>This is an absolutely enormous number. Assuming a <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html#feedbacks-diagnosed-from-complex-climate-models">net climate feedback of -1.3 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span></a> (consistent with the CMIP5 model ensemble)
 would then give us a truly astronomical <strong>equilibrium climate sensitivity of 41 K</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,7 +1067,7 @@ Total elapsed time is 1.9986737567564754 years.
 </div>
 <div class="section" id="putting-in-some-ozone">
 <h2>Putting in some ozone<a class="headerlink" href="#putting-in-some-ozone" title="Permalink to this headline">¶</a></h2>
-<p>We need to provide some ozone data to the model in order to simulate a stratosphere. We will read in some ozone data just as we did in <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/grey-radiation-climlab.html#8.-Putting-stratospheric-ozone-in-the-grey-gas-model">the previous lecture on grey-gas modeling in climlab</a>.</p>
+<p>We need to provide some ozone data to the model in order to simulate a stratosphere. We will read in some ozone data just as we did in <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/grey-radiation-climlab.html#putting-stratospheric-ozone-in-the-grey-gas-model">the previous lecture on grey-gas modeling in climlab</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">datapath</span> <span class="o">+</span> <span class="s1">&#39;som_input/ozone_1.9x2.5_L26_2000clim_c091112.nc&#39;</span><span class="p">)</span>
