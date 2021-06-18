@@ -1,0 +1,44 @@
+name: link-checker
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '30 0 * * SUN' # Sunday “At 00:30”
+jobs:
+  link-checker:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@master
+        with:
+          channels: conda-forge
+          channel-priority: strict
+          activate-environment: climlab-courseware
+          auto-update-conda: false
+          python-version: 3.8
+          environment-file: environment.yml
+          mamba-version: '*'
+          use-mamba: true
+
+      # - name: Disable notebook execution
+      #   shell: python
+      #   run: |
+      #     import yaml
+      #     with open('_config.yml') as f:
+      #       data = yaml.safe_load(f)
+      #     data['execute']['execute_notebooks'] = 'off'
+      #     with open('_config.yml', 'w') as f:
+      #       yaml.dump(data, f)
+      - name: Check external links
+        run: |
+          jupyter-book build --builder linkcheck .
