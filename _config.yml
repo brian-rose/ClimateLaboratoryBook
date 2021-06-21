@@ -72,4 +72,6 @@ repository:
 # Advanced and power-user settings
 sphinx:
   extra_extensions          :   # A list of extra extensions to load by Sphinx (added to those already used by JB).
-  config                    :   # key-value pairs to directly over-ride the Sphinx configuration
+  local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
+  # We are ignoring the link to the JupyterHub because of an issue with the certificate
+  config                    :   {linkcheck_ignore: https://lore.atmos.albany.edu:8000} # key-value pairs to directly over-ride the Sphinx configuration

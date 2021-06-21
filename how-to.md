@@ -40,14 +40,6 @@ This should bring you to a login screen. Use your standard UAlbany netid and pas
 
 *UAlbany users, please let me know if things don't seem to be working correctly.*
 
-### TEMPORARY TEST
-
-Link to some other JupyterHub instances:
-- <https://reed.atmos.albany.edu:8000>
-- <https://ash.atmos.albany.edu:8000>
-- <https://rainier.atmos.albany.edu:8000>
-
-
 ## Public users: interact through a cloud-based Binder service
 
 *(currently broken -- working on it)*
