@@ -1,0 +1,66 @@
+name: deploy-book
+
+# Only run this when the main branch changes
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    # If your git repository has the Jupyter Book within some-subfolder next to
+    # unrelated files, you can make this run only if a file within that specific
+    # folder has been modified.
+    #
+    # paths:
+    # - some-subfolder/**
+
+# This job installs dependencies, build the book, and pushes it to `gh-pages`
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@master
+        with:
+          channels: conda-forge
+          channel-priority: strict
+          activate-environment: climlab-courseware
+          auto-update-conda: false
+          python-version: 3.8
+          environment-file: render-environment.yml
+          mamba-version: '*'
+          use-mamba: true
+
+      # Build the book
+      - name: Build the book
+        run: |
+          jupyter-book build .
+
+      - name: Zip-book
+        run: |
+          set -x
+          set -e
+
+          if [ -f book.zip ]; then
+              rm -rf book.zip
+          fi
+          zip -r book.zip ./_build/html
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: book-zip
+          path: ./book.zip
+      # Push the book's HTML to github-pages
+      - name: Deploy to GitHub pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
+          enable_jekyll: false

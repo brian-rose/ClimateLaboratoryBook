@@ -1,0 +1,49 @@
+# Preview the rendered book on netlify
+#
+# This wizardry is respectfully borrowed from ProjectPythia/pythia-foundations
+# Original author: Anderson Banihirwe @andersy005
+name: preview-book
+on:
+  workflow_run:
+    workflows:
+      - deploy-book
+    types:
+      - completed
+jobs:
+  deploy:
+    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Artifact Book
+        uses: dawidd6/action-download-artifact@v2.14.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          workflow: deploy.yaml
+          run_id: ${{ github.event.workflow_run.id }}
+          name: book-zip
+      - name: Unzip book
+        run: |
+          rm -rf ./_build/html
+          unzip book.zip
+          rm -f book.zip
+      - name: Deploy to Netlify
+        id: netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: ./_build/html
+          production-deploy: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          enable-commit-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 5
+      - name: Jupyter Book Preview
+        uses: ProjectPythia/actions/comment-netlify-preview-in-pr@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-url: ${{ steps.netlify.outputs.deploy-url }}
