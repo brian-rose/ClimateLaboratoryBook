@@ -1,8 +1,6 @@
 # The Climate Laboratory
 
 [![DOI](https://zenodo.org/badge/231609808.svg)](https://zenodo.org/badge/latestdoi/231609808)
-<!-- ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/brian-rose/ClimateLaboratoryBook/deploy-book/main?logo=github&style=for-the-badge)
-![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/brian-rose/ClimateLaboratoryBook/link-checker/main?logo=github&style=for-the-badge) -->
 ![Deploy Book](https://github.com/brian-rose/ClimateLaboratoryBook/actions/workflows/deploy.yaml/badge.svg)
 ![Link Checker](https://github.com/brian-rose/ClimateLaboratoryBook/actions/workflows/link-checker.yaml/badge.svg)
 
