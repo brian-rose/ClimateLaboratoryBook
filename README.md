@@ -2,6 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/231609808.svg)](https://zenodo.org/badge/latestdoi/231609808)
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/brian-rose/ClimateLaboratoryBook/deploy-book/main?logo=github&style=for-the-badge)
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/brian-rose/ClimateLaboratoryBook/link-checker/main?logo=github&style=for-the-badge)
 
 ***A hands-on approach to climate physics and climate modeling***
 
