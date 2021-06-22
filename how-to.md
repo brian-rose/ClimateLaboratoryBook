@@ -1,7 +1,5 @@
 # How to use this book
 
-*under construction*
-
 I wrote this book with a strong emphasis on *reproducibility* of the content.
 For example, most of the figures in the notes are generated interactively,
 often using data pulled from public servers. This means that readers are able
@@ -41,8 +39,6 @@ This should bring you to a login screen. Use your standard UAlbany netid and pas
 *UAlbany users, please let me know if things don't seem to be working correctly.*
 
 ## Public users: interact through a cloud-based Binder service
-
-*(currently broken -- working on it)*
 
 This will work well for many of the simple examples,
 but some of the notes require more computational resources.

@@ -59,9 +59,7 @@ Anyone is welcome to suggest edits or improvements by opening pull requests on t
 
 ## How is the book published
 
-[The book][book] is just the rendered html that results from running `jupyter-book build`. Currently I use the [ghp-import][ghp-import] tool to copy the built html to the `gh-pages` branch on [github][repo].
-
-See the [JupyterBook docs][jbook-publish] for more info on this.
+[The book][book] is just the rendered html that results from running `jupyter-book build`. A new build is triggered on GitHub Actions whenever the sources are updated on the [github repository][repo], and the successful build is deployed to the `gh-pages` branch of the repo.
 
 
 [brian]: http://www.atmos.albany.edu/facstaff/brose/index.html
