@@ -23,10 +23,10 @@ jobs:
         with:
           channels: conda-forge
           channel-priority: strict
-          activate-environment: climlab-courseware
+          activate-environment: book-render
           auto-update-conda: false
           python-version: 3.8
-          environment-file: environment.yml
+          environment-file: render-environment.yml
           mamba-version: '*'
           use-mamba: true
 

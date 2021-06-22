@@ -1,0 +1,8 @@
+# a minimal environment for building the book from source
+#  assuming all notebooks are already up-to-date
+name: book-render
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - jupyter-book  # needed to rebuild the book from source
