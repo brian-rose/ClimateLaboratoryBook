@@ -16,7 +16,3 @@ dependencies:
   - netcdf4
   - nc-time-axis
   - jupyter-book  # needed to rebuild the book from source
-  - pip
-  - pip:
-    # works for regular pip packages
-    - ghp-import  # used to automatically push the built book to github pages
