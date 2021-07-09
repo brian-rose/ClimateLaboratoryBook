@@ -7,10 +7,12 @@ dependencies:
   - python=3.8
   - numpy>1.19
   - matplotlib
+  - jupytext
   - xarray
   - pip
   - jupyter
   - jupyterlab
+  - rise
   - git
   - pymc3
   - conda-lock  

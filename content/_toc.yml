@@ -73,6 +73,7 @@
   - file: courseware/hydrostatic_balance.md
   - file: courseware/multi_layer_equilibrium.md
   - file: courseware/solving-the-stock-and-flow-equation.md
+    file: courseware/bayes_lecture.md
     
 - part: References
   chapters:

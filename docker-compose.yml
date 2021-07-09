@@ -43,8 +43,8 @@ services:
       - ${SINGLE_NB_PORT}:8888
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/home/jupyter/data_share:/home/jupyter/data_share"
-    command: ["jupyter","lab"]
+      - "/home/jovyan/shared_files:/home/jovyan/shared_files"
+    command: ["jupyter","notebook","--no-browser"]
     networks:
       - net_feb21
 
