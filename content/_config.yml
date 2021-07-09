@@ -27,8 +27,9 @@ repository:
 
 launch_buttons:
   notebook_interface: "classic" # The interface interactive links will activate ["classic", "jupyterlab"]
-  jupyterhub_url: http://jupyter-1.eoas.ubc.ca:8082
+  jupyterhub_url: https://jupyterhub.eoas.ubc.ca
 
 html:
   home_page_in_navbar: true
-  baseurl: https://a301_web.eoas.ubc.ca
+  baseurl: https://phaustin.github.io/ClimateLaboratoryBook
+  
