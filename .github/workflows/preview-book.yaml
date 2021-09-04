@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Download Artifact Book
-        uses: dawidd6/action-download-artifact@v2.14.0
+        uses: dawidd6/action-download-artifact@v2.14.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: deploy.yaml
