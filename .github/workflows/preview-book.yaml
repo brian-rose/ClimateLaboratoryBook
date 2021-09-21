@@ -3,6 +3,7 @@
 # This wizardry is respectfully borrowed from ProjectPythia/pythia-foundations
 # Original author: Anderson Banihirwe @andersy005
 name: preview-book
+
 on:
   workflow_run:
     workflows:
