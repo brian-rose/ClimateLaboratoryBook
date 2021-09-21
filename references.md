@@ -3,4 +3,5 @@
 *under construction*
 
 ```{bibliography}
+:style: alpha
 ```
