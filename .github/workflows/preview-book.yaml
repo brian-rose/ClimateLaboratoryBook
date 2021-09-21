@@ -8,6 +8,7 @@ on:
     workflows:
       - deploy-book
     types:
+      - requested
       - completed
 jobs:
   deploy:
@@ -18,6 +19,67 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v2
+      - name: Set message value
+        run: |
+          echo "comment_message=This pull request is being automatically built with [GitHub Actions](https://github.com/features/actions) and [Netlify](https://www.netlify.com/). To see the status of your deployment, click below." >> $GITHUB_ENV
+      - name: Find Pull Request
+        uses: actions/github-script@v4
+        id: find-pull-request
+        with:
+          script: |
+            let pullRequestNumber = ''
+            let pullRequestHeadSHA = ''
+            core.info('Finding pull request...')
+            const pullRequests = await github.pulls.list({owner: context.repo.owner, repo: context.repo.repo})
+            for (let pullRequest of pullRequests.data) {
+              if(pullRequest.head.sha === context.payload.workflow_run.head_commit.id) {
+                  pullRequestHeadSHA = pullRequest.head.sha
+                  pullRequestNumber = pullRequest.number
+                  break
+              }
+            }
+            core.setOutput('number', pullRequestNumber)
+            core.setOutput('sha', pullRequestHeadSHA)
+            if(pullRequestNumber === '') {
+              core.info(
+                 `No pull request associated with git commit SHA: ${context.payload.workflow_run.head_commit.id}`
+              )
+            }
+            else{
+              core.info(`Found pull request ${pullRequestNumber}, with head sha: ${pullRequestHeadSHA}`)
+            }
+      - name: Find Comment
+        uses: peter-evans/find-comment@v1
+        if: steps.find-pull-request.outputs.number != ''
+        id: fc
+        with:
+          issue-number: '${{ steps.find-pull-request.outputs.number }}'
+          comment-author: 'github-actions[bot]'
+          body-includes: '${{ env.comment_message }}'
+
+      - name: Create comment
+        if: |
+          github.event.workflow_run.conclusion != 'success'
+          && steps.find-pull-request.outputs.number != ''
+          && steps.fc.outputs.comment-id == ''
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ steps.find-pull-request.outputs.number }}
+          body: |
+            ${{ env.comment_message }}
+            🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
+      - name: Update comment
+        if: |
+          github.event.workflow_run.conclusion != 'success'
+          && steps.find-pull-request.outputs.number != ''
+          && steps.fc.outputs.comment-id != ''
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            ${{ env.comment_message }}
+            🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
       - name: Download Artifact Book
         uses: dawidd6/action-download-artifact@v2.14.1
         with:
@@ -25,11 +87,13 @@ jobs:
           workflow: deploy.yaml
           run_id: ${{ github.event.workflow_run.id }}
           name: book-zip
+
       - name: Unzip book
         run: |
           rm -rf ./_build/html
           unzip book.zip
           rm -f book.zip
+      # Push the book's HTML to Netlify and get the preview URL
       - name: Deploy to Netlify
         id: netlify
         uses: nwtgck/actions-netlify@v1.2
@@ -42,8 +106,17 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 5
-      - name: Jupyter Book Preview
-        uses: ProjectPythia/actions/comment-netlify-preview-in-pr@main
+
+      - name: Update Jupyter Book Preview comment
+        if: |
+          github.event.workflow_run.conclusion == 'success'
+          && steps.find-pull-request.outputs.number != ''
+          && steps.fc.outputs.comment-id != ''
+        uses: peter-evans/create-or-update-comment@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-url: ${{ steps.netlify.outputs.deploy-url }}
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          edit-mode: replace
+          body: |
+            ${{ env.comment_message }}
+            🔍 Git commit SHA:  ${{ steps.find-pull-request.outputs.sha }}
+            ✅ Deployment Preview URL: ${{ steps.netlify.outputs.deploy-url }}
