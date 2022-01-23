@@ -1,7 +1,3 @@
-# Preview the rendered book on netlify
-#
-# This wizardry is respectfully borrowed from ProjectPythia/pythia-foundations
-# Original author: Anderson Banihirwe @andersy005
 name: preview-book
 on:
   workflow_run:
@@ -12,7 +8,7 @@ on:
       - completed
 jobs:
   deploy:
-    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
+    if: github.repository == 'ProjectPythia/pythia-foundations'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -30,7 +26,8 @@ jobs:
             let pullRequestNumber = ''
             let pullRequestHeadSHA = ''
             core.info('Finding pull request...')
-            const pullRequests = await github.pulls.list({owner: context.repo.owner, repo: context.repo.repo})
+
+            const pullRequests = await github.rest.pulls.list({owner: context.repo.owner, repo: context.repo.repo})
             for (let pullRequest of pullRequests.data) {
               if(pullRequest.head.sha === context.payload.workflow_run.head_commit.id) {
                   pullRequestHeadSHA = pullRequest.head.sha
@@ -48,6 +45,7 @@ jobs:
             else{
               core.info(`Found pull request ${pullRequestNumber}, with head sha: ${pullRequestHeadSHA}`)
             }
+
       - name: Find Comment
         uses: peter-evans/find-comment@v1
         if: steps.find-pull-request.outputs.number != ''
@@ -67,7 +65,10 @@ jobs:
           issue-number: ${{ steps.find-pull-request.outputs.number }}
           body: |
             ${{ env.comment_message }}
-            🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
+
+            🔍 Git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
+            ✅ Deployment Preview URL: In Progress
+
       - name: Update comment
         if: |
           github.event.workflow_run.conclusion != 'success'
@@ -79,8 +80,15 @@ jobs:
           edit-mode: replace
           body: |
             ${{ env.comment_message }}
-            🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
+
+            🔍 Git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
+            ✅ Deployment Preview URL: In Progress
+
       - name: Download Artifact Book
+        if: |
+          github.event.workflow_run.conclusion == 'success'
+          && steps.find-pull-request.outputs.number != ''
+          && steps.fc.outputs.comment-id != ''
         uses: dawidd6/action-download-artifact@v2.16.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -89,12 +97,21 @@ jobs:
           name: book-zip
 
       - name: Unzip book
+        if: |
+          github.event.workflow_run.conclusion == 'success'
+          && steps.find-pull-request.outputs.number != ''
+          && steps.fc.outputs.comment-id != ''
         run: |
           rm -rf ./_build/html
           unzip book.zip
           rm -f book.zip
+
       # Push the book's HTML to Netlify and get the preview URL
       - name: Deploy to Netlify
+        if: |
+          github.event.workflow_run.conclusion == 'success'
+          && steps.find-pull-request.outputs.number != ''
+          && steps.fc.outputs.comment-id != ''
         id: netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
@@ -118,5 +135,6 @@ jobs:
           edit-mode: replace
           body: |
             ${{ env.comment_message }}
-            🔍 Git commit SHA:  ${{ steps.find-pull-request.outputs.sha }}
+
+            🔍 Git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
             ✅ Deployment Preview URL: ${{ steps.netlify.outputs.deploy-url }}
