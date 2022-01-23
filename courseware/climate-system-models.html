@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -588,12 +584,12 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#id4">
        Pro
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
+      <a class="reference internal nav-link" href="#id5">
        Con
       </a>
      </li>
@@ -739,7 +735,259 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The climate system and climate models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-climate-system-and-its-interactions">
+   1. The climate system and its interactions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition-of-the-climate-system-and-its-spheres">
+     Definition of the “climate system” and its “spheres”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#atmosphere">
+       Atmosphere
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hydrosphere">
+       Hydrosphere
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#biosphere-terrestrial-and-marine">
+       <strong>
+        Biosphere
+       </strong>
+       (terrestrial and marine):
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cryosphere">
+       <strong>
+        Cryosphere
+       </strong>
+       :
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#lithosphere">
+       <strong>
+        Lithosphere
+       </strong>
+       :
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-might-we-want-to-include-all-these-spheres-in-our-models">
+     WHY might we want to include all these “spheres” in our models?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget">
+     The key is that all these processes ultimately affect the planetary energy budget
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulation-versus-parameterization">
+   2. Simulation versus Parameterization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definitions">
+     Definitions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parameterization">
+     Parameterization
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pro">
+       Pro
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#con">
+       Con
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation">
+     Simulation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Pro
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Con
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-taxonomy-of-climate-models">
+   3. A taxonomy of climate models
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-components-of-a-climate-model">
+     Key components of a climate model
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#radiation">
+       Radiation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dynamics">
+       Dynamics
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#surface-processes">
+       Surface processes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#chemistry">
+       Chemistry
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#resolution-in-both-time-and-space">
+       Resolution (in both time and space)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-climate-modeling-pyramid">
+     The climate modeling pyramid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#five-basic-types-of-climate-model">
+     Five basic types of climate model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#energy-balance-models-ebms">
+     1. Energy Balance Models (EBMs)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#radiative-convective-rc-or-single-column-models-scms">
+     2. Radiative-Convective (RC) or Single-Column models (SCMs)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dimensionally-constrained-models">
+     3. Dimensionally constrained models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-circulation-models-gcms">
+     4. Global Circulation Models (GCMs)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#fun-fact">
+       Fun fact
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#earth-system-models">
+     5. Earth System Models
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simple-vs-complex-models-their-different-roles-in-the-science">
+     Simple vs. Complex models: their different roles in the science
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-gcm">
+   4. Introducing the GCM
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ingredients-of-the-gcm">
+     Ingredients of the GCM
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evolving-complexity-of-gcms">
+     Evolving complexity of GCMs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-hierarchy-of-complexity-for-ocean-models">
+     A hierarchy of complexity for ocean models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-can-we-resolve-with-a-2o-atmosphere">
+   5. What can we resolve with a 2º atmosphere?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discussion-point">
+     Discussion point:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#citation-information">
+   Citation information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-climate-system-and-climate-models">
@@ -752,7 +1000,7 @@
 <hr class="docutils" />
 <div class="section" id="definition-of-the-climate-system-and-its-spheres">
 <h3>Definition of the “climate system” and its “spheres”<a class="headerlink" href="#definition-of-the-climate-system-and-its-spheres" title="Permalink to this headline">¶</a></h3>
-<p>From the IPCC AR5 report:</p>
+<p>From the IPCC AR5 report <span id="id1">[<a class="reference internal" href="../references.html#id22">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
 <blockquote>
 <div><p><strong>Climate System:</strong> “The climate system is the highly complex system consisting of five major components: the atmosphere, the hydrosphere, the cryosphere, the lithosphere and the biosphere, and the interactions between them. The climate system evolves in time under the influence of its own internal dynamics and because of external forcings such as volcanic eruptions, solar variations and anthropogenic forcings such as the changing composition of the atmosphere and land use change.”</p>
 </div></blockquote>
@@ -790,7 +1038,7 @@
 </div>
 <div class="section" id="why-might-we-want-to-include-all-these-spheres-in-our-models">
 <h3>WHY might we want to include all these “spheres” in our models?<a class="headerlink" href="#why-might-we-want-to-include-all-these-spheres-in-our-models" title="Permalink to this headline">¶</a></h3>
-<p>Here are two nice figures from the IPCC AR5 WG1 report:</p>
+<p>Here are two nice figures from the IPCC AR5 WG1 report <span id="id2">[<a class="reference internal" href="../references.html#id22">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
 <img src='http://www.climatechange2013.org/images/figures/WGI_AR5_Fig1-1.jpg' width="800"><blockquote>
 <div><p>Figure 1.1 | Main drivers of climate change. The radiative balance between incoming solar shortwave radiation (SWR) and outgoing longwave radiation (OLR) is influenced by global climate ‘drivers’. Natural fluctuations in solar output (solar cycles) can cause changes in the energy balance (through fluctuations in the amount of incoming SWR) (Section 2.3). Human activity changes the emissions of gases and aerosols, which are involved in atmospheric chemical reactions, resulting in modified O3 and aerosol amounts (Section 2.2). O3 and aerosol particles absorb, scatter and reflect SWR, changing the energy balance. Some aerosols act as cloud condensation nuclei modifying the properties of cloud droplets and possibly affecting precipitation (Section 7.4). Because cloud interactions with SWR and LWR are large, small changes in the properties of clouds have important implications for the radiative budget (Section 7.4). Anthropogenic changes in GHGs (e.g., CO2, CH4, N2O, O3, CFCs) and large aerosols (&gt;2.5 μm in size) modify the amount of outgoing LWR by absorbing outgoing LWR and re-emitting less energy at a lower temperature (Section 2.2). Surface albedo is changed by changes in vegetation or land surface properties, snow or ice cover and ocean colour (Section 2.3). These changes are driven by natural seasonal and diurnal changes (e.g., snow cover), as well as human influence (e.g., changes in vegetation types) (Forster et al., 2007).</p>
 </div></blockquote>
@@ -815,7 +1063,7 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 <hr class="docutils" />
 <div class="section" id="definitions">
 <h3>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h3>
-<p>The <em>Climate Modelling Primer</em> (4th ed., page 124) defines <strong>parameterization</strong> as</p>
+<p>The <em>Climate Modelling Primer</em> (4th ed., page 124) <span id="id3">[<a class="reference internal" href="../references.html#id23">McGuffie and Henderson-Sellers, 2014</a>]</span> defines <strong>parameterization</strong> as</p>
 <blockquote>
 <div><p>The process of capturing a physical process through some mathematical relationship between important parameters in the process, but without explicitly modeling all the actual processes. For example, the albedo of leaves might be related to the soil moisture (via some specification of wilting point) but the physical and biological mechanisms in the plant that happen when the leaf wilts are not modelled.</p>
 </div></blockquote>
@@ -848,12 +1096,12 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 <li><p>Cloud microphysics to predict the formation of cloud droplets and their optical properties</p></li>
 </ul>
 <p>This is essentially what goes on in a so-called GCM (General Circulation Model or Global Climate Model).</p>
-<div class="section" id="id1">
-<h4>Pro<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>Pro<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>Model is based on real physical principles (e.g. Newton’s laws of motion, conservation of mass and energy). It is therefore more likely to remain valid under changing climate conditions.</p>
 </div>
-<div class="section" id="id2">
-<h4>Con<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>Con<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Requires lots of computer resources. Must simulate the weather even though we really just want the climate (statistics of weather!)</p>
 <p>Essentially a <strong>simulation</strong> involves representing (at least some aspects of) the underlying rules that govern the process. <em>There is a chain of causality linking input to output</em>.</p>
 <p><strong>Parameterization</strong> involves making assumptions about the <strong>statistical properties</strong> of the process – so we can calculate some relevant statistical properties of the output given the input, without needing to explicitly model the actual events.</p>
@@ -956,7 +1204,7 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 <h3>Simple vs. Complex models: their different roles in the science<a class="headerlink" href="#simple-vs-complex-models-their-different-roles-in-the-science" title="Permalink to this headline">¶</a></h3>
 <p><img alt="Primer Table 2.1" src="../_images/Primer_Table2.1.png" /></p>
 <p>In this course we are going to work extensively with two kinds of simple one-dimensional model: <strong>EBM</strong>s and <strong>RCM</strong>s.</p>
-<p>Section 2.2.1 and 2.2.2 of the <em>Primer</em> give a sneak peek of the ingredients and uses for these models.</p>
+<p>Section 2.2.1 and 2.2.2 of the <em>Primer</em> <span id="id6">[<a class="reference internal" href="../references.html#id23">McGuffie and Henderson-Sellers, 2014</a>]</span> give a sneak peek of the ingredients and uses for these models.</p>
 <hr class="docutils" />
 <p><a id='section4'></a></p>
 </div>
@@ -1089,8 +1337,8 @@ The report and images can be found online at <a class="reference external" href=
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="analytical-efolding.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1107,19 +1355,17 @@ The report and images can be found online at <a class="reference external" href=
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

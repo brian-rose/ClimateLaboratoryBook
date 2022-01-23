@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -632,7 +628,152 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Who needs spectral bands? We do. Some baby steps…</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-if-co-2-actually-behaved-like-a-grey-gas">
+   1. What if CO
+   <span class="math notranslate nohighlight">
+    \(_2\)
+   </span>
+   actually behaved like a Grey Gas?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing">
+     What does our 2-layer analytical model then say about the radiative forcing?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusions">
+     Conclusions:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-look-at-observed-spectra">
+   2. Another look at observed spectra
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observed-solar-spectra">
+     Observed solar spectra
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observed-terrestrial-spectra">
+     Observed terrestrial spectra
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#one-very-big-shortcoming-of-the-grey-gas-model-it-ignores-the-window-region">
+       One very big shortcoming of the Grey Gas model: it ignores the window region
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#water-vapor-changes-under-global-warming">
+   3. Water vapor changes under global warming
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#evidence-from-cesm-simulations">
+     Evidence from CESM simulations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-do-you-see-here">
+     What do you see here?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-simple-water-vapor-parameterization">
+   4. A simple water vapor parameterization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-credible-climate-model-needs-a-water-vapor-feedback">
+     A credible climate model needs a water vapor feedback
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#manabe-s-constant-relative-humidity-parameterization">
+     Manabe’s constant relative humidity parameterization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-spectral-bands-with-the-climlab-bandrcmodel-process">
+   5. Modeling spectral bands with the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     climlab.BandRCModel
+    </span>
+   </code>
+   process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#about-the-spectra">
+   About the spectra
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shortwave">
+     Shortwave
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#longwave">
+     Longwave
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-usage-of-the-spectral-model">
+     Example usage of the spectral model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#about-the-radiatively-active-gases">
+     About the radiatively active gases
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#putting-in-some-ozone">
+   Putting in some ozone
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="who-needs-spectral-bands-we-do-some-baby-steps">
@@ -887,10 +1028,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </div>
 <div class="section" id="manabe-s-constant-relative-humidity-parameterization">
 <h3>Manabe’s constant relative humidity parameterization<a class="headerlink" href="#manabe-s-constant-relative-humidity-parameterization" title="Permalink to this headline">¶</a></h3>
-<p>We are going to adopt a parameterization first used in a very famous paper:</p>
-<blockquote>
-<div><p>Manabe, S. and Wetherald, R. T. (1967). Thermal equilibrium of the atmosphere with a given distribution of relative humidity. J. Atmos. Sci., 24(3):241–259.</p>
-</div></blockquote>
+<p>We are going to adopt a parameterization first used in a very famous paper by <span id="id1">Manabe and Wetherald [<a class="reference internal" href="../references.html#id19">1967</a>]</span>, <em>The thermal equilibrium of the atmosphere with a given distribution of relative humidity</em>.</p>
 <p>This paper was the first to give a really credible calculation of climate sensitivity to a doubling of CO2 by accounting for the known spectral properties of CO2 and H2O absorption, as well as the water vapor feedback!</p>
 <p>The parameterization is very simple:</p>
 <p>We assume that the relative humidity <span class="math notranslate nohighlight">\(r\)</span> is a linear function of pressure <span class="math notranslate nohighlight">\(p\)</span>:</p>
@@ -1722,8 +1860,8 @@ Total elapsed time is 4.996684391891189 years.
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="radiative-transfer.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1740,19 +1878,17 @@ Total elapsed time is 4.996684391891189 years.
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

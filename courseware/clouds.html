@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -608,7 +604,128 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Clouds and cloud feedback</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optical-properties-of-individual-clouds-depend-on-the-cloud-liquid-water-path">
+   1. Optical properties of individual clouds depend on the Cloud Liquid Water Path
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#longwave-effects-of-clouds">
+     Longwave effects of clouds
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shortwave-effects-of-clouds">
+     Shortwave effects of clouds
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloudy-sky-versus-clear-sky-radiation">
+   2. Cloudy sky versus clear sky radiation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-thin-cirrus">
+     High thin cirrus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#low-stratus">
+     Low stratus
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deep-convective-cumulonimbus">
+     Deep convective cumulonimbus
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-radiative-effect-cre">
+   3. Cloud Radiative Effect (CRE)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling-the-dependence-of-cre-on-cloud-height">
+   4. Modeling the dependence of CRE on cloud height
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#global-average-observed-temperature-and-specific-humidity">
+     Global average observed temperature and specific humidity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloud-feedback">
+   5. Cloud Feedback
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#clear-sky-and-cloud-feedbacks">
+     Clear-sky and cloud feedbacks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cloud-feedback-vs-cre">
+     Cloud feedback vs. CRE
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#so-how-do-we-compute-lambda-cloud">
+       So how do we compute
+       <span class="math notranslate nohighlight">
+        \(\lambda_{cloud}\)
+       </span>
+       ?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feedback-measured-in-comprehensive-gcms">
+   6. Feedback measured in comprehensive GCMs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measuring-lambda-clear-with-radiative-kernels">
+   7. Measuring
+   <span class="math notranslate nohighlight">
+    \(\lambda_{clear}\)
+   </span>
+   with radiative kernels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="clouds-and-cloud-feedback">
@@ -624,7 +741,7 @@
 <div class="math notranslate nohighlight">
 \[LWP = w ~ \Delta z\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta z\)</span> is the depth of the cloudy layer in meters.  <span class="math notranslate nohighlight">\(LWP\)</span> has units of g m<span class="math notranslate nohighlight">\(^{-2}\)</span>.</p>
-<p><span class="math notranslate nohighlight">\(LWP\)</span> determines the key optical properties of the cloud, both in the longwave and shortwave:</p>
+<p><span class="math notranslate nohighlight">\(LWP\)</span> determines the key optical properties of the cloud, both in the longwave and shortwave <span id="id1">[<a class="reference internal" href="../references.html#id15">Webster, 1994</a>]</span>:</p>
 <p><img alt="Webster cloud optical properties schematic" src="../_images/CloudOpticalProperties_Webster1994.png" /></p>
 <p>A key point about the optical properties of water clouds:</p>
 <ul class="simple">
@@ -984,7 +1101,7 @@
 <img src='http://www.climatechange2013.org/images/figures/WGI_AR5_Fig9-43.jpg'><blockquote>
 <div><p><strong>Figure 9.43</strong> | (a) Strengths of individual feedbacks for CMIP3 and CMIP5 models (left and right columns of symbols) for Planck (P), water vapour (WV), clouds (C), albedo (A), lapse rate (LR), combination of water vapour and lapse rate (WV+LR) and sum of all feedbacks except Planck (ALL), from Soden and Held (2006) and Vial et al. (2013), following Soden et al. (2008). CMIP5 feedbacks are derived from CMIP5 simulations for abrupt fourfold increases in CO2 concentrations (4 × CO2). (b) ECS obtained using regression techniques by Andrews et al. (2012) against ECS estimated from the ratio of CO2 ERF to the sum of all feedbacks. The CO2 ERF is one-half the 4 × CO2 forcings from Andrews et al. (2012), and the total feedback (ALL + Planck) is from Vial et al. (2013).</p>
 </div></blockquote>
-<p><em>Figure caption reproduced from the AR5 WG1 report</em></p>
+<p><em>Figure caption reproduced from the AR5 WG1 report <span id="id2">[<a class="reference internal" href="../references.html#id18">Flato <em>et al.</em>, 2013</a>]</span></em></p>
 <hr class="docutils" />
 <p><a id='section7'></a></p>
 </div>
@@ -994,6 +1111,7 @@
 <p>So how are the clear-sky feedbacks (P, WV, LR, A) actually calculated?</p>
 <p>Presently, the most popular technique the method of <strong>radiative kernels</strong>.</p>
 <p>You have been building a (primitive) kernel for the water vapor feedback in the last homework.</p>
+<p>Some plots from <span id="id3">Held and Soden [<a class="reference internal" href="../references.html#id14">2000</a>]</span>:</p>
 <p><img alt="Held and Soden kernels" src="../_images/Kernels_Held&amp;Soden2000.png" /></p>
 <blockquote>
 <div><p>Held, I. M. and Soden, B. J. (2000). Water vapor feedback and global warming. Ann. Rev. Energy Environ., 25:441–475.</p>
@@ -1033,8 +1151,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="transient-toy.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1051,19 +1169,17 @@
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

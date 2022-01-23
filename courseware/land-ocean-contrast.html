@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -596,7 +592,116 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Land-Ocean contrasts under climate change</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-recent-tweet-that-caught-my-attention">
+   A recent tweet that caught my attention…
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#some-observational-results-on-land-ocean-warming-differences-from-a-recent-paper">
+   Some observational results on land-ocean warming differences from a recent paper
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looking-at-land-ocean-warming-patterns-in-the-cesm">
+   Looking at land-ocean warming patterns in the CESM
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-point">
+   Key Point
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-the-land-amplification-factor">
+   Plot the “land amplification factor”
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-simple-theory-for-land-ocean-warming-contrast">
+   A simple theory for land-ocean warming contrast
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-atmospheric-dynamics-constraint">
+     The atmospheric dynamics constraint
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-surface-moisture-constraint">
+     The surface moisture constraint
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-ocean-influence-box-model">
+     The “Ocean-influence” box model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combined-theory-dynamic-and-moisture-constraints">
+     Combined theory: dynamic and moisture constraints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-humidity-changes-over-land">
+     Relative humidity changes over land
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-of-simple-land-amplification-theory">
+   Evaluation of simple land amplification theory
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#amplification-factors-using-dynamic-constraint-only">
+     Amplification factors using dynamic constraint only
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#amplification-factors-using-dynamic-moisture-constraint">
+     Amplification factors using dynamic + moisture constraint
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#critical-evaluation-of-assumptions">
+   Critical evaluation of assumptions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#relative-humidity-change">
+     Relative humidity change
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="land-ocean-contrasts-under-climate-change">
@@ -619,6 +724,7 @@
 </div>
 <div class="section" id="some-observational-results-on-land-ocean-warming-differences-from-a-recent-paper">
 <h2>Some observational results on land-ocean warming differences from a recent paper<a class="headerlink" href="#some-observational-results-on-land-ocean-warming-differences-from-a-recent-paper" title="Permalink to this headline">¶</a></h2>
+<p>Reproduced directly from <span id="id1">Byrne and O'Gorman [<a class="reference internal" href="../references.html#id4">2018</a>]</span>:</p>
 <img src='https://www.pnas.org/content/pnas/115/19/4863/F1.large.jpg' width="500">
 <blockquote>
 <div><p>A–C) Surface-air annual (A) temperature, (B) specific humidity, and (C) relative humidity anomalies averaged from 40∘S to 40∘N and best-fit trends (1979–2016) over land (red solid lines and asterisks) and ocean (blue lines and asterisks). The best-fit trends in the land–ocean contrasts in temperature and specific humidity (δTL−δTO and δqL−δqO, respectively) are also plotted (black asterisks). Land values are from the HadISDH dataset (13, 14) and ocean values are from the ERA-Interim reanalysis (15). Ocean specific humidity anomalies are calculated assuming fixed climatological relative humidity (Materials and Methods). Also shown are land anomalies and associated trends (dashed lines and circles) estimated using the simple theory (Eqs. 2–4) and subsampled to the months and gridboxes for which HadISDH observations are available. Error bars on the trends indicate the 90% confidence intervals corrected to account for serial correlation (Materials and Methods).</p>
@@ -838,11 +944,11 @@ The Transient Climate Response is 1.67 K.
 </div>
 <div class="section" id="a-simple-theory-for-land-ocean-warming-contrast">
 <h2>A simple theory for land-ocean warming contrast<a class="headerlink" href="#a-simple-theory-for-land-ocean-warming-contrast" title="Permalink to this headline">¶</a></h2>
-<p>This section is based on a series of papers by Byrne and O’Gorman:</p>
+<p>This section is based on a series of papers by Michael Byrne and Paul O’Gorman:</p>
 <ul class="simple">
-<li><p>Byrne and O’Gorman (2013): Land–Ocean Warming Contrast over a Wide Range of Climates: Convective Quasi-Equilibrium Theory and Idealized Simulations. J. Clim. 26, <a class="reference external" href="https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1">https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</a></p></li>
-<li><p>Byrne and O’Gorman (2016): Understanding Decreases in Land Relative Humidity with Global Warming: Conceptual Model and GCM Simulations. J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p></li>
-<li><p>Byrne and O’Gorman (2018): Trends in continental temperature and humidity directly linked to ocean warming, PNAS 115 (19) 4863-4868, <a class="reference external" href="https://doi.org/10.1073/pnas.1722312115">https://doi.org/10.1073/pnas.1722312115</a></p></li>
+<li><p><span id="id2">Byrne and O'Gorman [<a class="reference internal" href="../references.html#id3">2013</a>]</span>: Land–Ocean Warming Contrast over a Wide Range of Climates: Convective Quasi-Equilibrium Theory and Idealized Simulations. J. Clim. 26, <a class="reference external" href="https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1">https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</a></p></li>
+<li><p><span id="id3">Byrne and O'Gorman [<a class="reference internal" href="../references.html#id2">2016</a>]</span>: Understanding Decreases in Land Relative Humidity with Global Warming: Conceptual Model and GCM Simulations. J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p></li>
+<li><p><span id="id4">Byrne and O'Gorman [<a class="reference internal" href="../references.html#id4">2018</a>]</span>: Trends in continental temperature and humidity directly linked to ocean warming, PNAS 115 (19) 4863-4868, <a class="reference external" href="https://doi.org/10.1073/pnas.1722312115">https://doi.org/10.1073/pnas.1722312115</a></p></li>
 </ul>
 <div class="section" id="the-atmospheric-dynamics-constraint">
 <h3>The atmospheric dynamics constraint<a class="headerlink" href="#the-atmospheric-dynamics-constraint" title="Permalink to this headline">¶</a></h3>
@@ -851,14 +957,11 @@ The Transient Climate Response is 1.67 K.
 <li><p>Frequent moist convection maintains a nearly moist-neutral lapse rate in the convectively active equatorial regions (“convective quasi-equilibrium”).</p></li>
 <li><p>“Weak Temperature Gradient” theory for the low-latitude atmosphere asserts that air temperatures in the free troposphere are nearly homogeneous.</p></li>
 <li><p>Therefore the free troposphere is moist adiabatic everywhere.</p></li>
-<li><p>The differences between surface air temperature over land and ocean can be expressed in terms of different Lifting Condensation Levels (LCL):</p></li>
+<li><p>The differences between surface air temperature over land and ocean can be expressed in terms of different Lifting Condensation Levels (LCL) <span id="id5">[<a class="reference internal" href="../references.html#id3">Byrne and O'Gorman, 2013</a>]</span>:</p></li>
 </ul>
 <img src='https://journals.ametsoc.org/view/journals/clim/26/12/full-jcli-d-12-00262.1-f1.jpg' width="300">
 <blockquote>
 <div><p>Fig. 1. Schematic diagram of potential temperature vs height for moist adiabats over land and ocean and equal temperatures at upper levels. A land–ocean surface air temperature contrast is implied by different LCLs over land and ocean.</p>
-</div></blockquote>
-<blockquote>
-<div><p>Byrne and O’Gorman (2013) J. Clim. 26, <a class="reference external" href="https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1">https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-12-00262.1</a></p>
 </div></blockquote>
 <p>A consequence of these constraints is that, under a climate change, the near-surface <strong>moist static energy</strong> content over land and ocean are equal:</p>
 <div class="math notranslate nohighlight">
@@ -877,7 +980,7 @@ The Transient Climate Response is 1.67 K.
 </div>
 <div class="section" id="the-surface-moisture-constraint">
 <h3>The surface moisture constraint<a class="headerlink" href="#the-surface-moisture-constraint" title="Permalink to this headline">¶</a></h3>
-<p>This section is drawn directly from Byrne and O’Gorman (2016) J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p>
+<p>This section is drawn directly from <span id="id6"></span>.</p>
 <p>Consider the following simple moisture budgets for the boundary layers over ocean and over land:</p>
 <img src='https://journals.ametsoc.org/view/journals/clim/29/24/full-jcli-d-16-0351.1-f2.jpg' width="500">
 <blockquote>
@@ -969,7 +1072,7 @@ q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
 <div class="math notranslate nohighlight">
 \[ \frac{\delta r_L}{r_L} \approx - \alpha (1-\gamma) \frac{L_v}{c_p} \delta q_O \]</div>
 <p>The conclusion is that <strong>the relative humidity over land must decrease</strong> along with the amplified warming over land.</p>
-<p>See Byrne and O’Gorman (2016) for discussion and caveats.</p>
+<p>See <span id="id7">Byrne and O'Gorman [<a class="reference internal" href="../references.html#id2">2016</a>]</span> for discussion and caveats.</p>
 </div>
 </div>
 <div class="section" id="evaluation-of-simple-land-amplification-theory">
@@ -1127,12 +1230,11 @@ q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
 <img alt="../_images/land-ocean-contrast_36_0.png" src="../_images/land-ocean-contrast_36_0.png" />
 </div>
 </div>
-<p>Compare to CMIP5 multi-model mean:</p>
+<p>Compare to CMIP5 multi-model mean <span id="id8">[<a class="reference internal" href="../references.html#id2">Byrne and O'Gorman, 2016</a>]</span>:</p>
 <img src='https://journals.ametsoc.org/view/journals/clim/29/24/full-jcli-d-16-0351.1-fa1.jpg' width="400">
 <blockquote>
 <div><p>Fig. B1. The CMIP5 multimodel mean (a) land–ocean warming contrast (expressed as an amplification factor) and (b) surface-air land pseudo relative humidity change normalized by the global-mean surface-air temperature change (solid lines) and as estimated by the combined moisture and dynamic constraints (dashed lines). The amplification factor and land relative humidity changes are estimated for each land grid point and for each month of the year before taking the zonal and annual means.</p>
 </div></blockquote>
-<p>Byrne and O’Gorman (2016) J. Clim. 29, <a class="reference external" href="https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1">https://journals.ametsoc.org/doi/10.1175/JCLI-D-16-0351.1</a></p>
 <p>Our results are consistent with Byrne and O’Gorman in that the simple theory captures the amplification signal in the <strong>southern subtropics</strong> quite well, but strongly overestimates the amplifcation in the <strong>northern subtropics</strong>.</p>
 <p>The simple “ocean influence” theory works best in the hemisphere dominated by ocean!</p>
 <p>We may get more insight into the weaknesses of the theory by looking more carefully at the relative humidity changes, and the role of land-surface evaporation changes (neglected under the “ocean-influence” theory).</p>
@@ -1239,8 +1341,8 @@ q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="surface-energy-balance.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1257,19 +1359,17 @@ q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

@@ -41,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -238,11 +238,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="courseware/transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -391,7 +387,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -446,7 +442,7 @@
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -464,19 +460,100 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
         </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>References</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="references">
 <h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
-<p><em>under construction</em></p>
+<p id="id1"><dl class="citation">
+<dt class="label" id="id3"><span class="brackets">1</span></dt>
+<dd><p>Michael P. Byrne and Paul A. O'Gorman. Land-ocean warming contrast over a wide range of climates: convective quasi-equilibrium theory and idealized simulations. <em>J. Climate</em>, 26:4000–4016, 2013. <a class="reference external" href="https://doi.org/10.1175/JCLI-D-12-00262.1">doi:10.1175/JCLI-D-12-00262.1</a>.</p>
+</dd>
+<dt class="label" id="id2"><span class="brackets">2</span></dt>
+<dd><p>Michael P. Byrne and Paul A. O'Gorman. Understanding decreases in land relative humidity with global warming: conceptual model and GCM simulations. <em>J. Climate</em>, 29:9045–9061, 2016. <a class="reference external" href="https://doi.org/10.1175/JCLI-D-16-0351.1">doi:10.1175/JCLI-D-16-0351.1</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">3</span></dt>
+<dd><p>Michael P. Byrne and Paul A. O'Gorman. Trends in continental temperature and humidity directly linked to ocean warming. <em>Proc. Nat. Acad. Sci.</em>, 2018. <a class="reference external" href="https://doi.org/10.1073/pnas.1722312115">doi:10.1073/pnas.1722312115</a>.</p>
+</dd>
+<dt class="label" id="id22"><span class="brackets">4</span></dt>
+<dd><p>U. Cubasch, D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald, and J.-G. Winther. Introduction. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, <em>Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change</em>, chapter 1. Cambridge University Press, Cambridge, U.K., 2013. <a class="reference external" href="https://doi.org/10.1017/CBO9781107415324.007">doi:10.1017/CBO9781107415324.007</a>.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">5</span></dt>
+<dd><p>John T. Fasullo and Kevin E. Trenberth. The annual cycle of the energy budget. part II: meridional structures and poleward transports. <em>J. Climate</em>, 21:2313–2325, 2008. <a class="reference external" href="https://doi.org/10.1175/2007JCLI1936.1">doi:10.1175/2007JCLI1936.1</a>.</p>
+</dd>
+<dt class="label" id="id18"><span class="brackets">6</span></dt>
+<dd><p>G. Flato, J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason, and M. Rummukainen. Evaluation of climate models. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, <em>Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change</em>, chapter 9. Cambridge University Press, Cambridge, U.K., 2013.</p>
+</dd>
+<dt class="label" id="id13"><span class="brackets">7</span></dt>
+<dd><p>Dennis L. Hartmann. <em>Global Physical Climatology</em>. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.</p>
+</dd>
+<dt class="label" id="id14"><span class="brackets">8</span></dt>
+<dd><p>Isaac M. Held and Brian J. Soden. Water vapor feedback and global warming. <em>Ann. Rev. Energy Environ.</em>, 25:441–475, 2000.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">9</span></dt>
+<dd><p>Isaac M. Held, Michael Winton, Ken Takahashi, Thomas Delworth, Fanrong Zeng, and Geoffrey K. Vallis. Probing the fast and slow components of global warming by returning abruptly to preindustrial forcing. <em>J. Climate</em>, 23:2418–2427, 2010.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">10</span></dt>
+<dd><p>Paul F. Hoffman, Dorian S. Abbot, Yosef Ashkenazy, Douglas I. Benn, Jochen J. Brocks, Phoebe A. Cohen, Grant M. Cox, Jessica R. Creveling, Yannick Donnadieu, Douglas H. Erwin, Ian J. Fairchild, David Ferreira, Jason C. Goodman, Galen P. Halverson, Malte F. Jansen, Guillaume Le Hir, Gordon D. Love, Francis A. Macdonald, Adam C. Maloof, Camille A. Partin, Gilles Ramstein, Brian E. J. Rose, Catherine V. Rose, Peter M. Sadler, Eli Tziperman, Aiko Voigt, and Stephen G. Warren. Snowball Earth climate dynamics and Cryogenian geology–geobiology. <em>Science Advances</em>, 2017. <a class="reference external" href="https://doi.org/10.1126/sciadv.1600983">doi:10.1126/sciadv.1600983</a>.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">11</span></dt>
+<dd><p>Paul F. Hoffman and Zheng-Xiang Li. A palaeogeographic context for Neoproterozoic glaciation. <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em>, 277:158–172, 2009.</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">12</span></dt>
+<dd><p>John Imbrie and Katherine Palmer Imbrie. <em>Ice Ages: Solving the Mystery</em>. Harvard University Press, Cambridge, Massachusetts, 1986.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">13</span></dt>
+<dd><p>Lorraine E. Lisiecki and Maureen E. Raymo. A Pliocene-Pleistocene stack of 57 globally distributed benthic $\delta ^18$O records. <em>Paleoceanog.</em>, 2005. <a class="reference external" href="https://doi.org/10.1029/2004PA001071">doi:10.1029/2004PA001071</a>.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets">14</span></dt>
+<dd><p>Syukuro Manabe and Richard T. Wetherald. Thermal equilibrium of the atmosphere with a given distribution of relative humidity. <em>J. Atmos. Sci.</em>, 24(3):241–259, 1967.</p>
+</dd>
+<dt class="label" id="id20"><span class="brackets">15</span></dt>
+<dd><p>John Marshall and R. Alan Plumb. <em>Atmosphere, Ocean and Climate Dynamics</em>. Academic Press, 2007.</p>
+</dd>
+<dt class="label" id="id23"><span class="brackets">16</span></dt>
+<dd><p>Kendal McGuffie and Ann Henderson-Sellers. <em>The Climate Modelling Primer</em>. Wiley-Blackwell, 4th edition, 2014.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">17</span></dt>
+<dd><p>William H. Press, Brian P. Flannery, Saul A. Teukolsky, and William T. Vetterling. <em>Numerical Recipes in C</em>. Cambridge University Press, Cambridge, U.K., 1988.</p>
+</dd>
+<dt class="label" id="id21"><span class="brackets">18</span></dt>
+<dd><p>Brian E. J. Rose. Climlab: a python toolkit for interactive, process-oriented climate modeling. <em>J. Open Source Software</em>, 2018. <a class="reference external" href="https://doi.org/10.21105/joss.00659">doi:10.21105/joss.00659</a>.</p>
+</dd>
+<dt class="label" id="id9"><span class="brackets">19</span></dt>
+<dd><p>Brian E. J. Rose, Timothy W. Cronin, and Cecilia M. Bitz. Ice caps and ice belts: the effects of obliquity on ice−albedo feedback. <em>Astrophys. J.</em>, 846:28, 2017. <a class="reference external" href="https://doi.org/10.3847/1538-4357/aa8306">doi:10.3847/1538-4357/aa8306</a>.</p>
+</dd>
+<dt class="label" id="id24"><span class="brackets">20</span></dt>
+<dd><p>Kevin E. Trenberth and John T. Fasullo. Tracking earth's energy: from el niño to global warming. <em>Surv. Geophys.</em>, 33:413–426, 2012. <a class="reference external" href="https://doi.org/10.1007/s10712-011-9150-2">doi:10.1007/s10712-011-9150-2</a>.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">21</span></dt>
+<dd><p>J.D. Walker and J.W. Geissman. Geologic time scale. Technical Report, Geological Society of America, 2009. <a class="reference external" href="https://doi.org/10.1130/2009.CTS004R2C">doi:10.1130/2009.CTS004R2C</a>.</p>
+</dd>
+<dt class="label" id="id15"><span class="brackets">22</span></dt>
+<dd><p>Peter J. Webster. The role of hydrological processes in ocean-atmosphere interactions. <em>Rev. Geophys.</em>, 32:427–476, 1994. <a class="reference external" href="https://doi.org/10.1029/94RG01873">doi:10.1029/94RG01873</a>.</p>
+</dd>
+<dt class="label" id="id17"><span class="brackets">23</span></dt>
+<dd><p>Masakazu Yoshimori, Masahiro Watanabe, Hideo Shiogama, Akira Oka, Ayako Abe-Ouchi, Rumi Ohgaito, and Youichi Kamae. A review of progress towards understanding the transient global mean surface temperature response to radiative perturbation. <em>Prog. Earth Planet. Sic.</em>, 2016. <a class="reference external" href="https://doi.org/10.1186/s40645-016-0096-3">doi:10.1186/s40645-016-0096-3</a>.</p>
+</dd>
+</dl>
+</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -501,8 +578,8 @@
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="courseware/assignment-insolation-orbit.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -512,19 +589,17 @@
         </div>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

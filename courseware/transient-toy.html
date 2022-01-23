@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -56,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="16. Clouds and cloud feedback" href="clouds.html" />
-    <link rel="prev" title="14. Examing the transient and equilibrium CO\(_2\) response in the CESM" href="transient-cesm.html" />
+    <link rel="prev" title="14. Examing the transient and equilibrium CO2 response in the CESM" href="transient-cesm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -557,7 +553,77 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Toy models of transient warming</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploring-the-rate-of-climate-change">
+   Exploring the rate of climate change
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-versions-of-radiative-convective-equilibrium-with-different-climate-sensitivities">
+   Two versions of Radiative-Convective Equilibrium with different climate sensitivities
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-to-reach-equilibrium">
+   Time to reach equilibrium
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transient-warming-scenarios-in-column-models-with-ocean-heat-uptake">
+   Transient warming scenarios in column models with ocean heat uptake
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-idealized-transient-global-warming-scenario-co2-increases-by-1-year-to-doubling">
+   An idealized transient global warming scenario: CO2 increases by 1%/year to doubling.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#transient-vs-equilibrium-warming-key-points">
+   Transient vs. equilibrium warming: key points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#results-from-comprehensive-coupled-gcms">
+   Results from comprehensive coupled GCMs
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fast-and-slow-components-of-the-warming">
+     Fast and slow components of the warming
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-happens-if-co2-levels-are-abruptly-returned-to-pre-industrial-levels">
+     What happens if CO2 levels are abruptly returned to pre-industrial levels?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="toy-models-of-transient-warming">
@@ -1044,9 +1110,7 @@ Year  143 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  144 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  145 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  146 , CO2 mixing ratio is  698.3536522015938  ppm.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year  147 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  147 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  148 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  149 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  150 , CO2 mixing ratio is  698.3536522015938  ppm.
@@ -1190,9 +1254,7 @@ Year  287 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  288 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  289 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  290 , CO2 mixing ratio is  698.3536522015938  ppm.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year  291 , CO2 mixing ratio is  698.3536522015938  ppm.
+Year  291 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  292 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  293 , CO2 mixing ratio is  698.3536522015938  ppm.
 Year  294 , CO2 mixing ratio is  698.3536522015938  ppm.
@@ -1392,7 +1454,7 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 <h2>Results from comprehensive coupled GCMs<a class="headerlink" href="#results-from-comprehensive-coupled-gcms" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fast-and-slow-components-of-the-warming">
 <h3>Fast and slow components of the warming<a class="headerlink" href="#fast-and-slow-components-of-the-warming" title="Permalink to this headline">¶</a></h3>
-<p>This figure shows how a comprehensive coupled GCM responds to the same kind of idealized CO2 increase we have looked at above: CO2 increases at 1%/year for 70 years and is then held constant at twice the pre-industrial level (blue curve), or at 4x the pre-industrial level (red curve).</p>
+<p>This figure shows how a comprehensive coupled GCM responds to the same kind of idealized CO2 increase we have looked at above: CO2 increases at 1%/year for 70 years and is then held constant at twice the pre-industrial level (blue curve), or at 4x the pre-industrial level (red curve) <span id="id1">[<a class="reference internal" href="../references.html#id17">Yoshimori <em>et al.</em>, 2016</a>]</span></p>
 <p>The dashed curve show the <strong>ocean heat content</strong> continuing to rise slowly over thousands of years.</p>
 <img src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Yoshimori_transientwarming.png" width="400"><blockquote>
 <div><p>M. Yoshimori, M. Watanabe, H. Shiogama, A. Oka, A. Abe-Ouchi, R. Ohgaito, and Y. Kamae. A review of progress towards understanding the transient global mean surface temperature response to radiative perturbation. Prog. Earth Planet. Sic., 3, 2016.</p>
@@ -1403,7 +1465,7 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 <p>Here, in a different model, we see the surface temperature change through the historical period (black) followed by a typical future global warming scenario (blue).</p>
 <p>The red curves show the effects of suddenly returning greenhouse gases to their preindustrial levels at various times in the future.</p>
 <p>The temperatures very quickly drop, but <strong>not back to the preindustrial values</strong>. Over time, the build-up of heat content in the deep ocean means that, even if CO2 levels revert to what they used to be, the climate remain quite a bit warmer for thousands of years.</p>
-<p>This has been referred to as the <strong>recalcitrant</strong> component of global warming, in analogy with stubborn medical conditions that are difficult to treat.</p>
+<p>This has been referred to as the <strong>recalcitrant</strong> component of global warming, in analogy with stubborn medical conditions that are difficult to treat <span id="id2">[<a class="reference internal" href="../references.html#id16">Held <em>et al.</em>, 2010</a>]</span>.</p>
 <img src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Held_recalcitrant.png" width="400"><blockquote>
 <div><p>I. M. Held, M. Winton, K. Takahashi, T. Delworth, F. Zeng, and G. K. Vallis. Probing the fast and slow components of global warming by returning abruptly to preindustrial forcing. J. Climate, 23:2418–2427, 2010.</p>
 </div></blockquote>
@@ -1442,14 +1504,14 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="transient-cesm.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">14. </span>Examing the transient and equilibrium CO<span class="math notranslate nohighlight">\(_2\)</span> response in the CESM</p>
+            <p class="prev-next-title"><span class="section-number">14. </span>Examing the transient and equilibrium CO2 response in the CESM</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="clouds.html" title="next page">
@@ -1460,19 +1522,17 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

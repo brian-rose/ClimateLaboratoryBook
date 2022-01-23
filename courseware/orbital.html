@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -635,7 +631,155 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Orbital variations, insolation, and the ice ages</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-ice-ages">
+   1. The ice ages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#extent-of-glaciation">
+     Extent of glaciation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pacing-of-ice-ages-evidence-from-ocean-sediments">
+     Pacing of ice ages: evidence from ocean sediments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-astronomical-theory-of-the-ice-ages">
+   2. Introducing the astronomical theory of the ice ages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-milankovitch-hypothesis">
+     The Milankovitch hypothesis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ellipses-and-orbits">
+   3. Ellipses and orbits
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-draw-an-ellipse">
+     How to draw an ellipse
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#perihelion-and-aphelion">
+     Perihelion and Aphelion
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#eccentricity">
+     Eccentricity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obliquity">
+     Obliquity
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#longitude-of-perihelion-and-precession-of-the-equinoxes">
+     Longitude of perihelion and precession of the equinoxes
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#question">
+       Question
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-three-orbital-parameters">
+     The three orbital parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#past-orbital-variations">
+   4. Past orbital variations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#timescales-of-orbital-variation">
+     Timescales of orbital variation:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters">
+   5. Using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     climlab
+    </span>
+   </code>
+   to calculate insolation for arbitrary orbital parameters
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#an-example-zero-obliquity">
+     An example: zero obliquity
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#past-changes-in-insolation-investigating-the-milankovitch-hypothesis">
+   6. Past changes in insolation: investigating the Milankovitch hypothesis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparing-insolation-at-10-kyr-and-23-kyr">
+     Comparing insolation at 10 kyr and 23 kyr
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#understanding-the-effects-of-orbital-variations-on-insolation">
+   7. Understanding the effects of orbital variations on insolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   8. Summary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="orbital-variations-insolation-and-the-ice-ages">
@@ -667,14 +811,14 @@
 </div>
 <div class="section" id="pacing-of-ice-ages-evidence-from-ocean-sediments">
 <h3>Pacing of ice ages: evidence from ocean sediments<a class="headerlink" href="#pacing-of-ice-ages-evidence-from-ocean-sediments" title="Permalink to this headline">¶</a></h3>
-<p>The figure below shows a global record of <strong>oxygen isotopes</strong> recorded in the shells of marine organisms. This record tells us primarily about variations in <strong>global ice volume</strong> – because the net evaporation of water from the oceans to build up the ice sheets leaves the oceans enriched in heavier isotopes.</p>
+<p>The figure below shows a global record of <strong>oxygen isotopes</strong> recorded in the shells of marine organisms <span id="id1">[<a class="reference internal" href="../references.html#id12">Lisiecki and Raymo, 2005</a>]</span>. This record tells us primarily about variations in <strong>global ice volume</strong> – because the net evaporation of water from the oceans to build up the ice sheets leaves the oceans enriched in heavier isotopes.</p>
 <p>The x axis is plotted in <strong>Thousands of years before present</strong> (present-day is at zero on the left).</p>
 <p><img alt="Lisiecki and Raymo Figure 4" src="../_images/Lisiecki_Raymo_Fig.4top.png" /></p>
 <blockquote>
 <div><p>Lisiecki, L. E. and Raymo, M. E. (2005). A Pliocene-Pleistocene stack of 57 globally distributed benthic δ18O records. Paleoceanog., 20.</p>
 </div></blockquote>
 <p>The ice ages (times of extensive glaciation and high ocean <span class="math notranslate nohighlight">\(\delta^{18}\)</span>O) do not seem to be random fluctations. They have come and gone (approximately) periodically, somewhat like the seasons.</p>
-<p><strong>Spectral analysis</strong> of such records reveals peaks at some special frequencies:</p>
+<p><strong>Spectral analysis</strong> of such records reveals peaks at some special frequencies <span id="id2">[<a class="reference internal" href="../references.html#id11">Imbrie and Imbrie, 1986</a>]</span>:</p>
 <p><img alt="Imbrie and Imbrie Figure 42" src="../_images/ImbrieImbrie_Fig42.png" /></p>
 <blockquote>
 <div><p>Imbrie, J. and Imbrie, K. P. (1986). Ice Ages: Solving the Mystery. Harvard University Press, Cambridge, Massachusetts.</p>
@@ -740,7 +884,7 @@ South Pole: 562.03 W/m2.
 <blockquote>
 <div><p>A movie depicting Earth’s changing orbit over the last 100Ky. The orientation is such that spring equinox (indicated by a vertical bar) is directly to the front with the sun behind it. Northern Hemisphere summer is to our right, and Northern Hemisphere winter is to the left. The apsidal (dashed) line connects perihelion (Earth’s closest approach to the sun) to aphelion (the point when Earth is furthest from the sun). The rotaion of the apsidal line occurs because of the precession of the equinoxes and has a roughly twenty-two thousand year period. The semi-circle around the Earth indicates the location of the equator and the straight line is the polar axis. Obliquity is defined as the angle beetween the orbital and equatorial planes. The variations in Earth’s obliquity and the eccentricity of Earth’s orbit have both been increased in magnitude by a factor of ten. Also, the Earth’s angular velocity has been decreased by a factor of five thousand. Note that Earth’s angular velocity is slowest at aphelion and fastest at perihelion.</p>
 </div></blockquote>
-<p>The Earth’s orbit around the Sun traces out an <strong>ellipse</strong>, with the Sun at one focal point.</p>
+<p>The Earth’s orbit around the Sun traces out an <strong>ellipse</strong>, with the Sun at one focal point <span id="id3">[<a class="reference internal" href="../references.html#id11">Imbrie and Imbrie, 1986</a>]</span>:</p>
 <p><img alt="Imbrie and Imbrie Figure 14" src="../_images/ImbrieImbrie_Fig14.png" /></p>
 <blockquote>
 <div><p>Imbrie, J. and Imbrie, K. P. (1986). Ice Ages: Solving the Mystery. Harvard University Press, Cambridge, Massachusetts.</p>
@@ -2688,8 +2832,8 @@ Coordinates:
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="insolation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -2706,19 +2850,17 @@ Coordinates:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 

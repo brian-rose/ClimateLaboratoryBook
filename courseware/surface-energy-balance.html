@@ -41,9 +41,9 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script>
         const thebe_selector = ".thebe"
@@ -241,11 +241,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="transient-cesm.html">
-   14. Examing the transient and equilibrium CO
-   <span class="math notranslate nohighlight">
-    \(_2\)
-   </span>
-   response in the CESM
+   14. Examing the transient and equilibrium CO2 response in the CESM
   </a>
  </li>
  <li class="toctree-l1">
@@ -394,7 +390,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  References
+  Postamble
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -449,7 +445,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -490,7 +486,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -600,7 +596,120 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The surface energy balance</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#energy-exchange-mechanisms-at-the-earth-s-surface">
+   1. Energy exchange mechanisms at the Earth’s surface
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#major-terms-in-the-surface-energy-budget">
+     Major terms in the surface energy budget
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minor-terms-in-the-surface-energy-budget">
+     Minor terms in the surface energy budget
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-surface-energy-budget-in-cesm-simulations">
+   2. The surface energy budget in CESM simulations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-load-the-data">
+     First, load the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#annual-mean-surface-energy-budget">
+     Annual mean surface energy budget
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-anomalies-for-all-terms">
+     Compute anomalies for all terms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-maps-of-the-annual-mean-net-upward-flux-f-s-control-and-anomaly-after-warming">
+     Plot maps of the annual mean net upward flux
+     <span class="math notranslate nohighlight">
+      \(F_S\)
+     </span>
+     (control and anomaly after warming)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variation-of-energy-balance-components-with-latitude">
+     Variation of energy balance components with latitude
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#seasonal-variations">
+     Seasonal variations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sensible-and-latent-heat-fluxes-in-the-boundary-layer">
+   3. Sensible and Latent Heat Fluxes in the boundary layer
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bulk-aerodynamic-formulas">
+     Bulk aerodynamic formulas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-bowen-ratio">
+     The Bowen ratio
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-bowen-ratio-for-wet-surfaces">
+     The Bowen ratio for wet surfaces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-equilibrium-bowen-ratio-for-saturated-air">
+     The equilibrium Bowen ratio (for saturated air)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bowen-ratio-in-cesm-simulations">
+   4. Bowen ratio in CESM simulations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   Credits
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="the-surface-energy-balance">
@@ -907,7 +1016,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 <div class="section" id="sensible-and-latent-heat-fluxes-in-the-boundary-layer">
 <h2>3. Sensible and Latent Heat Fluxes in the boundary layer<a class="headerlink" href="#sensible-and-latent-heat-fluxes-in-the-boundary-layer" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>These notes largely follow Chapter 4 of Hartmann (1994) “Global Physical Climatology”, Academic Press.</p>
+<p>These notes largely follow Chapter 4 of <span id="id1">Hartmann [<a class="reference internal" href="../references.html#id13">1994</a>]</span>, <em>Global Physical Climatology</em>.</p>
 <p>Turbulent fluxes of heat: eddy fluxes of heat and moisture at some level in the atmospheric boundary layer</p>
 <div class="math notranslate nohighlight">
 \[ \text{SH} = c_p ~\rho ~ \overline{w^\prime T^\prime} \]</div>
@@ -971,7 +1080,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 <div class="math notranslate nohighlight">
 \[ \frac{\partial q^*}{\partial T} = q^*(T) \frac{L}{R_v ~ T^2} \]</div>
 <p>Here the quasi-exponential dependence of <span class="math notranslate nohighlight">\(q^*\)</span> on <span class="math notranslate nohighlight">\(T\)</span> far outweighs the inverse square dependence, so the <strong>equilibrium Bowen ratio decreases roughly exponentially with temperature</strong>.</p>
-<p>The following code reproduces Figure 4.10 of Hartmann (1994).</p>
+<p>The following code reproduces Figure 4.10 of <span id="id2">Hartmann [<a class="reference internal" href="../references.html#id13">1994</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.utils.thermo</span> <span class="kn">import</span> <span class="n">qsat</span>
@@ -1095,8 +1204,8 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="advanced-snowball-earth.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -1113,19 +1222,17 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Brian E. J. Rose<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By Brian E. J. Rose<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
 </main>
 
 
