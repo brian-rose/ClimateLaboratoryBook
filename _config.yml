@@ -76,3 +76,7 @@ sphinx:
   # We are ignoring the link to the JupyterHub because of an issue with the certificate
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
     linkcheck_ignore        : https://lore.atmos.albany.edu:8000
+    bibtex_reference_style  : author_year
+
+bibtex_bibfiles:
+    - _bibliography/references.bib
