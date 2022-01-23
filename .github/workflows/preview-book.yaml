@@ -8,7 +8,7 @@ on:
       - completed
 jobs:
   deploy:
-    if: github.repository == 'ProjectPythia/pythia-foundations'
+    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
     runs-on: ubuntu-latest
     defaults:
       run:
