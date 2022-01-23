@@ -58,6 +58,6 @@ parts:
   - file: courseware/assignment-rcm-feedback
   - file: courseware/assignment-cesm-climate-change
   - file: courseware/assignment-insolation-orbit
-- caption: References
+- caption: Postamble
   chapters:
   - file: references
