@@ -7,7 +7,7 @@
 # Book settings
 title                       : The Climate Laboratory  # The title of the book. Will be placed in the left navbar.
 author                      : Brian E. J. Rose  # The author of the book
-copyright                   : "2021"  # Copyright year to be placed in the footer
+copyright                   : "2022"  # Copyright year to be placed in the footer
 logo                        : ""  # A path to the book logo
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
@@ -27,12 +27,21 @@ execute:
 #######################################################################################
 # Parse and render settings
 parse:
-  myst_extended_syntax      : false  # enable MyST extended syntax support (see documents for details)
-  myst_url_schemes          : [mailto, http, https]  # URI schemes that will be recognised as external URLs in Markdown links
-  # myst_enable_extensions:
-  #   # don't forget to list any other extensions you want enabled,
-  #   # including those that are enabled by default!
-  #   - amsmath  # needed for LaTeX-style math blocks like \begin{align*} \end{align*} with $$ delimitations
+  myst_enable_extensions:  # default extensions to enable in the myst parser. See https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
+    - amsmath
+    - colon_fence
+    # - deflist
+    - dollarmath
+    # - html_admonition
+    - html_image
+    - linkify
+    # - replacements
+    # - smartquotes
+    - substitution
+    - tasklist
+  myst_url_schemes: [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
+  myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
+
 #######################################################################################
 # HTML-specific settings
 html:

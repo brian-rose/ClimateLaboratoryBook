@@ -22,19 +22,24 @@ This is the preferred route for UAlbany students. Anyone with login credentials
 to our server will have a point-and-click interface to a completely interactive
 version of the notes, and will be able to save their work and pull in new updates.
 
-Here are some basic instructions *(subject to change as we work out some kinks...)*:
+Here's what to do:
 
 - In a web browser, open this link to the JupyterHub: <https://lore.atmos.albany.edu:8000>
 This should bring you to a login screen. Use your standard UAlbany netid and password.
 - You should now see a JupyterHub screen showing your home space on the DAES linux system.
 - In a different browser window, navigate to the desired page of this book.
-- Click on the button that says `Interact (UAlbany only)`.
+- Find the "Rocket ship" icon at top right. Hover over the icon and you should see several buttons appear.
+- Click on the button that says `JupyterHub`.
 - There may be a brief delay while a local copy of the notes is made for you (or updated) on the server.
 - You should then see the notebook open and running live on the JupyterHub.
 - **IMPORTANT** you need to manually *change the kernel* before things will run properly:
   - Find the `Kernel` menu
   - Select `Kernel --> Change kernel --> ATM415: Python 3`
 - You should then be able to run all the code without any trouble.
+
+```{note}
+Do this step every time! If you get errors trying to run any `import` statements, double check that you're using the `ATM415: Python 3` kernel.
+```
 
 *UAlbany users, please let me know if things don't seem to be working correctly.*
 
@@ -43,6 +48,8 @@ This should bring you to a login screen. Use your standard UAlbany netid and pas
 This will work well for many of the simple examples,
 but some of the notes require more computational resources.
 Binder is good for tinkering, but there is no easy way to save your work and come back to it.
+
+To launch a notebook in Binder, hover over the "Rocket ship" icon at top right and click the `Binder` button. 
 
 ## Anyone: run the code in your own Python environment
 
