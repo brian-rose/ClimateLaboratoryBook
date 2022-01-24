@@ -546,13 +546,14 @@ However to get the most of the material, you’ll probably want to
 <p>This is the preferred route for UAlbany students. Anyone with login credentials
 to our server will have a point-and-click interface to a completely interactive
 version of the notes, and will be able to save their work and pull in new updates.</p>
-<p>Here are some basic instructions <em>(subject to change as we work out some kinks…)</em>:</p>
+<p>Here’s what to do:</p>
 <ul class="simple">
 <li><p>In a web browser, open this link to the JupyterHub: <a class="reference external" href="https://lore.atmos.albany.edu:8000">https://lore.atmos.albany.edu:8000</a>
 This should bring you to a login screen. Use your standard UAlbany netid and password.</p></li>
 <li><p>You should now see a JupyterHub screen showing your home space on the DAES linux system.</p></li>
 <li><p>In a different browser window, navigate to the desired page of this book.</p></li>
-<li><p>Click on the button that says <code class="docutils literal notranslate"><span class="pre">Interact</span> <span class="pre">(UAlbany</span> <span class="pre">only)</span></code>.</p></li>
+<li><p>Find the “Rocket ship” icon at top right. Hover over the icon and you should see several buttons appear.</p></li>
+<li><p>Click on the button that says <code class="docutils literal notranslate"><span class="pre">JupyterHub</span></code>.</p></li>
 <li><p>There may be a brief delay while a local copy of the notes is made for you (or updated) on the server.</p></li>
 <li><p>You should then see the notebook open and running live on the JupyterHub.</p></li>
 <li><p><strong>IMPORTANT</strong> you need to manually <em>change the kernel</em> before things will run properly:</p>
@@ -563,6 +564,10 @@ This should bring you to a login screen. Use your standard UAlbany netid and pas
 </li>
 <li><p>You should then be able to run all the code without any trouble.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do this step every time! If you get errors trying to run any <code class="docutils literal notranslate"><span class="pre">import</span></code> statements, double check that you’re using the <code class="docutils literal notranslate"><span class="pre">ATM415:</span> <span class="pre">Python</span> <span class="pre">3</span></code> kernel.</p>
+</div>
 <p><em>UAlbany users, please let me know if things don’t seem to be working correctly.</em></p>
 </div>
 <div class="section" id="public-users-interact-through-a-cloud-based-binder-service">
@@ -570,6 +575,7 @@ This should bring you to a login screen. Use your standard UAlbany netid and pas
 <p>This will work well for many of the simple examples,
 but some of the notes require more computational resources.
 Binder is good for tinkering, but there is no easy way to save your work and come back to it.</p>
+<p>To launch a notebook in Binder, hover over the “Rocket ship” icon at top right and click the <code class="docutils literal notranslate"><span class="pre">Binder</span></code> button.</p>
 </div>
 <div class="section" id="anyone-run-the-code-in-your-own-python-environment">
 <h2>Anyone: run the code in your own Python environment<a class="headerlink" href="#anyone-run-the-code-in-your-own-python-environment" title="Permalink to this headline">¶</a></h2>
@@ -644,7 +650,7 @@ the source repository.</p>
     
       By Brian E. J. Rose<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>
