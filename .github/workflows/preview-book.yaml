@@ -81,7 +81,7 @@ jobs:
             ${{ env.comment_message }}
             🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
       - name: Download Artifact Book
-        uses: dawidd6/action-download-artifact@v2.16.0
+        uses: dawidd6/action-download-artifact@v2.17.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           workflow: deploy.yaml
