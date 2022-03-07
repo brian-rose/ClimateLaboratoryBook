@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/models-budgets-fun.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -848,7 +847,7 @@
 <blockquote>
 <div><p>Essentially, all models are wrong, but some are useful.”</p>
 </div></blockquote>
-<p>From the Climate Modelling Primer, 4th ed <span id="id1">[<a class="reference internal" href="../references.html#id23">McGuffie and Henderson-Sellers, 2014</a>]</span></p>
+<p>From the Climate Modelling Primer, 4th ed <span id="id1">[<a class="reference internal" href="../references.html#id23" title="Kendal McGuffie and Ann Henderson-Sellers. The Climate Modelling Primer. Wiley-Blackwell, 4th edition, 2014.">McGuffie and Henderson-Sellers, 2014</a>]</span></p>
 <blockquote>
 <div><p>In the broadest sense, models are for learning about the world (in our case, the climate) and the learning takes place in the contruction and the manipulation of the model, as anyone who has watched a child build idealised houses or spaceships with Lego, or built with it themselves, will know.  Climate models are, likewise, idealised representations of a complicated and complex reality through which our understanding of the climate has significantly expanded. All models involve some ignoring, distoring and approximating, but gradually they allow us to build understanding of the system being modelled. A child’s Lego construction typically contains the essential elements of the real objects, improves with attention to detail, helps them understand the real world, but is never confused with the real thing.</p>
 </div></blockquote>
@@ -864,7 +863,7 @@
 <div class="section" id="the-observed-global-energy-budget">
 <h2>2. The observed global energy budget<a class="headerlink" href="#the-observed-global-energy-budget" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>The figure below shows current best estimates of the <em>global, annual mean</em> energy fluxes through the climate system <span id="id2">[<a class="reference internal" href="../references.html#id24">Trenberth and Fasullo, 2012</a>]</span>.</p>
+<p>The figure below shows current best estimates of the <em>global, annual mean</em> energy fluxes through the climate system <span id="id2">[<a class="reference internal" href="../references.html#id24" title="Kevin E. Trenberth and John T. Fasullo. Tracking earth's energy: from el niño to global warming. Surv. Geophys., 33:413–426, 2012. doi:10.1007/s10712-011-9150-2.">Trenberth and Fasullo, 2012</a>]</span>.</p>
 <p>We will look at many of these processes in detail throughout the course.</p>
 <p><img alt="Observed global energy flows from Trenberth and Fasullo (2012)" src="../_images/GlobalEnergyBudget.png" /></p>
 </div>

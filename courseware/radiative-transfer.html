@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -936,8 +935,8 @@ t_{0} &amp;= \frac{U_{0} \exp(-\Delta \tau)}{U_{0}}  \\
 <h3>Emissivity<a class="headerlink" href="#emissivity" title="Permalink to this headline">¶</a></h3>
 <p>The second term is the net change in the beam due to <strong>emissions</strong> in the layer.</p>
 <p>We can the define the <strong>emissivity</strong> <span class="math notranslate nohighlight">\(\epsilon_0\)</span> of the layer analogously</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25dbf41b-f146-4ca7-a5a0-55e0157b1d5e">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-25dbf41b-f146-4ca7-a5a0-55e0157b1d5e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c5d99f7b-752c-49d8-9759-6d0b9eb517fc">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-c5d99f7b-752c-49d8-9759-6d0b9eb517fc" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \epsilon_{0} &amp;=  1 - \exp(-\Delta \tau) \\
   &amp;= 1 - t_{0} 
 \end{align}\]</div>

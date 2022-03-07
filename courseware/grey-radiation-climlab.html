@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/grey-radiation-climlab.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -1821,8 +1820,8 @@ Total elapsed time is 2.0014116660123062 years.
 </div>
 </div>
 <p>Compare these to the analytical solutions for radiative equilibrium with <span class="math notranslate nohighlight">\(\epsilon = 0.58\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95803e15-a5c8-4d6a-975d-e2d5fc9330e6">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-95803e15-a5c8-4d6a-975d-e2d5fc9330e6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a43cf39e-bd16-465b-8e8a-2c5381bf486d">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-a43cf39e-bd16-465b-8e8a-2c5381bf486d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 T_s &amp;= 296.4 \text{ K} \\
 T_0 &amp;= 262.3 \text{ K} \\
 T_1 &amp;= 233.8 \text{ K} \\

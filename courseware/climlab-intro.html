@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climlab-intro.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -727,7 +726,7 @@
 <hr class="docutils" />
 <div class="section" id="about-climlab">
 <h2>About climlab<a class="headerlink" href="#about-climlab" title="Permalink to this headline">¶</a></h2>
-<p>climlab <span id="id1">[<a class="reference internal" href="../references.html#id21">Rose, 2018</a>]</span> is a specialized python package for process-oriented climate modeling.</p>
+<p>climlab <span id="id1">[<a class="reference internal" href="../references.html#id21" title="Brian E. J. Rose. Climlab: a python toolkit for interactive, process-oriented climate modeling. J. Open Source Software, 2018. doi:10.21105/joss.00659.">Rose, 2018</a>]</span> is a specialized python package for process-oriented climate modeling.</p>
 <p>It is based on a very general concept of a model as a collection of individual,
 interacting processes. climlab defines a base class called <code class="docutils literal notranslate"><span class="pre">Process</span></code>, which
 can contain an arbitrarily complex tree of sub-processes (each also some

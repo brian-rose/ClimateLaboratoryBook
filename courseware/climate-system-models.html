@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climate-system-models.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -1000,7 +999,7 @@
 <hr class="docutils" />
 <div class="section" id="definition-of-the-climate-system-and-its-spheres">
 <h3>Definition of the “climate system” and its “spheres”<a class="headerlink" href="#definition-of-the-climate-system-and-its-spheres" title="Permalink to this headline">¶</a></h3>
-<p>From the IPCC AR5 report <span id="id1">[<a class="reference internal" href="../references.html#id22">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
+<p>From the IPCC AR5 report <span id="id1">[<a class="reference internal" href="../references.html#id22" title="U. Cubasch, D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald, and J.-G. Winther. Introduction. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 1. Cambridge University Press, Cambridge, U.K., 2013. doi:10.1017/CBO9781107415324.007.">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
 <blockquote>
 <div><p><strong>Climate System:</strong> “The climate system is the highly complex system consisting of five major components: the atmosphere, the hydrosphere, the cryosphere, the lithosphere and the biosphere, and the interactions between them. The climate system evolves in time under the influence of its own internal dynamics and because of external forcings such as volcanic eruptions, solar variations and anthropogenic forcings such as the changing composition of the atmosphere and land use change.”</p>
 </div></blockquote>
@@ -1038,7 +1037,7 @@
 </div>
 <div class="section" id="why-might-we-want-to-include-all-these-spheres-in-our-models">
 <h3>WHY might we want to include all these “spheres” in our models?<a class="headerlink" href="#why-might-we-want-to-include-all-these-spheres-in-our-models" title="Permalink to this headline">¶</a></h3>
-<p>Here are two nice figures from the IPCC AR5 WG1 report <span id="id2">[<a class="reference internal" href="../references.html#id22">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
+<p>Here are two nice figures from the IPCC AR5 WG1 report <span id="id2">[<a class="reference internal" href="../references.html#id22" title="U. Cubasch, D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald, and J.-G. Winther. Introduction. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 1. Cambridge University Press, Cambridge, U.K., 2013. doi:10.1017/CBO9781107415324.007.">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
 <a class="reference internal image-reference" href="http://www.climatechange2013.org/images/figures/WGI_AR5_Fig1-1.jpg"><img alt="http://www.climatechange2013.org/images/figures/WGI_AR5_Fig1-1.jpg" src="http://www.climatechange2013.org/images/figures/WGI_AR5_Fig1-1.jpg" style="width: 800px;" /></a>
 <blockquote>
 <div><p>Figure 1.1 | Main drivers of climate change. The radiative balance between incoming solar shortwave radiation (SWR) and outgoing longwave radiation (OLR) is influenced by global climate ‘drivers’. Natural fluctuations in solar output (solar cycles) can cause changes in the energy balance (through fluctuations in the amount of incoming SWR) (Section 2.3). Human activity changes the emissions of gases and aerosols, which are involved in atmospheric chemical reactions, resulting in modified O3 and aerosol amounts (Section 2.2). O3 and aerosol particles absorb, scatter and reflect SWR, changing the energy balance. Some aerosols act as cloud condensation nuclei modifying the properties of cloud droplets and possibly affecting precipitation (Section 7.4). Because cloud interactions with SWR and LWR are large, small changes in the properties of clouds have important implications for the radiative budget (Section 7.4). Anthropogenic changes in GHGs (e.g., CO2, CH4, N2O, O3, CFCs) and large aerosols (&gt;2.5 μm in size) modify the amount of outgoing LWR by absorbing outgoing LWR and re-emitting less energy at a lower temperature (Section 2.2). Surface albedo is changed by changes in vegetation or land surface properties, snow or ice cover and ocean colour (Section 2.3). These changes are driven by natural seasonal and diurnal changes (e.g., snow cover), as well as human influence (e.g., changes in vegetation types) (Forster et al., 2007).</p>
@@ -1065,7 +1064,7 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 <hr class="docutils" />
 <div class="section" id="definitions">
 <h3>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h3>
-<p>The <em>Climate Modelling Primer</em> (4th ed., page 124) <span id="id3">[<a class="reference internal" href="../references.html#id23">McGuffie and Henderson-Sellers, 2014</a>]</span> defines <strong>parameterization</strong> as</p>
+<p>The <em>Climate Modelling Primer</em> (4th ed., page 124) <span id="id3">[<a class="reference internal" href="../references.html#id23" title="Kendal McGuffie and Ann Henderson-Sellers. The Climate Modelling Primer. Wiley-Blackwell, 4th edition, 2014.">McGuffie and Henderson-Sellers, 2014</a>]</span> defines <strong>parameterization</strong> as</p>
 <blockquote>
 <div><p>The process of capturing a physical process through some mathematical relationship between important parameters in the process, but without explicitly modeling all the actual processes. For example, the albedo of leaves might be related to the soil moisture (via some specification of wilting point) but the physical and biological mechanisms in the plant that happen when the leaf wilts are not modelled.</p>
 </div></blockquote>
@@ -1206,7 +1205,7 @@ So we don’t tend to include ice sheet and geological feedbacks – though coup
 <h3>Simple vs. Complex models: their different roles in the science<a class="headerlink" href="#simple-vs-complex-models-their-different-roles-in-the-science" title="Permalink to this headline">¶</a></h3>
 <p><img alt="Primer Table 2.1" src="../_images/Primer_Table2.1.png" /></p>
 <p>In this course we are going to work extensively with two kinds of simple one-dimensional model: <strong>EBM</strong>s and <strong>RCM</strong>s.</p>
-<p>Section 2.2.1 and 2.2.2 of the <em>Primer</em> <span id="id6">[<a class="reference internal" href="../references.html#id23">McGuffie and Henderson-Sellers, 2014</a>]</span> give a sneak peek of the ingredients and uses for these models.</p>
+<p>Section 2.2.1 and 2.2.2 of the <em>Primer</em> <span id="id6">[<a class="reference internal" href="../references.html#id23" title="Kendal McGuffie and Ann Henderson-Sellers. The Climate Modelling Primer. Wiley-Blackwell, 4th edition, 2014.">McGuffie and Henderson-Sellers, 2014</a>]</span> give a sneak peek of the ingredients and uses for these models.</p>
 <hr class="docutils" />
 <p><a id='section4'></a></p>
 </div>

@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/spectral-bands.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -1028,7 +1027,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </div>
 <div class="section" id="manabe-s-constant-relative-humidity-parameterization">
 <h3>Manabe’s constant relative humidity parameterization<a class="headerlink" href="#manabe-s-constant-relative-humidity-parameterization" title="Permalink to this headline">¶</a></h3>
-<p>We are going to adopt a parameterization first used in a very famous paper by <span id="id1">Manabe and Wetherald [<a class="reference internal" href="../references.html#id19">1967</a>]</span>, <em>The thermal equilibrium of the atmosphere with a given distribution of relative humidity</em>.</p>
+<p>We are going to adopt a parameterization first used in a very famous paper by <span id="id1">Manabe and Wetherald [<a class="reference internal" href="../references.html#id19" title="Syukuro Manabe and Richard T. Wetherald. Thermal equilibrium of the atmosphere with a given distribution of relative humidity. J. Atmos. Sci., 24(3):241–259, 1967.">1967</a>]</span>, <em>The thermal equilibrium of the atmosphere with a given distribution of relative humidity</em>.</p>
 <p>This paper was the first to give a really credible calculation of climate sensitivity to a doubling of CO2 by accounting for the known spectral properties of CO2 and H2O absorption, as well as the water vapor feedback!</p>
 <p>The parameterization is very simple:</p>
 <p>We assume that the relative humidity <span class="math notranslate nohighlight">\(r\)</span> is a linear function of pressure <span class="math notranslate nohighlight">\(p\)</span>:</p>

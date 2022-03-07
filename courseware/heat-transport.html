@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/heat-transport.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -1375,7 +1374,7 @@ h &amp;= \frac{\mathcal{H}(\phi) - \mathcal{H}(\phi+\delta\phi)}{2 \pi a^2  \cos
 <blockquote>
 <div><p>The ERBE period zonal mean annual cycle of the meridional energy transport in PW by (a) the atmosphere and ocean as inferred from ERBE <span class="math notranslate nohighlight">\(R_T\)</span>, NRA <span class="math notranslate nohighlight">\(\delta\)</span>A_E/<span class="math notranslate nohighlight">\(\delta\)</span>t, and GODAS <span class="math notranslate nohighlight">\(\delta\)</span>O_E/<span class="math notranslate nohighlight">\(\delta\)</span>t; (b) the atmosphere based on NRA; and (c) by the ocean as implied by ERBE + NRA <span class="math notranslate nohighlight">\(F_S\)</span> and GODAS <span class="math notranslate nohighlight">\(\delta\)</span>O_E/<span class="math notranslate nohighlight">\(\delta\)</span>t. Stippling and hatching in (a)–(c) represent regions and times of year in which the standard deviation of the monthly mean values among estimates, some of which include the CERES period (see text), exceeds 0.5 and 1.0 PW, respectively. (d) The median annual mean transport by latitude for the total (gray), atmosphere (red), and ocean (blue) accompanied with the associated <span class="math notranslate nohighlight">\(\pm2\sigma\)</span> range (shaded).</p>
 </div></blockquote>
-<p>This is a reproduction of Figure 7 from <span id="id1">Fasullo and Trenberth [<a class="reference internal" href="../references.html#id10">2008</a>]</span>.</p>
+<p>This is a reproduction of Figure 7 from <span id="id1">Fasullo and Trenberth [<a class="reference internal" href="../references.html#id10" title="John T. Fasullo and Kevin E. Trenberth. The annual cycle of the energy budget. part II: meridional structures and poleward transports. J. Climate, 21:2313–2325, 2008. doi:10.1175/2007JCLI1936.1.">2008</a>]</span>.</p>
 <p>This figure shows the breakdown of the heat transport by <strong>season</strong> as well as the <strong>partition between the atmosphere and ocean</strong>.</p>
 <p>Focussing just on the total, annual transport in panel (d) (black curve), we see that is quite consistent with what we computed from the CESM simulation.</p>
 </div>

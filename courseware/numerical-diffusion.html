@@ -42,15 +42,14 @@
     <script src="../_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/numerical-diffusion.html" />
     <link rel="author" title="About these documents" href="../about.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -1330,7 +1329,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <div class="section" id="stability-analysis-of-the-ftcs-scheme">
 <h2>5. Stability analysis of the FTCS scheme<a class="headerlink" href="#stability-analysis-of-the-ftcs-scheme" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Following <span id="id1">Press <em>et al.</em> [<a class="reference internal" href="../references.html#id8">1988</a>]</span>, <em>Numerical Recipes in C: The Art of Scientific Computing</em>.</p>
+<p>Following <span id="id1">Press <em>et al.</em> [<a class="reference internal" href="../references.html#id8" title="William H. Press, Brian P. Flannery, Saul A. Teukolsky, and William T. Vetterling. Numerical Recipes in C. Cambridge University Press, Cambridge, U.K., 1988.">1988</a>]</span>, <em>Numerical Recipes in C: The Art of Scientific Computing</em>.</p>
 <p>This is an example of the so-called <strong>von Neumann Stability Analysis</strong>. It is a form of <em>normal mode</em> analysis for a discrete system.</p>
 <p>We look for normal mode solutions (i.e. wavy sines and cosines) of the finite difference equations of the form</p>
 <div class="math notranslate nohighlight">
