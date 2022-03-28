@@ -49,7 +49,7 @@ jobs:
               core.info(`Found pull request ${pullRequestNumber}, with head sha: ${pullRequestHeadSHA}`)
             }
       - name: Find Comment
-        uses: peter-evans/find-comment@v1
+        uses: peter-evans/find-comment@v2
         if: steps.find-pull-request.outputs.number != ''
         id: fc
         with:
