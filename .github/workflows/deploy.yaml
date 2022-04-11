@@ -52,7 +52,7 @@ jobs:
           fi
           zip -r book.zip ./_build/html
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: book-zip
           path: ./book.zip
