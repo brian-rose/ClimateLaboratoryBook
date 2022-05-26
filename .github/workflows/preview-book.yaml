@@ -25,8 +25,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for opening this PR! The book is being automatically built with [GitHub Actions](https://github.com/features/actions)
-                A preview will be available here: https://brian-rose.github.io/ClimateLaboratoryBook/_preview/${{github.event.number}}'
+              body: '👋 Thanks for opening this PR! The book is being automatically built with [GitHub Actions](https://github.com/features/actions). A preview will be available here: https://brian-rose.github.io/ClimateLaboratoryBook/_preview/${{github.event.number}}'
             })
       - uses: conda-incubator/setup-miniconda@master
         with:
