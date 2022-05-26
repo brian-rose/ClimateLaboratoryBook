@@ -4,9 +4,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup:
-    - uses: ./.github/workflows/set-up-environment.yaml
-
   build:
     runs-on: ubuntu-latest
     defaults:
@@ -19,6 +16,18 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v3
+      - uses: conda-incubator/setup-miniconda@master
+        with:
+          channels: conda-forge
+          channel-priority: strict
+          activate-environment: climlab-courseware
+          auto-update-conda: false
+          python-version: 3.8
+          environment-file: render-environment.yml
+          mamba-version: '*'
+          use-mamba: true
+
+      # Build the book
       - name: Build the book
         run: |
           jupyter-book build .
