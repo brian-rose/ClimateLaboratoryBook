@@ -15,19 +15,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@master
-        with:
-          channels: conda-forge
-          channel-priority: strict
-          activate-environment: climlab-courseware
-          auto-update-conda: false
-          python-version: 3.8
-          environment-file: render-environment.yml
-          mamba-version: '*'
-          use-mamba: true
-
-      # Build the book
+      - uses: ./.github/workflows/set-up-environment.yaml
       - name: Build the book
         run: |
           jupyter-book build .
