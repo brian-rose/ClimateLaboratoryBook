@@ -1,0 +1,36 @@
+name: make-comment
+on:
+  pull_request_target:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set message value
+        run: |
+          echo "comment_message=👋 Thanks for opening this PR! The book will be automatically built with [GitHub Actions](https://github.com/features/actions) each time the PR is updated. A preview will be available here: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/_preview/${{github.event.number}}" >> $GITHUB_ENV
+      # See if our comment is already posted (only want to post it once when the PR is first opened)
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: '${{ github.event.number }}'
+          comment-author: 'github-actions[bot]'
+          body-includes: '${{ env.comment_message }}'
+      # If not, then post it
+      - name: Post comment
+        uses: actions/github-script@v5
+        if: steps.fc.outputs.comment-id == 0  # no matching comment found
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '${{ env.comment_message }}'
+            })

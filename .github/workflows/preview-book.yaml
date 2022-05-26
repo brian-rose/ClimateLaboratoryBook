@@ -1,122 +1,37 @@
-# Preview the rendered book on netlify
-#
-# This wizardry is respectfully borrowed from ProjectPythia/pythia-foundations
-# Original author: Anderson Banihirwe @andersy005
 name: preview-book
 on:
-  workflow_run:
-    workflows:
-      - deploy-book
-    types:
-      - requested
-      - completed
+  pull_request:
+  workflow_dispatch:
+
 jobs:
-  deploy:
-    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
+  build:
     runs-on: ubuntu-latest
     defaults:
       run:
-        shell: bash
+        shell: bash -l {0}
     steps:
       - uses: actions/checkout@v3
-      - name: Set message value
-        run: |
-          echo "comment_message=This pull request is being automatically built with [GitHub Actions](https://github.com/features/actions) and [Netlify](https://www.netlify.com/). To see the status of your deployment, click below." >> $GITHUB_ENV
-      - name: Find Pull Request
-        uses: actions/github-script@v6
-        id: find-pull-request
+      - uses: conda-incubator/setup-miniconda@master
         with:
-          script: |
-            let pullRequestNumber = ''
-            let pullRequestHeadSHA = ''
-            core.info('Finding pull request...')
-            const pullRequests = await github.pulls.list({owner: context.repo.owner, repo: context.repo.repo})
-            for (let pullRequest of pullRequests.data) {
-              if(pullRequest.head.sha === context.payload.workflow_run.head_commit.id) {
-                  pullRequestHeadSHA = pullRequest.head.sha
-                  pullRequestNumber = pullRequest.number
-                  break
-              }
-            }
-            core.setOutput('number', pullRequestNumber)
-            core.setOutput('sha', pullRequestHeadSHA)
-            if(pullRequestNumber === '') {
-              core.info(
-                 `No pull request associated with git commit SHA: ${context.payload.workflow_run.head_commit.id}`
-              )
-            }
-            else{
-              core.info(`Found pull request ${pullRequestNumber}, with head sha: ${pullRequestHeadSHA}`)
-            }
-      - name: Find Comment
-        uses: peter-evans/find-comment@v2
-        if: steps.find-pull-request.outputs.number != ''
-        id: fc
-        with:
-          issue-number: '${{ steps.find-pull-request.outputs.number }}'
-          comment-author: 'github-actions[bot]'
-          body-includes: '${{ env.comment_message }}'
+          channels: conda-forge
+          channel-priority: strict
+          activate-environment: climlab-courseware
+          auto-update-conda: false
+          python-version: 3.8
+          environment-file: render-environment.yml
+          mamba-version: '*'
+          use-mamba: true
 
-      - name: Create comment
-        if: |
-          github.event.workflow_run.conclusion != 'success'
-          && steps.find-pull-request.outputs.number != ''
-          && steps.fc.outputs.comment-id == ''
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          issue-number: ${{ steps.find-pull-request.outputs.number }}
-          body: |
-            ${{ env.comment_message }}
-            🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
-      - name: Update comment
-        if: |
-          github.event.workflow_run.conclusion != 'success'
-          && steps.find-pull-request.outputs.number != ''
-          && steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            ${{ env.comment_message }}
-            🚧 Deployment in progress for git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
-      - name: Download Artifact Book
-        uses: dawidd6/action-download-artifact@v2.19.0
+      # Build the book
+      - name: Build the book
+        run: |
+          jupyter-book build .
+      # Push the book's HTML to github-pages
+      # This will be published at /_preview/PRnumber/ relative to the main site
+      - name: Deploy to GitHub pages
+        uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          workflow: deploy.yaml
-          run_id: ${{ github.event.workflow_run.id }}
-          name: book-zip
-
-      - name: Unzip book
-        run: |
-          rm -rf ./_build/html
-          unzip book.zip
-          rm -f book.zip
-      # Push the book's HTML to Netlify and get the preview URL
-      - name: Deploy to Netlify
-        id: netlify
-        uses: nwtgck/actions-netlify@v1.2
-        with:
-          publish-dir: ./_build/html
-          production-deploy: false
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          enable-commit-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 5
-
-      - name: Update Jupyter Book Preview comment
-        if: |
-          github.event.workflow_run.conclusion == 'success'
-          && steps.find-pull-request.outputs.number != ''
-          && steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            ${{ env.comment_message }}
-            🔍 Git commit SHA:  ${{ steps.find-pull-request.outputs.sha }}
-            ✅ Deployment Preview URL: ${{ steps.netlify.outputs.deploy-url }}
+          publish_dir: ./_build/html
+          enable_jekyll: false
+          destination_dir: _preview/${{github.event.number}}
