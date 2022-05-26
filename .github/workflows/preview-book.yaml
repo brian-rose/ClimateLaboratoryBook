@@ -33,7 +33,6 @@ jobs:
           jupyter-book build .
       # Push the book's HTML to github-pages
       - name: Deploy to GitHub pages
-        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
