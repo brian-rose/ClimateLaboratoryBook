@@ -16,6 +16,19 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v3
+      - name: Post comment
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: |
+                '👋 Thanks for opening this PR! The book is being automatically built with [GitHub Actions](https://github.com/features/actions)
+                A preview will be available here: https://brian-rose.github.io/ClimateLaboratoryBook/_preview/${{github.event.number}}'
+            })
       - uses: conda-incubator/setup-miniconda@master
         with:
           channels: conda-forge
@@ -40,15 +53,3 @@ jobs:
           publish_dir: ./_build/html
           enable_jekyll: false
           destination_dir: _preview/${{github.event.number}}
-
-      - name: Post comment
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '👋 A preview of this PR is here: https://brian-rose.github.io/ClimateLaboratoryBook/_preview/${{github.event.number}}'
-            })
