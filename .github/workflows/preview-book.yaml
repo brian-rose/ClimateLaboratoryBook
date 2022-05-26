@@ -9,7 +9,6 @@ jobs:
     defaults:
       run:
         shell: bash -l {0}
-    if: github.repository == 'brian-rose/ClimateLaboratoryBook'
     steps:
       - name: Cancel previous runs
         uses: styfle/cancel-workflow-action@0.9.1
@@ -25,7 +24,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '👋 Thanks for opening this PR! The book is being automatically built with [GitHub Actions](https://github.com/features/actions). A preview will be available here: https://${{ github.repository_owner }}.github.io/ClimateLaboratoryBook/_preview/${{github.event.number}}'
+              body: '👋 Thanks for opening this PR! The book is being automatically built with [GitHub Actions](https://github.com/features/actions). A preview will be available here: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/_preview/${{github.event.number}}'
             })
       - uses: conda-incubator/setup-miniconda@master
         with:
