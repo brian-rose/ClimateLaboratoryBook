@@ -23,7 +23,7 @@ jobs:
           body-includes: '${{ env.comment_message }}'
       # If not, then post it
       - name: Post comment
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         if: steps.fc.outputs.comment-id == 0  # no matching comment found
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
