@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>18. Orbital variations, insolation, and the ice ages &#8212; The Climate Laboratory</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -76,7 +75,21 @@ const thebe_selector_output = ".output, .cell_output"
                     </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -85,9 +98,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -100,14 +114,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../home.html">
-   The Climate Laboratory
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Preamble
  </span>
@@ -404,97 +419,182 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/courseware/orbital.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/orbital.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        <a class="jupyterhub-button" href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/orbital.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/orbital.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/orbital.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/courseware/orbital.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-ice-ages">
    1. The ice ages
@@ -627,12 +727,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Orbital variations, insolation, and the ice ages</h1>
@@ -781,11 +880,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="orbital-variations-insolation-and-the-ice-ages">
-<h1><span class="section-number">18. </span>Orbital variations, insolation, and the ice ages<a class="headerlink" href="#orbital-variations-insolation-and-the-ice-ages" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="orbital-variations-insolation-and-the-ice-ages">
+<h1><span class="section-number">18. </span>Orbital variations, insolation, and the ice ages<a class="headerlink" href="#orbital-variations-insolation-and-the-ice-ages" title="Permalink to this headline">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -799,12 +899,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
-<div class="section" id="the-ice-ages">
-<h2>1. The ice ages<a class="headerlink" href="#the-ice-ages" title="Permalink to this headline">¶</a></h2>
+<section id="the-ice-ages">
+<h2>1. The ice ages<a class="headerlink" href="#the-ice-ages" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Recent Earth history (past few million years) has been dominated by the repeated growth and retreat of large continental ice sheets, mostly over the land masses of the Northern Hemisphere.</p>
-<div class="section" id="extent-of-glaciation">
-<h3>Extent of glaciation<a class="headerlink" href="#extent-of-glaciation" title="Permalink to this headline">¶</a></h3>
+<section id="extent-of-glaciation">
+<h3>Extent of glaciation<a class="headerlink" href="#extent-of-glaciation" title="Permalink to this headline">#</a></h3>
 <p>The images below show typical maximum extents of the ice sheets during recent glaciations (grey) compared with present-day ice sheets (black)</p>
 <img alt="http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Iceage_north-intergl_glac_hg.png/480px-Iceage_north-intergl_glac_hg.png" src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Iceage_north-intergl_glac_hg.png/480px-Iceage_north-intergl_glac_hg.png" />
 <img alt="http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Iceage_south-intergl_glac_hg.png/480px-Iceage_south-intergl_glac_hg.png" src="http://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Iceage_south-intergl_glac_hg.png/480px-Iceage_south-intergl_glac_hg.png" />
@@ -812,9 +912,9 @@ const thebe_selector_output = ".output, .cell_output"
 <div><p>Hannes Grobe/AWI, <a class="reference external" href="http://commons.wikimedia.org/wiki/File:Iceage_north-intergl_glac_hg.png">http://commons.wikimedia.org/wiki/File:Iceage_north-intergl_glac_hg.png</a></p>
 </div></blockquote>
 <p><a id='icevolumeseries'></a></p>
-</div>
-<div class="section" id="pacing-of-ice-ages-evidence-from-ocean-sediments">
-<h3>Pacing of ice ages: evidence from ocean sediments<a class="headerlink" href="#pacing-of-ice-ages-evidence-from-ocean-sediments" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pacing-of-ice-ages-evidence-from-ocean-sediments">
+<h3>Pacing of ice ages: evidence from ocean sediments<a class="headerlink" href="#pacing-of-ice-ages-evidence-from-ocean-sediments" title="Permalink to this headline">#</a></h3>
 <p>The figure below shows a global record of <strong>oxygen isotopes</strong> recorded in the shells of marine organisms <span id="id1">[<a class="reference internal" href="../references.html#id12" title="Lorraine E. Lisiecki and Maureen E. Raymo. A Pliocene-Pleistocene stack of 57 globally distributed benthic $\delta ^18$O records. Paleoceanog., 2005. doi:10.1029/2004PA001071.">Lisiecki and Raymo, 2005</a>]</span>. This record tells us primarily about variations in <strong>global ice volume</strong> – because the net evaporation of water from the oceans to build up the ice sheets leaves the oceans enriched in heavier isotopes.</p>
 <p>The x axis is plotted in <strong>Thousands of years before present</strong> (present-day is at zero on the left).</p>
 <p><img alt="Lisiecki and Raymo Figure 4" src="../_images/Lisiecki_Raymo_Fig.4top.png" /></p>
@@ -832,10 +932,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The presence of peaks in the spectrum at orbital frequencies was seen as convincing evidence that the so-called <strong>astronomical theory of the ice ages</strong> was (at least partially) correct.</p>
 <hr class="docutils" />
 <p><a id='section2'></a></p>
-</div>
-</div>
-<div class="section" id="introducing-the-astronomical-theory-of-the-ice-ages">
-<h2>2. Introducing the astronomical theory of the ice ages<a class="headerlink" href="#introducing-the-astronomical-theory-of-the-ice-ages" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="introducing-the-astronomical-theory-of-the-ice-ages">
+<h2>2. Introducing the astronomical theory of the ice ages<a class="headerlink" href="#introducing-the-astronomical-theory-of-the-ice-ages" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>The <strong>Astronomical Theory</strong> of climate and the ice ages looks to the <strong>regular, predictable variations in the Earth’s orbit around the Sun</strong> as the driving force for the growth and melt of the great ice sheets. Such theories have been discussed since long before there was any evidence about the timing of past glaciations.</p>
 <p>Last time we saw that insolation is NOT perfectly symmetrically distributed between the two hemispheres and seasons.</p>
@@ -866,8 +966,8 @@ South Pole: 562.03 W/m2.
 </div>
 <p>These asymmetries arise because of the detailed shape of the orbit of the Earth around the Sun and the tilt of the Earth’s axis of rotation.</p>
 <p>As these orbitals details change over time, there are significant changes in the distribution of sunlight over the seasons and latitudes.</p>
-<div class="section" id="the-milankovitch-hypothesis">
-<h3>The Milankovitch hypothesis<a class="headerlink" href="#the-milankovitch-hypothesis" title="Permalink to this headline">¶</a></h3>
+<section id="the-milankovitch-hypothesis">
+<h3>The Milankovitch hypothesis<a class="headerlink" href="#the-milankovitch-hypothesis" title="Permalink to this headline">#</a></h3>
 <p>Version of the astronomical theory have been debated for at least 150 years.</p>
 <p>The most popular flavor has been the so-called <strong>Milankovitch hypothesis</strong>:</p>
 <blockquote>
@@ -876,10 +976,10 @@ South Pole: 562.03 W/m2.
 <p>The idea is that for an ice sheet to grow, seasonal snow must survive through the summer. Milankovitch therefore focussed on the factors determining the climatic conditions during <strong>summer</strong>.</p>
 <hr class="docutils" />
 <p><a id='section3'></a></p>
-</div>
-</div>
-<div class="section" id="ellipses-and-orbits">
-<h2>3. Ellipses and orbits<a class="headerlink" href="#ellipses-and-orbits" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="ellipses-and-orbits">
+<h2>3. Ellipses and orbits<a class="headerlink" href="#ellipses-and-orbits" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>First, watch this neat animation from <a class="reference external" href="http://www.people.fas.harvard.edu/~phuybers">Peter Huybers</a> (Harvard University):</p>
 <p><a class="reference external" href="http://www.people.fas.harvard.edu/~phuybers/Inso/Orbit.mv4">http://www.people.fas.harvard.edu/~phuybers/Inso/Orbit.mv4</a></p>
@@ -893,8 +993,8 @@ South Pole: 562.03 W/m2.
 <blockquote>
 <div><p>Imbrie, J. and Imbrie, K. P. (1986). Ice Ages: Solving the Mystery. Harvard University Press, Cambridge, Massachusetts.</p>
 </div></blockquote>
-<div class="section" id="how-to-draw-an-ellipse">
-<h3>How to draw an ellipse<a class="headerlink" href="#how-to-draw-an-ellipse" title="Permalink to this headline">¶</a></h3>
+<section id="how-to-draw-an-ellipse">
+<h3>How to draw an ellipse<a class="headerlink" href="#how-to-draw-an-ellipse" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>Take any two points on a plane</p></li>
 <li><p>Attach the two ends of a piece of string to the two points.</p></li>
@@ -907,9 +1007,9 @@ South Pole: 562.03 W/m2.
 <div><p>An ellipse is a curve that is the locus of all points in the plane the sum of whose distances from two fixed points (the foci) is a positive constant.</p>
 </div></blockquote>
 <p>In our case, the positive constant is the total length of the string.</p>
-</div>
-<div class="section" id="perihelion-and-aphelion">
-<h3>Perihelion and Aphelion<a class="headerlink" href="#perihelion-and-aphelion" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="perihelion-and-aphelion">
+<h3>Perihelion and Aphelion<a class="headerlink" href="#perihelion-and-aphelion" title="Permalink to this headline">#</a></h3>
 <p>The point in the orbit that is <strong>closest to the sun</strong> is called <strong>Perihelion</strong>.
 The farthest point is called <strong>Aphelion</strong>.</p>
 <p>Distances (present-day):</p>
@@ -917,9 +1017,9 @@ The farthest point is called <strong>Aphelion</strong>.</p>
 <li><p>Perihelion,  <span class="math notranslate nohighlight">\( d_p = 1.47 \times 10^{11}\)</span> m</p></li>
 <li><p>Aphelion,  <span class="math notranslate nohighlight">\( d_a = 1.52 \times 10^{11}\)</span> m</p></li>
 </ul>
-</div>
-<div class="section" id="eccentricity">
-<h3>Eccentricity<a class="headerlink" href="#eccentricity" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="eccentricity">
+<h3>Eccentricity<a class="headerlink" href="#eccentricity" title="Permalink to this headline">#</a></h3>
 <p>The eccentricity of the orbit is defined as</p>
 <div class="math notranslate nohighlight">
 \[ e = \frac{d_a-d_p}{d_a+d_p} \]</div>
@@ -930,9 +1030,9 @@ The farthest point is called <strong>Aphelion</strong>.</p>
 <p>At present, perihelion occurs on January 3. This is very close to the Northern Hemisphere winter solstice (Dec. 21).</p>
 <p><strong>The Earth actually receives MORE total sunlight during Northern Winter than during Northern Summer.</strong></p>
 <p>It is thus critical to understand the relative timing of our seasons (which are determined by the axial tilt or obliquity) and the perehelion.</p>
-</div>
-<div class="section" id="obliquity">
-<h3>Obliquity<a class="headerlink" href="#obliquity" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="obliquity">
+<h3>Obliquity<a class="headerlink" href="#obliquity" title="Permalink to this headline">#</a></h3>
 <p>The obliquity <span class="math notranslate nohighlight">\(\Phi\)</span> is the <strong>tilt of the Earth’s axis of rotation with respect to a line normal to the plane of the Earth’s orbit around the Sun.</strong></p>
 <p>Currently <span class="math notranslate nohighlight">\(\Phi = 23.5^\circ\)</span></p>
 <p>Obliquity is the fundamental reason we have seasons, and would have seasons even with a perfectly circular orbit (<span class="math notranslate nohighlight">\(e=0\)</span>)</p>
@@ -941,32 +1041,32 @@ The farthest point is called <strong>Aphelion</strong>.</p>
 <li><p>more summertime insolation at the poles</p></li>
 <li><p>less wintertime insolation in mid-latitudes</p></li>
 </ul>
-</div>
-<div class="section" id="longitude-of-perihelion-and-precession-of-the-equinoxes">
-<h3>Longitude of perihelion and precession of the equinoxes<a class="headerlink" href="#longitude-of-perihelion-and-precession-of-the-equinoxes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="longitude-of-perihelion-and-precession-of-the-equinoxes">
+<h3>Longitude of perihelion and precession of the equinoxes<a class="headerlink" href="#longitude-of-perihelion-and-precession-of-the-equinoxes" title="Permalink to this headline">#</a></h3>
 <p>The <strong>longitude of perihelion</strong> is defined as the angle <span class="math notranslate nohighlight">\(\Lambda\)</span> between the Earth-Sun line at vernal equinox and the line from the Sun to perihelion (see sketch).</p>
 <p>The current value is <span class="math notranslate nohighlight">\(\Lambda = 281^\circ\)</span> (perihelion on January 3, shortly after NH winter solstice).</p>
 <p>We call the gradual change over time of the longitude of perihelion the <strong>precession of the equinoxes</strong> (or just precession).  It is the <strong>gradual change in the time of year at which the Earth is closest to the Sun</strong>.</p>
-<div class="section" id="question">
-<h4>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h4>
+<section id="question">
+<h4>Question<a class="headerlink" href="#question" title="Permalink to this headline">#</a></h4>
 <p>Can there be any precession for a planet with a <em>perfectly circular</em> orbit (zero eccentricity)?</p>
 <p>It is important to understand that eccentricity modulates the precession. <em>Highly eccentric orbits lead to larger differences in the seasonal distribution of insolation.</em></p>
 <p>We quantify this with the <strong>precessional parameter</strong></p>
 <div class="math notranslate nohighlight">
 \[ e \sin \Lambda \]</div>
 <p>Large positive precessional parameter = Excess insolation during summer in the northern hemisphere.</p>
-</div>
-</div>
-<div class="section" id="the-three-orbital-parameters">
-<h3>The three orbital parameters<a class="headerlink" href="#the-three-orbital-parameters" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="the-three-orbital-parameters">
+<h3>The three orbital parameters<a class="headerlink" href="#the-three-orbital-parameters" title="Permalink to this headline">#</a></h3>
 <p>We have just identified three parameters that control the seasonal and latitudinal distribution of insolation: <span class="math notranslate nohighlight">\(e, \Lambda, \Phi\)</span></p>
 <p>All three vary in predictable ways over time. They have been calculated very accurately from astronomical considerations (basically the gravity of the Earth, Sun, moon, and other solar system objects).</p>
 <hr class="docutils" />
 <p><a id='section4'></a></p>
-</div>
-</div>
-<div class="section" id="past-orbital-variations">
-<h2>4. Past orbital variations<a class="headerlink" href="#past-orbital-variations" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="past-orbital-variations">
+<h2>4. Past orbital variations<a class="headerlink" href="#past-orbital-variations" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>There are tools in <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to look up orbital parameters for Earth over the last 5 million years.</p>
 <p>We will use the package</p>
@@ -1779,8 +1879,8 @@ Attributes:
 <img alt="../_images/orbital_46_1.png" src="../_images/orbital_46_1.png" />
 </div>
 </div>
-<div class="section" id="timescales-of-orbital-variation">
-<h3>Timescales of orbital variation:<a class="headerlink" href="#timescales-of-orbital-variation" title="Permalink to this headline">¶</a></h3>
+<section id="timescales-of-orbital-variation">
+<h3>Timescales of orbital variation:<a class="headerlink" href="#timescales-of-orbital-variation" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Eccentricity varies slowly between nearly circular and slightly eccentric, with dominant periodicities of about 100 and 400 kyear. Current eccentricity is relatively small compared to previous few million years</p></li>
 <li><p>Longitude of perihelion has a period around 20 kyears, but effect is modulated by slow eccentricity variations. Precessional cycles are predicted to be small for the coming 50 kyears because of weak eccentricity.</p></li>
@@ -1788,10 +1888,10 @@ Attributes:
 </ul>
 <hr class="docutils" />
 <p><a id='section5'></a></p>
-</div>
-</div>
-<div class="section" id="using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters">
-<h2>5. Using <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to calculate insolation for arbitrary orbital parameters<a class="headerlink" href="#using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters">
+<h2>5. Using <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to calculate insolation for arbitrary orbital parameters<a class="headerlink" href="#using-climlab-to-calculate-insolation-for-arbitrary-orbital-parameters" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>We can use the function</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">solar</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">daily_insolation</span><span class="p">()</span>
@@ -1799,8 +1899,8 @@ Attributes:
 </div>
 <p>to calculate insolation for any arbitrary orbital parameters.</p>
 <p>We just need to pass a dictionary of orbital parameters. This works automatically when we slice or interpolate from the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> object <code class="docutils literal notranslate"><span class="pre">OrbitalTable</span></code>.</p>
-<div class="section" id="an-example-zero-obliquity">
-<h3>An example: zero obliquity<a class="headerlink" href="#an-example-zero-obliquity" title="Permalink to this headline">¶</a></h3>
+<section id="an-example-zero-obliquity">
+<h3>An example: zero obliquity<a class="headerlink" href="#an-example-zero-obliquity" title="Permalink to this headline">#</a></h3>
 <p>Calculate the insolation at the <strong>North Pole</strong> for a planet with <strong>zero obliquity</strong> and <strong>zero eccentricity</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2591,10 +2691,10 @@ Coordinates:
 <p>Do you understand what’s going on here?</p>
 <hr class="docutils" />
 <p><a id='section6'></a></p>
-</div>
-</div>
-<div class="section" id="past-changes-in-insolation-investigating-the-milankovitch-hypothesis">
-<h2>6. Past changes in insolation: investigating the Milankovitch hypothesis<a class="headerlink" href="#past-changes-in-insolation-investigating-the-milankovitch-hypothesis" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="past-changes-in-insolation-investigating-the-milankovitch-hypothesis">
+<h2>6. Past changes in insolation: investigating the Milankovitch hypothesis<a class="headerlink" href="#past-changes-in-insolation-investigating-the-milankovitch-hypothesis" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>The <strong>Last Glacial Maximum</strong> or “LGM” occurred around 23,000 years before present, when the ice sheets were at their greatest extent.</p>
 <p>By 10,000 years ago, the ice sheets were mostly gone and the last ice age was over.</p>
@@ -2630,8 +2730,8 @@ Coordinates:
 <p>Actually 10,000 years ago the climate was slightly warmer than today and the ice sheets had mostly disappeared already.</p>
 <p>The LGM occurred near a minimum in summer insolation in the north – mostly due to obliquity reaching a minimum, since we have been in a period of weak precession due to the nearly circular orbit. So this is consistent with the orbital theory.</p>
 <p>The hypothesis is incomplete, but compelling.</p>
-<div class="section" id="comparing-insolation-at-10-kyr-and-23-kyr">
-<h3>Comparing insolation at 10 kyr and 23 kyr<a class="headerlink" href="#comparing-insolation-at-10-kyr-and-23-kyr" title="Permalink to this headline">¶</a></h3>
+<section id="comparing-insolation-at-10-kyr-and-23-kyr">
+<h3>Comparing insolation at 10 kyr and 23 kyr<a class="headerlink" href="#comparing-insolation-at-10-kyr-and-23-kyr" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">181</span><span class="p">)</span>
@@ -2696,10 +2796,10 @@ Coordinates:
 <p><strong>Ice ages are driven by seasonal and latitudinal redistributions of solar energy</strong>, NOT by changes in the total global amount of solar energy!</p>
 <hr class="docutils" />
 <p><a id='section7'></a></p>
-</div>
-</div>
-<div class="section" id="understanding-the-effects-of-orbital-variations-on-insolation">
-<h2>7. Understanding the effects of orbital variations on insolation<a class="headerlink" href="#understanding-the-effects-of-orbital-variations-on-insolation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="understanding-the-effects-of-orbital-variations-on-insolation">
+<h2>7. Understanding the effects of orbital variations on insolation<a class="headerlink" href="#understanding-the-effects-of-orbital-variations-on-insolation" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>We are going to create a figure showing past time variations in three quantities:</p>
 <ol class="simple">
@@ -2786,9 +2886,9 @@ Coordinates:
 </ol>
 <hr class="docutils" />
 <p><a id='section8'></a></p>
-</div>
-<div class="section" id="summary">
-<h2>8. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="summary">
+<h2>8. Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
 <li><p>The annual, global mean insolation varies only as a result of eccentricity <span class="math notranslate nohighlight">\(e\)</span>. The changes are very small (about 0.1 % through a typical eccentricity cycle from more circular to more elliptical)</p></li>
@@ -2802,17 +2902,17 @@ Coordinates:
 </ul>
 <p>These geometrical considerations tell us that <strong>seasonal variations in <span class="math notranslate nohighlight">\(Q\)</span> can be rather large</strong>, and will surely impact the climate. But to go from there to understanding how large ice sheets come and go is a difficult step, and requires climate models!</p>
 <p>One thing is clear: any serious astronomical theory of climate needs to take account of the climate response to seasonal variations in Q, because these are much larger than the variations in annual mean insolation.</p>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
 <p>Development of these notes and the <a class="reference external" href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
 <hr class="docutils" />
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2836,9 +2936,11 @@ Coordinates:
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="insolation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -2854,24 +2956,28 @@ Coordinates:
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Brian E. J. Rose<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Brian E. J. Rose<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

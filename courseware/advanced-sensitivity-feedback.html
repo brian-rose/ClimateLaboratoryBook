@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Advanced topic: Climate sensitivity and feedback &#8212; The Climate Laboratory</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,20 +20,16 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -39,12 +37,13 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -76,7 +75,21 @@ const thebe_selector_output = ".output, .cell_output"
                     </script>
 
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -85,9 +98,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
       
@@ -100,14 +114,15 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../home.html">
-   The Climate Laboratory
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Preamble
  </span>
@@ -404,97 +419,182 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/courseware/advanced-sensitivity-feedback.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/advanced-sensitivity-feedback.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        <a class="jupyterhub-button" href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/advanced-sensitivity-feedback.ipynb&branch=main"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="../_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/advanced-sensitivity-feedback.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https://github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/advanced-sensitivity-feedback.ipynb&branch=main"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on JupyterHub"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="headerbtn__text-container">JupyterHub</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/courseware/advanced-sensitivity-feedback.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#radiative-forcing">
    1. Radiative forcing
@@ -612,12 +712,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Advanced topic: Climate sensitivity and feedback</h1>
@@ -751,16 +850,17 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="advanced-topic-climate-sensitivity-and-feedback">
-<h1>Advanced topic: Climate sensitivity and feedback<a class="headerlink" href="#advanced-topic-climate-sensitivity-and-feedback" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="advanced-topic-climate-sensitivity-and-feedback">
+<h1>Advanced topic: Climate sensitivity and feedback<a class="headerlink" href="#advanced-topic-climate-sensitivity-and-feedback" title="Permalink to this headline">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
-<div class="section" id="radiative-forcing">
-<h2>1. Radiative forcing<a class="headerlink" href="#radiative-forcing" title="Permalink to this headline">¶</a></h2>
+<section id="radiative-forcing">
+<h2>1. Radiative forcing<a class="headerlink" href="#radiative-forcing" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Let’s say we instantaneously double atmospheric CO<span class="math notranslate nohighlight">\(_2\)</span>. What happens?</p>
 <ul class="simple">
@@ -775,9 +875,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>What happens next?</p>
 <hr class="docutils" />
 <p><a id='section2'></a></p>
-</div>
-<div class="section" id="climate-sensitivity-without-feedback">
-<h2>2. Climate sensitivity (without feedback)<a class="headerlink" href="#climate-sensitivity-without-feedback" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="climate-sensitivity-without-feedback">
+<h2>2. Climate sensitivity (without feedback)<a class="headerlink" href="#climate-sensitivity-without-feedback" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Let’s use our simple zero-dimensional EBM to calculate the resulting change in <strong>equilibrium temperature</strong>.</p>
 <p>How much warming will we get once the climate system has adjusted to the radiative forcing?</p>
@@ -793,8 +893,8 @@ const thebe_selector_output = ".output, .cell_output"
 \[ OLR_f = OLR_i \]</div>
 <p>The new equilibrium will have <strong>exactly the same OLR</strong> as the old equilibrium, but a <strong>different surface temperature</strong>.</p>
 <p>The climate system must warm up by a certain amount to get the OLR back up to its original value! The question is, <strong>how much warming is necessary</strong>? In other words, <strong>what is the new equilibrium temperature</strong>?</p>
-<div class="section" id="equilibrium-climate-sensitivity-ecs">
-<h3>Equilibrium Climate Sensitivity (ECS)<a class="headerlink" href="#equilibrium-climate-sensitivity-ecs" title="Permalink to this headline">¶</a></h3>
+<section id="equilibrium-climate-sensitivity-ecs">
+<h3>Equilibrium Climate Sensitivity (ECS)<a class="headerlink" href="#equilibrium-climate-sensitivity-ecs" title="Permalink to this headline">#</a></h3>
 <p>We now define the Equilibrium Climate Sensitivity (denoted ECS or <span class="math notranslate nohighlight">\(\Delta T_{2xCO2}\)</span>):</p>
 <p><em>The global mean surface warming necessary to balance the planetary energy budget after a doubling of atmospheric CO<span class="math notranslate nohighlight">\(_2\)</span>.</em></p>
 <p>The temperature must increase so that the increase in OLR is exactly equal to the radiative forcing:</p>
@@ -845,10 +945,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p><span class="math notranslate nohighlight">\(\Delta T_0 = 1.2\)</span> K is the <strong>warming that we would have if the Earth radiated the excess energy away to space as a blackbody</strong>, and with no change in the planetary albedo.</p>
 <hr class="docutils" />
 <p><a id='section3'></a></p>
-</div>
-</div>
-<div class="section" id="the-feedback-concept">
-<h2>3. The feedback concept<a class="headerlink" href="#the-feedback-concept" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="the-feedback-concept">
+<h2>3. The feedback concept<a class="headerlink" href="#the-feedback-concept" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>A concept borrowed from electrical engineering. You have all heard or used the term before, but we’ll try take a more precise approach today.</p>
 <p>A feedback occurs when a portion of the output from the action of a system is added to the input and subsequently alters the output:</p>
@@ -856,22 +956,22 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The result of a loop system can either be <strong>amplification</strong> or <strong>dampening</strong> of the process, depending on the sign of the gain in the loop, which we will denote <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p>We will call amplifying feedbacks <strong>positive</strong> (<span class="math notranslate nohighlight">\(f&gt;0\)</span>) and damping feedbacks <strong>negative</strong> (<span class="math notranslate nohighlight">\(f&lt;0\)</span>).</p>
 <p>We can think of the “process” here as the entire climate system, which contains many examples of both positive and negative feedback.</p>
-<div class="section" id="example-the-water-vapor-feedback">
-<h3>Example: the water vapor feedback<a class="headerlink" href="#example-the-water-vapor-feedback" title="Permalink to this headline">¶</a></h3>
+<section id="example-the-water-vapor-feedback">
+<h3>Example: the water vapor feedback<a class="headerlink" href="#example-the-water-vapor-feedback" title="Permalink to this headline">#</a></h3>
 <p>The capacity of the atmosphere to hold water vapor (saturation specific humidity) increases exponentially with temperature. Warming is thus accompanied by moistening (more water vapor), which leads to more warming due to the enhanced water vapor greenhouse effect.</p>
 <p><strong>Positive or negative feedback?</strong></p>
-</div>
-<div class="section" id="example-the-ice-albedo-feedback">
-<h3>Example: the ice-albedo feedback<a class="headerlink" href="#example-the-ice-albedo-feedback" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="example-the-ice-albedo-feedback">
+<h3>Example: the ice-albedo feedback<a class="headerlink" href="#example-the-ice-albedo-feedback" title="Permalink to this headline">#</a></h3>
 <p>Colder temperatures lead to expansion of the areas covered by ice and snow, which tend to be more reflective than water and vegetation. This causes a reduction in the absorbed solar radiation, which leads to more cooling.</p>
 <p><strong>Positive or negative feedback?</strong></p>
 <p><em>Make sure it’s clear that the sign of the feedback is the same whether we are talking about warming or cooling.</em></p>
 <hr class="docutils" />
 <p><a id='section4'></a></p>
-</div>
-</div>
-<div class="section" id="climate-feedback-some-definitions">
-<h2>4. Climate feedback: some definitions<a class="headerlink" href="#climate-feedback-some-definitions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="climate-feedback-some-definitions">
+<h2>4. Climate feedback: some definitions<a class="headerlink" href="#climate-feedback-some-definitions" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>We start with an initial radiative forcing , and get a response</p>
 <div class="math notranslate nohighlight">
@@ -912,9 +1012,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>And if the overall feedback is negative?</p>
 <hr class="docutils" />
 <p><a id='section5'></a></p>
-</div>
-<div class="section" id="climate-sensitivity-with-feedback">
-<h2>5. Climate sensitivity with feedback<a class="headerlink" href="#climate-sensitivity-with-feedback" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="climate-sensitivity-with-feedback">
+<h2>5. Climate sensitivity with feedback<a class="headerlink" href="#climate-sensitivity-with-feedback" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>ECS is an important number. A major goal of climate modeling is to provide better estimates of ECS and its uncertainty.</p>
 <p>Latest IPCC report AR5 gives a likely range of 1.5 to 4.5 K. (There is lots of uncertainty in these numbers – we will definitely come back to this question)</p>
@@ -934,9 +1034,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The overall feedback (due to water vapor, clouds, etc.) is <strong>positive</strong>.</p>
 <hr class="docutils" />
 <p><a id='section6'></a></p>
-</div>
-<div class="section" id="contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity">
-<h2>6. Contribution of individual feedback processes to Equilibrium Climate Sensitivity<a class="headerlink" href="#contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity">
+<h2>6. Contribution of individual feedback processes to Equilibrium Climate Sensitivity<a class="headerlink" href="#contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Now what if we have several individual feedback processes occurring simultaneously?</p>
 <p>We can think of individual feedback amounts <span class="math notranslate nohighlight">\(f_1, f_2, f_3, ...\)</span>, with each  representing a physically distinct mechanism, e.g. water vapor, surface snow and ice, cloud changes, etc.</p>
@@ -948,8 +1048,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="math notranslate nohighlight">
 \[ \Delta T_{2xCO2} = \frac{1}{1- \sum_{i=0}^N f_i } \Delta T_0 \]</div>
 <p>The climate sensitivity is thus <strong>increased by positive feedback processes</strong>, and <strong>decreased by negative feedback processes</strong>.</p>
-<div class="section" id="climate-feedback-parameters">
-<h3>Climate feedback parameters<a class="headerlink" href="#climate-feedback-parameters" title="Permalink to this headline">¶</a></h3>
+<section id="climate-feedback-parameters">
+<h3>Climate feedback parameters<a class="headerlink" href="#climate-feedback-parameters" title="Permalink to this headline">#</a></h3>
 <p>We can also write this in terms of the original radiative forcing as</p>
 <div class="math notranslate nohighlight">
 \[ \Delta T_{2xCO2} = \frac{\Delta R}{\lambda_0 - \sum_{i=1}^{N} \lambda_i} \]</div>
@@ -968,9 +1068,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>cloud and non-cloud processes</p></li>
 </ul>
 <p>These individual feedback processes may be positive or negative. This is very powerful, because we can <strong>measure the relative importance of different feedback processes</strong> simply by comparing their <span class="math notranslate nohighlight">\(\lambda_i\)</span> values.</p>
-</div>
-<div class="section" id="every-climate-model-has-a-planck-feedback">
-<h3>Every climate model has a Planck feedback<a class="headerlink" href="#every-climate-model-has-a-planck-feedback" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="every-climate-model-has-a-planck-feedback">
+<h3>Every climate model has a Planck feedback<a class="headerlink" href="#every-climate-model-has-a-planck-feedback" title="Permalink to this headline">#</a></h3>
 <p>The “Planck feedback” represented by the negative of our reference parameter <span class="math notranslate nohighlight">\(-\lambda_0\)</span> is not really a feedback at all.</p>
 <p>It is the most basic and universal climate process, and is present in every climate model. It is simply an expression of the fact that a warm planet radiates more to space than a cold planet.</p>
 <p>As we will see, our estimate of <span class="math notranslate nohighlight">\(-\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} \)</span> is essentially the same as the Planck feedback diagnosed from complex GCMs. Unlike our simple zero-dimensional EBM, however, most other climate models (and the real climate system) have other radiative feedback processes, such that</p>
@@ -978,13 +1078,13 @@ const thebe_selector_output = ".output, .cell_output"
 \[\lambda = \lambda_0 - \sum_{i=1}^{N} \lambda_i \ne \lambda_0 \]</div>
 <hr class="docutils" />
 <p><a id='section7'></a></p>
-</div>
-</div>
-<div class="section" id="feedbacks-diagnosed-from-complex-climate-models">
-<h2>7. Feedbacks diagnosed from complex climate models<a class="headerlink" href="#feedbacks-diagnosed-from-complex-climate-models" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="feedbacks-diagnosed-from-complex-climate-models">
+<h2>7. Feedbacks diagnosed from complex climate models<a class="headerlink" href="#feedbacks-diagnosed-from-complex-climate-models" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
-<div class="section" id="data-from-the-ipcc-ar5">
-<h3>Data from the IPCC AR5<a class="headerlink" href="#data-from-the-ipcc-ar5" title="Permalink to this headline">¶</a></h3>
+<section id="data-from-the-ipcc-ar5">
+<h3>Data from the IPCC AR5<a class="headerlink" href="#data-from-the-ipcc-ar5" title="Permalink to this headline">#</a></h3>
 <p>This figure is reproduced from the recent IPCC AR5 report. It shows the feedbacks diagnosed from the various models that contributed to the assessment.</p>
 <p>(Later in the term we will discuss how the feedback diagnosis is actually done)</p>
 <p>See below for complete citation information.</p>
@@ -1018,9 +1118,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Therefore, most of the spread in the ECS across the models is due to the spread in the cloud feedback.</p></li>
 <li><p>Our estimate of <span class="math notranslate nohighlight">\(+2.0 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1}\)</span> for all the missing processes is consistent with the GCM ensemble.</p></li>
 </ul>
-</div>
-<div class="section" id="citation">
-<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="citation">
+<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">#</a></h3>
 <p>This is Figure 9.43 from Chapter 9 of the IPCC AR5 Working Group 1 report.</p>
 <p>The report and images can be found online at
 <a class="reference external" href="https://www.ipcc.ch/report/ar5/wg1/">https://www.ipcc.ch/report/ar5/wg1/</a></p>
@@ -1028,13 +1128,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Flato, G., J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason and M. Rummukainen, 2013: Evaluation of Climate Models. In: Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Stocker, T.F., D. Qin, G.-K. Plattner, M. Tignor, S.K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex and P.M. Midgley (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 741–866, doi:10.1017/CBO9781107415324.020</p>
 <hr class="docutils" />
 <p><a id='section8'></a></p>
-</div>
-</div>
-<div class="section" id="the-zero-dimensional-model-with-variable-albedo">
-<h2>8. The zero-dimensional model with variable albedo<a class="headerlink" href="#the-zero-dimensional-model-with-variable-albedo" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="the-zero-dimensional-model-with-variable-albedo">
+<h2>8. The zero-dimensional model with variable albedo<a class="headerlink" href="#the-zero-dimensional-model-with-variable-albedo" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
-<div class="section" id="the-model">
-<h3>The model<a class="headerlink" href="#the-model" title="Permalink to this headline">¶</a></h3>
+<section id="the-model">
+<h3>The model<a class="headerlink" href="#the-model" title="Permalink to this headline">#</a></h3>
 <p>In homework you will be asked to include a new process in the zero-dimensional EBM: a temperature-dependent albedo.</p>
 <p>We use the following formula:</p>
 <div class="math notranslate nohighlight">
@@ -1050,9 +1150,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><span class="math notranslate nohighlight">\(T_i = 260\)</span> K is the threshold temperature below which our model assumes the planet is completely ice covered.</p></li>
 </ul>
 <p>For intermediate temperature, this formula gives a smooth variation in albedo with global mean temperature. It is tuned to reproduce the observed albedo <span class="math notranslate nohighlight">\(\alpha = 0.299\)</span> for <span class="math notranslate nohighlight">\(T = 288\)</span> K.</p>
-</div>
-<div class="section" id="coding-up-the-model-in-python">
-<h3>Coding up the model in Python<a class="headerlink" href="#coding-up-the-model-in-python" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="coding-up-the-model-in-python">
+<h3>Coding up the model in Python<a class="headerlink" href="#coding-up-the-model-in-python" title="Permalink to this headline">#</a></h3>
 <p>This largely repeats what I asked you to do in your homework.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1108,9 +1208,9 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="../_images/advanced-sensitivity-feedback_48_1.png" src="../_images/advanced-sensitivity-feedback_48_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="graphical-solution-toa-fluxes-as-functions-of-temperature">
-<h3>Graphical solution: TOA fluxes as functions of temperature<a class="headerlink" href="#graphical-solution-toa-fluxes-as-functions-of-temperature" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="graphical-solution-toa-fluxes-as-functions-of-temperature">
+<h3>Graphical solution: TOA fluxes as functions of temperature<a class="headerlink" href="#graphical-solution-toa-fluxes-as-functions-of-temperature" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
@@ -1131,9 +1231,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <p>The graphs meet at three different points! That means there are actually three different possible equilibrium temperatures in this model.</p>
-</div>
-<div class="section" id="numerical-solution-to-get-the-three-equilibrium-temperatures">
-<h3>Numerical solution to get the three equilibrium temperatures<a class="headerlink" href="#numerical-solution-to-get-the-three-equilibrium-temperatures" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="numerical-solution-to-get-the-three-equilibrium-temperatures">
+<h3>Numerical solution to get the three equilibrium temperatures<a class="headerlink" href="#numerical-solution-to-get-the-three-equilibrium-temperatures" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use numerical root-finding to get the equilibria</span>
@@ -1155,23 +1255,23 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="bonus-exercise">
-<h3>Bonus exercise<a class="headerlink" href="#bonus-exercise" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="bonus-exercise">
+<h3>Bonus exercise<a class="headerlink" href="#bonus-exercise" title="Permalink to this headline">#</a></h3>
 <p>Using numerical timestepping and different initial temperatures, can you get the model to converge on all three equilibria, or only some of them?</p>
 <p>What do you think this means?</p>
-</div>
-</div>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
 <p>Development of these notes and the <a class="reference external" href="https://github.com/brian-rose/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
 <hr class="docutils" />
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1195,9 +1295,11 @@ const thebe_selector_output = ".output, .cell_output"
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="sensitivity-feedback.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1213,24 +1315,28 @@ const thebe_selector_output = ".output, .cell_output"
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Brian E. J. Rose<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Brian E. J. Rose<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
