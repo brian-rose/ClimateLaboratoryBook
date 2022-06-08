@@ -16,15 +16,6 @@ jobs:
         run: |
           echo "comment_message=👋 Thanks for opening this PR! The book will be automatically built with [GitHub Actions](https://github.com/features/actions). To see the status of your deployment, click below." >> $GITHUB_ENV
 
-      - name: Find Comment
-        uses: peter-evans/find-comment@v2
-        if: steps.find-pull-request.outputs.number != ''
-        id: fc
-        with:
-          issue-number: '${{ steps.find-pull-request.outputs.number }}'
-          comment-author: 'github-actions[bot]'
-          body-includes: '${{ env.comment_message }}'
-
       - name: Remove book files
         run: |
           rm -rf _build/html/*
@@ -39,16 +30,3 @@ jobs:
           publish_dir: _build/html
           enable_jekyll: false
           destination_dir: _preview/${{ github.event.pull_request.number }}
-
-      - name: Update Cookbook preview comment
-        if: |
-          steps.find-pull-request.outputs.number != ''
-          && steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            ${{ env.comment_message }}
-            🔍 Git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
-            ✅ Deployment Preview URL: (deleted -- please reopen this PR to regenerate the preview
