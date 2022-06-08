@@ -104,7 +104,7 @@ jobs:
           && steps.find-pull-request.outputs.number != ''
           && steps.fc.outputs.comment-id != ''
         run: |
-          rm -rf notebooks/_build/html
+          rm -rf _build/html
           unzip book.zip
           rm -f book.zip
 
@@ -118,7 +118,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: notebooks/_build/html
+          publish_dir: _build/html
           enable_jekyll: false
           destination_dir: _preview/${{ steps.find-pull-request.outputs.number }}
 
