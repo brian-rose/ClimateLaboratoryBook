@@ -35,7 +35,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: /usr/share/miniconda3/envs/book-render
-          key: linux-64-conda-${{ hashFiles('book-render.yml') }}-${{ env.DATE }}-${{ env.CACHE_NUMBER }}
+          key: linux-64-conda-${{ hashFiles('render-environment.yml') }}-${{ env.DATE }}-${{ env.CACHE_NUMBER }}
         id: cache
 
       - name: Update environment
