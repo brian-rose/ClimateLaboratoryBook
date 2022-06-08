@@ -1,7 +1,6 @@
 name: link-checker
 
 on:
-  push:
   pull_request:
   workflow_dispatch:
   schedule:
@@ -19,7 +18,8 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@master
+      - name: Set up conda environment
+        uses: conda-incubator/setup-miniconda@master
         with:
           channels: conda-forge
           channel-priority: strict

@@ -1,17 +1,17 @@
-name: preview-book
+name: build-book
 on:
   pull_request:
-  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-upload:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
     steps:
       - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@master
+      - name: Setup conda environment
+        uses: conda-incubator/setup-miniconda@master
         with:
           channels: conda-forge
           channel-priority: strict
@@ -21,17 +21,19 @@ jobs:
           environment-file: render-environment.yml
           mamba-version: '*'
           use-mamba: true
-
-      # Build the book
       - name: Build the book
         run: |
           jupyter-book build .
-      # Push the book's HTML to github-pages
-      # This will be published at /_preview/PRnumber/ relative to the main site
-      - name: Deploy to GitHub pages
-        uses: peaceiris/actions-gh-pages@v3.8.0
+      - name: Zip the book
+        run: |
+          set -x
+          set -e
+          if [ -f book.zip ]; then
+              rm -rf book.zip
+          fi
+          zip -r book.zip _build/html
+      - name: Upload zipped book artifact
+        uses: actions/upload-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build/html
-          enable_jekyll: false
-          destination_dir: _preview/${{github.event.number}}
+          name: book-zip-${{github.event.number}}
+          path: ./book.zip
