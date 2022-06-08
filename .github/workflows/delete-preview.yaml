@@ -22,8 +22,7 @@ jobs:
 
       - name: Delete deployed preview
         if: |
-          steps.find-pull-request.outputs.number != ''
-          && steps.fc.outputs.comment-id != ''
+          github.event.pull_request.number != ''
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
