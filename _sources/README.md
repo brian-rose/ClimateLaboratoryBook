@@ -1,7 +1,7 @@
 # The Climate Laboratory
 
 [![DOI](https://zenodo.org/badge/231609808.svg)](https://zenodo.org/badge/latestdoi/231609808)
-![Deploy Book](https://github.com/brian-rose/ClimateLaboratoryBook/actions/workflows/deploy.yaml/badge.svg)
+[![Deploy Book](https://github.com/brian-rose/ClimateLaboratoryBook/actions/workflows/deploy-book.yaml/badge.svg)](https://github.com/brian-rose/ClimateLaboratoryBook/actions/workflows/deploy-book.yaml)
 ![Link Checker](https://github.com/brian-rose/ClimateLaboratoryBook/actions/workflows/link-checker.yaml/badge.svg)
 
 ***A hands-on approach to climate physics and climate modeling***
