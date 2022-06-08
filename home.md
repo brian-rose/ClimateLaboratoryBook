@@ -4,6 +4,8 @@
 
 **By [Brian E. J. Rose][brian], University at Albany**
 
+**IGNORE MY TEXT**
+
 This will evolve into the textbook for both
 [ENV 415: Climate Laboratory][env415] and [ATM 623: Climate Modeling][atm623]
 at the [University at Albany][ualbany].
