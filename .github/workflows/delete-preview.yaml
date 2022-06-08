@@ -11,49 +11,10 @@ jobs:
         shell: bash -l {0}
     steps:
       - uses: actions/checkout@v3
-      - name: Fetch Repo Name
-        id: repo-name
-        run: echo "::set-output name=value::$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')"  # just the repo name, not owner
 
       - name: Set message value
         run: |
           echo "comment_message=👋 Thanks for opening this PR! The book will be automatically built with [GitHub Actions](https://github.com/features/actions). To see the status of your deployment, click below." >> $GITHUB_ENV
-
-      - name: Find Pull Request
-        uses: actions/github-script@v6
-        id: find-pull-request
-        with:
-          script: |
-            let pullRequestNumber = ''
-            let pullRequestHeadSHA = ''
-            core.info('Finding pull request...')
-            const pullRequests = await github.rest.pulls.list({owner: context.repo.owner, repo: context.repo.repo})
-            for (let pullRequest of pullRequests.data) {
-              if(pullRequest.head.sha === context.payload.workflow_run.head_commit.id) {
-                  pullRequestHeadSHA = pullRequest.head.sha
-                  pullRequestNumber = pullRequest.number
-                  break
-              }
-            }
-            core.setOutput('number', pullRequestNumber)
-            core.setOutput('sha', pullRequestHeadSHA)
-            if(pullRequestNumber === '') {
-              core.info(
-                 `No pull request associated with git commit SHA: ${context.payload.workflow_run.head_commit.id}`
-              )
-            }
-            else{
-              core.info(`Found pull request ${pullRequestNumber}, with head sha: ${pullRequestHeadSHA}`)
-            }
-
-      - name: Find Comment
-        uses: peter-evans/find-comment@v2
-        if: steps.find-pull-request.outputs.number != ''
-        id: fc
-        with:
-          issue-number: '${{ steps.find-pull-request.outputs.number }}'
-          comment-author: 'github-actions[bot]'
-          body-includes: '${{ env.comment_message }}'
 
       - name: Remove book files
         run: |
@@ -68,17 +29,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _build/html
           enable_jekyll: false
-          destination_dir: _preview/${{ steps.find-pull-request.outputs.number }}
-
-      - name: Update Cookbook preview comment
-        if: |
-          steps.find-pull-request.outputs.number != ''
-          && steps.fc.outputs.comment-id != ''
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          edit-mode: replace
-          body: |
-            ${{ env.comment_message }}
-            🔍 Git commit SHA: ${{ steps.find-pull-request.outputs.sha }}
-            ✅ Deployment Preview URL: (deleted -- please reopen this PR to regenerate the preview)
+          destination_dir: _preview/${{ github.event.pull_request.number }}
