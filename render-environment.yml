@@ -4,5 +4,5 @@ name: book-render
 channels:
   - conda-forge
 dependencies:
-  - python=3.8
+  - python=3.10
   - jupyter-book  # needed to rebuild the book from source
