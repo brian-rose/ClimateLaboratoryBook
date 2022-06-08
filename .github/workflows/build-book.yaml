@@ -23,7 +23,7 @@ jobs:
           use-mamba: true
       - name: Build the book
         run: |
-          jupyter-book build notebooks/
+          jupyter-book build .
       - name: Zip the book
         run: |
           set -x
@@ -31,7 +31,7 @@ jobs:
           if [ -f book.zip ]; then
               rm -rf book.zip
           fi
-          zip -r book.zip notebooks/_build/html
+          zip -r book.zip _build/html
       - name: Upload zipped book artifact
         uses: actions/upload-artifact@v3
         with:
