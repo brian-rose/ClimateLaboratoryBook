@@ -111,6 +111,7 @@ jobs:
       # Push the book's HTML to github-pages
       # This will be published at /_preview/PRnumber/ relative to the main site
       - name: Deploy to GitHub pages
+        id: deploy
         if: |
           github.event.workflow_run.conclusion == 'success'
           && steps.find-pull-request.outputs.number != ''
@@ -127,6 +128,7 @@ jobs:
           github.event.workflow_run.conclusion == 'success'
           && steps.find-pull-request.outputs.number != ''
           && steps.fc.outputs.comment-id != ''
+          && steps.deploy.conclusion == 'success'
         uses: peter-evans/create-or-update-comment@v2
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}

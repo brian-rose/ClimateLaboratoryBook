@@ -63,15 +63,6 @@ jobs:
         if: ${{ steps.findPr.outputs.pr }} != ''
         run: rm -rf _preview/${{ steps.findPr.outputs.pr }}
 
-      - name: Delete preview
-        if: ${{ steps.findPr.outputs.pr }} != ''
-        uses: peaceiris/actions-gh-pages@v3.8.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: _preview/${{ steps.findPr.outputs.pr }}
-          enable_jekyll: false
-          destination_dir: _preview/${{ steps.findPr.outputs.pr }}
-
       # Push the book's HTML to github-pages
       - name: Deploy to GitHub pages
         if: github.ref == 'refs/heads/main'
