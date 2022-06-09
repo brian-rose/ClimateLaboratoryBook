@@ -59,7 +59,7 @@ jobs:
         run: |
           jupyter-book build .
 
-      - name: Delete preview
+      - name: Delete preview files
         if: ${{ steps.findPr.outputs.pr }} != ''
         run: rm -rf _preview/${{ steps.findPr.outputs.pr }}
 
@@ -71,3 +71,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_build/html
           enable_jekyll: false
+          keep_files: true  # This should preserve existing previews from other PRs

@@ -1,0 +1,37 @@
+name: delete-preview
+
+# Only run this when the main branch changes
+on:
+  pull_request_target:
+    types: closed
+
+jobs:
+  delete:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      # Find the PR associated with this push, if there is one.
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+          # Can be "open", "closed", or "all".  Defaults to "open".
+          state: all
+      # This will echo "Your PR is 7", or be skipped if there is no current PR.
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+      - name: Delete preview files
+        run: |
+          rm -rf _preview/${{ steps.findPr.outputs.pr }}
+      - name: Commit the changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: gh-pages
+          commit_message: Delete preview for pull request \#${{ steps.findPr.outputs.pr }}
