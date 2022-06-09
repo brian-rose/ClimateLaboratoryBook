@@ -26,7 +26,7 @@ jobs:
         id: findPr
         with:
           # Can be "open", "closed", or "all".  Defaults to "open".
-          state: open
+          state: all
       # This will echo "Your PR is 7", or be skipped if there is no current PR.
       - run: echo "Your PR is ${PR}"
         if: success() && steps.findPr.outputs.number
