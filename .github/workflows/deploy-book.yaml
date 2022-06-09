@@ -21,6 +21,15 @@ jobs:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v3
 
+      # Find the PR associated with this push, if there is one.
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        with:
+          # Can be "open", "closed", or "all".  Defaults to "open".
+          state: open
+      # This will echo "Your PR is 7", or be skipped if there is no current PR.
+      - run: echo "Your PR is ${{ steps.findPr.outputs.number }}"
+
       - name: Setup Mambaforge
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -46,6 +55,11 @@ jobs:
       - name: Build the book
         run: |
           jupyter-book build .
+
+      - name: Delete preview
+        if: ${{ steps.findPr.outputs.number }} != ''
+        run: rm -rf _preview/${{ steps.findPr.outputs.number }}
+
       # Push the book's HTML to github-pages
       - name: Deploy to GitHub pages
         if: github.ref == 'refs/heads/main'
