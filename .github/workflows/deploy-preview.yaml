@@ -116,7 +116,7 @@ jobs:
           github.event.workflow_run.conclusion == 'success'
           && steps.find-pull-request.outputs.number != ''
           && steps.fc.outputs.comment-id != ''
-        uses: peaceiris/actions-gh-pages@v3.8.0
+        uses: peaceiris/actions-gh-pages@v3.9.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _build/html
