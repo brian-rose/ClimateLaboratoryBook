@@ -1,0 +1,33 @@
+---
+- hosts: all
+  vars_files:
+    # website_climate.yml is dynamically loaded
+    - vars/traefik_vars.yml
+    # - vars/git_vars.yml
+  tasks:
+    - include_vars: "vars/website_{{ course_name }}.yml"
+    - name: make the website folder
+      file:
+        path: "{{ website_dir }}"
+        state: directory
+    - name: make the html source folder
+      file:
+        path: "{{ book_remote_html }}"
+        state: directory
+    - name: fill and copy templates for website
+      template:
+        src: '{{ item.src }}'
+        dest: '{{ item.dest }}'
+      loop:
+        "{{ website_template_list }}"
+    - name: rsync the rendered book
+      ansible.posix.synchronize:
+        src: "{{ book_local_html }}"
+        dest: "{{ book_remote_html }}"
+        group: "no"
+# ansible-playbook -i hosts.yml -u jovyan -l n7jov -e "course_name=climate" setup_website_noauth.yml 
+
+
+
+
+

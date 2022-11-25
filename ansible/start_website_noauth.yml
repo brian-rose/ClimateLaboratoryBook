@@ -1,0 +1,20 @@
+---
+- hosts: all
+  vars_files:
+    - vars/jovyan_vars.yml
+    - vars/traefik_vars.yml
+    - vars/e211_website_vars.yml
+    - vars/vault.yml
+  tasks:
+    - name: start website
+      shell: "docker-compose -f docker-compose-website.yml up -d"
+      register: envvar_test
+      args:
+        chdir: "{{ git_remote_path }}/website"
+        executable: /bin/bash
+
+    # - name: print envvar result
+    #   debug:
+    #     msg: "stdout: {{ envvar_test.stdout }}"
+
+

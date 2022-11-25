@@ -1,0 +1,17 @@
+---
+#
+#  - jinja2 template variables
+#
+book_domain: "climate.{{ root_domain }}"
+book_name: "climate_book"
+book_remote_html: "{{ book_remote_path }}/html"
+book_local_html: "/home/phil/repos/ClimateLaboratoryBook/content/_build/html"
+book_prefix: "/climate_book"
+dest_dir: "{{ git_remote_path }}/website/{{ book_remote_path }}"
+website_dir: "~/repos/ClimateLaboratoryBook/website"
+book_remote_path: "{{ website_dir }}/book_html_source"
+website_template_list:
+  - { src: "templates/docker-compose-website_noauth.j2"  , dest: "{{website_dir }}/docker-compose-website.yml" }
+
+
+

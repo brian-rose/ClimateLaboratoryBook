@@ -1,10 +1,10 @@
-- file: home.md
-
-- part: Syllabus
+format: jb-book
+root: home.md
+parts:
+- caption: Syllabus
   chapters:
   - file: syllabus.md
-
-- part: Front matter
+- caption: Front matter
   chapters:
   - file: preamble.md
   - file: about.md
@@ -12,14 +12,13 @@
   - file: how-to.md
   - file: attribution.md
   - file: extra_reading.md
-
-- part: Lectures
+- caption: Lectures
   numbered: true
   chapters:
   - file: courseware/models-budgets-fun.md
   - file: courseware/zero-dim-ebm.md
     sections:
-      - file: courseware/analytical-efolding.md
+    - file: courseware/analytical-efolding.md
   - file: courseware/climate-system-models.md
   - file: courseware/introducing-cesm.md
   - file: courseware/climlab-intro.md
@@ -33,7 +32,7 @@
   - file: courseware/rce.md
   - file: courseware/sensitivity-feedback.md
     sections:
-      - file: courseware/advanced-sensitivity-feedback.md
+    - file: courseware/advanced-sensitivity-feedback.md
   - file: courseware/transient-cesm.md
   - file: courseware/transient-toy.md
   - file: courseware/clouds.md
@@ -41,21 +40,20 @@
   - file: courseware/orbital.md
   - file: courseware/heat-transport.md
     sections:
-      - file: courseware/advanced-heat-transport.md
+    - file: courseware/advanced-heat-transport.md
   - file: courseware/one-dim-ebm.md
   - file: courseware/seasonal-cycle.md
   - file: courseware/cesm-atmospheric-dynamics.md
   - file: courseware/numerical-diffusion.md
   - file: courseware/albedo-snowball.md
     sections:
-      - file: courseware/advanced-albedo-feedback.md
-      - file: courseware/advanced-snowball-earth.md
+    - file: courseware/advanced-albedo-feedback.md
+    - file: courseware/advanced-snowball-earth.md
   - file: courseware/cesm-coupled-dynamics.md
   - file: courseware/surface-energy-balance.md
   - file: courseware/land-ocean-contrast.md
   - file: courseware/water-water-everywhere.md
-
-- part: Assignments
+- caption: Assignments
   chapters:
   - file: about-assignments.md
   - file: courseware/assignment-zero-dim-ebm.md
@@ -65,16 +63,13 @@
   - file: courseware/assignment-rcm-feedback.md
   - file: courseware/assignment-cesm-climate-change.md
   - file: courseware/assignment-insolation-orbit.md
-
-- part: Extra notebooks
+- caption: Extra notebooks
   chapters:
   - file: courseware/schwarz.rst
   - file: courseware/hydrostat.rst
   - file: courseware/hydrostatic_balance.md
   - file: courseware/multi_layer_equilibrium.md
-  - file: courseware/solving-the-stock-and-flow-equation.md
-    file: courseware/bayes_lecture.md
-    
-- part: References
+  - file: courseware/bayes_lecture.md
+- caption: References
   chapters:
   - file: references.md

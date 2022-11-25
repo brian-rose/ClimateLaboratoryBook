@@ -1,0 +1,34 @@
+---
+#
+# setup_traefik.yml
+#
+#  - jinja2 template variables
+#
+root_domain: phaustin.org
+web_domain: phaustin.org
+auth_domain: auth.{{ root_domain }}
+path_prefix_whoami1: whoami1
+path_prefix_whoami2: whoami2
+network_name: traefik_net
+traefik_forward_auth_service: traefik2-forward-auth
+traefik_forward_authhost_service: traefik2-forward-authhost
+traefik_forward_auth_container_name: forward_auth2
+traefik_forward_authhost_container_name: forward_authhost
+lets_encrypt_email: paustin@eoas.ubc.ca
+dashboard_user_and_pw: 'eoas:$2y$05$2N25nFVO13/Xxv4JUetyou5eo2xnrZ5rUHXJF0/P59gwZUGgZUdrC'
+#
+# - src and dest loop for template
+#
+traefik_template_list:
+  - { src: "templates/traefik/traefik.j2" , dest: "{{ git_remote_path }}/traefik/config/traefik.yml" }
+  - { src: "templates/traefik/middleware.j2" , dest: "{{ git_remote_path }}/traefik/config/dynamic/middleware.yml" }
+  - { src: "templates/traefik/routers.j2" , dest: "{{ git_remote_path }}/traefik/config/dynamic/routers.yml" }
+  - { src: "templates/traefik/docker-compose-noauth.j2" , dest: "{{ git_remote_path }}/docker-compose-noauth.yml" }
+  - { src: "templates/traefik/docker-compose-google-oauth.j2" , dest: "{{ git_remote_path }}/docker-compose-google-oauth.yml" }
+  - { src: "templates/traefik/docker-compose-github-oauth.j2", dest: "{{ git_remote_path }}/docker-compose-github-oauth.yml" }
+  - { src: "templates/traefik/docker-compose-github-authhost.j2", dest: "{{ git_remote_path }}/docker-compose-github-authhost.yml" }
+  
+
+
+
+

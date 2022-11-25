@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  {{ course_name }}:
+    image: httpd:2.4.51
+    container_name: {{ course_name }}_apache
+    volumes:
+      - {{ book_remote_html }}:/usr/local/apache2/htdocs:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.{{ course_name }}.rule=Host(`{{ book_domain }}`) && PathPrefix(`{{ book_prefix }}`)"
+      - "traefik.http.routers.{{ course_name }}.middlewares={{ course_name }}_chain"
+      - "traefik.http.middlewares.{{ course_name }}-stripprefix.stripprefix.prefixes={{ book_prefix }}"
+      - "traefik.http.middlewares.{{ course_name }}_chain.chain.middlewares=strip-prefix-start@file,strip-prefix-end@file,{{ course_name }}-stripprefix"
+      - traefik.http.routers.{{ course_name }}.tls=true
+      - traefik.http.routers.{{ course_name }}.tls.certresolver=lets-encrypt
+      - traefik.http.routers.{{ course_name }}.service={{ course_name }}
+      - traefik.http.services.{{ course_name }}.loadbalancer.server.port=80
+    restart: on-failure
+    networks:
+      - {{ network_name }}
+
+
+networks:
+    {{ network_name }}:
+      external: true

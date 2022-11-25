@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+  {{ book_name }}:
+    image: httpd:2.4.51
+    container_name: {{ book_name }}_image
+    volumes:
+      - {{ book_remote_html }}:/usr/local/apache2/htdocs:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.{{ book_name }}.rule=Host(`{{ book_domain }}`)"
+      - traefik.http.routers.{{ book_name }}.tls=true
+      - traefik.http.routers.{{ book_name }}.tls.certresolver=lets-encrypt
+      - traefik.http.routers.{{ book_name }}.service={{ book_name }}
+      - traefik.http.services.{{ book_name }}.loadbalancer.server.port=80
+      - "traefik.http.routers.{{ book_name }}.middlewares={{ traefik_forward_auth_service }}"
+    restart: on-failure
+    networks:
+      - {{ network_name }}
+
+  {{ traefik_forward_auth_service }}:
+    image: thomseddon/traefik-forward-auth:2
+    environment:
+      - DEFAULT_PROVIDER=generic-oauth
+      - INSECURE_COOKIE=false # Example assumes no https, do not use in production
+      - PROVIDERS_GENERIC_OAUTH_AUTH_URL=https://github.com/login/oauth/authorize
+      - PROVIDERS_GENERIC_OAUTH_TOKEN_URL=https://github.com/login/oauth/access_token
+      - PROVIDERS_GENERIC_OAUTH_USER_URL=https://api.github.com/user
+      - PROVIDERS_GENERIC_OAUTH_CLIENT_ID
+      - PROVIDERS_GENERIC_OAUTH_CLIENT_SECRET
+      - AUTH_HOST=auth.eoastest2.xyz:80
+      - WHITELIST
+      - SECRET
+      - USER_ID_PATH=login
+    labels:
+      - "traefik.http.routers.{{ traefik_forward_auth_service }}.rule=Host(`auth.eoastest2.xyz`)"
+      - "traefik.http.routers.{{ traefik_forward_auth_service }}.tls=true"
+      - "traefik.http.routers.{{ traefik_forward_auth_service }}.tls.certresolver=lets-encrypt"
+      - "traefik.http.middlewares.{{ traefik_forward_auth_service }}.forwardauth.address=http://{{ traefik_forward_auth_service }}:4181"
+      - "traefik.http.middlewares.{{ traefik_forward_auth_service }}.forwardauth.authResponseHeaders=X-Forwarded-User"
+      - "traefik.http.middlewares.{{ traefik_forward_auth_service }}.forwardauth.trustForwardHeader=true"
+      - "traefik.http.services.{{ traefik_forward_auth_service }}.loadbalancer.server.port=4181"
+      - traefik.enable=true
+    networks:
+      - {{ network_name }}
+    container_name: {{ traefik_forward_auth_container_name }}
+
+
+
+networks:
+    {{ network_name }}:
+      external: true
