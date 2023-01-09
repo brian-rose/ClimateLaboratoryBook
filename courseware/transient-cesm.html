@@ -1319,7 +1319,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">global_mean</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">gw</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Return the area-weighted global average of the input field&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Return the area-weighted global average of the input field&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">field</span><span class="o">*</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span><span class="o">/</span><span class="n">weight</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2889,7 +2889,7 @@ The Transient Climate Response is 1.67 K.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_map</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;input field should be a 2D xarray.DataArray on a lat/lon grid.</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;input field should be a 2D xarray.DataArray on a lat/lon grid.</span>
 <span class="sd">        Make a filled contour plot of the field, and a line plot of the zonal mean</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
