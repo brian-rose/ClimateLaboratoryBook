@@ -67,7 +67,7 @@ latex:
 # Launch button settings
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
-  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  binderhub_url             : https://binder.projectpythia.org  # The URL of the BinderHub (e.g., https://mybinder.org)
   jupyterhub_url            : "https://lore.atmos.albany.edu:8000"  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
   thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
   colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
@@ -84,7 +84,7 @@ sphinx:
   local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
   # We are ignoring the link to the JupyterHub because of an issue with the certificate
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
-    linkcheck_ignore        : https://lore.atmos.albany.edu:8000
+    linkcheck_ignore        : ["https://doi.org/*", "https://lore.atmos.albany.edu:8000"] # don't run link checker on DOI links since they are immutable
     bibtex_reference_style  : author_year
 
 bibtex_bibfiles:
