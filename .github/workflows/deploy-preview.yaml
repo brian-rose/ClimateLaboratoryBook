@@ -14,7 +14,7 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Fetch Repo Name
         id: repo-name
         run: echo "::set-output name=value::$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')"  # just the repo name, not owner
