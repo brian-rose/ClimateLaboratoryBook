@@ -12,7 +12,7 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Mambaforge
         uses: conda-incubator/setup-miniconda@v2
