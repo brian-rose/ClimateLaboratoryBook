@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Assignment: Climate change in the CESM simulations &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -75,7 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Assignment: Insolation and orbital parameters" href="assignment-insolation-orbit.html" />
     <link rel="prev" title="Assignment: Feedbacks in the Radiative-Convective Model" href="assignment-rcm-feedback.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -441,21 +442,21 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-climate-change-in-the-cesm-simulations">
-<h1>Assignment: Climate change in the CESM simulations<a class="headerlink" href="#assignment-climate-change-in-the-cesm-simulations" title="Permalink to this headline">#</a></h1>
+<h1>Assignment: Climate change in the CESM simulations<a class="headerlink" href="#assignment-climate-change-in-the-cesm-simulations" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <section id="part-1">
-<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this headline">#</a></h2>
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h2>
 <p>Following the examples in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html">lecture notes</a>, open the four CESM simulations (fully coupled and slab ocean versions).</p>
 <p>Calculate timeseries of <strong>global mean ASR and OLR</strong> and store each of these as a new variable. <em>Recall that ASR is called <code class="docutils literal notranslate"><span class="pre">FSNT</span></code> in the CESM output, and OLR is called <code class="docutils literal notranslate"><span class="pre">FLNT</span></code>.</em></p>
 <p>Plot a timeseries of <strong>(ASR - OLR), the net downward energy flux at the top of the model</strong>, along with a <strong>12 month rolling mean</strong>, analogous to the plot of global mean surface air temperature in the lecture notes.</p>
 <p><em>Note that the rolling mean is important here because, just like with surface air temperature, there is a large seasonal cycle which makes it harder to see evidence of the climate change signal we wish to focus on.</em></p>
 </section>
 <section id="part-2">
-<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this headline">#</a></h2>
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h2>
 <p>Calculate and show the <strong>time-average ASR</strong> and <strong>time-average OLR</strong> over the final 10 or 20 years of each simulation. Following the lecture notes, use the 20-year slice for the fully coupled simulations, and the 10-year slice for the slab ocean simulations.</p>
 </section>
 <section id="part-3">
-<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this headline">#</a></h2>
+<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h2>
 <p>Based on your plots and numerical results from Parts 1 and 2, answer these questions:</p>
 <ol class="arabic simple">
 <li><p>Are the two control simulations (fully coupled and slab ocean) near energy balance?</p></li>
@@ -465,22 +466,22 @@ document.write(`
 </ol>
 </section>
 <section id="part-4">
-<h2>Part 4<a class="headerlink" href="#part-4" title="Permalink to this headline">#</a></h2>
+<h2>Part 4<a class="headerlink" href="#part-4" title="Permalink to this heading">#</a></h2>
 <p>Does the global average ASR <strong>increase</strong> or <strong>decrease</strong> because of CO2-driven warming in the CESM?</p>
 <p>Would you describe this as a <strong>positive</strong> or <strong>negative</strong> feedback?</p>
 </section>
 <section id="part-5">
-<h2>Part 5<a class="headerlink" href="#part-5" title="Permalink to this headline">#</a></h2>
+<h2>Part 5<a class="headerlink" href="#part-5" title="Permalink to this heading">#</a></h2>
 <p>In the previous question you looked at the global average change in ASR. Now I want you to look at how different parts of the world contribute to this change.</p>
 <p><strong>Make a map</strong> of the <strong>change in ASR</strong> due to the CO2 forcing. Use the average over the last 20 years of the coupled CO2 ramp simulation, comparing against the average over the last 20 years of the control simulation.</p>
 </section>
 <section id="part-6">
-<h2>Part 6<a class="headerlink" href="#part-6" title="Permalink to this headline">#</a></h2>
+<h2>Part 6<a class="headerlink" href="#part-6" title="Permalink to this heading">#</a></h2>
 <p>Repeat part 5, but this time instead of the change in ASR, look at the just change in the <strong>clear-sky</strong> component of ASR. You can find this in the output field called <code class="docutils literal notranslate"><span class="pre">FSNTC</span></code>.</p>
 <p><em>The <code class="docutils literal notranslate"><span class="pre">FSNTC</span></code> field shows shortwave absorption in the absence of clouds, so the <strong>change</strong> in <code class="docutils literal notranslate"><span class="pre">FSNTC</span></code> shows how absorption and reflection of shortwave are affected by processes other than clouds.</em></p>
 </section>
 <section id="part-7">
-<h2>Part 7<a class="headerlink" href="#part-7" title="Permalink to this headline">#</a></h2>
+<h2>Part 7<a class="headerlink" href="#part-7" title="Permalink to this heading">#</a></h2>
 <p>Discussion:</p>
 <ul class="simple">
 <li><p>Do your two maps (change in ASR, change in clear-sky ASR) look the same?</p></li>
@@ -490,7 +491,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

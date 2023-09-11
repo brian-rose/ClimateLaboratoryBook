@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Assignment: Climate change in the zero-dimensional EBM &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Assignment: Global average budgets in the CESM pre-industrial control simulation" href="assignment-cesm-control.html" />
     <link rel="prev" title="About the assignments" href="../about-assignments.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -441,10 +442,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-climate-change-in-the-zero-dimensional-ebm">
-<h1>Assignment: Climate change in the zero-dimensional EBM<a class="headerlink" href="#assignment-climate-change-in-the-zero-dimensional-ebm" title="Permalink to this headline">#</a></h1>
+<h1>Assignment: Climate change in the zero-dimensional EBM<a class="headerlink" href="#assignment-climate-change-in-the-zero-dimensional-ebm" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <p>Students completing this assignment will gain the following skills and concepts:</p>
 <ul class="simple">
 <li><p>Familiarity with the Jupyter notebook</p></li>
@@ -456,7 +457,7 @@ document.write(`
 </ul>
 </section>
 <section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h2>
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In a local copy of this notebook (on the JupyterHub or your own device) <strong>add your answers in additional cells</strong>.</p></li>
 <li><p><strong>Complete the required problems</strong> below.</p></li>
@@ -477,7 +478,7 @@ document.write(`
 </ul>
 </section>
 <section id="problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model">
-<h2>Problem 1: Time-dependent warming in the zero-dimensional Energy Balance Model<a class="headerlink" href="#problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model" title="Permalink to this headline">#</a></h2>
+<h2>Problem 1: Time-dependent warming in the zero-dimensional Energy Balance Model<a class="headerlink" href="#problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model" title="Permalink to this heading">#</a></h2>
 <p>In lecture we defined a zero-dimensional energy balance model for the global mean surface temperature <span class="math notranslate nohighlight">\(T_s\)</span> as follows</p>
 <div class="math notranslate nohighlight">
 \[ C  \frac{dT_s}{dt} = \text{ASR} - \text{OLR}\]</div>
@@ -507,7 +508,7 @@ document.write(`
 </ol>
 </section>
 <section id="problem-2-albedo-feedback-in-the-energy-balance-model">
-<h2>Problem 2: Albedo feedback in the Energy Balance Model<a class="headerlink" href="#problem-2-albedo-feedback-in-the-energy-balance-model" title="Permalink to this headline">#</a></h2>
+<h2>Problem 2: Albedo feedback in the Energy Balance Model<a class="headerlink" href="#problem-2-albedo-feedback-in-the-energy-balance-model" title="Permalink to this heading">#</a></h2>
 <p>For this exercise, we will introduce a new physical process into our model by <strong>letting the planetary albedo depend on temperature</strong>. The idea is that a warmer planet has less ice and snow at the surface, and thus a lower planetary albedo.</p>
 <p>Represent the ice-albedo feedback through the following formula:</p>
 <div class="math notranslate nohighlight">
@@ -542,14 +543,14 @@ document.write(`
 </ol>
 </section>
 <section id="bonus-problem">
-<h2>Bonus problem<a class="headerlink" href="#bonus-problem" title="Permalink to this headline">#</a></h2>
+<h2>Bonus problem<a class="headerlink" href="#bonus-problem" title="Permalink to this heading">#</a></h2>
 <p><em>Open-ended investigation for extra credit, not required</em></p>
 <p>Something very different occurs in this model if you introduce a strong negative radiative forcing, either by substantially reducing greenhouse gases (which we would represent as an increase in the transmissivity <span class="math notranslate nohighlight">\(\tau\)</span>), or by decreasing the incoming solar radiation <span class="math notranslate nohighlight">\(Q\)</span>.</p>
 <p>Investigate, using your numerical model code, and report your results along with your thoughts.</p>
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

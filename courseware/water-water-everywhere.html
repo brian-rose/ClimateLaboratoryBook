@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>26. Water, water everywhere! &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="About the assignments" href="../about-assignments.html" />
     <link rel="prev" title="25. Land-Ocean contrasts under climate change" href="land-ocean-contrast.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -456,15 +457,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="water-water-everywhere">
-<h1><span class="section-number">26. </span>Water, water everywhere!<a class="headerlink" href="#water-water-everywhere" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">26. </span>Water, water everywhere!<a class="headerlink" href="#water-water-everywhere" title="Permalink to this heading">#</a></h1>
 <section id="a-brief-look-at-the-effects-of-evaporation-on-global-climate">
-<h2>A brief look at the effects of evaporation on global climate<a class="headerlink" href="#a-brief-look-at-the-effects-of-evaporation-on-global-climate" title="Permalink to this headline">#</a></h2>
+<h2>A brief look at the effects of evaporation on global climate<a class="headerlink" href="#a-brief-look-at-the-effects-of-evaporation-on-global-climate" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 </section>
 <section id="imagine-a-world-with-reduced-efficiency-of-evaporation">
-<h2>1. Imagine a world with reduced efficiency of evaporation<a class="headerlink" href="#imagine-a-world-with-reduced-efficiency-of-evaporation" title="Permalink to this headline">#</a></h2>
+<h2>1. Imagine a world with reduced efficiency of evaporation<a class="headerlink" href="#imagine-a-world-with-reduced-efficiency-of-evaporation" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Recall from the lecture on <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/surface-energy-balance.html">surface energy balance</a> that the bulk formula for surface evaporation (latent heat flux) is</p>
 <div class="math notranslate nohighlight">
@@ -476,7 +477,7 @@ document.write(`
 <p>Now suppose that the drag coefficient is <strong>reduced by a factor of two</strong> (for evaporation only, not for sensible heat flux). i.e. <em>all else being equal, there will be half as much evaporation</em>.</p>
 <p>Reasoning through the effects of this perturbation (and calculating the effects in models) will give us some insight into several different roles played by water in the climate system.</p>
 <section id="in-class-exercise">
-<h3>In-class exercise:<a class="headerlink" href="#in-class-exercise" title="Permalink to this headline">#</a></h3>
+<h3>In-class exercise:<a class="headerlink" href="#in-class-exercise" title="Permalink to this heading">#</a></h3>
 <p><strong>What is the effect of the reduced evaporation efficiency on surface temperature?</strong></p>
 <ul class="simple">
 <li><p>Form small groups.</p></li>
@@ -489,7 +490,7 @@ document.write(`
 </section>
 </section>
 <section id="reduced-evaporation-experiment-in-a-simple-model-with-climlab">
-<h2>2. Reduced evaporation experiment in a simple model with <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#reduced-evaporation-experiment-in-a-simple-model-with-climlab" title="Permalink to this headline">#</a></h2>
+<h2>2. Reduced evaporation experiment in a simple model with <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#reduced-evaporation-experiment-in-a-simple-model-with-climlab" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We can use <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to construct a model for the zonal-average climate. The model will be on a pressure-latitude grid. It will include the following processes:</p>
 <ul class="simple">
@@ -656,7 +657,7 @@ document.write(`
 </div>
 </div>
 <section id="the-complete-model-ready-to-use">
-<h3>The complete model, ready to use!<a class="headerlink" href="#the-complete-model-ready-to-use" title="Permalink to this headline">#</a></h3>
+<h3>The complete model, ready to use!<a class="headerlink" href="#the-complete-model-ready-to-use" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="n">model</span><span class="p">)</span>
@@ -754,7 +755,7 @@ Total elapsed time is 4.996684391891189 years.
 </div>
 </section>
 <section id="reducing-the-evaporation-efficiency">
-<h3>Reducing the evaporation efficiency<a class="headerlink" href="#reducing-the-evaporation-efficiency" title="Permalink to this headline">#</a></h3>
+<h3>Reducing the evaporation efficiency<a class="headerlink" href="#reducing-the-evaporation-efficiency" title="Permalink to this heading">#</a></h3>
 <p>Just need to clone our model, and modify <span class="math notranslate nohighlight">\(C_D\)</span> in the latent heat flux subprocess.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -833,7 +834,7 @@ Total elapsed time is 9.993368783782378 years.
 <p>Basically, this model predicts that by inhibiting evaporation in the tropics, we force the tropical surface to warm and the tropical atmosphere to cool. This cooling signal is then communicated globally by atmospheric heat transport. The result is small positive global surface temperature anomaly.</p>
 </section>
 <section id="discussion-what-is-this-model-missing">
-<h3>Discussion: what is this model missing?<a class="headerlink" href="#discussion-what-is-this-model-missing" title="Permalink to this headline">#</a></h3>
+<h3>Discussion: what is this model missing?<a class="headerlink" href="#discussion-what-is-this-model-missing" title="Permalink to this heading">#</a></h3>
 <p>We could list many things, but as we will see below, two key climate components that are not included in this model are</p>
 <ul class="simple">
 <li><p>changes in relative humidity</p></li>
@@ -845,7 +846,7 @@ Total elapsed time is 9.993368783782378 years.
 </section>
 </section>
 <section id="reduced-evaporation-efficiency-experiment-in-an-aquaplanet-gcm">
-<h2>3. Reduced evaporation efficiency experiment in an aquaplanet GCM<a class="headerlink" href="#reduced-evaporation-efficiency-experiment-in-an-aquaplanet-gcm" title="Permalink to this headline">#</a></h2>
+<h2>3. Reduced evaporation efficiency experiment in an aquaplanet GCM<a class="headerlink" href="#reduced-evaporation-efficiency-experiment-in-an-aquaplanet-gcm" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The model is the familiar CESM but in simplified “aquaplanet” setup. The surface is completely covered by a shallow slab ocean.</p>
 <p>This model setup (with CAM4 model physics) is described in detail in <span id="id1">Rose <em>et al.</em> [<a class="reference internal" href="../references.html#id24" title="Brian E. J. Rose, Kyle C. Armour, David S. Battisti, Nicole Feldl, and Daniel D. B. Koll. The dependence of transient climate sensitivity and radiative feedbacks on the spatial pattern of ocean heat uptake. Geophys. Res. Lett., 2014. doi:10.1002/2013GL058955.">2014</a>]</span> and <span id="id2">Rose and Rencurrel [<a class="reference internal" href="../references.html#id10" title="Brian E. J. Rose and M. Cameron Rencurrel. The vertical structure of tropospheric water vapor: comparing radiative and ocean-driven climate changes. J. Climate, 29:4251–4268, 2016. doi:10.1175/JCLI-D-15-0482.1.">2016</a>]</span>.</p>
@@ -878,7 +879,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <section id="temperature-anomalies">
-<h3>Temperature anomalies<a class="headerlink" href="#temperature-anomalies" title="Permalink to this headline">#</a></h3>
+<h3>Temperature anomalies<a class="headerlink" href="#temperature-anomalies" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -904,7 +905,7 @@ Total elapsed time is 9.993368783782378 years.
 <p>Why?</p>
 </section>
 <section id="compute-all-the-terms-in-the-toa-and-surface-energy-and-water-budget-anomalies">
-<h3>Compute all the terms in the TOA and surface energy and water budget anomalies<a class="headerlink" href="#compute-all-the-terms-in-the-toa-and-surface-energy-and-water-budget-anomalies" title="Permalink to this headline">#</a></h3>
+<h3>Compute all the terms in the TOA and surface energy and water budget anomalies<a class="headerlink" href="#compute-all-the-terms-in-the-toa-and-surface-energy-and-water-budget-anomalies" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">energy_budget</span> <span class="o">=</span> <span class="p">{}</span>
@@ -956,7 +957,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </section>
 <section id="energy-budget-anomalies-at-toa-and-surface">
-<h3>Energy budget anomalies at TOA and surface<a class="headerlink" href="#energy-budget-anomalies-at-toa-and-surface" title="Permalink to this headline">#</a></h3>
+<h3>Energy budget anomalies at TOA and surface<a class="headerlink" href="#energy-budget-anomalies-at-toa-and-surface" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -1013,7 +1014,7 @@ Total elapsed time is 9.993368783782378 years.
 </ul>
 </section>
 <section id="vertical-structure-of-relative-humidity-and-cloud-changes">
-<h3>Vertical structure of relative humidity and cloud changes<a class="headerlink" href="#vertical-structure-of-relative-humidity-and-cloud-changes" title="Permalink to this headline">#</a></h3>
+<h3>Vertical structure of relative humidity and cloud changes<a class="headerlink" href="#vertical-structure-of-relative-humidity-and-cloud-changes" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -1032,7 +1033,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </section>
 <section id="meridional-heat-transport-anomalies">
-<h3>Meridional heat transport anomalies<a class="headerlink" href="#meridional-heat-transport-anomalies" title="Permalink to this headline">#</a></h3>
+<h3>Meridional heat transport anomalies<a class="headerlink" href="#meridional-heat-transport-anomalies" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">HT</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1067,7 +1068,7 @@ Total elapsed time is 9.993368783782378 years.
 </section>
 </section>
 <section id="conclusion">
-<h2>4. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2>4. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We have forced a climate change NOT by adding any kind of radiative forcing, but just by changing the efficiency of evaporation at the sea surface.</p>
 <p>The climate system then find a new equilibrium in which the radiative fluxes, surface temperature, air-sea temperature difference, boundary layer relative humidity, and wind speeds all change simultaneously.</p>
@@ -1083,7 +1084,7 @@ Total elapsed time is 9.993368783782378 years.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

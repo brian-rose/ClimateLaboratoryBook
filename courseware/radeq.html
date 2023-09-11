@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>11. Radiative Equilibrium &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="12. Radiative-Convective Equilibrium" href="rce.html" />
     <link rel="prev" title="10. Who needs spectral bands? We do. Some baby steps…" href="spectral-bands.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -460,12 +461,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="radiative-equilibrium">
-<h1><span class="section-number">11. </span>Radiative Equilibrium<a class="headerlink" href="#radiative-equilibrium" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">11. </span>Radiative Equilibrium<a class="headerlink" href="#radiative-equilibrium" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="the-observed-annual-global-mean-temperature-profile">
-<h2>1. The observed annual, global mean temperature profile<a class="headerlink" href="#the-observed-annual-global-mean-temperature-profile" title="Permalink to this headline">#</a></h2>
+<h2>1. The observed annual, global mean temperature profile<a class="headerlink" href="#the-observed-annual-global-mean-temperature-profile" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s look again the observations of air temperature from the NCEP Reanalysis data we first encountered in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiation.html">Radiation notes</a>.</p>
 <p>In this notebook  we’ll define a function to create the Skew-T diagram, because later we are going to reuse it several times.</p>
@@ -528,7 +529,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="radiative-equilibrium-the-concept">
-<h2>2. Radiative equilibrium – the concept<a class="headerlink" href="#radiative-equilibrium-the-concept" title="Permalink to this headline">#</a></h2>
+<h2>2. Radiative equilibrium – the concept<a class="headerlink" href="#radiative-equilibrium-the-concept" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Models of radiative transfer slice up the atmospheric air column into a series of layer, and calculate the <strong>emission</strong> and <strong>absorption</strong> of radiation within each layer.</p>
 <p>It’s really just a generalization of the model we already looked at:</p>
@@ -541,10 +542,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="setting-up-a-single-column-radiation-model-in-climlab">
-<h2>3. Setting up a single-column radiation model in climlab<a class="headerlink" href="#setting-up-a-single-column-radiation-model-in-climlab" title="Permalink to this headline">#</a></h2>
+<h2>3. Setting up a single-column radiation model in climlab<a class="headerlink" href="#setting-up-a-single-column-radiation-model-in-climlab" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="radiation-models-in-climlab">
-<h3>Radiation models in climlab<a class="headerlink" href="#radiation-models-in-climlab" title="Permalink to this headline">#</a></h3>
+<h3>Radiation models in climlab<a class="headerlink" href="#radiation-models-in-climlab" title="Permalink to this heading">#</a></h3>
 <p>We’re now going to use <strong>climlab</strong> to run a <strong>complex radiation model</strong>, one that accounts for the spectral absorption properties of different gases.</p>
 <p>climlab actually provides two different “GCM-level” <a class="reference external" href="https://climlab.readthedocs.io/en/latest/api/climlab.radiation.Radiation.html">radiation codes</a>:</p>
 <ul class="simple">
@@ -556,7 +557,7 @@ document.write(`
 <p>climlab provides an easy-to-use Python wrapper for the RRTMG code.</p>
 </section>
 <section id="water-vapor-data">
-<h3>Water vapor data<a class="headerlink" href="#water-vapor-data" title="Permalink to this headline">#</a></h3>
+<h3>Water vapor data<a class="headerlink" href="#water-vapor-data" title="Permalink to this heading">#</a></h3>
 <p>Before setting up the model, we need some water vapor data. Why? Because our model needs to know how much water vapor exists at each vertical level, since water vapor is a radiatively important gas.</p>
 <p>We’re actually going to use the specific humidity field from our CESM control simulation. We’ll just take the global, time average of this data, and plot its vertical profile.</p>
 <div class="cell docutils container">
@@ -1377,7 +1378,7 @@ Coordinates:
 <p>Based on this figure, where is most of the water vapor?</p>
 </section>
 <section id="create-a-single-column-model-on-the-same-grid-as-this-water-vapor-data">
-<h3>Create a single-column model on the same grid as this water vapor data:<a class="headerlink" href="#create-a-single-column-model-on-the-same-grid-as-this-water-vapor-data" title="Permalink to this headline">#</a></h3>
+<h3>Create a single-column model on the same grid as this water vapor data:<a class="headerlink" href="#create-a-single-column-model-on-the-same-grid-as-this-water-vapor-data" title="Permalink to this heading">#</a></h3>
 <p>Here we will create the grid and state variables (air and surface temperature) for our single-column model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1417,7 +1418,7 @@ Coordinates:
 </div>
 </section>
 <section id="explore-the-single-column-model-object">
-<h3>Explore the single-column model object<a class="headerlink" href="#explore-the-single-column-model-object" title="Permalink to this headline">#</a></h3>
+<h3>Explore the single-column model object<a class="headerlink" href="#explore-the-single-column-model-object" title="Permalink to this heading">#</a></h3>
 <p>Look at a few interesting properties of the model we just created:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1497,7 +1498,7 @@ Coordinates:
 </div>
 </section>
 <section id="python-exercise-plot-the-ozone-profile">
-<h3>Python exercise: plot the ozone profile<a class="headerlink" href="#python-exercise-plot-the-ozone-profile" title="Permalink to this headline">#</a></h3>
+<h3>Python exercise: plot the ozone profile<a class="headerlink" href="#python-exercise-plot-the-ozone-profile" title="Permalink to this heading">#</a></h3>
 <p>Make a simple plot showing the vertical structure of ozone, similar to the specific humidity plot we just made above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1546,7 +1547,7 @@ Coordinates:
 </div>
 </section>
 <section id="the-rrtmg-radiation-model-has-lots-of-different-input-parameters">
-<h3>The RRTMG radiation model has lots of different input parameters<a class="headerlink" href="#the-rrtmg-radiation-model-has-lots-of-different-input-parameters" title="Permalink to this headline">#</a></h3>
+<h3>The RRTMG radiation model has lots of different input parameters<a class="headerlink" href="#the-rrtmg-radiation-model-has-lots-of-different-input-parameters" title="Permalink to this heading">#</a></h3>
 <p>For details you can look at the <a class="reference external" href="http://climlab.readthedocs.io/en/latest/api/climlab.radiation.Radiation.html">documentation</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1621,10 +1622,10 @@ solcycfrac
 </section>
 <hr class="docutils" />
 <section id="radiative-equilibrium-in-the-single-column-model">
-<h2>4. Radiative equilibrium in the single-column model<a class="headerlink" href="#radiative-equilibrium-in-the-single-column-model" title="Permalink to this headline">#</a></h2>
+<h2>4. Radiative equilibrium in the single-column model<a class="headerlink" href="#radiative-equilibrium-in-the-single-column-model" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="step-the-model-forward-in-time">
-<h3>Step the model forward in time!<a class="headerlink" href="#step-the-model-forward-in-time" title="Permalink to this headline">#</a></h3>
+<h3>Step the model forward in time!<a class="headerlink" href="#step-the-model-forward-in-time" title="Permalink to this heading">#</a></h3>
 <p>Here are the current temperatures (initial condition):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1677,7 +1678,7 @@ solcycfrac
 <p>Let’s take a look at all the diagnostic information that was generated during that timestep:</p>
 </section>
 <section id="diagnostic-variables-in-our-single-column-model">
-<h3>Diagnostic variables in our single-column model<a class="headerlink" href="#diagnostic-variables-in-our-single-column-model" title="Permalink to this headline">#</a></h3>
+<h3>Diagnostic variables in our single-column model<a class="headerlink" href="#diagnostic-variables-in-our-single-column-model" title="Permalink to this heading">#</a></h3>
 <p>Every climlab model has a <code class="docutils literal notranslate"><span class="pre">diagnostics</span></code> dictionary. Here we are going to check it out as an <code class="docutils literal notranslate"><span class="pre">xarray</span></code> dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2649,7 +2650,7 @@ Coordinates:
 <p><em><strong>Is the model gaining or losing energy?</strong></em></p>
 </section>
 <section id="integrate-out-to-equilibrium">
-<h3>Integrate out to equilibrium<a class="headerlink" href="#integrate-out-to-equilibrium" title="Permalink to this headline">#</a></h3>
+<h3>Integrate out to equilibrium<a class="headerlink" href="#integrate-out-to-equilibrium" title="Permalink to this heading">#</a></h3>
 <p>Here I want to step forward in time until the model is very close to energy balance.</p>
 <p>We can use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, conditional on the top-of-atmosphere imbalance:</p>
 <div class="cell docutils container">
@@ -2677,7 +2678,7 @@ Coordinates:
 <p>Indeed, the imbalance is now small.</p>
 </section>
 <section id="compare-the-radiative-equilibrium-temperature-to-observations">
-<h3>Compare the radiative equilibrium temperature to observations<a class="headerlink" href="#compare-the-radiative-equilibrium-temperature-to-observations" title="Permalink to this headline">#</a></h3>
+<h3>Compare the radiative equilibrium temperature to observations<a class="headerlink" href="#compare-the-radiative-equilibrium-temperature-to-observations" title="Permalink to this heading">#</a></h3>
 <p>Here’s a helper function we’ll use to add model temperature profiles to our skew-T plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2708,12 +2709,12 @@ Coordinates:
 </section>
 <hr class="docutils" />
 <section id="effects-of-different-gases-on-the-radiative-equilibrium-profile">
-<h2>5. Effects of different gases on the radiative equilibrium profile<a class="headerlink" href="#effects-of-different-gases-on-the-radiative-equilibrium-profile" title="Permalink to this headline">#</a></h2>
+<h2>5. Effects of different gases on the radiative equilibrium profile<a class="headerlink" href="#effects-of-different-gases-on-the-radiative-equilibrium-profile" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p><strong>Models are for experimenting and playing with!</strong></p>
 <p>We have just built a single-column radiation model with several different absorbing gases. <em>We can learn about their effects by taking them away.</em></p>
 <section id="radiative-equilibrium-without-water-vapor">
-<h3>Radiative equilibrium without water vapor<a class="headerlink" href="#radiative-equilibrium-without-water-vapor" title="Permalink to this headline">#</a></h3>
+<h3>Radiative equilibrium without water vapor<a class="headerlink" href="#radiative-equilibrium-without-water-vapor" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make an exact clone of our existing model</span>
@@ -2810,7 +2811,7 @@ Coordinates:
 <p>What do you think you can learn from this about the radiative role of water vapor?</p>
 </section>
 <section id="exercise-radiative-equilibrium-without-ozone">
-<h3>Exercise: radiative equilibrium without ozone<a class="headerlink" href="#exercise-radiative-equilibrium-without-ozone" title="Permalink to this headline">#</a></h3>
+<h3>Exercise: radiative equilibrium without ozone<a class="headerlink" href="#exercise-radiative-equilibrium-without-ozone" title="Permalink to this heading">#</a></h3>
 <p>Following the steps above, make another model, but this time instead of removing the water vapor, remove the ozone!</p>
 <p>Make another skew-T plot comparing all three model results.</p>
 <p>If you have time, try a third case in which you remove both the water vapor and the ozone!</p>
@@ -2818,7 +2819,7 @@ Coordinates:
 </section>
 <hr class="docutils" />
 <section id="summary-of-radiative-equilibrium-results">
-<h2>6. Summary of radiative equilibrium results<a class="headerlink" href="#summary-of-radiative-equilibrium-results" title="Permalink to this headline">#</a></h2>
+<h2>6. Summary of radiative equilibrium results<a class="headerlink" href="#summary-of-radiative-equilibrium-results" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
 <li><p>We used the <code class="docutils literal notranslate"><span class="pre">RRTMG</span></code> radiation model with prescribed profiles of absorbing gases to calculate <strong>pure radiative equilibrium</strong> temperature profiles.</p></li>
@@ -2838,7 +2839,7 @@ Coordinates:
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

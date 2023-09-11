@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Advanced topic: Ice albedo feedback in the EBM &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM" href="advanced-snowball-earth.html" />
     <link rel="prev" title="23. Ice-albedo feedback and Snowball Earth in the EBM" href="albedo-snowball.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -457,16 +458,16 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-topic-ice-albedo-feedback-in-the-ebm">
-<h1>Advanced topic: Ice albedo feedback in the EBM<a class="headerlink" href="#advanced-topic-ice-albedo-feedback-in-the-ebm" title="Permalink to this headline">#</a></h1>
+<h1>Advanced topic: Ice albedo feedback in the EBM<a class="headerlink" href="#advanced-topic-ice-albedo-feedback-in-the-ebm" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p><em>These notes and the companion <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a> extend the material in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/albedo-snowball.html">Ice-albedo feedback and Snowball Earth in the EBM</a> notes.</em></p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="interactive-snow-and-ice-line-in-the-ebm">
-<h2>1. Interactive snow and ice line in the EBM<a class="headerlink" href="#interactive-snow-and-ice-line-in-the-ebm" title="Permalink to this headline">#</a></h2>
+<h2>1. Interactive snow and ice line in the EBM<a class="headerlink" href="#interactive-snow-and-ice-line-in-the-ebm" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="the-annual-mean-ebm">
-<h3>The annual mean EBM<a class="headerlink" href="#the-annual-mean-ebm" title="Permalink to this headline">#</a></h3>
+<h3>The annual mean EBM<a class="headerlink" href="#the-annual-mean-ebm" title="Permalink to this heading">#</a></h3>
 <p>The equation is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -477,7 +478,7 @@ C(\phi) \frac{\partial T_s}{\partial t} = &amp; ~(1-\alpha) ~ Q - \left( A + B~T
 \end{split}\]</div>
 </section>
 <section id="temperature-dependent-ice-line-parameterization">
-<h3>Temperature-dependent ice line parameterization<a class="headerlink" href="#temperature-dependent-ice-line-parameterization" title="Permalink to this headline">#</a></h3>
+<h3>Temperature-dependent ice line parameterization<a class="headerlink" href="#temperature-dependent-ice-line-parameterization" title="Permalink to this heading">#</a></h3>
 <p>Let the surface albedo be larger wherever the temperature is below some threshold <span class="math notranslate nohighlight">\(T_f\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \alpha\left(\phi, T(\phi) \right) = \left\{\begin{array}{ccc} 
@@ -486,7 +487,7 @@ a_i &amp; ~ &amp; T(\phi) \le T_f \\
 \end{array} \right. \end{split}\]</div>
 </section>
 <section id="adding-the-interactive-ice-line-to-the-ebm-in-climlab">
-<h3>Adding the interactive ice line to the EBM in climlab<a class="headerlink" href="#adding-the-interactive-ice-line-to-the-ebm-in-climlab" title="Permalink to this headline">#</a></h3>
+<h3>Adding the interactive ice line to the EBM in climlab<a class="headerlink" href="#adding-the-interactive-ice-line-to-the-ebm-in-climlab" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -620,10 +621,10 @@ Total elapsed time is 5.000000000000044 years.
 </section>
 </section>
 <section id="polar-amplified-warming-in-the-ebm">
-<h2>2. Polar-amplified warming in the EBM<a class="headerlink" href="#polar-amplified-warming-in-the-ebm" title="Permalink to this headline">#</a></h2>
+<h2>2. Polar-amplified warming in the EBM<a class="headerlink" href="#polar-amplified-warming-in-the-ebm" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="add-a-small-radiative-forcing">
-<h3>Add a small radiative forcing<a class="headerlink" href="#add-a-small-radiative-forcing" title="Permalink to this headline">#</a></h3>
+<h3>Add a small radiative forcing<a class="headerlink" href="#add-a-small-radiative-forcing" title="Permalink to this heading">#</a></h3>
 <p>The equivalent of doubling CO2 in this model is something like</p>
 <div class="math notranslate nohighlight">
 \[ A \rightarrow A - \delta A \]</div>
@@ -666,7 +667,7 @@ Total elapsed time is 5.000000000000044 years.
 <p>There is no ice left!</p>
 </section>
 <section id="effects-of-further-radiative-forcing-in-the-ice-free-regime">
-<h3>Effects of further radiative forcing in the ice-free regime<a class="headerlink" href="#effects-of-further-radiative-forcing-in-the-ice-free-regime" title="Permalink to this headline">#</a></h3>
+<h3>Effects of further radiative forcing in the ice-free regime<a class="headerlink" href="#effects-of-further-radiative-forcing-in-the-ice-free-regime" title="Permalink to this heading">#</a></h3>
 <p>Let’s do some more greenhouse warming:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,10 +693,10 @@ Total elapsed time is 5.000000000000044 years.
 </section>
 </section>
 <section id="effects-of-diffusivity-in-the-annual-mean-ebm-with-albedo-feedback">
-<h2>3. Effects of diffusivity in the annual mean EBM with albedo feedback<a class="headerlink" href="#effects-of-diffusivity-in-the-annual-mean-ebm-with-albedo-feedback" title="Permalink to this headline">#</a></h2>
+<h2>3. Effects of diffusivity in the annual mean EBM with albedo feedback<a class="headerlink" href="#effects-of-diffusivity-in-the-annual-mean-ebm-with-albedo-feedback" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="in-class-investigation-effects-of-diffusivity-with-albedo-feedback">
-<h3>In-class investigation: Effects of diffusivity with albedo feedback<a class="headerlink" href="#in-class-investigation-effects-of-diffusivity-with-albedo-feedback" title="Permalink to this headline">#</a></h3>
+<h3>In-class investigation: Effects of diffusivity with albedo feedback<a class="headerlink" href="#in-class-investigation-effects-of-diffusivity-with-albedo-feedback" title="Permalink to this heading">#</a></h3>
 <p>We will repeat the diffusivity-tuning exercise from the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/one-dim-ebm.html">notes on the 1D EBM</a>, but this time with albedo feedback included in our model.</p>
 <ul class="simple">
 <li><p>Solve the annual-mean EBM (integrate out to equilibrium) over a range of different diffusivity parameters.</p></li>
@@ -728,7 +729,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </section>
 <section id="one-possible-way-to-do-this">
-<h3>One possible way to do this:<a class="headerlink" href="#one-possible-way-to-do-this" title="Permalink to this headline">#</a></h3>
+<h3>One possible way to do this:<a class="headerlink" href="#one-possible-way-to-do-this" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Darray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
@@ -796,10 +797,10 @@ Total elapsed time is 5.000000000000044 years.
 </section>
 <hr class="docutils" />
 <section id="diffusive-response-to-a-point-source-of-energy">
-<h2>4. Diffusive response to a point source of energy<a class="headerlink" href="#diffusive-response-to-a-point-source-of-energy" title="Permalink to this headline">#</a></h2>
+<h2>4. Diffusive response to a point source of energy<a class="headerlink" href="#diffusive-response-to-a-point-source-of-energy" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="step-1-adding-a-point-heat-source-to-the-ebm-without-albedo-feedback">
-<h3>Step 1: Adding a point heat source to the EBM without albedo feedback<a class="headerlink" href="#step-1-adding-a-point-heat-source-to-the-ebm-without-albedo-feedback" title="Permalink to this headline">#</a></h3>
+<h3>Step 1: Adding a point heat source to the EBM without albedo feedback<a class="headerlink" href="#step-1-adding-a-point-heat-source-to-the-ebm-without-albedo-feedback" title="Permalink to this heading">#</a></h3>
 <p>Let’s add a point heat source to the EBM and see what sets the spatial structure of the response.</p>
 <p>We will add a heat source at about 45º latitude.</p>
 <p>First, we will calculate the response in a model <strong>without albedo feedback</strong>.</p>
@@ -905,7 +906,7 @@ Total elapsed time is 9.999999999999863 years.
 <p>so increases with the diffusivity.</p>
 </section>
 <section id="step-2-effects-of-point-heat-source-with-albedo-feedback">
-<h3>Step 2: Effects of point heat source with albedo feedback<a class="headerlink" href="#step-2-effects-of-point-heat-source-with-albedo-feedback" title="Permalink to this headline">#</a></h3>
+<h3>Step 2: Effects of point heat source with albedo feedback<a class="headerlink" href="#step-2-effects-of-point-heat-source-with-albedo-feedback" title="Permalink to this heading">#</a></h3>
 <p>Now repeat this calculation <strong>with ice albedo feedback</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -947,7 +948,7 @@ Total elapsed time is 9.999999999999863 years.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

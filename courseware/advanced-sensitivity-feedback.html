@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Advanced topic: Climate sensitivity and feedback &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="14. Examing the transient and equilibrium CO2 response in the CESM" href="transient-cesm.html" />
     <link rel="prev" title="13. Climate sensitivity and feedback" href="sensitivity-feedback.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -466,12 +467,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-topic-climate-sensitivity-and-feedback">
-<h1>Advanced topic: Climate sensitivity and feedback<a class="headerlink" href="#advanced-topic-climate-sensitivity-and-feedback" title="Permalink to this headline">#</a></h1>
+<h1>Advanced topic: Climate sensitivity and feedback<a class="headerlink" href="#advanced-topic-climate-sensitivity-and-feedback" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="radiative-forcing">
-<h2>1. Radiative forcing<a class="headerlink" href="#radiative-forcing" title="Permalink to this headline">#</a></h2>
+<h2>1. Radiative forcing<a class="headerlink" href="#radiative-forcing" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s say we instantaneously double atmospheric CO<span class="math notranslate nohighlight">\(_2\)</span>. What happens?</p>
 <ul class="simple">
@@ -488,7 +489,7 @@ document.write(`
 <p><a id='section2'></a></p>
 </section>
 <section id="climate-sensitivity-without-feedback">
-<h2>2. Climate sensitivity (without feedback)<a class="headerlink" href="#climate-sensitivity-without-feedback" title="Permalink to this headline">#</a></h2>
+<h2>2. Climate sensitivity (without feedback)<a class="headerlink" href="#climate-sensitivity-without-feedback" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s use our simple zero-dimensional EBM to calculate the resulting change in <strong>equilibrium temperature</strong>.</p>
 <p>How much warming will we get once the climate system has adjusted to the radiative forcing?</p>
@@ -505,7 +506,7 @@ document.write(`
 <p>The new equilibrium will have <strong>exactly the same OLR</strong> as the old equilibrium, but a <strong>different surface temperature</strong>.</p>
 <p>The climate system must warm up by a certain amount to get the OLR back up to its original value! The question is, <strong>how much warming is necessary</strong>? In other words, <strong>what is the new equilibrium temperature</strong>?</p>
 <section id="equilibrium-climate-sensitivity-ecs">
-<h3>Equilibrium Climate Sensitivity (ECS)<a class="headerlink" href="#equilibrium-climate-sensitivity-ecs" title="Permalink to this headline">#</a></h3>
+<h3>Equilibrium Climate Sensitivity (ECS)<a class="headerlink" href="#equilibrium-climate-sensitivity-ecs" title="Permalink to this heading">#</a></h3>
 <p>We now define the Equilibrium Climate Sensitivity (denoted ECS or <span class="math notranslate nohighlight">\(\Delta T_{2xCO2}\)</span>):</p>
 <p><em>The global mean surface warming necessary to balance the planetary energy budget after a doubling of atmospheric CO<span class="math notranslate nohighlight">\(_2\)</span>.</em></p>
 <p>The temperature must increase so that the increase in OLR is exactly equal to the radiative forcing:</p>
@@ -559,7 +560,7 @@ document.write(`
 </section>
 </section>
 <section id="the-feedback-concept">
-<h2>3. The feedback concept<a class="headerlink" href="#the-feedback-concept" title="Permalink to this headline">#</a></h2>
+<h2>3. The feedback concept<a class="headerlink" href="#the-feedback-concept" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>A concept borrowed from electrical engineering. You have all heard or used the term before, but we’ll try take a more precise approach today.</p>
 <p>A feedback occurs when a portion of the output from the action of a system is added to the input and subsequently alters the output:</p>
@@ -568,12 +569,12 @@ document.write(`
 <p>We will call amplifying feedbacks <strong>positive</strong> (<span class="math notranslate nohighlight">\(f&gt;0\)</span>) and damping feedbacks <strong>negative</strong> (<span class="math notranslate nohighlight">\(f&lt;0\)</span>).</p>
 <p>We can think of the “process” here as the entire climate system, which contains many examples of both positive and negative feedback.</p>
 <section id="example-the-water-vapor-feedback">
-<h3>Example: the water vapor feedback<a class="headerlink" href="#example-the-water-vapor-feedback" title="Permalink to this headline">#</a></h3>
+<h3>Example: the water vapor feedback<a class="headerlink" href="#example-the-water-vapor-feedback" title="Permalink to this heading">#</a></h3>
 <p>The capacity of the atmosphere to hold water vapor (saturation specific humidity) increases exponentially with temperature. Warming is thus accompanied by moistening (more water vapor), which leads to more warming due to the enhanced water vapor greenhouse effect.</p>
 <p><strong>Positive or negative feedback?</strong></p>
 </section>
 <section id="example-the-ice-albedo-feedback">
-<h3>Example: the ice-albedo feedback<a class="headerlink" href="#example-the-ice-albedo-feedback" title="Permalink to this headline">#</a></h3>
+<h3>Example: the ice-albedo feedback<a class="headerlink" href="#example-the-ice-albedo-feedback" title="Permalink to this heading">#</a></h3>
 <p>Colder temperatures lead to expansion of the areas covered by ice and snow, which tend to be more reflective than water and vegetation. This causes a reduction in the absorbed solar radiation, which leads to more cooling.</p>
 <p><strong>Positive or negative feedback?</strong></p>
 <p><em>Make sure it’s clear that the sign of the feedback is the same whether we are talking about warming or cooling.</em></p>
@@ -582,7 +583,7 @@ document.write(`
 </section>
 </section>
 <section id="climate-feedback-some-definitions">
-<h2>4. Climate feedback: some definitions<a class="headerlink" href="#climate-feedback-some-definitions" title="Permalink to this headline">#</a></h2>
+<h2>4. Climate feedback: some definitions<a class="headerlink" href="#climate-feedback-some-definitions" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We start with an initial radiative forcing , and get a response</p>
 <div class="math notranslate nohighlight">
@@ -625,7 +626,7 @@ document.write(`
 <p><a id='section5'></a></p>
 </section>
 <section id="climate-sensitivity-with-feedback">
-<h2>5. Climate sensitivity with feedback<a class="headerlink" href="#climate-sensitivity-with-feedback" title="Permalink to this headline">#</a></h2>
+<h2>5. Climate sensitivity with feedback<a class="headerlink" href="#climate-sensitivity-with-feedback" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>ECS is an important number. A major goal of climate modeling is to provide better estimates of ECS and its uncertainty.</p>
 <p>Latest IPCC report AR5 gives a likely range of 1.5 to 4.5 K. (There is lots of uncertainty in these numbers – we will definitely come back to this question)</p>
@@ -647,7 +648,7 @@ document.write(`
 <p><a id='section6'></a></p>
 </section>
 <section id="contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity">
-<h2>6. Contribution of individual feedback processes to Equilibrium Climate Sensitivity<a class="headerlink" href="#contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity" title="Permalink to this headline">#</a></h2>
+<h2>6. Contribution of individual feedback processes to Equilibrium Climate Sensitivity<a class="headerlink" href="#contribution-of-individual-feedback-processes-to-equilibrium-climate-sensitivity" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Now what if we have several individual feedback processes occurring simultaneously?</p>
 <p>We can think of individual feedback amounts <span class="math notranslate nohighlight">\(f_1, f_2, f_3, ...\)</span>, with each  representing a physically distinct mechanism, e.g. water vapor, surface snow and ice, cloud changes, etc.</p>
@@ -660,7 +661,7 @@ document.write(`
 \[ \Delta T_{2xCO2} = \frac{1}{1- \sum_{i=0}^N f_i } \Delta T_0 \]</div>
 <p>The climate sensitivity is thus <strong>increased by positive feedback processes</strong>, and <strong>decreased by negative feedback processes</strong>.</p>
 <section id="climate-feedback-parameters">
-<h3>Climate feedback parameters<a class="headerlink" href="#climate-feedback-parameters" title="Permalink to this headline">#</a></h3>
+<h3>Climate feedback parameters<a class="headerlink" href="#climate-feedback-parameters" title="Permalink to this heading">#</a></h3>
 <p>We can also write this in terms of the original radiative forcing as</p>
 <div class="math notranslate nohighlight">
 \[ \Delta T_{2xCO2} = \frac{\Delta R}{\lambda_0 - \sum_{i=1}^{N} \lambda_i} \]</div>
@@ -681,7 +682,7 @@ document.write(`
 <p>These individual feedback processes may be positive or negative. This is very powerful, because we can <strong>measure the relative importance of different feedback processes</strong> simply by comparing their <span class="math notranslate nohighlight">\(\lambda_i\)</span> values.</p>
 </section>
 <section id="every-climate-model-has-a-planck-feedback">
-<h3>Every climate model has a Planck feedback<a class="headerlink" href="#every-climate-model-has-a-planck-feedback" title="Permalink to this headline">#</a></h3>
+<h3>Every climate model has a Planck feedback<a class="headerlink" href="#every-climate-model-has-a-planck-feedback" title="Permalink to this heading">#</a></h3>
 <p>The “Planck feedback” represented by the negative of our reference parameter <span class="math notranslate nohighlight">\(-\lambda_0\)</span> is not really a feedback at all.</p>
 <p>It is the most basic and universal climate process, and is present in every climate model. It is simply an expression of the fact that a warm planet radiates more to space than a cold planet.</p>
 <p>As we will see, our estimate of <span class="math notranslate nohighlight">\(-\lambda_0 = -3.3 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1} \)</span> is essentially the same as the Planck feedback diagnosed from complex GCMs. Unlike our simple zero-dimensional EBM, however, most other climate models (and the real climate system) have other radiative feedback processes, such that</p>
@@ -692,10 +693,10 @@ document.write(`
 </section>
 </section>
 <section id="feedbacks-diagnosed-from-complex-climate-models">
-<h2>7. Feedbacks diagnosed from complex climate models<a class="headerlink" href="#feedbacks-diagnosed-from-complex-climate-models" title="Permalink to this headline">#</a></h2>
+<h2>7. Feedbacks diagnosed from complex climate models<a class="headerlink" href="#feedbacks-diagnosed-from-complex-climate-models" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="data-from-the-ipcc-ar5">
-<h3>Data from the IPCC AR5<a class="headerlink" href="#data-from-the-ipcc-ar5" title="Permalink to this headline">#</a></h3>
+<h3>Data from the IPCC AR5<a class="headerlink" href="#data-from-the-ipcc-ar5" title="Permalink to this heading">#</a></h3>
 <p>This figure is reproduced from the recent IPCC AR5 report. It shows the feedbacks diagnosed from the various models that contributed to the assessment.</p>
 <p>(Later in the term we will discuss how the feedback diagnosis is actually done)</p>
 <p>See below for complete citation information.</p>
@@ -731,7 +732,7 @@ document.write(`
 </ul>
 </section>
 <section id="citation">
-<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this headline">#</a></h3>
+<h3>Citation<a class="headerlink" href="#citation" title="Permalink to this heading">#</a></h3>
 <p>This is Figure 9.43 from Chapter 9 of the IPCC AR5 Working Group 1 report.</p>
 <p>The report and images can be found online at
 <a class="reference external" href="https://www.ipcc.ch/report/ar5/wg1/">https://www.ipcc.ch/report/ar5/wg1/</a></p>
@@ -742,10 +743,10 @@ document.write(`
 </section>
 </section>
 <section id="the-zero-dimensional-model-with-variable-albedo">
-<h2>8. The zero-dimensional model with variable albedo<a class="headerlink" href="#the-zero-dimensional-model-with-variable-albedo" title="Permalink to this headline">#</a></h2>
+<h2>8. The zero-dimensional model with variable albedo<a class="headerlink" href="#the-zero-dimensional-model-with-variable-albedo" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="the-model">
-<h3>The model<a class="headerlink" href="#the-model" title="Permalink to this headline">#</a></h3>
+<h3>The model<a class="headerlink" href="#the-model" title="Permalink to this heading">#</a></h3>
 <p>In homework you will be asked to include a new process in the zero-dimensional EBM: a temperature-dependent albedo.</p>
 <p>We use the following formula:</p>
 <div class="math notranslate nohighlight">
@@ -763,7 +764,7 @@ document.write(`
 <p>For intermediate temperature, this formula gives a smooth variation in albedo with global mean temperature. It is tuned to reproduce the observed albedo <span class="math notranslate nohighlight">\(\alpha = 0.299\)</span> for <span class="math notranslate nohighlight">\(T = 288\)</span> K.</p>
 </section>
 <section id="coding-up-the-model-in-python">
-<h3>Coding up the model in Python<a class="headerlink" href="#coding-up-the-model-in-python" title="Permalink to this headline">#</a></h3>
+<h3>Coding up the model in Python<a class="headerlink" href="#coding-up-the-model-in-python" title="Permalink to this heading">#</a></h3>
 <p>This largely repeats what I asked you to do in your homework.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -821,7 +822,7 @@ document.write(`
 </div>
 </section>
 <section id="graphical-solution-toa-fluxes-as-functions-of-temperature">
-<h3>Graphical solution: TOA fluxes as functions of temperature<a class="headerlink" href="#graphical-solution-toa-fluxes-as-functions-of-temperature" title="Permalink to this headline">#</a></h3>
+<h3>Graphical solution: TOA fluxes as functions of temperature<a class="headerlink" href="#graphical-solution-toa-fluxes-as-functions-of-temperature" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;OLR&#39;</span><span class="p">)</span>
@@ -844,7 +845,7 @@ document.write(`
 <p>The graphs meet at three different points! That means there are actually three different possible equilibrium temperatures in this model.</p>
 </section>
 <section id="numerical-solution-to-get-the-three-equilibrium-temperatures">
-<h3>Numerical solution to get the three equilibrium temperatures<a class="headerlink" href="#numerical-solution-to-get-the-three-equilibrium-temperatures" title="Permalink to this headline">#</a></h3>
+<h3>Numerical solution to get the three equilibrium temperatures<a class="headerlink" href="#numerical-solution-to-get-the-three-equilibrium-temperatures" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use numerical root-finding to get the equilibria</span>
@@ -868,14 +869,14 @@ document.write(`
 </div>
 </section>
 <section id="bonus-exercise">
-<h3>Bonus exercise<a class="headerlink" href="#bonus-exercise" title="Permalink to this headline">#</a></h3>
+<h3>Bonus exercise<a class="headerlink" href="#bonus-exercise" title="Permalink to this heading">#</a></h3>
 <p>Using numerical timestepping and different initial temperatures, can you get the model to converge on all three equilibria, or only some of them?</p>
 <p>What do you think this means?</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

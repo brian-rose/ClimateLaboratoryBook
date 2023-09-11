@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Assignment: Feedbacks in the Radiative-Convective Model &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Assignment: Climate change in the CESM simulations" href="assignment-cesm-climate-change.html" />
     <link rel="prev" title="Assignment: Clouds in the Leaky Greenhouse Model" href="assignment-simple-clouds.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -443,10 +444,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-feedbacks-in-the-radiative-convective-model">
-<h1>Assignment: Feedbacks in the Radiative-Convective Model<a class="headerlink" href="#assignment-feedbacks-in-the-radiative-convective-model" title="Permalink to this headline">#</a></h1>
+<h1>Assignment: Feedbacks in the Radiative-Convective Model<a class="headerlink" href="#assignment-feedbacks-in-the-radiative-convective-model" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <p>Students completing this assignment will gain the following skills and concepts:</p>
 <ul class="simple">
 <li><p>Familiarity with setting up and running a single-column Radiative-Convective Model using climlab</p></li>
@@ -457,7 +458,7 @@ document.write(`
 </ul>
 </section>
 <section id="question-1">
-<h2>Question 1<a class="headerlink" href="#question-1" title="Permalink to this headline">#</a></h2>
+<h2>Question 1<a class="headerlink" href="#question-1" title="Permalink to this heading">#</a></h2>
 <p>Here you look at the effects of doubling CO<span class="math notranslate nohighlight">\(_2\)</span> in the single-column Radiative-Convective model.</p>
 <p><em>This exercise just repeats what we did in the lecture notes. You want to ensure that you can reproduce the same results before starting the next question, because you will need these results below.</em></p>
 <p>Following the lecture notes on climate sensitivity, do the following:</p>
@@ -472,9 +473,9 @@ document.write(`
 <p>Verify and show that you get the same results as we did in the lecture notes.</p>
 </section>
 <section id="question-2-combined-lapse-rate-and-water-vapor-feedback-in-the-rcm">
-<h2>Question 2: combined lapse rate and water vapor feedback in the RCM<a class="headerlink" href="#question-2-combined-lapse-rate-and-water-vapor-feedback-in-the-rcm" title="Permalink to this headline">#</a></h2>
+<h2>Question 2: combined lapse rate and water vapor feedback in the RCM<a class="headerlink" href="#question-2-combined-lapse-rate-and-water-vapor-feedback-in-the-rcm" title="Permalink to this heading">#</a></h2>
 <section id="instructions">
-<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this headline">#</a></h3>
+<h3>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">#</a></h3>
 <p>A typical, expected feature of global warming is that the <strong>upper troposphere warms more than the surface</strong>. (Later we will see that this does occur in the CESM simulations).</p>
 <p>This feature is <strong>not represented in our radiative-convective model</strong>, which is forced to a single prescribed lapse rate due to our convective adjustment.</p>
 <p>Here you will suppose that other physical processes modify this lapse rate as the climate warms.</p>
@@ -499,7 +500,7 @@ document.write(`
 <p>where <code class="docutils literal notranslate"><span class="pre">newvalue</span></code> is a number in K / km.</p>
 </section>
 <section id="specific-questions">
-<h3>Specific questions:<a class="headerlink" href="#specific-questions" title="Permalink to this headline">#</a></h3>
+<h3>Specific questions:<a class="headerlink" href="#specific-questions" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Make a nice skew-T plot that shows three temperature profiles:</p>
 <ul class="simple">
@@ -519,7 +520,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

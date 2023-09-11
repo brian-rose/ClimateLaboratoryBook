@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>14. Examing the transient and equilibrium CO2 response in the CESM &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="15. Toy models of transient warming" href="transient-toy.html" />
     <link rel="prev" title="Advanced topic: Climate sensitivity and feedback" href="advanced-sensitivity-feedback.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -452,7 +453,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="examing-the-transient-and-equilibrium-co2-response-in-the-cesm">
-<h1><span class="section-number">14. </span>Examing the transient and equilibrium CO2 response in the CESM<a class="headerlink" href="#examing-the-transient-and-equilibrium-co2-response-in-the-cesm" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">14. </span>Examing the transient and equilibrium CO2 response in the CESM<a class="headerlink" href="#examing-the-transient-and-equilibrium-co2-response-in-the-cesm" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>I have run two sets of experiments with the CESM model:</p>
 <ul class="simple">
@@ -482,7 +483,7 @@ document.write(`
 <div><p>The transient climate response (TCR) is the change in global and annual mean surface temperature from an experiment in which the CO2 concentration is increased by 1% yr<span class="math notranslate nohighlight">\(^{–1}\)</span>, and calculated using the difference between the start of the experiment and a 20-year period centred on the time of CO2 doubling.</p>
 </div></blockquote>
 <section id="first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years">
-<h2>First, a quick demonstration that 1%/year compounded increase reaches doubling after 70 years<a class="headerlink" href="#first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years" title="Permalink to this headline">#</a></h2>
+<h2>First, a quick demonstration that 1%/year compounded increase reaches doubling after 70 years<a class="headerlink" href="#first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">startingamount</span> <span class="o">=</span> <span class="mf">1.</span>
@@ -513,7 +514,7 @@ document.write(`
 </div>
 </section>
 <section id="load-the-concatenated-output-from-the-cam-output-atmosphere">
-<h2>Load the concatenated output from the CAM output (atmosphere)<a class="headerlink" href="#load-the-concatenated-output-from-the-cam-output-atmosphere" title="Permalink to this headline">#</a></h2>
+<h2>Load the concatenated output from the CAM output (atmosphere)<a class="headerlink" href="#load-the-concatenated-output-from-the-cam-output-atmosphere" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">casenames</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">:</span> <span class="s1">&#39;cpl_1850_f19&#39;</span><span class="p">,</span>
@@ -553,7 +554,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 </div>
 <section id="a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations">
-<h3>A plot of the prescribed CO2 concentrations in the coupled simulations<a class="headerlink" href="#a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations" title="Permalink to this headline">#</a></h3>
+<h3>A plot of the prescribed CO2 concentrations in the coupled simulations<a class="headerlink" href="#a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days_per_year</span> <span class="o">=</span> <span class="mi">365</span>
@@ -581,7 +582,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </section>
 </section>
 <section id="compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations">
-<h2>Compute and plot time series of global, annual mean near-surface air temperature in all four simulations<a class="headerlink" href="#compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations" title="Permalink to this headline">#</a></h2>
+<h2>Compute and plot time series of global, annual mean near-surface air temperature in all four simulations<a class="headerlink" href="#compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The surface air temperature, which we will use for our sensitivity metrics</span>
@@ -1033,7 +1034,7 @@ Attributes:
 </div>
 </div>
 <section id="make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average">
-<h3>Make some pretty timeseries plots, including an <strong>approximate</strong> running annual average<a class="headerlink" href="#make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average" title="Permalink to this headline">#</a></h3>
+<h3>Make some pretty timeseries plots, including an <strong>approximate</strong> running annual average<a class="headerlink" href="#make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -1080,7 +1081,7 @@ Attributes:
 </section>
 </section>
 <section id="now-we-can-work-on-computing-ecs-and-tcr">
-<h2>Now we can work on computing ECS and TCR<a class="headerlink" href="#now-we-can-work-on-computing-ecs-and-tcr" title="Permalink to this headline">#</a></h2>
+<h2>Now we can work on computing ECS and TCR<a class="headerlink" href="#now-we-can-work-on-computing-ecs-and-tcr" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the last 10 years from the slab ocean control simulation</span>
@@ -2563,7 +2564,7 @@ The Transient Climate Response is 1.67 K.
 </div>
 </section>
 <section id="some-cmip-climate-sensitivity-results-to-compare-against">
-<h2>Some CMIP climate sensitivity results to compare against<a class="headerlink" href="#some-cmip-climate-sensitivity-results-to-compare-against" title="Permalink to this headline">#</a></h2>
+<h2>Some CMIP climate sensitivity results to compare against<a class="headerlink" href="#some-cmip-climate-sensitivity-results-to-compare-against" title="Permalink to this heading">#</a></h2>
 <p>Figure and table from <span id="id1">Flato <em>et al.</em> [<a class="reference internal" href="../references.html#id19" title="G. Flato, J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason, and M. Rummukainen. Evaluation of climate models. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 9. Cambridge University Press, Cambridge, U.K., 2013.">2013</a>]</span></p>
 <p><img alt="feedback AR5" src="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig9-43-1.jpg" /></p>
 <p><strong>Figure 9.43</strong> | (a) Strengths of individual feedbacks for CMIP3 and CMIP5 models (left and right columns of symbols) for Planck (P), water vapour (WV), clouds (C), albedo (A), lapse rate (LR), combination of water vapour and lapse rate (WV+LR) and sum of all feedbacks except Planck (ALL), from Soden and Held (2006) and Vial et al. (2013), following Soden et al. (2008). CMIP5 feedbacks are derived from CMIP5 simulations for abrupt fourfold increases in CO2 concentrations (4 × CO2). (b) ECS obtained using regression techniques by Andrews et al. (2012) against ECS estimated from the ratio of CO2 ERF to the sum of all feedbacks. The CO2 ERF is one-half the 4 × CO2 forcings from Andrews et al. (2012), and the total feedback (ALL + Planck) is from Vial et al. (2013).</p>
@@ -2572,7 +2573,7 @@ The Transient Climate Response is 1.67 K.
 <p>Comparing against the multi-model mean of the ECS and TCR, our model is apparently slightly less sensitive than the CMIP5 mean.</p>
 </section>
 <section id="let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming">
-<h2>Let’s make some maps to compare spatial patterns of transient vs. equilibrium warming<a class="headerlink" href="#let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming" title="Permalink to this headline">#</a></h2>
+<h2>Let’s make some maps to compare spatial patterns of transient vs. equilibrium warming<a class="headerlink" href="#let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming" title="Permalink to this heading">#</a></h2>
 <p>Here is a helper function that takes a 2D lat/lon field and renders it as a nice contour map with accompanying zonal average line plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2621,7 +2622,7 @@ The Transient Climate Response is 1.67 K.
 </div>
 </div>
 <section id="make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models">
-<h3>Make maps of the surface air temperature anomaly due to CO2 doubling in both the slab and coupled models<a class="headerlink" href="#make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models" title="Permalink to this headline">#</a></h3>
+<h3>Make maps of the surface air temperature anomaly due to CO2 doubling in both the slab and coupled models<a class="headerlink" href="#make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tmap_cpl_2x</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
@@ -2665,7 +2666,7 @@ The Transient Climate Response is 1.67 K.
 </section>
 </section>
 <section id="appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types">
-<h2>Appendix: for later reference, here is how you can open the other output types<a class="headerlink" href="#appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types" title="Permalink to this headline">#</a></h2>
+<h2>Appendix: for later reference, here is how you can open the other output types<a class="headerlink" href="#appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types" title="Permalink to this heading">#</a></h2>
 <p>The following will open the rest of the CESM output (land, sea ice, river routing, ocean).</p>
 <p>These are not needed for the above homework assignment, but may be useful later on.</p>
 <div class="cell docutils container">
@@ -2719,7 +2720,7 @@ The Transient Climate Response is 1.67 K.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

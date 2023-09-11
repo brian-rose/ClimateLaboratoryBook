@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>10. Who needs spectral bands? We do. Some baby steps… &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -77,7 +78,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="11. Radiative Equilibrium" href="radeq.html" />
     <link rel="prev" title="9. Modeling non-scattering radiative transfer" href="radiative-transfer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -468,12 +469,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="who-needs-spectral-bands-we-do-some-baby-steps">
-<h1><span class="section-number">10. </span>Who needs spectral bands? We do. Some baby steps…<a class="headerlink" href="#who-needs-spectral-bands-we-do-some-baby-steps" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">10. </span>Who needs spectral bands? We do. Some baby steps…<a class="headerlink" href="#who-needs-spectral-bands-we-do-some-baby-steps" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="what-if-co-2-actually-behaved-like-a-grey-gas">
-<h2>1. What if CO<span class="math notranslate nohighlight">\(_2\)</span> actually behaved like a Grey Gas?<a class="headerlink" href="#what-if-co-2-actually-behaved-like-a-grey-gas" title="Permalink to this headline">#</a></h2>
+<h2>1. What if CO<span class="math notranslate nohighlight">\(_2\)</span> actually behaved like a Grey Gas?<a class="headerlink" href="#what-if-co-2-actually-behaved-like-a-grey-gas" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Suppose that CO<span class="math notranslate nohighlight">\(_2\)</span> actually behaved as a grey gas. In other words, no spectral dependence in absorptivity.</p>
 <p>If we then <strong>double the CO2 concentration</strong> in the atmosphere, we double the number of absorbers. This should imply that we also <strong>double the absorption cross-section</strong> <span class="math notranslate nohighlight">\(\kappa\)</span>. Following the notation from our <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#introducing-the-two-layer-grey-gas-model">lecture on grey-gas radiative transfer</a>, we have:</p>
@@ -493,7 +494,7 @@ document.write(`
 \[ \epsilon^\prime = 2 \epsilon  - \epsilon^2 \]</div>
 <p>(Note that <span class="math notranslate nohighlight">\(\epsilon^\prime = 2 \epsilon\)</span> for very thin layers, for which <span class="math notranslate nohighlight">\(\epsilon\)</span> is small).</p>
 <section id="what-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing">
-<h3>What does our 2-layer analytical model then say about the radiative forcing?<a class="headerlink" href="#what-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing" title="Permalink to this headline">#</a></h3>
+<h3>What does our 2-layer analytical model then say about the radiative forcing?<a class="headerlink" href="#what-does-our-2-layer-analytical-model-then-say-about-the-radiative-forcing" title="Permalink to this heading">#</a></h3>
 <p>Recall that <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html#tuning-the-grey-gas-model-to-observations">we tuned the two-layer grey gas model</a> with</p>
 <div class="math notranslate nohighlight">
 \[ \epsilon = 0.586 \]</div>
@@ -562,7 +563,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </div>
 </section>
 <section id="conclusions">
-<h3>Conclusions:<a class="headerlink" href="#conclusions" title="Permalink to this headline">#</a></h3>
+<h3>Conclusions:<a class="headerlink" href="#conclusions" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>If CO2 did behave like a grey gas, we would be toast*!</strong></p></li>
 <li><p>The Grey Gas model is insufficient for understanding radiative forcing and feedback.</p></li>
@@ -573,11 +574,11 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </section>
 </section>
 <section id="another-look-at-observed-spectra">
-<h2>2. Another look at observed spectra<a class="headerlink" href="#another-look-at-observed-spectra" title="Permalink to this headline">#</a></h2>
+<h2>2. Another look at observed spectra<a class="headerlink" href="#another-look-at-observed-spectra" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>It’s time to move away from the Grey Gas approximation and look more carefully at the actual observed spectra of solar and terrestrial radiation.</p>
 <section id="observed-solar-spectra">
-<h3>Observed solar spectra<a class="headerlink" href="#observed-solar-spectra" title="Permalink to this headline">#</a></h3>
+<h3>Observed solar spectra<a class="headerlink" href="#observed-solar-spectra" title="Permalink to this heading">#</a></h3>
 <p>The following figure shows observed spectra of solar radiation at TOA and at the surface, along with the theoretical Planck function for a blackbody at 5525 K.</p>
 <img alt="https://upload.wikimedia.org/wikipedia/commons/e/e7/Solar_spectrum_en.svg" src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Solar_spectrum_en.svg" /><blockquote>
 <div><p>This figure shows the solar radiation spectrum for direct light at both the top of the Earth’s atmosphere and at sea level. The sun produces light with a distribution similar to what would be expected from a 5525 K (5250 °C) blackbody, which is approximately the sun’s surface temperature. As light passes through the atmosphere, some is absorbed by gases with specific absorption bands. Additional light is redistributed by Raleigh scattering, which is responsible for the atmosphere’s blue color. These curves are based on the American Society for Testing and Materials (ASTM) Terrestrial Reference Spectra, which are standards adopted by the photovoltaics industry to ensure consistent test conditions and are similar to the light that could be expected in North America. Regions for ultraviolet, visible and infrared light are indicated.</p>
@@ -592,7 +593,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </ul>
 </section>
 <section id="observed-terrestrial-spectra">
-<h3>Observed terrestrial spectra<a class="headerlink" href="#observed-terrestrial-spectra" title="Permalink to this headline">#</a></h3>
+<h3>Observed terrestrial spectra<a class="headerlink" href="#observed-terrestrial-spectra" title="Permalink to this heading">#</a></h3>
 <p>This figure shows the Planck function for Earth’s surface temperature compared with the spectrum observed from space.</p>
 <p><img alt="Terrestrial spectrum" src="../_images/Terrestrial_spectrum.png" /></p>
 <p>Source: David Bice, Penn State University. <a class="reference external" href="https://www.e-education.psu.edu/earth103/node/1006">https://www.e-education.psu.edu/earth103/node/1006</a></p>
@@ -601,7 +602,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 <p>However there is a spectral band centered on 10 <span class="math notranslate nohighlight">\(\mu\)</span>m in which the greenhouse effect is very weak. This is the so-called <strong>window region</strong> in the spectrum.</p>
 <p>Since absorption is so strong across most of the rest of the infrared spectrum, this window region is a key determinant of the overall greenhouse effect.</p>
 <section id="one-very-big-shortcoming-of-the-grey-gas-model-it-ignores-the-window-region">
-<h4>One very big shortcoming of the Grey Gas model: it ignores the window region<a class="headerlink" href="#one-very-big-shortcoming-of-the-grey-gas-model-it-ignores-the-window-region" title="Permalink to this headline">#</a></h4>
+<h4>One very big shortcoming of the Grey Gas model: it ignores the window region<a class="headerlink" href="#one-very-big-shortcoming-of-the-grey-gas-model-it-ignores-the-window-region" title="Permalink to this heading">#</a></h4>
 <p>We would therefore like to start using a model that includes enough spectral information that it represents</p>
 <ul class="simple">
 <li><p>the mostly strong CO2 absorption outside the window region</p></li>
@@ -613,13 +614,13 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </section>
 </section>
 <section id="water-vapor-changes-under-global-warming">
-<h2>3. Water vapor changes under global warming<a class="headerlink" href="#water-vapor-changes-under-global-warming" title="Permalink to this headline">#</a></h2>
+<h2>3. Water vapor changes under global warming<a class="headerlink" href="#water-vapor-changes-under-global-warming" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Another big shortcoming of the Grey Gas model is that it cannot represent the <strong>water vapor feedback</strong>.</p>
 <p>We have seen above that H<span class="math notranslate nohighlight">\(_2\)</span>O is an important absorber in both longwave and shortwave spectra.</p>
 <p>We also know that the water vapor load in the atmosphere increases as the climate warms. The primary reason is that the <strong>saturation vapor pressure</strong> increases strongly with temperature.</p>
 <section id="evidence-from-cesm-simulations">
-<h3>Evidence from CESM simulations<a class="headerlink" href="#evidence-from-cesm-simulations" title="Permalink to this headline">#</a></h3>
+<h3>Evidence from CESM simulations<a class="headerlink" href="#evidence-from-cesm-simulations" title="Permalink to this heading">#</a></h3>
 <p>Let’s take at changes in the mean water vapor fields in the CESM model after a doubling of CO<span class="math notranslate nohighlight">\(_2\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -686,7 +687,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </div>
 </section>
 <section id="what-do-you-see-here">
-<h3>What do you see here?<a class="headerlink" href="#what-do-you-see-here" title="Permalink to this headline">#</a></h3>
+<h3>What do you see here?<a class="headerlink" href="#what-do-you-see-here" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Where does the largest warming occur?</p></li>
 <li><p>Where does the largest moistening occur?</p></li>
@@ -704,10 +705,10 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </section>
 </section>
 <section id="a-simple-water-vapor-parameterization">
-<h2>4. A simple water vapor parameterization<a class="headerlink" href="#a-simple-water-vapor-parameterization" title="Permalink to this headline">#</a></h2>
+<h2>4. A simple water vapor parameterization<a class="headerlink" href="#a-simple-water-vapor-parameterization" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="a-credible-climate-model-needs-a-water-vapor-feedback">
-<h3>A credible climate model needs a water vapor feedback<a class="headerlink" href="#a-credible-climate-model-needs-a-water-vapor-feedback" title="Permalink to this headline">#</a></h3>
+<h3>A credible climate model needs a water vapor feedback<a class="headerlink" href="#a-credible-climate-model-needs-a-water-vapor-feedback" title="Permalink to this heading">#</a></h3>
 <p>If relative humidity is nearly constant under global warming, and water vapor is a greenhouse gas, this implies a positive feedback that will amplify the warming for a given radiative forcing.</p>
 <p>Thus far our simple models have ignored this process, and we have not been able to use them to assess the climate sensitivity.</p>
 <p>To proceed towards more realistic models, we have two options:</p>
@@ -718,7 +719,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 <p>We will now explore this second option, so that we can continue to think of the global energy budget under climate change as a process occurring in a single column.</p>
 </section>
 <section id="manabe-s-constant-relative-humidity-parameterization">
-<h3>Manabe’s constant relative humidity parameterization<a class="headerlink" href="#manabe-s-constant-relative-humidity-parameterization" title="Permalink to this headline">#</a></h3>
+<h3>Manabe’s constant relative humidity parameterization<a class="headerlink" href="#manabe-s-constant-relative-humidity-parameterization" title="Permalink to this heading">#</a></h3>
 <p>We are going to adopt a parameterization first used in a very famous paper by <span id="id1">Manabe and Wetherald [<a class="reference internal" href="../references.html#id20" title="Syukuro Manabe and Richard T. Wetherald. Thermal equilibrium of the atmosphere with a given distribution of relative humidity. J. Atmos. Sci., 24(3):241–259, 1967.">1967</a>]</span>, <em>The thermal equilibrium of the atmosphere with a given distribution of relative humidity</em>.</p>
 <p>This paper was the first to give a really credible calculation of climate sensitivity to a doubling of CO2 by accounting for the known spectral properties of CO2 and H2O absorption, as well as the water vapor feedback!</p>
 <p>The parameterization is very simple:</p>
@@ -734,16 +735,16 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </section>
 </section>
 <section id="modeling-spectral-bands-with-the-climlab-bandrcmodel-process">
-<h2>5. Modeling spectral bands with the <code class="docutils literal notranslate"><span class="pre">climlab.BandRCModel</span></code> process<a class="headerlink" href="#modeling-spectral-bands-with-the-climlab-bandrcmodel-process" title="Permalink to this headline">#</a></h2>
+<h2>5. Modeling spectral bands with the <code class="docutils literal notranslate"><span class="pre">climlab.BandRCModel</span></code> process<a class="headerlink" href="#modeling-spectral-bands-with-the-climlab-bandrcmodel-process" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Here is a brief introduction to the <code class="docutils literal notranslate"><span class="pre">climlab.BandRCModel</span></code> process.</p>
 <p>This is a model that divides the spectrum into 7 distinct bands: three shortwave and four longwave.</p>
 <p>As we will see, the process works much like the familiar <code class="docutils literal notranslate"><span class="pre">climlab.RadiativeConvectiveModel</span></code>.</p>
 </section>
 <section id="about-the-spectra">
-<h2>About the spectra<a class="headerlink" href="#about-the-spectra" title="Permalink to this headline">#</a></h2>
+<h2>About the spectra<a class="headerlink" href="#about-the-spectra" title="Permalink to this heading">#</a></h2>
 <section id="shortwave">
-<h3>Shortwave<a class="headerlink" href="#shortwave" title="Permalink to this headline">#</a></h3>
+<h3>Shortwave<a class="headerlink" href="#shortwave" title="Permalink to this heading">#</a></h3>
 <p>The shortwave is divided into three channels:</p>
 <ul class="simple">
 <li><p>Channel 0 is the Hartley and Huggins band (extreme UV, 200 - 340 nm, 1% of total flux, strong ozone absorption)</p></li>
@@ -752,7 +753,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 </ul>
 </section>
 <section id="longwave">
-<h3>Longwave<a class="headerlink" href="#longwave" title="Permalink to this headline">#</a></h3>
+<h3>Longwave<a class="headerlink" href="#longwave" title="Permalink to this heading">#</a></h3>
 <p>The longwave is divided into four bands:</p>
 <ul class="simple">
 <li><p>Band 0 is the <strong>window region</strong> (between 8.5 and 11 <span class="math notranslate nohighlight">\(\mu\)</span>m), 17% of total flux.</p></li>
@@ -763,7 +764,7 @@ would then give us a truly astronomical <strong>equilibrium climate sensitivity 
 <p>The longwave decomposition is not as easily related to specific wavelengths, as in reality there is a lot of overlap between H<span class="math notranslate nohighlight">\(_2\)</span>O and CO<span class="math notranslate nohighlight">\(_2\)</span> absorption features (as well as absorption by other greenhouse gases such as CH<span class="math notranslate nohighlight">\(_4\)</span> and N<span class="math notranslate nohighlight">\(_2\)</span>O that we are not representing).</p>
 </section>
 <section id="example-usage-of-the-spectral-model">
-<h3>Example usage of the spectral model<a class="headerlink" href="#example-usage-of-the-spectral-model" title="Permalink to this headline">#</a></h3>
+<h3>Example usage of the spectral model<a class="headerlink" href="#example-usage-of-the-spectral-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">climlab</span>
@@ -876,7 +877,7 @@ Total elapsed time is 1.9986737567564754 years.
 <p>The model currently has no ozone (so there is no stratosphere). Not very realistic!</p>
 </section>
 <section id="about-the-radiatively-active-gases">
-<h3>About the radiatively active gases<a class="headerlink" href="#about-the-radiatively-active-gases" title="Permalink to this headline">#</a></h3>
+<h3>About the radiatively active gases<a class="headerlink" href="#about-the-radiatively-active-gases" title="Permalink to this heading">#</a></h3>
 <p>The Band model is aware of three different absorbing gases: O3 (ozone), CO2, and H2O (water vapor). The abundances of these gases are stored in a dictionary of arrays as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,7 +915,7 @@ Total elapsed time is 1.9986737567564754 years.
 </section>
 </section>
 <section id="putting-in-some-ozone">
-<h2>Putting in some ozone<a class="headerlink" href="#putting-in-some-ozone" title="Permalink to this headline">#</a></h2>
+<h2>Putting in some ozone<a class="headerlink" href="#putting-in-some-ozone" title="Permalink to this heading">#</a></h2>
 <p>We need to provide some ozone data to the model in order to simulate a stratosphere. We will read in some ozone data just as we did in <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/grey-radiation-climlab.html#putting-stratospheric-ozone-in-the-grey-gas-model">the previous lecture on grey-gas modeling in climlab</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1520,7 +1521,7 @@ Total elapsed time is 4.996684391891189 years.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

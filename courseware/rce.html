@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>12. Radiative-Convective Equilibrium &#8212; The Climate Laboratory</title>
   
@@ -44,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -75,7 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="13. Climate sensitivity and feedback" href="sensitivity-feedback.html" />
     <link rel="prev" title="11. Radiative Equilibrium" href="radeq.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -448,11 +449,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="radiative-convective-equilibrium">
-<h1><span class="section-number">12. </span>Radiative-Convective Equilibrium<a class="headerlink" href="#radiative-convective-equilibrium" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">12. </span>Radiative-Convective Equilibrium<a class="headerlink" href="#radiative-convective-equilibrium" title="Permalink to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <section id="recap-of-radiative-equilibrium-results">
-<h2>1. Recap of radiative equilibrium results<a class="headerlink" href="#recap-of-radiative-equilibrium-results" title="Permalink to this headline">#</a></h2>
+<h2>1. Recap of radiative equilibrium results<a class="headerlink" href="#recap-of-radiative-equilibrium-results" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Here we summarize results we generated in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radeq.html">Lecture on radiative equilibrium</a>.</p>
 <p><em>For Python details, click to expand the code</em></p>
@@ -551,7 +552,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="building-a-radiative-convection-model-in-climlab">
-<h2>2. Building a radiative-convection model in climlab<a class="headerlink" href="#building-a-radiative-convection-model-in-climlab" title="Permalink to this headline">#</a></h2>
+<h2>2. Building a radiative-convection model in climlab<a class="headerlink" href="#building-a-radiative-convection-model-in-climlab" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>To make a <strong>Radiative-Convective model</strong>, we just take a <strong>radiation</strong> model and couple it to a <strong>convection</strong> model!</p>
 <p>The “convection” model we’re going to use here is available as</p>
@@ -599,10 +600,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="adjustment-toward-radiative-convective-equilibrium">
-<h2>3. Adjustment toward radiative-convective equilibrium<a class="headerlink" href="#adjustment-toward-radiative-convective-equilibrium" title="Permalink to this headline">#</a></h2>
+<h2>3. Adjustment toward radiative-convective equilibrium<a class="headerlink" href="#adjustment-toward-radiative-convective-equilibrium" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="adjustment-from-isothermal-initial-conditions">
-<h3>Adjustment from isothermal initial conditions<a class="headerlink" href="#adjustment-from-isothermal-initial-conditions" title="Permalink to this headline">#</a></h3>
+<h3>Adjustment from isothermal initial conditions<a class="headerlink" href="#adjustment-from-isothermal-initial-conditions" title="Permalink to this heading">#</a></h3>
 <p>To get some insight into the interaction between radiation and convection, it’s useful to look at the adjustment process from a non-equilibrium initial condition.</p>
 <p><strong>Let’s make an animation!</strong></p>
 <p><em>The code below is complicated but it is mostly for generating the animation. Focus on the results, not the code here.</em></p>
@@ -5302,7 +5303,7 @@ AAAAAAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1OC40NS4xMDA=
 <p>Discuss.</p>
 </section>
 <section id="what-if-instead-we-start-out-from-pure-radiative-equilibrium">
-<h3>What if instead we start out from pure Radiative equilibrium?<a class="headerlink" href="#what-if-instead-we-start-out-from-pure-radiative-equilibrium" title="Permalink to this headline">#</a></h3>
+<h3>What if instead we start out from pure Radiative equilibrium?<a class="headerlink" href="#what-if-instead-we-start-out-from-pure-radiative-equilibrium" title="Permalink to this heading">#</a></h3>
 <p>This will represent the effect of a sudden “switching on” of convective processes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -7707,7 +7708,7 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 </section>
 <hr class="docutils" />
 <section id="compare-radiative-and-radiative-convective-equilibrium">
-<h2>4. Compare Radiative- and Radiative-Convective Equilibrium<a class="headerlink" href="#compare-radiative-and-radiative-convective-equilibrium" title="Permalink to this headline">#</a></h2>
+<h2>4. Compare Radiative- and Radiative-Convective Equilibrium<a class="headerlink" href="#compare-radiative-and-radiative-convective-equilibrium" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s repeat our experiment with removing certain absorbing gases from the model, but use the Radiative-Convective model.</p>
 <div class="cell tag_hide_input docutils container">
@@ -7805,10 +7806,10 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 </section>
 <hr class="docutils" />
 <section id="the-role-of-the-critical-lapse-rate">
-<h2>5. The role of the critical lapse rate<a class="headerlink" href="#the-role-of-the-critical-lapse-rate" title="Permalink to this headline">#</a></h2>
+<h2>5. The role of the critical lapse rate<a class="headerlink" href="#the-role-of-the-critical-lapse-rate" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="what-have-we-done-above">
-<h3>What have we done above<a class="headerlink" href="#what-have-we-done-above" title="Permalink to this headline">#</a></h3>
+<h3>What have we done above<a class="headerlink" href="#what-have-we-done-above" title="Permalink to this heading">#</a></h3>
 <p>These calculations all used a critical lapse rate of 6.5 K / km, which is a reasonable approximation to observations.</p>
 <p>We set this with the input argument</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adj_lapse_rate</span>
@@ -7831,7 +7832,7 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 <p>But this is a <strong>parameter</strong> that is uncertain and could be interesting to explore.</p>
 </section>
 <section id="python-exercise-change-the-critical-lapse-rate">
-<h3>Python exercise: change the critical lapse rate<a class="headerlink" href="#python-exercise-change-the-critical-lapse-rate" title="Permalink to this headline">#</a></h3>
+<h3>Python exercise: change the critical lapse rate<a class="headerlink" href="#python-exercise-change-the-critical-lapse-rate" title="Permalink to this heading">#</a></h3>
 <p>Repeat the whole series of calculations for the different combinations of absorbing gases above, but with different critical lapse rates:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">adj_lapse_rate</span> <span class="pre">=</span> <span class="pre">9.8</span></code> (in K/km, the dry adiabatic lapse rate, suitable for an atmosphere where condensation does not impact the buoyancy of air parcels)</p></li>
@@ -7841,7 +7842,7 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 </section>
 <hr class="docutils" />
 <section id="summary-of-radiative-convection-equilibrium-results">
-<h2>6. Summary of radiative-convection equilibrium results<a class="headerlink" href="#summary-of-radiative-convection-equilibrium-results" title="Permalink to this headline">#</a></h2>
+<h2>6. Summary of radiative-convection equilibrium results<a class="headerlink" href="#summary-of-radiative-convection-equilibrium-results" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
 <li><p>We noted that pure radiative equilibrium is <strong>not</strong> a good model for the observed temperature profile.</p></li>
@@ -7861,7 +7862,7 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this headline">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
