@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -87,6 +88,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -386,10 +396,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -397,7 +407,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -537,8 +547,8 @@ document.write(`
 <section id="longwave-emissions">
 <h3>Longwave emissions<a class="headerlink" href="#longwave-emissions" title="Permalink to this heading">#</a></h3>
 <p>Let’s denote the emissions from each layer as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e49dafeb-6416-4e45-99af-6f4e4f62b427">
-<span class="eqno">(7.1)<a class="headerlink" href="#equation-e49dafeb-6416-4e45-99af-6f4e4f62b427" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-54a2f008-f508-435a-871a-36d79c0aec8f">
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-54a2f008-f508-435a-871a-36d79c0aec8f" title="Permalink to this equation">#</a></span>\[\begin{align}
 E_s &amp;= \sigma T_s^4 \\
 E_0 &amp;= \epsilon \sigma T_0^4 \\
 E_1 &amp;= \epsilon \sigma T_1^4 
@@ -1169,8 +1179,8 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 </div>
 </div>
 <p>In more familiar notation, the radiative equilibrium solution is thus</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d9929199-a9a8-47a0-aaf6-8ab4b55d7c4f">
-<span class="eqno">(7.2)<a class="headerlink" href="#equation-d9929199-a9a8-47a0-aaf6-8ab4b55d7c4f" title="Permalink to this equation">#</a></span>\[\begin{align} 
+<div class="amsmath math notranslate nohighlight" id="equation-499aea1d-f231-4ac9-b538-5037f17e93de">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-499aea1d-f231-4ac9-b538-5037f17e93de" title="Permalink to this equation">#</a></span>\[\begin{align} 
 T_s &amp;= T_e \left( \frac{2+\epsilon}{2-\epsilon} \right)^{1/4} \\
 T_0 &amp;= T_e \left( \frac{1+\epsilon}{2-\epsilon} \right)^{1/4} \\
 T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
@@ -1315,11 +1325,10 @@ T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="elementary-greenhouse.html"
@@ -1339,10 +1348,7 @@ T_1 &amp;= T_e \left( \frac{ 1}{2 - \epsilon} \right)^{1/4}
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1449,8 +1455,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
