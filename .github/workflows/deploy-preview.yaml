@@ -24,7 +24,7 @@ jobs:
           echo "comment_message=👋 Thanks for opening this PR! The book will be automatically built with [GitHub Actions](https://github.com/features/actions). To see the status of your deployment, click below." >> $GITHUB_ENV
 
       - name: Find Pull Request
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: find-pull-request
         with:
           script: |
