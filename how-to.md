@@ -34,11 +34,11 @@ This should bring you to a login screen. Use your standard UAlbany netid and pas
 - You should then see the notebook open and running live on the JupyterHub.
 - **IMPORTANT** you need to manually *change the kernel* before things will run properly:
   - Find the `Kernel` menu
-  - Select `Kernel --> Change kernel --> ATM415: Python 3`
+  - Select `Kernel --> Change kernel --> Python 3 Jan. 2024 Environment`
 - You should then be able to run all the code without any trouble.
 
 ```{note}
-Do this step every time! If you get errors trying to run any `import` statements, double check that you're using the `ATM415: Python 3` kernel.
+Do this step every time! If you get errors trying to run any `import` statements, double check that you're using the `Python 3 Jan. 2024 Environment` kernel.
 ```
 
 *UAlbany users, please let me know if things don't seem to be working correctly.*
