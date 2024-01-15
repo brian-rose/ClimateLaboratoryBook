@@ -51,6 +51,16 @@ Binder is good for tinkering, but there is no easy way to save your work and com
 
 To launch a notebook in Binder, hover over the "Rocket ship" icon at top right and click the `Binder` button. 
 
+This will take you to an NSF-funded Binder service run by [Project Pythia](https://projectpythia.org).
+
+## Google Colab users
+
+Some users have reported success installing and running climlab on Google Colab. 
+See [these instructions in the climlab docs](https://climlab.readthedocs.io/en/latest/installation.html#installing-on-google-colab). 
+
+You would also need to clone the [source repository for this book on github][repo] into your Colab space. 
+I'm not using Colab so I don't have step-by-step instructions for this, but the adventurous user might find this a good option.
+
 ## Anyone: run the code in your own Python environment
 
 You will need the following:
