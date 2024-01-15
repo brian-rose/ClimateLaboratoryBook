@@ -69,7 +69,7 @@ Anyone is welcome to suggest edits or improvements by opening pull requests on t
 [ualbany]: https://www.albany.edu
 [about]: /about
 [jupyterbook]: https://jupyterbook.org
-[climlab]: https://github.com/brian-rose/climlab
+[climlab]: https://github.com/climlab/climlab
 [book]: https://brian-rose.github.io/ClimateLaboratoryBook/
 [repo]: https://github.com/brian-rose/ClimateLaboratoryBook
 [notebook]: https://jupyter-notebook.readthedocs.io/en/stable/
