@@ -80,6 +80,6 @@ and leave your `main` branch untouched so you can keep it up to date with
 the source repository.
 
 [repo]: https://github.com/brian-rose/ClimateLaboratoryBook
-[climlab]: https://github.com/brian-rose/climlab
+[climlab]: https://github.com/climlab/climlab
 [book]: https://brian-rose.github.io/ClimateLaboratoryBook/
 [notebook]: https://jupyter-notebook.readthedocs.io/en/stable/
