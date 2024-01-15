@@ -1,0 +1,2889 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>14. Examing the transient and equilibrium CO2 response in the CESM &#8212; The Climate Laboratory</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/transient-cesm';</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="15. Toy models of transient warming" href="transient-toy.html" />
+    <link rel="prev" title="Advanced topic: Climate sensitivity and feedback" href="advanced-sensitivity-feedback.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Climate Laboratory</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About this Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../who-for.html">Who is the book for?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How to use this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attribution.html">How to cite and reuse this material</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models-budgets-fun.html">1. Climate models, the global energy budget, and Fun with Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="zero-dim-ebm.html">2. Modeling the global energy budget</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="analytical-efolding.html">Advanced topic: Analytical solution of the global Energy Balance Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="climate-system-models.html">3. The climate system and climate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introducing-cesm.html">4. Introducing the Community Earth System Model (CESM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climlab-intro.html">5. Building simple climate models using climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiation.html">6. A Brief Review of Radiation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="elementary-greenhouse.html">7. Elementary greenhouse models</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy-greenhouse.html">Advanced topic: Solving the two-layer grey gas model analytically with sympy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grey-radiation-climlab.html">8. Grey radiation modeling with climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiative-transfer.html">9. Modeling non-scattering radiative transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectral-bands.html">10. Who needs spectral bands? We do. Some baby steps…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radeq.html">11. Radiative Equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rce.html">12. Radiative-Convective Equilibrium</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sensitivity-feedback.html">13. Climate sensitivity and feedback</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-sensitivity-feedback.html">Advanced topic: Climate sensitivity and feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Examing the transient and equilibrium CO2 response in the CESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-toy.html">15. Toy models of transient warming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clouds.html">16. Clouds and cloud feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insolation.html">17. Insolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orbital.html">18. Orbital variations, insolation, and the ice ages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="heat-transport.html">19. Heat transport</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-heat-transport.html">Advanced topic: Heat transport decomposition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="one-dim-ebm.html">20. The one-dimensional energy balance model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal-cycle.html">21. Modeling the seasonal cycle of surface temperature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical-diffusion.html">22. A peek at numerical methods for diffusion models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="albedo-snowball.html">23. Ice-albedo feedback and Snowball Earth in the EBM</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-albedo-feedback.html">Advanced topic: Ice albedo feedback in the EBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="surface-energy-balance.html">24. The surface energy balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="land-ocean-contrast.html">25. Land-Ocean contrasts under climate change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="water-water-everywhere.html">26. Water, water everywhere!</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about-assignments.html">About the assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-zero-dim-ebm.html">Assignment: Climate change in the zero-dimensional EBM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="assignment-cesm-control.html">Assignment: Global average budgets in the CESM pre-industrial control simulation</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignment-cesm-control-hints.html">Additional hints and guidance for CESM budgets assignment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-simple-clouds.html">Assignment: Clouds in the Leaky Greenhouse Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-rcm-feedback.html">Assignment: Feedbacks in the Radiative-Convective Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-cesm-climate-change.html">Assignment: Climate change in the CESM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-insolation-orbit.html">Assignment: Insolation and orbital parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Postamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/transient-cesm.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https%3A//github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/transient-cesm.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courseware/transient-cesm.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Examing the transient and equilibrium CO2 response in the CESM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years">First, a quick demonstration that 1%/year compounded increase reaches doubling after 70 years</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-concatenated-output-from-the-cam-output-atmosphere">Load the concatenated output from the CAM output (atmosphere)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations">A plot of the prescribed CO2 concentrations in the coupled simulations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations">Compute and plot time series of global, annual mean near-surface air temperature in all four simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average">Make some pretty timeseries plots, including an <strong>approximate</strong> running annual average</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-can-work-on-computing-ecs-and-tcr">Now we can work on computing ECS and TCR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-cmip-climate-sensitivity-results-to-compare-against">Some CMIP climate sensitivity results to compare against</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming">Let’s make some maps to compare spatial patterns of transient vs. equilibrium warming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models">Make maps of the surface air temperature anomaly due to CO2 doubling in both the slab and coupled models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types">Appendix: for later reference, here is how you can open the other output types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="examing-the-transient-and-equilibrium-co2-response-in-the-cesm">
+<h1><span class="section-number">14. </span>Examing the transient and equilibrium CO2 response in the CESM<a class="headerlink" href="#examing-the-transient-and-equilibrium-co2-response-in-the-cesm" title="Permalink to this heading">#</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>I have run two sets of experiments with the CESM model:</p>
+<ul class="simple">
+<li><p>The fully coupled model:</p>
+<ul>
+<li><p>pre-industrial control</p></li>
+<li><p>1%/year CO2 ramp scenario for 80 years</p></li>
+</ul>
+</li>
+<li><p>The slab ocean model:</p>
+<ul>
+<li><p>pre-industrial control with prescribed q-flux</p></li>
+<li><p>2xCO2 scenario run out to equilibrium</p></li>
+</ul>
+</li>
+</ul>
+<p>Our main first task is to compute the two canonical measures of climate sensitivity for this model:</p>
+<ul class="simple">
+<li><p>Equilibrium Climate Sensitivity (ECS)</p></li>
+<li><p>Transient Climate Response (TCR)</p></li>
+</ul>
+<p>From the IPCC AR5 WG1 report, Chapter 9, page 817:</p>
+<blockquote>
+<div><p>Equilibrium climate sensitivity (ECS) is the equilibrium change in global and annual mean surface air temperature after doubling the atmos- pheric concentration of CO2 relative to pre-industrial levels.</p>
+</div></blockquote>
+<blockquote>
+<div><p>The transient climate response (TCR) is the change in global and annual mean surface temperature from an experiment in which the CO2 concentration is increased by 1% yr<span class="math notranslate nohighlight">\(^{–1}\)</span>, and calculated using the difference between the start of the experiment and a 20-year period centred on the time of CO2 doubling.</p>
+</div></blockquote>
+<section id="first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years">
+<h2>First, a quick demonstration that 1%/year compounded increase reaches doubling after 70 years<a class="headerlink" href="#first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">startingamount</span> <span class="o">=</span> <span class="mf">1.</span>
+<span class="n">amount</span> <span class="o">=</span> <span class="n">startingamount</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">70</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">*=</span> <span class="mf">1.01</span>
+<span class="n">amount</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.006763368395386
+</pre></div>
+</div>
+</div>
+</div>
+<p>TCR is always smaller than ECS due to the transient effects of ocean heat uptake.</p>
+<p>We are going to <strong>estimate</strong> the ECS of the fully coupled model by using the equilibrium response of the Slab Ocean .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-the-concatenated-output-from-the-cam-output-atmosphere">
+<h2>Load the concatenated output from the CAM output (atmosphere)<a class="headerlink" href="#load-the-concatenated-output-from-the-cam-output-atmosphere" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">casenames</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">:</span> <span class="s1">&#39;cpl_1850_f19&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">:</span> <span class="s1">&#39;cpl_CO2ramp_f19&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;som_control&#39;</span><span class="p">:</span> <span class="s1">&#39;som_1850_f19&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;som_2xCO2&#39;</span><span class="p">:</span>   <span class="s1">&#39;som_1850_2xCO2&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+<span class="c1"># The path to the THREDDS server, should work from anywhere</span>
+<span class="n">basepath</span> <span class="o">=</span> <span class="s1">&#39;http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/&#39;</span>
+<span class="c1"># For better performance if you can access the roselab_rit filesystem (e.g. from JupyterHub)</span>
+<span class="c1"># basepath = &#39;/roselab_rit/cesm_archive/&#39;</span>
+<span class="n">casepaths</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="n">casepaths</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">basepath</span> <span class="o">+</span> <span class="n">casenames</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/concatenated/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a dictionary of all the CAM atmosphere output</span>
+<span class="n">atm</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">casepaths</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="n">casenames</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;.cam.h0.nc&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Attempting to open the dataset &#39;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+    <span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_1850_f19/concatenated/cpl_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/cpl_CO2ramp_f19/concatenated/cpl_CO2ramp_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_f19/concatenated/som_1850_f19.cam.h0.nc
+Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/som_1850_2xCO2/concatenated/som_1850_2xCO2.cam.h0.nc
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations">
+<h3>A plot of the prescribed CO2 concentrations in the coupled simulations<a class="headerlink" href="#a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days_per_year</span> <span class="o">=</span> <span class="mi">365</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">,</span> <span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">time</span><span class="o">/</span><span class="n">days_per_year</span><span class="p">,</span> <span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">co2vmr</span><span class="o">*</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;CO2 volume mixing ratio (CESM coupled simulations)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;pCO2 (ppm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b4b14bbc54b8f24298a757f8e9e3d8c4d28b539ac8388761a140c59502bc27da.png" src="../_images/b4b14bbc54b8f24298a757f8e9e3d8c4d28b539ac8388761a140c59502bc27da.png" />
+</div>
+</div>
+<p>Issues to think about:</p>
+<ul class="simple">
+<li><p>Why do we talk about fractional changes in CO2, such as “doubling atmospheric CO2”, and “1%/year compounded CO2 increase?</p></li>
+<li><p>Why not instead talk about changes in absolute amounts of CO2?</p></li>
+</ul>
+<p>The answer is closely related to the fact that the <strong>radiative forcing</strong> associated with CO2 increase is approximately <strong>logarithmic</strong> in CO2 amount. So a doubling of CO2 represents roughly the same radiative forcing <em>regardless of the initial CO2 concentration</em>.</p>
+</section>
+</section>
+<section id="compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations">
+<h2>Compute and plot time series of global, annual mean near-surface air temperature in all four simulations<a class="headerlink" href="#compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The surface air temperature, which we will use for our sensitivity metrics</span>
+<span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;TREFHT&#x27; (time: 240, lat: 96, lon: 144)&gt;
+[3317760 values with dtype=float32]
+Coordinates:
+  * time     (time) float64 31.0 59.0 90.0 120.0 ... 7.239e+03 7.269e+03 7.3e+03
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+  * lon      (lon) float64 0.0 2.5 5.0 7.5 10.0 ... 350.0 352.5 355.0 357.5
+Attributes:
+    units:         K
+    long_name:     Reference height temperature
+    cell_methods:  time: mean</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'TREFHT'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 240</li><li><span class='xr-has-index'>lat</span>: 96</li><li><span class='xr-has-index'>lon</span>: 144</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-d63425df-2e6c-4e3f-945a-7f626384dca4' class='xr-array-in' type='checkbox' checked><label for='section-d63425df-2e6c-4e3f-945a-7f626384dca4' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[3317760 values with dtype=float32]</pre></div></div></li><li class='xr-section-item'><input id='section-1c28600b-77b6-4b5e-92f6-c1dd8f48692f' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1c28600b-77b6-4b5e-92f6-c1dd8f48692f' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>31.0 59.0 ... 7.269e+03 7.3e+03</div><input id='attrs-0fc4952d-c844-4a3c-a724-f7985c6cbc0d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0fc4952d-c844-4a3c-a724-f7985c6cbc0d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-54904ca8-1d78-4fa3-87a1-38f4bcf296a8' class='xr-var-data-in' type='checkbox'><label for='data-54904ca8-1d78-4fa3-87a1-38f4bcf296a8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>units :</span></dt><dd>days since 0001-01-01 00:00:00</dd><dt><span>calendar :</span></dt><dd>noleap</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([  31.,   59.,   90., ..., 7239., 7269., 7300.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-90.0 -88.11 -86.21 ... 88.11 90.0</div><input id='attrs-35f8f2ae-d817-4b30-83f4-45bc305061d1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-35f8f2ae-d817-4b30-83f4-45bc305061d1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-701f0427-4c36-45f8-81d8-9b4758d62555' class='xr-var-data-in' type='checkbox'><label for='data-701f0427-4c36-45f8-81d8-9b4758d62555' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>array([-90.      , -88.105263, -86.210526, -84.315789, -82.421053, -80.526316,
+       -78.631579, -76.736842, -74.842105, -72.947368, -71.052632, -69.157895,
+       -67.263158, -65.368421, -63.473684, -61.578947, -59.684211, -57.789474,
+       -55.894737, -54.      , -52.105263, -50.210526, -48.315789, -46.421053,
+       -44.526316, -42.631579, -40.736842, -38.842105, -36.947368, -35.052632,
+       -33.157895, -31.263158, -29.368421, -27.473684, -25.578947, -23.684211,
+       -21.789474, -19.894737, -18.      , -16.105263, -14.210526, -12.315789,
+       -10.421053,  -8.526316,  -6.631579,  -4.736842,  -2.842105,  -0.947368,
+         0.947368,   2.842105,   4.736842,   6.631579,   8.526316,  10.421053,
+        12.315789,  14.210526,  16.105263,  18.      ,  19.894737,  21.789474,
+        23.684211,  25.578947,  27.473684,  29.368421,  31.263158,  33.157895,
+        35.052632,  36.947368,  38.842105,  40.736842,  42.631579,  44.526316,
+        46.421053,  48.315789,  50.210526,  52.105263,  54.      ,  55.894737,
+        57.789474,  59.684211,  61.578947,  63.473684,  65.368421,  67.263158,
+        69.157895,  71.052632,  72.947368,  74.842105,  76.736842,  78.631579,
+        80.526316,  82.421053,  84.315789,  86.210526,  88.105263,  90.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 2.5 5.0 ... 352.5 355.0 357.5</div><input id='attrs-620c5569-3a95-441a-8899-bd8c91871d97' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-620c5569-3a95-441a-8899-bd8c91871d97' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-94f43406-ae18-42d9-88ac-7b2720b8cabf' class='xr-var-data-in' type='checkbox'><label for='data-94f43406-ae18-42d9-88ac-7b2720b8cabf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>array([  0. ,   2.5,   5. ,   7.5,  10. ,  12.5,  15. ,  17.5,  20. ,  22.5,
+        25. ,  27.5,  30. ,  32.5,  35. ,  37.5,  40. ,  42.5,  45. ,  47.5,
+        50. ,  52.5,  55. ,  57.5,  60. ,  62.5,  65. ,  67.5,  70. ,  72.5,
+        75. ,  77.5,  80. ,  82.5,  85. ,  87.5,  90. ,  92.5,  95. ,  97.5,
+       100. , 102.5, 105. , 107.5, 110. , 112.5, 115. , 117.5, 120. , 122.5,
+       125. , 127.5, 130. , 132.5, 135. , 137.5, 140. , 142.5, 145. , 147.5,
+       150. , 152.5, 155. , 157.5, 160. , 162.5, 165. , 167.5, 170. , 172.5,
+       175. , 177.5, 180. , 182.5, 185. , 187.5, 190. , 192.5, 195. , 197.5,
+       200. , 202.5, 205. , 207.5, 210. , 212.5, 215. , 217.5, 220. , 222.5,
+       225. , 227.5, 230. , 232.5, 235. , 237.5, 240. , 242.5, 245. , 247.5,
+       250. , 252.5, 255. , 257.5, 260. , 262.5, 265. , 267.5, 270. , 272.5,
+       275. , 277.5, 280. , 282.5, 285. , 287.5, 290. , 292.5, 295. , 297.5,
+       300. , 302.5, 305. , 307.5, 310. , 312.5, 315. , 317.5, 320. , 322.5,
+       325. , 327.5, 330. , 332.5, 335. , 337.5, 340. , 342.5, 345. , 347.5,
+       350. , 352.5, 355. , 357.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f8c6f25d-bad7-46d0-8c77-4b99bd88fedb' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f8c6f25d-bad7-46d0-8c77-4b99bd88fedb' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>K</dd><dt><span>long_name :</span></dt><dd>Reference height temperature</dd><dt><span>cell_methods :</span></dt><dd>time: mean</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  The area weighting needed for global averaging</span>
+<span class="n">gw</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">gw</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gw</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.DataArray &#39;gw&#39; (lat: 96)&gt;
+array([0.000137, 0.001093, 0.002185, 0.003275, 0.004361, 0.005443, 0.006518,
+       0.007587, 0.008647, 0.009697, 0.010737, 0.011765, 0.012781, 0.013782,
+       0.014768, 0.015739, 0.016692, 0.017626, 0.018542, 0.019437, 0.020311,
+       0.021162, 0.021991, 0.022795, 0.023575, 0.024329, 0.025056, 0.025756,
+       0.026427, 0.02707 , 0.027683, 0.028266, 0.028818, 0.029339, 0.029827,
+       0.030283, 0.030705, 0.031094, 0.031449, 0.03177 , 0.032056, 0.032307,
+       0.032522, 0.032702, 0.032847, 0.032955, 0.033027, 0.033063, 0.033063,
+       0.033027, 0.032955, 0.032847, 0.032702, 0.032522, 0.032307, 0.032056,
+       0.03177 , 0.031449, 0.031094, 0.030705, 0.030283, 0.029827, 0.029339,
+       0.028818, 0.028266, 0.027683, 0.02707 , 0.026427, 0.025756, 0.025056,
+       0.024329, 0.023575, 0.022795, 0.021991, 0.021162, 0.020311, 0.019437,
+       0.018542, 0.017626, 0.016692, 0.015739, 0.014768, 0.013782, 0.012781,
+       0.011765, 0.010737, 0.009697, 0.008647, 0.007587, 0.006518, 0.005443,
+       0.004361, 0.003275, 0.002185, 0.001093, 0.000137])
+Coordinates:
+  * lat      (lat) float64 -90.0 -88.11 -86.21 -84.32 ... 84.32 86.21 88.11 90.0
+Attributes:
+    long_name:  gauss weights
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">global_mean</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">gw</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Return the area-weighted global average of the input field&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">field</span><span class="o">*</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span><span class="o">/</span><span class="n">weight</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Loop through the four simulations and produce the global mean timeseries</span>
+<span class="n">TREFHT_global</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="n">TREFHT_global</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_mean</span><span class="p">(</span><span class="n">atm</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average">
+<h3>Make some pretty timeseries plots, including an <strong>approximate</strong> running annual average<a class="headerlink" href="#make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">casenames</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;cpl&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fully coupled ocean&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Slab ocean&#39;</span><span class="p">)</span>
+    <span class="n">field</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">field_running</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">time</span> <span class="o">/</span> <span class="n">days_per_year</span><span class="p">,</span> 
+                   <span class="n">field</span><span class="p">,</span> 
+                   <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                   <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+                   <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field_running</span><span class="o">.</span><span class="n">time</span> <span class="o">/</span> <span class="n">days_per_year</span><span class="p">,</span> 
+            <span class="n">field_running</span><span class="p">,</span> 
+            <span class="n">color</span><span class="o">=</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_color</span><span class="p">(),</span>
+            <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+           <span class="p">)</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Years&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Global mean surface air temperature in CESM simulations&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/22c8869ceab17416488ec58b941848464770d97c7a5027f0b70cda3e7ef99416.png" src="../_images/22c8869ceab17416488ec58b941848464770d97c7a5027f0b70cda3e7ef99416.png" />
+</div>
+</div>
+<p>Issues to think about here include:</p>
+<ul class="simple">
+<li><p>Why is the annual average here only approximate? <em>(think about the calendar)</em></p></li>
+<li><p>Why is there an annual cycle in the global average temperature? (planet is coldest during NH winter)</p></li>
+<li><p>Different character of the temperature <strong>variability</strong> in the coupled vs. slab model</p></li>
+<li><p>Much more rapid warming in the Slab Ocean Model</p></li>
+</ul>
+</section>
+</section>
+<section id="now-we-can-work-on-computing-ecs-and-tcr">
+<h2>Now we can work on computing ECS and TCR<a class="headerlink" href="#now-we-can-work-on-computing-ecs-and-tcr" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the last 10 years from the slab ocean control simulation</span>
+<span class="c1"># and the last 20 years from the coupled control</span>
+<span class="n">nyears_slab</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">nyears_cpl</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">clim_slice_slab</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">nyears_slab</span><span class="o">*</span><span class="mi">12</span><span class="p">),</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">clim_slice_cpl</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">nyears_cpl</span><span class="o">*</span><span class="mi">12</span><span class="p">),</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the last 10 years from the slab ocean control simulation</span>
+<span class="n">T0_slab</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T0_slab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray ()&gt;
+array(286.82486457)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-0ddb5099-7ccb-43fa-9c33-cbd2bc8222c1' class='xr-array-in' type='checkbox' checked><label for='section-0ddb5099-7ccb-43fa-9c33-cbd2bc8222c1' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>286.8</span></div><div class='xr-array-data'><pre>array(286.82486457)</pre></div></div></li><li class='xr-section-item'><input id='section-f6f89c68-c5a9-4527-943c-ff0543922513' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f6f89c68-c5a9-4527-943c-ff0543922513' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-3460ecb8-bf19-4383-a783-199f7de1fe53' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3460ecb8-bf19-4383-a783-199f7de1fe53' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># and the last 20 years from the coupled control</span>
+<span class="n">T0_cpl</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T0_cpl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray ()&gt;
+array(286.75125938)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-c265cf38-0795-4fe7-b873-81bc185dfae4' class='xr-array-in' type='checkbox' checked><label for='section-c265cf38-0795-4fe7-b873-81bc185dfae4' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>286.8</span></div><div class='xr-array-data'><pre>array(286.75125938)</pre></div></div></li><li class='xr-section-item'><input id='section-f7795b31-9284-4abd-9d63-fd4f6843be8d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f7795b31-9284-4abd-9d63-fd4f6843be8d' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-bb98a188-7415-4a05-8ccc-638650ac70e3' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bb98a188-7415-4a05-8ccc-638650ac70e3' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the last 10 years from the slab 2xCO2 simulation</span>
+<span class="n">T2x_slab</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;som_2xCO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T2x_slab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray ()&gt;
+array(289.71521445)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-5a2d4a06-1890-4d74-95ad-eb2dd8faa64b' class='xr-array-in' type='checkbox' checked><label for='section-5a2d4a06-1890-4d74-95ad-eb2dd8faa64b' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>289.7</span></div><div class='xr-array-data'><pre>array(289.71521445)</pre></div></div></li><li class='xr-section-item'><input id='section-7c5415a8-a380-46e7-a875-844740115c69' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-7c5415a8-a380-46e7-a875-844740115c69' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-a8f97866-9338-4157-9974-fb23493c30bc' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-a8f97866-9338-4157-9974-fb23493c30bc' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># extract the last 20 years from the coupled CO2 ramp simulation</span>
+<span class="n">T2x_cpl</span> <span class="o">=</span> <span class="n">TREFHT_global</span><span class="p">[</span><span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">T2x_cpl</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray ()&gt;
+array(288.41935278)</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-b3ac18db-4fc3-4fde-9e4e-ba26f832bde3' class='xr-array-in' type='checkbox' checked><label for='section-b3ac18db-4fc3-4fde-9e4e-ba26f832bde3' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>288.4</span></div><div class='xr-array-data'><pre>array(288.41935278)</pre></div></div></li><li class='xr-section-item'><input id='section-132b6bea-4287-40ef-a8ae-dd2efa376394' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-132b6bea-4287-40ef-a8ae-dd2efa376394' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-c314294d-7d2b-4d62-bed6-24c6fad03ea2' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c314294d-7d2b-4d62-bed6-24c6fad03ea2' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ECS</span> <span class="o">=</span> <span class="n">T2x_slab</span> <span class="o">-</span> <span class="n">T0_slab</span>
+<span class="n">TCR</span> <span class="o">=</span> <span class="n">T2x_cpl</span> <span class="o">-</span> <span class="n">T0_cpl</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Equilibrium Climate Sensitivity is </span><span class="si">{:.3}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ECS</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Transient Climate Response is </span><span class="si">{:.3}</span><span class="s1"> K.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">TCR</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Equilibrium Climate Sensitivity is 2.89 K.
+The Transient Climate Response is 1.67 K.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="some-cmip-climate-sensitivity-results-to-compare-against">
+<h2>Some CMIP climate sensitivity results to compare against<a class="headerlink" href="#some-cmip-climate-sensitivity-results-to-compare-against" title="Permalink to this heading">#</a></h2>
+<p>Figure and table from <span id="id1">Flato <em>et al.</em> [<a class="reference internal" href="../references.html#id19" title="G. Flato, J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason, and M. Rummukainen. Evaluation of climate models. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 9. Cambridge University Press, Cambridge, U.K., 2013.">2013</a>]</span></p>
+<p><img alt="feedback AR5" src="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig9-43-1.jpg" /></p>
+<p><strong>Figure 9.43</strong> | (a) Strengths of individual feedbacks for CMIP3 and CMIP5 models (left and right columns of symbols) for Planck (P), water vapour (WV), clouds (C), albedo (A), lapse rate (LR), combination of water vapour and lapse rate (WV+LR) and sum of all feedbacks except Planck (ALL), from Soden and Held (2006) and Vial et al. (2013), following Soden et al. (2008). CMIP5 feedbacks are derived from CMIP5 simulations for abrupt fourfold increases in CO2 concentrations (4 × CO2). (b) ECS obtained using regression techniques by Andrews et al. (2012) against ECS estimated from the ratio of CO2 ERF to the sum of all feedbacks. The CO2 ERF is one-half the 4 × CO2 forcings from Andrews et al. (2012), and the total feedback (ALL + Planck) is from Vial et al. (2013).</p>
+<p><em>Figure caption reproduced from the AR5 WG1 report <span id="id2">[<a class="reference internal" href="../references.html#id19" title="G. Flato, J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason, and M. Rummukainen. Evaluation of climate models. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 9. Cambridge University Press, Cambridge, U.K., 2013.">Flato <em>et al.</em>, 2013</a>]</span></em></p>
+<p><img alt="AR5 Table 9.5" src="../_images/AR5_Table9.5.png" /></p>
+<p>Comparing against the multi-model mean of the ECS and TCR, our model is apparently slightly less sensitive than the CMIP5 mean.</p>
+</section>
+<section id="let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming">
+<h2>Let’s make some maps to compare spatial patterns of transient vs. equilibrium warming<a class="headerlink" href="#let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming" title="Permalink to this heading">#</a></h2>
+<p>Here is a helper function that takes a 2D lat/lon field and renders it as a nice contour map with accompanying zonal average line plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The map projection capabilities come from the cartopy package. There are many possible projections</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">from</span> <span class="nn">cartopy.util</span> <span class="kn">import</span> <span class="n">add_cyclic_point</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_map</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;input field should be a 2D xarray.DataArray on a lat/lon grid.</span>
+<span class="sd">        Make a filled contour plot of the field, and a line plot of the zonal mean</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">nrows</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">mapax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">rowspan</span><span class="o">=</span><span class="n">nrows</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">())</span>
+    <span class="n">barax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">),</span> <span class="p">(</span><span class="n">nrows</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">colspan</span><span class="o">=</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plotax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot2grid</span><span class="p">((</span><span class="n">nrows</span><span class="p">,</span><span class="n">ncols</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ncols</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">rowspan</span><span class="o">=</span><span class="n">nrows</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># add cyclic point so cartopy doesn&#39;t show a white strip at zero longitude</span>
+    <span class="n">wrap_data</span><span class="p">,</span> <span class="n">wrap_lon</span> <span class="o">=</span> <span class="n">add_cyclic_point</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">field</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span>
+    <span class="n">cx</span> <span class="o">=</span> <span class="n">mapax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">wrap_lon</span><span class="p">,</span> <span class="n">field</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">wrap_data</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+    <span class="n">mapax</span><span class="o">.</span><span class="n">set_global</span><span class="p">();</span> <span class="n">mapax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">();</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">barax</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">)</span>
+    <span class="n">plotax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lon&#39;</span><span class="p">),</span> <span class="n">field</span><span class="o">.</span><span class="n">lat</span><span class="p">)</span>
+    <span class="n">plotax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+    <span class="n">plotax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">mapax</span><span class="p">,</span> <span class="n">plotax</span><span class="p">,</span> <span class="n">barax</span><span class="p">),</span> <span class="n">cx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a single time slice of surface air temperature just as example</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> 
+                        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Surface air temperature in the coupled control simulation (K)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/32b6b43e095e2aa39e984c3f800cf23ee6f237d78b46516336e5cf6b6821e591.png" src="../_images/32b6b43e095e2aa39e984c3f800cf23ee6f237d78b46516336e5cf6b6821e591.png" />
+</div>
+</div>
+<section id="make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models">
+<h3>Make maps of the surface air temperature anomaly due to CO2 doubling in both the slab and coupled models<a class="headerlink" href="#make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Tmap_cpl_2x</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_CO2ramp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">Tmap_cpl_control</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;cpl_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_cpl</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">DeltaT_cpl</span> <span class="o">=</span> <span class="n">Tmap_cpl_2x</span> <span class="o">-</span> <span class="n">Tmap_cpl_control</span>
+
+<span class="n">Tmap_som_2x</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_2xCO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">Tmap_som_control</span> <span class="o">=</span> <span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">TREFHT</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">clim_slice_slab</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">DeltaT_som</span> <span class="o">=</span> <span class="n">Tmap_som_2x</span> <span class="o">-</span> <span class="n">Tmap_som_control</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">DeltaT_cpl</span><span class="p">,</span>
+                        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Surface air temperature anomaly (coupled transient) (K)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># ensure the line plots have same axes</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">set_clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>    <span class="c1"># ensure the contour maps have the same color intervals</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span><span class="n">cx</span>  <span class="o">=</span> <span class="n">make_map</span><span class="p">(</span><span class="n">DeltaT_som</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Surface air temperature anomaly (equilibrium SOM) (K)&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">set_clim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/08daa544a34a7e8bef7a5dd015b31a7370b912a2c9ec5d7c76f050f445b64514.png" src="../_images/08daa544a34a7e8bef7a5dd015b31a7370b912a2c9ec5d7c76f050f445b64514.png" />
+<img alt="../_images/c0464369342990ab0feeaafda34dd976fd0ffd3310a0a161f820e52bb7b47722.png" src="../_images/c0464369342990ab0feeaafda34dd976fd0ffd3310a0a161f820e52bb7b47722.png" />
+</div>
+</div>
+<p>Lots of intersting phenomena to think about here, including:</p>
+<ul class="simple">
+<li><p>Polar amplification of surface warming</p></li>
+<li><p>Reduction in equator-to-pole temperature gradients</p></li>
+<li><p>Much larger polar amplification in SOM than in transient – especially over the Southern Ocean (the <em>delayed warming of the Southern Ocean</em>)</p></li>
+<li><p>North Atlantic <em>warming hole</em> present in transient but not in equilibrium SOM.</p></li>
+<li><p>Land-ocean warming contrast: larger in transient, but still present in equilibrium</p></li>
+</ul>
+</section>
+</section>
+<section id="appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types">
+<h2>Appendix: for later reference, here is how you can open the other output types<a class="headerlink" href="#appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types" title="Permalink to this heading">#</a></h2>
+<p>The following will open the rest of the CESM output (land, sea ice, river routing, ocean).</p>
+<p>These are not needed for the above homework assignment, but may be useful later on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # make a dictionary of all the CLM land model output</span>
+<span class="c1"># land = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     path = casepaths[name] + casenames[name] + &#39;.clm2.h0.nc&#39;</span>
+<span class="c1">#     print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#     land[name] = xr.open_dataset(path)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # make a dictionary of all the sea ice model output</span>
+<span class="c1"># ice = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     path = casepaths[name] + casenames[name] + &#39;.cice.h.nc&#39;</span>
+<span class="c1">#     print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#     ice[name] = xr.open_dataset(path)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # make a dictionary of all the river transport output</span>
+<span class="c1"># rtm = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     path = casepaths[name] + casenames[name] + &#39;.rtm.h0.nc&#39;</span>
+<span class="c1">#     print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#     rtm[name] = xr.open_dataset(path)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ocn = {}</span>
+<span class="c1"># for name in casenames:</span>
+<span class="c1">#     if &#39;cpl&#39; in name:</span>
+<span class="c1">#         path = casepaths[name] + casenames[name] + &#39;.pop.h.nc&#39;</span>
+<span class="c1">#         print(&#39;Attempting to open the dataset &#39;, path)</span>
+<span class="c1">#         ocn[name] = xr.open_dataset(path)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/climlab/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="advanced-sensitivity-feedback.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Advanced topic: Climate sensitivity and feedback</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="transient-toy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>Toy models of transient warming</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-a-quick-demonstration-that-1-year-compounded-increase-reaches-doubling-after-70-years">First, a quick demonstration that 1%/year compounded increase reaches doubling after 70 years</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-concatenated-output-from-the-cam-output-atmosphere">Load the concatenated output from the CAM output (atmosphere)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-plot-of-the-prescribed-co2-concentrations-in-the-coupled-simulations">A plot of the prescribed CO2 concentrations in the coupled simulations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-and-plot-time-series-of-global-annual-mean-near-surface-air-temperature-in-all-four-simulations">Compute and plot time series of global, annual mean near-surface air temperature in all four simulations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-some-pretty-timeseries-plots-including-an-approximate-running-annual-average">Make some pretty timeseries plots, including an <strong>approximate</strong> running annual average</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-can-work-on-computing-ecs-and-tcr">Now we can work on computing ECS and TCR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-cmip-climate-sensitivity-results-to-compare-against">Some CMIP climate sensitivity results to compare against</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-make-some-maps-to-compare-spatial-patterns-of-transient-vs-equilibrium-warming">Let’s make some maps to compare spatial patterns of transient vs. equilibrium warming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-maps-of-the-surface-air-temperature-anomaly-due-to-co2-doubling-in-both-the-slab-and-coupled-models">Make maps of the surface air temperature anomaly due to CO2 doubling in both the slab and coupled models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-for-later-reference-here-is-how-you-can-open-the-other-output-types">Appendix: for later reference, here is how you can open the other output types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brian E. J. Rose
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
