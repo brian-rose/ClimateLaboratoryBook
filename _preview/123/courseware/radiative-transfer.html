@@ -1,0 +1,994 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>9. Modeling non-scattering radiative transfer &#8212; The Climate Laboratory</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/radiative-transfer';</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/radiative-transfer.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="10. Who needs spectral bands? We do. Some baby steps…" href="spectral-bands.html" />
+    <link rel="prev" title="8. Grey radiation modeling with climlab" href="grey-radiation-climlab.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Climate Laboratory</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About this Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../who-for.html">Who is the book for?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How to use this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attribution.html">How to cite and reuse this material</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models-budgets-fun.html">1. Climate models, the global energy budget, and Fun with Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="zero-dim-ebm.html">2. Modeling the global energy budget</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="analytical-efolding.html">Advanced topic: Analytical solution of the global Energy Balance Model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="climate-system-models.html">3. The climate system and climate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introducing-cesm.html">4. Introducing the Community Earth System Model (CESM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climlab-intro.html">5. Building simple climate models using climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiation.html">6. A Brief Review of Radiation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="elementary-greenhouse.html">7. Elementary greenhouse models</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy-greenhouse.html">Advanced topic: Solving the two-layer grey gas model analytically with sympy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grey-radiation-climlab.html">8. Grey radiation modeling with climlab</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. Modeling non-scattering radiative transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectral-bands.html">10. Who needs spectral bands? We do. Some baby steps…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radeq.html">11. Radiative Equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rce.html">12. Radiative-Convective Equilibrium</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sensitivity-feedback.html">13. Climate sensitivity and feedback</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-sensitivity-feedback.html">Advanced topic: Climate sensitivity and feedback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transient-cesm.html">14. Examing the transient and equilibrium CO2 response in the CESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-toy.html">15. Toy models of transient warming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clouds.html">16. Clouds and cloud feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insolation.html">17. Insolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orbital.html">18. Orbital variations, insolation, and the ice ages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="heat-transport.html">19. Heat transport</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-heat-transport.html">Advanced topic: Heat transport decomposition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="one-dim-ebm.html">20. The one-dimensional energy balance model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal-cycle.html">21. Modeling the seasonal cycle of surface temperature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical-diffusion.html">22. A peek at numerical methods for diffusion models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="albedo-snowball.html">23. Ice-albedo feedback and Snowball Earth in the EBM</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-albedo-feedback.html">Advanced topic: Ice albedo feedback in the EBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="surface-energy-balance.html">24. The surface energy balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="land-ocean-contrast.html">25. Land-Ocean contrasts under climate change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="water-water-everywhere.html">26. Water, water everywhere!</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about-assignments.html">About the assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-zero-dim-ebm.html">Assignment: Climate change in the zero-dimensional EBM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="assignment-cesm-control.html">Assignment: Global average budgets in the CESM pre-industrial control simulation</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignment-cesm-control-hints.html">Additional hints and guidance for CESM budgets assignment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-simple-clouds.html">Assignment: Clouds in the Leaky Greenhouse Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-rcm-feedback.html">Assignment: Feedbacks in the Radiative-Convective Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-cesm-climate-change.html">Assignment: Climate change in the CESM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-insolation-orbit.html">Assignment: Insolation and orbital parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Postamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/radiative-transfer.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https%3A//github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/radiative-transfer.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courseware/radiative-transfer.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modeling non-scattering radiative transfer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-two-stream-schwarschild-equations">1. The two-stream Schwarschild equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-thickness">Optical thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-optical-depth-as-vertical-coordinate">Using optical depth as vertical coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-cross-section">Absorption cross-section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-stream-schwarzschild-equations">Two-stream Schwarzschild equations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-grey-gas-model">2. The Grey Gas Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grey-gas-versions-of-the-schwarzschild-equations">Grey gas versions of the Schwarzschild equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-planck-function">Integrating the Planck function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-grey-gas-equations">The grey gas equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-the-fluxes-change-across-a-finite-layer-of-absorbers">How do the fluxes change across a finite layer of absorbers?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretizing-the-grey-gas-equations-on-a-finite-grid">3. Discretizing the Grey-gas equations on a finite grid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmissitivity">Transmissitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissivity">Emissivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discrete-two-stream-equations-on-a-finite-pressure-grid">The discrete two-stream equations on a finite pressure grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-equations-for-the-grey-gas-model">4. Matrix equations for the grey gas model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissivity-and-transmissivity-vectors">Emissivity and Transmissivity vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-downwelling-beam">The downwelling beam</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-upwelling-beam">The upwelling beam</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-transmissivity-matrices">The transmissivity matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-averaged-radiation-models-in-climlab">5. Band-averaged radiation models in <code class="docutils literal notranslate"><span class="pre">climlab</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-non-scattering-radiative-transfer">
+<h1><span class="section-number">9. </span>Modeling non-scattering radiative transfer<a class="headerlink" href="#modeling-non-scattering-radiative-transfer" title="Permalink to this heading">#</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<hr class="docutils" />
+<p><a id='section1'></a></p>
+<section id="the-two-stream-schwarschild-equations">
+<h2>1. The two-stream Schwarschild equations<a class="headerlink" href="#the-two-stream-schwarschild-equations" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Here we are going to introduce the governing equations of radiative transfer to put what we’ve been doing on a more solid theoretical footing.</p>
+<p>Our derivations here will also serve as a coherent documentation for how some of the radiation solvers are implemented in <code class="docutils literal notranslate"><span class="pre">climlab</span></code>.</p>
+<section id="optical-thickness">
+<h3>Optical thickness<a class="headerlink" href="#optical-thickness" title="Permalink to this heading">#</a></h3>
+<p>The <strong>optical thickness</strong> of a layer of absorbers is <span class="math notranslate nohighlight">\(\Delta \tau_\nu\)</span>. It is the emissivity and absorptivity of a layer of atmosphere.</p>
+<p>Passing to the limit of very thin layers, we define <span class="math notranslate nohighlight">\(\tau_\nu\)</span> through</p>
+<div class="math notranslate nohighlight">
+\[ \frac{d \tau_\nu}{dp} = -\frac{1}{g} \kappa_\nu \]</div>
+<p>where <strong><span class="math notranslate nohighlight">\(\kappa_\nu\)</span> is an absorption cross-section</strong> per unit mass at frequency <span class="math notranslate nohighlight">\(\nu\)</span>. It has units m<span class="math notranslate nohighlight">\(^2\)</span> kg<span class="math notranslate nohighlight">\(^{-1}\)</span>. <span class="math notranslate nohighlight">\(\kappa\)</span> is a measure of the area taken out of the incident beam by absorbers in a unit mass of atmosphere.</p>
+<p>In general <strong><span class="math notranslate nohighlight">\(\tau_\nu\)</span> depends on the frequency of the radiation</strong>, as indicated here by the subscript <span class="math notranslate nohighlight">\(\nu\)</span>.</p>
+</section>
+<section id="using-optical-depth-as-vertical-coordinate">
+<h3>Using optical depth as vertical coordinate<a class="headerlink" href="#using-optical-depth-as-vertical-coordinate" title="Permalink to this heading">#</a></h3>
+<p>Since pressure decreases with altitude, <span class="math notranslate nohighlight">\(\tau_\nu\)</span> increases with altitude.</p>
+<p>The equations of radiative transfer can be simplified by using <span class="math notranslate nohighlight">\(\tau_\nu\)</span> as vertical coordinate instead of pressure.</p>
+</section>
+<section id="absorption-cross-section">
+<h3>Absorption cross-section<a class="headerlink" href="#absorption-cross-section" title="Permalink to this heading">#</a></h3>
+<p>The specific absorption cross section <span class="math notranslate nohighlight">\(\kappa\)</span> depends on the number of molecules of each greenhouse gas encountered by the beam and the absorption properties characteristic to each kind of greenhouse gas molecule. Letting <span class="math notranslate nohighlight">\(q_k\)</span> be the mass-specific concentration of greenhouse gas <span class="math notranslate nohighlight">\(k\)</span>, we may write in general</p>
+<div class="math notranslate nohighlight">
+\[ \kappa(\nu, p, T) = \sum_{k=1}^n \kappa_k\big(\nu, p, T \big) q_k(p) \]</div>
+<p>For a well-mixed greenhouse gas, <span class="math notranslate nohighlight">\(q_k\)</span> is a constant; for a non-well-mixed gas like water vapor we need to account for the vertical distribution of the gas through <span class="math notranslate nohighlight">\(q_k(p)\)</span>.</p>
+<p>The dependence of <span class="math notranslate nohighlight">\(\kappa_k\)</span> on temperature and pressure arises from certain aspects of the physics of molecular absorption.</p>
+</section>
+<section id="two-stream-schwarzschild-equations">
+<h3>Two-stream Schwarzschild equations<a class="headerlink" href="#two-stream-schwarzschild-equations" title="Permalink to this heading">#</a></h3>
+<p>For climate modeling we almost always seperate the total flux into two beams: <strong>upward</strong> and <strong>downward</strong>.</p>
+<p>This involves taking integrals of the full angular dependence of the flux. We’ll skip the details here.</p>
+<p>Let <span class="math notranslate nohighlight">\(U_\nu\)</span> be the upward beam, and <span class="math notranslate nohighlight">\(D_\nu\)</span> be the downward beam. The governing equations for these beams are the <em>Schwarzschild equations</em>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d U_\nu}{d \tau_\nu} &amp;= -U_\nu + E\big( \nu, T(\tau_\nu) \big) \\
+\frac{d D_\nu}{d \tau_\nu} &amp;= D_\nu - E\big( \nu, T(\tau_\nu) \big) 
+\end{align}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(E\)</span> is the <strong>blackbody emission</strong> (both up and down), which in general depends on both <strong>frequency</strong> and <strong>temperature</strong>. We have written temperature as a function of the vertical coordinate (optical depth).</p>
+<p>The emissions are governed by the <strong>Planck function</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+E &amp;= \pi~ B\big( \nu, T \big) \\
+B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \nu}{k T} \right) -1} 
+\end{align}
+\end{split}\]</div>
+<p>with these fundamental physical constants:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h = 6.626 \times 10^{-34} ~\text{J s} \)</span> is Planck’s constant</p></li>
+<li><p><span class="math notranslate nohighlight">\(c = 3.00 \times 10^8 ~\text{m s}^{-1} \)</span> is the speed of light</p></li>
+<li><p><span class="math notranslate nohighlight">\(k = 1.38 \times 10^{-23} ~\text{J K}^{-1} \)</span> is the Boltzmann Thermodynamic Constant</p></li>
+</ul>
+<p>The two-stream equations basically say the beam is <strong>attenuated by absorption</strong> (first term) and <strong>augmented by emission</strong> (second term) in each thin layer of gas.</p>
+<p>These equations are valid for beam that are <strong>not affected by scattering</strong>. We may come back to that later.</p>
+<hr class="docutils" />
+<p><a id='section2'></a></p>
+</section>
+</section>
+<section id="the-grey-gas-model">
+<h2>2. The Grey Gas Model<a class="headerlink" href="#the-grey-gas-model" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The absorption properties <span class="math notranslate nohighlight">\(\kappa_i\)</span> of most atmospheric gases varies enormously with the frequency of the radiation. Hence the optical thickness <span class="math notranslate nohighlight">\(\tau_\nu\)</span> also has an intricate dependence on wavenumber or frequency.</p>
+<p>Our job as climate modelers is to calculate and understand the net atmospheric absorption and transmission of radiation. To do this thoroughly and accurately, the fluxes must be solved for individually on a very dense grid of wavenumbers, and then the results integrated over all wavenumbers.</p>
+<p>Actual radiative transfer codes (as used in GCMs) apply a lot of tricks and shortcuts to simplify this brute-force approach, but lead to sets of equations that are difficult to understand.</p>
+<p>However, there is a lot we can understand about the basics of radiative transfer and the greenhouse effect by ignoring the spectral dependence of the flux.</p>
+<p>Specifically, we make the approximation</p>
+<div class="math notranslate nohighlight">
+\[ \kappa(\nu, p, T) = \kappa(p) \]</div>
+<p>so that the optical depth <span class="math notranslate nohighlight">\(\tau\)</span> is now <strong>independent of frequency</strong>.</p>
+<p>This is known as the <strong>grey gas approximation</strong>.</p>
+</section>
+<section id="grey-gas-versions-of-the-schwarzschild-equations">
+<h2>Grey gas versions of the Schwarzschild equations<a class="headerlink" href="#grey-gas-versions-of-the-schwarzschild-equations" title="Permalink to this heading">#</a></h2>
+<section id="integrating-the-planck-function">
+<h3>Integrating the Planck function<a class="headerlink" href="#integrating-the-planck-function" title="Permalink to this heading">#</a></h3>
+<p>If we assume <span class="math notranslate nohighlight">\(\tau_\nu\)</span> is independent of frequency, we can then integrate the two-stream equations over all frequencies.</p>
+<p>The integral of the Planck function gives our familiar Stefan-Boltzmann blackbody radiation law</p>
+<div class="math notranslate nohighlight">
+\[ E(T) = \int_0^{\infty} \pi B\big( \nu, T \big) d\nu = \sigma T^4  \]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[ \sigma = \frac{2 \pi^5 k^4}{15 c^2 h^3} = 5.67 \times 10^{-8} ~\text{W m}^{-2}~\text{K}^{-4}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># climlab has these constants available, and actually calculates sigma from the above formula</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">climlab</span> 
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">kBoltzmann</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span> <span class="o">/</span> 
+         <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">c_light</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">hPlanck</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">==</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">sigma</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.6703726225913323e-08
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-grey-gas-equations">
+<h3>The grey gas equations<a class="headerlink" href="#the-grey-gas-equations" title="Permalink to this heading">#</a></h3>
+<p>This gives the governing equations for the grey gas model:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\frac{d U}{d \tau} &amp;= -U + \sigma T(\tau)^4 \\
+\frac{d D}{d \tau} &amp;= D - \sigma T(\tau)^4 
+\end{align}
+\end{split}\]</div>
+<p>These equations now say that the beam is diminished by absorption in a thin layer (first term) and augmented by blackbody emission, where both processes are assumed to be independent of frequency.</p>
+</section>
+<section id="how-do-the-fluxes-change-across-a-finite-layer-of-absorbers">
+<h3>How do the fluxes change across a finite layer of absorbers?<a class="headerlink" href="#how-do-the-fluxes-change-across-a-finite-layer-of-absorbers" title="Permalink to this heading">#</a></h3>
+<p>The above equations are <strong>linear, first order ODEs</strong>, and they are uncoupled from each other (because we neglected scattering).</p>
+<p><strong>Consider a layer of atmosphere</strong> from optical level <span class="math notranslate nohighlight">\(\tau_{0}\)</span> to <span class="math notranslate nohighlight">\(\tau_{1}\)</span>. The optical thickness of the layer is <span class="math notranslate nohighlight">\(\Delta \tau = \tau_{1} - \tau_{0}\)</span>.</p>
+<p>The incident upwelling beam from below is denoted <span class="math notranslate nohighlight">\(U_{0}\)</span>; the upwelling beam that leaves the top of our layer is denoted <span class="math notranslate nohighlight">\(U_{1}\)</span>. We want to calculate <span class="math notranslate nohighlight">\(U_{1}\)</span>, which we can get by integrating the equation for <span class="math notranslate nohighlight">\(dU/d\tau\)</span> over our layer.</p>
+<p>The result is</p>
+<div class="math notranslate nohighlight">
+\[ U_{1} = U_{0} \exp(-\Delta \tau) + \int_{\tau_{0}}^{\tau_{1}} E \exp \big( -(\tau_{1} - \tau) \big) d\tau \]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau\)</span> is now a dummy variable of integration, and we’ve written the blackbody emissions as <span class="math notranslate nohighlight">\(E = \sigma T^4\)</span>.</p>
+<p>The change in the downwelling beam is similar:</p>
+<div class="math notranslate nohighlight">
+\[ D_{0} = D_{1} \exp(-\Delta \tau ) + \int_{\tau_0}^{\tau_1} E \exp\big( -(\tau - \tau_{0}) \big) d\tau \]</div>
+<hr class="docutils" />
+<p><a id='section3'></a></p>
+</section>
+</section>
+<section id="discretizing-the-grey-gas-equations-on-a-finite-grid">
+<h2>3. Discretizing the Grey-gas equations on a finite grid<a class="headerlink" href="#discretizing-the-grey-gas-equations-on-a-finite-grid" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>One particularly important reason to think about these changes over finite layers is that we will typically solve the radiative transfer equations in a numerical model where the temperature is represented on a discrete grid (often using pressure coordinates).</p>
+<p>If we assume that <strong>temperature is uniform everywhere in our layer</strong> then the blackbody emission <span class="math notranslate nohighlight">\(E\)</span> is also a constant across the layer, which we will denote <span class="math notranslate nohighlight">\(E_{0}\)</span>.</p>
+<p>It can come out the integral and the expressions simplify to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+U_1 &amp;= U_0 ~ \exp(-\Delta \tau )  + E_{0} ~\Big( 1 - \exp(-\Delta \tau) \Big)  \\
+D_0 &amp;= D_1 ~ \exp(-\Delta \tau )  + E_{0} ~\Big( 1 - \exp(-\Delta \tau) \Big)
+\end{align}
+\end{split}\]</div>
+<section id="transmissitivity">
+<h3>Transmissitivity<a class="headerlink" href="#transmissitivity" title="Permalink to this heading">#</a></h3>
+<p>The first term is the <strong>transmission</strong> of radition from the bottom to the top of the layer (or vice-versa). We can define the <strong>transmissivity</strong> of the layer (denoted <span class="math notranslate nohighlight">\(t_{0}\)</span>) as the fraction of the incident beam that is passed on to the next layer:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+t_{0} &amp;= \frac{U_{0} \exp(-\Delta \tau)}{U_{0}}  \\
+ &amp;= \exp(-\Delta \tau)\\
+\end{align}
+\end{split}\]</div>
+</section>
+<section id="emissivity">
+<h3>Emissivity<a class="headerlink" href="#emissivity" title="Permalink to this heading">#</a></h3>
+<p>The second term is the net change in the beam due to <strong>emissions</strong> in the layer.</p>
+<p>We can the define the <strong>emissivity</strong> <span class="math notranslate nohighlight">\(\epsilon_0\)</span> of the layer analogously</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e1bbd886-6e0e-4f53-8b39-ccd7a113c49c">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-e1bbd886-6e0e-4f53-8b39-ccd7a113c49c" title="Permalink to this equation">#</a></span>\[\begin{align}
+\epsilon_{0} &amp;=  1 - \exp(-\Delta \tau) \\
+  &amp;= 1 - t_{0} 
+\end{align}\]</div>
+</section>
+<section id="the-discrete-two-stream-equations-on-a-finite-pressure-grid">
+<h3>The discrete two-stream equations on a finite pressure grid<a class="headerlink" href="#the-discrete-two-stream-equations-on-a-finite-pressure-grid" title="Permalink to this heading">#</a></h3>
+<p>Putting this all together gives us two simple equations that govern changes in the upwelling and downwelling beams across a discrete layer of optical depth <span class="math notranslate nohighlight">\(\Delta \tau\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+U_{1} &amp;= t_0 ~ U_{0} + \epsilon_{0} ~ E_{0}  \\
+D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
+\end{align}
+\end{split}\]</div>
+<p>Our model will typically be discretized in pressure coordinates. Suppose the thickness of the layer is <span class="math notranslate nohighlight">\(\Delta p\)</span>, then the optical depth is</p>
+<div class="math notranslate nohighlight">
+\[ \Delta \tau  = -\frac{\kappa}{g} \Delta p\]</div>
+<p>(the minus sign accounts for the opposite sign conventions of the two coordinates).</p>
+<p>Thus the emissivity of the layer is</p>
+<div class="math notranslate nohighlight">
+\[  \epsilon_{0} = 1 - \exp\big( \frac{\kappa}{g} \Delta p \big)  \]</div>
+<p>In the grey gas approximation we ignore all spectral dependence of the flux, so <span class="math notranslate nohighlight">\(\kappa\)</span> is a constant (we could let it vary in the vertical to represent non-well-mixed greenhouse gases like water vapor), and the blackbody emissions are simply</p>
+<div class="math notranslate nohighlight">
+\[ E_0 = \sigma T_0^4 \]</div>
+<hr class="docutils" />
+<p><a id='section4'></a></p>
+</section>
+</section>
+<section id="matrix-equations-for-the-grey-gas-model">
+<h2>4. Matrix equations for the grey gas model<a class="headerlink" href="#matrix-equations-for-the-grey-gas-model" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">climlab</span></code> implements the discretized two-stream equations as written above.</p>
+<p>We will now write out the equations on a discretized pressure grid with <span class="math notranslate nohighlight">\(N\)</span> layers.</p>
+<p>Let the <strong>upwelling flux</strong> be a column vector</p>
+<div class="math notranslate nohighlight">
+\[{\bf{U}} = [U_0, U_1, ..., U_{N-1}, U_N]^T\]</div>
+<p>If there are <span class="math notranslate nohighlight">\(N\)</span> levels then <span class="math notranslate nohighlight">\(\bf{U}\)</span> has <span class="math notranslate nohighlight">\(N+1\)</span> elements (i.e. the fluxes are defined at the boundaries between levels). We will number the layers starting from 0 following <code class="docutils literal notranslate"><span class="pre">numpy</span></code> index conventions.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(U_0\)</span> is the upwelling flux from surface to layer 0.</p></li>
+<li><p><span class="math notranslate nohighlight">\(U_1\)</span> is the upwelling flux layer 0 to layer 1, etc.</p></li>
+<li><p><span class="math notranslate nohighlight">\(U_N\)</span> is the upwelling flux from layer N-1 (the top level) to space.</p></li>
+</ul>
+<p>Same for the <strong>downwelling flux</strong></p>
+<div class="math notranslate nohighlight">
+\[{\bf{D}} = [D_0, D_1, ..., D_N]^T\]</div>
+<p>So <span class="math notranslate nohighlight">\(D_N\)</span> is the flux down from space and <span class="math notranslate nohighlight">\(D_0\)</span> is the back-radiation to the surface.</p>
+<p>The <strong>temperature</strong> and <strong>blackbody emissions</strong> are defined for each <span class="math notranslate nohighlight">\(N\)</span> pressure level, and are related by</p>
+<div class="math notranslate nohighlight">
+\[E_i = \sigma T_i^4\]</div>
+<section id="emissivity-and-transmissivity-vectors">
+<h3>Emissivity and Transmissivity vectors<a class="headerlink" href="#emissivity-and-transmissivity-vectors" title="Permalink to this heading">#</a></h3>
+<p>Let the vector of absorptivity / emissivity be</p>
+<div class="math notranslate nohighlight">
+\[ {\bf{\epsilon}} = [\epsilon_0, \epsilon_1, ..., \epsilon_{N-1}] \]</div>
+<p>where each element is determined by the thickness of the layer and the absorption cross-section for this particular spectral band:</p>
+<div class="math notranslate nohighlight">
+\[ \epsilon_{i} = 1 - \exp\big( \frac{\kappa}{g} \Delta p_i \big) \]</div>
+<p>And the transmissivity of individual layers is</p>
+<div class="math notranslate nohighlight">
+\[ t_{i} = 1 - \epsilon_{i} \]</div>
+<p>It is convenient to define a vector of transmissivities <span class="math notranslate nohighlight">\({\bf{t}}\)</span> with <span class="math notranslate nohighlight">\(N+1\)</span> elements:</p>
+<div class="math notranslate nohighlight">
+\[ {\bf{t}} = [1, t_0, t_1, ..., t_{N-1}] \]</div>
+</section>
+<section id="the-downwelling-beam">
+<h3>The downwelling beam<a class="headerlink" href="#the-downwelling-beam" title="Permalink to this heading">#</a></h3>
+<p>For the downwelling beam, we define a column vector of emissions with <span class="math notranslate nohighlight">\(N+1\)</span> elements:</p>
+<div class="math notranslate nohighlight">
+\[ {\bf{E_{down}}} = [E_0, E_1, ..., E_{N-1}, E_N]^{T} \]</div>
+<p>where we define the last element <span class="math notranslate nohighlight">\(E_N\)</span> as the <strong>incident flux at the TOA</strong>.</p>
+<p>For a longwave model, we would usually set <span class="math notranslate nohighlight">\(E_N = 0\)</span>. For a shortwave model, this would be the incident solar radiation.</p>
+<p>We want a matrix <span class="math notranslate nohighlight">\({\bf{T_{down}}}\)</span> that, when multiplied by <span class="math notranslate nohighlight">\(E_N\)</span>, gives the downwelling beam at each of the <span class="math notranslate nohighlight">\(N+1\)</span> layer interfaces:</p>
+<div class="math notranslate nohighlight">
+\[{\bf{D}} = {\bf{T_{down}}} ~ {\bf{E_{down}}} \]</div>
+</section>
+<section id="the-upwelling-beam">
+<h3>The upwelling beam<a class="headerlink" href="#the-upwelling-beam" title="Permalink to this heading">#</a></h3>
+<p>Define a vector of emissions for the upwelling beam thus:</p>
+<div class="math notranslate nohighlight">
+\[ {\bf{E_{up}}} = [up_{sfc}, E_0, E_1, ..., E_{N-1}] \]</div>
+<p>We need to add the reflected part of the downwelling beam at the surface to any emissions from the surface:</p>
+<div class="math notranslate nohighlight">
+\[ up_{sfc} = E_{sfc} + \alpha_{sfc} ~ D[0] \]</div>
+<p>Now we want a matrix <span class="math notranslate nohighlight">\({\bf{T_{up}}}\)</span> such that the upwelling beam is</p>
+<div class="math notranslate nohighlight">
+\[{\bf{U}} = {\bf{T_{up}}} ~ {\bf{E_{up}}} \]</div>
+</section>
+<section id="the-transmissivity-matrices">
+<h3>The transmissivity matrices<a class="headerlink" href="#the-transmissivity-matrices" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split} {\bf{T_{up}}} = \left[ \begin{array}{ccccc} 1 &amp; 0 &amp; 0 &amp;... &amp; 0 &amp; 0 \\  
+                                             t_0 &amp; 1 &amp; 0 &amp; ... &amp; 0 &amp; 0 \\
+                                         t_1 t_0 &amp; t_1 &amp; 1 &amp; ... &amp; 0 &amp; 0 \\
+                                     t_2 t_1 t_0 &amp; t_2 t_1 &amp; t_2 &amp; ... &amp; 0 &amp; 0 \\
+                                     ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... \\
+ \prod_0^{N-1} t_i &amp; \prod_1^{N-1} t_i &amp; \prod_2^{N-1} t_i &amp; ... &amp; t_{N-1} &amp; 1 
+   \end{array} \right] \end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ {\bf{T_{down}}} = {\bf{T_{up}}}^T  \]</div>
+<p>These formulas have been implemented in <code class="docutils literal notranslate"><span class="pre">climlab.radiation.transmissivity.Transmissivity()</span></code> using vectorized <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array operations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example with N=2 layers and constant absorptivity</span>
+<span class="c1">#  we construct an array of absorptivities</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">])</span>
+<span class="c1">#  and pass these as argument to the Transmissivity class</span>
+<span class="n">trans</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">transmissivity</span><span class="o">.</span><span class="n">Transmissivity</span><span class="p">(</span><span class="n">eps</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Matrix Tup is &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">trans</span><span class="o">.</span><span class="n">Tup</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Matrix Tdown is &#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">trans</span><span class="o">.</span><span class="n">Tdown</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix Tup is 
+[[1.     0.42   0.1764]
+ [0.     1.     0.42  ]
+ [0.     0.     1.    ]]
+Matrix Tdown is 
+[[1.     0.     0.    ]
+ [0.42   1.     0.    ]
+ [0.1764 0.42   1.    ]]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><a id='section5'></a></p>
+</section>
+</section>
+<section id="band-averaged-radiation-models-in-climlab">
+<h2>5. Band-averaged radiation models in <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#band-averaged-radiation-models-in-climlab" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The Grey Gas model is a useful first step in understanding how radiation shapes the global energy balance. But we quickly run up against its limitations when trying to understand what really determines climate sensitivity.</p>
+<p>What’s the next step in the model hierarchy?</p>
+<p>Suppose we break up the spectrum into a discrete number <span class="math notranslate nohighlight">\(M\)</span> of <strong>spectral bands</strong>. The idea is that we find parts of the spectrum in which the absorption characteristics of the important gases are relatively uniform. We then write the <strong>band-averaged absorption cross section</strong> for gas <span class="math notranslate nohighlight">\(k\)</span> and band <span class="math notranslate nohighlight">\(j\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[ \kappa_{kj} \big(p, T \big) = \frac{\int_{\nu_j} \kappa_j \big(\nu, p, T \big) d \nu }{  \int_{\nu_j} d \nu } \]</div>
+<p>where we integrate over whatever part of the spectrum we have chosen to define band <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<p>In our band models we will typically ignore any dependence of <span class="math notranslate nohighlight">\(\kappa\)</span> on temperature. The total absorption cross section for our band is thus (summing over all absorbing gases):</p>
+<div class="math notranslate nohighlight">
+\[ \kappa_j(p) = \sum_{k=1}^n \kappa_{kj}(p) q_k(p) \]</div>
+<p>Notice that once we make this defintion, all of the formulas we wrote down above for the grey gas model can be written nearly identically for the fluxes in each band.</p>
+<p>The optical depth in band <span class="math notranslate nohighlight">\(j\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ \Delta \tau_j  = -\frac{\kappa_j}{g} \Delta p\]</div>
+<p>from which we can define emissivity and transmissivity for band <span class="math notranslate nohighlight">\(j\)</span> just as above.</p>
+<p>The only difference from the Grey Gas formulas is that the <strong>blackbody emission</strong> in band <span class="math notranslate nohighlight">\(j\)</span> (denoted <span class="math notranslate nohighlight">\(E_j\)</span>) is now only a fraction of <span class="math notranslate nohighlight">\(\sigma T^4\)</span>.</p>
+<p>We will denote this fraction as <span class="math notranslate nohighlight">\(b_j\)</span>.</p>
+<p>The fraction <span class="math notranslate nohighlight">\(b_j\)</span> is temperature-dependent, and can be solved by integrating the Planck function:</p>
+<div class="math notranslate nohighlight">
+\[ E_j(T) = \int_{\nu_j} \pi B\big( \nu, T \big) d\nu \]</div>
+<p>To simplify our band models, we might choose to fix <span class="math notranslate nohighlight">\(b_j\)</span> in advance and just assume</p>
+<div class="math notranslate nohighlight">
+\[ E_j(T) = b_j ~ \sigma ~ T^4 \]</div>
+<p>which is sensible if the temperatures don’t vary too much.</p>
+<p>Regardless of how we calculate <span class="math notranslate nohighlight">\(b_j\)</span>, they must add up to one over all the bands in our model:</p>
+<div class="math notranslate nohighlight">
+\[ \sum_0^{M-1} b_j = 1 \]</div>
+<p>Once we’ve figured out this division of the total flux into multiple bands, and we know the absorption cross-sections of each band, we can calculate the upwelling and downwelling fluxes independently for each band, <strong>using the same formulas (same code!) as we use in the grey gas model</strong>.</p>
+<p>To get the total flux, we just need to sum the beams over all bands:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+U &amp;= \sum_0^{M-1} U_j  \\
+D &amp;= \sum_0^{M-1} D_j  
+\end{align}
+\end{split}\]</div>
+<hr class="docutils" />
+<p><a id='references'></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>For many more details about radiative transfer and a more careful derivation of the two-stream equations, see</p>
+<blockquote>
+<div><p>Pierrehumbert, R. T. (2010). Principles of Planetary Climate. Cambridge University Press.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/climlab/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="grey-radiation-climlab.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Grey radiation modeling with climlab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spectral-bands.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Who needs spectral bands? We do. Some baby steps…</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-two-stream-schwarschild-equations">1. The two-stream Schwarschild equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optical-thickness">Optical thickness</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-optical-depth-as-vertical-coordinate">Using optical depth as vertical coordinate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorption-cross-section">Absorption cross-section</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-stream-schwarzschild-equations">Two-stream Schwarzschild equations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-grey-gas-model">2. The Grey Gas Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grey-gas-versions-of-the-schwarzschild-equations">Grey gas versions of the Schwarzschild equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-the-planck-function">Integrating the Planck function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-grey-gas-equations">The grey gas equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-the-fluxes-change-across-a-finite-layer-of-absorbers">How do the fluxes change across a finite layer of absorbers?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretizing-the-grey-gas-equations-on-a-finite-grid">3. Discretizing the Grey-gas equations on a finite grid</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmissitivity">Transmissitivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissivity">Emissivity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-discrete-two-stream-equations-on-a-finite-pressure-grid">The discrete two-stream equations on a finite pressure grid</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-equations-for-the-grey-gas-model">4. Matrix equations for the grey gas model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emissivity-and-transmissivity-vectors">Emissivity and Transmissivity vectors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-downwelling-beam">The downwelling beam</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-upwelling-beam">The upwelling beam</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-transmissivity-matrices">The transmissivity matrices</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#band-averaged-radiation-models-in-climlab">5. Band-averaged radiation models in <code class="docutils literal notranslate"><span class="pre">climlab</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brian E. J. Rose
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
