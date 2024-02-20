@@ -548,8 +548,9 @@ document.write(`
 \sigma T_s^4 &amp;= A\uparrow + A\downarrow = 2 \sigma T_a^4 \\
 \end{align}
 \end{split}\]</div>
-<p>which means that
-$<span class="math notranslate nohighlight">\( T_s = 2^\frac{1}{4} T_a \approx 1.2 T_a \)</span>$</p>
+<p>which means that</p>
+<div class="math notranslate nohighlight">
+\[ T_s = 2^\frac{1}{4} T_a \approx 1.2 T_a \]</div>
 <p>So we have just determined that, in order to have a purely <strong>radiative equilibrium</strong>, we must have <span class="math notranslate nohighlight">\(T_s &gt; T_a\)</span>.</p>
 <p><em>The surface must be warmer than the atmosphere.</em></p>
 </section>
@@ -728,14 +729,19 @@ $<span class="math notranslate nohighlight">\( T_s = 2^\frac{1}{4} T_a \approx 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/557b3dea6b924da5265790ec423beab2403018d1cd4bfb51284823c3a6be2be7.png" src="../_images/557b3dea6b924da5265790ec423beab2403018d1cd4bfb51284823c3a6be2be7.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/climlab-courseware/lib/python3.10/site-packages/xarray/coding/times.py:167: SerializationWarning: Ambiguous reference date string: 1-1-1 00:00:0.0. The first value is assumed to be the year hence will be padded with zeros to remove the ambiguity (the padded reference date string is: 0001-1-1 00:00:0.0). To remove this message, remove the ambiguity by padding your reference date strings with zeros.
+  warnings.warn(warning_msg, SerializationWarning)
+</pre></div>
+</div>
+<img alt="../_images/ddb3c404e61487fe2292a05a2502a17d2045ec1c0126ee0c3ea71a7ab58ed917.png" src="../_images/ddb3c404e61487fe2292a05a2502a17d2045ec1c0126ee0c3ea71a7ab58ed917.png" />
 </div>
 </div>
 </section>
 <section id="target-temperatures-for-our-model-tuning">
 <h3>Target temperatures for our model tuning<a class="headerlink" href="#target-temperatures-for-our-model-tuning" title="Permalink to this heading">#</a></h3>
-<p>First, we set
-$<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p>
+<p>First, we set</p>
+<div class="math notranslate nohighlight">
+\[T_s = 288 \text{ K}  \]</div>
 <p>From the lapse rate plot, an average temperature for the layer between 1000 and 500 hPa is</p>
 <div class="math notranslate nohighlight">
 \[ T_0 = 275 \text{ K}\]</div>
@@ -775,6 +781,22 @@ $<span class="math notranslate nohighlight">\(T_s = 288 \text{ K}  \)</span>$</p
 <li><p>For the graph, <span class="math notranslate nohighlight">\(\epsilon\)</span> should range between 0 and 1.</p></li>
 <li><p>From your graph, find the approximate value of <span class="math notranslate nohighlight">\(\epsilon\)</span> that gives <span class="math notranslate nohighlight">\(OLR = 238.5\)</span></p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some partial code to get you started</span>
+<span class="k">def</span> <span class="nf">OLR</span><span class="p">(</span><span class="n">Ts</span><span class="p">,</span> <span class="n">T0</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">...</span> <span class="c1"># fill in this line, implementing the formula for OLR above</span>
+
+<span class="n">eps_array</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># make an array of values ranging from 0 to 1</span>
+
+<span class="c1">#  uncomment this line to make the plot, after you have created the OLR function</span>
+<span class="c1">#plt.plot(eps_array, OLR(288, 275, 230, eps_array))</span>
+<span class="c1"># add axis labels and units, e.g. using plt.xlabel() and plt.ylabel()</span>
+<span class="c1">#plt.grid()  # uncomment this line to add grid lines to your figure</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Note if you solve the quadratic equation algebraically you will get two solutions:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\epsilon \approx 0.586\)</span></p></li>
