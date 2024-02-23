@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>16. Clouds and cloud feedback &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/clouds';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -479,12 +491,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="clouds-and-cloud-feedback">
-<h1><span class="section-number">16. </span>Clouds and cloud feedback<a class="headerlink" href="#clouds-and-cloud-feedback" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">16. </span>Clouds and cloud feedback<a class="headerlink" href="#clouds-and-cloud-feedback" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="optical-properties-of-individual-clouds-depend-on-the-cloud-liquid-water-path">
-<h2>1. Optical properties of individual clouds depend on the Cloud Liquid Water Path<a class="headerlink" href="#optical-properties-of-individual-clouds-depend-on-the-cloud-liquid-water-path" title="Permalink to this heading">#</a></h2>
+<h2>1. Optical properties of individual clouds depend on the Cloud Liquid Water Path<a class="headerlink" href="#optical-properties-of-individual-clouds-depend-on-the-cloud-liquid-water-path" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let <span class="math notranslate nohighlight">\(w\)</span> represent the liquid water content of a unit volume of cloudy air, in units of g m<span class="math notranslate nohighlight">\(^{-3}\)</span>.</p>
 <p>Then the Liquid Water Path of the cloud is</p>
@@ -499,7 +511,7 @@ document.write(`
 <li><p>cloud albedo increases slowly with <span class="math notranslate nohighlight">\(LWP\)</span></p></li>
 </ul>
 <section id="longwave-effects-of-clouds">
-<h3>Longwave effects of clouds<a class="headerlink" href="#longwave-effects-of-clouds" title="Permalink to this heading">#</a></h3>
+<h3>Longwave effects of clouds<a class="headerlink" href="#longwave-effects-of-clouds" title="Link to this heading">#</a></h3>
 <p>Because the emissivity saturates for moderately thin clouds, thick clouds behave very much like blackbody absorbers at every level. Emissions from below and within the cloud will be absorbed by the upper part of the cloud.</p>
 <p>Emissions to space are therefore <strong>governed by the top of the cloud</strong>.</p>
 <p>The longwave effects of a thick cloud thus depend strongly on the <strong>temperature at the top of the cloud</strong>. This temperature is determined primarily by the <strong>height of the cloud top</strong>.</p>
@@ -507,7 +519,7 @@ document.write(`
 <p>The longwave effects of clouds tend to warm the surface.</p>
 </section>
 <section id="shortwave-effects-of-clouds">
-<h3>Shortwave effects of clouds<a class="headerlink" href="#shortwave-effects-of-clouds" title="Permalink to this heading">#</a></h3>
+<h3>Shortwave effects of clouds<a class="headerlink" href="#shortwave-effects-of-clouds" title="Link to this heading">#</a></h3>
 <p>Because clouds increase the planetary albedo, the shortwave effects of clouds tend to cool the surface.</p>
 <p>The same cloud therefore pushes the planetary energy budget in two directions simultaneously. Which effect dominates depends on</p>
 <ul class="simple">
@@ -522,7 +534,7 @@ document.write(`
 </section>
 </section>
 <section id="cloudy-sky-versus-clear-sky-radiation">
-<h2>2. Cloudy sky versus clear sky radiation<a class="headerlink" href="#cloudy-sky-versus-clear-sky-radiation" title="Permalink to this heading">#</a></h2>
+<h2>2. Cloudy sky versus clear sky radiation<a class="headerlink" href="#cloudy-sky-versus-clear-sky-radiation" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let <span class="math notranslate nohighlight">\(F = ASR - OLR\)</span> be the net incoming radiation at TOA.</p>
 <p>Suppose that the average flux in the portion of the sky <strong>without clouds</strong> is <span class="math notranslate nohighlight">\(F_{clear}\)</span>.</p>
@@ -541,7 +553,7 @@ document.write(`
 <p>The clouds will act to warm this surface if <span class="math notranslate nohighlight">\(F_{cloudy} &gt; F_{clear}\)</span>, in which case the net flux <span class="math notranslate nohighlight">\(F\)</span> will increase with the cloud fraction <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <p>In our examples above we surmised the following:</p>
 <section id="high-thin-cirrus">
-<h3>High thin cirrus<a class="headerlink" href="#high-thin-cirrus" title="Permalink to this heading">#</a></h3>
+<h3>High thin cirrus<a class="headerlink" href="#high-thin-cirrus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(ASR_{cloudy} \approx ASR_{clear} \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(OLR_{cloudy} &lt; OLR_{clear}\)</span></p></li>
@@ -549,7 +561,7 @@ document.write(`
 </ul>
 </section>
 <section id="low-stratus">
-<h3>Low stratus<a class="headerlink" href="#low-stratus" title="Permalink to this heading">#</a></h3>
+<h3>Low stratus<a class="headerlink" href="#low-stratus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(ASR_{cloudy} &lt; ASR_{clear} \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(OLR_{cloudy} \approx OLR_{clear}\)</span></p></li>
@@ -558,7 +570,7 @@ document.write(`
 <p>Many other cloud types are ambiguous. For example:</p>
 </section>
 <section id="deep-convective-cumulonimbus">
-<h3>Deep convective cumulonimbus<a class="headerlink" href="#deep-convective-cumulonimbus" title="Permalink to this heading">#</a></h3>
+<h3>Deep convective cumulonimbus<a class="headerlink" href="#deep-convective-cumulonimbus" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(ASR_{cloudy} &lt; ASR_{clear} \)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(OLR_{cloudy} &lt; OLR_{clear}\)</span></p></li>
@@ -570,7 +582,7 @@ document.write(`
 </section>
 </section>
 <section id="cloud-radiative-effect-cre">
-<h2>3. Cloud Radiative Effect (CRE)<a class="headerlink" href="#cloud-radiative-effect-cre" title="Permalink to this heading">#</a></h2>
+<h2>3. Cloud Radiative Effect (CRE)<a class="headerlink" href="#cloud-radiative-effect-cre" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Typically there is not just one cloud type but many to deal with simultaneously, whether in nature (satellite observations) or in a GCM.</p>
 <p>In practice we rarely calculate <span class="math notranslate nohighlight">\(F_{cloudy}\)</span> explicitly.</p>
@@ -586,7 +598,7 @@ document.write(`
 <p><a id='section4'></a></p>
 </section>
 <section id="modeling-the-dependence-of-cre-on-cloud-height">
-<h2>4. Modeling the dependence of CRE on cloud height<a class="headerlink" href="#modeling-the-dependence-of-cre-on-cloud-height" title="Permalink to this heading">#</a></h2>
+<h2>4. Modeling the dependence of CRE on cloud height<a class="headerlink" href="#modeling-the-dependence-of-cre-on-cloud-height" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We are now going to use the <code class="docutils literal notranslate"><span class="pre">RRTMG</span></code> radiation model to compute the cloud radiative effect in a single column, and look at how the CRE depends on cloud properties and the height of the cloud layer.</p>
 <div class="cell docutils container">
@@ -601,7 +613,7 @@ document.write(`
 </div>
 </div>
 <section id="global-average-observed-temperature-and-specific-humidity">
-<h3>Global average observed temperature and specific humidity<a class="headerlink" href="#global-average-observed-temperature-and-specific-humidity" title="Permalink to this heading">#</a></h3>
+<h3>Global average observed temperature and specific humidity<a class="headerlink" href="#global-average-observed-temperature-and-specific-humidity" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Get temperature and humidity data from NCEP Reanalysis</span>
@@ -778,7 +790,7 @@ document.write(`
 </section>
 </section>
 <section id="cloud-feedback">
-<h2>5. Cloud Feedback<a class="headerlink" href="#cloud-feedback" title="Permalink to this heading">#</a></h2>
+<h2>5. Cloud Feedback<a class="headerlink" href="#cloud-feedback" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p><span class="math notranslate nohighlight">\(CRE\)</span> (the radiative effects of clouds) depends on two cloud properties:</p>
 <ul class="simple">
@@ -799,7 +811,7 @@ document.write(`
 \[ \Delta F = (1-c)\Delta F_{clear}  + c \Delta F_{cloudy}  +\left( F_{cloudy} - F_{clear} \right) \Delta c \]</div>
 <p>where <span class="math notranslate nohighlight">\(c, F_{cloudy}, F_{clear}\)</span> here would be evaluated from the reference (control) climate, and we assume the changes are small so that the linearization is sensible.</p>
 <section id="clear-sky-and-cloud-feedbacks">
-<h3>Clear-sky and cloud feedbacks<a class="headerlink" href="#clear-sky-and-cloud-feedbacks" title="Permalink to this heading">#</a></h3>
+<h3>Clear-sky and cloud feedbacks<a class="headerlink" href="#clear-sky-and-cloud-feedbacks" title="Link to this heading">#</a></h3>
 <p>Equating our two expressions for the TOA change <span class="math notranslate nohighlight">\(\Delta F\)</span> gives</p>
 <div class="math notranslate nohighlight">
 \[ (1-c)\Delta F_{clear}  + c \Delta F_{cloudy}  +\left( F_{cloudy} - F_{clear} \right) \Delta c = \Delta R - \Delta T \left( \lambda_0 - \sum_{i=1}^N \lambda_i \right) \]</div>
@@ -819,7 +831,7 @@ document.write(`
 <p>Remember that all of these expressions can be (and frequently are) decomposed into longwave and shortwave components.</p>
 </section>
 <section id="cloud-feedback-vs-cre">
-<h3>Cloud feedback vs. CRE<a class="headerlink" href="#cloud-feedback-vs-cre" title="Permalink to this heading">#</a></h3>
+<h3>Cloud feedback vs. CRE<a class="headerlink" href="#cloud-feedback-vs-cre" title="Link to this heading">#</a></h3>
 <p>GCM diagnostics usually provide <span class="math notranslate nohighlight">\(CRE\)</span> (which are computed by making second passes through the radiation code with the cloud fractions set to zero).</p>
 <p>As we did in Assignment 4, we can compute the <strong>change in <span class="math notranslate nohighlight">\(CRE\)</span></strong> between a control and perturbation climate.</p>
 <p>One key point here is that <strong>the change in <span class="math notranslate nohighlight">\(CRE\)</span> is not equivalent to a cloud feedback</strong>.</p>
@@ -834,7 +846,7 @@ document.write(`
 <p>Why?</p>
 <p>Because the flux in the clear-sky fraction is changing!</p>
 <section id="so-how-do-we-compute-lambda-cloud">
-<h4>So how do we compute <span class="math notranslate nohighlight">\(\lambda_{cloud}\)</span>?<a class="headerlink" href="#so-how-do-we-compute-lambda-cloud" title="Permalink to this heading">#</a></h4>
+<h4>So how do we compute <span class="math notranslate nohighlight">\(\lambda_{cloud}\)</span>?<a class="headerlink" href="#so-how-do-we-compute-lambda-cloud" title="Link to this heading">#</a></h4>
 <p>So long as <span class="math notranslate nohighlight">\(\lambda_{clear}\)</span> is known, it’s easy:</p>
 <p>Just measure  <span class="math notranslate nohighlight">\(\frac{\Delta CRE}{\Delta T}\)</span> and the cloud fraction <span class="math notranslate nohighlight">\(c\)</span> from the model, and solve the above formula to get</p>
 <div class="math notranslate nohighlight">
@@ -846,7 +858,7 @@ document.write(`
 </section>
 </section>
 <section id="feedback-measured-in-comprehensive-gcms">
-<h2>6. Feedback measured in comprehensive GCMs<a class="headerlink" href="#feedback-measured-in-comprehensive-gcms" title="Permalink to this heading">#</a></h2>
+<h2>6. Feedback measured in comprehensive GCMs<a class="headerlink" href="#feedback-measured-in-comprehensive-gcms" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p><img alt="feedback AR5" src="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig9-43-1.jpg" /></p>
 <blockquote>
@@ -857,13 +869,13 @@ document.write(`
 <p><a id='section7'></a></p>
 </section>
 <section id="measuring-lambda-clear-with-radiative-kernels">
-<h2>7. Measuring <span class="math notranslate nohighlight">\(\lambda_{clear}\)</span> with radiative kernels<a class="headerlink" href="#measuring-lambda-clear-with-radiative-kernels" title="Permalink to this heading">#</a></h2>
+<h2>7. Measuring <span class="math notranslate nohighlight">\(\lambda_{clear}\)</span> with radiative kernels<a class="headerlink" href="#measuring-lambda-clear-with-radiative-kernels" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>So how are the clear-sky feedbacks (P, WV, LR, A) actually calculated?</p>
 <p>Presently, the most popular technique the method of <strong>radiative kernels</strong>.</p>
 <p>You have been building a (primitive) kernel for the water vapor feedback in the last homework.</p>
 <p>Some plots from <span id="id3">Held and Soden [<a class="reference internal" href="../references.html#id15" title="Isaac M. Held and Brian J. Soden. Water vapor feedback and global warming. Ann. Rev. Energy Environ., 25:441–475, 2000.">2000</a>]</span>:</p>
-<p><img alt="Held and Soden kernels" src="../_images/Kernels_Held&amp;Soden2000.png" /></p>
+<p><img alt="Held and Soden kernels" src="../_images/Kernels_Held%26Soden2000.png" /></p>
 <blockquote>
 <div><p>Held, I. M. and Soden, B. J. (2000). Water vapor feedback and global warming. Ann. Rev. Energy Environ., 25:441–475.</p>
 </div></blockquote>
@@ -871,7 +883,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

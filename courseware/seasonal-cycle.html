@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>21. Modeling the seasonal cycle of surface temperature &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/seasonal-cycle';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -480,12 +492,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modeling-the-seasonal-cycle-of-surface-temperature">
-<h1><span class="section-number">21. </span>Modeling the seasonal cycle of surface temperature<a class="headerlink" href="#modeling-the-seasonal-cycle-of-surface-temperature" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">21. </span>Modeling the seasonal cycle of surface temperature<a class="headerlink" href="#modeling-the-seasonal-cycle-of-surface-temperature" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="the-observed-seasonal-cycle-from-ncep-reanalysis-data">
-<h2>1. The observed seasonal cycle from NCEP Reanalysis data<a class="headerlink" href="#the-observed-seasonal-cycle-from-ncep-reanalysis-data" title="Permalink to this heading">#</a></h2>
+<h2>1. The observed seasonal cycle from NCEP Reanalysis data<a class="headerlink" href="#the-observed-seasonal-cycle-from-ncep-reanalysis-data" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Look at the observed seasonal cycle in the NCEP reanalysis data.</p>
 <p>Read in the necessary data from the online server <em>courtesy of the <a class="reference external" href="https://psl.noaa.gov">NOAA Physical Sciences Laboratory</a></em></p>
@@ -584,7 +596,7 @@ document.write(`
 <p><a id='section2'></a></p>
 </section>
 <section id="analytical-toy-model-of-the-seasonal-cycle">
-<h2>2. Analytical toy model of the seasonal cycle<a class="headerlink" href="#analytical-toy-model-of-the-seasonal-cycle" title="Permalink to this heading">#</a></h2>
+<h2>2. Analytical toy model of the seasonal cycle<a class="headerlink" href="#analytical-toy-model-of-the-seasonal-cycle" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>What factors determine the above pattern of seasonal temperatures? How large is the winter-to-summer variation in temperature? What is its phasing relative to the seasonal variations in insolation?</p>
 <p>We will start to examine this in a very simple zero-dimensional EBM.</p>
@@ -609,7 +621,7 @@ document.write(`
 \[  T(t) = T_0 + T^* \sin(\omega t - \Phi) \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Phi\)</span> is an unknown phase shift and <span class="math notranslate nohighlight">\(T^*\)</span> is the unknown amplitude of seasonal temperature variations.</p>
 <section id="the-annual-mean">
-<h3>The annual mean:<a class="headerlink" href="#the-annual-mean" title="Permalink to this heading">#</a></h3>
+<h3>The annual mean:<a class="headerlink" href="#the-annual-mean" title="Link to this heading">#</a></h3>
 <p>Integrate over one year to find</p>
 <div class="math notranslate nohighlight">
 \[ \overline{T} = T_0 \]</div>
@@ -620,7 +632,7 @@ document.write(`
 \[T_0 = \frac{Q_0 - A}{B} \]</div>
 </section>
 <section id="the-seasonal-problem">
-<h3>The seasonal problem<a class="headerlink" href="#the-seasonal-problem" title="Permalink to this heading">#</a></h3>
+<h3>The seasonal problem<a class="headerlink" href="#the-seasonal-problem" title="Link to this heading">#</a></h3>
 <p>Now we need to solve for <span class="math notranslate nohighlight">\(T^*\)</span> and <span class="math notranslate nohighlight">\(\Phi\)</span>.</p>
 <p>Take the derivative</p>
 <div class="math notranslate nohighlight">
@@ -638,7 +650,7 @@ C~ T^* \omega \cos(\omega t - \Phi) &amp;=  Q^* \sin\omega t + Q_0  \\
 \[ C~ T^* \omega \cos(\omega t - \Phi) =  Q^* \sin\omega t  - B ~ T^* \sin(\omega t - \Phi)  \]</div>
 </section>
 <section id="zero-heat-capacity-the-radiative-equilibrium-solution">
-<h3>Zero heat capacity: the radiative equilibrium solution<a class="headerlink" href="#zero-heat-capacity-the-radiative-equilibrium-solution" title="Permalink to this heading">#</a></h3>
+<h3>Zero heat capacity: the radiative equilibrium solution<a class="headerlink" href="#zero-heat-capacity-the-radiative-equilibrium-solution" title="Link to this heading">#</a></h3>
 <p>It’s instructive to first look at the case with <span class="math notranslate nohighlight">\(C=0\)</span>, which means that the system is not capable of storing heat, and the temperature must always be in radiative equilibrium with the insolation.</p>
 <p>In this case we would have</p>
 <div class="math notranslate nohighlight">
@@ -656,7 +668,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p>This highlights to important role for heat capacity to buffer the seasonal variations in sunlight.</p>
 </section>
 <section id="non-dimensional-heat-capacity-parameter">
-<h3>Non-dimensional heat capacity parameter<a class="headerlink" href="#non-dimensional-heat-capacity-parameter" title="Permalink to this heading">#</a></h3>
+<h3>Non-dimensional heat capacity parameter<a class="headerlink" href="#non-dimensional-heat-capacity-parameter" title="Link to this heading">#</a></h3>
 <p>We can rearrange the seasonal equation to give</p>
 <div class="math notranslate nohighlight">
 \[ \frac{C~\omega}{B} \cos(\omega t - \Phi) + \sin(\omega t - \Phi) = \frac{Q^*}{B~T^*} \sin\omega t   \]</div>
@@ -687,7 +699,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 \[ \cos\omega t \left( \tilde{C} \cos\Phi - \sin\Phi \right) = \sin\omega t \left( \frac{Q^*}{B~T^*} - \tilde{C} \sin\Phi - \cos\Phi \right) \]</div>
 </section>
 <section id="solving-for-the-phase-shift">
-<h3>Solving for the phase shift<a class="headerlink" href="#solving-for-the-phase-shift" title="Permalink to this heading">#</a></h3>
+<h3>Solving for the phase shift<a class="headerlink" href="#solving-for-the-phase-shift" title="Link to this heading">#</a></h3>
 <p>The equation above must be true for all <span class="math notranslate nohighlight">\(t\)</span>, which means that sum of terms in each set of parentheses must be zero.</p>
 <p>We therefore have an equation for the phase shift</p>
 <div class="math notranslate nohighlight">
@@ -697,7 +709,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 \[ \Phi = \arctan \tilde{C} \]</div>
 </section>
 <section id="solving-for-the-amplitude">
-<h3>Solving for the amplitude<a class="headerlink" href="#solving-for-the-amplitude" title="Permalink to this heading">#</a></h3>
+<h3>Solving for the amplitude<a class="headerlink" href="#solving-for-the-amplitude" title="Link to this heading">#</a></h3>
 <p>The other equation is</p>
 <div class="math notranslate nohighlight">
 \[ \frac{Q^*}{B~T^*} - \tilde{C} \sin\Phi - \cos\Phi = 0 \]</div>
@@ -709,7 +721,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 \[ T^* = \frac{Q^*}{B} \frac{1}{\left( 1+ \tilde{C}^2 \right) \cos\left(\arctan \tilde{C} \right) } \]</div>
 </section>
 <section id="shallow-water-limit">
-<h3>Shallow water limit:<a class="headerlink" href="#shallow-water-limit" title="Permalink to this heading">#</a></h3>
+<h3>Shallow water limit:<a class="headerlink" href="#shallow-water-limit" title="Link to this heading">#</a></h3>
 <p>In low heat capacity limit,</p>
 <div class="math notranslate nohighlight">
 \[ \tilde{C} &lt;&lt; 1 \]</div>
@@ -723,7 +735,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p>In the shallow water limit the temperature maximum will occur just slightly after the insolation maximum, and the seasonal temperature variations will be large.</p>
 </section>
 <section id="deep-water-limit">
-<h3>Deep water limit:<a class="headerlink" href="#deep-water-limit" title="Permalink to this heading">#</a></h3>
+<h3>Deep water limit:<a class="headerlink" href="#deep-water-limit" title="Link to this heading">#</a></h3>
 <p>Suppose instead we have an infinitely large heat reservoir (e.g. very deep ocean mixed layer).</p>
 <p>In the limit <span class="math notranslate nohighlight">\(\tilde{C} \rightarrow \infty\)</span>, the phase shift tends toward</p>
 <div class="math notranslate nohighlight">
@@ -734,7 +746,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 \[ T^* \rightarrow 0 \]</div>
 </section>
 <section id="what-values-of-tilde-c-are-realistic">
-<h3>What values of <span class="math notranslate nohighlight">\(\tilde{C}\)</span> are realistic?<a class="headerlink" href="#what-values-of-tilde-c-are-realistic" title="Permalink to this heading">#</a></h3>
+<h3>What values of <span class="math notranslate nohighlight">\(\tilde{C}\)</span> are realistic?<a class="headerlink" href="#what-values-of-tilde-c-are-realistic" title="Link to this heading">#</a></h3>
 <p>We need to evaluate</p>
 <div class="math notranslate nohighlight">
 \[ \tilde{C} = \frac{C~\omega}{B} \]</div>
@@ -742,7 +754,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p><span class="math notranslate nohighlight">\(B\)</span> is the longwave radiative feedback in our system: a measure of how efficiently a warm anomaly is radiated away to space. We have previously chosen <span class="math notranslate nohighlight">\(B = 2\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
 <p><span class="math notranslate nohighlight">\(C\)</span> is the heat capacity of the whole column, a number in J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
 <section id="heat-capacity-of-the-atmosphere">
-<h4>Heat capacity of the atmosphere<a class="headerlink" href="#heat-capacity-of-the-atmosphere" title="Permalink to this heading">#</a></h4>
+<h4>Heat capacity of the atmosphere<a class="headerlink" href="#heat-capacity-of-the-atmosphere" title="Link to this heading">#</a></h4>
 <p>Integrating from the surface to the top of the atmosphere, we can write</p>
 <div class="math notranslate nohighlight">
 \[ C_a = \int_0^{p_s} c_p \frac{dp}{g} \]</div>
@@ -750,7 +762,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p>This gives <span class="math notranslate nohighlight">\(C_a \approx 10^7\)</span> J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
 </section>
 <section id="heat-capacity-of-a-water-surface">
-<h4>Heat capacity of a water surface<a class="headerlink" href="#heat-capacity-of-a-water-surface" title="Permalink to this heading">#</a></h4>
+<h4>Heat capacity of a water surface<a class="headerlink" href="#heat-capacity-of-a-water-surface" title="Link to this heading">#</a></h4>
 <p>As we wrote [back in Lecture 2](./Lecture02 – Solving the zero-dimensional EBM.ipynb), the heat capacity for a well-mixed column of water is</p>
 <div class="math notranslate nohighlight">
 \[C_w = c_w \rho_w H_w \]</div>
@@ -761,25 +773,25 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p><strong>The heat capacity of the entire atmosphere is thus equivalent to 2.5 meters of water.</strong></p>
 </section>
 <section id="tilde-c-for-a-dry-land-surface">
-<h4><span class="math notranslate nohighlight">\(\tilde{C}\)</span> for a dry land surface<a class="headerlink" href="#tilde-c-for-a-dry-land-surface" title="Permalink to this heading">#</a></h4>
+<h4><span class="math notranslate nohighlight">\(\tilde{C}\)</span> for a dry land surface<a class="headerlink" href="#tilde-c-for-a-dry-land-surface" title="Link to this heading">#</a></h4>
 <p>A dry land surface has very little heat capacity and <span class="math notranslate nohighlight">\(C\)</span> is actually dominated by the atmosphere. So we can take <span class="math notranslate nohighlight">\(C = C_a = 10^7\)</span> J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> as a reasonable lower bound.</p>
 <p>So our lower bound on <span class="math notranslate nohighlight">\(\tilde{C}\)</span> is thus, taking <span class="math notranslate nohighlight">\(B = 2\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> and <span class="math notranslate nohighlight">\(\omega = 2\pi ~ \text{year}^{-1} = 2 \times 10^{-7} \text{ s}^{-1}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \tilde{C} = 1 \]</div>
 </section>
 <section id="tilde-c-for-a-100-meter-ocean-mixed-layer">
-<h4><span class="math notranslate nohighlight">\(\tilde{C}\)</span> for a 100 meter ocean mixed layer<a class="headerlink" href="#tilde-c-for-a-100-meter-ocean-mixed-layer" title="Permalink to this heading">#</a></h4>
+<h4><span class="math notranslate nohighlight">\(\tilde{C}\)</span> for a 100 meter ocean mixed layer<a class="headerlink" href="#tilde-c-for-a-100-meter-ocean-mixed-layer" title="Link to this heading">#</a></h4>
 <p>Setting <span class="math notranslate nohighlight">\(H_w = 100\)</span> m gives <span class="math notranslate nohighlight">\(C_w = 4 \times 10^8\)</span> J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>. Then our non-dimensional parameter is</p>
 <div class="math notranslate nohighlight">
 \[ \tilde{C} = 40 \]</div>
 </section>
 </section>
 <section id="the-upshot-tilde-c-is-closer-to-the-deep-water-limit">
-<h3>The upshot: <span class="math notranslate nohighlight">\(\tilde{C}\)</span> is closer to the deep water limit<a class="headerlink" href="#the-upshot-tilde-c-is-closer-to-the-deep-water-limit" title="Permalink to this heading">#</a></h3>
+<h3>The upshot: <span class="math notranslate nohighlight">\(\tilde{C}\)</span> is closer to the deep water limit<a class="headerlink" href="#the-upshot-tilde-c-is-closer-to-the-deep-water-limit" title="Link to this heading">#</a></h3>
 <p>Even for a dry land surface, <span class="math notranslate nohighlight">\(\tilde{C}\)</span> is not small. This means that there is always going to be a substantial phase shift in the timing of the peak temperatures, and a reduction in the seasonal amplitude.</p>
 </section>
 <section id="plot-the-full-solution-for-a-range-of-water-depths">
-<h3>Plot the full solution for a range of water depths<a class="headerlink" href="#plot-the-full-solution-for-a-range-of-water-depths" title="Permalink to this heading">#</a></h3>
+<h3>Plot the full solution for a range of water depths<a class="headerlink" href="#plot-the-full-solution-for-a-range-of-water-depths" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">seconds_per_year</span>
@@ -837,7 +849,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p>The vertical black line indicates 2.5 meters of water, which is the heat capacity of the atmosphere and thus our effective lower bound on total column heat capacity.</p>
 </section>
 <section id="the-seasonal-phase-shift">
-<h3>The seasonal phase shift<a class="headerlink" href="#the-seasonal-phase-shift" title="Permalink to this heading">#</a></h3>
+<h3>The seasonal phase shift<a class="headerlink" href="#the-seasonal-phase-shift" title="Link to this heading">#</a></h3>
 <p>Even for the driest surfaces the phase shift is about 45º and the amplitude is half of its theoretical maximum. For most wet surfaces the cycle is damped out and delayed further.</p>
 <p>Of course we are already familiar with this phase shift from our day-to-day experience. Our calendar says that summer “begins” at the solstice and last until the equinox.</p>
 <div class="cell docutils container">
@@ -866,7 +878,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 </section>
 </section>
 <section id="exploring-the-amplitude-of-the-seasonal-cycle-with-an-ebm">
-<h2>3. Exploring the amplitude of the seasonal cycle with an EBM<a class="headerlink" href="#exploring-the-amplitude-of-the-seasonal-cycle-with-an-ebm" title="Permalink to this heading">#</a></h2>
+<h2>3. Exploring the amplitude of the seasonal cycle with an EBM<a class="headerlink" href="#exploring-the-amplitude-of-the-seasonal-cycle-with-an-ebm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Something important is missing from this toy model: heat transport!</p>
 <p>The amplitude of the seasonal cycle of insolation increases toward the poles, but the seasonal temperature variations are partly mitigated by heat transport from lower, warmer latitudes.</p>
@@ -1001,7 +1013,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 </div>
 <p>Which one looks more realistic? Depends a bit on where you look. But overall, the observed seasonal cycle matches the 10 meter case best. The effective heat capacity governing the seasonal cycle of the zonal mean temperature is closer to 10 meters of water than to either 2 or 50 meters.</p>
 <section id="making-an-animation-of-the-ebm-solutions">
-<h3>Making an animation of the EBM solutions<a class="headerlink" href="#making-an-animation-of-the-ebm-solutions" title="Permalink to this heading">#</a></h3>
+<h3>Making an animation of the EBM solutions<a class="headerlink" href="#making-an-animation-of-the-ebm-solutions" title="Link to this heading">#</a></h3>
 <p>Let’s animate the seasonal cycle of insolation and temperature in our models with the three different water depths</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5955,7 +5967,7 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 </section>
 </section>
 <section id="the-seasonal-cycle-for-a-planet-with-90o-obliquity">
-<h2>4. The seasonal cycle for a planet with 90º obliquity<a class="headerlink" href="#the-seasonal-cycle-for-a-planet-with-90o-obliquity" title="Permalink to this heading">#</a></h2>
+<h2>4. The seasonal cycle for a planet with 90º obliquity<a class="headerlink" href="#the-seasonal-cycle-for-a-planet-with-90o-obliquity" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The EBM code uses our familiar <code class="docutils literal notranslate"><span class="pre">insolation.py</span></code> code to calculate insolation, and therefore it’s easy to set up a model with different orbital parameters. Here is an example with <strong>very</strong> different orbital parameters: 90º obliquity. We looked at the distribution of insolation by latitude and season for this type of planet in the last homework.</p>
 <div class="cell docutils container">
@@ -6062,7 +6074,7 @@ LWlsc3QAAAAlqXRvbwAAAB1kYXRhAAAAAQAAAABMYXZmNTguNDUuMTAw
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

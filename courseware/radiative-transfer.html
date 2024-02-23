@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>9. Modeling non-scattering radiative transfer &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/radiative-transfer';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -482,17 +494,17 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="modeling-non-scattering-radiative-transfer">
-<h1><span class="section-number">9. </span>Modeling non-scattering radiative transfer<a class="headerlink" href="#modeling-non-scattering-radiative-transfer" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">9. </span>Modeling non-scattering radiative transfer<a class="headerlink" href="#modeling-non-scattering-radiative-transfer" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="the-two-stream-schwarschild-equations">
-<h2>1. The two-stream Schwarschild equations<a class="headerlink" href="#the-two-stream-schwarschild-equations" title="Permalink to this heading">#</a></h2>
+<h2>1. The two-stream Schwarschild equations<a class="headerlink" href="#the-two-stream-schwarschild-equations" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Here we are going to introduce the governing equations of radiative transfer to put what we’ve been doing on a more solid theoretical footing.</p>
 <p>Our derivations here will also serve as a coherent documentation for how some of the radiation solvers are implemented in <code class="docutils literal notranslate"><span class="pre">climlab</span></code>.</p>
 <section id="optical-thickness">
-<h3>Optical thickness<a class="headerlink" href="#optical-thickness" title="Permalink to this heading">#</a></h3>
+<h3>Optical thickness<a class="headerlink" href="#optical-thickness" title="Link to this heading">#</a></h3>
 <p>The <strong>optical thickness</strong> of a layer of absorbers is <span class="math notranslate nohighlight">\(\Delta \tau_\nu\)</span>. It is the emissivity and absorptivity of a layer of atmosphere.</p>
 <p>Passing to the limit of very thin layers, we define <span class="math notranslate nohighlight">\(\tau_\nu\)</span> through</p>
 <div class="math notranslate nohighlight">
@@ -501,12 +513,12 @@ document.write(`
 <p>In general <strong><span class="math notranslate nohighlight">\(\tau_\nu\)</span> depends on the frequency of the radiation</strong>, as indicated here by the subscript <span class="math notranslate nohighlight">\(\nu\)</span>.</p>
 </section>
 <section id="using-optical-depth-as-vertical-coordinate">
-<h3>Using optical depth as vertical coordinate<a class="headerlink" href="#using-optical-depth-as-vertical-coordinate" title="Permalink to this heading">#</a></h3>
+<h3>Using optical depth as vertical coordinate<a class="headerlink" href="#using-optical-depth-as-vertical-coordinate" title="Link to this heading">#</a></h3>
 <p>Since pressure decreases with altitude, <span class="math notranslate nohighlight">\(\tau_\nu\)</span> increases with altitude.</p>
 <p>The equations of radiative transfer can be simplified by using <span class="math notranslate nohighlight">\(\tau_\nu\)</span> as vertical coordinate instead of pressure.</p>
 </section>
 <section id="absorption-cross-section">
-<h3>Absorption cross-section<a class="headerlink" href="#absorption-cross-section" title="Permalink to this heading">#</a></h3>
+<h3>Absorption cross-section<a class="headerlink" href="#absorption-cross-section" title="Link to this heading">#</a></h3>
 <p>The specific absorption cross section <span class="math notranslate nohighlight">\(\kappa\)</span> depends on the number of molecules of each greenhouse gas encountered by the beam and the absorption properties characteristic to each kind of greenhouse gas molecule. Letting <span class="math notranslate nohighlight">\(q_k\)</span> be the mass-specific concentration of greenhouse gas <span class="math notranslate nohighlight">\(k\)</span>, we may write in general</p>
 <div class="math notranslate nohighlight">
 \[ \kappa(\nu, p, T) = \sum_{k=1}^n \kappa_k\big(\nu, p, T \big) q_k(p) \]</div>
@@ -514,7 +526,7 @@ document.write(`
 <p>The dependence of <span class="math notranslate nohighlight">\(\kappa_k\)</span> on temperature and pressure arises from certain aspects of the physics of molecular absorption.</p>
 </section>
 <section id="two-stream-schwarzschild-equations">
-<h3>Two-stream Schwarzschild equations<a class="headerlink" href="#two-stream-schwarzschild-equations" title="Permalink to this heading">#</a></h3>
+<h3>Two-stream Schwarzschild equations<a class="headerlink" href="#two-stream-schwarzschild-equations" title="Link to this heading">#</a></h3>
 <p>For climate modeling we almost always seperate the total flux into two beams: <strong>upward</strong> and <strong>downward</strong>.</p>
 <p>This involves taking integrals of the full angular dependence of the flux. We’ll skip the details here.</p>
 <p>Let <span class="math notranslate nohighlight">\(U_\nu\)</span> be the upward beam, and <span class="math notranslate nohighlight">\(D_\nu\)</span> be the downward beam. The governing equations for these beams are the <em>Schwarzschild equations</em>:</p>
@@ -547,7 +559,7 @@ B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \n
 </section>
 </section>
 <section id="the-grey-gas-model">
-<h2>2. The Grey Gas Model<a class="headerlink" href="#the-grey-gas-model" title="Permalink to this heading">#</a></h2>
+<h2>2. The Grey Gas Model<a class="headerlink" href="#the-grey-gas-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The absorption properties <span class="math notranslate nohighlight">\(\kappa_i\)</span> of most atmospheric gases varies enormously with the frequency of the radiation. Hence the optical thickness <span class="math notranslate nohighlight">\(\tau_\nu\)</span> also has an intricate dependence on wavenumber or frequency.</p>
 <p>Our job as climate modelers is to calculate and understand the net atmospheric absorption and transmission of radiation. To do this thoroughly and accurately, the fluxes must be solved for individually on a very dense grid of wavenumbers, and then the results integrated over all wavenumbers.</p>
@@ -560,9 +572,9 @@ B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \n
 <p>This is known as the <strong>grey gas approximation</strong>.</p>
 </section>
 <section id="grey-gas-versions-of-the-schwarzschild-equations">
-<h2>Grey gas versions of the Schwarzschild equations<a class="headerlink" href="#grey-gas-versions-of-the-schwarzschild-equations" title="Permalink to this heading">#</a></h2>
+<h2>Grey gas versions of the Schwarzschild equations<a class="headerlink" href="#grey-gas-versions-of-the-schwarzschild-equations" title="Link to this heading">#</a></h2>
 <section id="integrating-the-planck-function">
-<h3>Integrating the Planck function<a class="headerlink" href="#integrating-the-planck-function" title="Permalink to this heading">#</a></h3>
+<h3>Integrating the Planck function<a class="headerlink" href="#integrating-the-planck-function" title="Link to this heading">#</a></h3>
 <p>If we assume <span class="math notranslate nohighlight">\(\tau_\nu\)</span> is independent of frequency, we can then integrate the two-stream equations over all frequencies.</p>
 <p>The integral of the Planck function gives our familiar Stefan-Boltzmann blackbody radiation law</p>
 <div class="math notranslate nohighlight">
@@ -594,7 +606,7 @@ B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \n
 </div>
 </section>
 <section id="the-grey-gas-equations">
-<h3>The grey gas equations<a class="headerlink" href="#the-grey-gas-equations" title="Permalink to this heading">#</a></h3>
+<h3>The grey gas equations<a class="headerlink" href="#the-grey-gas-equations" title="Link to this heading">#</a></h3>
 <p>This gives the governing equations for the grey gas model:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -606,7 +618,7 @@ B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \n
 <p>These equations now say that the beam is diminished by absorption in a thin layer (first term) and augmented by blackbody emission, where both processes are assumed to be independent of frequency.</p>
 </section>
 <section id="how-do-the-fluxes-change-across-a-finite-layer-of-absorbers">
-<h3>How do the fluxes change across a finite layer of absorbers?<a class="headerlink" href="#how-do-the-fluxes-change-across-a-finite-layer-of-absorbers" title="Permalink to this heading">#</a></h3>
+<h3>How do the fluxes change across a finite layer of absorbers?<a class="headerlink" href="#how-do-the-fluxes-change-across-a-finite-layer-of-absorbers" title="Link to this heading">#</a></h3>
 <p>The above equations are <strong>linear, first order ODEs</strong>, and they are uncoupled from each other (because we neglected scattering).</p>
 <p><strong>Consider a layer of atmosphere</strong> from optical level <span class="math notranslate nohighlight">\(\tau_{0}\)</span> to <span class="math notranslate nohighlight">\(\tau_{1}\)</span>. The optical thickness of the layer is <span class="math notranslate nohighlight">\(\Delta \tau = \tau_{1} - \tau_{0}\)</span>.</p>
 <p>The incident upwelling beam from below is denoted <span class="math notranslate nohighlight">\(U_{0}\)</span>; the upwelling beam that leaves the top of our layer is denoted <span class="math notranslate nohighlight">\(U_{1}\)</span>. We want to calculate <span class="math notranslate nohighlight">\(U_{1}\)</span>, which we can get by integrating the equation for <span class="math notranslate nohighlight">\(dU/d\tau\)</span> over our layer.</p>
@@ -622,7 +634,7 @@ B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \n
 </section>
 </section>
 <section id="discretizing-the-grey-gas-equations-on-a-finite-grid">
-<h2>3. Discretizing the Grey-gas equations on a finite grid<a class="headerlink" href="#discretizing-the-grey-gas-equations-on-a-finite-grid" title="Permalink to this heading">#</a></h2>
+<h2>3. Discretizing the Grey-gas equations on a finite grid<a class="headerlink" href="#discretizing-the-grey-gas-equations-on-a-finite-grid" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>One particularly important reason to think about these changes over finite layers is that we will typically solve the radiative transfer equations in a numerical model where the temperature is represented on a discrete grid (often using pressure coordinates).</p>
 <p>If we assume that <strong>temperature is uniform everywhere in our layer</strong> then the blackbody emission <span class="math notranslate nohighlight">\(E\)</span> is also a constant across the layer, which we will denote <span class="math notranslate nohighlight">\(E_{0}\)</span>.</p>
@@ -635,7 +647,7 @@ D_0 &amp;= D_1 ~ \exp(-\Delta \tau )  + E_{0} ~\Big( 1 - \exp(-\Delta \tau) \Big
 \end{align}
 \end{split}\]</div>
 <section id="transmissitivity">
-<h3>Transmissitivity<a class="headerlink" href="#transmissitivity" title="Permalink to this heading">#</a></h3>
+<h3>Transmissitivity<a class="headerlink" href="#transmissitivity" title="Link to this heading">#</a></h3>
 <p>The first term is the <strong>transmission</strong> of radition from the bottom to the top of the layer (or vice-versa). We can define the <strong>transmissivity</strong> of the layer (denoted <span class="math notranslate nohighlight">\(t_{0}\)</span>) as the fraction of the incident beam that is passed on to the next layer:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -646,17 +658,17 @@ t_{0} &amp;= \frac{U_{0} \exp(-\Delta \tau)}{U_{0}}  \\
 \end{split}\]</div>
 </section>
 <section id="emissivity">
-<h3>Emissivity<a class="headerlink" href="#emissivity" title="Permalink to this heading">#</a></h3>
+<h3>Emissivity<a class="headerlink" href="#emissivity" title="Link to this heading">#</a></h3>
 <p>The second term is the net change in the beam due to <strong>emissions</strong> in the layer.</p>
 <p>We can the define the <strong>emissivity</strong> <span class="math notranslate nohighlight">\(\epsilon_0\)</span> of the layer analogously</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d474bf50-1c7b-4618-b7dc-898a6c609cd7">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-d474bf50-1c7b-4618-b7dc-898a6c609cd7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-be377a97-70ad-4c3c-8e2a-d30f1daf8394">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-be377a97-70ad-4c3c-8e2a-d30f1daf8394" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon_{0} &amp;=  1 - \exp(-\Delta \tau) \\
   &amp;= 1 - t_{0} 
 \end{align}\]</div>
 </section>
 <section id="the-discrete-two-stream-equations-on-a-finite-pressure-grid">
-<h3>The discrete two-stream equations on a finite pressure grid<a class="headerlink" href="#the-discrete-two-stream-equations-on-a-finite-pressure-grid" title="Permalink to this heading">#</a></h3>
+<h3>The discrete two-stream equations on a finite pressure grid<a class="headerlink" href="#the-discrete-two-stream-equations-on-a-finite-pressure-grid" title="Link to this heading">#</a></h3>
 <p>Putting this all together gives us two simple equations that govern changes in the upwelling and downwelling beams across a discrete layer of optical depth <span class="math notranslate nohighlight">\(\Delta \tau\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -680,7 +692,7 @@ D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
 </section>
 </section>
 <section id="matrix-equations-for-the-grey-gas-model">
-<h2>4. Matrix equations for the grey gas model<a class="headerlink" href="#matrix-equations-for-the-grey-gas-model" title="Permalink to this heading">#</a></h2>
+<h2>4. Matrix equations for the grey gas model<a class="headerlink" href="#matrix-equations-for-the-grey-gas-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p><code class="docutils literal notranslate"><span class="pre">climlab</span></code> implements the discretized two-stream equations as written above.</p>
 <p>We will now write out the equations on a discretized pressure grid with <span class="math notranslate nohighlight">\(N\)</span> layers.</p>
@@ -701,7 +713,7 @@ D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
 <div class="math notranslate nohighlight">
 \[E_i = \sigma T_i^4\]</div>
 <section id="emissivity-and-transmissivity-vectors">
-<h3>Emissivity and Transmissivity vectors<a class="headerlink" href="#emissivity-and-transmissivity-vectors" title="Permalink to this heading">#</a></h3>
+<h3>Emissivity and Transmissivity vectors<a class="headerlink" href="#emissivity-and-transmissivity-vectors" title="Link to this heading">#</a></h3>
 <p>Let the vector of absorptivity / emissivity be</p>
 <div class="math notranslate nohighlight">
 \[ {\bf{\epsilon}} = [\epsilon_0, \epsilon_1, ..., \epsilon_{N-1}] \]</div>
@@ -716,7 +728,7 @@ D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
 \[ {\bf{t}} = [1, t_0, t_1, ..., t_{N-1}] \]</div>
 </section>
 <section id="the-downwelling-beam">
-<h3>The downwelling beam<a class="headerlink" href="#the-downwelling-beam" title="Permalink to this heading">#</a></h3>
+<h3>The downwelling beam<a class="headerlink" href="#the-downwelling-beam" title="Link to this heading">#</a></h3>
 <p>For the downwelling beam, we define a column vector of emissions with <span class="math notranslate nohighlight">\(N+1\)</span> elements:</p>
 <div class="math notranslate nohighlight">
 \[ {\bf{E_{down}}} = [E_0, E_1, ..., E_{N-1}, E_N]^{T} \]</div>
@@ -727,7 +739,7 @@ D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
 \[{\bf{D}} = {\bf{T_{down}}} ~ {\bf{E_{down}}} \]</div>
 </section>
 <section id="the-upwelling-beam">
-<h3>The upwelling beam<a class="headerlink" href="#the-upwelling-beam" title="Permalink to this heading">#</a></h3>
+<h3>The upwelling beam<a class="headerlink" href="#the-upwelling-beam" title="Link to this heading">#</a></h3>
 <p>Define a vector of emissions for the upwelling beam thus:</p>
 <div class="math notranslate nohighlight">
 \[ {\bf{E_{up}}} = [up_{sfc}, E_0, E_1, ..., E_{N-1}] \]</div>
@@ -739,7 +751,7 @@ D_{0} &amp;= t_0 ~ D_{1} + \epsilon_{0} ~ E_{0}  \\
 \[{\bf{U}} = {\bf{T_{up}}} ~ {\bf{E_{up}}} \]</div>
 </section>
 <section id="the-transmissivity-matrices">
-<h3>The transmissivity matrices<a class="headerlink" href="#the-transmissivity-matrices" title="Permalink to this heading">#</a></h3>
+<h3>The transmissivity matrices<a class="headerlink" href="#the-transmissivity-matrices" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split} {\bf{T_{up}}} = \left[ \begin{array}{ccccc} 1 &amp; 0 &amp; 0 &amp;... &amp; 0 &amp; 0 \\  
                                              t_0 &amp; 1 &amp; 0 &amp; ... &amp; 0 &amp; 0 \\
@@ -784,7 +796,7 @@ Matrix Tdown is
 </section>
 </section>
 <section id="band-averaged-radiation-models-in-climlab">
-<h2>5. Band-averaged radiation models in <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#band-averaged-radiation-models-in-climlab" title="Permalink to this heading">#</a></h2>
+<h2>5. Band-averaged radiation models in <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#band-averaged-radiation-models-in-climlab" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The Grey Gas model is a useful first step in understanding how radiation shapes the global energy balance. But we quickly run up against its limitations when trying to understand what really determines climate sensitivity.</p>
 <p>What’s the next step in the model hierarchy?</p>
@@ -825,7 +837,7 @@ D &amp;= \sum_0^{M-1} D_j
 <p><a id='references'></a></p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>For many more details about radiative transfer and a more careful derivation of the two-stream equations, see</p>
 <blockquote>
@@ -834,7 +846,7 @@ D &amp;= \sum_0^{M-1} D_j
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

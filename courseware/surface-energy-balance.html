@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>24. The surface energy balance &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/surface-energy-balance';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -475,12 +487,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-surface-energy-balance">
-<h1><span class="section-number">24. </span>The surface energy balance<a class="headerlink" href="#the-surface-energy-balance" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">24. </span>The surface energy balance<a class="headerlink" href="#the-surface-energy-balance" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="energy-exchange-mechanisms-at-the-earth-s-surface">
-<h2>1. Energy exchange mechanisms at the Earth’s surface<a class="headerlink" href="#energy-exchange-mechanisms-at-the-earth-s-surface" title="Permalink to this heading">#</a></h2>
+<h2>1. Energy exchange mechanisms at the Earth’s surface<a class="headerlink" href="#energy-exchange-mechanisms-at-the-earth-s-surface" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The surface of the Earth is the boundary between the atmosphere and the land, ocean, or ice. Understanding the energy fluxes across the surface are very important for three main reasons:</p>
 <ol class="arabic simple">
@@ -490,7 +502,7 @@ document.write(`
 </ol>
 <p>The energy budget at the surface is more complex that the budget at the top of the atmosphere. At the TOA the only energy transfer mechanisms are radiative (shortwave and longwave). At the surface, in addition to radiation we need to consider fluxes of energy by conduction and by convection of heat and moisture through turbulent fluid motion.</p>
 <section id="major-terms-in-the-surface-energy-budget">
-<h3>Major terms in the surface energy budget<a class="headerlink" href="#major-terms-in-the-surface-energy-budget" title="Permalink to this heading">#</a></h3>
+<h3>Major terms in the surface energy budget<a class="headerlink" href="#major-terms-in-the-surface-energy-budget" title="Link to this heading">#</a></h3>
 <p>We will denote the <strong>net upward energy flux at the surface</strong> as <span class="math notranslate nohighlight">\(F_S\)</span>.</p>
 <p>As we mentioned back in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/heat-transport.html">Lecture on Heat Transport</a>, there are four principal contributions to <span class="math notranslate nohighlight">\(F_S\)</span>:</p>
 <ol class="arabic simple">
@@ -502,7 +514,7 @@ document.write(`
 <p>Wherever <span class="math notranslate nohighlight">\(F_S \ne 0\)</span>, there is a net flux of energy between the atmosphere and the surface below. This implies either that there is heat storage / release occuring below the surface (e.g. warming or cooling of water, melting of snow and ice), and/or there is horizontal heat transport by fluid motions occuring below the surface (ocean circulation, groundwater flow).</p>
 </section>
 <section id="minor-terms-in-the-surface-energy-budget">
-<h3>Minor terms in the surface energy budget<a class="headerlink" href="#minor-terms-in-the-surface-energy-budget" title="Permalink to this heading">#</a></h3>
+<h3>Minor terms in the surface energy budget<a class="headerlink" href="#minor-terms-in-the-surface-energy-budget" title="Link to this heading">#</a></h3>
 <p>All of these terms are small globally but can be significant locally or seasonally.</p>
 <ul class="simple">
 <li><p>Latent heat of fusion required for melting ice and snow</p></li>
@@ -518,12 +530,12 @@ document.write(`
 </section>
 </section>
 <section id="the-surface-energy-budget-in-cesm-simulations">
-<h2>2. The surface energy budget in CESM simulations<a class="headerlink" href="#the-surface-energy-budget-in-cesm-simulations" title="Permalink to this heading">#</a></h2>
+<h2>2. The surface energy budget in CESM simulations<a class="headerlink" href="#the-surface-energy-budget-in-cesm-simulations" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We will examine the surface budget in the CESM slab ocean simulations. The advantage of looking at surface fluxes in a model rather than observations is that the model fluxes are completely consistent with the model climate, so that the net flux <span class="math notranslate nohighlight">\(F_S\)</span> will be a meaningful measure of the heat storage in the system.</p>
 <p>The model also gives us an opportunity to look at how the surface budget reponds to global warming under a doubling of CO<span class="math notranslate nohighlight">\(_2\)</span>.</p>
 <section id="first-load-the-data">
-<h3>First, load the data<a class="headerlink" href="#first-load-the-data" title="Permalink to this heading">#</a></h3>
+<h3>First, load the data<a class="headerlink" href="#first-load-the-data" title="Link to this heading">#</a></h3>
 <p>We’ll use some of the same simulations we worked with in the lecture on the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html">Transient and Equilibrium Response of the CESM</a> to CO2 forcing.</p>
 <p>However, unlike in that lecture, here we will use output files that have already been time-averaged to represent seasonal climatologies of the equilibrium states before and after adding the CO<span class="math notranslate nohighlight">\(_2\)</span>.</p>
 <div class="cell docutils container">
@@ -591,7 +603,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 </section>
 <section id="annual-mean-surface-energy-budget">
-<h3>Annual mean surface energy budget<a class="headerlink" href="#annual-mean-surface-energy-budget" title="Permalink to this heading">#</a></h3>
+<h3>Annual mean surface energy budget<a class="headerlink" href="#annual-mean-surface-energy-budget" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Surface energy budget terms, all defined as positive up (from ocean to atmosphere)</span>
@@ -620,7 +632,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 </section>
 <section id="compute-anomalies-for-all-terms">
-<h3>Compute anomalies for all terms<a class="headerlink" href="#compute-anomalies-for-all-terms" title="Permalink to this heading">#</a></h3>
+<h3>Compute anomalies for all terms<a class="headerlink" href="#compute-anomalies-for-all-terms" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#   Here we take advantage of xarray!</span>
@@ -643,7 +655,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 </section>
 <section id="plot-maps-of-the-annual-mean-net-upward-flux-f-s-control-and-anomaly-after-warming">
-<h3>Plot maps of the annual mean net upward flux <span class="math notranslate nohighlight">\(F_S\)</span> (control and anomaly after warming)<a class="headerlink" href="#plot-maps-of-the-annual-mean-net-upward-flux-f-s-control-and-anomaly-after-warming" title="Permalink to this heading">#</a></h3>
+<h3>Plot maps of the annual mean net upward flux <span class="math notranslate nohighlight">\(F_S\)</span> (control and anomaly after warming)<a class="headerlink" href="#plot-maps-of-the-annual-mean-net-upward-flux-f-s-control-and-anomaly-after-warming" title="Link to this heading">#</a></h3>
 <p><em>Note we should really be using cartopy to make better maps here, like we did in the lecture on the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html">Transient and Equilibrium Response of the CESM</a>. But these plots should still get the point across.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,7 +704,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </ul>
 </section>
 <section id="variation-of-energy-balance-components-with-latitude">
-<h3>Variation of energy balance components with latitude<a class="headerlink" href="#variation-of-energy-balance-components-with-latitude" title="Permalink to this heading">#</a></h3>
+<h3>Variation of energy balance components with latitude<a class="headerlink" href="#variation-of-energy-balance-components-with-latitude" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fieldlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SWsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;LWsfc&#39;</span><span class="p">,</span> <span class="s1">&#39;LHF&#39;</span><span class="p">,</span> <span class="s1">&#39;SHF&#39;</span><span class="p">,</span> <span class="s1">&#39;Net&#39;</span><span class="p">]</span>
@@ -735,7 +747,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </ul>
 </section>
 <section id="seasonal-variations">
-<h3>Seasonal variations<a class="headerlink" href="#seasonal-variations" title="Permalink to this heading">#</a></h3>
+<h3>Seasonal variations<a class="headerlink" href="#seasonal-variations" title="Link to this heading">#</a></h3>
 <p>We will compute the budgets for the months of January and July, and plot their differences.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -776,7 +788,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </section>
 </section>
 <section id="sensible-and-latent-heat-fluxes-in-the-boundary-layer">
-<h2>3. Sensible and Latent Heat Fluxes in the boundary layer<a class="headerlink" href="#sensible-and-latent-heat-fluxes-in-the-boundary-layer" title="Permalink to this heading">#</a></h2>
+<h2>3. Sensible and Latent Heat Fluxes in the boundary layer<a class="headerlink" href="#sensible-and-latent-heat-fluxes-in-the-boundary-layer" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>These notes largely follow Chapter 4 of <span id="id1">Hartmann [<a class="reference internal" href="../references.html#id14" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">1994</a>]</span>, <em>Global Physical Climatology</em>.</p>
 <p>Turbulent fluxes of heat: eddy fluxes of heat and moisture at some level in the atmospheric boundary layer</p>
@@ -786,7 +798,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 \[ \text{LE} = L ~\rho ~\overline{w^\prime q^\prime} \]</div>
 <p>where <span class="math notranslate nohighlight">\(c_p\)</span> is the specific heat of air at constant pressure, <span class="math notranslate nohighlight">\(L\)</span> is the latent heat of vaporization, <span class="math notranslate nohighlight">\(\text{SH}\)</span> is the sensible heat flux and <span class="math notranslate nohighlight">\(\text{LE}\)</span> is the latent heat flux.</p>
 <section id="bulk-aerodynamic-formulas">
-<h3>Bulk aerodynamic formulas<a class="headerlink" href="#bulk-aerodynamic-formulas" title="Permalink to this heading">#</a></h3>
+<h3>Bulk aerodynamic formulas<a class="headerlink" href="#bulk-aerodynamic-formulas" title="Link to this heading">#</a></h3>
 <p>From theory of boundary layer turbulence, we suppose that the eddy heat fluxes is related to boundary layer temperature gradients, as well as the mean wind speed:</p>
 <div class="math notranslate nohighlight">
 \[ \text{SH} = c_p ~\rho ~ C_D ~ U \left( T_s - T_a \right) \]</div>
@@ -799,7 +811,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 <p>In general the transfer coefficients <span class="math notranslate nohighlight">\(C_D\)</span> could be different for sensible and latent heat flux, but empirically they are found to be very similar to each other. We will assume they are equal here.</p>
 </section>
 <section id="the-bowen-ratio">
-<h3>The Bowen ratio<a class="headerlink" href="#the-bowen-ratio" title="Permalink to this heading">#</a></h3>
+<h3>The Bowen ratio<a class="headerlink" href="#the-bowen-ratio" title="Link to this heading">#</a></h3>
 <p>The <strong>Bowen ratio</strong> is a dimensionless number defined as</p>
 <div class="math notranslate nohighlight">
 \[  B_o = \frac{\text{SH}}{\text{LE}} \]</div>
@@ -807,7 +819,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 <p>From the above plots, the Bowen ratio tends to be small in the low latitudes.</p>
 </section>
 <section id="the-bowen-ratio-for-wet-surfaces">
-<h3>The Bowen ratio for wet surfaces<a class="headerlink" href="#the-bowen-ratio-for-wet-surfaces" title="Permalink to this heading">#</a></h3>
+<h3>The Bowen ratio for wet surfaces<a class="headerlink" href="#the-bowen-ratio-for-wet-surfaces" title="Link to this heading">#</a></h3>
 <p>Over a water surface or a very wet land surface, we may assume that the mixing ratio of water vapor at the surface is equal to the saturation mixing ratio <span class="math notranslate nohighlight">\(q^*\)</span> at the temperature of the surface:</p>
 <div class="math notranslate nohighlight">
 \[ q_s = q^*(T_s) \]</div>
@@ -833,7 +845,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 \[ B_o = \frac{c_p}{ L \left( \frac{(1-r)}{\left( T_s - T_a \right)} q_s^* + r \frac{\partial q^*}{\partial T} \right)} \]</div>
 </section>
 <section id="the-equilibrium-bowen-ratio-for-saturated-air">
-<h3>The equilibrium Bowen ratio (for saturated air)<a class="headerlink" href="#the-equilibrium-bowen-ratio-for-saturated-air" title="Permalink to this heading">#</a></h3>
+<h3>The equilibrium Bowen ratio (for saturated air)<a class="headerlink" href="#the-equilibrium-bowen-ratio-for-saturated-air" title="Link to this heading">#</a></h3>
 <p>Notice that <strong>if the boundary layer air is saturated</strong>, then <span class="math notranslate nohighlight">\(r=1\)</span> and the Bowen ratio takes on a special value</p>
 <div class="math notranslate nohighlight">
 \[ B_e = \frac{c_p}{ L \frac{\partial q^*}{\partial T} } \]</div>
@@ -890,7 +902,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </section>
 </section>
 <section id="bowen-ratio-in-cesm-simulations">
-<h2>4. Bowen ratio in CESM simulations<a class="headerlink" href="#bowen-ratio-in-cesm-simulations" title="Permalink to this heading">#</a></h2>
+<h2>4. Bowen ratio in CESM simulations<a class="headerlink" href="#bowen-ratio-in-cesm-simulations" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -935,7 +947,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

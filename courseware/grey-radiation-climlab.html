@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>8. Grey radiation modeling with climlab &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/grey-radiation-climlab';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -477,16 +489,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="grey-radiation-modeling-with-climlab">
-<h1><span class="section-number">8. </span>Grey radiation modeling with climlab<a class="headerlink" href="#grey-radiation-modeling-with-climlab" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8. </span>Grey radiation modeling with climlab<a class="headerlink" href="#grey-radiation-modeling-with-climlab" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="introducing-climlab">
-<h2>1. Introducing <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#introducing-climlab" title="Permalink to this heading">#</a></h2>
+<h2>1. Introducing <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#introducing-climlab" title="Link to this heading">#</a></h2>
 </section>
 <hr class="docutils" />
 <section id="about-climlab">
-<h2>About climlab<a class="headerlink" href="#about-climlab" title="Permalink to this heading">#</a></h2>
+<h2>About climlab<a class="headerlink" href="#about-climlab" title="Link to this heading">#</a></h2>
 <p>climlab is a specialized python package for process-oriented climate modeling.</p>
 <p>It is based on a very general concept of a model as a collection of individual,
 interacting processes. climlab defines a base class called <code class="docutils literal notranslate"><span class="pre">Process</span></code>, which
@@ -500,7 +512,7 @@ appropriate collection of sub-processes.</p>
 <p><a class="github reference external" href="https://github.com/climlab/climlab">climlab/climlab</a></p>
 </section>
 <section id="installing-climlab">
-<h2>Installing climlab<a class="headerlink" href="#installing-climlab" title="Permalink to this heading">#</a></h2>
+<h2>Installing climlab<a class="headerlink" href="#installing-climlab" title="Link to this heading">#</a></h2>
 <p>If you’ve followed <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/how-to.html">these instructions from the Climate Laboratory book</a>, then you should be all set – climlab is automatically installed as part of the suite of tools used in <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>.</p>
 <p>If you are maintaining your own Python installation (e.g. on a personal laptop), you can always install climlab by doing</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">climlab</span>
@@ -522,12 +534,12 @@ appropriate collection of sub-processes.</p>
 <p><a id='section2'></a></p>
 </section>
 <section id="using-climlab-to-implement-the-two-layer-leaky-greenhouse-model">
-<h2>2. Using <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to implement the two-layer leaky greenhouse model<a class="headerlink" href="#using-climlab-to-implement-the-two-layer-leaky-greenhouse-model" title="Permalink to this heading">#</a></h2>
+<h2>2. Using <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to implement the two-layer leaky greenhouse model<a class="headerlink" href="#using-climlab-to-implement-the-two-layer-leaky-greenhouse-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>One of the things that <code class="docutils literal notranslate"><span class="pre">climlab</span></code> is set up to do is the grey-radiation modeling we have already been discussing.</p>
 <p>Since we already derived a [complete analytical solution to the two-layer leaky greenhouse model](Lecture06 – Elementary greenhouse models.ipynb), we will use this to validate the <code class="docutils literal notranslate"><span class="pre">climlab</span></code> code.</p>
 <section id="validation">
-<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h3>
+<h3>Validation<a class="headerlink" href="#validation" title="Link to this heading">#</a></h3>
 <p>We want to verify that the model reproduces the observed OLR given observed temperatures, and the absorptivity that we tuned in the analytical model. The target numbers are:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -543,7 +555,7 @@ T_1 &amp;= 230 \text{ K} \\
 \[ OLR = 238.5 \text{ W m}^{-2} \]</div>
 </section>
 <section id="initialize-a-model-in-climlab">
-<h3>Initialize a model in <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#initialize-a-model-in-climlab" title="Permalink to this heading">#</a></h3>
+<h3>Initialize a model in <code class="docutils literal notranslate"><span class="pre">climlab</span></code><a class="headerlink" href="#initialize-a-model-in-climlab" title="Link to this heading">#</a></h3>
 <p>The first thing we do is create a new model.</p>
 <p>The following example code is sparsely commented but will hopefully orient you on the basics of defining and working with a <code class="docutils literal notranslate"><span class="pre">climlab</span> <span class="pre">Process</span></code> object.</p>
 <div class="cell docutils container">
@@ -1557,8 +1569,8 @@ Total elapsed time is 2.0014116660123062 years.
 </div>
 </div>
 <p>Compare these to the analytical solutions for radiative equilibrium with <span class="math notranslate nohighlight">\(\epsilon = 0.58\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-875dc4e2-c8de-45c1-adbf-5badd0223c43">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-875dc4e2-c8de-45c1-adbf-5badd0223c43" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9d9f4f07-704e-4010-b566-0ed174e94548">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-9d9f4f07-704e-4010-b566-0ed174e94548" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_s &amp;= 296.4 \text{ K} \\
 T_0 &amp;= 262.3 \text{ K} \\
 T_1 &amp;= 233.8 \text{ K} \\
@@ -1569,7 +1581,7 @@ T_1 &amp;= 233.8 \text{ K} \\
 </section>
 </section>
 <section id="the-observed-annual-global-mean-temperature-profile">
-<h2>3. The observed annual, global mean temperature profile<a class="headerlink" href="#the-observed-annual-global-mean-temperature-profile" title="Permalink to this heading">#</a></h2>
+<h2>3. The observed annual, global mean temperature profile<a class="headerlink" href="#the-observed-annual-global-mean-temperature-profile" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We want to model the OLR in a column whose temperatures match observations. As we’ve done before, we’ll calculate the global, annual mean air temperature from the NCEP Reanalysis data.</p>
 <div class="cell docutils container">
@@ -2814,7 +2826,7 @@ Coordinates:
 <p><a id='section4'></a></p>
 </section>
 <section id="a-30-layer-model-using-the-observed-temperatures">
-<h2>4. A 30-layer model using the observed temperatures<a class="headerlink" href="#a-30-layer-model-using-the-observed-temperatures" title="Permalink to this heading">#</a></h2>
+<h2>4. A 30-layer model using the observed temperatures<a class="headerlink" href="#a-30-layer-model-using-the-observed-temperatures" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2923,7 +2935,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 </div>
 </div>
 <section id="tune-absorptivity-to-get-observed-olr">
-<h3>Tune absorptivity to get observed OLR<a class="headerlink" href="#tune-absorptivity-to-get-observed-olr" title="Permalink to this heading">#</a></h3>
+<h3>Tune absorptivity to get observed OLR<a class="headerlink" href="#tune-absorptivity-to-get-observed-olr" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
@@ -3033,7 +3045,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 </section>
 </section>
 <section id="radiative-forcing-in-the-30-layer-model">
-<h2>5. Radiative forcing in the 30-layer model<a class="headerlink" href="#radiative-forcing-in-the-30-layer-model" title="Permalink to this heading">#</a></h2>
+<h2>5. Radiative forcing in the 30-layer model<a class="headerlink" href="#radiative-forcing-in-the-30-layer-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s compute radiative forcing for a <strong>2% increase in absorptivity</strong>.</p>
 <div class="cell docutils container">
@@ -3134,7 +3146,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 <p><a id='section6'></a></p>
 </section>
 <section id="radiative-equilibrium-in-the-30-layer-model">
-<h2>6. Radiative equilibrium in the 30-layer model<a class="headerlink" href="#radiative-equilibrium-in-the-30-layer-model" title="Permalink to this heading">#</a></h2>
+<h2>6. Radiative equilibrium in the 30-layer model<a class="headerlink" href="#radiative-equilibrium-in-the-30-layer-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3196,7 +3208,7 @@ Total elapsed time is 0.9993368783782377 years.
 <p><a id='section7'></a></p>
 </section>
 <section id="radiative-convective-equilibrium-in-the-30-layer-model">
-<h2>7. Radiative-Convective Equilibrium in the 30-layer model<a class="headerlink" href="#radiative-convective-equilibrium-in-the-30-layer-model" title="Permalink to this heading">#</a></h2>
+<h2>7. Radiative-Convective Equilibrium in the 30-layer model<a class="headerlink" href="#radiative-convective-equilibrium-in-the-30-layer-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We recognize that the large drop in temperature just above the surface is unphysical. Parcels of air in direct contact with the ground will be warmed by mechansisms other than radiative transfer.</p>
 <p>These warm air parcels will then become buoyant, and will convect upward, mixing their heat content with the environment.</p>
@@ -3204,7 +3216,7 @@ Total elapsed time is 0.9993368783782377 years.
 <p>At each timestep, our model checks for any locations at which the <strong>lapse rate</strong> exceeds some threshold. Unstable layers are removed through an energy-conserving mixing formula.</p>
 <p>This process is assumed to be fast relative to radiative heating. In the model, it is instantaneous.</p>
 <section id="add-the-convective-adjustment-as-an-additional-subprocess">
-<h3>Add the convective adjustment as an additional subprocess<a class="headerlink" href="#add-the-convective-adjustment-as-an-additional-subprocess" title="Permalink to this heading">#</a></h3>
+<h3>Add the convective adjustment as an additional subprocess<a class="headerlink" href="#add-the-convective-adjustment-as-an-additional-subprocess" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Here is the existing model</span>
@@ -3312,7 +3324,7 @@ Total elapsed time is 1.9986737567564754 years.
 </section>
 </section>
 <section id="putting-stratospheric-ozone-in-the-grey-gas-model">
-<h2>8. Putting stratospheric ozone in the grey-gas model<a class="headerlink" href="#putting-stratospheric-ozone-in-the-grey-gas-model" title="Permalink to this heading">#</a></h2>
+<h2>8. Putting stratospheric ozone in the grey-gas model<a class="headerlink" href="#putting-stratospheric-ozone-in-the-grey-gas-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Our model has no equivalent of the stratosphere, where temperature increases with height. That’s because our model has been completely transparent to shortwave radiation up until now.</p>
 <p>We can load the observed ozone climatology from the input files for the CESM model:</p>
@@ -4224,7 +4236,7 @@ Attributes:
        970.55483 , 992.5561  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f6efd123-04db-4431-b277-8fdf47053ffc' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f6efd123-04db-4431-b277-8fdf47053ffc' class='xr-section-summary' >Attributes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>hybrid level at midpoints (1000*(A+B))</dd><dt><span>units :</span></dt><dd>level</dd><dt><span>positive :</span></dt><dd>down</dd><dt><span>standard_name :</span></dt><dd>atmosphere_hybrid_sigma_pressure_coordinate</dd><dt><span>formula_terms :</span></dt><dd>a: hyam b: hybm p0: P0 ps: PS</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="take-the-global-average-of-the-ozone-climatology-and-plot-it-as-a-function-of-pressure-or-height">
-<h3>Take the global average of the ozone climatology, and plot it as a function of pressure (or height)<a class="headerlink" href="#take-the-global-average-of-the-ozone-climatology-and-plot-it-as-a-function-of-pressure-or-height" title="Permalink to this heading">#</a></h3>
+<h3>Take the global average of the ozone climatology, and plot it as a function of pressure (or height)<a class="headerlink" href="#take-the-global-average-of-the-ozone-climatology-and-plot-it-as-a-function-of-pressure-or-height" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Take global, annual average and convert to Kelvin</span>
@@ -4805,7 +4817,7 @@ Total elapsed time is 0.9993368783782377 years.
 <p>Feel free to experiment! (That’s what models are for, after all).</p>
 </section>
 <section id="the-take-home-message">
-<h3>The take home message<a class="headerlink" href="#the-take-home-message" title="Permalink to this heading">#</a></h3>
+<h3>The take home message<a class="headerlink" href="#the-take-home-message" title="Link to this heading">#</a></h3>
 <p>The dominant effect of stratospheric ozone is to vastly increase the radiative equilibrium temperature in the ozone layer. The temperature needs to be higher so that the longwave emission can balance the shortwave absorption.</p>
 <p>Without ozone to absorb incoming solar radiation, the <strong>temperature does not increase with height</strong>.</p>
 <p>This simple grey-gas model illustrates this principle very clearly.</p>
@@ -4813,7 +4825,7 @@ Total elapsed time is 0.9993368783782377 years.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

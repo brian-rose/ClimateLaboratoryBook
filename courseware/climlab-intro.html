@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. Building simple climate models using climlab &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/climlab-intro';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -475,16 +487,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="building-simple-climate-models-using-climlab">
-<h1><span class="section-number">5. </span>Building simple climate models using climlab<a class="headerlink" href="#building-simple-climate-models-using-climlab" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">5. </span>Building simple climate models using climlab<a class="headerlink" href="#building-simple-climate-models-using-climlab" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="introducing-climlab">
-<h2>1. Introducing climlab<a class="headerlink" href="#introducing-climlab" title="Permalink to this heading">#</a></h2>
+<h2>1. Introducing climlab<a class="headerlink" href="#introducing-climlab" title="Link to this heading">#</a></h2>
 </section>
 <hr class="docutils" />
 <section id="about-climlab">
-<h2>About climlab<a class="headerlink" href="#about-climlab" title="Permalink to this heading">#</a></h2>
+<h2>About climlab<a class="headerlink" href="#about-climlab" title="Link to this heading">#</a></h2>
 <p>climlab <span id="id1">[<a class="reference internal" href="../references.html#id22" title="Brian E. J. Rose. Climlab: a python toolkit for interactive, process-oriented climate modeling. J. Open Source Software, 2018. doi:10.21105/joss.00659.">Rose, 2018</a>]</span> is a specialized python package for process-oriented climate modeling.</p>
 <p>It is based on a very general concept of a model as a collection of individual,
 interacting processes. climlab defines a base class called <code class="docutils literal notranslate"><span class="pre">Process</span></code>, which
@@ -498,7 +510,7 @@ appropriate collection of sub-processes.</p>
 <p><a class="github reference external" href="https://github.com/climlab/climlab">climlab/climlab</a></p>
 </section>
 <section id="installing-climlab">
-<h2>Installing climlab<a class="headerlink" href="#installing-climlab" title="Permalink to this heading">#</a></h2>
+<h2>Installing climlab<a class="headerlink" href="#installing-climlab" title="Link to this heading">#</a></h2>
 <p>If you’ve followed <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/how-to.html">these instructions from the Climate Laboratory book</a>, then you should be all set – climlab is automatically installed as part of the suite of tools used in <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>.</p>
 <p>If you are maintaining your own Python installation (e.g. on a personal laptop), you can always install climlab by doing</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">climlab</span>
@@ -508,10 +520,10 @@ appropriate collection of sub-processes.</p>
 <p><a id='section2'></a></p>
 </section>
 <section id="using-climlab-to-implement-the-zero-dimensional-energy-balance-model">
-<h2>2. Using climlab to implement the zero-dimensional energy balance model<a class="headerlink" href="#using-climlab-to-implement-the-zero-dimensional-energy-balance-model" title="Permalink to this heading">#</a></h2>
+<h2>2. Using climlab to implement the zero-dimensional energy balance model<a class="headerlink" href="#using-climlab-to-implement-the-zero-dimensional-energy-balance-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="the-model-equation-recap">
-<h3>The model equation (recap)<a class="headerlink" href="#the-model-equation-recap" title="Permalink to this heading">#</a></h3>
+<h3>The model equation (recap)<a class="headerlink" href="#the-model-equation-recap" title="Link to this heading">#</a></h3>
 <p>Recall that we have worked with a zero-dimensional Energy Balance Model</p>
 <div class="math notranslate nohighlight">
 \[ C \frac{dT_s}{dt} = (1-\alpha) Q - \tau \sigma T_s^4 \]</div>
@@ -520,7 +532,7 @@ appropriate collection of sub-processes.</p>
 <p>There are tools within climlab to implement much more complicated models, but the basic interface will be the same.</p>
 </section>
 <section id="create-the-state-variables-for-the-model">
-<h3>Create the state variables for the model<a class="headerlink" href="#create-the-state-variables-for-the-model" title="Permalink to this heading">#</a></h3>
+<h3>Create the state variables for the model<a class="headerlink" href="#create-the-state-variables-for-the-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  As usual, we start with some import statements.</span>
@@ -946,7 +958,7 @@ Data variables:
 </div>
 </section>
 <section id="create-the-subcomponents-of-the-model">
-<h3>Create the subcomponents of the model<a class="headerlink" href="#create-the-subcomponents-of-the-model" title="Permalink to this heading">#</a></h3>
+<h3>Create the subcomponents of the model<a class="headerlink" href="#create-the-subcomponents-of-the-model" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_t</span> <span class="o">=</span> <span class="mf">60.</span> <span class="o">*</span> <span class="mf">60.</span> <span class="o">*</span> <span class="mf">24.</span> <span class="o">*</span> <span class="mf">30.</span>  <span class="c1"># 30 days, or about 1 month!</span>
@@ -997,7 +1009,7 @@ AbsorbedShortwave: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbso
 </div>
 </section>
 <section id="create-the-model-by-coupling-the-subcomponents">
-<h3>Create the model by coupling the subcomponents<a class="headerlink" href="#create-the-model-by-coupling-the-subcomponents" title="Permalink to this heading">#</a></h3>
+<h3>Create the model by coupling the subcomponents<a class="headerlink" href="#create-the-model-by-coupling-the-subcomponents" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  couple them together into a single model</span>
@@ -1049,7 +1061,7 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 </div>
 </section>
 <section id="take-a-single-timestep-forward">
-<h3>Take a single timestep forward<a class="headerlink" href="#take-a-single-timestep-forward" title="Permalink to this heading">#</a></h3>
+<h3>Take a single timestep forward<a class="headerlink" href="#take-a-single-timestep-forward" title="Link to this heading">#</a></h3>
 <p>Here is some internal information about the timestep of the model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1133,11 +1145,11 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 </section>
 </section>
 <section id="run-the-zero-dimensional-ebm-out-to-equilibrium">
-<h2>3. Run the zero-dimensional EBM out to equilibrium<a class="headerlink" href="#run-the-zero-dimensional-ebm-out-to-equilibrium" title="Permalink to this heading">#</a></h2>
+<h2>3. Run the zero-dimensional EBM out to equilibrium<a class="headerlink" href="#run-the-zero-dimensional-ebm-out-to-equilibrium" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s look at how the model adjusts toward its equilibrium temperature.</p>
 <section id="exercise">
-<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, take 500 steps forward with this model</p></li>
 <li><p>Store the current temperature at each step in an array</p></li>
@@ -1148,10 +1160,10 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 </section>
 </section>
 <section id="a-climate-change-scenario">
-<h2>4. A climate change scenario<a class="headerlink" href="#a-climate-change-scenario" title="Permalink to this heading">#</a></h2>
+<h2>4. A climate change scenario<a class="headerlink" href="#a-climate-change-scenario" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="description-of-the-scenario">
-<h3>Description of the scenario<a class="headerlink" href="#description-of-the-scenario" title="Permalink to this heading">#</a></h3>
+<h3>Description of the scenario<a class="headerlink" href="#description-of-the-scenario" title="Link to this heading">#</a></h3>
 <p>Suppose we want to investigate the effects of a small decrease in the transmissitivity of the atmosphere <code class="docutils literal notranslate"><span class="pre">tau</span></code>.</p>
 <p>Previously we used the zero-dimensional model to investigate a <strong>hypothetical climate change scenario</strong> in which:</p>
 <ul class="simple">
@@ -1160,7 +1172,7 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 </ul>
 </section>
 <section id="implement-the-scenario-in-climlab">
-<h3>Implement the scenario in climlab<a class="headerlink" href="#implement-the-scenario-in-climlab" title="Permalink to this heading">#</a></h3>
+<h3>Implement the scenario in climlab<a class="headerlink" href="#implement-the-scenario-in-climlab" title="Link to this heading">#</a></h3>
 <p>How would we do that using <code class="docutils literal notranslate"><span class="pre">climlab</span></code>?</p>
 <p>Recall that the model is comprised of two sub-components:</p>
 <div class="cell docutils container">
@@ -1294,7 +1306,7 @@ EnergyBalanceModel: &lt;class &#39;climlab.process.time_dependent_process.TimeDe
 </div>
 </section>
 <section id="automatic-timestepping">
-<h3>Automatic timestepping<a class="headerlink" href="#automatic-timestepping" title="Permalink to this heading">#</a></h3>
+<h3>Automatic timestepping<a class="headerlink" href="#automatic-timestepping" title="Link to this heading">#</a></h3>
 <p>Often we want to integrate a model forward in time to equilibrium without needing to store information about the transient state.</p>
 <p><code class="docutils literal notranslate"><span class="pre">climlab</span></code> offers convenience methods to do this easily:</p>
 <div class="cell docutils container">
@@ -1405,7 +1417,7 @@ Total elapsed time is 50.10373938170343 years.
 </section>
 </section>
 <section id="further-climlab-resources">
-<h2>5. Further <code class="docutils literal notranslate"><span class="pre">climlab</span></code> resources<a class="headerlink" href="#further-climlab-resources" title="Permalink to this heading">#</a></h2>
+<h2>5. Further <code class="docutils literal notranslate"><span class="pre">climlab</span></code> resources<a class="headerlink" href="#further-climlab-resources" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We will be using <code class="docutils literal notranslate"><span class="pre">climlab</span></code> extensively throughout this course. Lots of examples of more advanced usage are found here in the course notes. Here are some links to other resources:</p>
 <ul class="simple">
@@ -1417,7 +1429,7 @@ Total elapsed time is 50.10373938170343 years.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. Climate models, the global energy budget, and Fun with Python &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/models-budgets-fun';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -491,12 +503,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="climate-models-the-global-energy-budget-and-fun-with-python">
-<h1><span class="section-number">1. </span>Climate models, the global energy budget, and Fun with Python<a class="headerlink" href="#climate-models-the-global-energy-budget-and-fun-with-python" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">1. </span>Climate models, the global energy budget, and Fun with Python<a class="headerlink" href="#climate-models-the-global-energy-budget-and-fun-with-python" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="what-is-a-climate-model">
-<h2>1. What is a Climate Model?<a class="headerlink" href="#what-is-a-climate-model" title="Permalink to this heading">#</a></h2>
+<h2>1. What is a Climate Model?<a class="headerlink" href="#what-is-a-climate-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>First, some thoughts on modeling from <a class="reference external" href="https://xkcd.com">xkcd</a></p>
 <p><img alt="physicists" src="https://imgs.xkcd.com/comics/physicists.png" /></p>
@@ -527,7 +539,7 @@ document.write(`
 <div><p>In the broadest sense, models are for learning about the world (in our case, the climate) and the learning takes place in the contruction and the manipulation of the model, as anyone who has watched a child build idealised houses or spaceships with Lego, or built with it themselves, will know.  Climate models are, likewise, idealised representations of a complicated and complex reality through which our understanding of the climate has significantly expanded. All models involve some ignoring, distoring and approximating, but gradually they allow us to build understanding of the system being modelled. A child’s Lego construction typically contains the essential elements of the real objects, improves with attention to detail, helps them understand the real world, but is never confused with the real thing.</p>
 </div></blockquote>
 <section id="a-minimal-definition-of-a-climate-model">
-<h3>A minimal definition of a climate model<a class="headerlink" href="#a-minimal-definition-of-a-climate-model" title="Permalink to this heading">#</a></h3>
+<h3>A minimal definition of a climate model<a class="headerlink" href="#a-minimal-definition-of-a-climate-model" title="Link to this heading">#</a></h3>
 <p><em>A representation of the exchange of energy between the Earth system and space, and its effects on average surface temperature.</em></p>
 <p>(what average?)</p>
 <p>Note the focus on <strong>planetary energy budget</strong>. That’s the key to all climate modeling.</p>
@@ -536,16 +548,16 @@ document.write(`
 </section>
 </section>
 <section id="the-observed-global-energy-budget">
-<h2>2. The observed global energy budget<a class="headerlink" href="#the-observed-global-energy-budget" title="Permalink to this heading">#</a></h2>
+<h2>2. The observed global energy budget<a class="headerlink" href="#the-observed-global-energy-budget" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The figure below shows current best estimates of the <em>global, annual mean</em> energy fluxes through the climate system <span id="id2">[<a class="reference internal" href="../references.html#id27" title="Kevin E. Trenberth and John T. Fasullo. Tracking earth's energy: from el niño to global warming. Surv. Geophys., 33:413–426, 2012. doi:10.1007/s10712-011-9150-2.">Trenberth and Fasullo, 2012</a>]</span>.</p>
 <p>We will look at many of these processes in detail throughout the course.</p>
 <p><img alt="Observed global energy flows from Trenberth and Fasullo (2012)" src="../_images/GlobalEnergyBudget.png" /></p>
 </section>
 <section id="things-to-note">
-<h2>Things to note:<a class="headerlink" href="#things-to-note" title="Permalink to this heading">#</a></h2>
+<h2>Things to note:<a class="headerlink" href="#things-to-note" title="Link to this heading">#</a></h2>
 <section id="on-the-shortwave-side">
-<h3>On the shortwave side<a class="headerlink" href="#on-the-shortwave-side" title="Permalink to this heading">#</a></h3>
+<h3>On the shortwave side<a class="headerlink" href="#on-the-shortwave-side" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>global mean albedo is 101.9 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> / 341.3 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> = 0.299</p></li>
 <li><p>Reflection off clouds = 79 W m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></li>
@@ -567,7 +579,7 @@ document.write(`
 </ul>
 </section>
 <section id="on-the-longwave-side">
-<h3>On the longwave side<a class="headerlink" href="#on-the-longwave-side" title="Permalink to this heading">#</a></h3>
+<h3>On the longwave side<a class="headerlink" href="#on-the-longwave-side" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Observed emission from the SURFACE is 396 W m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></li>
 <li><p>very close to the blackbody emission <span class="math notranslate nohighlight">\(\sigma T^4\)</span> at <span class="math notranslate nohighlight">\(T = 288\)</span> K (the global mean surface temperature).</p></li>
@@ -576,7 +588,7 @@ document.write(`
 <p>QUESTION: What do we call this?  (greenhouse effect)</p>
 </section>
 <section id="look-at-net-numbers">
-<h3>Look at net numbers…<a class="headerlink" href="#look-at-net-numbers" title="Permalink to this heading">#</a></h3>
+<h3>Look at net numbers…<a class="headerlink" href="#look-at-net-numbers" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Net absorbed = 0.9 W m<span class="math notranslate nohighlight">\(^{-2}\)</span></p></li>
 <li><p>Why?</p></li>
@@ -585,7 +597,7 @@ document.write(`
 <p>Note, the exchanges of energy between the surface and the atmosphere are complicated, involve a number of different processes. We will look at these more carefully later.</p>
 </section>
 <section id="additional-points">
-<h3>Additional points:<a class="headerlink" href="#additional-points" title="Permalink to this heading">#</a></h3>
+<h3>Additional points:<a class="headerlink" href="#additional-points" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Notice that this is a budget of energy, not temperature.</p></li>
 <li><p>We will need to discuss the connection between the two</p></li>
@@ -603,13 +615,13 @@ document.write(`
 </ul>
 </section>
 <section id="discussion-point">
-<h3>Discussion point<a class="headerlink" href="#discussion-point" title="Permalink to this heading">#</a></h3>
+<h3>Discussion point<a class="headerlink" href="#discussion-point" title="Link to this heading">#</a></h3>
 <p>How might we expect some of the terms in the global energy budget to vary under anthropogenic climate change?</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="using-python-to-compute-emission-to-space">
-<h2>3. Using Python to compute emission to space<a class="headerlink" href="#using-python-to-compute-emission-to-space" title="Permalink to this heading">#</a></h2>
+<h2>3. Using Python to compute emission to space<a class="headerlink" href="#using-python-to-compute-emission-to-space" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p><em>Most of what follows is intended as a “fill in the blanks” exercise. We will practice writing some Python code while discussing the physical process of longwave emission to space.</em></p>
 <p>Suppose the Earth behaves like a <strong>blackbody radiator</strong> with effective global mean <strong>emission temperature <span class="math notranslate nohighlight">\(T_e\)</span></strong>.</p>
@@ -620,29 +632,29 @@ document.write(`
 <p><strong>We can just take this as a definition of the emission temperature.</strong></p>
 <p>Looking back at the observations, the global, annual mean value for OLR is 238.5 W m<span class="math notranslate nohighlight">\(^{-2}\)</span>.</p>
 <section id="calculate-the-emission-temperature-t-e">
-<h3>Calculate the emission temperature <span class="math notranslate nohighlight">\(T_e\)</span><a class="headerlink" href="#calculate-the-emission-temperature-t-e" title="Permalink to this heading">#</a></h3>
+<h3>Calculate the emission temperature <span class="math notranslate nohighlight">\(T_e\)</span><a class="headerlink" href="#calculate-the-emission-temperature-t-e" title="Link to this heading">#</a></h3>
 <p>Rerranging the Stefan-Boltzmann law we get</p>
 <div class="math notranslate nohighlight">
 \[ T_e = \left(\frac{\text{OLR}}{\sigma} \right)^{\frac{1}{4}} \]</div>
 <p>First just use Python like a hand calculator to calculate <span class="math notranslate nohighlight">\(T_e\)</span> iteractively:</p>
 <p>Try typing a few different ways, with and without whitespace.</p>
 <section id="python-fact-1">
-<h4>Python fact 1<a class="headerlink" href="#python-fact-1" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 1<a class="headerlink" href="#python-fact-1" title="Link to this heading">#</a></h4>
 <p>extra spaces are ignored!</p>
 <p>But typing numbers interactively is tedious and error prone. Let’s define a variable called <code class="docutils literal notranslate"><span class="pre">sigma</span></code></p>
 </section>
 <section id="python-fact-2">
-<h4>Python fact 2<a class="headerlink" href="#python-fact-2" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 2<a class="headerlink" href="#python-fact-2" title="Link to this heading">#</a></h4>
 <p>We can define new variables interactively. Variables let us give names to things. Names make our code easy to understand.</p>
 </section>
 </section>
 <section id="thoughts-on-emission-temperature">
-<h3>Thoughts on emission temperature<a class="headerlink" href="#thoughts-on-emission-temperature" title="Permalink to this heading">#</a></h3>
+<h3>Thoughts on emission temperature<a class="headerlink" href="#thoughts-on-emission-temperature" title="Link to this heading">#</a></h3>
 <p>What value did we find for the emission temperature <span class="math notranslate nohighlight">\(T_e\)</span>? How does it compare to the actual global mean surface temperature?</p>
 <p><em>Is the blackbody radiator a good model for the Earth’s emission to space?</em></p>
 </section>
 <section id="a-simple-greenhouse-model">
-<h3>A simple greenhouse model<a class="headerlink" href="#a-simple-greenhouse-model" title="Permalink to this heading">#</a></h3>
+<h3>A simple greenhouse model<a class="headerlink" href="#a-simple-greenhouse-model" title="Link to this heading">#</a></h3>
 <p>The emission to space is lower because of the greenhouse effect, which we will study in detail later.</p>
 <p>For now, just introduce a basic concept:</p>
 <p><em>Only a fraction of the surface emission makes it out to space.</em></p>
@@ -672,16 +684,16 @@ What we really want to do is <strong>define a reusable function</strong></p>
 <li><p>We need to hit return one more time at the end to finish our function</p></li>
 </ul>
 <section id="python-fact-3">
-<h4>Python fact 3<a class="headerlink" href="#python-fact-3" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 3<a class="headerlink" href="#python-fact-3" title="Link to this heading">#</a></h4>
 <p><strong>Indentations are not ignored!  They serve to group together several lines of code.</strong></p>
 <p>we will see plenty of examples of this – in this case, the indentation lets the interpreter know that the code is all part of the function definition.</p>
 </section>
 <section id="python-fact-4">
-<h4>Python fact 4:<a class="headerlink" href="#python-fact-4" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 4:<a class="headerlink" href="#python-fact-4" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">def</span></code> is a keyword that defines a function.</p>
 <p>Just like a mathematical function, a Python function takes one or more input arguments, performs some operations on those inputs, and gives back some resulting value.</p>
 <section id="python-fact-5">
-<h5>Python fact 5:<a class="headerlink" href="#python-fact-5" title="Permalink to this heading">#</a></h5>
+<h5>Python fact 5:<a class="headerlink" href="#python-fact-5" title="Link to this heading">#</a></h5>
 <p><code class="docutils literal notranslate"><span class="pre">return</span></code> is a keyword that defines what value will be returned by the function.</p>
 <p>Once a function is defined, we can call it interactively:</p>
 <div class="cell docutils container">
@@ -694,19 +706,19 @@ What we really want to do is <strong>define a reusable function</strong></p>
 </section>
 </section>
 <section id="python-fact-6">
-<h4>Python fact 6<a class="headerlink" href="#python-fact-6" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 6<a class="headerlink" href="#python-fact-6" title="Link to this heading">#</a></h4>
 <p><strong>The <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol is used for comments in Python code.</strong></p>
 <p>The interpreter will ignore anything that follows <code class="docutils literal notranslate"><span class="pre">#</span></code> on a line of code.</p>
 </section>
 <section id="python-fact-7">
-<h4>Python fact 7:<a class="headerlink" href="#python-fact-7" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 7:<a class="headerlink" href="#python-fact-7" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">print</span></code> is a function that causes the value of an expression (or a list of expressions) to be printed to the screen.</p>
 <p>(Don’t always need it, because by default the interpreter prints the output of the last statement to the screen, as we have seen).</p>
 <p>Note also that we defined variables named <code class="docutils literal notranslate"><span class="pre">sigma</span></code> and <code class="docutils literal notranslate"><span class="pre">tau</span></code> inside our OLR function.</p>
 <p>What happens if you try to <code class="docutils literal notranslate"><span class="pre">print(tau)</span></code>?</p>
 </section>
 <section id="python-fact-8">
-<h4>Python fact 8:<a class="headerlink" href="#python-fact-8" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 8:<a class="headerlink" href="#python-fact-8" title="Link to this heading">#</a></h4>
 <p><strong>Variables defined in functions do not exist outside of that function.</strong></p>
 <p>Try declaring <code class="docutils literal notranslate"><span class="pre">sigma</span> <span class="pre">=</span> <span class="pre">2</span></code>, then <code class="docutils literal notranslate"><span class="pre">print(sigma)</span></code>. And try computing <code class="docutils literal notranslate"><span class="pre">OLR(288)</span></code> again. Did anything change?</p>
 <p>Note that we didn’t really <strong>need</strong> to define those variables inside the function. We could have written the function in one line.</p>
@@ -714,7 +726,7 @@ What we really want to do is <strong>define a reusable function</strong></p>
 </section>
 </section>
 <section id="arrays-with-numpy">
-<h3>Arrays with <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#arrays-with-numpy" title="Permalink to this heading">#</a></h3>
+<h3>Arrays with <code class="docutils literal notranslate"><span class="pre">numpy</span></code><a class="headerlink" href="#arrays-with-numpy" title="Link to this heading">#</a></h3>
 <p>Now let’s try some array calculations:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -743,7 +755,7 @@ What we really want to do is <strong>define a reusable function</strong></p>
 <p>Now try again to compute <code class="docutils literal notranslate"><span class="pre">OLR(288)</span></code></p>
 <p>What do you get?</p>
 <section id="python-fact-9-assigning-a-value-to-a-named-variable-overwrites-whatever-was-already-assigned-to-that-name">
-<h4>Python fact 9: Assigning a value to a named variable overwrites whatever was already assigned to that name.<a class="headerlink" href="#python-fact-9-assigning-a-value-to-a-named-variable-overwrites-whatever-was-already-assigned-to-that-name" title="Permalink to this heading">#</a></h4>
+<h4>Python fact 9: Assigning a value to a named variable overwrites whatever was already assigned to that name.<a class="headerlink" href="#python-fact-9-assigning-a-value-to-a-named-variable-overwrites-whatever-was-already-assigned-to-that-name" title="Link to this heading">#</a></h4>
 <p>Python is also case sensitive. If we had used <code class="docutils literal notranslate"><span class="pre">olr</span></code> to store the array, there would be no conflict.</p>
 <p>Now let’s re-enter our function. Start typing <code class="docutils literal notranslate"><span class="pre">def</span></code> and then hit the “up arrow” key. What happens?</p>
 <p>The editor gives us lots of useful keyboard shortcuts.</p>
@@ -757,7 +769,7 @@ What we really want to do is <strong>define a reusable function</strong></p>
 </section>
 <hr class="docutils" />
 <section id="summary">
-<h2>4. Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>4. Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
 <li><p><strong>Climate</strong> is essentially <strong>statistics of weather</strong>.</p></li>
@@ -772,7 +784,7 @@ What we really want to do is <strong>define a reusable function</strong></p>
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

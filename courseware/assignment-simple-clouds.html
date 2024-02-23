@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Assignment: Clouds in the Leaky Greenhouse Model &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/assignment-simple-clouds';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -461,10 +473,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-clouds-in-the-leaky-greenhouse-model">
-<h1>Assignment: Clouds in the Leaky Greenhouse Model<a class="headerlink" href="#assignment-clouds-in-the-leaky-greenhouse-model" title="Permalink to this heading">#</a></h1>
+<h1>Assignment: Clouds in the Leaky Greenhouse Model<a class="headerlink" href="#assignment-clouds-in-the-leaky-greenhouse-model" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p>Students completing this assignment will gain the following skills and concepts:</p>
 <ul class="simple">
 <li><p>Continued practice working with the Jupyter notebook</p></li>
@@ -473,23 +485,23 @@ document.write(`
 </ul>
 </section>
 <section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">#</a></h2>
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
 <p><em><strong>This assignment requires some mathematics. You can present your work in this notebook, on hand-written paper, or a combination. Just make sure you communicate clearly which answers belong to which question.</strong></em></p>
 <p>For answers presented in the notebook, follow the usual procedures to ensure that your code is well commented and runs clearly without errors (see previous assignment instructions).</p>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Consider the two-layer “leaky greenhouse” (or grey radiation) model from <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/elementary-greenhouse.html">these lecture notes</a>.</p>
 <p>Here you will use this model to investigate the <strong>radiative effects of clouds</strong>.</p>
 <p>Clouds simultaneously <strong>reflect shortwave radiation</strong> and <strong>absorb longwave radiation</strong>. These two effects often oppose each other in nature, and which one is stronger depends (among other things) on whether the clouds are <strong>low</strong> or <strong>high</strong> (i.e. in layer 0 or layer 1).</p>
 <p>For this question we will suppose (as we did in the lecture notes) that there is <strong>no absorption of shortwave radiation</strong> in the atmosphere.</p>
 </section>
 <section id="question-1">
-<h2>Question 1<a class="headerlink" href="#question-1" title="Permalink to this heading">#</a></h2>
+<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
 <p>Suppose a cloud reflects a fraction <span class="math notranslate nohighlight">\(\alpha_c\)</span> of the shortwave beam incoming from above. <span class="math notranslate nohighlight">\(\alpha_c\)</span> is a number between 0 and 1. Provide a coherent argument (in words, sketches, and/or equations) for why the <strong>shortwave</strong> effects cloud should alway be a <strong>cooling</strong> on the surface. Is this cooling effect different if the cloud is low or high? Explain.</p>
 </section>
 <section id="question-2">
-<h2>Question 2<a class="headerlink" href="#question-2" title="Permalink to this heading">#</a></h2>
+<h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
 <p>Because the liquid water droplets in a cloud are effective absorbers of longwave radiation, a cloud will <strong>increase the longwave absorptivity / emissivity</strong> of the layer in which it resides.</p>
 <p>We can represent this in the two-layer atmosphere by letting the absorptivity of a cloudy layer be <span class="math notranslate nohighlight">\(\epsilon + \epsilon_c\)</span>, where <span class="math notranslate nohighlight">\(\epsilon_c\)</span> is an additional absorptivity due to the cloud. Derive a formula (i.e. an algebraic expression) for the OLR in terms of the temperatures <span class="math notranslate nohighlight">\(T_s, T_0, T_1\)</span> and the emissivities <span class="math notranslate nohighlight">\(\epsilon, \epsilon_c\)</span> for two different cases:</p>
 <ul class="simple">
@@ -498,7 +510,7 @@ document.write(`
 </ul>
 </section>
 <section id="question-3">
-<h2>Question 3<a class="headerlink" href="#question-3" title="Permalink to this heading">#</a></h2>
+<h2>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
 <p>Now use the tuned numerical values we used in class:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(T_s = 288\)</span> K</p></li>
@@ -515,16 +527,16 @@ document.write(`
 <p>(b) Which one has a larger effect, the low cloud or the high cloud?</p>
 </section>
 <section id="question-4">
-<h2>Question 4<a class="headerlink" href="#question-4" title="Permalink to this heading">#</a></h2>
+<h2>Question 4<a class="headerlink" href="#question-4" title="Link to this heading">#</a></h2>
 <p>Based on your results in questions 1-3, which do you think is more likely to produce a <strong>net warming effect</strong> on the climate: a low cloud or a high cloud? Give an explanation in words.</p>
 </section>
 <section id="question-5">
-<h2>Question 5<a class="headerlink" href="#question-5" title="Permalink to this heading">#</a></h2>
+<h2>Question 5<a class="headerlink" href="#question-5" title="Link to this heading">#</a></h2>
 <p>How would your answer change if the atmosphere were <strong>isothermal</strong>, i.e. <span class="math notranslate nohighlight">\(T_s = T_0 = T_1\)</span>?</p>
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

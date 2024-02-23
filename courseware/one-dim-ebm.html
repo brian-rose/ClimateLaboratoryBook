@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>20. The one-dimensional energy balance model &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/one-dim-ebm';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -507,13 +519,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-one-dimensional-energy-balance-model">
-<h1><span class="section-number">20. </span>The one-dimensional energy balance model<a class="headerlink" href="#the-one-dimensional-energy-balance-model" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">20. </span>The one-dimensional energy balance model<a class="headerlink" href="#the-one-dimensional-energy-balance-model" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p><em>Subsections marked with the asterisk * are more detailed mathematical discussions which can be skipped by the first-time reader.</em></p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="simulation-versus-parameterization-of-heat-transport">
-<h2>1. Simulation versus parameterization of heat transport<a class="headerlink" href="#simulation-versus-parameterization-of-heat-transport" title="Permalink to this heading">#</a></h2>
+<h2>1. Simulation versus parameterization of heat transport<a class="headerlink" href="#simulation-versus-parameterization-of-heat-transport" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>In the previous lectures we have seen how heat transport by winds and ocean currents acts to COOL the tropics and WARM the poles. The observed temperature gradient is a product of both the insolation and the heat transport!</p>
 <p>We were able to ignore this issue in our models of the global mean temperature, because the transport just moves energy around between latitude bands – does not create or destroy energy.</p>
@@ -521,7 +533,7 @@ document.write(`
 <p>This leads to us the old theme of <strong>simulation versus parameterization</strong>.</p>
 <p>Complex climate models like the CESM simulate the heat transport by solving the full equations of motion for the atmosphere (and ocean too, if coupled).</p>
 <section id="simulation-of-synoptic-scale-variability-in-cesm">
-<h3>Simulation of synoptic-scale variability in CESM<a class="headerlink" href="#simulation-of-synoptic-scale-variability-in-cesm" title="Permalink to this heading">#</a></h3>
+<h3>Simulation of synoptic-scale variability in CESM<a class="headerlink" href="#simulation-of-synoptic-scale-variability-in-cesm" title="Link to this heading">#</a></h3>
 <p>Let’s revisit an animation of the global 6-hourly sea-level pressure field from our slab ocean simulation with CESM. (We first saw this [back in Lecture 5](./Lecture05 – Climate system and climate models.ipynb))</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,7 +557,7 @@ document.write(`
 <p>A model like this needs to <strong>simulate the weather</strong> in order to <strong>model the heat transport</strong>.</p>
 </section>
 <section id="a-simpler-statistical-approach">
-<h3>A simpler statistical approach<a class="headerlink" href="#a-simpler-statistical-approach" title="Permalink to this heading">#</a></h3>
+<h3>A simpler statistical approach<a class="headerlink" href="#a-simpler-statistical-approach" title="Link to this heading">#</a></h3>
 <p>Let’s emphasize: the most important role for heat transport by winds and ocean currents is to more energy from where it’s WARM to where it’s COLD, thereby reducing the temperature gradient (equator to pole) from what it would be if the planet were in radiative-convective equilibrium everywhere with no north-south motion.</p>
 <p>This is the basis for the parameterization of heat transport often used in simple climate models.</p>
 <p>Discuss analogy with molecular heat conduction: metal rod with one end in the fire.</p>
@@ -561,10 +573,10 @@ Measures how quickly the temperature  decreases as we move northward
 </section>
 <hr class="docutils" />
 <section id="the-temperature-diffusion-parameterization">
-<h2>2. The temperature diffusion parameterization<a class="headerlink" href="#the-temperature-diffusion-parameterization" title="Permalink to this heading">#</a></h2>
+<h2>2. The temperature diffusion parameterization<a class="headerlink" href="#the-temperature-diffusion-parameterization" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="definition">
-<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h3>
+<h3>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h3>
 <p>Last time we wrote down an energy budget for a thin zonal band centered at latitude <span class="math notranslate nohighlight">\(\phi\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ \frac{\partial E(\phi)}{\partial t} = \text{ASR}(\phi) - \text{OLR}(\phi) - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial \mathcal{H}}{\partial \phi} \]</div>
@@ -577,7 +589,7 @@ Measures how quickly the temperature  decreases as we move northward
 <p>Notice that we have explicitly chosen to the use <strong>surface temperature gradient</strong> to set the heat transport. This is a convenient (and traditional) choice to make, but it is not the only possibility! We could instead tune our parameterization to some measure of the free-tropospheric temperature gradient.</p>
 </section>
 <section id="the-diffusive-parameterization-in-the-planetary-energy-budget">
-<h3>The diffusive parameterization in the planetary energy budget<a class="headerlink" href="#the-diffusive-parameterization-in-the-planetary-energy-budget" title="Permalink to this heading">#</a></h3>
+<h3>The diffusive parameterization in the planetary energy budget<a class="headerlink" href="#the-diffusive-parameterization-in-the-planetary-energy-budget" title="Link to this heading">#</a></h3>
 <p>Plug the parameterization into our energy budget to get</p>
 <div class="math notranslate nohighlight">
 \[ \frac{\partial E(\phi)}{\partial t} = \text{ASR}(\phi) - \text{OLR}(\phi) - \frac{1}{2 \pi a^2  \cos⁡\phi } \frac{\partial }{\partial \phi} \left( -2 \pi a^2  \cos⁡\phi ~ D ~ \frac{\partial T_s}{\partial \phi} \right) \]</div>
@@ -586,7 +598,7 @@ Measures how quickly the temperature  decreases as we move northward
 \[ \frac{\partial E(\phi)}{\partial t} = \text{ASR}(\phi) - \text{OLR}(\phi) + \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(   \cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right) \]</div>
 </section>
 <section id="surface-temperature-is-a-good-measure-of-column-heat-content">
-<h3>Surface temperature is a good measure of column heat content<a class="headerlink" href="#surface-temperature-is-a-good-measure-of-column-heat-content" title="Permalink to this heading">#</a></h3>
+<h3>Surface temperature is a good measure of column heat content<a class="headerlink" href="#surface-temperature-is-a-good-measure-of-column-heat-content" title="Link to this heading">#</a></h3>
 <p>Let’s now make the same assumption we made [back at the beginning of the course](Lecture01 – Planetary energy budget.ipynb) when we first wrote down the zero-dimensional EBM.</p>
 <p><em>Most of the heat capacity is in the oceans, so that the energy content of each column <span class="math notranslate nohighlight">\(E\)</span> is proportional to surface temperature</em>:</p>
 <div class="math notranslate nohighlight">
@@ -594,7 +606,7 @@ Measures how quickly the temperature  decreases as we move northward
 <p>where <span class="math notranslate nohighlight">\(C\)</span> is <strong>effective heat capacity</strong> of the atmosphere - ocean column, in units of J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>. Here we are writing <span class="math notranslate nohighlight">\(C\)</span> are a function of latitude so that our model is general enough to allow different land-ocean fractions at different latitudes.</p>
 </section>
 <section id="a-heat-equation-for-surface-temperature">
-<h3>A heat equation for surface temperature<a class="headerlink" href="#a-heat-equation-for-surface-temperature" title="Permalink to this heading">#</a></h3>
+<h3>A heat equation for surface temperature<a class="headerlink" href="#a-heat-equation-for-surface-temperature" title="Link to this heading">#</a></h3>
 <p>Now our budget becomes a PDE for the surface temperature <span class="math notranslate nohighlight">\(T_s(\phi, t)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[ C(\phi) \frac{\partial T_s}{\partial t} = \text{ASR}(\phi) - \text{OLR}(\phi) + \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(   \cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right) \]</div>
@@ -608,7 +620,7 @@ Measures how quickly the temperature  decreases as we move northward
 <p>In our case, the analogy is between the random molecular motion of a metal rod, and the net mixing / stirring effect of weather systems.</p>
 </section>
 <section id="take-the-global-average">
-<h3>* Take the global average…<a class="headerlink" href="#take-the-global-average" title="Permalink to this heading">#</a></h3>
+<h3>* Take the global average…<a class="headerlink" href="#take-the-global-average" title="Link to this heading">#</a></h3>
 <p>Take the integral <span class="math notranslate nohighlight">\(\int_{-\pi/2}^{\pi/2} \cos\phi ~ d\phi\)</span> of each term.</p>
 <div class="math notranslate nohighlight">
 \[ C \frac{\partial \overline{T_s}}{\partial t} d\phi = \overline{\text{ASR}} - \overline{\text{OLR}} + D \int_{-\pi/2}^{\pi/2} \frac{\partial }{\partial \phi} \left(   \cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right) d\phi\]</div>
@@ -618,7 +630,7 @@ Measures how quickly the temperature  decreases as we move northward
 </section>
 <hr class="docutils" />
 <section id="solving-the-temperature-diffusion-equation-with-climlab">
-<h2>3. Solving the temperature diffusion equation with climlab<a class="headerlink" href="#solving-the-temperature-diffusion-equation-with-climlab" title="Permalink to this heading">#</a></h2>
+<h2>3. Solving the temperature diffusion equation with climlab<a class="headerlink" href="#solving-the-temperature-diffusion-equation-with-climlab" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p><code class="docutils literal notranslate"><span class="pre">climlab</span></code> has a pre-defined process for solving the meridional diffusion equation. Let’s look at a simple example in which diffusion is the ONLY process that changes the temperature.</p>
 <p>The equation we’re going to solve here is</p>
@@ -718,7 +730,7 @@ Diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalH
 <p>If we let this run a long time, what should happen??</p>
 <p>Try it yourself and find out!</p>
 <section id="mathematical-aside-the-legendre-polynomials">
-<h3>* Mathematical aside: the Legendre Polynomials<a class="headerlink" href="#mathematical-aside-the-legendre-polynomials" title="Permalink to this heading">#</a></h3>
+<h3>* Mathematical aside: the Legendre Polynomials<a class="headerlink" href="#mathematical-aside-the-legendre-polynomials" title="Link to this heading">#</a></h3>
 <p>Here we have used a function called the “2nd Legendre polynomial”, defined as</p>
 <div class="math notranslate nohighlight">
 \[ P_2 (x) = \frac{1}{2} \left( 3x^2-1 \right) \]</div>
@@ -747,10 +759,10 @@ Diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalH
 </section>
 <hr class="docutils" />
 <section id="parameterizing-the-radiation-terms">
-<h2>4. Parameterizing the radiation terms<a class="headerlink" href="#parameterizing-the-radiation-terms" title="Permalink to this heading">#</a></h2>
+<h2>4. Parameterizing the radiation terms<a class="headerlink" href="#parameterizing-the-radiation-terms" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="the-basic-problem">
-<h3>The basic problem<a class="headerlink" href="#the-basic-problem" title="Permalink to this heading">#</a></h3>
+<h3>The basic problem<a class="headerlink" href="#the-basic-problem" title="Link to this heading">#</a></h3>
 <p>Let’s go back to the complete budget with our heat transport parameterization</p>
 <div class="math notranslate nohighlight">
 \[ C(\phi) \frac{\partial T_s}{\partial t} = \text{ASR}(\phi) - \text{OLR}(\phi) + \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(   \cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right) \]</div>
@@ -758,7 +770,7 @@ Diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalH
 <p>In mathematical terms, we want to express this <strong>as a closed equation for surface temperature <span class="math notranslate nohighlight">\(T_s\)</span></strong>.</p>
 </section>
 <section id="fixed-albedo-assumption">
-<h3>Fixed albedo assumption<a class="headerlink" href="#fixed-albedo-assumption" title="Permalink to this heading">#</a></h3>
+<h3>Fixed albedo assumption<a class="headerlink" href="#fixed-albedo-assumption" title="Link to this heading">#</a></h3>
 <p>First, as usual, we can write the solar term as</p>
 <div class="math notranslate nohighlight">
 \[ \text{ASR} = (1-\alpha) ~ Q \]</div>
@@ -766,7 +778,7 @@ Diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalH
 <p>Note that the solar term is (at least in annual average) larger at equator than poles… and transport term acts to flatten out the temperatures.</p>
 </section>
 <section id="parameterizing-the-longwave-radiation">
-<h3>Parameterizing the longwave radiation<a class="headerlink" href="#parameterizing-the-longwave-radiation" title="Permalink to this heading">#</a></h3>
+<h3>Parameterizing the longwave radiation<a class="headerlink" href="#parameterizing-the-longwave-radiation" title="Link to this heading">#</a></h3>
 <p>Now, we almost have a model we can solve for T!  Just need to express the OLR in terms of temperature.</p>
 <p>So…  what’s the link between OLR and temperature????</p>
 <p>[ discuss ]</p>
@@ -789,10 +801,10 @@ Diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalH
 </section>
 <hr class="docutils" />
 <section id="tuning-the-longwave-parameters-with-reanalysis-data">
-<h2>5. Tuning the longwave parameters with reanalysis data<a class="headerlink" href="#tuning-the-longwave-parameters-with-reanalysis-data" title="Permalink to this heading">#</a></h2>
+<h2>5. Tuning the longwave parameters with reanalysis data<a class="headerlink" href="#tuning-the-longwave-parameters-with-reanalysis-data" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="olr-versus-surface-temperature-in-ncep-reanalysis-data">
-<h3>OLR versus surface temperature in NCEP Reanalysis data<a class="headerlink" href="#olr-versus-surface-temperature-in-ncep-reanalysis-data" title="Permalink to this heading">#</a></h3>
+<h3>OLR versus surface temperature in NCEP Reanalysis data<a class="headerlink" href="#olr-versus-surface-temperature-in-ncep-reanalysis-data" title="Link to this heading">#</a></h3>
 <p>Let’s look at the data to find reasonable values for <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -908,7 +920,7 @@ Attributes:
 \[ A = 210 ~ \text{W m}^{-2}, ~~~ B = 2 ~ \text{W m}^{-2}~^\circ\text{C}^{-1} \]</div>
 </section>
 <section id="checking-the-global-average">
-<h3>Checking the global average<a class="headerlink" href="#checking-the-global-average" title="Permalink to this heading">#</a></h3>
+<h3>Checking the global average<a class="headerlink" href="#checking-the-global-average" title="Link to this heading">#</a></h3>
 <p>Note that in the <strong>global average</strong>, recall <span class="math notranslate nohighlight">\(\overline{T_s} = 288 \text{ K} = 15^\circ\text{C}\)</span></p>
 <p>And so this parameterization gives</p>
 <div class="math notranslate nohighlight">
@@ -917,7 +929,7 @@ Attributes:
 So this is consistent.</p>
 </section>
 <section id="relationship-between-b-and-feedback-parameters">
-<h3>Relationship between <span class="math notranslate nohighlight">\(B\)</span> and feedback parameters<a class="headerlink" href="#relationship-between-b-and-feedback-parameters" title="Permalink to this heading">#</a></h3>
+<h3>Relationship between <span class="math notranslate nohighlight">\(B\)</span> and feedback parameters<a class="headerlink" href="#relationship-between-b-and-feedback-parameters" title="Link to this heading">#</a></h3>
 <p>Recall that when we looked at climate forcing and feedback, we said that overall response to a forcing <span class="math notranslate nohighlight">\(\Delta R\)</span> in W m<span class="math notranslate nohighlight">\(^{-2}\)</span> is</p>
 <div class="math notranslate nohighlight">
 \[ \Delta T = \frac{\Delta R}{\lambda} \]</div>
@@ -939,10 +951,10 @@ So this is consistent.</p>
 </section>
 <hr class="docutils" />
 <section id="the-one-dimensional-diffusive-energy-balance-model">
-<h2>6. The one-dimensional diffusive Energy Balance Model<a class="headerlink" href="#the-one-dimensional-diffusive-energy-balance-model" title="Permalink to this heading">#</a></h2>
+<h2>6. The one-dimensional diffusive Energy Balance Model<a class="headerlink" href="#the-one-dimensional-diffusive-energy-balance-model" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="putting-the-equation-together">
-<h3>Putting the equation together<a class="headerlink" href="#putting-the-equation-together" title="Permalink to this heading">#</a></h3>
+<h3>Putting the equation together<a class="headerlink" href="#putting-the-equation-together" title="Link to this heading">#</a></h3>
 <p>Putting the above OLR parameterization into our budget equation gives</p>
 <div class="math notranslate nohighlight">
 \[ C(\phi) \frac{\partial T_s}{\partial t} = (1-\alpha) ~ Q - \left( A + B~T_s \right) + \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(   \cos⁡\phi  ~ \frac{\partial T_s}{\partial \phi} \right) \]</div>
@@ -959,7 +971,7 @@ So this is consistent.</p>
 <p>We also need to specify the albedo.</p>
 </section>
 <section id="observed-albedo">
-<h3>Observed albedo<a class="headerlink" href="#observed-albedo" title="Permalink to this heading">#</a></h3>
+<h3>Observed albedo<a class="headerlink" href="#observed-albedo" title="Link to this heading">#</a></h3>
 <p>Let’s go back to the NCEP Reanalysis data to see how planetary albedo actually varies as a function of latitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -999,7 +1011,7 @@ So this is consistent.</p>
 </ul>
 </section>
 <section id="approximating-the-observed-albedo-with-a-smooth-function">
-<h3>Approximating the observed albedo with a smooth function<a class="headerlink" href="#approximating-the-observed-albedo-with-a-smooth-function" title="Permalink to this heading">#</a></h3>
+<h3>Approximating the observed albedo with a smooth function<a class="headerlink" href="#approximating-the-observed-albedo-with-a-smooth-function" title="Link to this heading">#</a></h3>
 <p>Like temperature and insolation, this can be approximated by a smooth function that increases with latitude:</p>
 <div class="math notranslate nohighlight">
 \[ \alpha(\phi) \approx \alpha_0 + \alpha_2 P_2(\sin\phi) \]</div>
@@ -1027,12 +1039,12 @@ So this is consistent.</p>
 </section>
 <hr class="docutils" />
 <section id="the-annual-mean-ebm">
-<h2>7. The annual-mean EBM<a class="headerlink" href="#the-annual-mean-ebm" title="Permalink to this heading">#</a></h2>
+<h2>7. The annual-mean EBM<a class="headerlink" href="#the-annual-mean-ebm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>For now, we will be focusing on the <strong>annual mean</strong> model.</p>
 <p>For the <strong>insolation</strong>, we set <span class="math notranslate nohighlight">\(Q(\phi,t) = \bar{Q}(\phi)\)</span>, the annual mean value <em>(large at equator, small at pole)</em>.</p>
 <section id="mathematical-details-deriving-the-annual-mean-model">
-<h3>* Mathematical details: deriving the annual mean model<a class="headerlink" href="#mathematical-details-deriving-the-annual-mean-model" title="Permalink to this heading">#</a></h3>
+<h3>* Mathematical details: deriving the annual mean model<a class="headerlink" href="#mathematical-details-deriving-the-annual-mean-model" title="Link to this heading">#</a></h3>
 <p>Suppose we take the <strong>annual mean of the planetary energy budget</strong>.</p>
 <p>If the albedo is fixed, then the average is pretty simple. Our EBM equation is purely linear, so the change over one year is just</p>
 <div class="math notranslate nohighlight">
@@ -1052,12 +1064,12 @@ So this is consistent.</p>
 <p>This form can be convenient for analytical solutions. As we will see, the non-dimensional number <span class="math notranslate nohighlight">\(D/B\)</span> is a very important measure of the efficiency of heat transport in the climate system.  We will return to this later.</p>
 </section>
 <section id="numerical-solutions-of-the-time-dependent-ebm">
-<h3>Numerical solutions of the time-dependent EBM<a class="headerlink" href="#numerical-solutions-of-the-time-dependent-ebm" title="Permalink to this heading">#</a></h3>
+<h3>Numerical solutions of the time-dependent EBM<a class="headerlink" href="#numerical-solutions-of-the-time-dependent-ebm" title="Link to this heading">#</a></h3>
 <p>We will leave the time derivative in our model, because this is the most convenient way to find the equilibrium solution!</p>
 <p>There is code available in <code class="docutils literal notranslate"><span class="pre">climlab</span></code> to solve the diffusive EBM.</p>
 </section>
 <section id="animating-the-adjustment-of-annual-mean-ebm-to-equilibrium">
-<h3>Animating the adjustment of annual mean EBM to equilibrium<a class="headerlink" href="#animating-the-adjustment-of-annual-mean-ebm-to-equilibrium" title="Permalink to this heading">#</a></h3>
+<h3>Animating the adjustment of annual mean EBM to equilibrium<a class="headerlink" href="#animating-the-adjustment-of-annual-mean-ebm-to-equilibrium" title="Link to this heading">#</a></h3>
 <p>Before looking at the details of how to set up an EBM in <code class="docutils literal notranslate"><span class="pre">climlab</span></code>, let’s look at an animation of the adjustment of the model (its temperature and energy budget) from an <strong>isothermal initial condition</strong>.</p>
 <p>For reference, all the code necessary to generate the animation is here in the notebook.</p>
 <div class="cell docutils container">
@@ -4772,7 +4784,7 @@ AAAAHWRhdGEAAAABAAAAAExhdmY1OC40NS4xMDA=
 <p>This is very much analogous to the competition between radiation and convection we saw in <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/rce.html#adjustment-from-isothermal-initial-conditions">our study of radiative-convective equilibrium</a> in a single vertical column.</p>
 </section>
 <section id="example-ebm-using-climlab">
-<h3>Example EBM using climlab<a class="headerlink" href="#example-ebm-using-climlab" title="Permalink to this heading">#</a></h3>
+<h3>Example EBM using climlab<a class="headerlink" href="#example-ebm-using-climlab" title="Link to this heading">#</a></h3>
 <p>Here is a simple example using the parameter values we just discussed.</p>
 <p>For simplicity, this model will use the <strong>annual mean insolation</strong>, so the forcing is steady in time.</p>
 <p>We haven’t yet selected an appropriate value for the diffusivity <span class="math notranslate nohighlight">\(D\)</span>. Let’s just try something and see what happens:</p>
@@ -4836,7 +4848,7 @@ Total elapsed time is 9.999999999999863 years.
 </div>
 </section>
 <section id="comparison-of-the-equilibrium-climate-to-observations">
-<h3>Comparison of the equilibrium climate to observations<a class="headerlink" href="#comparison-of-the-equilibrium-climate-to-observations" title="Permalink to this heading">#</a></h3>
+<h3>Comparison of the equilibrium climate to observations<a class="headerlink" href="#comparison-of-the-equilibrium-climate-to-observations" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -4895,10 +4907,10 @@ Total elapsed time is 9.999999999999863 years.
 </section>
 <hr class="docutils" />
 <section id="effects-of-diffusivity-in-the-annual-mean-ebm">
-<h2>8. Effects of diffusivity in the annual mean EBM<a class="headerlink" href="#effects-of-diffusivity-in-the-annual-mean-ebm" title="Permalink to this heading">#</a></h2>
+<h2>8. Effects of diffusivity in the annual mean EBM<a class="headerlink" href="#effects-of-diffusivity-in-the-annual-mean-ebm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="what-is-the-optimal-value-for-d">
-<h3>What is the optimal value for <span class="math notranslate nohighlight">\(D\)</span>?<a class="headerlink" href="#what-is-the-optimal-value-for-d" title="Permalink to this heading">#</a></h3>
+<h3>What is the optimal value for <span class="math notranslate nohighlight">\(D\)</span>?<a class="headerlink" href="#what-is-the-optimal-value-for-d" title="Link to this heading">#</a></h3>
 <p>We want to choose a value of <span class="math notranslate nohighlight">\(D\)</span> that gives a reasonable approximation to observations:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Delta T \approx 45\)</span> ºC between equator and pole</p></li>
@@ -5396,11 +5408,11 @@ Coordinates:
 <p>Comparing to our observational targets, this is too much heat transport and too small temperature gradient!</p>
 </section>
 <section id="class-exercise-crowd-sourcing-the-optical-value-for-d">
-<h3>Class exercise: crowd-sourcing the optical value for <span class="math notranslate nohighlight">\(D\)</span><a class="headerlink" href="#class-exercise-crowd-sourcing-the-optical-value-for-d" title="Permalink to this heading">#</a></h3>
+<h3>Class exercise: crowd-sourcing the optical value for <span class="math notranslate nohighlight">\(D\)</span><a class="headerlink" href="#class-exercise-crowd-sourcing-the-optical-value-for-d" title="Link to this heading">#</a></h3>
 <p>Repeat these calculations with some different values of <span class="math notranslate nohighlight">\(D\)</span>. We’ll crowd-source the optimal value that best matches our observational targets.</p>
 </section>
 <section id="tabulate-our-crowd-sourced-results">
-<h3>Tabulate our crowd-sourced results!<a class="headerlink" href="#tabulate-our-crowd-sourced-results" title="Permalink to this heading">#</a></h3>
+<h3>Tabulate our crowd-sourced results!<a class="headerlink" href="#tabulate-our-crowd-sourced-results" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/">pandas package</a> is very very useful for working with spreadsheet-style data in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5470,7 +5482,7 @@ Coordinates:
 <p>Is it starting to become clear what value we should choose?</p>
 </section>
 <section id="a-more-systematic-search">
-<h3>A more systematic search<a class="headerlink" href="#a-more-systematic-search" title="Permalink to this heading">#</a></h3>
+<h3>A more systematic search<a class="headerlink" href="#a-more-systematic-search" title="Link to this heading">#</a></h3>
 <p><strong>Do this as in-class investigation for a more advanced exercise</strong></p>
 <ul class="simple">
 <li><p>Solve the annual-mean EBM (integrate out to equilibrium) over a range of different diffusivity parameters.</p></li>
@@ -5489,7 +5501,7 @@ Coordinates:
 </li>
 </ul>
 <section id="one-possible-way-to-do-this">
-<h4>One possible way to do this:<a class="headerlink" href="#one-possible-way-to-do-this" title="Permalink to this heading">#</a></h4>
+<h4>One possible way to do this:<a class="headerlink" href="#one-possible-way-to-do-this" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Darray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
@@ -5555,7 +5567,7 @@ Coordinates:
 </section>
 <hr class="docutils" />
 <section id="summary-parameter-values-in-the-diffusive-ebm">
-<h2>9. Summary: parameter values in the diffusive EBM<a class="headerlink" href="#summary-parameter-values-in-the-diffusive-ebm" title="Permalink to this heading">#</a></h2>
+<h2>9. Summary: parameter values in the diffusive EBM<a class="headerlink" href="#summary-parameter-values-in-the-diffusive-ebm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Our model is defined by the following equation</p>
 <div class="math notranslate nohighlight">
@@ -5577,7 +5589,7 @@ Coordinates:
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>15. Toy models of transient warming &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/transient-toy';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -464,15 +476,15 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="toy-models-of-transient-warming">
-<h1><span class="section-number">15. </span>Toy models of transient warming<a class="headerlink" href="#toy-models-of-transient-warming" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">15. </span>Toy models of transient warming<a class="headerlink" href="#toy-models-of-transient-warming" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <section id="exploring-the-rate-of-climate-change">
-<h2>Exploring the rate of climate change<a class="headerlink" href="#exploring-the-rate-of-climate-change" title="Permalink to this heading">#</a></h2>
+<h2>Exploring the rate of climate change<a class="headerlink" href="#exploring-the-rate-of-climate-change" title="Link to this heading">#</a></h2>
 <p>In the last set of notes and homework we discussed differences between <strong>equilibrium warming</strong> and <strong>transient warming</strong> due to the slowly-evolving effects of ocean heat uptake.</p>
 <p>Here we are going to look at some toy climate models and think about relationships between climate sensitivity, ocean heat uptake, and timescales.</p>
 </section>
 <section id="two-versions-of-radiative-convective-equilibrium-with-different-climate-sensitivities">
-<h2>Two versions of Radiative-Convective Equilibrium with different climate sensitivities<a class="headerlink" href="#two-versions-of-radiative-convective-equilibrium-with-different-climate-sensitivities" title="Permalink to this heading">#</a></h2>
+<h2>Two versions of Radiative-Convective Equilibrium with different climate sensitivities<a class="headerlink" href="#two-versions-of-radiative-convective-equilibrium-with-different-climate-sensitivities" title="Link to this heading">#</a></h2>
 <p>We are going set up two different single-column model with different lapse rate feedbacks.</p>
 <p>We begin by repeating the same setup we have done several times before, building a single-column RCM with prescribed water vapor profile.</p>
 <div class="cell docutils container">
@@ -633,7 +645,7 @@ The ECS is 2.216 K
 <p>Although this is not the main topic of today’s lesson, it’s still interesting to think about why the lapse rates affect the climate sensivitity in this way…</p>
 </section>
 <section id="time-to-reach-equilibrium">
-<h2>Time to reach equilibrium<a class="headerlink" href="#time-to-reach-equilibrium" title="Permalink to this heading">#</a></h2>
+<h2>Time to reach equilibrium<a class="headerlink" href="#time-to-reach-equilibrium" title="Link to this heading">#</a></h2>
 <p>These models reached their new equilibria in just a few years. Why is that? Because they have very little heat capacity:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -652,7 +664,7 @@ The ECS is 2.216 K
 <p>For this, we need a deep ocean that can <strong>exchange heat with the surface</strong>.</p>
 </section>
 <section id="transient-warming-scenarios-in-column-models-with-ocean-heat-uptake">
-<h2>Transient warming scenarios in column models with ocean heat uptake<a class="headerlink" href="#transient-warming-scenarios-in-column-models-with-ocean-heat-uptake" title="Permalink to this heading">#</a></h2>
+<h2>Transient warming scenarios in column models with ocean heat uptake<a class="headerlink" href="#transient-warming-scenarios-in-column-models-with-ocean-heat-uptake" title="Link to this heading">#</a></h2>
 <p>We are now going to build two new models. The atmosphere (radiative-convective model) will be identical to the two “slab” models we just used. But these will be coupled to a <strong>column of ocean water</strong> 2000 m deep!</p>
 <p>We will <strong>parameterize the ocean heat uptake</strong> as a diffusive mixing process. Much like when we discussed the diffusive parameterization for atmospheric heat transport – we are assuming that ocean dynamics result in a vertical mixing of heat from warm to cold temperatures.</p>
 <p>The following code will set this up for us.</p>
@@ -746,7 +758,7 @@ RCM with low sensitivity and inefficient heat uptake: &lt;class &#39;climlab.pro
 </div>
 </section>
 <section id="an-idealized-transient-global-warming-scenario-co2-increases-by-1-year-to-doubling">
-<h2>An idealized transient global warming scenario: CO2 increases by 1%/year to doubling.<a class="headerlink" href="#an-idealized-transient-global-warming-scenario-co2-increases-by-1-year-to-doubling" title="Permalink to this heading">#</a></h2>
+<h2>An idealized transient global warming scenario: CO2 increases by 1%/year to doubling.<a class="headerlink" href="#an-idealized-transient-global-warming-scenario-co2-increases-by-1-year-to-doubling" title="Link to this heading">#</a></h2>
 <p>Now consider the CO2 increase. In the real world, CO2 has been increasing every year since the beginning of industrialization. Future CO2 concentrations depend on collective choices made by human societies about how much fossil fuel to extract and burn.</p>
 <p>We will set up a simple scenario. Suppose that CO2 increases by 1% of its existing concentration every year <strong>until it reaches 2x its initial concentration</strong>. This takes about 70 years.</p>
 <p>After 70 years, we assume that all anthropogenic emissions, and CO2 concentration is <strong>stabilized</strong> at the 2x level.</p>
@@ -1273,7 +1285,7 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 </div>
 </section>
 <section id="transient-vs-equilibrium-warming-key-points">
-<h2>Transient vs. equilibrium warming: key points<a class="headerlink" href="#transient-vs-equilibrium-warming-key-points" title="Permalink to this heading">#</a></h2>
+<h2>Transient vs. equilibrium warming: key points<a class="headerlink" href="#transient-vs-equilibrium-warming-key-points" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>During the first 70 years, the radiative forcing goes up every year</p></li>
 <li><p>The warming in the two models is almost identical during this phase</p></li>
@@ -1288,9 +1300,9 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 </ul>
 </section>
 <section id="results-from-comprehensive-coupled-gcms">
-<h2>Results from comprehensive coupled GCMs<a class="headerlink" href="#results-from-comprehensive-coupled-gcms" title="Permalink to this heading">#</a></h2>
+<h2>Results from comprehensive coupled GCMs<a class="headerlink" href="#results-from-comprehensive-coupled-gcms" title="Link to this heading">#</a></h2>
 <section id="fast-and-slow-components-of-the-warming">
-<h3>Fast and slow components of the warming<a class="headerlink" href="#fast-and-slow-components-of-the-warming" title="Permalink to this heading">#</a></h3>
+<h3>Fast and slow components of the warming<a class="headerlink" href="#fast-and-slow-components-of-the-warming" title="Link to this heading">#</a></h3>
 <p>This figure shows how a comprehensive coupled GCM responds to the same kind of idealized CO2 increase we have looked at above: CO2 increases at 1%/year for 70 years and is then held constant at twice the pre-industrial level (blue curve), or at 4x the pre-industrial level (red curve) <span id="id1">[<a class="reference internal" href="../references.html#id18" title="Masakazu Yoshimori, Masahiro Watanabe, Hideo Shiogama, Akira Oka, Ayako Abe-Ouchi, Rumi Ohgaito, and Youichi Kamae. A review of progress towards understanding the transient global mean surface temperature response to radiative perturbation. Prog. Earth Planet. Sic., 2016. doi:10.1186/s40645-016-0096-3.">Yoshimori <em>et al.</em>, 2016</a>]</span></p>
 <p>The dashed curve show the <strong>ocean heat content</strong> continuing to rise slowly over thousands of years.</p>
 <a class="reference internal image-reference" href="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Yoshimori_transientwarming.png"><img alt="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Yoshimori_transientwarming.png" src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/Yoshimori_transientwarming.png" style="width: 400px;" /></a>
@@ -1299,7 +1311,7 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 </div></blockquote>
 </section>
 <section id="what-happens-if-co2-levels-are-abruptly-returned-to-pre-industrial-levels">
-<h3>What happens if CO2 levels are abruptly returned to pre-industrial levels?<a class="headerlink" href="#what-happens-if-co2-levels-are-abruptly-returned-to-pre-industrial-levels" title="Permalink to this heading">#</a></h3>
+<h3>What happens if CO2 levels are abruptly returned to pre-industrial levels?<a class="headerlink" href="#what-happens-if-co2-levels-are-abruptly-returned-to-pre-industrial-levels" title="Link to this heading">#</a></h3>
 <p>Here, in a different model, we see the surface temperature change through the historical period (black) followed by a typical future global warming scenario (blue).</p>
 <p>The red curves show the effects of suddenly returning greenhouse gases to their preindustrial levels at various times in the future.</p>
 <p>The temperatures very quickly drop, but <strong>not back to the preindustrial values</strong>. Over time, the build-up of heat content in the deep ocean means that, even if CO2 levels revert to what they used to be, the climate remain quite a bit warmer for thousands of years.</p>
@@ -1312,7 +1324,7 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

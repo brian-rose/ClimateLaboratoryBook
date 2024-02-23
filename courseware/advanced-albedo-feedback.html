@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Advanced topic: Ice albedo feedback in the EBM &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/advanced-albedo-feedback';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -474,16 +486,16 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-topic-ice-albedo-feedback-in-the-ebm">
-<h1>Advanced topic: Ice albedo feedback in the EBM<a class="headerlink" href="#advanced-topic-ice-albedo-feedback-in-the-ebm" title="Permalink to this heading">#</a></h1>
+<h1>Advanced topic: Ice albedo feedback in the EBM<a class="headerlink" href="#advanced-topic-ice-albedo-feedback-in-the-ebm" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p><em>These notes and the companion <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a> extend the material in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/albedo-snowball.html">Ice-albedo feedback and Snowball Earth in the EBM</a> notes.</em></p>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
 <section id="interactive-snow-and-ice-line-in-the-ebm">
-<h2>1. Interactive snow and ice line in the EBM<a class="headerlink" href="#interactive-snow-and-ice-line-in-the-ebm" title="Permalink to this heading">#</a></h2>
+<h2>1. Interactive snow and ice line in the EBM<a class="headerlink" href="#interactive-snow-and-ice-line-in-the-ebm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="the-annual-mean-ebm">
-<h3>The annual mean EBM<a class="headerlink" href="#the-annual-mean-ebm" title="Permalink to this heading">#</a></h3>
+<h3>The annual mean EBM<a class="headerlink" href="#the-annual-mean-ebm" title="Link to this heading">#</a></h3>
 <p>The equation is</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -494,7 +506,7 @@ C(\phi) \frac{\partial T_s}{\partial t} = &amp; ~(1-\alpha) ~ Q - \left( A + B~T
 \end{split}\]</div>
 </section>
 <section id="temperature-dependent-ice-line-parameterization">
-<h3>Temperature-dependent ice line parameterization<a class="headerlink" href="#temperature-dependent-ice-line-parameterization" title="Permalink to this heading">#</a></h3>
+<h3>Temperature-dependent ice line parameterization<a class="headerlink" href="#temperature-dependent-ice-line-parameterization" title="Link to this heading">#</a></h3>
 <p>Let the surface albedo be larger wherever the temperature is below some threshold <span class="math notranslate nohighlight">\(T_f\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \alpha\left(\phi, T(\phi) \right) = \left\{\begin{array}{ccc} 
@@ -503,7 +515,7 @@ a_i &amp; ~ &amp; T(\phi) \le T_f \\
 \end{array} \right. \end{split}\]</div>
 </section>
 <section id="adding-the-interactive-ice-line-to-the-ebm-in-climlab">
-<h3>Adding the interactive ice line to the EBM in climlab<a class="headerlink" href="#adding-the-interactive-ice-line-to-the-ebm-in-climlab" title="Permalink to this heading">#</a></h3>
+<h3>Adding the interactive ice line to the EBM in climlab<a class="headerlink" href="#adding-the-interactive-ice-line-to-the-ebm-in-climlab" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -637,10 +649,10 @@ Total elapsed time is 5.000000000000044 years.
 </section>
 </section>
 <section id="polar-amplified-warming-in-the-ebm">
-<h2>2. Polar-amplified warming in the EBM<a class="headerlink" href="#polar-amplified-warming-in-the-ebm" title="Permalink to this heading">#</a></h2>
+<h2>2. Polar-amplified warming in the EBM<a class="headerlink" href="#polar-amplified-warming-in-the-ebm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="add-a-small-radiative-forcing">
-<h3>Add a small radiative forcing<a class="headerlink" href="#add-a-small-radiative-forcing" title="Permalink to this heading">#</a></h3>
+<h3>Add a small radiative forcing<a class="headerlink" href="#add-a-small-radiative-forcing" title="Link to this heading">#</a></h3>
 <p>The equivalent of doubling CO2 in this model is something like</p>
 <div class="math notranslate nohighlight">
 \[ A \rightarrow A - \delta A \]</div>
@@ -683,7 +695,7 @@ Total elapsed time is 5.000000000000044 years.
 <p>There is no ice left!</p>
 </section>
 <section id="effects-of-further-radiative-forcing-in-the-ice-free-regime">
-<h3>Effects of further radiative forcing in the ice-free regime<a class="headerlink" href="#effects-of-further-radiative-forcing-in-the-ice-free-regime" title="Permalink to this heading">#</a></h3>
+<h3>Effects of further radiative forcing in the ice-free regime<a class="headerlink" href="#effects-of-further-radiative-forcing-in-the-ice-free-regime" title="Link to this heading">#</a></h3>
 <p>Let’s do some more greenhouse warming:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -709,10 +721,10 @@ Total elapsed time is 5.000000000000044 years.
 </section>
 </section>
 <section id="effects-of-diffusivity-in-the-annual-mean-ebm-with-albedo-feedback">
-<h2>3. Effects of diffusivity in the annual mean EBM with albedo feedback<a class="headerlink" href="#effects-of-diffusivity-in-the-annual-mean-ebm-with-albedo-feedback" title="Permalink to this heading">#</a></h2>
+<h2>3. Effects of diffusivity in the annual mean EBM with albedo feedback<a class="headerlink" href="#effects-of-diffusivity-in-the-annual-mean-ebm-with-albedo-feedback" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="in-class-investigation-effects-of-diffusivity-with-albedo-feedback">
-<h3>In-class investigation: Effects of diffusivity with albedo feedback<a class="headerlink" href="#in-class-investigation-effects-of-diffusivity-with-albedo-feedback" title="Permalink to this heading">#</a></h3>
+<h3>In-class investigation: Effects of diffusivity with albedo feedback<a class="headerlink" href="#in-class-investigation-effects-of-diffusivity-with-albedo-feedback" title="Link to this heading">#</a></h3>
 <p>We will repeat the diffusivity-tuning exercise from the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/one-dim-ebm.html">notes on the 1D EBM</a>, but this time with albedo feedback included in our model.</p>
 <ul class="simple">
 <li><p>Solve the annual-mean EBM (integrate out to equilibrium) over a range of different diffusivity parameters.</p></li>
@@ -745,7 +757,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </section>
 <section id="one-possible-way-to-do-this">
-<h3>One possible way to do this:<a class="headerlink" href="#one-possible-way-to-do-this" title="Permalink to this heading">#</a></h3>
+<h3>One possible way to do this:<a class="headerlink" href="#one-possible-way-to-do-this" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Darray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
@@ -813,10 +825,10 @@ Total elapsed time is 5.000000000000044 years.
 </section>
 <hr class="docutils" />
 <section id="diffusive-response-to-a-point-source-of-energy">
-<h2>4. Diffusive response to a point source of energy<a class="headerlink" href="#diffusive-response-to-a-point-source-of-energy" title="Permalink to this heading">#</a></h2>
+<h2>4. Diffusive response to a point source of energy<a class="headerlink" href="#diffusive-response-to-a-point-source-of-energy" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="step-1-adding-a-point-heat-source-to-the-ebm-without-albedo-feedback">
-<h3>Step 1: Adding a point heat source to the EBM without albedo feedback<a class="headerlink" href="#step-1-adding-a-point-heat-source-to-the-ebm-without-albedo-feedback" title="Permalink to this heading">#</a></h3>
+<h3>Step 1: Adding a point heat source to the EBM without albedo feedback<a class="headerlink" href="#step-1-adding-a-point-heat-source-to-the-ebm-without-albedo-feedback" title="Link to this heading">#</a></h3>
 <p>Let’s add a point heat source to the EBM and see what sets the spatial structure of the response.</p>
 <p>We will add a heat source at about 45º latitude.</p>
 <p>First, we will calculate the response in a model <strong>without albedo feedback</strong>.</p>
@@ -922,7 +934,7 @@ Total elapsed time is 9.999999999999863 years.
 <p>so increases with the diffusivity.</p>
 </section>
 <section id="step-2-effects-of-point-heat-source-with-albedo-feedback">
-<h3>Step 2: Effects of point heat source with albedo feedback<a class="headerlink" href="#step-2-effects-of-point-heat-source-with-albedo-feedback" title="Permalink to this heading">#</a></h3>
+<h3>Step 2: Effects of point heat source with albedo feedback<a class="headerlink" href="#step-2-effects-of-point-heat-source-with-albedo-feedback" title="Link to this heading">#</a></h3>
 <p>Now repeat this calculation <strong>with ice albedo feedback</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -964,7 +976,7 @@ Total elapsed time is 9.999999999999863 years.
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

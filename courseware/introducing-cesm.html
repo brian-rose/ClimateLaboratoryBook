@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>4. Introducing the Community Earth System Model (CESM) &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/introducing-cesm';</script>
@@ -165,7 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -491,14 +503,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introducing-the-community-earth-system-model-cesm">
-<h1><span class="section-number">4. </span>Introducing the Community Earth System Model (CESM)<a class="headerlink" href="#introducing-the-community-earth-system-model-cesm" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">4. </span>Introducing the Community Earth System Model (CESM)<a class="headerlink" href="#introducing-the-community-earth-system-model-cesm" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <hr class="docutils" />
 <section id="about-the-cesm">
-<h2>About the CESM<a class="headerlink" href="#about-the-cesm" title="Permalink to this heading">#</a></h2>
+<h2>About the CESM<a class="headerlink" href="#about-the-cesm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="what-is-it">
-<h3>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this heading">#</a></h3>
+<h3>What is it?<a class="headerlink" href="#what-is-it" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>CESM is one of a handful of complex coupled GCMs that are used as part of the IPCC process.</p></li>
 <li><p>Developed and maintained at NCAR (Boulder CO) by a group of climate scientists and software engineers.</p></li>
@@ -508,7 +520,7 @@ document.write(`
 <p><a class="reference external" href="https://www.cesm.ucar.edu/models/">https://www.cesm.ucar.edu/models/</a></p>
 </section>
 <section id="key-components-of-cesm">
-<h3>Key components of CESM:<a class="headerlink" href="#key-components-of-cesm" title="Permalink to this heading">#</a></h3>
+<h3>Key components of CESM:<a class="headerlink" href="#key-components-of-cesm" title="Link to this heading">#</a></h3>
 <p>see <a class="reference external" href="https://www.cesm.ucar.edu/models/cesm1.2/">https://www.cesm.ucar.edu/models/cesm1.2/</a> for more info</p>
 <ul class="simple">
 <li><p>Atmospheric model (AGCM)</p>
@@ -539,10 +551,10 @@ document.write(`
 </section>
 </section>
 <section id="our-numerical-experiments-with-cesm">
-<h2>Our numerical experiments with CESM<a class="headerlink" href="#our-numerical-experiments-with-cesm" title="Permalink to this heading">#</a></h2>
+<h2>Our numerical experiments with CESM<a class="headerlink" href="#our-numerical-experiments-with-cesm" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <section id="atmosphere">
-<h3>Atmosphere<a class="headerlink" href="#atmosphere" title="Permalink to this heading">#</a></h3>
+<h3>Atmosphere<a class="headerlink" href="#atmosphere" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Horizontal resolution about 2º lat/lon</p></li>
 <li><p>AGCM solves the fundamental equations:</p>
@@ -570,7 +582,7 @@ document.write(`
 </ul>
 </section>
 <section id="sea-ice">
-<h3>Sea ice<a class="headerlink" href="#sea-ice" title="Permalink to this heading">#</a></h3>
+<h3>Sea ice<a class="headerlink" href="#sea-ice" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Resolution of 1º.</p></li>
 <li><p>Thermodynamics (conservation of energy, water and salt)</p>
@@ -587,7 +599,7 @@ document.write(`
 </ul>
 </section>
 <section id="land-surface-model">
-<h3>Land surface model<a class="headerlink" href="#land-surface-model" title="Permalink to this heading">#</a></h3>
+<h3>Land surface model<a class="headerlink" href="#land-surface-model" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Same resolution as atmosphere.</p></li>
 <li><p>Determines surface fluxes of heat, water, momentum (friction) based on prescribed vegetation types.</p></li>
@@ -596,7 +608,7 @@ document.write(`
 </ul>
 </section>
 <section id="ocean">
-<h3>Ocean<a class="headerlink" href="#ocean" title="Permalink to this heading">#</a></h3>
+<h3>Ocean<a class="headerlink" href="#ocean" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Same grid as sea ice, 1º.</p></li>
 <li><p>Exchanges heat, water, and momentum with the atmosphere and sea ice</p></li>
@@ -605,7 +617,7 @@ document.write(`
 </ul>
 </section>
 <section id="experimental-setup">
-<h3>Experimental setup<a class="headerlink" href="#experimental-setup" title="Permalink to this heading">#</a></h3>
+<h3>Experimental setup<a class="headerlink" href="#experimental-setup" title="Link to this heading">#</a></h3>
 <p>Model is given realistic atmospheric composition, realistic solar radiation, etc.</p>
 <p>We perform a <strong>preindustrial control run</strong> to get a baseline simulation, and take <strong>averages of several years</strong> (because the model has internal variability – every year is a little bit different)</p>
 <p>We then (later) we will change something, e.g. double the atmospheric <span class="math notranslate nohighlight">\(CO_2\)</span>!</p>
@@ -613,10 +625,10 @@ document.write(`
 </section>
 </section>
 <section id="browsing-input-data-with-xarray">
-<h2>Browsing input data with xarray<a class="headerlink" href="#browsing-input-data-with-xarray" title="Permalink to this heading">#</a></h2>
+<h2>Browsing input data with xarray<a class="headerlink" href="#browsing-input-data-with-xarray" title="Link to this heading">#</a></h2>
 <p>First, let’s take a look at some of the ingredients that go into the control run. <strong>All of the necessary data will be served up by a special data server sitting in the department</strong>, so you should be able to run this code to interact with the data on any computer that is connected to the internet.</p>
 <section id="you-need-to-be-connected-to-the-internet-to-run-the-code-in-this-notebook">
-<h3>You need to be connected to the internet to run the code in this notebook<a class="headerlink" href="#you-need-to-be-connected-to-the-internet-to-run-the-code-in-this-notebook" title="Permalink to this heading">#</a></h3>
+<h3>You need to be connected to the internet to run the code in this notebook<a class="headerlink" href="#you-need-to-be-connected-to-the-internet-to-run-the-code-in-this-notebook" title="Link to this heading">#</a></h3>
 <p>You can browse the available data through a web interface here:</p>
 <p><a class="reference external" href="http://thredds.atmos.albany.edu:8080/thredds/catalog.html">http://thredds.atmos.albany.edu:8080/thredds/catalog.html</a></p>
 <p>Within this folder called <code class="docutils literal notranslate"><span class="pre">CESM</span> <span class="pre">archive</span></code>, you will find another folder called <code class="docutils literal notranslate"><span class="pre">som_input</span></code> which contains all the input files.</p>
@@ -634,7 +646,7 @@ document.write(`
 <p>We are going to use a package called <a class="reference external" href="http://xarray.pydata.org">xarray</a> (abbreviated here as <code class="docutils literal notranslate"><span class="pre">xr</span></code>) to work with the datasets.</p>
 </section>
 <section id="boundary-conditions-continents-and-topography">
-<h3>Boundary conditions: continents and topography<a class="headerlink" href="#boundary-conditions-continents-and-topography" title="Permalink to this heading">#</a></h3>
+<h3>Boundary conditions: continents and topography<a class="headerlink" href="#boundary-conditions-continents-and-topography" title="Link to this heading">#</a></h3>
 <p>Here we are going to load the input topography file and take a look at what’s inside.</p>
 <p>In this case we are passing it a URL to our online dataserver. We’ll put the URL in a string variable called <code class="docutils literal notranslate"><span class="pre">datapath</span></code> to simplify things later on.</p>
 <div class="cell docutils container">
@@ -1557,7 +1569,7 @@ Attributes:
 </div>
 </section>
 <section id="plotting-the-topography">
-<h3>Plotting the topography<a class="headerlink" href="#plotting-the-topography" title="Permalink to this heading">#</a></h3>
+<h3>Plotting the topography<a class="headerlink" href="#plotting-the-topography" title="Link to this heading">#</a></h3>
 <p>We will now read the geopotential and make a plot of the topography of the Earth’s surface as represented on the 2º grid. The code below makes a colorful plot of the topography. We also use the land-sea mask in order to plot nothing at grid points that are entirely ocean-covered.</p>
 <p>Execute this code exactly as written first, and then play around with it to see how you might customize the graph.</p>
 <div class="cell docutils container">
@@ -2085,14 +2097,14 @@ Attributes:
 </div>
 </section>
 <section id="making-nicer-maps">
-<h3>Making nicer maps<a class="headerlink" href="#making-nicer-maps" title="Permalink to this heading">#</a></h3>
+<h3>Making nicer maps<a class="headerlink" href="#making-nicer-maps" title="Link to this heading">#</a></h3>
 <p>Notice that to make these plots we’ve just plotted the lat-lon array without using any map projection.</p>
 <p>There are nice tools available to make better maps. We’ll leave that as a topic for another day. But if you’re keen to read ahead, check out:</p>
 <p><a class="reference external" href="http://scitools.org.uk/cartopy/">http://scitools.org.uk/cartopy/</a></p>
 </section>
 </section>
 <section id="ocean-boundary-conditions">
-<h2>Ocean boundary conditions<a class="headerlink" href="#ocean-boundary-conditions" title="Permalink to this heading">#</a></h2>
+<h2>Ocean boundary conditions<a class="headerlink" href="#ocean-boundary-conditions" title="Link to this heading">#</a></h2>
 <p>Let’s load another file that contains some information about the ocean and its interaction with the atmosphere.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3772,7 +3784,7 @@ Attributes:
 <p><a class="reference external" href="http://xarray.pydata.org">http://xarray.pydata.org</a></p>
 </section>
 <section id="the-pre-industrial-control-run">
-<h2>The “pre-industrial” control run<a class="headerlink" href="#the-pre-industrial-control-run" title="Permalink to this heading">#</a></h2>
+<h2>The “pre-industrial” control run<a class="headerlink" href="#the-pre-industrial-control-run" title="Link to this heading">#</a></h2>
 <p>Our control run is set up to simulate the climate of the “pre-industrial era”, meaning before significant human-induced changes to the composition of the atmosphere, nominally the year 1850.</p>
 <p>Output from the control run is available on the same data server as above. Look in the folder called <code class="docutils literal notranslate"><span class="pre">cpl_1850_f19</span></code> (Here <code class="docutils literal notranslate"><span class="pre">cpl</span></code> stands for “coupled model” with interactive ocean, 1850 indicated pre-industrial conditions, and <code class="docutils literal notranslate"><span class="pre">f19</span></code> is a code for 2º the horizontal grid resolution).</p>
 <p>There are output files for each active model component:</p>
@@ -5675,7 +5687,7 @@ Attributes:
 </section>
 <hr class="docutils" />
 <section id="exercise-taking-a-time-average">
-<h2>Exercise: Taking a time average<a class="headerlink" href="#exercise-taking-a-time-average" title="Permalink to this heading">#</a></h2>
+<h2>Exercise: Taking a time average<a class="headerlink" href="#exercise-taking-a-time-average" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <ul class="simple">
 <li><p>Take the <strong>time average</strong> of the <code class="docutils literal notranslate"><span class="pre">SOLIN</span></code> field. Store the result as a new variable.</p></li>
@@ -6148,7 +6160,7 @@ Coordinates:
 </section>
 <hr class="docutils" />
 <section id="exercise-plotting-the-time-average-insolation">
-<h2>Exercise: Plotting the time average insolation<a class="headerlink" href="#exercise-plotting-the-time-average-insolation" title="Permalink to this heading">#</a></h2>
+<h2>Exercise: Plotting the time average insolation<a class="headerlink" href="#exercise-plotting-the-time-average-insolation" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <ol class="arabic simple">
 <li><p>Make a well-labeled plot of the time-averaged insolation (using the variable you stored above).</p></li>
@@ -6157,20 +6169,20 @@ Coordinates:
 <p>Remember that you can apply the <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> operation across any number of named dimensions in a data array.</p>
 </section>
 <section id="comparing-the-control-run-with-the-observed-energy-budget">
-<h2>Comparing the control run with the observed energy budget<a class="headerlink" href="#comparing-the-control-run-with-the-observed-energy-budget" title="Permalink to this heading">#</a></h2>
+<h2>Comparing the control run with the observed energy budget<a class="headerlink" href="#comparing-the-control-run-with-the-observed-energy-budget" title="Link to this heading">#</a></h2>
 <p>Recall that our investigations so far have been guided by this figure of the observed <strong>annual, global mean energy budget</strong>:</p>
 <p><img alt="Observed global energy budget" src="http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/images/GlobalEnergyBudget.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="exercise-thinking-about-how-to-compute-a-global-average">
-<h2>Exercise: Thinking about how to compute a global average<a class="headerlink" href="#exercise-thinking-about-how-to-compute-a-global-average" title="Permalink to this heading">#</a></h2>
+<h2>Exercise: Thinking about how to compute a global average<a class="headerlink" href="#exercise-thinking-about-how-to-compute-a-global-average" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>In order to compare these numbers with the control run, <strong>we need to take global averages</strong> of the data. What do we mean by <strong>global average</strong>?</p>
 <p>Before proceeding with these notes, try to answer the following question:</p>
 <p><strong>Why does it not make sense to simply average over each data point on a latitude-longitude grid?</strong></p>
 </section>
 <section id="weighting-for-global-average">
-<h2>Weighting for global average<a class="headerlink" href="#weighting-for-global-average" title="Permalink to this heading">#</a></h2>
+<h2>Weighting for global average<a class="headerlink" href="#weighting-for-global-average" title="Link to this heading">#</a></h2>
 <p>The global average needs to weighted by the area of each grid cell, which is proportional to the <strong>cosine of latitude</strong> (do you understand why?)</p>
 <p>We can implement this in xarray as follows:</p>
 <div class="cell docutils container">
@@ -7118,7 +7130,7 @@ Coordinates:
       dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-00eefd2d-e7d8-43ef-b052-1d83a032cd9d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-00eefd2d-e7d8-43ef-b052-1d83a032cd9d' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="an-alternative-use-weights-already-provided-in-the-dataset">
-<h3>An alternative: use weights already provided in the dataset<a class="headerlink" href="#an-alternative-use-weights-already-provided-in-the-dataset" title="Permalink to this heading">#</a></h3>
+<h3>An alternative: use weights already provided in the dataset<a class="headerlink" href="#an-alternative-use-weights-already-provided-in-the-dataset" title="Link to this heading">#</a></h3>
 <p>You will find that many gridded datasets already provide a field that gives accurate area weighting.</p>
 <p>In the case of the CESM output, the field is called <code class="docutils literal notranslate"><span class="pre">gw</span></code></p>
 <div class="cell docutils container">
@@ -7590,7 +7602,7 @@ Coordinates:
 </div>
 </section>
 <section id="compute-the-global-time-average-insolation">
-<h3>Compute the global, time average insolation<a class="headerlink" href="#compute-the-global-time-average-insolation" title="Permalink to this heading">#</a></h3>
+<h3>Compute the global, time average insolation<a class="headerlink" href="#compute-the-global-time-average-insolation" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Compute the global, time average insolation using our two different weight factors</span>
@@ -7973,7 +7985,7 @@ array(340.30586262)</pre><div class='xr-wrap' style='display:none'><div class='x
 </section>
 <hr class="docutils" />
 <section id="exercise-plotting-a-global-average-timeseries">
-<h2>Exercise: plotting a global average timeseries<a class="headerlink" href="#exercise-plotting-a-global-average-timeseries" title="Permalink to this heading">#</a></h2>
+<h2>Exercise: plotting a global average timeseries<a class="headerlink" href="#exercise-plotting-a-global-average-timeseries" title="Link to this heading">#</a></h2>
 <p>Plot a <strong>timeseries</strong> of the <strong>global average surface temperature</strong> in the control simulation.</p>
 <p>Surface temperature is called <code class="docutils literal notranslate"><span class="pre">'TS'</span></code> in the dataset.</p>
 <p>Make a plot of the global average <code class="docutils literal notranslate"><span class="pre">TS</span></code> with time on the x axis. <em>Make sure your global average is properly weighted as discussed above.</em></p>
@@ -8468,7 +8480,7 @@ Coordinates:
 </div>
 </div>
 <section id="discussion-point">
-<h3>Discussion point<a class="headerlink" href="#discussion-point" title="Permalink to this heading">#</a></h3>
+<h3>Discussion point<a class="headerlink" href="#discussion-point" title="Link to this heading">#</a></h3>
 <p>What do you see in this graph? Do you have any ideas about why the global average temperature looks like this?</p>
 <p>Also, what is the <strong>time average</strong> global-average surface temperature in this simulation?</p>
 <div class="cell docutils container">
@@ -8846,7 +8858,7 @@ array(287.54590571)</pre><div class='xr-wrap' style='display:none'><div class='x
 </div>
 </section>
 <section id="finding-the-radiative-fluxes-in-the-model-output">
-<h3>Finding the radiative fluxes in the model output<a class="headerlink" href="#finding-the-radiative-fluxes-in-the-model-output" title="Permalink to this heading">#</a></h3>
+<h3>Finding the radiative fluxes in the model output<a class="headerlink" href="#finding-the-radiative-fluxes-in-the-model-output" title="Link to this heading">#</a></h3>
 <p>Now that you can take global averages and time averages, we can compare some energy budget values against observations.</p>
 <p>The model output contains lots of diagnostics about the radiative fluxes. Here are some CESM naming conventions to help you find the appropriate output fields:</p>
 <ul class="simple">
@@ -9335,7 +9347,7 @@ Attributes:
 </section>
 <hr class="docutils" />
 <section id="exercise-compute-terms-in-the-planetary-energy-budget">
-<h2>Exercise: compute terms in the planetary energy budget<a class="headerlink" href="#exercise-compute-terms-in-the-planetary-energy-budget" title="Permalink to this heading">#</a></h2>
+<h2>Exercise: compute terms in the planetary energy budget<a class="headerlink" href="#exercise-compute-terms-in-the-planetary-energy-budget" title="Link to this heading">#</a></h2>
 <p>Compute annual, global averages of the following four quantities.</p>
 <ol class="arabic simple">
 <li><p>Incoming solar radiation (or insolation)</p></li>
@@ -9347,7 +9359,7 @@ Attributes:
 </section>
 <hr class="docutils" />
 <section id="a-few-more-tidbits">
-<h2>A few more tidbits<a class="headerlink" href="#a-few-more-tidbits" title="Permalink to this heading">#</a></h2>
+<h2>A few more tidbits<a class="headerlink" href="#a-few-more-tidbits" title="Link to this heading">#</a></h2>
 <p>Feel free to keep exploring the data!</p>
 <p>Many other fields are four-dimensional (time, level, latitude, longitude).</p>
 <p>For example, here the <strong>air temperature</strong> at every point and every month:</p>
@@ -9857,7 +9869,7 @@ Attributes:
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>

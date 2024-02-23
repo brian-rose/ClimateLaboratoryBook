@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Assignment: Climate change in the CESM simulations &#8212; The Climate Laboratory</title>
   
@@ -29,33 +28,31 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -63,12 +60,16 @@
                 gtag('js', new Date());
                 gtag('config', 'UA-43758959-2');
             </script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/assignment-cesm-climate-change';</script>
     <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-cesm-climate-change.html" />
     <link rel="author" title="About these documents" href="../about.html" />
@@ -163,7 +164,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Climate Laboratory</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -458,21 +470,21 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-climate-change-in-the-cesm-simulations">
-<h1>Assignment: Climate change in the CESM simulations<a class="headerlink" href="#assignment-climate-change-in-the-cesm-simulations" title="Permalink to this heading">#</a></h1>
+<h1>Assignment: Climate change in the CESM simulations<a class="headerlink" href="#assignment-climate-change-in-the-cesm-simulations" title="Link to this heading">#</a></h1>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <section id="part-1">
-<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h2>
+<h2>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h2>
 <p>Following the examples in the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html">lecture notes</a>, open the four CESM simulations (fully coupled and slab ocean versions).</p>
 <p>Calculate timeseries of <strong>global mean ASR and OLR</strong> and store each of these as a new variable. <em>Recall that ASR is called <code class="docutils literal notranslate"><span class="pre">FSNT</span></code> in the CESM output, and OLR is called <code class="docutils literal notranslate"><span class="pre">FLNT</span></code>.</em></p>
 <p>Plot a timeseries of <strong>(ASR - OLR), the net downward energy flux at the top of the model</strong>, along with a <strong>12 month rolling mean</strong>, analogous to the plot of global mean surface air temperature in the lecture notes.</p>
 <p><em>Note that the rolling mean is important here because, just like with surface air temperature, there is a large seasonal cycle which makes it harder to see evidence of the climate change signal we wish to focus on.</em></p>
 </section>
 <section id="part-2">
-<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h2>
+<h2>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h2>
 <p>Calculate and show the <strong>time-average ASR</strong> and <strong>time-average OLR</strong> over the final 10 or 20 years of each simulation. Following the lecture notes, use the 20-year slice for the fully coupled simulations, and the 10-year slice for the slab ocean simulations.</p>
 </section>
 <section id="part-3">
-<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h2>
+<h2>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h2>
 <p>Based on your plots and numerical results from Parts 1 and 2, answer these questions:</p>
 <ol class="arabic simple">
 <li><p>Are the two control simulations (fully coupled and slab ocean) near energy balance?</p></li>
@@ -482,22 +494,22 @@ document.write(`
 </ol>
 </section>
 <section id="part-4">
-<h2>Part 4<a class="headerlink" href="#part-4" title="Permalink to this heading">#</a></h2>
+<h2>Part 4<a class="headerlink" href="#part-4" title="Link to this heading">#</a></h2>
 <p>Does the global average ASR <strong>increase</strong> or <strong>decrease</strong> because of CO2-driven warming in the CESM?</p>
 <p>Would you describe this as a <strong>positive</strong> or <strong>negative</strong> feedback?</p>
 </section>
 <section id="part-5">
-<h2>Part 5<a class="headerlink" href="#part-5" title="Permalink to this heading">#</a></h2>
+<h2>Part 5<a class="headerlink" href="#part-5" title="Link to this heading">#</a></h2>
 <p>In the previous question you looked at the global average change in ASR. Now I want you to look at how different parts of the world contribute to this change.</p>
 <p><strong>Make a map</strong> of the <strong>change in ASR</strong> due to the CO2 forcing. Use the average over the last 20 years of the coupled CO2 ramp simulation, comparing against the average over the last 20 years of the control simulation.</p>
 </section>
 <section id="part-6">
-<h2>Part 6<a class="headerlink" href="#part-6" title="Permalink to this heading">#</a></h2>
+<h2>Part 6<a class="headerlink" href="#part-6" title="Link to this heading">#</a></h2>
 <p>Repeat part 5, but this time instead of the change in ASR, look at the just change in the <strong>clear-sky</strong> component of ASR. You can find this in the output field called <code class="docutils literal notranslate"><span class="pre">FSNTC</span></code>.</p>
 <p><em>The <code class="docutils literal notranslate"><span class="pre">FSNTC</span></code> field shows shortwave absorption in the absence of clouds, so the <strong>change</strong> in <code class="docutils literal notranslate"><span class="pre">FSNTC</span></code> shows how absorption and reflection of shortwave are affected by processes other than clouds.</em></p>
 </section>
 <section id="part-7">
-<h2>Part 7<a class="headerlink" href="#part-7" title="Permalink to this heading">#</a></h2>
+<h2>Part 7<a class="headerlink" href="#part-7" title="Link to this heading">#</a></h2>
 <p>Discussion:</p>
 <ul class="simple">
 <li><p>Do your two maps (change in ASR, change in clear-sky ASR) look the same?</p></li>
@@ -507,7 +519,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="credits">
-<h2>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
 <p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
 <p>It is licensed for free and open consumption under the
 <a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
