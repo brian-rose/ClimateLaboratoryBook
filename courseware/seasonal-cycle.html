@@ -663,7 +663,7 @@ C~ T^* \omega \cos(\omega t - \Phi) &amp;=  Q^* \sin\omega t + Q_0  \\
 \[ T^* = \frac{Q^*}{B} \]</div>
 <p>With no heat capacity, there can be no phase shift!  The temperature goes up and does in lockstep with the insolation.
 As we will see, the amplitude of the temperature variations is maximum in this limit.</p>
-<p>As a practical example:  at 45ºN the amplitude of the seasonal insolation cycle is about 180 W m<span class="math notranslate nohighlight">\(^{-2}\)</span>  (see the [Insolation notes](Lecture11 – Insolation.ipynb) – the difference between insolation at summer and winter solstice is about 360 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> which we divide by two to get the amplitude of seasonal variations).</p>
+<p>As a practical example:  at 45ºN the amplitude of the seasonal insolation cycle is about 180 W m<span class="math notranslate nohighlight">\(^{-2}\)</span>  (see the <a class="reference internal" href="insolation.html"><span class="std std-doc">Insolation notes</span></a> – the difference between insolation at summer and winter solstice is about 360 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> which we divide by two to get the amplitude of seasonal variations).</p>
 <p>We will follow our previous EBM work and take <span class="math notranslate nohighlight">\(B = 2\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>. This would give a seasonal temperature amplitude of 90ºC!</p>
 <p>This highlights to important role for heat capacity to buffer the seasonal variations in sunlight.</p>
 </section>
@@ -763,7 +763,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 </section>
 <section id="heat-capacity-of-a-water-surface">
 <h4>Heat capacity of a water surface<a class="headerlink" href="#heat-capacity-of-a-water-surface" title="Link to this heading">#</a></h4>
-<p>As we wrote [back in Lecture 2](./Lecture02 – Solving the zero-dimensional EBM.ipynb), the heat capacity for a well-mixed column of water is</p>
+<p>As we wrote <a class="reference internal" href="zero-dim-ebm.html"><span class="std std-doc">back in the notes on Modeling the Global Energy Budget</span></a>, the heat capacity for a well-mixed column of water is</p>
 <div class="math notranslate nohighlight">
 \[C_w = c_w \rho_w H_w \]</div>
 <p>where</p>
@@ -896,7 +896,7 @@ As we will see, the amplitude of the temperature variations is maximum in this l
 <p>to solve this model numerically.</p>
 <p>One handy feature of <code class="docutils literal notranslate"><span class="pre">climlab</span></code> process code: the function <code class="docutils literal notranslate"><span class="pre">integrate_years()</span></code> automatically calculates the time averaged temperature. So if we run it for exactly one year, we get the annual mean temperature (and many other diagnostics) saved in the dictionary <code class="docutils literal notranslate"><span class="pre">timeave</span></code>.</p>
 <p>We will look at the seasonal cycle of temperature in three different models with different heat capacities (which we express through an equivalent depth of water in meters).</p>
-<p>All other parameters will be [as chosen in Lecture 16](./Lecture16 – Diffusive energy balance model.ipynb) (which focussed on tuning the EBM to the annual mean energy budget).</p>
+<p>All other parameters will be <a class="reference internal" href="one-dim-ebm.html"><span class="std std-doc">as chosen in the notes on the one-dimensional energy balance model</span></a> (which focussed on tuning the EBM to the annual mean energy budget).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  for convenience, set up a dictionary with our reference parameters</span>
