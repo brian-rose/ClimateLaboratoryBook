@@ -511,6 +511,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/climlab-courseware/lib/python3.10/site-packages/climlab/convection/akmaev_adjustment.py:142: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
+  Akmaev_adjustment = jit(signature_or_function=Akmaev_adjustment)
+</pre></div>
+</div>
+</div>
 </div>
 <hr class="docutils" />
 <p><a id='section1'></a></p>
@@ -562,7 +568,8 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
-<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span><span class="p">,</span> <span class="mi">365</span><span class="p">)</span>
+<span class="n">numpoints</span> <span class="o">=</span> <span class="mf">365.</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">numpoints</span><span class="p">,</span> <span class="mi">365</span><span class="p">)</span><span class="o">/</span><span class="n">numpoints</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
 <span class="n">Qnorth</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="n">days</span><span class="p">)</span>
 <span class="n">Qsouth</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="n">days</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Daily average insolation at summer solstice:&#39;</span><span class="p">)</span>
@@ -574,7 +581,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Daily average insolation at summer solstice:
 North Pole: 525.31 W/m2.
-South Pole: 562.03 W/m2.
+South Pole: 562.04 W/m2.
 </pre></div>
 </div>
 </div>
@@ -695,9 +702,9 @@ The farthest point is called <strong>Aphelion</strong>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokenization took: 3.30 ms
-Type conversion took: 2.50 ms
-Parser memory cleanup took: 0.01 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokenization took: 1.58 ms
+Type conversion took: 0.90 ms
+Parser memory cleanup took: 0.00 ms
 </pre></div>
 </div>
 </div>
@@ -740,6 +747,7 @@ Parser memory cleanup took: 0.01 ms
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -752,7 +760,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -969,6 +977,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -990,14 +1003,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1007,13 +1022,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1051,7 +1069,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1076,9 +1095,12 @@ Data variables:
 Attributes:
     Description:  The Berger and Loutre (1991) orbital data table
     Citation:     https://doi.org/10.1016/0277-3791(91)90033-Q
-    Source:       http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLI...
-    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-abcdb016-8094-4a7d-9983-d714aa09b0a5' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-abcdb016-8094-4a7d-9983-d714aa09b0a5' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>kyear</span>: 5001</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-0b024efe-802a-4d7c-8c19-6073c1593db7' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0b024efe-802a-4d7c-8c19-6073c1593db7' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>kyear</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 -1 -2 -3 ... -4998 -4999 -5000</div><input id='attrs-b1eb30b2-68e6-4b2a-9c71-5b37a7de0173' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b1eb30b2-68e6-4b2a-9c71-5b37a7de0173' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-36bad26a-f8a1-4c90-afca-08b31b9ad236' class='xr-var-data-in' type='checkbox'><label for='data-36bad26a-f8a1-4c90-afca-08b31b9ad236' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([    0,    -1,    -2, ..., -4998, -4999, -5000])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-726544de-72f2-432f-8f10-a3e1ac1aa378' class='xr-section-summary-in' type='checkbox'  checked><label for='section-726544de-72f2-432f-8f10-a3e1ac1aa378' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ecc</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.01724 0.01764 ... 0.02689 0.02685</div><input id='attrs-6e4b4ecb-48db-459a-9abc-e7c35ed4f058' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-6e4b4ecb-48db-459a-9abc-e7c35ed4f058' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f1d0c2f5-7474-4e3a-aba8-5eccfb678d78' class='xr-var-data-in' type='checkbox'><label for='data-f1d0c2f5-7474-4e3a-aba8-5eccfb678d78' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.017236, 0.017644, 0.018024, ..., 0.026988, 0.026892, 0.026851])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>long_peri</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>281.4 264.3 ... -8.362e+04</div><input id='attrs-4a058a85-3f16-4a09-aa20-e82268da4bb9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4a058a85-3f16-4a09-aa20-e82268da4bb9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5358fe6c-d90c-4d3f-aa57-7d0203534d89' class='xr-var-data-in' type='checkbox'><label for='data-5358fe6c-d90c-4d3f-aa57-7d0203534d89' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([   281.37,    264.26,    247.23, ..., -83591.56, -83606.08,
-       -83620.57])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>obliquity</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>23.45 23.57 23.7 ... 22.52 22.52</div><input id='attrs-11ad48e9-0542-4d40-a045-d48edfa8d37a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-11ad48e9-0542-4d40-a045-d48edfa8d37a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c04a1484-7170-4974-8358-630e8baadb90' class='xr-var-data-in' type='checkbox'><label for='data-c04a1484-7170-4974-8358-630e8baadb90' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([23.446, 23.573, 23.697, ..., 22.546, 22.525, 22.525])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precession</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.0169 -0.01756 ... -0.02639</div><input id='attrs-4d32119e-5e45-4c78-8913-2e479ac1f0ec' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4d32119e-5e45-4c78-8913-2e479ac1f0ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-522aab33-cab5-4cc5-809e-18295af10515' class='xr-var-data-in' type='checkbox'><label for='data-522aab33-cab5-4cc5-809e-18295af10515' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-0.0169 , -0.01756, -0.01662, ..., -0.0256 , -0.02683, -0.02639])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>426.8 430.1 434.7 ... 409.1 412.3</div><input id='attrs-700c17e7-4360-44ab-8004-e5d297f8a64d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-700c17e7-4360-44ab-8004-e5d297f8a64d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8437a245-1c1c-494c-88b5-f073720342ea' class='xr-var-data-in' type='checkbox'><label for='data-8437a245-1c1c-494c-88b5-f073720342ea' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([426.76, 430.12, 434.69, ..., 407.47, 409.12, 412.29])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>455.6 455.5 454.1 ... 450.6 447.3</div><input id='attrs-2270c258-acbd-4306-8b22-433e6da39a19' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2270c258-acbd-4306-8b22-433e6da39a19' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b3f8bde9-5570-47a4-9001-4731a2012506' class='xr-var-data-in' type='checkbox'><label for='data-b3f8bde9-5570-47a4-9001-4731a2012506' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([455.58, 455.48, 454.07, ..., 452.94, 450.63, 447.34])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>440.6 442.5 445.6 ... 433.5 436.9</div><input id='attrs-b8f99686-045f-49e0-bd16-3cb9b10610b5' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b8f99686-045f-49e0-bd16-3cb9b10610b5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a2ba3a90-99ea-4f28-9450-5ba218b2334e' class='xr-var-data-in' type='checkbox'><label for='data-a2ba3a90-99ea-4f28-9450-5ba218b2334e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([440.6 , 442.48, 445.62, ..., 431.53, 433.54, 436.89])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>470.4 468.6 465.5 ... 477.5 474.0</div><input id='attrs-4fc4d991-5c68-4d22-ae29-cdf1858d9333' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4fc4d991-5c68-4d22-ae29-cdf1858d9333' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-56bcea06-fe94-48f2-9098-e83dfab5675a' class='xr-var-data-in' type='checkbox'><label for='data-56bcea06-fe94-48f2-9098-e83dfab5675a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([470.35, 468.57, 465.49, ..., 479.68, 477.53, 474.03])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a6bcb176-bd4e-4843-8033-6567e58bc39a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a6bcb176-bd4e-4843-8033-6567e58bc39a' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>The Berger and Loutre (1991) orbital data table</dd><dt><span>Citation :</span></dt><dd>https://doi.org/10.1016/0277-3791(91)90033-Q</dd><dt><span>Source :</span></dt><dd>http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLIMLAB/orbital/orbit91</dd><dt><span>Note :</span></dt><dd>Longitude of perihelion is defined to be 0 degrees at Northern Vernal Equinox. This differs by 180 degrees from orbit91 source file.</dd></dl></div></li></ul></div></div></div></div>
+    Source:       http://www.atmos.albany.edu/facstaff/brose/resources/climla...
+    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b30b7b7b-b169-4d50-9169-6f2ecdbe915b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b30b7b7b-b169-4d50-9169-6f2ecdbe915b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>kyear</span>: 5001</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-fa56b31a-cef8-4a09-ad4b-f6ad34ac248c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fa56b31a-cef8-4a09-ad4b-f6ad34ac248c' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>kyear</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 -1 -2 -3 ... -4998 -4999 -5000</div><input id='attrs-391d744c-3002-4c51-ae92-4dcc24e069d5' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-391d744c-3002-4c51-ae92-4dcc24e069d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5fba5331-71bb-40a0-8dcb-fa8334d68d6e' class='xr-var-data-in' type='checkbox'><label for='data-5fba5331-71bb-40a0-8dcb-fa8334d68d6e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([    0,    -1,    -2, ..., -4998, -4999, -5000])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2caeb1b0-adf1-4c7c-81d0-fa6b24eb0ea3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2caeb1b0-adf1-4c7c-81d0-fa6b24eb0ea3' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ecc</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.01724 0.01764 ... 0.02689 0.02685</div><input id='attrs-f3f4d1a5-437f-43cc-a61d-e34922ad84f8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f3f4d1a5-437f-43cc-a61d-e34922ad84f8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-19c4b5c4-f192-447b-bb31-b87c44792ee6' class='xr-var-data-in' type='checkbox'><label for='data-19c4b5c4-f192-447b-bb31-b87c44792ee6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.017236, 0.017644, 0.018024, ..., 0.026988, 0.026892, 0.026851])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>long_peri</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>281.4 264.3 ... -8.362e+04</div><input id='attrs-c31e9b78-5e99-443d-80ad-e3cceaff91a7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c31e9b78-5e99-443d-80ad-e3cceaff91a7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1372ae42-6d2a-4857-b362-c95450c53428' class='xr-var-data-in' type='checkbox'><label for='data-1372ae42-6d2a-4857-b362-c95450c53428' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([   281.37,    264.26,    247.23, ..., -83591.56, -83606.08,
+       -83620.57])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>obliquity</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>23.45 23.57 23.7 ... 22.52 22.52</div><input id='attrs-be9d6b35-60c9-4bdf-a59b-28bcbf025375' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-be9d6b35-60c9-4bdf-a59b-28bcbf025375' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3e7bb0b7-4195-4f1a-a1dd-a5883032a037' class='xr-var-data-in' type='checkbox'><label for='data-3e7bb0b7-4195-4f1a-a1dd-a5883032a037' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([23.446, 23.573, 23.697, ..., 22.546, 22.525, 22.525])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precession</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-0.0169 -0.01756 ... -0.02639</div><input id='attrs-29e0ea74-ab25-4738-8289-294df8c306d5' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-29e0ea74-ab25-4738-8289-294df8c306d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fa93516d-27cf-4527-b35d-108f6033a6d8' class='xr-var-data-in' type='checkbox'><label for='data-fa93516d-27cf-4527-b35d-108f6033a6d8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-0.0169 , -0.01756, -0.01662, ..., -0.0256 , -0.02683, -0.02639])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>426.8 430.1 434.7 ... 409.1 412.3</div><input id='attrs-44a76f1f-6888-4ae2-9ca1-5d6ef89a2194' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-44a76f1f-6888-4ae2-9ca1-5d6ef89a2194' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e3d29566-a7f4-4446-93b0-73ca89c00b76' class='xr-var-data-in' type='checkbox'><label for='data-e3d29566-a7f4-4446-93b0-73ca89c00b76' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([426.76, 430.12, 434.69, ..., 407.47, 409.12, 412.29])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>455.6 455.5 454.1 ... 450.6 447.3</div><input id='attrs-9eb456ae-ee37-4bf4-bd74-d90a7cea663c' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-9eb456ae-ee37-4bf4-bd74-d90a7cea663c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5771823e-5a1d-4630-9f23-d3d9a817e8e8' class='xr-var-data-in' type='checkbox'><label for='data-5771823e-5a1d-4630-9f23-d3d9a817e8e8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([455.58, 455.48, 454.07, ..., 452.94, 450.63, 447.34])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>440.6 442.5 445.6 ... 433.5 436.9</div><input id='attrs-087b9993-87cf-4619-a9f0-ef734443f9c3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-087b9993-87cf-4619-a9f0-ef734443f9c3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5f12aaeb-af09-44ad-b39d-7e8f9bfccebe' class='xr-var-data-in' type='checkbox'><label for='data-5f12aaeb-af09-44ad-b39d-7e8f9bfccebe' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([440.6 , 442.48, 445.62, ..., 431.53, 433.54, 436.89])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>470.4 468.6 465.5 ... 477.5 474.0</div><input id='attrs-39db6c5b-9855-4149-a6cb-a24e0826ece7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-39db6c5b-9855-4149-a6cb-a24e0826ece7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-183acc88-c934-43a8-9cef-f5745534e2ff' class='xr-var-data-in' type='checkbox'><label for='data-183acc88-c934-43a8-9cef-f5745534e2ff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([470.35, 468.57, 465.49, ..., 479.68, 477.53, 474.03])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1f4600e3-0b8c-491b-845b-aaad5a59224b' class='xr-section-summary-in' type='checkbox'  ><label for='section-1f4600e3-0b8c-491b-845b-aaad5a59224b' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>kyear</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-36c2d8d2-0da1-4719-9e39-1a584693df6c' class='xr-index-data-in' type='checkbox'/><label for='index-36c2d8d2-0da1-4719-9e39-1a584693df6c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([    0,    -1,    -2,    -3,    -4,    -5,    -6,    -7,    -8,    -9,
+       ...
+       -4991, -4992, -4993, -4994, -4995, -4996, -4997, -4998, -4999, -5000],
+      dtype=&#x27;int64&#x27;, name=&#x27;kyear&#x27;, length=5001))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fea77868-d722-4df0-9a52-bf131076ff64' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fea77868-d722-4df0-9a52-bf131076ff64' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>The Berger and Loutre (1991) orbital data table</dd><dt><span>Citation :</span></dt><dd>https://doi.org/10.1016/0277-3791(91)90033-Q</dd><dt><span>Source :</span></dt><dd>http://www.atmos.albany.edu/facstaff/brose/resources/climlab_data/orbital/orbit91</dd><dt><span>Note :</span></dt><dd>Longitude of perihelion is defined to be 0 degrees at Northern Vernal Equinox. This differs by 180 degrees from orbit91 source file.</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Make reference plots of the variation in the three orbital parameter over the last 1 million years</p>
 <div class="cell docutils container">
@@ -1121,6 +1143,7 @@ Attributes:
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1133,7 +1156,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -1350,6 +1373,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1371,14 +1399,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1388,13 +1418,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1432,7 +1465,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1457,9 +1491,14 @@ Data variables:
 Attributes:
     Description:  The Berger and Loutre (1991) orbital data table
     Citation:     https://doi.org/10.1016/0277-3791(91)90033-Q
-    Source:       http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLI...
-    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-dd42bc02-50b4-4b0b-8816-fce24e963521' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-dd42bc02-50b4-4b0b-8816-fce24e963521' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>kyear</span>: 1001</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-669338c1-dfc6-4d47-baaa-96923bd82a16' class='xr-section-summary-in' type='checkbox'  checked><label for='section-669338c1-dfc6-4d47-baaa-96923bd82a16' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>kyear</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1e+03 -999.0 -998.0 ... -1.0 0.0</div><input id='attrs-c0d5a550-7236-46da-a54d-126e28e48b95' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c0d5a550-7236-46da-a54d-126e28e48b95' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-15b71377-9669-4e7b-bfb4-1200990e3c22' class='xr-var-data-in' type='checkbox'><label for='data-15b71377-9669-4e7b-bfb4-1200990e3c22' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-1000.,  -999.,  -998., ...,    -2.,    -1.,     0.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-aa747323-7bf9-4ae8-a81b-2b62441a6f0a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-aa747323-7bf9-4ae8-a81b-2b62441a6f0a' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ecc</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03576 0.03695 ... 0.01764 0.01724</div><input id='attrs-39357ab7-75e0-4064-95b1-08fbdf37bbfd' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-39357ab7-75e0-4064-95b1-08fbdf37bbfd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7c56b98c-3db2-4e6f-badc-3beaa518d13a' class='xr-var-data-in' type='checkbox'><label for='data-7c56b98c-3db2-4e6f-badc-3beaa518d13a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.035765, 0.036953, 0.038114, ..., 0.018024, 0.017644, 0.017236])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>long_peri</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1.644e+04 -1.642e+04 ... 281.4</div><input id='attrs-c728ff59-6760-4a50-b1e6-9ca597ca7cf0' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c728ff59-6760-4a50-b1e6-9ca597ca7cf0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f1043b59-07b2-42c2-b652-38cef8e401e5' class='xr-var-data-in' type='checkbox'><label for='data-f1043b59-07b2-42c2-b652-38cef8e401e5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-16437.54, -16421.71, -16405.83, ...,    247.23,    264.26,
-          281.37])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>obliquity</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>23.78 23.84 23.88 ... 23.57 23.45</div><input id='attrs-4f3fd63f-5532-4abc-bfc5-2e3b11eab860' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4f3fd63f-5532-4abc-bfc5-2e3b11eab860' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4b4d327c-81ef-4a9d-b4fa-955e9073391e' class='xr-var-data-in' type='checkbox'><label for='data-4b4d327c-81ef-4a9d-b4fa-955e9073391e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([23.778, 23.835, 23.877, ..., 23.697, 23.573, 23.446])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precession</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03018 0.02458 ... -0.0169</div><input id='attrs-9b5da482-90ff-4d49-8e14-2332df016879' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-9b5da482-90ff-4d49-8e14-2332df016879' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-524a2319-4469-4cf8-98b0-ce1738fb9af0' class='xr-var-data-in' type='checkbox'><label for='data-524a2319-4469-4cf8-98b0-ce1738fb9af0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 0.03018,  0.02458,  0.0166 , ..., -0.01662, -0.01756, -0.0169 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>478.7 479.0 476.4 ... 430.1 426.8</div><input id='attrs-0e2b2fbb-af0b-45f5-8b3c-67955ae1086a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-0e2b2fbb-af0b-45f5-8b3c-67955ae1086a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-30bf510f-6c3a-430e-a286-e8e7789e3b7a' class='xr-var-data-in' type='checkbox'><label for='data-30bf510f-6c3a-430e-a286-e8e7789e3b7a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([478.69, 478.97, 476.36, ..., 434.69, 430.12, 426.76])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>414.9 416.2 419.9 ... 455.5 455.6</div><input id='attrs-afdb32c6-5ce5-4692-a3b3-6b8a11997591' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-afdb32c6-5ce5-4692-a3b3-6b8a11997591' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-142d9d14-e564-4806-b3b9-97e647f2a4b3' class='xr-var-data-in' type='checkbox'><label for='data-142d9d14-e564-4806-b3b9-97e647f2a4b3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([414.92, 416.23, 419.89, ..., 454.07, 455.48, 455.58])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>489.6 489.1 485.9 ... 442.5 440.6</div><input id='attrs-bc8b1358-2382-48e9-bde7-3a94ca73a294' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-bc8b1358-2382-48e9-bde7-3a94ca73a294' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e3d1871a-d17c-4b4c-8e28-e977dd6f0e0a' class='xr-var-data-in' type='checkbox'><label for='data-e3d1871a-d17c-4b4c-8e28-e977dd6f0e0a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([489.61, 489.11, 485.86, ..., 445.62, 442.48, 440.6 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>424.4 425.0 428.3 ... 468.6 470.4</div><input id='attrs-99323354-6783-41b8-a31c-90069d1899e1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-99323354-6783-41b8-a31c-90069d1899e1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f96c305f-b00b-45db-a032-b4f065feee01' class='xr-var-data-in' type='checkbox'><label for='data-f96c305f-b00b-45db-a032-b4f065feee01' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([424.37, 425.04, 428.27, ..., 465.49, 468.57, 470.35])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-291848b8-1cff-40c5-9601-bed95d7b06ee' class='xr-section-summary-in' type='checkbox'  checked><label for='section-291848b8-1cff-40c5-9601-bed95d7b06ee' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>The Berger and Loutre (1991) orbital data table</dd><dt><span>Citation :</span></dt><dd>https://doi.org/10.1016/0277-3791(91)90033-Q</dd><dt><span>Source :</span></dt><dd>http://thredds.atmos.albany.edu:8080/thredds/fileServer/CLIMLAB/orbital/orbit91</dd><dt><span>Note :</span></dt><dd>Longitude of perihelion is defined to be 0 degrees at Northern Vernal Equinox. This differs by 180 degrees from orbit91 source file.</dd></dl></div></li></ul></div></div></div></div>
+    Source:       http://www.atmos.albany.edu/facstaff/brose/resources/climla...
+    Note:         Longitude of perihelion is defined to be 0 degrees at North...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-dac78f44-334d-41c7-b77a-b58bcfc6a855' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-dac78f44-334d-41c7-b77a-b58bcfc6a855' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>kyear</span>: 1001</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-481e2a02-2c12-4bac-9f11-56505b7bd584' class='xr-section-summary-in' type='checkbox'  checked><label for='section-481e2a02-2c12-4bac-9f11-56505b7bd584' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>kyear</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1e+03 -999.0 -998.0 ... -1.0 0.0</div><input id='attrs-73e6a7a3-b0a8-4475-babc-00d6dfec3d2f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-73e6a7a3-b0a8-4475-babc-00d6dfec3d2f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f80dc439-4960-43fa-91de-9bf8a1c7f39e' class='xr-var-data-in' type='checkbox'><label for='data-f80dc439-4960-43fa-91de-9bf8a1c7f39e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-1000.,  -999.,  -998., ...,    -2.,    -1.,     0.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-df868ce9-4158-4b77-88e0-f56708dbe6a4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-df868ce9-4158-4b77-88e0-f56708dbe6a4' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>ecc</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03576 0.03695 ... 0.01764 0.01724</div><input id='attrs-83e2c6e5-8726-4e08-a275-2a3996b842dc' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-83e2c6e5-8726-4e08-a275-2a3996b842dc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3e3ef607-9598-40d6-ba87-e6e5838a6122' class='xr-var-data-in' type='checkbox'><label for='data-3e3ef607-9598-40d6-ba87-e6e5838a6122' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([0.035765, 0.036953, 0.038114, ..., 0.018024, 0.017644, 0.017236])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>long_peri</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-1.644e+04 -1.642e+04 ... 281.4</div><input id='attrs-55821d05-f818-498b-825c-dced3316d299' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-55821d05-f818-498b-825c-dced3316d299' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3a9b370c-ba3d-4b42-aa50-655868fa506d' class='xr-var-data-in' type='checkbox'><label for='data-3a9b370c-ba3d-4b42-aa50-655868fa506d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-16437.54, -16421.71, -16405.83, ...,    247.23,    264.26,
+          281.37])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>obliquity</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>23.78 23.84 23.88 ... 23.57 23.45</div><input id='attrs-5199a77d-b588-449d-b57c-87e03f5bfdd7' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-5199a77d-b588-449d-b57c-87e03f5bfdd7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2e2b6884-5d4e-4067-a8d0-f0ff1a9931db' class='xr-var-data-in' type='checkbox'><label for='data-2e2b6884-5d4e-4067-a8d0-f0ff1a9931db' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([23.778, 23.835, 23.877, ..., 23.697, 23.573, 23.446])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>precession</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.03018 0.02458 ... -0.0169</div><input id='attrs-8e0a8956-95be-42d8-a290-d764a728515b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8e0a8956-95be-42d8-a290-d764a728515b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-27e84e49-fcc1-4440-8ddf-f5b87677f307' class='xr-var-data-in' type='checkbox'><label for='data-27e84e49-fcc1-4440-8ddf-f5b87677f307' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 0.03018,  0.02458,  0.0166 , ..., -0.01662, -0.01756, -0.0169 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>478.7 479.0 476.4 ... 430.1 426.8</div><input id='attrs-36d0951c-7ea5-4760-a465-6437371830e4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-36d0951c-7ea5-4760-a465-6437371830e4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f177fdef-4351-4904-9c68-c9ebb5a20460' class='xr-var-data-in' type='checkbox'><label for='data-f177fdef-4351-4904-9c68-c9ebb5a20460' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([478.69, 478.97, 476.36, ..., 434.69, 430.12, 426.76])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>65SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>414.9 416.2 419.9 ... 455.5 455.6</div><input id='attrs-c527372b-bda3-4687-b11e-c3cf780f6897' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c527372b-bda3-4687-b11e-c3cf780f6897' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4bcc8d3d-d35e-44a3-9e9b-8d3eaac7e236' class='xr-var-data-in' type='checkbox'><label for='data-4bcc8d3d-d35e-44a3-9e9b-8d3eaac7e236' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([414.92, 416.23, 419.89, ..., 454.07, 455.48, 455.58])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15NJul</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>489.6 489.1 485.9 ... 442.5 440.6</div><input id='attrs-7011d560-9ad4-4d08-9a29-27b00e68488a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7011d560-9ad4-4d08-9a29-27b00e68488a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a433b960-9213-4707-a28a-a9e17aa2d96b' class='xr-var-data-in' type='checkbox'><label for='data-a433b960-9213-4707-a28a-a9e17aa2d96b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([489.61, 489.11, 485.86, ..., 445.62, 442.48, 440.6 ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>15SJan</span></div><div class='xr-var-dims'>(kyear)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>424.4 425.0 428.3 ... 468.6 470.4</div><input id='attrs-4fb9b6ed-cb23-45d6-9852-940f7775643b' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4fb9b6ed-cb23-45d6-9852-940f7775643b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-276931a5-5194-4593-82b4-23a532f0bbd7' class='xr-var-data-in' type='checkbox'><label for='data-276931a5-5194-4593-82b4-23a532f0bbd7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([424.37, 425.04, 428.27, ..., 465.49, 468.57, 470.35])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7516461f-90d7-42f3-95e7-9824c65e1bfe' class='xr-section-summary-in' type='checkbox'  ><label for='section-7516461f-90d7-42f3-95e7-9824c65e1bfe' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>kyear</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b45f996d-0177-4d5a-a4c7-ed46416a6005' class='xr-index-data-in' type='checkbox'/><label for='index-b45f996d-0177-4d5a-a4c7-ed46416a6005' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-1000.0,  -999.0,  -998.0,  -997.0,  -996.0,  -995.0,  -994.0,  -993.0,
+        -992.0,  -991.0,
+       ...
+          -9.0,    -8.0,    -7.0,    -6.0,    -5.0,    -4.0,    -3.0,    -2.0,
+          -1.0,     0.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;kyear&#x27;, length=1001))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5fe784aa-d9e4-41a9-b2f5-a4681418a0e1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5fe784aa-d9e4-41a9-b2f5-a4681418a0e1' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Description :</span></dt><dd>The Berger and Loutre (1991) orbital data table</dd><dt><span>Citation :</span></dt><dd>https://doi.org/10.1016/0277-3791(91)90033-Q</dd><dt><span>Source :</span></dt><dd>http://www.atmos.albany.edu/facstaff/brose/resources/climlab_data/orbital/orbit91</dd><dt><span>Note :</span></dt><dd>Longitude of perihelion is defined to be 0 degrees at Northern Vernal Equinox. This differs by 180 degrees from orbit91 source file.</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The object called</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">orb</span>
@@ -1491,7 +1530,7 @@ Attributes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Obliquity (axial tilt) $\\Phi$&#39;)
 </pre></div>
 </div>
-<img alt="../_images/8f4a81a7b8556694545143bd383897ed9b1c93d0ddcbbd7b219300b433fb3ef9.png" src="../_images/8f4a81a7b8556694545143bd383897ed9b1c93d0ddcbbd7b219300b433fb3ef9.png" />
+<img alt="../_images/4f5caf374e627b1cb583102eff956bffd3218d07d0e973fea330b08d15932128.png" src="../_images/4f5caf374e627b1cb583102eff956bffd3218d07d0e973fea330b08d15932128.png" />
 </div>
 </div>
 <section id="timescales-of-orbital-variation">
@@ -1533,8 +1572,8 @@ Attributes:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">20.</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
-<span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">thisorb</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days20</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">20.</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
+<span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">days20</span><span class="p">,</span> <span class="n">thisorb</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1570,6 +1609,7 @@ Attributes:
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1582,7 +1622,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -1799,6 +1839,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -1820,14 +1865,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -1837,13 +1884,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1881,7 +1931,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1895,9 +1946,9 @@ array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])
 Coordinates:
-  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>day</span>: 50</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-4e3f4222-4c18-4b59-9e56-3f72addecf86' class='xr-array-in' type='checkbox' checked><label for='section-4e3f4222-4c18-4b59-9e56-3f72addecf86' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</span></div><div class='xr-array-data'><pre>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
+  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>day</span>: 50</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-5633ca9b-faf9-4a5f-b19b-115f1f4e153e' class='xr-array-in' type='checkbox' checked><label for='section-5633ca9b-faf9-4a5f-b19b-115f1f4e153e' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</span></div><div class='xr-array-data'><pre>array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
        0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
-       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])</pre></div></div></li><li class='xr-section-item'><input id='section-5a53d259-eaa4-4eb6-88e6-c277d6feb4af' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5a53d259-eaa4-4eb6-88e6-c277d6feb4af' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>day</span></div><div class='xr-var-dims'>(day)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.26 25.34 32.42 ... 358.2 365.2</div><input id='attrs-59cd69e0-54c1-4eb6-b1b8-051f6c6e47dd' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-59cd69e0-54c1-4eb6-b1b8-051f6c6e47dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-83abd58c-5de5-4dd2-bbca-80c617923917' class='xr-var-data-in' type='checkbox'><label for='data-83abd58c-5de5-4dd2-bbca-80c617923917' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.26211 ,  25.343336,  32.424563,  39.505789,  46.587015,  53.668242,
+       0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.])</pre></div></div></li><li class='xr-section-item'><input id='section-2a45ede6-fdb3-4799-822a-793ab2895198' class='xr-section-summary-in' type='checkbox'  checked><label for='section-2a45ede6-fdb3-4799-822a-793ab2895198' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>day</span></div><div class='xr-var-dims'>(day)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.26 25.34 32.42 ... 358.2 365.2</div><input id='attrs-b94c0c43-1d71-4d69-b905-6ced5373a4fe' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b94c0c43-1d71-4d69-b905-6ced5373a4fe' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3c20f163-7766-4f23-bbb1-38d5e0ec3f4e' class='xr-var-data-in' type='checkbox'><label for='data-3c20f163-7766-4f23-bbb1-38d5e0ec3f4e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.26211 ,  25.343336,  32.424563,  39.505789,  46.587015,  53.668242,
         60.749468,  67.830694,  74.911921,  81.993147,  89.074373,  96.1556  ,
        103.236826, 110.318052, 117.399279, 124.480505, 131.561731, 138.642958,
        145.724184, 152.80541 , 159.886637, 166.967863, 174.049089, 181.130316,
@@ -1905,12 +1956,29 @@ Coordinates:
        230.6989  , 237.780126, 244.861352, 251.942579, 259.023805, 266.105031,
        273.186258, 280.267484, 287.34871 , 294.429937, 301.511163, 308.592389,
        315.673616, 322.754842, 329.836068, 336.917295, 343.998521, 351.079747,
-       358.160974, 365.2422  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-57155f9f-7a05-42aa-bc95-de19c1c39840' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-57155f9f-7a05-42aa-bc95-de19c1c39840' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+       358.160974, 365.2422  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fb6cb9e3-82af-4a78-8060-687b187d2d4f' class='xr-section-summary-in' type='checkbox'  ><label for='section-fb6cb9e3-82af-4a78-8060-687b187d2d4f' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>day</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-3cfbabc9-0482-47e9-b59a-dd9be2a44471' class='xr-index-data-in' type='checkbox'/><label for='index-3cfbabc9-0482-47e9-b59a-dd9be2a44471' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([18.262110000000003, 25.343336326530615,  32.42456265306122,
+        39.50578897959184,  46.58701530612245,  53.66824163265306,
+       60.749467959183676,  67.83069428571429,   74.9119206122449,
+        81.99314693877551,  89.07437326530612,  96.15559959183673,
+       103.23682591836736, 110.31805224489796, 117.39927857142858,
+       124.48050489795918,  131.5617312244898, 138.64295755102043,
+         145.724183877551, 152.80541020408165, 159.88663653061224,
+       166.96786285714288,  174.0490891836735, 181.13031551020407,
+       188.21154183673468, 195.29276816326532, 202.37399448979593,
+       209.45522081632654, 216.53644714285716, 223.61767346938777,
+       230.69889979591838, 237.78012612244896, 244.86135244897957,
+       251.94257877551024,  259.0238051020408,  266.1050314285714,
+        273.1862577551021,  280.2674840816327,  287.3487104081633,
+        294.4299367346939, 301.51116306122447,  308.5923893877552,
+        315.6736157142857,  322.7548420408163, 329.83606836734697,
+        336.9172946938776, 343.99852102040813,  351.0797473469388,
+        358.1609736734694,           365.2422],
+      dtype=&#x27;float64&#x27;, name=&#x27;day&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-49fc1fb5-b6df-4d2d-9e68-d91819926483' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-49fc1fb5-b6df-4d2d-9e68-d91819926483' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Compare this with the same calculation for default (present-day) orbital parameters:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">days</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="n">days20</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1946,6 +2014,7 @@ Coordinates:
 }
 
 html[theme=dark],
+body[data-theme=dark],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
@@ -1958,7 +2027,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -2175,6 +2244,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -2196,14 +2270,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -2213,13 +2289,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -2257,7 +2336,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -2281,7 +2361,7 @@ array([  0.        ,   0.        ,   0.        ,   0.        ,
          0.        ,   0.        ,   0.        ,   0.        ,
          0.        ,   0.        ])
 Coordinates:
-  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>day</span>: 50</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-9c3e5387-def5-451c-b3ca-e762f413daa7' class='xr-array-in' type='checkbox' checked><label for='section-9c3e5387-def5-451c-b3ca-e762f413daa7' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</span></div><div class='xr-array-data'><pre>array([  0.        ,   0.        ,   0.        ,   0.        ,
+  * day      (day) float64 18.26 25.34 32.42 39.51 ... 344.0 351.1 358.2 365.2</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>day</span>: 50</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-87a0eb8a-5f82-48be-aaf4-3dc585ca3274' class='xr-array-in' type='checkbox' checked><label for='section-87a0eb8a-5f82-48be-aaf4-3dc585ca3274' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 ... 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0</span></div><div class='xr-array-data'><pre>array([  0.        ,   0.        ,   0.        ,   0.        ,
          0.        ,   0.        ,   0.        ,   0.        ,
          0.        ,  18.86214697,  85.00612352, 149.06416099,
        210.14318852, 267.43771123, 320.2345592 , 367.91459762,
@@ -2293,7 +2373,7 @@ Coordinates:
          0.        ,   0.        ,   0.        ,   0.        ,
          0.        ,   0.        ,   0.        ,   0.        ,
          0.        ,   0.        ,   0.        ,   0.        ,
-         0.        ,   0.        ])</pre></div></div></li><li class='xr-section-item'><input id='section-eadd714f-0ba0-401f-ab9b-45955be7a4f9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-eadd714f-0ba0-401f-ab9b-45955be7a4f9' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>day</span></div><div class='xr-var-dims'>(day)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.26 25.34 32.42 ... 358.2 365.2</div><input id='attrs-f1a25ee0-fc61-4489-af87-fe12a997827a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f1a25ee0-fc61-4489-af87-fe12a997827a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5fcbc39a-ac43-4bba-93e3-66b1ee7da7ae' class='xr-var-data-in' type='checkbox'><label for='data-5fcbc39a-ac43-4bba-93e3-66b1ee7da7ae' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.26211 ,  25.343336,  32.424563,  39.505789,  46.587015,  53.668242,
+         0.        ,   0.        ])</pre></div></div></li><li class='xr-section-item'><input id='section-f79d6ee8-8061-4308-a650-67ac426ef1d8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f79d6ee8-8061-4308-a650-67ac426ef1d8' class='xr-section-summary' >Coordinates: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>day</span></div><div class='xr-var-dims'>(day)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>18.26 25.34 32.42 ... 358.2 365.2</div><input id='attrs-d876cdcd-d05f-46a2-870e-a7e676416aa2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-d876cdcd-d05f-46a2-870e-a7e676416aa2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4bb66dc9-e7c9-45f4-91d0-d6b0caafad0c' class='xr-var-data-in' type='checkbox'><label for='data-4bb66dc9-e7c9-45f4-91d0-d6b0caafad0c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 18.26211 ,  25.343336,  32.424563,  39.505789,  46.587015,  53.668242,
         60.749468,  67.830694,  74.911921,  81.993147,  89.074373,  96.1556  ,
        103.236826, 110.318052, 117.399279, 124.480505, 131.561731, 138.642958,
        145.724184, 152.80541 , 159.886637, 166.967863, 174.049089, 181.130316,
@@ -2301,7 +2381,24 @@ Coordinates:
        230.6989  , 237.780126, 244.861352, 251.942579, 259.023805, 266.105031,
        273.186258, 280.267484, 287.34871 , 294.429937, 301.511163, 308.592389,
        315.673616, 322.754842, 329.836068, 336.917295, 343.998521, 351.079747,
-       358.160974, 365.2422  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-97b9483c-cb49-4d64-8c29-208f2ab6a0ea' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-97b9483c-cb49-4d64-8c29-208f2ab6a0ea' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+       358.160974, 365.2422  ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c3026234-ed21-4ad6-8d3d-f8c623bf426e' class='xr-section-summary-in' type='checkbox'  ><label for='section-c3026234-ed21-4ad6-8d3d-f8c623bf426e' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>day</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d578307b-db50-4454-a837-98620fbd433f' class='xr-index-data-in' type='checkbox'/><label for='index-d578307b-db50-4454-a837-98620fbd433f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([18.262110000000003, 25.343336326530615,  32.42456265306122,
+        39.50578897959184,  46.58701530612245,  53.66824163265306,
+       60.749467959183676,  67.83069428571429,   74.9119206122449,
+        81.99314693877551,  89.07437326530612,  96.15559959183673,
+       103.23682591836736, 110.31805224489796, 117.39927857142858,
+       124.48050489795918,  131.5617312244898, 138.64295755102043,
+         145.724183877551, 152.80541020408165, 159.88663653061224,
+       166.96786285714288,  174.0490891836735, 181.13031551020407,
+       188.21154183673468, 195.29276816326532, 202.37399448979593,
+       209.45522081632654, 216.53644714285716, 223.61767346938777,
+       230.69889979591838, 237.78012612244896, 244.86135244897957,
+       251.94257877551024,  259.0238051020408,  266.1050314285714,
+        273.1862577551021,  280.2674840816327,  287.3487104081633,
+        294.4299367346939, 301.51116306122447,  308.5923893877552,
+        315.6736157142857,  322.7548420408163, 329.83606836734697,
+        336.9172946938776, 343.99852102040813,  351.0797473469388,
+        358.1609736734694,           365.2422],
+      dtype=&#x27;float64&#x27;, name=&#x27;day&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3e989974-267b-4571-988d-0991254cf614' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-3e989974-267b-4571-988d-0991254cf614' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Do you understand what’s going on here?</p>
 <hr class="docutils" />
@@ -2331,7 +2428,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/640d35817fb7cf9194bd8bf586b32df13ab959d2ed6b6520228fc6ae0858b17f.png" src="../_images/640d35817fb7cf9194bd8bf586b32df13ab959d2ed6b6520228fc6ae0858b17f.png" />
+<img alt="../_images/8e987b375ef628a28af1c834f52c7a2c3407c95fd17592623a74df936831a040.png" src="../_images/8e987b375ef628a28af1c834f52c7a2c3407c95fd17592623a74df936831a040.png" />
 </div>
 </div>
 <p>Indeed, there was an increase of 60 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> over a 10 kyr interval following the LGM.</p>
@@ -2350,7 +2447,6 @@ Coordinates:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">181</span><span class="p">)</span>
-<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">50.</span><span class="p">)</span><span class="o">/</span><span class="mi">50</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
 
 <span class="n">orb_0</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># present-day orbital parameters</span>
 <span class="n">orb_10</span> <span class="o">=</span> <span class="n">OrbitalTable</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">kyear</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># orbital parameters for 10 kyrs before present</span>
@@ -2387,7 +2483,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4d680d8527d3756bb953d2c2f9531d2e039d7c89b67a7413592adc1520f952d8.png" src="../_images/4d680d8527d3756bb953d2c2f9531d2e039d7c89b67a7413592adc1520f952d8.png" />
+<img alt="../_images/bc88c3dc650fde72ea1584aeb2761f60abd8bc42a39ae643944bdcc52b9ab09f.png" src="../_images/bc88c3dc650fde72ea1584aeb2761f60abd8bc42a39ae643944bdcc52b9ab09f.png" />
 </div>
 </div>
 <p>This figure shows that the <strong>insolation at summer solstice</strong> does not tell the whole story!</p>
@@ -2402,7 +2498,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0065104307832676315
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.006517159167911077
 </pre></div>
 </div>
 </div>
@@ -2426,16 +2522,13 @@ Coordinates:
 <p>Create a large array of insolation over the whole globe, whole year, and for every set of orbital parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">91</span><span class="p">)</span>
-<span class="n">num</span> <span class="o">=</span> <span class="mf">365.</span>
-<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="n">num</span><span class="p">,</span><span class="mi">365</span><span class="p">)</span><span class="o">/</span><span class="n">num</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
-<span class="n">Q</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">orb</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Q</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">orb</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span> <span class="n">Q</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(91, 365, 1001)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(181, 365, 1001)
 </pre></div>
 </div>
 </div>
@@ -2452,7 +2545,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(91, 1001)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(181, 1001)
 (1001,)
 </pre></div>
 </div>
@@ -2490,7 +2583,7 @@ Coordinates:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6e8dcbb7577e617fef5411bd128bc7427091082360986e078d4da65127cd2bee.png" src="../_images/6e8dcbb7577e617fef5411bd128bc7427091082360986e078d4da65127cd2bee.png" />
+<img alt="../_images/bfe34514b612805337ea8e6a1e3bb9cf85316de112877a8cacade5e1089c194d.png" src="../_images/bfe34514b612805337ea8e6a1e3bb9cf85316de112877a8cacade5e1089c194d.png" />
 </div>
 </div>
 <p>We see that</p>
