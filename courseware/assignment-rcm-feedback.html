@@ -489,14 +489,14 @@ document.write(`
 <h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
 <p>Here you look at the effects of doubling CO<span class="math notranslate nohighlight">\(_2\)</span> in the single-column Radiative-Convective model.</p>
 <p><em>This exercise just repeats what we did in the lecture notes. You want to ensure that you can reproduce the same results before starting the next question, because you will need these results below.</em></p>
-<p>Following the lecture notes on climate sensitivity, do the following:</p>
+<p>Following the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/sensitivity-feedback.html">lecture notes on climate sensitivity</a>, do the following:</p>
 <ul class="simple">
 <li><p>set up a single-column radiative-convective model with specific humidity taken from the CESM control simulation</p></li>
 <li><p>Run this control model out to equilibrium</p></li>
-<li><p>Using a clone of the control model, calculate the stratosphere-adjusted radiative forcing <span class="math notranslate nohighlight">\(\Delta R\)</span>.</p></li>
-<li><p>Using another model clone, timestep the model out to equilibrium <strong>with fixed specific humidity</strong></p></li>
-<li><p>Calculate the no-feedback Equilibrium Climate Sensitivity (ECS)</p></li>
-<li><p>Also calculate the no-feedback climate response parameter <span class="math notranslate nohighlight">\(\lambda_0\)</span></p></li>
+<li><p>Using a clone of the control model, double the atmospheric CO<span class="math notranslate nohighlight">\(_2\)</span> and calculate the <em>stratosphere-adjusted radiative forcing</em> <span class="math notranslate nohighlight">\(\Delta R\)</span>.</p></li>
+<li><p>Using another model clone with doubled CO<span class="math notranslate nohighlight">\(_2\)</span>, timestep the model out to equilibrium. <em>For this calculation, do not modify the specific humidity as we are assuming that there is no change in the water vapor distribution as the climate warms.</em></p></li>
+<li><p>Calculate the no-feedback Equilibrium Climate Sensitivity (ECS). <em>Recall that this is a number in Kelvin.</em></p></li>
+<li><p>Also calculate the no-feedback climate response parameter <span class="math notranslate nohighlight">\(\lambda_0\)</span> in W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p></li>
 </ul>
 <p>Verify and show that you get the same results as we did in the lecture notes.</p>
 </section>
@@ -505,7 +505,7 @@ document.write(`
 <section id="instructions">
 <h3>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h3>
 <p>A typical, expected feature of global warming is that the <strong>upper troposphere warms more than the surface</strong>. (Later we will see that this does occur in the CESM simulations).</p>
-<p>This feature is <strong>not represented in our radiative-convective model</strong>, which is forced to a single prescribed lapse rate due to our convective adjustment.</p>
+<p>This feature is <strong>not represented in our standard radiative-convective model</strong>, which is forced to a single prescribed lapse rate due to our convective adjustment.</p>
 <p>Here you will suppose that other physical processes modify this lapse rate as the climate warms.</p>
 <p><strong>Repeat the RCM global warming calculation, but implement two different feedbacks:</strong></p>
 <ul class="simple">
@@ -516,16 +516,17 @@ document.write(`
 \[ \Gamma = \Gamma_{ref} - (0.3 \text{ km}) \Delta T_s \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Gamma_{ref}\)</span> is the critical lapse rate you used in your control model, probably 6.5 K / km, and <span class="math notranslate nohighlight">\(\Delta T_s\)</span> is the <strong>current value of the surface warming relative to the control</strong> in units of K.</p>
 <p>So, for example if the model has warmed by 1 K at the surface, then our parameterization says that the critical lapse rate should be 6.5 - 0.3 = 6.2 K / km.</p>
-<p>Follow the example in the lecture notes where we implemented the fixed relative humidity. In addition to adjusting the <code class="docutils literal notranslate"><span class="pre">specific_humidity</span></code> at each timestep, you should also change the attribute</p>
+<p>Follow the example in the lecture notes where we implemented the fixed relative humidity. Remember that we needed to adjust the <code class="docutils literal notranslate"><span class="pre">specific_humidity</span></code> field of our radiation process at every timestep. Here we still need to do that, but in addition, we also need to change the attribute</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adj_lapse_rate</span>
 </pre></div>
 </div>
 <p>of the convection process at each timestep.</p>
-<p>For example, if you have a model called <code class="docutils literal notranslate"><span class="pre">mymodel</span></code> that contains a <code class="docutils literal notranslate"><span class="pre">ConvectiveAdjustment</span></code> process called <code class="docutils literal notranslate"><span class="pre">Convection</span></code>:</p>
+<p>For example, if you have a model called <code class="docutils literal notranslate"><span class="pre">mymodel</span></code> that contains a <code class="docutils literal notranslate"><span class="pre">ConvectiveAdjustment</span></code> process called <code class="docutils literal notranslate"><span class="pre">Convection</span></code>, here is some code that you would need at every timestep:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mymodel</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Convection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">adj_lapse_rate</span> <span class="o">=</span> <span class="n">newvalue</span>
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">newvalue</span></code> is a number in K / km.</p>
+<p>You will need to write a loop where, at every timestep, you calculate the appropriate value of <code class="docutils literal notranslate"><span class="pre">newvalue</span></code> and set the lapse rate parameter as shown above.</p>
 </section>
 <section id="specific-questions">
 <h3>Specific questions:<a class="headerlink" href="#specific-questions" title="Link to this heading">#</a></h3>
