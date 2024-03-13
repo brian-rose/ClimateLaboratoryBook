@@ -497,6 +497,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/climlab-courseware/lib/python3.10/site-packages/climlab/convection/akmaev_adjustment.py:142: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
+  Akmaev_adjustment = jit(signature_or_function=Akmaev_adjustment)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,7 +550,7 @@ document.write(`
 Total elapsed time is 5.000000000000044 years.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Field([-5.7127636e-12])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Field([-5.82645043e-12])
 </pre></div>
 </div>
 </div>
@@ -623,20 +629,22 @@ Total elapsed time is 5.000000000000044 years.
         <span class="n">DeltaTs</span> <span class="o">=</span> <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">Ts</span>
         <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Convection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">adj_lapse_rate</span> <span class="o">=</span> <span class="mf">6.5</span> <span class="o">+</span> <span class="n">lapse_change_factor</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaTs</span>
         <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The TOA imbalance is </span><span class="si">%0.5f</span><span class="s1"> W/m2&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">ASR</span><span class="o">-</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">OLR</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The ECS is </span><span class="si">%0.3f</span><span class="s1"> K&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">Ts</span><span class="p">))</span>
+    <span class="n">imbalance</span> <span class="o">=</span> <span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>  <span class="c1"># convert to a single scalar</span>
+    <span class="n">ecs</span> <span class="o">=</span> <span class="p">(</span><span class="n">rcm_2xCO2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">rcm_control</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The TOA imbalance is </span><span class="si">{:.2e}</span><span class="s1"> W/m2&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">imbalance</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The ECS is </span><span class="si">{:.2f}</span><span class="s1"> K&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ecs</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating High-sensitivity RCM
-The TOA imbalance is 0.00003 W/m2
-The ECS is 3.566 K
+The TOA imbalance is 3.11e-05 W/m2
+The ECS is 3.57 K
 
 Integrating Low-sensitivity RCM
-The TOA imbalance is 0.00022 W/m2
-The ECS is 2.216 K
+The TOA imbalance is 2.22e-04 W/m2
+The ECS is 2.22 K
 </pre></div>
 </div>
 </div>
@@ -779,8 +787,8 @@ This code will take a long time to run! While it's running, we'll think about wh
     <span class="n">thisTs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">thisnetrad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">thisTocean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Tocean</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">num_years</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">thisTs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Ts</span>
-    <span class="n">thisnetrad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">OLR</span>
+    <span class="n">thisTs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Ts</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">thisnetrad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     <span class="n">thisTocean</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">deep</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">Tocean</span>
     <span class="n">Tsarray</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisTs</span><span class="p">)</span>
     <span class="n">Tocean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">thisTocean</span><span class="p">)</span>
@@ -806,9 +814,9 @@ This code will take a long time to run! While it's running, we'll think about wh
             <span class="n">model</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;Convection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">adj_lapse_rate</span> <span class="o">=</span> <span class="mf">6.5</span> <span class="o">+</span> <span class="n">lapse_change_factor</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">DeltaTs</span>
             <span class="n">model</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
             
-            <span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Ts</span>
+            <span class="n">Tsarray</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Ts</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
             <span class="n">Tocean</span><span class="p">[</span><span class="n">n</span><span class="p">][:,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">Tocean</span>
-            <span class="n">netrad</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">OLR</span>
+            <span class="n">netrad</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1280,7 +1288,7 @@ Year  400 , CO2 mixing ratio is  698.3536522015938  ppm.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a66cd74d265b2953ce1ba051141abf6ea307c65415130c4e0359c5a58951181.png" src="../_images/2a66cd74d265b2953ce1ba051141abf6ea307c65415130c4e0359c5a58951181.png" />
+<img alt="../_images/1914293b8bbd79aa10ef06766d4a9b8a2844d5fe061a829e5823b1444c484d56.png" src="../_images/1914293b8bbd79aa10ef06766d4a9b8a2844d5fe061a829e5823b1444c484d56.png" />
 </div>
 </div>
 </section>
