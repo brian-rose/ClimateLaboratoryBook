@@ -496,7 +496,7 @@ document.write(`
 <section id="distribution-of-insolation">
 <h2>1. Distribution of insolation<a class="headerlink" href="#distribution-of-insolation" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
-<p><em>These notes closely follow section 2.7 of <em>Global Physical Climatology</em> by <span id="id1">Hartmann [<a class="reference internal" href="../references.html#id14" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">1994</a>]</span></em>.</p>
+<p><em>These notes closely follow section 2.7 of <em>Global Physical Climatology</em> by <span id="id1">Hartmann [<a class="reference internal" href="../references.html#id15" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">1994</a>]</span></em>.</p>
 <p>The <strong>amount of solar radiation</strong> incident on the top of the atmosphere (what we call the “insolation”) depends on</p>
 <ul class="simple">
 <li><p>latitude</p></li>
@@ -508,7 +508,7 @@ document.write(`
 <h3>Solar zenith angle<a class="headerlink" href="#solar-zenith-angle" title="Link to this heading">#</a></h3>
 <p>We define the <strong>solar zenith angle</strong> <span class="math notranslate nohighlight">\(\theta_s\)</span> as the angle between the local normal to Earth’s surface and a line between a point on Earth’s surface and the sun.</p>
 <p><img alt="Hartmann Figure 2.5" src="../_images/Hartmann_Fig2.5.png" /></p>
-<p>From the above figure (reproduced from <span id="id2">Hartmann [<a class="reference internal" href="../references.html#id14" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">1994</a>]</span>), the ratio of the shadow area to the surface area is equal to the cosine of the solar zenith angle.</p>
+<p>From the above figure (reproduced from <span id="id2">Hartmann [<a class="reference internal" href="../references.html#id15" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">1994</a>]</span>), the ratio of the shadow area to the surface area is equal to the cosine of the solar zenith angle.</p>
 </section>
 <section id="instantaneous-solar-flux">
 <h3>Instantaneous solar flux<a class="headerlink" href="#instantaneous-solar-flux" title="Link to this heading">#</a></h3>
@@ -577,8 +577,59 @@ document.write(`
 <p>The appropriate daily average here is weighted with respect to the insolation, rather than weighted by time. The formula is</p>
 <div class="math notranslate nohighlight">
 \[ \overline{\cos\theta_s}^{day} = \frac{\int_{-h_0}^{h_0} Q \cos\theta_s~dh}{\int_{-h_0}^{h_0} Q ~dh} \]</div>
-<p><img alt="Hartmann Figure 2.8" src="../_images/Hartmann_Fig2.8.png" /></p>
-<p>The average zenith angle is much higher at the poles than in the tropics <span id="id3">[<a class="reference internal" href="../references.html#id14" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">Hartmann, 1994</a>]</span>. This contributes to the very high surface albedos observed at high latitudes.</p>
+<p><span id="id3">Cronin [<a class="reference internal" href="../references.html#id2" title="Timothy W. Cronin. On the choice of average solar zenith angle. J. Atmos. Sci., 71:2994–3003, 2014. doi:10.1175/JAS-D-13-0392.1.">2014</a>]</span> also shows that the insolation-weighted value <span class="math notranslate nohighlight">\(\overline{\cos\theta_s}^{day}\)</span> is a good choice for minimizing scattering bias under a variety of circumstances.</p>
+<p>To calculate <span class="math notranslate nohighlight">\(\overline{\cos\theta_s}^{day}\)</span>, we first note that the factor <span class="math notranslate nohighlight">\(S_0 \left(\frac{\overline{d}}{d}\right)^2\)</span> cancels out of the top and bottom of the above expression, leaving</p>
+<div class="math notranslate nohighlight">
+\[ \overline{\cos\theta_s}^{Q} = \frac{\int_{-h_0}^{h_0} \cos^2 \theta_s ~dh}{\int_{-h_0}^{h_0} \cos\theta_s ~dh} \]</div>
+<p>With a bit of work, we can substitute in the expression for <span class="math notranslate nohighlight">\(\cos\theta_s\)</span> in terms of latitude <span class="math notranslate nohighlight">\(\phi\)</span>, declination angle <span class="math notranslate nohighlight">\(\delta\)</span> and hour angle <span class="math notranslate nohighlight">\(h\)</span> and integrate the numerator and denominator of the above expression. I implement the resulting formulas in the Python code below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">tan</span><span class="p">,</span><span class="n">arccos</span><span class="p">,</span><span class="n">arcsin</span><span class="p">,</span><span class="n">arctan</span><span class="p">,</span><span class="n">pi</span><span class="p">,</span><span class="nb">abs</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
+
+<span class="n">declinations</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;21 December&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">23.45</span><span class="p">,</span>
+                <span class="s1">&#39;Equinox&#39;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span>
+                <span class="s1">&#39;21 June&#39;</span><span class="p">:</span> <span class="mf">23.45</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">hour_angle_at_sunset</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">,</span> <span class="c1"># there is sunset/sunrise</span>
+              <span class="n">arccos</span><span class="p">(</span><span class="o">-</span><span class="n">tan</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">tan</span><span class="p">(</span><span class="n">delta</span><span class="p">)),</span>
+              <span class="c1"># otherwise figure out if it&#39;s all night or all day</span>
+              <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">phi</span><span class="o">*</span><span class="n">delta</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">insolation_weighted_coszen</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+    <span class="n">h0</span> <span class="o">=</span> <span class="n">hour_angle_at_sunset</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">h0</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">h0</span><span class="p">)</span>
+    <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">h0</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> 
+        <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">h0</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">h0</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">delta</span> <span class="ow">in</span> <span class="n">declinations</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">arccos</span><span class="p">(</span><span class="n">insolation_weighted_coszen</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">delta</span><span class="p">),</span> <span class="n">phi</span><span class="p">))),</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Insolation-weighted daily average solar zenith angle as a function of latitude&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_93315/797907564.py:14: RuntimeWarning: invalid value encountered in arccos
+  arccos(-tan(phi)*tan(delta)),
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_93315/797907564.py:23: RuntimeWarning: invalid value encountered in divide
+  return numerator / denominator / 2
+</pre></div>
+</div>
+<img alt="../_images/96d5065cb906a0f7e23f681fdc36f635d71e77c201aa6d2f113afbeb6a872843.png" src="../_images/96d5065cb906a0f7e23f681fdc36f635d71e77c201aa6d2f113afbeb6a872843.png" />
+</div>
+</div>
+<p><em>The figure above reproduces Figure 2.8 from <span id="id4">[<a class="reference internal" href="../references.html#id15" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">Hartmann, 1994</a>]</span>.</em></p>
+<p>The average zenith angle is much higher at the poles than in the tropics. This contributes to the very high surface albedos observed at high latitudes.</p>
 <hr class="docutils" />
 <p><a id='section2'></a></p>
 </section>
@@ -606,11 +657,14 @@ document.write(`
 <h3>Using the <code class="docutils literal notranslate"><span class="pre">daily_insolation</span></code> function<a class="headerlink" href="#using-the-daily-insolation-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
 <span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/climlab-courseware/lib/python3.10/site-packages/climlab/convection/akmaev_adjustment.py:142: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
+  Akmaev_adjustment = jit(signature_or_function=Akmaev_adjustment)
 </pre></div>
 </div>
 </div>
@@ -625,7 +679,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function daily_insolation in module climlab.solar.insolation:
 
-daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 281.37, &#39;obliquity&#39;: 23.446}, S0=1365.2, day_type=1)
+daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 281.37, &#39;obliquity&#39;: 23.446}, S0=1365.2, day_type=1, days_per_year=365.2422)
     Compute daily average insolation given latitude, time of year and orbital parameters.
     
     Orbital parameters can be interpolated to any time in the last 5 Myears with
@@ -710,7 +764,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123.9532155180746
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123.95321551807459
 </pre></div>
 </div>
 </div>
@@ -747,7 +801,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Daily average insolation on March 21&#39;)
 </pre></div>
 </div>
-<img alt="../_images/10f4aac278687dabc9fbcb65706608697e01cc16f720765d12323a4d41562cec.png" src="../_images/10f4aac278687dabc9fbcb65706608697e01cc16f720765d12323a4d41562cec.png" />
+<img alt="../_images/1ff659639c22267e9a5bbe61635992963a01f1c06ce55ba48e9d961bfd8d2925.png" src="../_images/1ff659639c22267e9a5bbe61635992963a01f1c06ce55ba48e9d961bfd8d2925.png" />
 </div>
 </div>
 </section>
@@ -771,7 +825,9 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mf">90.</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span><span class="p">,</span> <span class="mi">365</span> <span class="p">)</span>
+<span class="n">numpoints</span> <span class="o">=</span> <span class="mf">365.</span>
+<span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">numpoints</span><span class="p">,</span> <span class="mi">365</span><span class="p">)</span><span class="o">/</span><span class="n">numpoints</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
+
 <span class="n">Q</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">days</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -791,10 +847,10 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x1687dbfd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x12fdcbf40&gt;
 </pre></div>
 </div>
-<img alt="../_images/97d023b6eea57e02842afce215240cb5190c374ba3a10759148aebab8dd75cf2.png" src="../_images/97d023b6eea57e02842afce215240cb5190c374ba3a10759148aebab8dd75cf2.png" />
+<img alt="../_images/039c644e5bbdc95eb342f3534387deada291dc3cfc5f4f8673507e481e753997.png" src="../_images/039c644e5bbdc95eb342f3534387deada291dc3cfc5f4f8673507e481e753997.png" />
 </div>
 </div>
 <section id="time-and-space-averages">
@@ -808,7 +864,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The annual, global average insolation is 341.38 W/m2.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The annual, global average insolation is 341.35 W/m2.
 </pre></div>
 </div>
 </div>
@@ -830,7 +886,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3282b134cc6565d6c27097b4b5e6c79782c57c63758f4c1a18f4e018ab4f9abb.png" src="../_images/3282b134cc6565d6c27097b4b5e6c79782c57c63758f4c1a18f4e018ab4f9abb.png" />
+<img alt="../_images/d435cd4cd1a5d1bf1fd95d2938a25086d590217fb00239ff72da1f062ffc713f.png" src="../_images/d435cd4cd1a5d1bf1fd95d2938a25086d590217fb00239ff72da1f062ffc713f.png" />
 </div>
 </div>
 </section>
