@@ -1,0 +1,1902 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>23. Ice-albedo feedback and Snowball Earth in the EBM &#8212; The Climate Laboratory</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/albedo-snowball';</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/albedo-snowball.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced topic: Ice albedo feedback in the EBM" href="advanced-albedo-feedback.html" />
+    <link rel="prev" title="22. A peek at numerical methods for diffusion models" href="numerical-diffusion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Climate Laboratory</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About this Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../who-for.html">Who is the book for?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How to use this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attribution.html">How to cite and reuse this material</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models-budgets-fun.html">1. Climate models, the global energy budget, and Fun with Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="zero-dim-ebm.html">2. Modeling the global energy budget</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="analytical-efolding.html">Advanced topic: Analytical solution of the global Energy Balance Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="climate-system-models.html">3. The climate system and climate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introducing-cesm.html">4. Introducing the Community Earth System Model (CESM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climlab-intro.html">5. Building simple climate models using climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiation.html">6. A Brief Review of Radiation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="elementary-greenhouse.html">7. Elementary greenhouse models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy-greenhouse.html">Advanced topic: Solving the two-layer grey gas model analytically with sympy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="grey-radiation-climlab.html">8. Grey radiation modeling with climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiative-transfer.html">9. Modeling non-scattering radiative transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectral-bands.html">10. Who needs spectral bands? We do. Some baby steps…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radeq.html">11. Radiative Equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rce.html">12. Radiative-Convective Equilibrium</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sensitivity-feedback.html">13. Climate sensitivity and feedback</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-sensitivity-feedback.html">Advanced topic: Climate sensitivity and feedback</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-cesm.html">14. Examing the transient and equilibrium CO2 response in the CESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-toy.html">15. Toy models of transient warming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clouds.html">16. Clouds and cloud feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insolation.html">17. Insolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orbital.html">18. Orbital variations, insolation, and the ice ages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="heat-transport.html">19. Heat transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-heat-transport.html">Advanced topic: Heat transport decomposition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="one-dim-ebm.html">20. The one-dimensional energy balance model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal-cycle.html">21. Modeling the seasonal cycle of surface temperature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical-diffusion.html">22. A peek at numerical methods for diffusion models</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">23. Ice-albedo feedback and Snowball Earth in the EBM</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-albedo-feedback.html">Advanced topic: Ice albedo feedback in the EBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="surface-energy-balance.html">24. The surface energy balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="land-ocean-contrast.html">25. Land-Ocean contrasts under climate change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="water-water-everywhere.html">26. Water, water everywhere!</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about-assignments.html">About the assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-zero-dim-ebm.html">Assignment: Climate change in the zero-dimensional EBM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="assignment-cesm-control.html">Assignment: Global average budgets in the CESM pre-industrial control simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignment-cesm-control-hints.html">Additional hints and guidance for CESM budgets assignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-simple-clouds.html">Assignment: Clouds in the Leaky Greenhouse Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-rcm-feedback.html">Assignment: Feedbacks in the Radiative-Convective Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-cesm-climate-change.html">Assignment: Climate change in the CESM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-insolation-orbit.html">Assignment: Insolation and orbital parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Postamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/albedo-snowball.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https%3A//github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/albedo-snowball.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courseware/albedo-snowball.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ice-albedo feedback and Snowball Earth in the EBM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-the-1d-ebm">1. Review of the 1D EBM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-snow-ice-line-in-the-ebm">2. Interactive snow/ice line in the EBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-dependent-ice-line">Temperature-dependent ice line</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-ebm-with-variable-snow-ice-line-in-climlab">3. Solving the EBM with variable snow/ice line in CLIMLAB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-amplified-warming-in-the-ebm">4. Polar-amplified warming in the EBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-small-radiative-forcing">Add a small radiative forcing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-different-kind-of-climate-forcing-changing-the-solar-constant">5. A different kind of climate forcing: changing the solar constant</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-decrease-s-0">What happens if we decrease <span class="math notranslate nohighlight">\(S_0\)</span>?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-large-ice-cap-instability">6. The large ice cap instability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-decrease-s-0-even-more">What happens if we decrease <span class="math notranslate nohighlight">\(S_0\)</span> even more?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-what-happens-if-we-set-s-0-back-to-its-present-day-value">Now what happens if we set <span class="math notranslate nohighlight">\(S_0\)</span> back to its present-day value?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-neoproterozoic-snowball-earth">7. The Neoproterozoic Snowball Earth</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geologic-time-scale">The Geologic Time Scale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensive-evidence-for-large-glaciers-at-sea-level-in-the-tropics">Extensive evidence for large glaciers at sea level in the tropics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-snowball-earth-hypothesis">The Snowball Earth hypothesis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-complete-hysteresis-curve-for-the-1d-diffusive-ebm">8. Computing the complete hysteresis curve for the 1D diffusive EBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-un-freeze-the-snowball">How to un-freeze the Snowball</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ice-albedo-feedback-and-snowball-earth-in-the-ebm">
+<h1><span class="section-number">23. </span>Ice-albedo feedback and Snowball Earth in the EBM<a class="headerlink" href="#ice-albedo-feedback-and-snowball-earth-in-the-ebm" title="Link to this heading">#</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<hr class="docutils" />
+<section id="review-of-the-1d-ebm">
+<h2>1. Review of the 1D EBM<a class="headerlink" href="#review-of-the-1d-ebm" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Last time we derived the equation for the one-dimensional EBM with diffusive heat transport:</p>
+<div class="math notranslate nohighlight">
+\[ C \frac{\partial T}{\partial t} = (1-\alpha) ~ Q - \left( A + B~T \right) + \frac{D}{\cos⁡\phi } \frac{\partial }{\partial \phi} \left(   \cos⁡\phi  ~ \frac{\partial T}{\partial \phi} \right) \]</div>
+<p>We have chosen the following parameter values, which seems to give a reasonable fit to the observed <strong>annual mean temperature and energy budget</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( A = 210 ~ \text{W m}^{-2}\)</span> (emission at 0<span class="math notranslate nohighlight">\(^\circ\)</span>C)</p></li>
+<li><p><span class="math notranslate nohighlight">\( B = 2 ~ \text{W m}^{-2}~^\circ\text{C}^{-1} \)</span> (increase in emission per degree, related to net longwave climate feedback)</p></li>
+<li><p><span class="math notranslate nohighlight">\( D = 0.6 ~ \text{W m}^{-2}~^\circ\text{C}^{-1} \)</span> (thermal diffusivity of the climate system)</p></li>
+</ul>
+<p>We looked at the adjustment of this model to equilibrium, with annual mean insolation <span class="math notranslate nohighlight">\(\overline{Q(\phi)}\)</span> and specified albedo <span class="math notranslate nohighlight">\(\alpha(\phi)\)</span> (giving a reasonable fit to observations).</p>
+<p>We also tuned the diffuvisity <span class="math notranslate nohighlight">\(D\)</span> so that our annual mean solution has a reasonable pole-to-equator temperature gradient and peak poleward heat transport.</p>
+<p>Actually for the new version of this model with interactive ice line, we are going to reduce the diffusivity down to <span class="math notranslate nohighlight">\( D = 0.55 ~ \text{W m}^{-2}~^\circ\text{C}^{-1} \)</span>.</p>
+<hr class="docutils" />
+<p><a id='section2'></a></p>
+</section>
+<section id="interactive-snow-ice-line-in-the-ebm">
+<h2>2. Interactive snow/ice line in the EBM<a class="headerlink" href="#interactive-snow-ice-line-in-the-ebm" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>What we want to do today is introduce another process into our model: an <strong>interactive snow and ice line</strong>.</p>
+<p>The idea is simply that, as the climate gets warmer, the snow and ice will retreat poleward, and the planetary albedo will decrease (or vice-versa).</p>
+<p>We modeled this in the zero-dimensional model by using a kind of ramp function for the global mean albedo as a function of global mean temperature.</p>
+<p>Here, since our model resolves temperature at each latitude, we want to do something more physical: <em>suppose that the surface is covered in ice and snow wherever the temperature is below some threshold <span class="math notranslate nohighlight">\(T_f\)</span>.</em></p>
+<section id="temperature-dependent-ice-line">
+<h3>Temperature-dependent ice line<a class="headerlink" href="#temperature-dependent-ice-line" title="Link to this heading">#</a></h3>
+<p>Let the surface albedo be larger wherever the temperature is below some threshold <span class="math notranslate nohighlight">\(T_f\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \alpha\left(\phi, T(\phi) \right) = \left\{\begin{array}{ccc} 
+\alpha_0 + \alpha_2 P_2(\sin\phi) &amp; ~ &amp; T(\phi) &gt; T_f  &amp; \text{(no ice)} \\
+a_i &amp; ~ &amp; T(\phi) \le T_f &amp; \text{(ice-covered)} \\
+\end{array} \right. \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_2(\sin\phi) = \frac{1}{2}\left( 3\left(\sin\phi\right)^2 - 1 \right) \)</span> is called the <em>second Legendre Polynomial</em> (just a mathematically convenient description of a smooth variation between the equator and pole).</p>
+<p>Empirically, we follow classic work by Budyko and set the threshold temperature</p>
+<div class="math notranslate nohighlight">
+\[ T_f = -10^\circ\text{C} \]</div>
+<p>This is known as a “step function” formula, because the value of <span class="math notranslate nohighlight">\(\alpha\)</span> steps or jumps up to a higher value as we cross the ice line.</p>
+<hr class="docutils" />
+<p><a id='section3'></a></p>
+</section>
+</section>
+<section id="solving-the-ebm-with-variable-snow-ice-line-in-climlab">
+<h2>3. Solving the EBM with variable snow/ice line in CLIMLAB<a class="headerlink" href="#solving-the-ebm-with-variable-snow-ice-line-in-climlab" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">climlab</span>
+<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  for convenience, set up a dictionary with our reference parameters</span>
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;D&#39;</span><span class="p">:</span><span class="mf">0.55</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span><span class="mi">210</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a0&#39;</span><span class="p">:</span><span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;a2&#39;</span><span class="p">:</span><span class="mf">0.078</span><span class="p">,</span> <span class="s1">&#39;ai&#39;</span><span class="p">:</span><span class="mf">0.62</span><span class="p">,</span> <span class="s1">&#39;Tf&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">10.</span><span class="p">}</span>
+<span class="n">model1</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">EBM_annual</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;EBM with interactive ice line&#39;</span><span class="p">,</span>
+                            <span class="n">num_lat</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> 
+                            <span class="n">D</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> 
+                            <span class="n">A</span><span class="o">=</span><span class="mf">210.</span><span class="p">,</span> 
+                            <span class="n">B</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> 
+                            <span class="n">Tf</span><span class="o">=-</span><span class="mf">10.</span><span class="p">,</span> 
+                            <span class="n">a0</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> 
+                            <span class="n">a2</span><span class="o">=</span><span class="mf">0.078</span><span class="p">,</span> 
+                            <span class="n">ai</span><span class="o">=</span><span class="mf">0.62</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>climlab Process of type &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (180, 1) 
+The subprocess tree: 
+EBM with interactive ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.aplusbt.AplusBT&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.AnnualMeanInsolation&#39;&gt;
+   albedo: &lt;class &#39;climlab.surface.albedo.StepFunctionAlbedo&#39;&gt;
+      iceline: &lt;class &#39;climlab.surface.albedo.Iceline&#39;&gt;
+      warm_albedo: &lt;class &#39;climlab.surface.albedo.P2Albedo&#39;&gt;
+      cold_albedo: &lt;class &#39;climlab.surface.albedo.ConstantAlbedo&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;
+   diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalHeatDiffusion&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we provided a parameter <code class="docutils literal notranslate"><span class="pre">ai</span></code> for the icy albedo, our model now contains several sub-processes contained within the process called <code class="docutils literal notranslate"><span class="pre">albedo</span></code>. Together these implement the step-function formula above.</p>
+<p>The process called <code class="docutils literal notranslate"><span class="pre">iceline</span></code> simply looks for grid cells with temperature below <span class="math notranslate nohighlight">\(T_f\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;timestep&#39;: 350632.51200000005, &#39;S0&#39;: 1365.2, &#39;s2&#39;: -0.48, &#39;A&#39;: 210.0, &#39;B&#39;: 2.0, &#39;D&#39;: 0.55, &#39;Tf&#39;: -10.0, &#39;water_depth&#39;: 10.0, &#39;a0&#39;: 0.3, &#39;a2&#39;: 0.078, &#39;ai&#39;: 0.62}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  A python shortcut... we can use the dictionary to pass lots of input arguments simultaneously:</span>
+
+<span class="c1">#  same thing as before, but written differently:</span>
+<span class="n">model1</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">EBM_annual</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;EBM with interactive ice line&#39;</span><span class="p">,</span>
+                            <span class="n">num_lat</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+                            <span class="o">**</span><span class="n">param</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>climlab Process of type &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (180, 1) 
+The subprocess tree: 
+EBM with interactive ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
+   LW: &lt;class &#39;climlab.radiation.aplusbt.AplusBT&#39;&gt;
+   insolation: &lt;class &#39;climlab.radiation.insolation.AnnualMeanInsolation&#39;&gt;
+   albedo: &lt;class &#39;climlab.surface.albedo.StepFunctionAlbedo&#39;&gt;
+      iceline: &lt;class &#39;climlab.surface.albedo.Iceline&#39;&gt;
+      warm_albedo: &lt;class &#39;climlab.surface.albedo.P2Albedo&#39;&gt;
+      cold_albedo: &lt;class &#39;climlab.surface.albedo.ConstantAlbedo&#39;&gt;
+   SW: &lt;class &#39;climlab.radiation.absorbed_shorwave.SimpleAbsorbedShortwave&#39;&gt;
+   diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalHeatDiffusion&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ebm_plot</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">return_fig</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>    
+    <span class="n">templimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="mi">32</span>
+    <span class="n">radlimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">340</span><span class="p">,</span> <span class="mi">340</span>
+    <span class="n">htlimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span>
+    <span class="n">latlimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span>
+    <span class="n">lat_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+    
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">templimits</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (deg C)&#39;</span><span class="p">)</span>
+    
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">ASR</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SW&#39;</span> <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="o">-</span><span class="n">e</span><span class="o">.</span><span class="n">OLR</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LW&#39;</span> <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">,</span> <span class="s1">&#39;c-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;net rad&#39;</span> <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">heat_transport_convergence</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;dyn&#39;</span> <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">net_radiation</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="n">heat_transport_convergence</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;total&#39;</span> <span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">radlimits</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Energy budget (W m$^{-2}$)&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    
+    <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">lat_bounds</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">heat_transport</span> <span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">htlimits</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Heat transport (PW)&#39;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">]:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">latlimits</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">lat_ticks</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">return_fig</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5 years.
+Total elapsed time is 5.000000000000044 years.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Diagnostics in this model are mostly on the latitude axis, e.g.:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span><span class="o">.</span><span class="n">ASR</span><span class="o">.</span><span class="n">to_xarray</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (depth: 1, lat: 180)&gt;
+array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
+         66.15142104,  66.36917776,  66.63263704,  66.93823592,
+         67.2910667 ,  67.69112601,  68.13642192,  68.63061992,
+         69.17502064,  69.76984994,  70.41686003,  71.11806553,
+         71.8766754 ,  72.69521702,  73.57685571,  74.52622406,
+        126.5151735 , 128.64225662, 130.94704321, 133.4799311 ,
+        136.31700247, 139.35073236, 142.52593606, 145.81221046,
+        149.18851573, 152.63894184, 156.15081983, 159.71369723,
+        163.31871561, 166.9582033 , 170.62539457, 174.3142284 ,
+        178.01919988, 181.73524799, 185.45766933, 189.1820507 ,
+        192.90421597, 196.62018373, 200.32613334, 204.01837763,
+        207.69334083, 211.3475408 , 214.97757473, 218.58010762,
+        222.15186324, 225.68961698, 229.19019037, 232.6504471 ,
+        236.06729007, 239.43765961, 242.75853253, 246.02692181,
+        249.23987716, 252.39448586, 255.48787433, 258.51720991,
+        261.47970311, 264.37261007, 267.19323534, 269.93893481,
+        272.60711881, 275.19525537, 277.70087357, 280.12156692,
+        282.45499686, 284.69889616, 286.8510725 , 288.9094118 ,
+        290.87188171, 292.73653488, 294.50151227, 296.16504627,
+        297.72546377, 299.18118908, 300.5307467 , 301.77276399,
+...
+        301.77276406, 300.53074678, 299.18118916, 297.72546386,
+        296.16504637, 294.50151238, 292.73653499, 290.87188183,
+        288.90941193, 286.85107263, 284.6988963 , 282.454997  ,
+        280.12156707, 277.70087372, 275.19525553, 272.60711897,
+        269.93893498, 267.19323552, 264.37261025, 261.4797033 ,
+        258.51721011, 255.48787453, 252.39448606, 249.23987736,
+        246.02692203, 242.75853274, 239.43765984, 236.06729029,
+        232.65044733, 229.19019061, 225.68961722, 222.15186349,
+        218.58010787, 214.97757498, 211.34754106, 207.69334109,
+        204.01837789, 200.32613361, 196.620184  , 192.90421625,
+        189.18205098, 185.45766961, 181.73524828, 178.01920017,
+        174.31422869, 170.62539486, 166.95820359, 163.31871591,
+        159.71369753, 156.15082013, 152.63894214, 149.18851604,
+        145.81221077, 142.52593637, 139.35073267, 136.31700278,
+        133.47993141, 130.94704352, 128.64225694, 126.51517382,
+         74.52622425,  73.57685591,  72.69521721,  71.87667559,
+         71.11806573,  70.41686023,  69.76985014,  69.17502084,
+         68.63062012,  68.13642212,  67.69112621,  67.2910669 ,
+         66.93823612,  66.63263724,  66.36917797,  66.15142124,
+         65.97923958,  65.84761924,  65.76244835,  65.71797553]])
+Coordinates:
+  * depth    (depth) float64 5.0
+  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>lat</span>: 180</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-c01d4760-7dbd-404a-9d6a-202b5279203c' class='xr-array-in' type='checkbox' checked><label for='section-c01d4760-7dbd-404a-9d6a-202b5279203c' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>65.72 65.76 65.85 65.98 66.15 66.37 ... 66.15 65.98 65.85 65.76 65.72</span></div><div class='xr-array-data'><pre>array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
+         66.15142104,  66.36917776,  66.63263704,  66.93823592,
+         67.2910667 ,  67.69112601,  68.13642192,  68.63061992,
+         69.17502064,  69.76984994,  70.41686003,  71.11806553,
+         71.8766754 ,  72.69521702,  73.57685571,  74.52622406,
+        126.5151735 , 128.64225662, 130.94704321, 133.4799311 ,
+        136.31700247, 139.35073236, 142.52593606, 145.81221046,
+        149.18851573, 152.63894184, 156.15081983, 159.71369723,
+        163.31871561, 166.9582033 , 170.62539457, 174.3142284 ,
+        178.01919988, 181.73524799, 185.45766933, 189.1820507 ,
+        192.90421597, 196.62018373, 200.32613334, 204.01837763,
+        207.69334083, 211.3475408 , 214.97757473, 218.58010762,
+        222.15186324, 225.68961698, 229.19019037, 232.6504471 ,
+        236.06729007, 239.43765961, 242.75853253, 246.02692181,
+        249.23987716, 252.39448586, 255.48787433, 258.51720991,
+        261.47970311, 264.37261007, 267.19323534, 269.93893481,
+        272.60711881, 275.19525537, 277.70087357, 280.12156692,
+        282.45499686, 284.69889616, 286.8510725 , 288.9094118 ,
+        290.87188171, 292.73653488, 294.50151227, 296.16504627,
+        297.72546377, 299.18118908, 300.5307467 , 301.77276399,
+...
+        301.77276406, 300.53074678, 299.18118916, 297.72546386,
+        296.16504637, 294.50151238, 292.73653499, 290.87188183,
+        288.90941193, 286.85107263, 284.6988963 , 282.454997  ,
+        280.12156707, 277.70087372, 275.19525553, 272.60711897,
+        269.93893498, 267.19323552, 264.37261025, 261.4797033 ,
+        258.51721011, 255.48787453, 252.39448606, 249.23987736,
+        246.02692203, 242.75853274, 239.43765984, 236.06729029,
+        232.65044733, 229.19019061, 225.68961722, 222.15186349,
+        218.58010787, 214.97757498, 211.34754106, 207.69334109,
+        204.01837789, 200.32613361, 196.620184  , 192.90421625,
+        189.18205098, 185.45766961, 181.73524828, 178.01920017,
+        174.31422869, 170.62539486, 166.95820359, 163.31871591,
+        159.71369753, 156.15082013, 152.63894214, 149.18851604,
+        145.81221077, 142.52593637, 139.35073267, 136.31700278,
+        133.47993141, 130.94704352, 128.64225694, 126.51517382,
+         74.52622425,  73.57685591,  72.69521721,  71.87667559,
+         71.11806573,  70.41686023,  69.76985014,  69.17502084,
+         68.63062012,  68.13642212,  67.69112621,  67.2910669 ,
+         66.93823612,  66.63263724,  66.36917797,  66.15142124,
+         65.97923958,  65.84761924,  65.76244835,  65.71797553]])</pre></div></div></li><li class='xr-section-item'><input id='section-18d3f98e-734e-440f-98fc-8b430c377aa2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-18d3f98e-734e-440f-98fc-8b430c377aa2' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.0</div><input id='attrs-0902af55-f9ad-479b-9899-b70c716768c9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0902af55-f9ad-479b-9899-b70c716768c9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb86f588-9082-4535-b348-aac5e6c29200' class='xr-var-data-in' type='checkbox'><label for='data-bb86f588-9082-4535-b348-aac5e6c29200' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([5.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-3c2d9513-697d-4f5a-8070-9f5e822ac10f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3c2d9513-697d-4f5a-8070-9f5e822ac10f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1a309f3b-ee58-484d-b570-40e71f3011d3' class='xr-var-data-in' type='checkbox'><label for='data-1a309f3b-ee58-484d-b570-40e71f3011d3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
+       -79.5, -78.5, -77.5, -76.5, -75.5, -74.5, -73.5, -72.5, -71.5, -70.5,
+       -69.5, -68.5, -67.5, -66.5, -65.5, -64.5, -63.5, -62.5, -61.5, -60.5,
+       -59.5, -58.5, -57.5, -56.5, -55.5, -54.5, -53.5, -52.5, -51.5, -50.5,
+       -49.5, -48.5, -47.5, -46.5, -45.5, -44.5, -43.5, -42.5, -41.5, -40.5,
+       -39.5, -38.5, -37.5, -36.5, -35.5, -34.5, -33.5, -32.5, -31.5, -30.5,
+       -29.5, -28.5, -27.5, -26.5, -25.5, -24.5, -23.5, -22.5, -21.5, -20.5,
+       -19.5, -18.5, -17.5, -16.5, -15.5, -14.5, -13.5, -12.5, -11.5, -10.5,
+        -9.5,  -8.5,  -7.5,  -6.5,  -5.5,  -4.5,  -3.5,  -2.5,  -1.5,  -0.5,
+         0.5,   1.5,   2.5,   3.5,   4.5,   5.5,   6.5,   7.5,   8.5,   9.5,
+        10.5,  11.5,  12.5,  13.5,  14.5,  15.5,  16.5,  17.5,  18.5,  19.5,
+        20.5,  21.5,  22.5,  23.5,  24.5,  25.5,  26.5,  27.5,  28.5,  29.5,
+        30.5,  31.5,  32.5,  33.5,  34.5,  35.5,  36.5,  37.5,  38.5,  39.5,
+        40.5,  41.5,  42.5,  43.5,  44.5,  45.5,  46.5,  47.5,  48.5,  49.5,
+        50.5,  51.5,  52.5,  53.5,  54.5,  55.5,  56.5,  57.5,  58.5,  59.5,
+        60.5,  61.5,  62.5,  63.5,  64.5,  65.5,  66.5,  67.5,  68.5,  69.5,
+        70.5,  71.5,  72.5,  73.5,  74.5,  75.5,  76.5,  77.5,  78.5,  79.5,
+        80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-95079c31-5f27-48dd-83b9-ec2e321655be' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-95079c31-5f27-48dd-83b9-ec2e321655be' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<p>There is a built-in utility to take properly area-weighted global averages!</p>
+<p>This gives us the net global energy imbalance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">ASR</span> <span class="o">-</span> <span class="n">model1</span><span class="o">.</span><span class="n">OLR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.02589604)
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is also a built-in diagnostic <code class="docutils literal notranslate"><span class="pre">net_radiation</span></code> that has the same information (i.e. ASR - OLR):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.02589604)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since it’s not fully equilibrated yet, we can run it out a little longer:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integrate out to equilibrium.</span>
+<span class="n">model1</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1">#  Check for energy balance</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">))</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">ebm_plot</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5 years.
+Total elapsed time is 9.999999999999863 years.
+1.2815863643387452e-05
+</pre></div>
+</div>
+<img alt="../_images/c4d5889fb5359cb22eb3699f8fd5fb0b027e3c4ef7dbf6b3bbcc4793ead30420.png" src="../_images/c4d5889fb5359cb22eb3699f8fd5fb0b027e3c4ef7dbf6b3bbcc4793ead30420.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  There is a diagnostic that tells us the current location of the ice edge:</span>
+<span class="n">model1</span><span class="o">.</span><span class="n">icelat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-70.,  70.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This model is tuned up to reasonable “present-day” conditions.</p>
+<hr class="docutils" />
+<p><a id='section4'></a></p>
+</section>
+<section id="polar-amplified-warming-in-the-ebm">
+<h2>4. Polar-amplified warming in the EBM<a class="headerlink" href="#polar-amplified-warming-in-the-ebm" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="add-a-small-radiative-forcing">
+<h3>Add a small radiative forcing<a class="headerlink" href="#add-a-small-radiative-forcing" title="Link to this heading">#</a></h3>
+<p>The equivalent of doubling CO2 in this model is something like</p>
+<div class="math notranslate nohighlight">
+\[ A \rightarrow A - \delta A \]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta A = 4\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>210
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deltaA</span> <span class="o">=</span> <span class="mf">4.</span>
+
+<span class="c1">#  This is a very handy way to &quot;clone&quot; an existing model:</span>
+<span class="n">model2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+
+<span class="c1">#  Now change the longwave parameter:</span>
+<span class="n">model2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">deltaA</span>
+<span class="c1">#  and integrate out to equilibrium again</span>
+<span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model1</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model2</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f400bc5382681b1884c056f2e01a12ab16fd71d709fc29aafad27cd5ebd11c38.png" src="../_images/f400bc5382681b1884c056f2e01a12ab16fd71d709fc29aafad27cd5ebd11c38.png" />
+</div>
+</div>
+<p><strong>The warming is polar-amplified</strong>:  more warming at the poles than elsewhere.</p>
+<p>Why?</p>
+<p>Also, the current ice line is now:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model2</span><span class="o">.</span><span class="n">icelat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-90.,  90.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is no ice left!</p>
+<p>Let’s do some more greenhouse warming:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model3</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+<span class="n">model3</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">deltaA</span>
+<span class="n">model3</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model1</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model1</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model2</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model3</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model3</span><span class="o">.</span><span class="n">Ts</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;model3&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1688b9430&gt;
+</pre></div>
+</div>
+<img alt="../_images/ff4088a0f3044f252d734d754970e3fd86ff5379e8f445567a2ef41955e573dd.png" src="../_images/ff4088a0f3044f252d734d754970e3fd86ff5379e8f445567a2ef41955e573dd.png" />
+</div>
+</div>
+<p>In the ice-free regime, there is no polar-amplified warming. A uniform radiative forcing produces a uniform warming.</p>
+<hr class="docutils" />
+<p><a id='section5'></a></p>
+</section>
+</section>
+<section id="a-different-kind-of-climate-forcing-changing-the-solar-constant">
+<h2>5. A different kind of climate forcing: changing the solar constant<a class="headerlink" href="#a-different-kind-of-climate-forcing-changing-the-solar-constant" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Historically EBMs have been used to study the climatic response to a change in the energy output from the Sun.</p>
+<p>We can do that easily with <code class="docutils literal notranslate"><span class="pre">climlab</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">EBM_annual</span><span class="p">(</span><span class="n">num_lat</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span> <span class="o">**</span><span class="n">param</span><span class="p">)</span>
+<span class="c1">#  The current (default) solar constant, corresponding to present-day conditions:</span>
+<span class="n">m</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">S0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1365.2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="what-happens-if-we-decrease-s-0">
+<h3>What happens if we decrease <span class="math notranslate nohighlight">\(S_0\)</span>?<a class="headerlink" href="#what-happens-if-we-decrease-s-0" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  First, get to equilibrium</span>
+<span class="n">m</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span>
+<span class="c1">#  Check for energy balance</span>
+<span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5.0 years.
+Total elapsed time is 5.000000000000044 years.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.02589604)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">icelat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-70.,  70.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Now make the solar constant smaller:</span>
+<span class="n">m</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1300.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Integrate to new equilibrium</span>
+<span class="n">m</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">10.</span><span class="p">)</span>
+<span class="c1">#  Check for energy balance</span>
+<span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 900 steps, 3652.4220000000005 days, or 10.0 years.
+Total elapsed time is 14.999999999999647 years.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(-0.00013379)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">icelat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-54.,  54.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebm_plot</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d09af7461519076c15730432f55b52086f8ea7ab66e6ffa735110c469c7889c1.png" src="../_images/d09af7461519076c15730432f55b52086f8ea7ab66e6ffa735110c469c7889c1.png" />
+</div>
+</div>
+<p>A much colder climate!  The ice line is sitting at 54º. The heat transport shows that the atmosphere is moving lots of energy across the ice line, trying hard to compensate for the strong radiative cooling everywhere poleward of the ice line.</p>
+<hr class="docutils" />
+<p><a id='section6'></a></p>
+</section>
+</section>
+<section id="the-large-ice-cap-instability">
+<h2>6. The large ice cap instability<a class="headerlink" href="#the-large-ice-cap-instability" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="what-happens-if-we-decrease-s-0-even-more">
+<h3>What happens if we decrease <span class="math notranslate nohighlight">\(S_0\)</span> even more?<a class="headerlink" href="#what-happens-if-we-decrease-s-0-even-more" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Now make the solar constant smaller:</span>
+<span class="n">m</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1200.</span>
+<span class="c1">#  First, get to equilibrium</span>
+<span class="n">m</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span>
+<span class="c1">#  Check for energy balance</span>
+<span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5.0 years.
+Total elapsed time is 19.99999999999943 years.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(-5.13788963)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">10.</span><span class="p">)</span>
+<span class="c1">#  Check for energy balance</span>
+<span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 900 steps, 3652.4220000000005 days, or 10.0 years.
+Total elapsed time is 30.000000000000693 years.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(-1.25838355e-06)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebm_plot</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/52563f3f123fc6b32d78bbbaf3c45f4b3945bbd46cabca6bf83daced98636d76.png" src="../_images/52563f3f123fc6b32d78bbbaf3c45f4b3945bbd46cabca6bf83daced98636d76.png" />
+</div>
+</div>
+<p>Something very different happened! Where is the ice line now?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">icelat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.,  0.])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="now-what-happens-if-we-set-s-0-back-to-its-present-day-value">
+<h3>Now what happens if we set <span class="math notranslate nohighlight">\(S_0\)</span> back to its present-day value?<a class="headerlink" href="#now-what-happens-if-we-set-s-0-back-to-its-present-day-value" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Now make the solar constant smaller:</span>
+<span class="n">m</span><span class="o">.</span><span class="n">subprocess</span><span class="o">.</span><span class="n">insolation</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1365.2</span>
+<span class="c1">#  First, get to equilibrium</span>
+<span class="n">m</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span>
+<span class="c1">#  Check for energy balance</span>
+<span class="n">climlab</span><span class="o">.</span><span class="n">global_mean</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">net_radiation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5.0 years.
+Total elapsed time is 35.0000000000016 years.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(0.00790051)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ebm_plot</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c63a100d2b7ad2aea00e7d14240cfce9b0ef1bbaa4ce5594b70699c23dcbd060.png" src="../_images/c63a100d2b7ad2aea00e7d14240cfce9b0ef1bbaa4ce5594b70699c23dcbd060.png" />
+</div>
+</div>
+<p>Is this the same climate we started with?</p>
+<p>This is an example of a <strong>hysteresis</strong> in the climate system:  the state of the climate depends on its history!</p>
+<ul class="simple">
+<li><p>A global cooling caused snow and ice to expand to the equator</p></li>
+<li><p>External conditions (i.e. the solar constant) returned back to its present-day value</p></li>
+<li><p>The climate stayed cold and completely ice-covered.</p></li>
+</ul>
+<p>If the oceans froze over and the Earth were covered in ice and snow today, it would remain that way!</p>
+<hr class="docutils" />
+<p><a id='section7'></a></p>
+</section>
+</section>
+<section id="the-neoproterozoic-snowball-earth">
+<h2>7. The Neoproterozoic Snowball Earth<a class="headerlink" href="#the-neoproterozoic-snowball-earth" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="the-geologic-time-scale">
+<h3>The Geologic Time Scale<a class="headerlink" href="#the-geologic-time-scale" title="Link to this heading">#</a></h3>
+<p>First, some information on the nomenclature for Earth history <span id="id1">[<a class="reference internal" href="../references.html#id9" title="J.D. Walker and J.W. Geissman. Geologic time scale. Technical Report, Geological Society of America, 2009. doi:10.1130/2009.CTS004R2C.">Walker and Geissman, 2009</a>]</span>:</p>
+<p><img alt="Geological Time Scale" src="../_images/GeoTimeScale2009.png" /></p>
+<p>The long view of glacial epochs on Earth <span id="id2">[<a class="reference internal" href="../references.html#id8" title="Paul F. Hoffman, Dorian S. Abbot, Yosef Ashkenazy, Douglas I. Benn, Jochen J. Brocks, Phoebe A. Cohen, Grant M. Cox, Jessica R. Creveling, Yannick Donnadieu, Douglas H. Erwin, Ian J. Fairchild, David Ferreira, Jason C. Goodman, Galen P. Halverson, Malte F. Jansen, Guillaume Le Hir, Gordon D. Love, Francis A. Macdonald, Adam C. Maloof, Camille A. Partin, Gilles Ramstein, Brian E. J. Rose, Catherine V. Rose, Peter M. Sadler, Eli Tziperman, Aiko Voigt, and Stephen G. Warren. Snowball Earth climate dynamics and Cryogenian geology–geobiology. Science Advances, 2017. doi:10.1126/sciadv.1600983.">Hoffman <em>et al.</em>, 2017</a>]</span>:</p>
+<p><img alt="Hoffman et al. (2017) Sci. Adv. Figure 2" src="../_images/Hoffman_etal_SciAdv_Fig2.pdf" /></p>
+<p>Source: <a class="reference external" href="https://doi.org/10.1126/sciadv.1600983">Hoffman et al. (2017), Science Advances 3:e1600983, doi:10.1126/sciadv.1600983</a></p>
+</section>
+<section id="extensive-evidence-for-large-glaciers-at-sea-level-in-the-tropics">
+<h3>Extensive evidence for large glaciers at sea level in the tropics<a class="headerlink" href="#extensive-evidence-for-large-glaciers-at-sea-level-in-the-tropics" title="Link to this heading">#</a></h3>
+<p>Evidently the climate was <strong>very cold</strong> at these times (635 Ma and 715 Ma) <span id="id3">[<a class="reference internal" href="../references.html#id7" title="Paul F. Hoffman and Zheng-Xiang Li. A palaeogeographic context for Neoproterozoic glaciation. Palaeogeogr. Palaeoclimatol. Palaeoecol., 277:158–172, 2009. doi:10.1016/j.palaeo.2009.03.013.">Hoffman and Li, 2009</a>]</span>:</p>
+<p><img alt="Hoffman and Li (2009)" src="../_images/Hoffman_Li_2009.png" /></p>
+<p>Source: <a class="reference external" href="https://doi.org/10.1016/j.palaeo.2009.03.013">Hoffman, P. F. and Li, Z.-X. (2009). A palaeogeographic context for Neoproterozoic glaciation. Palaeogeogr. Palaeoclimatol. Palaeoecol., 277:158–172.</a></p>
+</section>
+<section id="the-snowball-earth-hypothesis">
+<h3>The Snowball Earth hypothesis<a class="headerlink" href="#the-snowball-earth-hypothesis" title="Link to this heading">#</a></h3>
+<p>Various bizarre features in the geological record from 635 and 715 Ma ago indicate that the Earth underwent some very extreme environmental changes… at least twice. The <strong>Snowball Earth hypothesis</strong> postulates that:</p>
+<ul class="simple">
+<li><p>The Earth was completely ice-covered (including the oceans)</p></li>
+<li><p>The total glaciation endured for millions of years</p></li>
+<li><p>CO<span class="math notranslate nohighlight">\(_2\)</span> slowly accumulated in the atmosphere from volcanoes</p></li>
+<li><p>Weathering of rocks (normally acting to reduce CO<span class="math notranslate nohighlight">\(_2\)</span>) extremely slow due to cold, dry climate</p></li>
+<li><p>Eventually the extreme greenhouse effect is enough to melt back the ice</p></li>
+<li><p>The Earth then enters a period of extremely hot climate.</p></li>
+</ul>
+<p>The hypothesis rests on a phenomenon first discovered by climate modelers in the Budyko-Sellers EBM: <strong>runaway ice-albedo feedback</strong> or <strong>large ice cap instability</strong>.</p>
+<hr class="docutils" />
+<p><a id='section8'></a></p>
+</section>
+</section>
+<section id="computing-the-complete-hysteresis-curve-for-the-1d-diffusive-ebm">
+<h2>8. Computing the complete hysteresis curve for the 1D diffusive EBM<a class="headerlink" href="#computing-the-complete-hysteresis-curve-for-the-1d-diffusive-ebm" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<div class="alert alert-warning">
+The calculations in this section may take a long time to complete, depending on the speed of your computer.
+</div><p>The ice edge in our model is always where the temperature crosses <span class="math notranslate nohighlight">\(T_f = -10^\circ\)</span>C. The system is at <strong>equilibrium</strong> when the temperature is such that there is a balance between ASR, OLR, and heat transport convergence everywhere.</p>
+<p>Suppose that sun was hotter or cooler at different times (in fact it was significantly cooler during early Earth history). That would mean that the solar constant <span class="math notranslate nohighlight">\(S_0 = 4Q\)</span> was larger or smaller. We should expect that the temperature (and thus the ice edge) should increase and decrease as we change <span class="math notranslate nohighlight">\(S_0\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(S_0\)</span> during the Neoproterozoic Snowball Earth events is believed to be about 93% of its present-day value, or about 1270 W m<span class="math notranslate nohighlight">\(^{-2}\)</span>.</p>
+<p>We are going to look at how the <strong>equilibrium</strong> ice edge depends on <span class="math notranslate nohighlight">\(S_0\)</span>, by integrating the model out to equilibrium for lots of different values of <span class="math notranslate nohighlight">\(S_0\)</span>. We will start by slowly decreasing <span class="math notranslate nohighlight">\(S_0\)</span>, and then slowly increasing <span class="math notranslate nohighlight">\(S_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model2</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">EBM_annual</span><span class="p">(</span><span class="n">num_lat</span> <span class="o">=</span> <span class="mi">360</span><span class="p">,</span> <span class="o">**</span><span class="n">param</span><span class="p">)</span>
+<span class="n">S0array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1400.</span><span class="p">,</span> <span class="mf">1200.</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">icelat_cooling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">S0array</span><span class="p">)</span>
+<span class="n">icelat_warming</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">S0array</span><span class="p">)</span>
+<span class="c1"># First cool....</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S0array</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="n">S0array</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">icelat_cooling</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span>
+<span class="c1"># Then warm...</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S0array</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">S0array</span><span class="p">)[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">icelat_warming</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span>
+<span class="c1"># For completeness -- also start from present-day conditions and warm up.</span>
+<span class="n">model3</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">EBM_annual</span><span class="p">(</span><span class="n">num_lat</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="o">**</span><span class="n">param</span><span class="p">)</span>
+<span class="n">S0array3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1350.</span><span class="p">,</span> <span class="mf">1400.</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">icelat3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">S0array3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S0array3</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">model3</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="n">S0array3</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">model3</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">icelat3</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model3</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5 years.
+Total elapsed time is 5.000000000000044 years.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array</span><span class="p">,</span> <span class="n">icelat_cooling</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cooling&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array</span><span class="p">,</span> <span class="n">icelat_warming</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;warming&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array3</span><span class="p">,</span> <span class="n">icelat3</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;warming&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">90</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Ice edge latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Solar constant (W m$^{-2}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="n">const</span><span class="o">.</span><span class="n">S0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">S0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;present-day&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Solar constant versus ice edge latitude in the EBM with albedo feedback&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/101daf46e42807459d53efeeb51c468a1385958f0c6ee473f9a5074eacbb77fd.png" src="../_images/101daf46e42807459d53efeeb51c468a1385958f0c6ee473f9a5074eacbb77fd.png" />
+</div>
+</div>
+<p>There are actually up to 3 different climates possible for a given value of <span class="math notranslate nohighlight">\(S_0\)</span>!</p>
+<section id="how-to-un-freeze-the-snowball">
+<h3>How to un-freeze the Snowball<a class="headerlink" href="#how-to-un-freeze-the-snowball" title="Link to this heading">#</a></h3>
+<p>The graph indicates that if the Earth were completely frozen over, it would be perfectly happy to stay that way even if the sun were brighter and hotter than it is today.</p>
+<p>Our EBM predicts that (with present-day parameters) the equilibrium temperature at the equator in the Snowball state is about -33ºC, which is much colder than the threshold temperature <span class="math notranslate nohighlight">\(T_f = -10^\circ\)</span>C. How can we melt the Snowball?</p>
+<p>We need to increase the avaible energy sufficiently to get the equatorial temperatures above this threshold! That is going to require a much larger increase in <span class="math notranslate nohighlight">\(S_0\)</span> (could also increase the greenhouse gases, which would have a similar effect)!</p>
+<p>Let’s crank up the sun to 1830 W m<span class="math notranslate nohighlight">\(^{-2}\)</span> (about a 35% increase from present-day).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_ticks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">60</span><span class="p">,</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">90</span><span class="p">]</span>
+
+<span class="n">model4</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">process_like</span><span class="p">(</span><span class="n">model2</span><span class="p">)</span>  <span class="c1"># initialize with cold Snowball temperature</span>
+<span class="n">model4</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1830.</span>
+<span class="n">model4</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model4</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">my_ticks</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The ice edge is at &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; degrees latitude.&#39;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 3600 steps, 14609.688000000002 days, or 40 years.
+Total elapsed time is 4044.99999997769 years.
+The ice edge is at [-0.  0.] degrees latitude.
+</pre></div>
+</div>
+<img alt="../_images/a200929d5210f3001978f8415141314b8c13bdbb2da627fabd2b53865eea3ef4.png" src="../_images/a200929d5210f3001978f8415141314b8c13bdbb2da627fabd2b53865eea3ef4.png" />
+</div>
+</div>
+<p>Still a Snowball… but just barely! The temperature at the equator is just below the threshold.</p>
+<p>Try to imagine what might happen once it starts to melt. The solar constant is huge, and if it weren’t for the highly reflective ice and snow, the climate would be really really hot!</p>
+<p>We’re going to increase <span class="math notranslate nohighlight">\(S_0\)</span> one more time…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model4</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1840.</span>
+<span class="n">model4</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model4</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">my_ticks</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 900 steps, 3652.4220000000005 days, or 10 years.
+Total elapsed time is 4054.999999977441 years.
+</pre></div>
+</div>
+<img alt="../_images/76f2e7ac2eb7c11ac84ace586215730903c14456829409450fc9c6abe37f66aa.png" src="../_images/76f2e7ac2eb7c11ac84ace586215730903c14456829409450fc9c6abe37f66aa.png" />
+</div>
+</div>
+<p>Suddenly the climate looks very very different again! The global mean temperature is</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model4</span><span class="o">.</span><span class="n">global_mean_temperature</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(57.73355447)
+</pre></div>
+</div>
+</div>
+</div>
+<p>A roasty 58ºC, and the poles are above 20ºC. A tiny increase in <span class="math notranslate nohighlight">\(S_0\)</span> has led to a very drastic change in the climate.</p>
+<p>Now we will complete the plot of ice edge versus solar constant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S0array_snowballmelt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1400.</span><span class="p">,</span> <span class="mf">1900.</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">icelat_snowballmelt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="p">)</span>
+<span class="n">icelat_snowballmelt_cooling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="n">S0array_snowballmelt</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">icelat_snowballmelt</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="p">)[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">model2</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">icelat_snowballmelt_cooling</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model2</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array</span><span class="p">,</span> <span class="n">icelat_cooling</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cooling&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array</span><span class="p">,</span> <span class="n">icelat_warming</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;warming&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array3</span><span class="p">,</span> <span class="n">icelat3</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;warming&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="p">,</span> <span class="n">icelat_snowballmelt</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S0array_snowballmelt</span><span class="p">,</span> <span class="n">icelat_snowballmelt_cooling</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">75</span><span class="p">,</span><span class="mi">90</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Ice edge latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Solar constant (W m$^{-2}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="p">[</span><span class="n">const</span><span class="o">.</span><span class="n">S0</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">S0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;present-day&#39;</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Solar constant versus ice edge latitude in the EBM with albedo feedback&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/77acbc68892511d94ef45c5ed7a576b3de797a2363a9481fb369d7462d409caa.png" src="../_images/77acbc68892511d94ef45c5ed7a576b3de797a2363a9481fb369d7462d409caa.png" />
+</div>
+</div>
+<p>The upshot:</p>
+<ul class="simple">
+<li><p>For extremely large <span class="math notranslate nohighlight">\(S_0\)</span>, the only possible climate is a hot Earth with no ice.</p></li>
+<li><p>For extremely small <span class="math notranslate nohighlight">\(S_0\)</span>, the only possible climate is a cold Earth completely covered in ice.</p></li>
+<li><p>For a large range of <span class="math notranslate nohighlight">\(S_0\)</span> including the present-day value, more than one climate is possible!</p></li>
+<li><p>Once we get into a Snowball Earth state, getting out again is rather difficult!</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/climlab/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+</section>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="numerical-diffusion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>A peek at numerical methods for diffusion models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advanced-albedo-feedback.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced topic: Ice albedo feedback in the EBM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-of-the-1d-ebm">1. Review of the 1D EBM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-snow-ice-line-in-the-ebm">2. Interactive snow/ice line in the EBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-dependent-ice-line">Temperature-dependent ice line</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-ebm-with-variable-snow-ice-line-in-climlab">3. Solving the EBM with variable snow/ice line in CLIMLAB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-amplified-warming-in-the-ebm">4. Polar-amplified warming in the EBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-a-small-radiative-forcing">Add a small radiative forcing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-different-kind-of-climate-forcing-changing-the-solar-constant">5. A different kind of climate forcing: changing the solar constant</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-decrease-s-0">What happens if we decrease <span class="math notranslate nohighlight">\(S_0\)</span>?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-large-ice-cap-instability">6. The large ice cap instability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-happens-if-we-decrease-s-0-even-more">What happens if we decrease <span class="math notranslate nohighlight">\(S_0\)</span> even more?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-what-happens-if-we-set-s-0-back-to-its-present-day-value">Now what happens if we set <span class="math notranslate nohighlight">\(S_0\)</span> back to its present-day value?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-neoproterozoic-snowball-earth">7. The Neoproterozoic Snowball Earth</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geologic-time-scale">The Geologic Time Scale</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensive-evidence-for-large-glaciers-at-sea-level-in-the-tropics">Extensive evidence for large glaciers at sea level in the tropics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-snowball-earth-hypothesis">The Snowball Earth hypothesis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-complete-hysteresis-curve-for-the-1d-diffusive-ebm">8. Computing the complete hysteresis curve for the 1D diffusive EBM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-un-freeze-the-snowball">How to un-freeze the Snowball</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brian E. J. Rose
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
