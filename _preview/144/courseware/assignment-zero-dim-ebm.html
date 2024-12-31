@@ -1,0 +1,750 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Assignment: Climate change in the zero-dimensional EBM &#8212; The Climate Laboratory</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/assignment-zero-dim-ebm';</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/assignment-zero-dim-ebm.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignment: Global average budgets in the CESM pre-industrial control simulation" href="assignment-cesm-control.html" />
+    <link rel="prev" title="About the assignments" href="../about-assignments.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Climate Laboratory</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About this Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../who-for.html">Who is the book for?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How to use this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attribution.html">How to cite and reuse this material</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models-budgets-fun.html">1. Climate models, the global energy budget, and Fun with Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="zero-dim-ebm.html">2. Modeling the global energy budget</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="analytical-efolding.html">Advanced topic: Analytical solution of the global Energy Balance Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="climate-system-models.html">3. The climate system and climate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introducing-cesm.html">4. Introducing the Community Earth System Model (CESM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climlab-intro.html">5. Building simple climate models using climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiation.html">6. A Brief Review of Radiation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="elementary-greenhouse.html">7. Elementary greenhouse models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy-greenhouse.html">Advanced topic: Solving the two-layer grey gas model analytically with sympy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="grey-radiation-climlab.html">8. Grey radiation modeling with climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiative-transfer.html">9. Modeling non-scattering radiative transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectral-bands.html">10. Who needs spectral bands? We do. Some baby steps…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radeq.html">11. Radiative Equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rce.html">12. Radiative-Convective Equilibrium</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sensitivity-feedback.html">13. Climate sensitivity and feedback</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-sensitivity-feedback.html">Advanced topic: Climate sensitivity and feedback</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-cesm.html">14. Examing the transient and equilibrium CO2 response in the CESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-toy.html">15. Toy models of transient warming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clouds.html">16. Clouds and cloud feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insolation.html">17. Insolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orbital.html">18. Orbital variations, insolation, and the ice ages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="heat-transport.html">19. Heat transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-heat-transport.html">Advanced topic: Heat transport decomposition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="one-dim-ebm.html">20. The one-dimensional energy balance model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal-cycle.html">21. Modeling the seasonal cycle of surface temperature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical-diffusion.html">22. A peek at numerical methods for diffusion models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="albedo-snowball.html">23. Ice-albedo feedback and Snowball Earth in the EBM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-albedo-feedback.html">Advanced topic: Ice albedo feedback in the EBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="surface-energy-balance.html">24. The surface energy balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="land-ocean-contrast.html">25. Land-Ocean contrasts under climate change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="water-water-everywhere.html">26. Water, water everywhere!</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about-assignments.html">About the assignments</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: Climate change in the zero-dimensional EBM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="assignment-cesm-control.html">Assignment: Global average budgets in the CESM pre-industrial control simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignment-cesm-control-hints.html">Additional hints and guidance for CESM budgets assignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-simple-clouds.html">Assignment: Clouds in the Leaky Greenhouse Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-rcm-feedback.html">Assignment: Feedbacks in the Radiative-Convective Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-cesm-climate-change.html">Assignment: Climate change in the CESM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-insolation-orbit.html">Assignment: Insolation and orbital parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Postamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/assignment-zero-dim-ebm.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https%3A//github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/assignment-zero-dim-ebm.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courseware/assignment-zero-dim-ebm.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment: Climate change in the zero-dimensional EBM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model">Problem 1: Time-dependent warming in the zero-dimensional Energy Balance Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equation-of-the-energy-balance-model">The equation of the Energy Balance Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a">Part (a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b">Part (b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c">Part (c)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-albedo-feedback-in-the-energy-balance-model">Problem 2: Albedo feedback in the Energy Balance Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-albedo-formula">The albedo formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Part (a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Part (b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part (c)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-problem">Bonus problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-climate-change-in-the-zero-dimensional-ebm">
+<h1>Assignment: Climate change in the zero-dimensional EBM<a class="headerlink" href="#assignment-climate-change-in-the-zero-dimensional-ebm" title="Link to this heading">#</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<section id="learning-goals">
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<p>Students completing this assignment will gain the following skills and concepts:</p>
+<ul class="simple">
+<li><p>Familiarity with the Jupyter notebook</p></li>
+<li><p>Familiarity with the zero-dimensional Energy Balance Model</p></li>
+<li><p>Understanding of the adjustment toward equilibrium temperature</p></li>
+<li><p>Introduction to the concept of ice-albedo feedback</p></li>
+<li><p>Use of numerical timestepping to find the equilibrium temperature</p></li>
+<li><p>Python programming skills: arrays, loops, and simple graphs</p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In a local copy of this notebook (on the JupyterHub or your own device) <strong>add your answers in additional cells</strong>.</p></li>
+<li><p><strong>Complete the required problems</strong> below.</p></li>
+<li><p>Some assignments have <strong>optional bonus problems</strong>. These are meant to be interesting and thought-provoking, but are not required. Extra credit will be given for interesting answers to the bonus problems.</p></li>
+<li><p>Follow <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/how-to.html#ualbany-users-interact-through-our-dedicated-jupyterhub">these instructions</a> to run your notebook on the UAlbany JupyterHub. Remember to set your kernel to <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span> <span class="pre">Jan.</span> <span class="pre">2024</span> <span class="pre">Environment</span></code></p></li>
+<li><p>Remember you can add new cells using the “+” button, and set your cell types to <code class="docutils literal notranslate"><span class="pre">Markdown</span></code> for text, and <code class="docutils literal notranslate"><span class="pre">Code</span></code> for Python code!</p></li>
+<li><p><strong>Include comments</strong> in your code to explain your method as necessary.</p></li>
+<li><p>Remember to actually answer the questions. <strong>Written answers in Markdown cells are required</strong> (not just code and figures!)</p></li>
+<li><p>Submit your solutions in <strong>a single Jupyter notebook</strong> that contains your text, your code, and your figures.</p></li>
+<li><p><em>Make sure that your notebook</em> <em><strong>runs cleanly without errors:</strong></em></p>
+<ul>
+<li><p>Save your notebook.</p></li>
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> menu, select <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">&amp;</span> <span class="pre">Run</span> <span class="pre">All</span></code>.</p></li>
+<li><p>Did the notebook run from start to finish without error and produce the expected output?</p></li>
+<li><p>If yes, save again and submit your notebook file.</p></li>
+<li><p>If no, fix the errors and try again.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model">
+<h2>Problem 1: Time-dependent warming in the zero-dimensional Energy Balance Model<a class="headerlink" href="#problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model" title="Link to this heading">#</a></h2>
+<section id="the-equation-of-the-energy-balance-model">
+<h3>The equation of the Energy Balance Model<a class="headerlink" href="#the-equation-of-the-energy-balance-model" title="Link to this heading">#</a></h3>
+<p>In lecture we defined a zero-dimensional Energy Balance Mdel for the global mean surface temperature <span class="math notranslate nohighlight">\(T\)</span> as follows</p>
+<div class="math notranslate nohighlight">
+\[ C  \frac{dT}{dt} = \text{ASR} - \text{OLR}\]</div>
+<div class="math notranslate nohighlight">
+\[ \text{ASR} = (1-\alpha) Q \]</div>
+<div class="math notranslate nohighlight">
+\[ \text{OLR} = \tau \sigma T^4\]</div>
+<p>where we defined these terms:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C\)</span> is a heat capacity for the atmosphere-ocean column</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the global mean planetary albedo</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma = 5.67 \times 10^{-8}\)</span> W m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-4}\)</span> is the Stefan-Boltzmann constant</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span> is our transmissivity parameter for the atmosphere.</p></li>
+<li><p><span class="math notranslate nohighlight">\(Q\)</span> is the global-mean incoming solar radiation, or <em>insolation</em>.</p></li>
+</ul>
+<p>Refer back to our class notes for parameter values.</p>
+</section>
+<section id="part-a">
+<h3>Part (a)<a class="headerlink" href="#part-a" title="Link to this heading">#</a></h3>
+<p>If the heat penetrated to twice as deep into the ocean, the value of <span class="math notranslate nohighlight">\(C\)</span> would be twice as large. Would this affect the <strong>equilibrium temperature</strong>? Why or why not?</p>
+<p><em>Hint: look carefully at the equation for the Energy Balance Model. What is the condition for equilibrium? What role does <span class="math notranslate nohighlight">\(C\)</span> play in the equation at equilibrium?</em></p>
+<p><em>Your answer goes here! (Double-click this cell to edit)</em></p>
+</section>
+<section id="part-b">
+<h3>Part (b)<a class="headerlink" href="#part-b" title="Link to this heading">#</a></h3>
+<p>In the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/zero-dim-ebm.html#automate-the-timestepping-with-a-loop">Lecture notes we used numerical timestepping</a> to investigate a <em>hypothetical climate change scenario</em> in which <span class="math notranslate nohighlight">\(\tau\)</span> decreases to 0.57 and <span class="math notranslate nohighlight">\(\alpha\)</span> increases to 0.32. We produced a graph of <span class="math notranslate nohighlight">\(T_s(t)\)</span> over a twenty year period, starting from an initial temperature of 288 K. Here you will repeat this calculate with a larger value of <span class="math notranslate nohighlight">\(C\)</span> and compare the warming rates. Specifically:</p>
+<ul class="simple">
+<li><p>Repeat our in-class time-stepping calculation with the same parameters we used before (including a heat capacity of <span class="math notranslate nohighlight">\(C = 4\times10^8\)</span> J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>), but extend it to 50 years. <strong>You should create an array of temperatures with 51 elements, beginning from 288 K</strong>.</p></li>
+<li><p>Now do it again, but use <span class="math notranslate nohighlight">\(C = 8\times10^8\)</span> J m<span class="math notranslate nohighlight">\(^{-2}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> (representing 200 meters of water). You should <strong>create another 51-element array</strong> of temperatures also beginning from 288 K.</p></li>
+<li><p><strong>Make a well-labeled graph</strong> that compares the two temperatures over the 50-year period.</p></li>
+</ul>
+</section>
+<section id="part-c">
+<h3>Part (c)<a class="headerlink" href="#part-c" title="Link to this heading">#</a></h3>
+<p>What do your results show about the role of heat capacity on climate change? <strong>Give a short written answer.</strong></p>
+</section>
+</section>
+<section id="problem-2-albedo-feedback-in-the-energy-balance-model">
+<h2>Problem 2: Albedo feedback in the Energy Balance Model<a class="headerlink" href="#problem-2-albedo-feedback-in-the-energy-balance-model" title="Link to this heading">#</a></h2>
+<section id="the-albedo-formula">
+<h3>The albedo formula<a class="headerlink" href="#the-albedo-formula" title="Link to this heading">#</a></h3>
+<p>For this exercise, we will introduce a new physical process into our model by <strong>letting the planetary albedo depend on temperature</strong>. The idea is that a warmer planet has less ice and snow at the surface, and thus a lower planetary albedo (less reflection).</p>
+<p>Represent the ice-albedo feedback through the following formula:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \alpha(T) = \left\{ \begin{array}{ccc}
+\alpha_i &amp;   &amp; T \le T_i \\
+\alpha_o + (\alpha_i-\alpha_o) \frac{(T-T_o)^2}{(T_i-T_o)^2} &amp;   &amp; T_i &lt; T &lt; T_o \\
+\alpha_o &amp;   &amp; T \ge T_o \end{array} \right\}\end{split}\]</div>
+<p>with the following parameter values:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha_o = 0.289\)</span> is the albedo of a warm, ice-free planet</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha_i = 0.7\)</span> is the albedo of a very cold, completely ice-covered planet</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_o = 293\)</span> K is the threshold temperature above which we assume the planet is ice-free</p></li>
+<li><p><span class="math notranslate nohighlight">\(T_i = 260\)</span> K is the threshold temperature below which we assume the planet is completely ice covered.</p></li>
+</ul>
+<p>For intermediate temperature, this formula gives a smooth variation in albedo with global mean temperature. It is tuned to reproduce the observed albedo <span class="math notranslate nohighlight">\(\alpha = 0.299\)</span> for <span class="math notranslate nohighlight">\(T = 288\)</span> K.</p>
+</section>
+<section id="id1">
+<h3>Part (a)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Define a Python function that implements the above albedo formula. Your function should take the temperature <span class="math notranslate nohighlight">\(T\)</span> as input and return the correct albedo <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p>Use your function to calculate albedos for a wide range on planetary temperature (e.g. from <span class="math notranslate nohighlight">\(T=250\)</span> K to <span class="math notranslate nohighlight">\(T=300\)</span> K.)</p></li>
+<li><p>Present your results (albedo as a function of global mean temperature, or <span class="math notranslate nohighlight">\(\alpha(T)\)</span>) in a nicely labeled graph with temperature <span class="math notranslate nohighlight">\(T\)</span> along the x axis and albedo <span class="math notranslate nohighlight">\(\alpha\)</span> on the y axis.</p></li>
+</ul>
+<p><em>Hint: your code will need to decide which of the three formulas to use based on the value of <span class="math notranslate nohighlight">\(T\)</span>. You might want to review the use of <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> statements in Python. Alternatively, you can check out the <code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code> function (see <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.where.html">the numpy documentation</a>) which can make decisions simultaneously on arrays of numbers. There is definitely more than one way to solve this problem. It doesn’t matter how you do it as long as it works!</em></p>
+</section>
+<section id="id2">
+<h3>Part (b)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Now investigate a climate change scenario with this new model:</p>
+<ul class="simple">
+<li><p>Suppose that the transmissivity decreases from 0.611 to 0.57 (same as before)</p></li>
+<li><p>This time the albedo is not a fixed, known number. Instead, it varies with the current value of temperature according the formula you plotted in Part (a).</p></li>
+<li><p>Your task is to <strong>calculate the new equilibrium temperature</strong>.</p></li>
+<li><p>Unlike when the albedo is a fixed number, it is not possible to solve for the equilibrium temperature analytically. Instead, you will use numerical time-stepping to find the equilibrium temperature</p></li>
+<li><p>Repeat the procedure from Problem 1b <em>(time-step forward for 50 years from an initial temperature of 288 K and make a graph of the results)</em>, but this time <strong>use the function you defined above to compute the albedo for the current temperature</strong>.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>Part (c)<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Explain in your own words how the temperature-dependent albedo affects the equilibrium temperature. If the albedo never changed from the observed value <span class="math notranslate nohighlight">\(0.299\)</span>, would the equilibrium temperature be larger or smaller?</p>
+</section>
+</section>
+<section id="bonus-problem">
+<h2>Bonus problem<a class="headerlink" href="#bonus-problem" title="Link to this heading">#</a></h2>
+<p><em>Open-ended investigation for extra credit, not required</em></p>
+<p>Something very different occurs in this model if you introduce a strong negative radiative forcing, either by substantially reducing greenhouse gases (which we would represent as an increase in the transmissivity <span class="math notranslate nohighlight">\(\tau\)</span>), or by decreasing the incoming solar radiation <span class="math notranslate nohighlight">\(Q\)</span>.</p>
+<p>Investigate, using your numerical model code, and report your results along with your thoughts.</p>
+</section>
+<hr class="docutils" />
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/climlab/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../about-assignments.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">About the assignments</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="assignment-cesm-control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assignment: Global average budgets in the CESM pre-industrial control simulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-time-dependent-warming-in-the-zero-dimensional-energy-balance-model">Problem 1: Time-dependent warming in the zero-dimensional Energy Balance Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equation-of-the-energy-balance-model">The equation of the Energy Balance Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a">Part (a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b">Part (b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c">Part (c)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-albedo-feedback-in-the-energy-balance-model">Problem 2: Albedo feedback in the Energy Balance Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-albedo-formula">The albedo formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Part (a)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Part (b)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Part (c)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-problem">Bonus problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brian E. J. Rose
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
