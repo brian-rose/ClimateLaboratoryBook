@@ -33,13 +33,11 @@ jobs:
         env:
           PR: ${{ steps.findPr.outputs.pr }}
 
-      - name: Setup Mambaforge
+      - name: Setup Miniforge
         uses: conda-incubator/setup-miniconda@v3
         with:
-          miniforge-variant: Mambaforge
           miniforge-version: latest
           activate-environment: book-render
-          use-mamba: true
 
       - name: Set cache date
         run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
@@ -52,7 +50,7 @@ jobs:
 
       - name: Update environment
         if: steps.cache.outputs.cache-hit != 'true'
-        run: mamba env update -n book-render -f render-environment.yml
+        run: conda env update -n book-render -f render-environment.yml
 
       # Build the book
       - name: Build the book

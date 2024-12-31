@@ -19,13 +19,11 @@ jobs:
           access_token: ${{ github.token }}
       - uses: actions/checkout@v4
 
-      - name: Setup Mambaforge
+      - name: Setup Miniforge
         uses: conda-incubator/setup-miniconda@v3
         with:
-          miniforge-variant: Mambaforge
           miniforge-version: latest
           activate-environment: book-render
-          use-mamba: true
 
       - name: Set cache date
         run: echo "DATE=$(date +'%Y%m%d')" >> $GITHUB_ENV
@@ -38,17 +36,8 @@ jobs:
 
       - name: Update environment
         if: steps.cache.outputs.cache-hit != 'true'
-        run: mamba env update -n book-render -f render-environment.yml
+        run: conda env update -n book-render -f render-environment.yml
 
-      # - name: Disable notebook execution
-      #   shell: python
-      #   run: |
-      #     import yaml
-      #     with open('_config.yml') as f:
-      #       data = yaml.safe_load(f)
-      #     data['execute']['execute_notebooks'] = 'off'
-      #     with open('_config.yml', 'w') as f:
-      #       yaml.dump(data, f)
       - name: Check external links
         run: |
           jupyter-book build --builder linkcheck .
