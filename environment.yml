@@ -16,3 +16,4 @@ dependencies:
   - netcdf4
   - nc-time-axis
   - jupyter-book  # needed to rebuild the book from source
+  - xclim
