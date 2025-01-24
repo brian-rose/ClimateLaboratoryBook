@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -573,9 +573,9 @@
 <p>With a bit of work, we can substitute in the expression for <span class="math notranslate nohighlight">\(\cos\theta_s\)</span> in terms of latitude <span class="math notranslate nohighlight">\(\phi\)</span>, declination angle <span class="math notranslate nohighlight">\(\delta\)</span> and hour angle <span class="math notranslate nohighlight">\(h\)</span> and integrate the numerator and denominator of the above expression. I implement the resulting formulas in the Python code below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">tan</span><span class="p">,</span><span class="n">arccos</span><span class="p">,</span><span class="n">arcsin</span><span class="p">,</span><span class="n">arctan</span><span class="p">,</span><span class="n">pi</span><span class="p">,</span><span class="nb">abs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span><span class="p">,</span><span class="n">cos</span><span class="p">,</span><span class="n">tan</span><span class="p">,</span><span class="n">arccos</span><span class="p">,</span><span class="n">arcsin</span><span class="p">,</span><span class="n">arctan</span><span class="p">,</span><span class="n">pi</span><span class="p">,</span><span class="nb">abs</span>
 
 <span class="n">lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">90.</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 <span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)</span>
@@ -584,13 +584,13 @@
                 <span class="s1">&#39;Equinox&#39;</span><span class="p">:</span> <span class="mf">0.</span><span class="p">,</span>
                 <span class="s1">&#39;21 June&#39;</span><span class="p">:</span> <span class="mf">23.45</span><span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">hour_angle_at_sunset</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hour_angle_at_sunset</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">-</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.</span><span class="p">,</span> <span class="c1"># there is sunset/sunrise</span>
               <span class="n">arccos</span><span class="p">(</span><span class="o">-</span><span class="n">tan</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">tan</span><span class="p">(</span><span class="n">delta</span><span class="p">)),</span>
               <span class="c1"># otherwise figure out if it&#39;s all night or all day</span>
               <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">phi</span><span class="o">*</span><span class="n">delta</span><span class="o">&gt;</span><span class="mf">0.</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="mf">0.</span><span class="p">)</span> <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">insolation_weighted_coszen</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">insolation_weighted_coszen</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
     <span class="n">h0</span> <span class="o">=</span> <span class="n">hour_angle_at_sunset</span><span class="p">(</span><span class="n">delta</span><span class="p">,</span> <span class="n">phi</span><span class="p">)</span>
     <span class="n">denominator</span> <span class="o">=</span> <span class="n">h0</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">h0</span><span class="p">)</span>
     <span class="n">numerator</span> <span class="o">=</span> <span class="p">(</span><span class="n">h0</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> 
@@ -646,8 +646,8 @@
 <h3>Using the <code class="docutils literal notranslate"><span class="pre">daily_insolation</span></code> function<a class="headerlink" href="#using-the-daily-insolation-function" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
-<span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">climlab</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab.solar.insolation</span><span class="w"> </span><span class="kn">import</span> <span class="n">daily_insolation</span>
 </pre></div>
 </div>
 </div>

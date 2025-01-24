@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -786,15 +786,15 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">albedo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">alpha_o</span> <span class="o">=</span> <span class="mf">0.289</span><span class="p">,</span> <span class="n">alpha_i</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">To</span> <span class="o">=</span> <span class="mf">293.</span><span class="p">,</span> <span class="n">Ti</span> <span class="o">=</span> <span class="mf">260.</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">albedo</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">alpha_o</span> <span class="o">=</span> <span class="mf">0.289</span><span class="p">,</span> <span class="n">alpha_i</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">To</span> <span class="o">=</span> <span class="mf">293.</span><span class="p">,</span> <span class="n">Ti</span> <span class="o">=</span> <span class="mf">260.</span><span class="p">):</span>
     <span class="n">alb1</span> <span class="o">=</span> <span class="n">alpha_o</span> <span class="o">+</span> <span class="p">(</span><span class="n">alpha_i</span><span class="o">-</span><span class="n">alpha_o</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">T</span><span class="o">-</span><span class="n">To</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ti</span> <span class="o">-</span> <span class="n">To</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
     <span class="n">alb2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="o">&gt;</span><span class="n">Ti</span><span class="p">,</span> <span class="n">alb1</span><span class="p">,</span> <span class="n">alpha_i</span><span class="p">)</span>
     <span class="n">alb3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">T</span><span class="o">&lt;</span><span class="n">To</span><span class="p">,</span> <span class="n">alb2</span><span class="p">,</span> <span class="n">alpha_o</span><span class="p">)</span>
@@ -805,14 +805,14 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ASR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mf">341.3</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ASR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mf">341.3</span><span class="p">):</span>
     <span class="n">alpha</span> <span class="o">=</span> <span class="n">albedo</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">Q</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">5.67E-8</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">5.67E-8</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">T</span><span class="o">**</span><span class="mi">4</span>
 
-<span class="k">def</span> <span class="nf">Ftoa</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Ftoa</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">ASR</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -866,7 +866,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use numerical root-finding to get the equilibria</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">brentq</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">brentq</span>
 <span class="c1"># brentq is a root-finding function</span>
 <span class="c1">#  Need to give it a function and two end-points</span>
 <span class="c1">#  It will look for a zero of the function between those end-points</span>

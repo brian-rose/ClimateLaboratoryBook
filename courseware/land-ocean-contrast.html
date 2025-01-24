@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -507,11 +507,11 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">from</span> <span class="nn">cartopy.util</span> <span class="kn">import</span> <span class="n">add_cyclic_point</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cartopy.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_cyclic_point</span>
 </pre></div>
 </div>
 </div>
@@ -577,7 +577,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_map</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">make_map</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;input field should be a 2D xarray.DataArray on a lat/lon grid.</span>
 <span class="sd">        Make a filled contour plot of the field, and a line plot of the zonal mean</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -619,7 +619,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">global_mean</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">gw</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">global_mean</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">atm</span><span class="p">[</span><span class="s1">&#39;som_control&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">gw</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Return the area-weighted global average of the input field&#39;&#39;&#39;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">field</span><span class="o">*</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">))</span><span class="o">/</span><span class="n">weight</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
 
@@ -876,9 +876,9 @@ q_{FT,L} &amp;= \lambda_L q_L  &amp;  q_{FT,O} &amp;= \lambda_O q_O
 <p>We are going to evaluate this theory quantitatively against the CESM simulations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.utils.constants</span> <span class="kn">import</span> <span class="n">Lhvap</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">Rv</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">climlab.utils.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lhvap</span><span class="p">,</span> <span class="n">cp</span><span class="p">,</span> <span class="n">Rv</span>
 
-<span class="k">def</span> <span class="nf">land_amp</span><span class="p">(</span><span class="n">deltaQO</span><span class="p">,</span> <span class="n">deltaQL</span><span class="p">,</span> <span class="n">deltaTO</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">land_amp</span><span class="p">(</span><span class="n">deltaQO</span><span class="p">,</span> <span class="n">deltaQL</span><span class="p">,</span> <span class="n">deltaTO</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">Lhvap</span><span class="o">/</span><span class="n">cp</span><span class="o">*</span><span class="p">(</span><span class="n">deltaQO</span> <span class="o">-</span> <span class="n">deltaQL</span><span class="p">)</span><span class="o">/</span><span class="n">deltaTO</span>
 </pre></div>
 </div>

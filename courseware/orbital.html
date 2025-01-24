@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -494,9 +494,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
 </pre></div>
 </div>
 </div>
@@ -556,7 +556,7 @@
 <p>to compare the maximum insolation received at the North Pole (at its summer solstice) and the South Pole (at its summer solstice).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">climlab.solar.insolation</span><span class="w"> </span><span class="kn">import</span> <span class="n">daily_insolation</span>
 <span class="n">numpoints</span> <span class="o">=</span> <span class="mf">365.</span>
 <span class="n">days</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">numpoints</span><span class="p">,</span> <span class="mi">365</span><span class="p">)</span><span class="o">/</span><span class="n">numpoints</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">days_per_year</span>
 <span class="n">Qnorth</span> <span class="o">=</span> <span class="n">daily_insolation</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="n">days</span><span class="p">)</span>
@@ -686,7 +686,7 @@ The farthest point is called <strong>Aphelion</strong>.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.orbital</span> <span class="kn">import</span> <span class="n">OrbitalTable</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">climlab.solar.orbital</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrbitalTable</span>
 </pre></div>
 </div>
 </div>
@@ -1547,7 +1547,7 @@ Attributes:
 <p>Calculate the insolation at the <strong>North Pole</strong> for a planet with <strong>zero obliquity</strong> and <strong>zero eccentricity</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.solar.insolation</span> <span class="kn">import</span> <span class="n">daily_insolation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">climlab.solar.insolation</span><span class="w"> </span><span class="kn">import</span> <span class="n">daily_insolation</span>
 </pre></div>
 </div>
 </div>

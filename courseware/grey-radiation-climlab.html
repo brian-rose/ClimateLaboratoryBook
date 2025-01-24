@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -510,11 +510,11 @@ appropriate collection of sub-processes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">deg2rad</span><span class="p">,</span> <span class="n">log</span>
-<span class="kn">import</span> <span class="nn">climlab</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">deg2rad</span><span class="p">,</span> <span class="n">log</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">climlab</span>
 </pre></div>
 </div>
 </div>
@@ -1558,8 +1558,8 @@ Total elapsed time is 2.0014116660123062 years.
 </div>
 </div>
 <p>Compare these to the analytical solutions for radiative equilibrium with <span class="math notranslate nohighlight">\(\epsilon = 0.58\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a824f71-b606-4f69-b148-09f575b3fa38">
-<span class="eqno">(8.1)<a class="headerlink" href="#equation-0a824f71-b606-4f69-b148-09f575b3fa38" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-51dd2cfb-f23c-409d-9839-7f626322eae0">
+<span class="eqno">(8.1)<a class="headerlink" href="#equation-51dd2cfb-f23c-409d-9839-7f626322eae0" title="Permalink to this equation">#</a></span>\[\begin{align}
 T_s &amp;= 296.4 \text{ K} \\
 T_0 &amp;= 262.3 \text{ K} \\
 T_1 &amp;= 233.8 \text{ K} \\
@@ -2765,10 +2765,10 @@ Coordinates:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  A handy re-usable routine for making a plot of the temperature profiles</span>
 <span class="c1">#  We will plot temperatures with respect to log(pressure) to get a height-like coordinate</span>
 
-<span class="k">def</span> <span class="nf">zstar</span><span class="p">(</span><span class="n">lev</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zstar</span><span class="p">(</span><span class="n">lev</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">lev</span> <span class="o">/</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="n">plot_obs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fixed_range</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_soundings</span><span class="p">(</span><span class="n">result_list</span><span class="p">,</span> <span class="n">name_list</span><span class="p">,</span> <span class="n">plot_obs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fixed_range</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">color_cycle</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">]</span>
     <span class="c1"># col is either a column model object or a list of column model objects</span>
     <span class="c1">#if isinstance(state_list, climlab.Process):</span>
@@ -2972,7 +2972,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 <p>We can be more precise with a numerical root-finder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">OLRanom</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">OLRanom</span><span class="p">(</span><span class="n">eps</span><span class="p">):</span>
     <span class="n">col</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;LW&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">absorptivity</span> <span class="o">=</span> <span class="n">eps</span>
     <span class="n">col</span><span class="o">.</span><span class="n">compute_diagnostics</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">col</span><span class="o">.</span><span class="n">OLR</span> <span class="o">-</span> <span class="mf">238.5</span>
@@ -2983,7 +2983,7 @@ Untitled: &lt;class &#39;climlab.model.column.GreyRadiationModel&#39;&gt;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use numerical root-finding to get the equilibria</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">brentq</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">brentq</span>
 <span class="c1"># brentq is a root-finding function</span>
 <span class="c1">#  Need to give it a function and two end-points</span>
 <span class="c1">#  It will look for a zero of the function between those end-points</span>

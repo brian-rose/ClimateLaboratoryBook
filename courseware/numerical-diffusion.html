@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -624,9 +624,9 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span><span class="p">,</span> <span class="n">Latex</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span><span class="p">,</span> <span class="n">Latex</span>
 </pre></div>
 </div>
 </div>
@@ -803,7 +803,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p>Here is a function that computes the diffusive flux <span class="math notranslate nohighlight">\(F\)</span> on the staggered grid, including the boundaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diffusive_flux</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diffusive_flux</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1">#  Take the finite difference</span>
     <span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">u</span><span class="p">)</span><span class="o">/</span><span class="n">deltax</span>
     <span class="c1">#  add a zero as the first element (no flux on boundary)</span>
@@ -831,7 +831,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p>The time tendency of <span class="math notranslate nohighlight">\(u\)</span> is just the convergence of this flux, which requires one more finite difference:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1">#  compute flux</span>
     <span class="n">F</span> <span class="o">=</span> <span class="n">diffusive_flux</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
     <span class="c1">#  take convergence of flux</span>
@@ -846,7 +846,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p>The gaussian (bell curve) function is a convenient way to create such a field.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gaussian</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">std</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">std</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -914,7 +914,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 <p>It is very simple to implement in <code class="docutils literal notranslate"><span class="pre">numpy</span></code> code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">step_forward</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">K</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">dudt</span> <span class="o">=</span> <span class="n">diffusion</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">u</span> <span class="o">+</span> <span class="n">deltat</span> <span class="o">*</span> <span class="n">dudt</span>
 </pre></div>

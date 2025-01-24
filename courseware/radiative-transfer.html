@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -574,8 +574,8 @@ B\big( \nu, T \big) &amp;= \frac{2 h \nu^3}{c^2} \frac{1}{\exp \left( \frac{h \n
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># climlab has these constants available, and actually calculates sigma from the above formula</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">climlab</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">climlab</span> 
 
 <span class="n">sigma</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">5</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">kBoltzmann</span><span class="o">**</span><span class="mi">4</span><span class="p">)</span> <span class="o">/</span> 
          <span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">c_light</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">hPlanck</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
@@ -650,8 +650,8 @@ t_{0} &amp;= \frac{U_{0} \exp(-\Delta \tau)}{U_{0}}  \\
 <h3>Emissivity<a class="headerlink" href="#emissivity" title="Link to this heading">#</a></h3>
 <p>The second term is the net change in the beam due to <strong>emissions</strong> in the layer.</p>
 <p>We can the define the <strong>emissivity</strong> <span class="math notranslate nohighlight">\(\epsilon_0\)</span> of the layer analogously</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a84e816-d52a-4ad8-a448-f39c27c26522">
-<span class="eqno">(9.1)<a class="headerlink" href="#equation-0a84e816-d52a-4ad8-a448-f39c27c26522" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4691ec3d-64b0-438b-87ec-10df8c9d0adf">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-4691ec3d-64b0-438b-87ec-10df8c9d0adf" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon_{0} &amp;=  1 - \exp(-\Delta \tau) \\
   &amp;= 1 - t_{0} 
 \end{align}\]</div>

@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -477,10 +477,10 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">metpy.plots</span> <span class="kn">import</span> <span class="n">SkewT</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">metpy.plots</span><span class="w"> </span><span class="kn">import</span> <span class="n">SkewT</span>
 <span class="c1">#  This code is used just to create the skew-T plot of global, annual mean air temperature</span>
 <span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
 <span class="n">ncep_air</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;pressure/air.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">use_cftime</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -489,7 +489,7 @@
 <span class="n">weight</span> <span class="o">=</span> <span class="n">coslat</span> <span class="o">/</span> <span class="n">coslat</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
 <span class="n">Tglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">ncep_air</span><span class="o">.</span><span class="n">air</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
 <span class="c1">#  Resuable function to plot the temperature data on a Skew-T chart</span>
-<span class="k">def</span> <span class="nf">make_skewT</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_skewT</span><span class="p">():</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
     <span class="n">skew</span> <span class="o">=</span> <span class="n">SkewT</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
     <span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Tglobal</span><span class="o">.</span><span class="n">level</span><span class="p">,</span> <span class="n">Tglobal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Observations&#39;</span><span class="p">)</span>
@@ -504,7 +504,7 @@
     <span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure (hPa)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">skew</span>
 <span class="c1">#  and a function to add extra profiles to this chart</span>
-<span class="k">def</span> <span class="nf">add_profile</span><span class="p">(</span><span class="n">skew</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_profile</span><span class="p">(</span><span class="n">skew</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">line</span> <span class="o">=</span> <span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">Tatm</span> <span class="o">-</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span><span class="p">,</span>
              <span class="n">label</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">skew</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> 
@@ -518,7 +518,7 @@
 <span class="n">weight_factor</span> <span class="o">=</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span> <span class="o">/</span> <span class="n">atm_control</span><span class="o">.</span><span class="n">gw</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
 <span class="n">Qglobal</span> <span class="o">=</span> <span class="p">(</span><span class="n">atm_control</span><span class="o">.</span><span class="n">Q</span> <span class="o">*</span> <span class="n">weight_factor</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">))</span>
 <span class="c1">#  Create the single-column model domain</span>
-<span class="kn">import</span> <span class="nn">climlab</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">climlab</span>
 <span class="c1">#  Make a model on same vertical domain as the GCM</span>
 <span class="n">mystate</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">column_state</span><span class="p">(</span><span class="n">lev</span><span class="o">=</span><span class="n">Qglobal</span><span class="o">.</span><span class="n">lev</span><span class="p">,</span> <span class="n">water_depth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
 <span class="c1">#  Create the model itself -- radiation only!</span>
@@ -627,10 +627,10 @@
 <div class="cell tag_hide_input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Some imports needed to make and display animations</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">animation</span>
 
-<span class="k">def</span> <span class="nf">get_tendencies</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_tendencies</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Pack all the subprocess tendencies into xarray.Datasets</span>
 <span class="sd">    and convert to units of K / day&#39;&#39;&#39;</span>
     <span class="n">tendencies_atm</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">()</span>
@@ -643,7 +643,7 @@
         <span class="n">tend</span> <span class="o">*=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">seconds_per_day</span>
     <span class="k">return</span> <span class="n">tendencies_atm</span><span class="p">,</span> <span class="n">tendencies_sfc</span>
 
-<span class="k">def</span> <span class="nf">initial_figure</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">initial_figure</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
     
@@ -680,7 +680,7 @@
     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">skew</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;Day </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="s1">&#39;days_elapsed&#39;</span><span class="p">])),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">))</span> 
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">lines</span>
 
-<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
     <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Tatm</span><span class="p">)</span><span class="o">-</span><span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span><span class="p">)</span>
     <span class="n">lines</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span><span class="o">-</span><span class="n">climlab</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">tempCtoK</span><span class="p">)</span>
     <span class="c1">#lines[2].set_xdata(np.array(model.q)*1E3)</span>

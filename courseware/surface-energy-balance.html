@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -530,10 +530,10 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
 </pre></div>
 </div>
 </div>
@@ -846,11 +846,11 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 <p>The following code reproduces Figure 4.10 of <span id="id2">Hartmann [<a class="reference internal" href="../references.html#id16" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">1994</a>]</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">climlab.utils.thermo</span> <span class="kn">import</span> <span class="n">qsat</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">climlab.utils.thermo</span><span class="w"> </span><span class="kn">import</span> <span class="n">qsat</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">+</span> <span class="n">const</span><span class="o">.</span><span class="n">tempCtoK</span>
 <span class="n">qstar</span> <span class="o">=</span> <span class="n">qsat</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span>  <span class="c1"># in kg / kg</span>
 
-<span class="k">def</span> <span class="nf">Be</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">Be</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="n">qstar</span> <span class="o">=</span> <span class="n">qsat</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">const</span><span class="o">.</span><span class="n">ps</span><span class="p">)</span>  <span class="c1"># in kg / kg</span>
     <span class="n">dqstardT</span> <span class="o">=</span> <span class="n">qstar</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">Lhvap</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">Rv</span> <span class="o">/</span> <span class="n">T</span><span class="o">**</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">const</span><span class="o">.</span><span class="n">cp</span> <span class="o">/</span> <span class="n">const</span><span class="o">.</span><span class="n">Lhvap</span> <span class="o">/</span> <span class="n">dqstardT</span>

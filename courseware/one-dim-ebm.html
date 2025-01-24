@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -526,7 +526,7 @@
 <p>Let’s revisit an animation of the global 6-hourly sea-level pressure field from our slab ocean simulation with CESM. (We first saw this [back in Lecture 5](./Lecture05 – Climate system and climate models.ipynb))</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;As85L34fKYQ&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -629,10 +629,10 @@ Measures how quickly the temperature  decreases as we move northward
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">climlab</span>
-<span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">climlab</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
 </pre></div>
 </div>
 </div>
@@ -643,7 +643,7 @@ Measures how quickly the temperature  decreases as we move northward
 <span class="c1">#   that is warm at the equator and cold at the poles</span>
 <span class="c1">#   and varies smoothly with latitude in between</span>
 
-<span class="kn">from</span> <span class="nn">climlab.utils</span> <span class="kn">import</span> <span class="n">legendre</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">climlab.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">legendre</span>
 <span class="n">sfc</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">domain</span><span class="o">.</span><span class="n">zonal_mean_surface</span><span class="p">(</span><span class="n">num_lat</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">water_depth</span><span class="o">=</span><span class="mf">10.</span><span class="p">)</span>
 <span class="n">lat</span> <span class="o">=</span> <span class="n">sfc</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">points</span>
 <span class="n">initial</span> <span class="o">=</span> <span class="mf">12.</span> <span class="o">-</span> <span class="mf">40.</span> <span class="o">*</span> <span class="n">legendre</span><span class="o">.</span><span class="n">P2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">lat</span><span class="p">)))</span>
@@ -797,7 +797,7 @@ Diffusion: &lt;class &#39;climlab.dynamics.meridional_heat_diffusion.MeridionalH
 <p>Let’s look at the data to find reasonable values for <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="c1">## The NOAA ESRL server is shutdown! January 2019</span>
 <span class="n">ncep_url</span> <span class="o">=</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis.derived/&quot;</span>
 <span class="n">ncep_Ts</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span> <span class="n">ncep_url</span> <span class="o">+</span> <span class="s2">&quot;surface_gauss/skt.sfc.mon.1981-2010.ltm.nc&quot;</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -859,7 +859,7 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Use a linear regression package to compute best fit for the slope and intercept</span>
-<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
 <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">Ts_ncep_annual</span><span class="p">,</span> <span class="n">OLR_ncep_annual</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Best fit is A = </span><span class="si">%0.0f</span><span class="s1"> W/m2 and B = </span><span class="si">%0.1f</span><span class="s1"> W/m2/degC&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span> <span class="n">slope</span><span class="p">))</span>
@@ -1064,10 +1064,10 @@ So this is consistent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Some imports needed to make and display animations</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">animation</span>
 
-<span class="k">def</span> <span class="nf">setup_figure</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_figure</span><span class="p">():</span>
     <span class="n">templimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">32</span>
     <span class="n">radlimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">340</span><span class="p">,</span> <span class="mi">340</span>
     <span class="n">htlimits</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span>
@@ -1086,7 +1086,7 @@ So this is consistent.</p>
     <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Diffusive energy balance model with annual-mean insolation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span>
 
-<span class="k">def</span> <span class="nf">initial_figure</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">initial_figure</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="c1">#  Make figure and axes</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">setup_figure</span><span class="p">()</span>
     <span class="c1"># plot initial data</span>
@@ -1103,7 +1103,7 @@ So this is consistent.</p>
     <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Day 0&#39;</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">lines</span>
 
-<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">day</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">lines</span><span class="p">):</span>
     <span class="n">model</span><span class="o">.</span><span class="n">step_forward</span><span class="p">()</span>
     <span class="c1">#  The rest of this is just updating the plot</span>
     <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
@@ -4861,10 +4861,10 @@ Total elapsed time is 9.999999999999863 years.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">inferred_heat_transport</span><span class="p">(</span> <span class="n">energy_in</span><span class="p">,</span> <span class="n">lat_deg</span> <span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">inferred_heat_transport</span><span class="p">(</span> <span class="n">energy_in</span><span class="p">,</span> <span class="n">lat_deg</span> <span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Returns the inferred heat transport (in PW) by integrating the net energy imbalance from pole to pole.&#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
-    <span class="kn">from</span> <span class="nn">climlab</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">climlab</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
     <span class="n">lat_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span> <span class="n">lat_deg</span> <span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span> <span class="mf">1E-15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> 
             <span class="n">integrate</span><span class="o">.</span><span class="n">cumtrapz</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">)</span><span class="o">*</span><span class="n">energy_in</span><span class="p">,</span>
@@ -5405,7 +5405,7 @@ Coordinates:
 <p>The <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/">pandas package</a> is very very useful for working with spreadsheet-style data in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">classdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
               <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">32.8</span><span class="p">,</span> <span class="mf">6.64</span><span class="p">],</span>  

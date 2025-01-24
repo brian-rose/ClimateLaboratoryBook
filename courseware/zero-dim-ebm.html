@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -635,7 +635,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  define a reusable function!</span>
-<span class="k">def</span> <span class="nf">equilibrium_temperature</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">tau</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">equilibrium_temperature</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">tau</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span><span class="o">/</span><span class="p">(</span><span class="n">tau</span><span class="o">*</span><span class="n">sigma</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="n">Teq_observed</span> <span class="o">=</span> <span class="n">equilibrium_temperature</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">Q</span><span class="p">,</span><span class="n">tau</span><span class="p">)</span>
@@ -858,10 +858,10 @@ The equilibrium temperature increased by about 2.8 K.
 <p>Let’s now define the functions that we were supposed to create above:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ASR</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ASR</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span>
 
-<span class="k">def</span> <span class="nf">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="n">tau</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">T</span><span class="o">**</span><span class="mi">4</span>
 </pre></div>
 </div>
@@ -903,7 +903,7 @@ The equilibrium temperature increased by about 2.8 K.
 <p>But this is tedious typing. Time to <strong>define a function</strong> to make things easier and more reliable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">step_forward</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">step_forward</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">T</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">C</span> <span class="o">*</span> <span class="p">(</span> <span class="n">ASR</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.32</span><span class="p">)</span> <span class="o">-</span> <span class="n">OLR</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.57</span><span class="p">)</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -933,7 +933,7 @@ The equilibrium temperature increased by about 2.8 K.
 <p>Now let’s really harness the power of the computer by <strong>making a loop</strong> (and storing values in arrays):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">numsteps</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">Tsteps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">numsteps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -979,7 +979,7 @@ The equilibrium temperature increased by about 2.8 K.
 <span class="c1">#   Display all plots inline in the notebook</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline  
 <span class="c1">#  import the plotting package</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -1006,8 +1006,8 @@ ASR = OLR.</p>
 <p>This is actually not native Python, but uses a graphics library called <a class="reference external" href="https://matplotlib.org">matplotlib</a>. This is the workhorse of scientific plotting in Python, and we will be using it all the time!</p>
 <p>Just about all of our notebooks will start with this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </section>
