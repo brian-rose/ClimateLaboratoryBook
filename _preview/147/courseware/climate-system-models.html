@@ -1,0 +1,1025 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>3. The climate system and climate models &#8212; The Climate Laboratory</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-43758959-2"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'UA-43758959-2');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'courseware/climate-system-models';</script>
+    <link rel="canonical" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/climate-system-models.html" />
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Introducing the Community Earth System Model (CESM)" href="introducing-cesm.html" />
+    <link rel="prev" title="Advanced topic: Analytical solution of the global Energy Balance Model" href="analytical-efolding.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../home.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Climate Laboratory</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../home.html">
+                    The Climate Laboratory
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about.html">About this Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../who-for.html">Who is the book for?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../how-to.html">How to use this book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attribution.html">How to cite and reuse this material</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models-budgets-fun.html">1. Climate models, the global energy budget, and Fun with Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="zero-dim-ebm.html">2. Modeling the global energy budget</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="analytical-efolding.html">Advanced topic: Analytical solution of the global Energy Balance Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. The climate system and climate models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introducing-cesm.html">4. Introducing the Community Earth System Model (CESM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climlab-intro.html">5. Building simple climate models using climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiation.html">6. A Brief Review of Radiation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="elementary-greenhouse.html">7. Elementary greenhouse models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sympy-greenhouse.html">Advanced topic: Solving the two-layer grey gas model analytically with sympy</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="grey-radiation-climlab.html">8. Grey radiation modeling with climlab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radiative-transfer.html">9. Modeling non-scattering radiative transfer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spectral-bands.html">10. Who needs spectral bands? We do. Some baby steps…</a></li>
+<li class="toctree-l1"><a class="reference internal" href="radeq.html">11. Radiative Equilibrium</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rce.html">12. Radiative-Convective Equilibrium</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sensitivity-feedback.html">13. Climate sensitivity and feedback</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-sensitivity-feedback.html">Advanced topic: Climate sensitivity and feedback</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-cesm.html">14. Examing the transient and equilibrium CO2 response in the CESM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transient-toy.html">15. Toy models of transient warming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clouds.html">16. Clouds and cloud feedback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="insolation.html">17. Insolation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="orbital.html">18. Orbital variations, insolation, and the ice ages</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="heat-transport.html">19. Heat transport</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-heat-transport.html">Advanced topic: Heat transport decomposition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="one-dim-ebm.html">20. The one-dimensional energy balance model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="seasonal-cycle.html">21. Modeling the seasonal cycle of surface temperature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical-diffusion.html">22. A peek at numerical methods for diffusion models</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="albedo-snowball.html">23. Ice-albedo feedback and Snowball Earth in the EBM</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced-albedo-feedback.html">Advanced topic: Ice albedo feedback in the EBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced-snowball-earth.html">Advanced topic: Snowball Earth and Large Ice Cap Instability in the EBM</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="surface-energy-balance.html">24. The surface energy balance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="land-ocean-contrast.html">25. Land-Ocean contrasts under climate change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="water-water-everywhere.html">26. Water, water everywhere!</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about-assignments.html">About the assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-zero-dim-ebm.html">Assignment: Climate change in the zero-dimensional EBM</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="assignment-cesm-control.html">Assignment: Global average budgets in the CESM pre-industrial control simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignment-cesm-control-hints.html">Additional hints and guidance for CESM budgets assignment</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-simple-clouds.html">Assignment: Clouds in the Leaky Greenhouse Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-rcm-feedback.html">Assignment: Feedbacks in the Radiative-Convective Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-cesm-climate-change.html">Assignment: Climate change in the CESM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment-insolation-orbit.html">Assignment: Insolation and orbital parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Postamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/brian-rose/ClimateLaboratoryBook/main?urlpath=tree/courseware/climate-system-models.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://lore.atmos.albany.edu:8000/hub/user-redirect/git-pull?repo=https%3A//github.com/brian-rose/ClimateLaboratoryBook&urlpath=tree/ClimateLaboratoryBook/courseware/climate-system-models.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/courseware/climate-system-models.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The climate system and climate models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-climate-system-and-its-interactions">1. The climate system and its interactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-climate-system-and-its-spheres">Definition of the “climate system” and its “spheres”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atmosphere">Atmosphere</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrosphere">Hydrosphere</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#biosphere-terrestrial-and-marine"><strong>Biosphere</strong> (terrestrial and marine):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cryosphere"><strong>Cryosphere</strong>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lithosphere"><strong>Lithosphere</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-we-want-to-include-all-these-spheres-in-our-models">WHY might we want to include all these “spheres” in our models?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget">The key is that all these processes ultimately affect the planetary energy budget</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-versus-parameterization">2. Simulation versus Parameterization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterization">Parameterization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pro">Pro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#con">Con</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Pro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Con</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-taxonomy-of-climate-models">3. A taxonomy of climate models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components-of-a-climate-model">Key components of a climate model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation">Radiation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics">Dynamics</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-processes">Surface processes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-in-both-time-and-space">Resolution (in both time and space)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-climate-modeling-pyramid">The climate modeling pyramid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-basic-types-of-climate-model">Five basic types of climate model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-balance-models-ebms">1. Energy Balance Models (EBMs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiative-convective-rc-or-single-column-models-scms">2. Radiative-Convective (RC) or Single-Column models (SCMs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionally-constrained-models">3. Dimensionally constrained models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-circulation-models-gcms">4. Global Circulation Models (GCMs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fun-fact">Fun fact</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-system-models">5. Earth System Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-vs-complex-models-their-different-roles-in-the-science">Simple vs. Complex models: their different roles in the science</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-gcm">4. Introducing the GCM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ingredients-of-the-gcm">Ingredients of the GCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolving-complexity-of-gcms">Evolving complexity of GCMs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-hierarchy-of-complexity-for-ocean-models">A hierarchy of complexity for ocean models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-resolve-with-a-2o-atmosphere">5. What can we resolve with a 2º atmosphere?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-point">Discussion point:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation-information">Citation information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-climate-system-and-climate-models">
+<h1><span class="section-number">3. </span>The climate system and climate models<a class="headerlink" href="#the-climate-system-and-climate-models" title="Link to this heading">#</a></h1>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a> by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<hr class="docutils" />
+<p><a id='section1'></a></p>
+<section id="the-climate-system-and-its-interactions">
+<h2>1. The climate system and its interactions<a class="headerlink" href="#the-climate-system-and-its-interactions" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="definition-of-the-climate-system-and-its-spheres">
+<h3>Definition of the “climate system” and its “spheres”<a class="headerlink" href="#definition-of-the-climate-system-and-its-spheres" title="Link to this heading">#</a></h3>
+<p>From the IPCC AR5 report <span id="id1">[<a class="reference internal" href="../references.html#id27" title="U. Cubasch, D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald, and J.-G. Winther. Introduction. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 1. Cambridge University Press, Cambridge, U.K., 2013. doi:10.1017/CBO9781107415324.007.">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
+<blockquote>
+<div><p><strong>Climate System:</strong> “The climate system is the highly complex system consisting of five major components: the atmosphere, the hydrosphere, the cryosphere, the lithosphere and the biosphere, and the interactions between them. The climate system evolves in time under the influence of its own internal dynamics and because of external forcings such as volcanic eruptions, solar variations and anthropogenic forcings such as the changing composition of the atmosphere and land use change.”</p>
+</div></blockquote>
+<p>Which begs some further definitions:</p>
+<section id="atmosphere">
+<h4>Atmosphere<a class="headerlink" href="#atmosphere" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>The gaseous envelope surrounding the Earth.</p>
+</div></blockquote>
+</section>
+<section id="hydrosphere">
+<h4>Hydrosphere<a class="headerlink" href="#hydrosphere" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>The component of the climate system comprising liquid surface and subterranean water, such as oceans, seas, rivers, lakes, underground water, etc.</p>
+</div></blockquote>
+</section>
+<section id="biosphere-terrestrial-and-marine">
+<h4><strong>Biosphere</strong> (terrestrial and marine):<a class="headerlink" href="#biosphere-terrestrial-and-marine" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>The part of the Earth system comprising all ecosystems and living organisms… including derived dead organic matter, such as litter, soil organic matter and oceanic detritus.</p>
+</div></blockquote>
+</section>
+<section id="cryosphere">
+<h4><strong>Cryosphere</strong>:<a class="headerlink" href="#cryosphere" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>All regions on and beneath the surface of the Earth and ocean where water is in solid form, including sea ice, lake ice, river ice, snow cover, glaciers and ice sheets, and frozen ground (which includes permafrost).</p>
+</div></blockquote>
+</section>
+<section id="lithosphere">
+<h4><strong>Lithosphere</strong>:<a class="headerlink" href="#lithosphere" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p>The upper layer of the solid Earth, both continental and oceanic, which comprises all crustal rocks and the cold, mainly elastic part of the uppermost mantle.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="why-might-we-want-to-include-all-these-spheres-in-our-models">
+<h3>WHY might we want to include all these “spheres” in our models?<a class="headerlink" href="#why-might-we-want-to-include-all-these-spheres-in-our-models" title="Link to this heading">#</a></h3>
+<p>Here are two nice figures from the IPCC AR5 WG1 report <span id="id2">[<a class="reference internal" href="../references.html#id27" title="U. Cubasch, D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald, and J.-G. Winther. Introduction. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 1. Cambridge University Press, Cambridge, U.K., 2013. doi:10.1017/CBO9781107415324.007.">Cubasch <em>et al.</em>, 2013</a>]</span>:</p>
+<a class="reference internal image-reference" href="https://www.ipcc.ch/site/assets/uploads/2017/09/Fig1-01.jpg"><img alt="https://www.ipcc.ch/site/assets/uploads/2017/09/Fig1-01.jpg" src="https://www.ipcc.ch/site/assets/uploads/2017/09/Fig1-01.jpg" style="width: 800px;" /></a>
+<blockquote>
+<div><p>Figure 1.1 | Main drivers of climate change. The radiative balance between incoming solar shortwave radiation (SWR) and outgoing longwave radiation (OLR) is influenced by global climate ‘drivers’. Natural fluctuations in solar output (solar cycles) can cause changes in the energy balance (through fluctuations in the amount of incoming SWR) (Section 2.3). Human activity changes the emissions of gases and aerosols, which are involved in atmospheric chemical reactions, resulting in modified O3 and aerosol amounts (Section 2.2). O3 and aerosol particles absorb, scatter and reflect SWR, changing the energy balance. Some aerosols act as cloud condensation nuclei modifying the properties of cloud droplets and possibly affecting precipitation (Section 7.4). Because cloud interactions with SWR and LWR are large, small changes in the properties of clouds have important implications for the radiative budget (Section 7.4). Anthropogenic changes in GHGs (e.g., CO2, CH4, N2O, O3, CFCs) and large aerosols (&gt;2.5 μm in size) modify the amount of outgoing LWR by absorbing outgoing LWR and re-emitting less energy at a lower temperature (Section 2.2). Surface albedo is changed by changes in vegetation or land surface properties, snow or ice cover and ocean colour (Section 2.3). These changes are driven by natural seasonal and diurnal changes (e.g., snow cover), as well as human influence (e.g., changes in vegetation types) (Forster et al., 2007).</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="https://www.ipcc.ch/site/assets/uploads/2017/09/Fig1-02.jpg"><img alt="https://www.ipcc.ch/site/assets/uploads/2017/09/Fig1-02.jpg" src="https://www.ipcc.ch/site/assets/uploads/2017/09/Fig1-02.jpg" style="width: 800px;" /></a>
+<blockquote>
+<div><p>Figure 1.2 | Climate feedbacks and timescales. The climate feedbacks related to increasing CO2 and rising temperature include negative feedbacks (–) such as LWR, lapse rate (see Glossary in Annex III), and air–sea carbon exchange and positive feedbacks (+) such as water vapour and snow/ice albedo feedbacks. Some feedbacks may be positive or negative (±): clouds, ocean circulation changes, air–land CO2 exchange, and emissions of non-GHGs and aerosols from natural systems. In the smaller box, the large difference in timescales for the various feedbacks is highlighted.</p>
+</div></blockquote>
+</section>
+<section id="the-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget">
+<h3>The key is that all these processes ultimately affect the planetary energy budget<a class="headerlink" href="#the-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget" title="Link to this heading">#</a></h3>
+<p>Let’s talk about <strong>timescales</strong>.</p>
+<p>Note that the IPCC figure only goes out to centuries – deep ocean circulation – but there are many even longer timescales in the climate system.
+e.g. growth and decay of ice sheets, geological processes like chemical weathering, continental drift</p>
+<p>The choice of which processes to include in a model should therefore be <strong>guided by the timescales of interest</strong>. For example, the IPCC process is primarily concerned with the century timescale – because it is of special concern to human affairs.
+So we don’t tend to include ice sheet and geological feedbacks – though coupled ice sheet modeling is becoming more important.</p>
+<p><img alt="Primer Table 1.8" src="../_images/Primer_Table1.8.png" /></p>
+<hr class="docutils" />
+<p><a id='section2'></a></p>
+</section>
+</section>
+<section id="simulation-versus-parameterization">
+<h2>2. Simulation versus Parameterization<a class="headerlink" href="#simulation-versus-parameterization" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="definitions">
+<h3>Definitions<a class="headerlink" href="#definitions" title="Link to this heading">#</a></h3>
+<p>The <em>Climate Modelling Primer</em> (4th ed., page 124) <span id="id3">[<a class="reference internal" href="../references.html#id28" title="Kendal McGuffie and Ann Henderson-Sellers. The Climate Modelling Primer. Wiley-Blackwell, 4th edition, 2014.">McGuffie and Henderson-Sellers, 2014</a>]</span> defines <strong>parameterization</strong> as</p>
+<blockquote>
+<div><p>The process of capturing a physical process through some mathematical relationship between important parameters in the process, but without explicitly modeling all the actual processes. For example, the albedo of leaves might be related to the soil moisture (via some specification of wilting point) but the physical and biological mechanisms in the plant that happen when the leaf wilts are not modelled.</p>
+</div></blockquote>
+<p>An example from our own work so far: the <strong>greenhouse effect</strong>, which causes the OLR to be much lower than the surface emission, and the equilibrium temperature of the surface to be much warmer than it would otherwise be.</p>
+<p>In reality the greenhouse effect arises from the contributions of several different gases, at various levels, to the absorption and emission of longwave radiation. Key greenhouse species include water vapor and cloud droplets, which both strongly tied to the day-to-day variations in weather.</p>
+<p>How can we represent this in a climate model?</p>
+</section>
+<section id="parameterization">
+<h3>Parameterization<a class="headerlink" href="#parameterization" title="Link to this heading">#</a></h3>
+<p>Represent the time-averaged, net effect of the complex radiative transfer process, and its coupling to day-to-day water and cloud variations, with an <strong>empirical relationship</strong>, e.g.</p>
+<div class="math notranslate nohighlight">
+\[ OLR = \tau \sigma T_s^4 \]</div>
+<p>Use observed temperature and OLR to choose an appropriate value for <span class="math notranslate nohighlight">\(\tau\)</span></p>
+<p>(this is what we have done so far)</p>
+<section id="pro">
+<h4>Pro<a class="headerlink" href="#pro" title="Link to this heading">#</a></h4>
+<p>Simple to implement, easy to understand the result</p>
+</section>
+<section id="con">
+<h4>Con<a class="headerlink" href="#con" title="Link to this heading">#</a></h4>
+<p>How might the value of <span class="math notranslate nohighlight">\(\tau\)</span> change with climate change? We have no way of knowing, and have to make assumptions.</p>
+</section>
+</section>
+<section id="simulation">
+<h3>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h3>
+<p>Solve a large set of coupled equations for the time-dependent behavior of the atmosphere:</p>
+<ul class="simple">
+<li><p>Equations of radiative transfer, with detailed information about the various greenhouse gases</p></li>
+<li><p>Equations of fluid motion to predict growth and decay of weather system and movement of water vapor</p></li>
+<li><p>Cloud microphysics to predict the formation of cloud droplets and their optical properties</p></li>
+</ul>
+<p>This is essentially what goes on in a so-called GCM (General Circulation Model or Global Climate Model).</p>
+<section id="id4">
+<h4>Pro<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<p>Model is based on real physical principles (e.g. Newton’s laws of motion, conservation of mass and energy). It is therefore more likely to remain valid under changing climate conditions.</p>
+</section>
+<section id="id5">
+<h4>Con<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>Requires lots of computer resources. Must simulate the weather even though we really just want the climate (statistics of weather!)</p>
+<p>Essentially a <strong>simulation</strong> involves representing (at least some aspects of) the underlying rules that govern the process. <em>There is a chain of causality linking input to output</em>.</p>
+<p><strong>Parameterization</strong> involves making assumptions about the <strong>statistical properties</strong> of the process – so we can calculate some relevant statistical properties of the output given the input, without needing to explicitly model the actual events.</p>
+<hr class="docutils" />
+<p><a id='section3'></a></p>
+</section>
+</section>
+</section>
+<section id="a-taxonomy-of-climate-models">
+<h2>3. A taxonomy of climate models<a class="headerlink" href="#a-taxonomy-of-climate-models" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="key-components-of-a-climate-model">
+<h3>Key components of a climate model<a class="headerlink" href="#key-components-of-a-climate-model" title="Link to this heading">#</a></h3>
+<section id="radiation">
+<h4>Radiation<a class="headerlink" href="#radiation" title="Link to this heading">#</a></h4>
+<p>The way in which the input and absorption of solar radiation and the emission of infrared radiation are handled</p>
+</section>
+<section id="dynamics">
+<h4>Dynamics<a class="headerlink" href="#dynamics" title="Link to this heading">#</a></h4>
+<p>The movement of energy around the globe by winds and ocean currents (specifically from low to high latitudes) and vertical movements (e.g. small-scale turbulence, convection and deep-water formation)</p>
+</section>
+<section id="surface-processes">
+<h4>Surface processes<a class="headerlink" href="#surface-processes" title="Link to this heading">#</a></h4>
+<p>Inclusion of the effects of sea and land ice, snow, vegetation and the resultant change in albedo, emissivity and surface-atmosphere energy and moisture interchanges.</p>
+</section>
+<section id="chemistry">
+<h4>Chemistry<a class="headerlink" href="#chemistry" title="Link to this heading">#</a></h4>
+<p>The chemical composition of the atmosphere and interactions, including biological, with other components (e.g. carbon exchanges between ocean, land and atmosphere)</p>
+</section>
+<section id="resolution-in-both-time-and-space">
+<h4>Resolution (in both time and space)<a class="headerlink" href="#resolution-in-both-time-and-space" title="Link to this heading">#</a></h4>
+<p>The timestep of the model and the horizontal and vertical scales resolved.</p>
+</section>
+</section>
+<section id="the-climate-modeling-pyramid">
+<h3>The climate modeling pyramid<a class="headerlink" href="#the-climate-modeling-pyramid" title="Link to this heading">#</a></h3>
+<p>The edges represent the basic elements of the models, with <strong>complexity increasing upwards</strong>. Around the base of the pyramid are the simpler climate models, which incorporate only one primary process.</p>
+<p><img alt="Primer Figure 2.2" src="../_images/Primer_Figure2.2.png" /></p>
+</section>
+<section id="five-basic-types-of-climate-model">
+<h3>Five basic types of climate model<a class="headerlink" href="#five-basic-types-of-climate-model" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Energy Balance Models (EBMs)</p></li>
+<li><p>Radiative-Convective (RC) or Single-Column models (SCMs)</p></li>
+<li><p>“Dimensionally Constrained” models</p></li>
+<li><p>Global Circulation Models (GCMs)</p></li>
+<li><p>Earth System Models (ESMs)</p></li>
+</ol>
+<p>The vertical axis in the pyramid figures shows increasing complexity BOTH in terms of number of processes included and linked together, AND increasing resolution in space and time.</p>
+</section>
+<section id="energy-balance-models-ebms">
+<h3>1. Energy Balance Models (EBMs)<a class="headerlink" href="#energy-balance-models-ebms" title="Link to this heading">#</a></h3>
+<p>Zero- or one-dimensional models predicting the surface (strictly the sea-level) temperature as a function of the energy balance of the Earth.</p>
+<p>Simplified relationships are used to calculate the terms contributing to the energy balance in each latitude zone in the one-dimensional case.</p>
+<p><em>How might we extend our zero-dimensional model to include a latitude dimension? What new kinds of processes might we have to include?</em></p>
+</section>
+<section id="radiative-convective-rc-or-single-column-models-scms">
+<h3>2. Radiative-Convective (RC) or Single-Column models (SCMs)<a class="headerlink" href="#radiative-convective-rc-or-single-column-models-scms" title="Link to this heading">#</a></h3>
+<p>Focus on processes in the <strong>vertical column</strong>.</p>
+<ul class="simple">
+<li><p>RC models compute the (usually global average) temperature profile by explicit modelling of <strong>radiation</strong> and <strong>convection</strong> processes, which together determine the *lapse rate.</p></li>
+<li><p>SCMs are single columns ‘extracted’ from a three-dimensional model and include all the processes that would be modelled in the three-dimensional version but without any of the horizontal energy transfers.</p></li>
+</ul>
+</section>
+<section id="dimensionally-constrained-models">
+<h3>3. Dimensionally constrained models<a class="headerlink" href="#dimensionally-constrained-models" title="Link to this heading">#</a></h3>
+<p>Include the following:</p>
+<ul class="simple">
+<li><p>Statistical-Dynamical (SD) models, deal explicitly with surface processes and dynamics in a zonal average (average around latitude circles) framework and have a vertically resolved atmosphere.</p></li>
+<li><p>Earth-System Models of Intermediate Complexity (EMICs) extend SD models to include interactive chemistry, especially the cycling of carbon between ocean, atmosphere and land.</p></li>
+<li><p>Integrated Assessment Models (IAMs) couple the climate system to models of economic activity to more fully assess the impact of particular policy choices affective emissions.</p></li>
+</ul>
+</section>
+<section id="global-circulation-models-gcms">
+<h3>4. Global Circulation Models (GCMs)<a class="headerlink" href="#global-circulation-models-gcms" title="Link to this heading">#</a></h3>
+<p>The <strong>three-dimensional nature</strong> of the atmosphere and ocean is incorporated.</p>
+<p>These models can exists as <em>fully coupled ocean-atmosphere models</em> or, for testing and evaluation, as independent ocean or atmospheric circulation models.</p>
+<p>These models attempt to simulate as many processes as possible and produce a three-dimensional picture of the time evolution of the state of the whole climate system.</p>
+<p>Vertical resolution is much finer than horizontal resolution but, even so, the number of layers is usually much less than the number of columns.</p>
+<section id="fun-fact">
+<h4>Fun fact<a class="headerlink" href="#fun-fact" title="Link to this heading">#</a></h4>
+<p>Depending on who you ask, <strong>GCM</strong> stands for any of the following:</p>
+<ul class="simple">
+<li><p><strong>General Circulation Model</strong> (the original)</p></li>
+<li><p><strong>Global Climate Model</strong> (more common these days)</p></li>
+<li><p><strong>Global Circulation Model</strong> (possibly the most accurate name)</p></li>
+</ul>
+<p>A GCM was originally a representation of the processes that shape and maintain the <strong>time-average circulation</strong> of the atmosphere, e.g. why are the surface winds, on average, westerly in mid-latitudes and easterly in the tropics?</p>
+<p>Distinctions have historically been drawn between <strong>oceanic</strong> and <strong>atmospheric</strong> general circulation models, which are often denoted <strong>OGCM</strong> and <strong>AGCM</strong> respectively.</p>
+<p>As the pyramid is ascended, more processes are integrated to develop a coupled ocean-atmosphere global model, which might be denoted <strong>AOGCM</strong> or <strong>CGCM</strong>.</p>
+</section>
+</section>
+<section id="earth-system-models">
+<h3>5. Earth System Models<a class="headerlink" href="#earth-system-models" title="Link to this heading">#</a></h3>
+<p>Ascending the pyramid even more and moving forward in climate modeling history, more processes that used to be fixed come to be incorporated into GCMs and the coupling becomes more complete: e.g. changes in biomes and vegetation, chemical changes in atmosphere, ocean and soil.</p>
+<p>Such models are now generally known as <strong>Earth System Models</strong>.</p>
+<p>For brevity we use the generic term GCM to mean any complex three-dimensional model of the atmosphere and ocean and possibly other components, used for climate simulation. We will be more precise where necessary.</p>
+</section>
+<section id="simple-vs-complex-models-their-different-roles-in-the-science">
+<h3>Simple vs. Complex models: their different roles in the science<a class="headerlink" href="#simple-vs-complex-models-their-different-roles-in-the-science" title="Link to this heading">#</a></h3>
+<p><img alt="Primer Table 2.1" src="../_images/Primer_Table2.1.png" /></p>
+<p>In this course we are going to work extensively with two kinds of simple one-dimensional model: <strong>EBM</strong>s and <strong>RCM</strong>s.</p>
+<p>Section 2.2.1 and 2.2.2 of the <em>Primer</em> <span id="id6">[<a class="reference internal" href="../references.html#id28" title="Kendal McGuffie and Ann Henderson-Sellers. The Climate Modelling Primer. Wiley-Blackwell, 4th edition, 2014.">McGuffie and Henderson-Sellers, 2014</a>]</span> give a sneak peek of the ingredients and uses for these models.</p>
+<hr class="docutils" />
+<p><a id='section4'></a></p>
+</section>
+</section>
+<section id="introducing-the-gcm">
+<h2>4. Introducing the GCM<a class="headerlink" href="#introducing-the-gcm" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="ingredients-of-the-gcm">
+<h3>Ingredients of the GCM<a class="headerlink" href="#ingredients-of-the-gcm" title="Link to this heading">#</a></h3>
+<p>The aim of the GCM is the calculation of the <strong>full three-dimensional character</strong> of the atmosphere and ocean.</p>
+<p>To <strong>simulate</strong> the fluid flow and its effects on other components of the climate system, instead of <strong>parameterizing</strong> the flow.</p>
+<p>This requires the solution of a series of equations governing the motion of fluids</p>
+<ul class="simple">
+<li><p>Conservation of energy</p></li>
+<li><p>Conservation of momentum, Newton’s 2nd law of motion (F=ma) for a moving fluid</p></li>
+<li><p>Conservation of mass, for the fluid itself (air or water) as well as any quantities carried by the fluid (e.g. water vapor in the atmosphere, salt in the ocean)</p></li>
+<li><p>Equation of state, linking thermodynamic properties of the fluid (e.g. ideal gas law for atmosphere)</p></li>
+<li><p>Also, equations for the formation of clouds, sea ice, etc.</p></li>
+</ul>
+<p>Atmospheric Science students will recognize this list - the so-called “governing equations” for the atmosphere.</p>
+<p>These equations are the basis of <em>numerical weather prediction</em> as well as climate modeling.</p>
+<p>The physical laws are expressed in terms of <strong>differential equations</strong>.</p>
+<p>Just as we saw with the zero-dimensional EBM, we need to approximate the derivatives in order to represent them on a computer.</p>
+<p>One way to do this is to divide the Earth into a <strong>series of boxes on a regular grid</strong>.</p>
+<p>The model then represents all the <strong>state variables</strong>, e.g. for the atmosphere</p>
+<ul class="simple">
+<li><p>Temperature</p></li>
+<li><p>Wind speed and direction</p></li>
+<li><p>Humidity</p></li>
+<li><p>Pressure</p></li>
+</ul>
+<p>for each box - essentially a spatial average of these quantities over the box.</p>
+<p>The discretized equations are then solved numerically by <strong>timestepping</strong>, (conceptually at least) just like we have already done with the EBM.</p>
+<p><img alt="Primer Figure 2.5" src="../_images/Primer_Figure2.5.png" /></p>
+</section>
+<section id="evolving-complexity-of-gcms">
+<h3>Evolving complexity of GCMs<a class="headerlink" href="#evolving-complexity-of-gcms" title="Link to this heading">#</a></h3>
+<a class="reference internal image-reference" href="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig1-13.jpg"><img alt="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig1-13.jpg" src="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig1-13.jpg" style="width: 800px;" /></a>
+<blockquote>
+<div><p>Figure 1.13 | The development of climate models over the last 35 years showing how the different components were coupled into comprehensive climate models over time. In each aspect (e.g., the atmosphere, which comprises a wide range of atmospheric processes) the complexity and range of processes has increased over time (illustrated by growing cylinders). Note that during the same time the horizontal and vertical resolution has increased considerably e.g., for spectral models from T21L9 (roughly 500 km horizontal resolu- tion and 9 vertical levels) in the 1970s to T95L95 (roughly 100 km horizontal resolution and 95 vertical levels) at present, and that now ensembles with at least three independent experiments can be considered as standard.</p>
+</div></blockquote>
+<a class="reference internal image-reference" href="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig1-14.jpg"><img alt="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig1-14.jpg" src="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig1-14.jpg" style="width: 800px;" /></a>
+<blockquote>
+<div><p>Figure 1.14 | Horizontal resolutions considered in today’s higher resolution models and in the very high resolution models now being tested: (a) Illustration of the European topography at a resolution of 87.5 × 87.5 km; (b) same as (a) but for a resolution of 30.0 × 30.0 km.</p>
+</div></blockquote>
+</section>
+<section id="a-hierarchy-of-complexity-for-ocean-models">
+<h3>A hierarchy of complexity for ocean models<a class="headerlink" href="#a-hierarchy-of-complexity-for-ocean-models" title="Link to this heading">#</a></h3>
+<p><img alt="Primer Figure 2.9" src="../_images/Primer_Figure2.9.png" /></p>
+<p>One goal of all this complexity is to do <strong>more simulation</strong> and <strong>less parameterization</strong> in order to get a more accurate prediction of climate change.</p>
+<p>In terms of our simple view of planetary energy budget, <strong>we are trying to represent the net climate feedback parameter <span class="math notranslate nohighlight">\(\lambda\)</span> correctly</strong>, and so get the correct climate sensitivity.</p>
+<p>Ideally this means basing the model on <strong>laws of physics and chemistry</strong>.</p>
+<p>However it doesn’t always work this way. In many cases we know that a feedback operates in nature, but we can’t represent it in terms of first principles.</p>
+<p>Land surface processes are a good example.</p>
+<p>Exchanges of energy, water and carbon between the land and atmosphere are biologically mediated. We must (to a certain extent) rely on empirical relationships. A bit like economic modeling.</p>
+<p>We also must deal with interaction across spatial scales.</p>
+<p>E.g. cumulus convection and vertical transport of heat and water vapor</p>
+<hr class="docutils" />
+<p><a id='section5'></a></p>
+</section>
+</section>
+<section id="what-can-we-resolve-with-a-2o-atmosphere">
+<h2>5. What can we resolve with a 2º atmosphere?<a class="headerlink" href="#what-can-we-resolve-with-a-2o-atmosphere" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The following animation shows contours of sea level pressure in the control simulation. It is based on 6-hourly output from the numerical model.</p>
+<p>The atmosphere is simulated with a 2º finite volume dynamical core.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;As85L34fKYQ&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="400"
+            height="300"
+            src="https://www.youtube.com/embed/As85L34fKYQ"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        </div></div>
+</div>
+<section id="discussion-point">
+<h3>Discussion point:<a class="headerlink" href="#discussion-point" title="Link to this heading">#</a></h3>
+<p>How well does this represent the true general circulation of the atmosphere?</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="citation-information">
+<h2>Citation information<a class="headerlink" href="#citation-information" title="Link to this heading">#</a></h2>
+<p>Several figures above are reproduced from Chapter 1 of the IPCC AR5 Working Group 1 report.
+The report and images can be found online at <a class="reference external" href="https://www.ipcc.ch/report/ar5/wg1/">https://www.ipcc.ch/report/ar5/wg1/</a></p>
+<p>The full citation is:</p>
+<blockquote>
+<div><p>Cubasch, U., D. Wuebbles, D. Chen, M.C. Facchini, D. Frame, N. Mahowald and J.-G. Winther, 2013: Introduction. In: Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Stocker, T.F., D. Qin, G.-K. Plattner, M. Tignor, S.K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex and P.M. Midgley (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 119–158, doi:10.1017/CBO9781107415324.007.</p>
+</div></blockquote>
+<p>Some other figures are reproduced from <a class="reference external" href="https://www.wiley.com/en-us/The+Climate+Modelling+Primer%2C+4th+Edition-p-9781118747186"><em>The Climate Modelling Primer</em> (4th ed)</a>  by Kendal McGuffie and Ann Henderson-Sellers, Wiley-Blackwell 2014.</p>
+<hr class="docutils" />
+</section>
+<hr class="docutils" />
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h2>
+<p>This notebook is part of <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook">The Climate Laboratory</a>, an open-source textbook developed and maintained by <a class="reference external" href="http://www.atmos.albany.edu/facstaff/brose/index.html">Brian E. J. Rose</a>, University at Albany.</p>
+<p>It is licensed for free and open consumption under the
+<a class="reference external" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a> license.</p>
+<p>Development of these notes and the <a class="reference external" href="https://github.com/climlab/climlab">climlab software</a> is partially supported by the National Science Foundation under award AGS-1455071 to Brian Rose. Any opinions, findings, conclusions or recommendations expressed here are mine and do not necessarily reflect the views of the National Science Foundation.</p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./courseware"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="analytical-efolding.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Advanced topic: Analytical solution of the global Energy Balance Model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="introducing-cesm.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Introducing the Community Earth System Model (CESM)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-climate-system-and-its-interactions">1. The climate system and its interactions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-the-climate-system-and-its-spheres">Definition of the “climate system” and its “spheres”</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#atmosphere">Atmosphere</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrosphere">Hydrosphere</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#biosphere-terrestrial-and-marine"><strong>Biosphere</strong> (terrestrial and marine):</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cryosphere"><strong>Cryosphere</strong>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lithosphere"><strong>Lithosphere</strong>:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-might-we-want-to-include-all-these-spheres-in-our-models">WHY might we want to include all these “spheres” in our models?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-key-is-that-all-these-processes-ultimately-affect-the-planetary-energy-budget">The key is that all these processes ultimately affect the planetary energy budget</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-versus-parameterization">2. Simulation versus Parameterization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterization">Parameterization</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pro">Pro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#con">Con</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Pro</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Con</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-taxonomy-of-climate-models">3. A taxonomy of climate models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components-of-a-climate-model">Key components of a climate model</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#radiation">Radiation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamics">Dynamics</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-processes">Surface processes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry">Chemistry</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-in-both-time-and-space">Resolution (in both time and space)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-climate-modeling-pyramid">The climate modeling pyramid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#five-basic-types-of-climate-model">Five basic types of climate model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-balance-models-ebms">1. Energy Balance Models (EBMs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#radiative-convective-rc-or-single-column-models-scms">2. Radiative-Convective (RC) or Single-Column models (SCMs)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionally-constrained-models">3. Dimensionally constrained models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-circulation-models-gcms">4. Global Circulation Models (GCMs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fun-fact">Fun fact</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-system-models">5. Earth System Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-vs-complex-models-their-different-roles-in-the-science">Simple vs. Complex models: their different roles in the science</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-gcm">4. Introducing the GCM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ingredients-of-the-gcm">Ingredients of the GCM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolving-complexity-of-gcms">Evolving complexity of GCMs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-hierarchy-of-complexity-for-ocean-models">A hierarchy of complexity for ocean models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-we-resolve-with-a-2o-atmosphere">5. What can we resolve with a 2º atmosphere?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-point">Discussion point:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citation-information">Citation information</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Brian E. J. Rose
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
