@@ -460,7 +460,6 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedbacks-diagnosed-from-complex-climate-models">7. Feedbacks diagnosed from complex climate models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-from-the-ipcc-ar5">Data from the IPCC AR5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zero-dimensional-model-with-variable-albedo">8. The zero-dimensional model with variable albedo</a><ul class="nav section-nav flex-column">
@@ -544,13 +543,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Repeating code from Lecture 2</span>
-<span class="n">sigma</span> <span class="o">=</span> <span class="mf">5.67E-8</span>  <span class="c1">#  Stefan-Boltzmann constant in W/m2/K4</span>
-<span class="n">Q</span> <span class="o">=</span> <span class="mf">341.3</span>  <span class="c1">#  global mean insolation in W/m2</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="mf">101.9</span> <span class="o">/</span> <span class="n">Q</span>    <span class="c1">#  observed planetary albedo</span>
-<span class="n">Te</span> <span class="o">=</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">*</span><span class="n">Q</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mf">0.25</span>  <span class="c1">#  Emission temperature (definition)</span>
-<span class="n">Tsbar</span> <span class="o">=</span> <span class="mf">288.</span>  <span class="c1"># global mean surface temperature in K</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="n">Te</span> <span class="o">/</span> <span class="n">Tsbar</span>   <span class="c1">#  Calculate value of beta from observations</span>
-<span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">beta</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">Tsbar</span><span class="o">**</span><span class="mi">3</span>
+<span class="n">OLRobserved</span> <span class="o">=</span> <span class="mf">238.5</span>  <span class="c1"># in W/m2</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">5.67E-8</span>  <span class="c1"># S-B constant</span>
+<span class="n">Tsobserved</span> <span class="o">=</span> <span class="mf">288.</span>  <span class="c1"># global average surface temperature</span>
+<span class="n">tau</span> <span class="o">=</span> <span class="n">OLRobserved</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">Tsobserved</span><span class="o">**</span><span class="mi">4</span>  <span class="c1"># solve for tuned value of transmissivity</span>
+
+<span class="n">lambda_0</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">Tsobserved</span><span class="o">**</span><span class="mi">3</span>
 </pre></div>
 </div>
 </div>
@@ -646,7 +644,7 @@
 <h2>5. Climate sensitivity with feedback<a class="headerlink" href="#climate-sensitivity-with-feedback" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <p>ECS is an important number. A major goal of climate modeling is to provide better estimates of ECS and its uncertainty.</p>
-<p>Latest IPCC report AR5 gives a likely range of 1.5 to 4.5 K. (There is lots of uncertainty in these numbers – we will definitely come back to this question)</p>
+<p>The IPCC report AR5 gives a likely range of 1.5 to 4.5 K. (There is lots of uncertainty in these numbers – we will definitely come back to this question)</p>
 <p>So our simple estimate of the no-feedback change <span class="math notranslate nohighlight">\(\Delta T_0\)</span> is apparently underestimating climate sensitivity.</p>
 <p>Saying the same thing another way: the overall net climate feedback is positive, amplifying the response, and the system gain <span class="math notranslate nohighlight">\(g&gt;1\)</span>.</p>
 <p>Let’s assume that the true value is <span class="math notranslate nohighlight">\(\Delta T_{2xCO2} = 3\)</span> K (middle of the range). This implies that the gain is</p>
@@ -714,12 +712,12 @@
 <hr class="docutils" />
 <section id="data-from-the-ipcc-ar5">
 <h3>Data from the IPCC AR5<a class="headerlink" href="#data-from-the-ipcc-ar5" title="Link to this heading">#</a></h3>
-<p>This figure is reproduced from the recent IPCC AR5 report. It shows the feedbacks diagnosed from the various models that contributed to the assessment.</p>
+<p>This figure is reproduced from the IPCC AR5 report. It shows the feedbacks diagnosed from the various models that contributed to the assessment.</p>
 <p>(Later in the term we will discuss how the feedback diagnosis is actually done)</p>
 <p>See below for complete citation information.</p>
 <p><img alt="feedback AR5" src="https://www.ipcc.ch/site/assets/uploads/2018/02/Fig9-43-1.jpg" /></p>
 <p><strong>Figure 9.43</strong> | (a) Strengths of individual feedbacks for CMIP3 and CMIP5 models (left and right columns of symbols) for Planck (P), water vapour (WV), clouds (C), albedo (A), lapse rate (LR), combination of water vapour and lapse rate (WV+LR) and sum of all feedbacks except Planck (ALL), from Soden and Held (2006) and Vial et al. (2013), following Soden et al. (2008). CMIP5 feedbacks are derived from CMIP5 simulations for abrupt fourfold increases in CO2 concentrations (4 × CO2). (b) ECS obtained using regression techniques by Andrews et al. (2012) against ECS estimated from the ratio of CO2 ERF to the sum of all feedbacks. The CO2 ERF is one-half the 4 × CO2 forcings from Andrews et al. (2012), and the total feedback (ALL + Planck) is from Vial et al. (2013).</p>
-<p><em>Figure caption reproduced from the AR5 WG1 report</em></p>
+<p><em>Figure caption reproduced from the AR5 WG1 report <span id="id1">[<a class="reference internal" href="../references.html#id21" title="G. Flato, J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason, and M. Rummukainen. Evaluation of climate models. In T.F. Stocker, D. Qin, G.-K. Plattner, M. Tignor, S. K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex, and P.M. Midgley, editors, Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change, chapter 9. Cambridge University Press, Cambridge, U.K., 2013.">Flato <em>et al.</em>, 2013</a>]</span></em></p>
 <p>Legend:</p>
 <ul class="simple">
 <li><p>P: Planck feedback</p></li>
@@ -747,14 +745,6 @@
 <li><p>Therefore, most of the spread in the ECS across the models is due to the spread in the cloud feedback.</p></li>
 <li><p>Our estimate of <span class="math notranslate nohighlight">\(+2.0 ~\text{W} ~\text{m}^{-2} ~\text{K}^{-1}\)</span> for all the missing processes is consistent with the GCM ensemble.</p></li>
 </ul>
-</section>
-<section id="citation">
-<h3>Citation<a class="headerlink" href="#citation" title="Link to this heading">#</a></h3>
-<p>This is Figure 9.43 from Chapter 9 of the IPCC AR5 Working Group 1 report.</p>
-<p>The report and images can be found online at
-<a class="reference external" href="https://www.ipcc.ch/report/ar5/wg1/">https://www.ipcc.ch/report/ar5/wg1/</a></p>
-<p>The full citation is:</p>
-<p>Flato, G., J. Marotzke, B. Abiodun, P. Braconnot, S.C. Chou, W. Collins, P. Cox, F. Driouech, S. Emori, V. Eyring, C. Forest, P. Gleckler, E. Guilyardi, C. Jakob, V. Kattsov, C. Reason and M. Rummukainen, 2013: Evaluation of Climate Models. In: Climate Change 2013: The Physical Science Basis. Contribution of Working Group I to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change [Stocker, T.F., D. Qin, G.-K. Plattner, M. Tignor, S.K. Allen, J. Boschung, A. Nauels, Y. Xia, V. Bex and P.M. Midgley (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 741–866, doi:10.1017/CBO9781107415324.020</p>
 <hr class="docutils" />
 <p><a id='section8'></a></p>
 </section>
@@ -834,7 +824,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Albedo as a function of global mean temperature&#39;)
 </pre></div>
 </div>
-<img alt="../_images/2173e9fc471d7c6953244852cbf0b7e8c6b069019894dcc602c711c95b337bf7.png" src="../_images/2173e9fc471d7c6953244852cbf0b7e8c6b069019894dcc602c711c95b337bf7.png" />
+<img alt="../_images/3364df378a65ec703d12ce8c01e183e40dc862547c7668338352599a7aa7e45d.png" src="../_images/3364df378a65ec703d12ce8c01e183e40dc862547c7668338352599a7aa7e45d.png" />
 </div>
 </div>
 </section>
@@ -853,10 +843,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10c725fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x130205630&gt;
 </pre></div>
 </div>
-<img alt="../_images/9724832d1dd4d615dc4514387856b0ea1c01e07bdec203fe6e84a2b341a4ec6d.png" src="../_images/9724832d1dd4d615dc4514387856b0ea1c01e07bdec203fe6e84a2b341a4ec6d.png" />
+<img alt="../_images/3302668944134dfac91207dbbf76b863a99747be743bf40c4fc61d2e33e9e850.png" src="../_images/3302668944134dfac91207dbbf76b863a99747be743bf40c4fc61d2e33e9e850.png" />
 </div>
 </div>
 <p>The graphs meet at three different points! That means there are actually three different possible equilibrium temperatures in this model.</p>
@@ -986,7 +976,6 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feedbacks-diagnosed-from-complex-climate-models">7. Feedbacks diagnosed from complex climate models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-from-the-ipcc-ar5">Data from the IPCC AR5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#citation">Citation</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-zero-dimensional-model-with-variable-albedo">8. The zero-dimensional model with variable albedo</a><ul class="nav section-nav flex-column">
