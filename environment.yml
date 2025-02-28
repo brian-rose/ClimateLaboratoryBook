@@ -1,8 +1,8 @@
-name: climlab-courseware
+name: new-climlab-courseware
 channels:
   - conda-forge
 dependencies:
-  - python=3.10
+  - python
   - numpy
   - matplotlib
   - xarray
@@ -11,7 +11,7 @@ dependencies:
   - sympy
   - ffmpeg
   - jupyter
-  - climlab>=0.7.11  # older versions used a data download and caching strategy that breaks Binder
+  - climlab
   - numba>=0.43.1  # older version will hang forever under python 3, https://github.com/climlab/climlab/issues/101
   - netcdf4
   - nc-time-axis
