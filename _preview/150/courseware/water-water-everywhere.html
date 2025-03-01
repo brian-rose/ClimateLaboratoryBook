@@ -614,7 +614,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a66252b93077ee3cbedc5da3fbcac7f2c5af930edef4fbacd819bd27346ec6ee.png" src="../_images/a66252b93077ee3cbedc5da3fbcac7f2c5af930edef4fbacd819bd27346ec6ee.png" />
+<img alt="../_images/21d3bcb1101eea173f27516de6022d932016b35985013cd1a3ed21c1002146a1.png" src="../_images/21d3bcb1101eea173f27516de6022d932016b35985013cd1a3ed21c1002146a1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -633,24 +633,35 @@ document.write(`
 <span class="n">rad</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">RRTMG</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
                               <span class="n">specific_humidity</span><span class="o">=</span><span class="n">h2o</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> 
                               <span class="n">albedo</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span>
-                              <span class="n">insolation</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">insolation</span><span class="p">,</span>
                               <span class="n">coszen</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">coszen</span><span class="p">,</span>
+                              <span class="n">irradiance_factor</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">irradiance_factor</span><span class="p">,</span>
                               <span class="o">**</span><span class="n">mycloud</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Radiation&#39;</span><span class="p">,</span> <span class="n">rad</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Insolation&#39;</span><span class="p">,</span> <span class="n">sun</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;WaterVapor&#39;</span><span class="p">,</span> <span class="n">h2o</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Convection&#39;</span><span class="p">,</span> <span class="n">conv</span><span class="p">)</span>
 
-<span class="n">model</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/new-climlab-courseware/lib/python3.13/site-packages/climlab/radiation/radiation.py:156: UserWarning: Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.
-  warnings.warn(&#39;Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (60, 1) 
+  Tatm: (60, 50) 
+The subprocess tree: 
+Radiative-Convective-Diffusive Model: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   Radiation: &lt;class &#39;climlab.radiation.rrtm.rrtmg.RRTMG&#39;&gt;
+      SW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_sw.RRTMG_SW&#39;&gt;
+      LW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_lw.RRTMG_LW&#39;&gt;
+   Insolation: &lt;class &#39;climlab.radiation.insolation.DailyInsolation&#39;&gt;
+   WaterVapor: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+   Convection: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;climlab.process.time_dependent_process.TimeDependentProcess at 0x16a1016a0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/new-climlab-courseware/lib/python3.13/site-packages/climlab/radiation/radiation.py:153: UserWarning: Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.
+  warnings.warn(&#39;Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.&#39;)
 </pre></div>
 </div>
 </div>
@@ -716,7 +727,7 @@ Radiative-Convective-Diffusive Model: &lt;class &#39;climlab.process.time_depend
 </div>
 </div>
 <div class="alert alert-warning">
-Although this is a "simple" model, it has a 60 x 30 point grid and is **by far the most complex model** we have built so far in these notes. These runs will probably take 15 minutes or more to execute, depending on the speed of your computer.
+Although this is a "simple" model, it has a 60 x 30 point grid and is **by far the most complex model** we have built so far in these notes. These runs will probably take several minutes to execute, depending on the speed of your computer.
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
@@ -781,7 +792,7 @@ Total elapsed time is 4.996684391891189 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7dfc3ec5e2f86ab5dfad67d161d76409425268fb1dbb85596373347bff960ec3.png" src="../_images/7dfc3ec5e2f86ab5dfad67d161d76409425268fb1dbb85596373347bff960ec3.png" />
+<img alt="../_images/de33273e4540a32913c7eec599c619d5f887cd938bf05c0087d9d12153e1bb4d.png" src="../_images/de33273e4540a32913c7eec599c619d5f887cd938bf05c0087d9d12153e1bb4d.png" />
 </div>
 </div>
 </section>
@@ -847,14 +858,14 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is nan K.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 0.84 K.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_74558/3339827933.py:33: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_85353/3339827933.py:33: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   print (&#39;The global mean surface temperature anomaly is %0.2f K.&#39;
 </pre></div>
 </div>
-<img alt="../_images/f48cf463829ce2d6e4383e63043c41f0c940b5905b7da856b4472efeb267921c.png" src="../_images/f48cf463829ce2d6e4383e63043c41f0c940b5905b7da856b4472efeb267921c.png" />
+<img alt="../_images/b7cd92c78a241db4eca816879710a6b0c71d9269c13209721451046a19f9c7a6.png" src="../_images/b7cd92c78a241db4eca816879710a6b0c71d9269c13209721451046a19f9c7a6.png" />
 </div>
 </div>
 <p>This model predicts the following:</p>
@@ -932,7 +943,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 4.94 K.
 </pre></div>
 </div>
-<img alt="../_images/f30fb76413c7c0e9ef5c9ca0e69f61f2c9ad7961d4fbfc139326acb8462a86bd.png" src="../_images/f30fb76413c7c0e9ef5c9ca0e69f61f2c9ad7961d4fbfc139326acb8462a86bd.png" />
+<img alt="../_images/bce0d7d6cce53806a8f4e948b63e9c96f535ededb0776bde51339cac95c8a49a.png" src="../_images/bce0d7d6cce53806a8f4e948b63e9c96f535ededb0776bde51339cac95c8a49a.png" />
 </div>
 </div>
 <p>In this model, reducing the evaporation efficiency leads to a <strong>much warmer climate</strong>.  The largest warming occurs in mid-latitudes. The warming is <strong>not</strong> limited to the surface but in fact extends deeply through the troposphere.</p>
@@ -1019,7 +1030,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/88491eaa01fba5860bc4eafee12b7583fdd4529388d0a66ccd470930eb1fcc9c.png" src="../_images/88491eaa01fba5860bc4eafee12b7583fdd4529388d0a66ccd470930eb1fcc9c.png" />
+<img alt="../_images/0534c7141557528facd85d673d9dfce5bc0f243b763111b479cb4f578df4dae7.png" src="../_images/0534c7141557528facd85d673d9dfce5bc0f243b763111b479cb4f578df4dae7.png" />
 </div>
 </div>
 <p>Dashed lines are <strong>clear-sky</strong> radiation anomalies.</p>
@@ -1063,7 +1074,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5973473fad067d1fe9b615ba49ffecbb1e2ad126220f5ee62c4a8e453d5203f5.png" src="../_images/5973473fad067d1fe9b615ba49ffecbb1e2ad126220f5ee62c4a8e453d5203f5.png" />
+<img alt="../_images/f5ff0fbb234e536817a5247f57d74685904124c49bb5e43b22e4136e3bd0ca59.png" src="../_images/f5ff0fbb234e536817a5247f57d74685904124c49bb5e43b22e4136e3bd0ca59.png" />
 </div>
 </div>
 </section>
@@ -1095,7 +1106,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Latitude&#39;)
 </pre></div>
 </div>
-<img alt="../_images/36a88f0e80a69d3720e7a57cf3448f39861d68d2f1c58564446a355ee5f80c4d.png" src="../_images/36a88f0e80a69d3720e7a57cf3448f39861d68d2f1c58564446a355ee5f80c4d.png" />
+<img alt="../_images/a98f0b112a56643212c99412a32cc379e9ee7139eb7f967f9e2aae730a0818a1.png" src="../_images/a98f0b112a56643212c99412a32cc379e9ee7139eb7f967f9e2aae730a0818a1.png" />
 </div>
 </div>
 <hr class="docutils" />
