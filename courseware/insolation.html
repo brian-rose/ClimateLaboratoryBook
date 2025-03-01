@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -84,7 +81,6 @@
     <link rel="prev" title="16. Clouds and cloud feedback" href="clouds.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -100,8 +96,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -109,6 +116,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -116,8 +124,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -133,8 +141,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -164,11 +171,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -255,14 +266,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -608,13 +622,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_93315/797907564.py:14: RuntimeWarning: invalid value encountered in arccos
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_73623/797907564.py:14: RuntimeWarning: invalid value encountered in arccos
   arccos(-tan(phi)*tan(delta)),
-/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_93315/797907564.py:23: RuntimeWarning: invalid value encountered in divide
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_73623/797907564.py:23: RuntimeWarning: invalid value encountered in divide
   return numerator / denominator / 2
 </pre></div>
 </div>
-<img alt="../_images/96d5065cb906a0f7e23f681fdc36f635d71e77c201aa6d2f113afbeb6a872843.png" src="../_images/96d5065cb906a0f7e23f681fdc36f635d71e77c201aa6d2f113afbeb6a872843.png" />
+<img alt="../_images/86cf7b817b3bb62fa47b13d33a4455aa98bff278b0cfa5612693101ac5fbf54b.png" src="../_images/86cf7b817b3bb62fa47b13d33a4455aa98bff278b0cfa5612693101ac5fbf54b.png" />
 </div>
 </div>
 <p><em>The figure above reproduces Figure 2.8 from <span id="id4">[<a class="reference internal" href="../references.html#id16" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">Hartmann, 1994</a>]</span>.</em></p>
@@ -651,12 +665,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/climlab-courseware/lib/python3.10/site-packages/climlab/convection/akmaev_adjustment.py:142: NumbaDeprecationWarning: <span class=" -Color -Color-Bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
-  Akmaev_adjustment = jit(signature_or_function=Akmaev_adjustment)
-</pre></div>
-</div>
-</div>
 </div>
 <p>First, get a little help on using the <code class="docutils literal notranslate"><span class="pre">daily_insolation</span></code> function:</p>
 <div class="cell docutils container">
@@ -668,55 +676,62 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function daily_insolation in module climlab.solar.insolation:
 
-daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 281.37, &#39;obliquity&#39;: 23.446}, S0=1365.2, day_type=1, days_per_year=365.2422)
+daily_insolation(
+    lat,
+    day,
+    orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 281.37, &#39;obliquity&#39;: 23.446},
+    S0=1365.2,
+    day_type=1,
+    days_per_year=365.2422
+)
     Compute daily average insolation given latitude, time of year and orbital parameters.
-    
+
     Orbital parameters can be interpolated to any time in the last 5 Myears with
     ``climlab.solar.orbital.OrbitalTable`` (see example above).
-    
+
     Longer orbital tables are available with ``climlab.solar.orbital.LongOrbitalTable``
-    
+
     Inputs can be scalar, ``numpy.ndarray``, or ``xarray.DataArray``.
-    
+
     The return value will be ``numpy.ndarray`` if **all** the inputs are ``numpy``.
     Otherwise ``xarray.DataArray``.
-    
-    **Function-call argument** 
-    
-    
+
+    **Function-call argument**
+
+
     :param array lat:       Latitude in degrees (-90 to 90).
     :param array day:       Indicator of time of year. See argument ``day_type``
                             for details about format.
     :param dict orb:        a dictionary with three members (as provided by
                             ``climlab.solar.orbital.OrbitalTable``)
-    
+
                             * ``&#39;ecc&#39;`` - eccentricity
-    
+
                                 * unit: dimensionless
                                 * default value: ``0.017236``
-    
+
                             * ``&#39;long_peri&#39;`` - longitude of perihelion (precession angle)
-    
+
                                 * unit: degrees
                                 * default value: ``281.37``
-    
+
                             * ``&#39;obliquity&#39;`` - obliquity angle
-    
+
                                 * unit: degrees
                                 * default value: ``23.446``
-    
-    :param float S0:        solar constant                                  
-    
-                            - unit: :math:`\textrm{W}/\textrm{m}^2`       
-    
+
+    :param float S0:        solar constant
+
+                            - unit: :math:`\textrm{W}/\textrm{m}^2`
+
                             - default value: ``1365.2``
     :param int day_type:    Convention for specifying time of year (+/- 1,2) [optional].
-    
+
                             *day_type=1* (default):
                              day input is calendar day (1-365.24), where day 1
                              is January first. The calendar is referenced to the
                              vernal equinox which always occurs at day 80.
-    
+
                             *day_type=2:*
                              day input is solar longitude (0-360 degrees). Solar
                              longitude is the angle of the Earth&#39;s orbit measured from spring
@@ -727,19 +742,30 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
                             if day_type is neither 1 nor 2
     :returns:               Daily average solar radiation in unit
                             :math:`\textrm{W}/\textrm{m}^2`.
-    
+
                             Dimensions of output are ``(lat.size, day.size, ecc.size)``
     :rtype:                 array
-    
-    
-    Code is fully vectorized to handle array input for all arguments.       
-    
+
+
+    Code is fully vectorized to handle array input for all arguments.
+
     Orbital arguments should all have the same sizes.
     This is automatic if computed from
     :func:`~climlab.solar.orbital.OrbitalTable.lookup_parameters`
-    
+
         For more information about computation of solar insolation see the
         :ref:`Tutorial` chapter.
+
+    .. note::
+
+        Calling ``insolation = daily_insolation(lat, day, orb, S0)`` is equivalent to::
+
+            coszen, irradiance_factor = daily_insolation_factors(lat, day, orb)
+            insolation = S0 * irradiance_factor * coszen
+
+        Computing the zenith angle with ``daily_insolation_factors`` allows for
+        optional time averaging choices which may be important for certain
+        radiative transfer calculations that are sensitive to zenith angle.
 </pre></div>
 </div>
 </div>
@@ -753,7 +779,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123.95321551807459
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(123.95321551807461)
 </pre></div>
 </div>
 </div>
@@ -766,7 +792,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>482.356497522712
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(482.356497522712)
 </pre></div>
 </div>
 </div>
@@ -790,7 +816,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Daily average insolation on March 21&#39;)
 </pre></div>
 </div>
-<img alt="../_images/1ff659639c22267e9a5bbe61635992963a01f1c06ce55ba48e9d961bfd8d2925.png" src="../_images/1ff659639c22267e9a5bbe61635992963a01f1c06ce55ba48e9d961bfd8d2925.png" />
+<img alt="../_images/78d4f4a17e66b03aeed74e681998f38c48f0f515bb88340c1ea9c26f2b84be92.png" src="../_images/78d4f4a17e66b03aeed74e681998f38c48f0f515bb88340c1ea9c26f2b84be92.png" />
 </div>
 </div>
 </section>
@@ -836,10 +862,10 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x12fdcbf40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x175a0e990&gt;
 </pre></div>
 </div>
-<img alt="../_images/039c644e5bbdc95eb342f3534387deada291dc3cfc5f4f8673507e481e753997.png" src="../_images/039c644e5bbdc95eb342f3534387deada291dc3cfc5f4f8673507e481e753997.png" />
+<img alt="../_images/fe5975e2aabfa4df487c27177c63e8513d196d40c52a02162c1d0e0359437e35.png" src="../_images/fe5975e2aabfa4df487c27177c63e8513d196d40c52a02162c1d0e0359437e35.png" />
 </div>
 </div>
 <section id="time-and-space-averages">
@@ -875,7 +901,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d435cd4cd1a5d1bf1fd95d2938a25086d590217fb00239ff72da1f062ffc713f.png" src="../_images/d435cd4cd1a5d1bf1fd95d2938a25086d590217fb00239ff72da1f062ffc713f.png" />
+<img alt="../_images/24ed20ebb87904e6715718c8a0b5b8a3830495dd1687bb025b98a21b738901e4.png" src="../_images/24ed20ebb87904e6715718c8a0b5b8a3830495dd1687bb025b98a21b738901e4.png" />
 </div>
 </div>
 </section>
@@ -946,8 +972,7 @@ daily_insolation(lat, day, orb={&#39;ecc&#39;: 0.017236, &#39;long_peri&#39;: 28
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1029,8 +1054,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

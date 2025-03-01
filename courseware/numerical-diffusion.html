@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -84,7 +81,6 @@
     <link rel="prev" title="21. Modeling the seasonal cycle of surface temperature" href="seasonal-cycle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -100,8 +96,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -109,6 +116,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -116,8 +124,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -133,8 +141,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -164,11 +171,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -255,14 +266,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -701,15 +715,15 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function diff in module numpy:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on _ArrayFunctionDispatcher in module numpy:
 
 diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
     Calculate the n-th discrete difference along the given axis.
-    
+
     The first difference is given by ``out[i] = a[i+1] - a[i]`` along
     the given axis, higher differences are calculated by using `diff`
     recursively.
-    
+
     Parameters
     ----------
     a : array_like
@@ -726,9 +740,9 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
         arrays with length 1 in the direction of axis and the shape
         of the input array in along all other axes.  Otherwise the
         dimension and shape must match `a` except along axis.
-    
+
         .. versionadded:: 1.16.0
-    
+
     Returns
     -------
     diff : ndarray
@@ -738,49 +752,50 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
         between any two elements of `a`. This is the same as the type of
         `a` in most cases. A notable exception is `datetime64`, which
         results in a `timedelta64` output array.
-    
+
     See Also
     --------
     gradient, ediff1d, cumsum
-    
+
     Notes
     -----
     Type is preserved for boolean arrays, so the result will contain
     `False` when consecutive elements are the same and `True` when they
     differ.
-    
+
     For unsigned integer arrays, the results will also be unsigned. This
     should not be surprising, as the result is consistent with
     calculating the difference directly:
-    
+
     &gt;&gt;&gt; u8_arr = np.array([1, 0], dtype=np.uint8)
     &gt;&gt;&gt; np.diff(u8_arr)
     array([255], dtype=uint8)
     &gt;&gt;&gt; u8_arr[1,...] - u8_arr[0,...]
     255
-    
+
     If this is not desirable, then the array should be cast to a larger
     integer type first:
-    
+
     &gt;&gt;&gt; i16_arr = u8_arr.astype(np.int16)
     &gt;&gt;&gt; np.diff(i16_arr)
     array([-1], dtype=int16)
-    
+
     Examples
     --------
+    &gt;&gt;&gt; import numpy as np
     &gt;&gt;&gt; x = np.array([1, 2, 4, 7, 0])
     &gt;&gt;&gt; np.diff(x)
     array([ 1,  2,  3, -7])
     &gt;&gt;&gt; np.diff(x, n=2)
     array([  1,   1, -10])
-    
+
     &gt;&gt;&gt; x = np.array([[1, 3, 6, 10], [0, 5, 6, 8]])
     &gt;&gt;&gt; np.diff(x)
     array([[2, 3, 4],
            [5, 1, 2]])
     &gt;&gt;&gt; np.diff(x, axis=0)
     array([[-1,  2,  0, -2]])
-    
+
     &gt;&gt;&gt; x = np.arange(&#39;1066-10-13&#39;, &#39;1066-10-16&#39;, dtype=np.datetime64)
     &gt;&gt;&gt; np.diff(x)
     array([1, 1], dtype=&#39;timedelta64[D]&#39;)
@@ -865,10 +880,10 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1523fbdc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10e371010&gt;
 </pre></div>
 </div>
-<img alt="../_images/56d6f34c22257735c40b227181a913b97f5cd87c01a3a01ad279aa3fa290ba8d.png" src="../_images/56d6f34c22257735c40b227181a913b97f5cd87c01a3a01ad279aa3fa290ba8d.png" />
+<img alt="../_images/c53b5034079e7a9241067ba0828c5842fdf8e40455d96b429c036cfcb032f975.png" src="../_images/c53b5034079e7a9241067ba0828c5842fdf8e40455d96b429c036cfcb032f975.png" />
 </div>
 </div>
 <p>Hopefully this makes sense. The diffusion is acting to smooth out <span class="math notranslate nohighlight">\(u\)</span> by reducing the peak and increasing <span class="math notranslate nohighlight">\(u\)</span> on the flanks of the gaussian bump.</p>
@@ -889,7 +904,7 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/06f1b3f31a56d731217fc8b40b1c5fc8cd74abb30b9ce5c1c524af9b046bbedd.png" src="../_images/06f1b3f31a56d731217fc8b40b1c5fc8cd74abb30b9ce5c1c524af9b046bbedd.png" />
+<img alt="../_images/53c35a5b2b33973827c1c3204728c4e3888a418bfba88ab0589915f77b365ab3.png" src="../_images/53c35a5b2b33973827c1c3204728c4e3888a418bfba88ab0589915f77b365ab3.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -937,10 +952,10 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15271ddc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10ea7cf50&gt;
 </pre></div>
 </div>
-<img alt="../_images/770025ae4dbc9d53117edd3cd100ceb96b7e196dd71e022af8a4f21e3e8f32e5.png" src="../_images/770025ae4dbc9d53117edd3cd100ceb96b7e196dd71e022af8a4f21e3e8f32e5.png" />
+<img alt="../_images/a6d9730ab8d581e4d167bb7dea343a31113c00b44e58d3a19492ebe04e6fa2d1.png" src="../_images/a6d9730ab8d581e4d167bb7dea343a31113c00b44e58d3a19492ebe04e6fa2d1.png" />
 </div>
 </div>
 <p>Let’s loop through a number of timesteps.</p>
@@ -967,10 +982,10 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1527715e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10eb14910&gt;
 </pre></div>
 </div>
-<img alt="../_images/ac7dbfd7671bbbcc56421b0d927983a371ca53007645c5bd1b07948cc492f87e.png" src="../_images/ac7dbfd7671bbbcc56421b0d927983a371ca53007645c5bd1b07948cc492f87e.png" />
+<img alt="../_images/afeace8470d452d6f30640a4ef2ebb17c08512380442584e6fb1bf3fb7a27f7d.png" src="../_images/afeace8470d452d6f30640a4ef2ebb17c08512380442584e6fb1bf3fb7a27f7d.png" />
 </div>
 </div>
 <p>The numerics were easy to implement, and the scheme seems to work very well! The results are physically sensible.</p>
@@ -1001,10 +1016,10 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x152823fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10ebc5950&gt;
 </pre></div>
 </div>
-<img alt="../_images/3d09efffc4ea3b249471c1f77cbcd9eb99b4f557352c22747a17a2ddc58787c8.png" src="../_images/3d09efffc4ea3b249471c1f77cbcd9eb99b4f557352c22747a17a2ddc58787c8.png" />
+<img alt="../_images/11955ffcfd2c873430f9e027e250115cb64f89d9c02ac9848678d3779da785f0.png" src="../_images/11955ffcfd2c873430f9e027e250115cb64f89d9c02ac9848678d3779da785f0.png" />
 </div>
 </div>
 <p>Suddenly our scheme is producing numerical noise that grows in time and overwhelms to smooth physical solution we are trying to model.</p>
@@ -1110,10 +1125,10 @@ diff(a, n=1, axis=-1, prepend=&lt;no value&gt;, append=&lt;no value&gt;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x103360fa0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x10ea4c550&gt;
 </pre></div>
 </div>
-<img alt="../_images/2c909c9beb8cfbcc2bf9f09d6171deb7c244dc0dd12c62569e49bd4ea767e842.png" src="../_images/2c909c9beb8cfbcc2bf9f09d6171deb7c244dc0dd12c62569e49bd4ea767e842.png" />
+<img alt="../_images/e9b2684a5a0773eeca39a496a5d555428ad5abeb26668d129b529007cb899125.png" src="../_images/e9b2684a5a0773eeca39a496a5d555428ad5abeb26668d129b529007cb899125.png" />
 </div>
 </div>
 <p>Success! The graph now looks like a smoother (higher resolution) version of our first integration with the coarser grid.</p>
@@ -1299,8 +1314,7 @@ u^n_{J-1} \\
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1392,8 +1406,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

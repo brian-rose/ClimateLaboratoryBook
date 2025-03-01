@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -84,7 +81,6 @@
     <link rel="prev" title="23. Ice-albedo feedback and Snowball Earth in the EBM" href="albedo-snowball.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -100,8 +96,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -109,6 +116,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -116,8 +124,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -133,8 +141,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -164,11 +171,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -255,14 +266,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -618,7 +632,7 @@ Annual EBM with ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
 Total elapsed time is 5.000000000000044 years.
 </pre></div>
 </div>
-<img alt="../_images/46b0ba4a266edf76fda836da264e5919e7585ba75c441ef0cb3aef48fd1e45e8.png" src="../_images/46b0ba4a266edf76fda836da264e5919e7585ba75c441ef0cb3aef48fd1e45e8.png" />
+<img alt="../_images/7aa4a5967d586bb63ffb3ce98956b6f80dfe570401033a845e293883fc325457.png" src="../_images/7aa4a5967d586bb63ffb3ce98956b6f80dfe570401033a845e293883fc325457.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -660,10 +674,10 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x15ff85b80&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12e6ba490&gt;]
 </pre></div>
 </div>
-<img alt="../_images/8255ff9b9a21f86196d6220b1f7847a1047eae8a2ed4ff132107e020104bfddf.png" src="../_images/8255ff9b9a21f86196d6220b1f7847a1047eae8a2ed4ff132107e020104bfddf.png" />
+<img alt="../_images/28e36a2a4a20f9addfb195cf3183b5fc02ad3fec1e3b3e96044fd5aba3ef5d51.png" src="../_images/28e36a2a4a20f9addfb195cf3183b5fc02ad3fec1e3b3e96044fd5aba3ef5d51.png" />
 </div>
 </div>
 <p>The warming is polar-amplified:  more warming at the poles than elsewhere.</p>
@@ -701,7 +715,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0dce2145d3e1ef3c48114b22962712575110f2072a3949da05afe3a605d29dfc.png" src="../_images/0dce2145d3e1ef3c48114b22962712575110f2072a3949da05afe3a605d29dfc.png" />
+<img alt="../_images/2b436a32d2cbfad81911472e47be3d633c0fa0ce8b8283eadf1593b6135910fb.png" src="../_images/2b436a32d2cbfad81911472e47be3d633c0fa0ce8b8283eadf1593b6135910fb.png" />
 </div>
 </div>
 <p>In the ice-free regime, there is no polar-amplified warming. A uniform radiative forcing produces a uniform warming.</p>
@@ -802,7 +816,25 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bb352fe85a78f61775aa8d248fe2c87f5bdf2680d2358118ae9cc3a2f9306bb0.png" src="../_images/bb352fe85a78f61775aa8d248fe2c87f5bdf2680d2358118ae9cc3a2f9306bb0.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\D&#39;
+&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\o&#39;
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\D&#39;
+&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\o&#39;
+&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:6: SyntaxWarning: invalid escape sequence &#39;\D&#39;
+  ax1.plot(Darray, deltaT_list, color=color1, label=&#39;$\Delta T$&#39;)
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:7: SyntaxWarning: invalid escape sequence &#39;\o&#39;
+  ax1.plot(Darray, Tmean_list, &#39;--&#39;, color=color1, label=&#39;$\overline{T}$&#39;)
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  ax1.set_ylabel(&#39;Temperature ($^\circ$C)&#39;, fontsize=14,  color=color1)
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:16: SyntaxWarning: invalid escape sequence &#39;\c&#39;
+  ax2.set_ylabel(&#39;Poleward heat transport across 35.5$^\circ$ (PW)&#39;, fontsize=14, color=color2)
+</pre></div>
+</div>
+<img alt="../_images/c6c6460bea6821511f259b931c687be7c1b4fef2887f3c8b9dad046b7f593bbe.png" src="../_images/c6c6460bea6821511f259b931c687be7c1b4fef2887f3c8b9dad046b7f593bbe.png" />
 </div>
 </div>
 <p>Discuss!</p>
@@ -912,7 +944,7 @@ Total elapsed time is 9.999999999999863 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/aced2cccae8b4a3879bad6d18a5e1b2ff38d305ec669bb84551aea2eddebdc5a.png" src="../_images/aced2cccae8b4a3879bad6d18a5e1b2ff38d305ec669bb84551aea2eddebdc5a.png" />
+<img alt="../_images/8a5238bfda0b490259fc29bf41fdf9b2e11358e2a327c4819f9d0735b1d3131e.png" src="../_images/8a5238bfda0b490259fc29bf41fdf9b2e11358e2a327c4819f9d0735b1d3131e.png" />
 </div>
 </div>
 <p>The warming effects of our point source are felt <strong>at all latitudes</strong> but the effects decay away from the heat source.</p>
@@ -954,7 +986,7 @@ Total elapsed time is 9.999999999999863 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/17d750d5f24fff12c1e9229021773d16cfba560c2c9a0dda70aaba0b65e16945.png" src="../_images/17d750d5f24fff12c1e9229021773d16cfba560c2c9a0dda70aaba0b65e16945.png" />
+<img alt="../_images/d975de768502e569beba78cf57f1a68fe715a6acb4a8ca3f2ce957377c7d4be4.png" src="../_images/d975de768502e569beba78cf57f1a68fe715a6acb4a8ca3f2ce957377c7d4be4.png" />
 </div>
 </div>
 <p>Now the maximum warming <strong>does not coincide with the heat source at 45º</strong>!</p>
@@ -1028,8 +1060,7 @@ Total elapsed time is 9.999999999999863 years.
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1108,8 +1139,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

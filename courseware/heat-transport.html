@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -84,7 +81,6 @@
     <link rel="prev" title="18. Orbital variations, insolation, and the ice ages" href="orbital.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -100,8 +96,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -109,6 +116,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -116,8 +124,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -133,8 +141,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -164,11 +171,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -255,14 +266,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -546,7 +560,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/55e3140da432bcc1ddd282c6595c3c812b80e48b4f412a841952b38dbf781c87.png" src="../_images/55e3140da432bcc1ddd282c6595c3c812b80e48b4f412a841952b38dbf781c87.png" />
+<img alt="../_images/3fffc8631afc1d946219187451d3481a1c99a715fc92f450a5305a4b42dd37a1.png" src="../_images/3fffc8631afc1d946219187451d3481a1c99a715fc92f450a5305a4b42dd37a1.png" />
 </div>
 </div>
 <p>This figure reveals something fairly obvious, but still worth thinking about:</p>
@@ -629,7 +643,7 @@ RCM: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1756a7dbe6be1010e70407358e484507b8fcaa27f37c3f8fc65876b784e4e32d.png" src="../_images/1756a7dbe6be1010e70407358e484507b8fcaa27f37c3f8fc65876b784e4e32d.png" />
+<img alt="../_images/9fa8e36e16aa08d81aa512312727f531e73033f2f95b8324cb97e59c921fc086.png" src="../_images/9fa8e36e16aa08d81aa512312727f531e73033f2f95b8324cb97e59c921fc086.png" />
 </div>
 </div>
 <p>This new insolation process uses the same code we’ve already been working with to compute realistic distributions of insolation. Here we are using</p>
@@ -688,7 +702,7 @@ Total elapsed time is 0.9774336043315914 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e3ec59a69d1719093e4c01a819ff95daef6da2e64dfec4b43dd18753ca00f7e4.png" src="../_images/e3ec59a69d1719093e4c01a819ff95daef6da2e64dfec4b43dd18753ca00f7e4.png" />
+<img alt="../_images/a044a4b4309748977379a269c9c5482ca2a857fa762995770b5c5c748c369ce2.png" src="../_images/a044a4b4309748977379a269c9c5482ca2a857fa762995770b5c5c748c369ce2.png" />
 </div>
 </div>
 <p>This just serves to demonstrate that the <code class="docutils literal notranslate"><span class="pre">DailyInsolation</span></code> process is doing something sensible.</p>
@@ -731,7 +745,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Ts&#39;, &#39;Tatm&#39;, &#39;OLR&#39;, &#39;OLRclr&#39;, &#39;OLRcld&#39;, &#39;TdotLW&#39;, &#39;TdotLW_clr&#39;, &#39;LW_sfc&#39;, &#39;LW_sfc_clr&#39;, &#39;LW_flux_up&#39;, &#39;LW_flux_down&#39;, &#39;LW_flux_net&#39;, &#39;LW_flux_up_clr&#39;, &#39;LW_flux_down_clr&#39;, &#39;LW_flux_net_clr&#39;, &#39;ASR&#39;, &#39;ASRclr&#39;, &#39;ASRcld&#39;, &#39;TdotSW&#39;, &#39;TdotSW_clr&#39;, &#39;SW_sfc&#39;, &#39;SW_sfc_clr&#39;, &#39;SW_flux_up&#39;, &#39;SW_flux_down&#39;, &#39;SW_flux_net&#39;, &#39;SW_flux_up_clr&#39;, &#39;SW_flux_down_clr&#39;, &#39;SW_flux_net_clr&#39;, &#39;insolation&#39;, &#39;coszen&#39;, &#39;q&#39;])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;Ts&#39;, &#39;Tatm&#39;, &#39;OLR&#39;, &#39;OLRclr&#39;, &#39;OLRcld&#39;, &#39;TdotLW&#39;, &#39;TdotLW_clr&#39;, &#39;LW_sfc&#39;, &#39;LW_sfc_clr&#39;, &#39;LW_flux_up&#39;, &#39;LW_flux_down&#39;, &#39;LW_flux_net&#39;, &#39;LW_flux_up_clr&#39;, &#39;LW_flux_down_clr&#39;, &#39;LW_flux_net_clr&#39;, &#39;ASR&#39;, &#39;ASRclr&#39;, &#39;ASRcld&#39;, &#39;TdotSW&#39;, &#39;TdotSW_clr&#39;, &#39;SW_sfc&#39;, &#39;SW_sfc_clr&#39;, &#39;SW_flux_up&#39;, &#39;SW_flux_down&#39;, &#39;SW_flux_net&#39;, &#39;SW_flux_up_clr&#39;, &#39;SW_flux_down_clr&#39;, &#39;SW_flux_net_clr&#39;, &#39;insolation&#39;, &#39;coszen&#39;, &#39;irradiance_factor&#39;, &#39;q&#39;])
 </pre></div>
 </div>
 </div>
@@ -751,7 +765,7 @@ Total elapsed time is 5.97411799622278 years.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Insolation (W/m2)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/31a41ac1f9ce27abc14dfd5aeb6d7c1fa1c023202753527dbf365cf284f5ebbb.png" src="../_images/31a41ac1f9ce27abc14dfd5aeb6d7c1fa1c023202753527dbf365cf284f5ebbb.png" />
+<img alt="../_images/5b1be8a82796ddba6a6e91b7d99fb2806c59f745e712ff9f0f79a4b649069bb2.png" src="../_images/5b1be8a82796ddba6a6e91b7d99fb2806c59f745e712ff9f0f79a4b649069bb2.png" />
 </div>
 </div>
 </section>
@@ -770,7 +784,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c46da78d8b7f7dc717f47c6ad11a373c7b50401b28c2b46dad0c31783f81b90c.png" src="../_images/c46da78d8b7f7dc717f47c6ad11a373c7b50401b28c2b46dad0c31783f81b90c.png" />
+<img alt="../_images/52f44bd7ec3c2bc1c3181eceaf484d02f1064612d011b30701561679dbe7c4b5.png" src="../_images/52f44bd7ec3c2bc1c3181eceaf484d02f1064612d011b30701561679dbe7c4b5.png" />
 </div>
 </div>
 <p>Our modeled RCE state is <strong>far too warm in the tropics</strong>, and <strong>too cold in the mid- to high latitudes.</strong></p>
@@ -816,7 +830,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8a570a3ee1fecae61a72091b7ef752a3690a84e10e1cf73ce5c084043c3b8009.png" src="../_images/8a570a3ee1fecae61a72091b7ef752a3690a84e10e1cf73ce5c084043c3b8009.png" />
+<img alt="../_images/00731f2e304c2b4b10f3ae210d62a75592ec91b8d2afb40cc10fc58235435b20.png" src="../_images/00731f2e304c2b4b10f3ae210d62a75592ec91b8d2afb40cc10fc58235435b20.png" />
 </div>
 </div>
 <p>Again, this plot reveals temperatures that are too warm in the tropics, too cold at the poles throughout the troposphere.</p>
@@ -839,7 +853,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7b3643fbf0bfad3907fa18b291542a47c6165139878a98409b5c4a24464ed5fe.png" src="../_images/7b3643fbf0bfad3907fa18b291542a47c6165139878a98409b5c4a24464ed5fe.png" />
+<img alt="../_images/553601a98710f1e524980d06404fbdad79954d0227301cfdcd1db384e38de31c.png" src="../_images/553601a98710f1e524980d06404fbdad79954d0227301cfdcd1db384e38de31c.png" />
 </div>
 </div>
 <p>Indeed, the budget is (very nearly) closed everywhere. Each latitude is in energy balance, independent of every other column.</p>
@@ -903,7 +917,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8858b05d7c3ba4b9bf2ad2faeb798bc839e45977f44436fecbd8268c029db0d9.png" src="../_images/8858b05d7c3ba4b9bf2ad2faeb798bc839e45977f44436fecbd8268c029db0d9.png" />
+<img alt="../_images/c35184e5b3809e0e8c1b6887a5107e4743a0e2d964943f34d082624cf9ddb275.png" src="../_images/c35184e5b3809e0e8c1b6887a5107e4743a0e2d964943f34d082624cf9ddb275.png" />
 </div>
 </div>
 <p>We find that ASR does NOT balance OLR in most locations.</p>
@@ -988,7 +1002,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e54f25b867ddc98c0951b46fdcba471ff9684acdcc5f3634eadab2d9b8875ffb.png" src="../_images/e54f25b867ddc98c0951b46fdcba471ff9684acdcc5f3634eadab2d9b8875ffb.png" />
+<img alt="../_images/6bd987c441f58c4119dde8701dffd963e25c0a54a947f8dfcc732efa8727fa87.png" src="../_images/6bd987c441f58c4119dde8701dffd963e25c0a54a947f8dfcc732efa8727fa87.png" />
 </div>
 </div>
 <p>Essentially the same story as the reanalysis data: there is a <strong>surplus of energy across the tropics</strong> and a net <strong>energy deficit in mid- to high latitudes</strong>.</p>
@@ -1104,8 +1118,8 @@ h &amp;= \frac{\mathcal{H}(\phi) - \mathcal{H}(\phi+\delta\phi)}{2 \pi a^2  \cos
         <span class="k">except</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Need to supply axis number for integral over latitude.&#39;</span><span class="p">)</span>
     <span class="c1">#  result as plain numpy array</span>
-    <span class="n">integral</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">cumtrapz</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lat_rad</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">latax</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1E-15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">integral</span><span class="p">)</span>
+    <span class="n">integral</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">lat_rad</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">latax</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1E-15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">integral</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">):</span>
         <span class="n">result_xarray</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="n">result_xarray</span><span class="o">.</span><span class="n">values</span> <span class="o">=</span> <span class="n">result</span>
@@ -1132,7 +1146,7 @@ h &amp;= \frac{\mathcal{H}(\phi) - \mathcal{H}(\phi+\delta\phi)}{2 \pi a^2  \cos
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Total northward heat transport inferred from CESM control simulation&#39;)
 </pre></div>
 </div>
-<img alt="../_images/d047ea5cf5b5d5816a42253c7686bc58d134306fed5388b83ed7dd7da0f9ae6c.png" src="../_images/d047ea5cf5b5d5816a42253c7686bc58d134306fed5388b83ed7dd7da0f9ae6c.png" />
+<img alt="../_images/337df80f096c12ec509fe256ba0185819f129d2106f1e50b4745f7fc1377b87e.png" src="../_images/337df80f096c12ec509fe256ba0185819f129d2106f1e50b4745f7fc1377b87e.png" />
 </div>
 </div>
 <p>The total heat transport is very nearly symmetric about the equator, with poleward transport of about 5 to 6 PW in both hemispheres.</p>
@@ -1217,8 +1231,7 @@ h &amp;= \frac{\mathcal{H}(\phi) - \mathcal{H}(\phi+\delta\phi)}{2 \pi a^2  \cos
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1300,8 +1313,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

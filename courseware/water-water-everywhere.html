@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -84,7 +81,6 @@
     <link rel="prev" title="25. Land-Ocean contrasts under climate change" href="land-ocean-contrast.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -100,8 +96,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -109,6 +116,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -116,8 +124,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -133,8 +141,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -164,11 +171,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -255,14 +266,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -540,8 +554,8 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">integrate</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">climlab</span><span class="w"> </span><span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">const</span>
     <span class="n">lat_rad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span> <span class="n">lat_deg</span> <span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span> <span class="mf">1E-15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> 
-            <span class="n">integrate</span><span class="o">.</span><span class="n">cumtrapz</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">)</span><span class="o">*</span><span class="n">energy_in</span><span class="p">,</span>
+    <span class="k">return</span> <span class="p">(</span> <span class="mf">1E-15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">const</span><span class="o">.</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> 
+            <span class="n">integrate</span><span class="o">.</span><span class="n">cumulative_trapezoid</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">lat_rad</span><span class="p">)</span><span class="o">*</span><span class="n">energy_in</span><span class="p">,</span>
             <span class="n">x</span><span class="o">=</span><span class="n">lat_rad</span><span class="p">,</span> <span class="n">initial</span><span class="o">=</span><span class="mf">0.</span> <span class="p">)</span> <span class="p">)</span>
 </pre></div>
 </div>
@@ -600,7 +614,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/496c1ef183e002e532b2f6fce72602d070f1508b5ff3a9683ff4d1a6a957bcb5.png" src="../_images/496c1ef183e002e532b2f6fce72602d070f1508b5ff3a9683ff4d1a6a957bcb5.png" />
+<img alt="../_images/21d3bcb1101eea173f27516de6022d932016b35985013cd1a3ed21c1002146a1.png" src="../_images/21d3bcb1101eea173f27516de6022d932016b35985013cd1a3ed21c1002146a1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -619,24 +633,35 @@
 <span class="n">rad</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">radiation</span><span class="o">.</span><span class="n">RRTMG</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
                               <span class="n">specific_humidity</span><span class="o">=</span><span class="n">h2o</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> 
                               <span class="n">albedo</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span>
-                              <span class="n">insolation</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">insolation</span><span class="p">,</span>
                               <span class="n">coszen</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">coszen</span><span class="p">,</span>
+                              <span class="n">irradiance_factor</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">irradiance_factor</span><span class="p">,</span>
                               <span class="o">**</span><span class="n">mycloud</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Radiation&#39;</span><span class="p">,</span> <span class="n">rad</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Insolation&#39;</span><span class="p">,</span> <span class="n">sun</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;WaterVapor&#39;</span><span class="p">,</span> <span class="n">h2o</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">add_subprocess</span><span class="p">(</span><span class="s1">&#39;Convection&#39;</span><span class="p">,</span> <span class="n">conv</span><span class="p">)</span>
 
-<span class="n">model</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/opt/anaconda3/envs/climlab-courseware/lib/python3.8/site-packages/climlab/radiation/radiation.py:150: UserWarning: Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.
-  warnings.warn(&#39;Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>climlab Process of type &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;. 
+State variables and domain shapes: 
+  Ts: (60, 1) 
+  Tatm: (60, 50) 
+The subprocess tree: 
+Radiative-Convective-Diffusive Model: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&#39;&gt;
+   Radiation: &lt;class &#39;climlab.radiation.rrtm.rrtmg.RRTMG&#39;&gt;
+      SW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_sw.RRTMG_SW&#39;&gt;
+      LW: &lt;class &#39;climlab.radiation.rrtm.rrtmg_lw.RRTMG_LW&#39;&gt;
+   Insolation: &lt;class &#39;climlab.radiation.insolation.DailyInsolation&#39;&gt;
+   WaterVapor: &lt;class &#39;climlab.radiation.water_vapor.ManabeWaterVapor&#39;&gt;
+   Convection: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;climlab.process.time_dependent_process.TimeDependentProcess at 0x167b6b6a0&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/new-climlab-courseware/lib/python3.13/site-packages/climlab/radiation/radiation.py:153: UserWarning: Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.
+  warnings.warn(&#39;Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.&#39;)
 </pre></div>
 </div>
 </div>
@@ -702,7 +727,7 @@ Radiative-Convective-Diffusive Model: &lt;class &#39;climlab.process.time_depend
 </div>
 </div>
 <div class="alert alert-warning">
-Although this is a "simple" model, it has a 60 x 30 point grid and is **by far the most complex model** we have built so far in these notes. These runs will probably take 15 minutes or more to execute, depending on the speed of your computer.
+Although this is a "simple" model, it has a 60 x 30 point grid and is **by far the most complex model** we have built so far in these notes. These runs will probably take several minutes to execute, depending on the speed of your computer.
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
@@ -767,7 +792,7 @@ Total elapsed time is 4.996684391891189 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a16dab2ae07174eee12922deda640f6c5d07ef496247c7694c3ae6aee84b9f64.png" src="../_images/a16dab2ae07174eee12922deda640f6c5d07ef496247c7694c3ae6aee84b9f64.png" />
+<img alt="../_images/de33273e4540a32913c7eec599c619d5f887cd938bf05c0087d9d12153e1bb4d.png" src="../_images/de33273e4540a32913c7eec599c619d5f887cd938bf05c0087d9d12153e1bb4d.png" />
 </div>
 </div>
 </section>
@@ -836,7 +861,11 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 0.84 K.
 </pre></div>
 </div>
-<img alt="../_images/d77027e978b2b250913515368704526f69dca94a75d56bef7d687b834a22dda4.png" src="../_images/d77027e978b2b250913515368704526f69dca94a75d56bef7d687b834a22dda4.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_85353/3339827933.py:33: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+  print (&#39;The global mean surface temperature anomaly is %0.2f K.&#39;
+</pre></div>
+</div>
+<img alt="../_images/b7cd92c78a241db4eca816879710a6b0c71d9269c13209721451046a19f9c7a6.png" src="../_images/b7cd92c78a241db4eca816879710a6b0c71d9269c13209721451046a19f9c7a6.png" />
 </div>
 </div>
 <p>This model predicts the following:</p>
@@ -914,7 +943,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 4.94 K.
 </pre></div>
 </div>
-<img alt="../_images/4d692661345f808dc814d872459d47e6ef83c6b2758472d390c801acaa27fed6.png" src="../_images/4d692661345f808dc814d872459d47e6ef83c6b2758472d390c801acaa27fed6.png" />
+<img alt="../_images/bce0d7d6cce53806a8f4e948b63e9c96f535ededb0776bde51339cac95c8a49a.png" src="../_images/bce0d7d6cce53806a8f4e948b63e9c96f535ededb0776bde51339cac95c8a49a.png" />
 </div>
 </div>
 <p>In this model, reducing the evaporation efficiency leads to a <strong>much warmer climate</strong>.  The largest warming occurs in mid-latitudes. The warming is <strong>not</strong> limited to the surface but in fact extends deeply through the troposphere.</p>
@@ -1001,7 +1030,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9a684636569c3d3019cd83cfe1d04b225cbc45b04da020a0235f92bc7949adfa.png" src="../_images/9a684636569c3d3019cd83cfe1d04b225cbc45b04da020a0235f92bc7949adfa.png" />
+<img alt="../_images/0534c7141557528facd85d673d9dfce5bc0f243b763111b479cb4f578df4dae7.png" src="../_images/0534c7141557528facd85d673d9dfce5bc0f243b763111b479cb4f578df4dae7.png" />
 </div>
 </div>
 <p>Dashed lines are <strong>clear-sky</strong> radiation anomalies.</p>
@@ -1045,7 +1074,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/199e4d95c1e6e92548019f0fbc0a266cee501fc0a80d142f6d8f64eacfa9d7fb.png" src="../_images/199e4d95c1e6e92548019f0fbc0a266cee501fc0a80d142f6d8f64eacfa9d7fb.png" />
+<img alt="../_images/f5ff0fbb234e536817a5247f57d74685904124c49bb5e43b22e4136e3bd0ca59.png" src="../_images/f5ff0fbb234e536817a5247f57d74685904124c49bb5e43b22e4136e3bd0ca59.png" />
 </div>
 </div>
 </section>
@@ -1077,7 +1106,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Latitude&#39;)
 </pre></div>
 </div>
-<img alt="../_images/4616945f5a74249a359504447200b652df47a4be9b9a5ca6b927b878d40066ac.png" src="../_images/4616945f5a74249a359504447200b652df47a4be9b9a5ca6b927b878d40066ac.png" />
+<img alt="../_images/a98f0b112a56643212c99412a32cc379e9ee7139eb7f967f9e2aae730a0818a1.png" src="../_images/a98f0b112a56643212c99412a32cc379e9ee7139eb7f967f9e2aae730a0818a1.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1165,8 +1194,7 @@ Total elapsed time is 9.993368783782378 years.
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1244,8 +1272,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

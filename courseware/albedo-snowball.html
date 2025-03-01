@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -84,7 +81,6 @@
     <link rel="prev" title="22. A peek at numerical methods for diffusion models" href="numerical-diffusion.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -100,8 +96,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -109,6 +116,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -116,8 +124,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -133,8 +141,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -164,11 +171,15 @@
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -255,14 +266,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -408,16 +414,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -715,12 +729,14 @@ Total elapsed time is 5.000000000000044 years.
   --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
 }
 
-html[theme=dark],
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
 body.vscode-dark {
   --xr-font-color0: rgba(255, 255, 255, 1);
   --xr-font-color2: rgba(255, 255, 255, 0.54);
   --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1F1F1F;
+  --xr-border-color: #1f1f1f;
   --xr-disabled-color: #515151;
   --xr-background-color: #111111;
   --xr-background-color-row-even: #111111;
@@ -728,7 +744,7 @@ body.vscode-dark {
 }
 
 .xr-wrap {
-  display: block;
+  display: block !important;
   min-width: 300px;
   max-width: 700px;
 }
@@ -765,7 +781,7 @@ body.vscode-dark {
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
-  grid-template-columns: 150px auto auto 1fr 20px 20px;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
 }
 
 .xr-section-item {
@@ -773,7 +789,9 @@ body.vscode-dark {
 }
 
 .xr-section-item input {
-  display: none;
+  display: inline-block;
+  opacity: 0;
+  height: 0;
 }
 
 .xr-section-item input + label {
@@ -783,6 +801,10 @@ body.vscode-dark {
 .xr-section-item input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -806,7 +828,7 @@ body.vscode-dark {
 
 .xr-section-summary-in + label:before {
   display: inline-block;
-  content: '►';
+  content: "►";
   font-size: 11px;
   width: 15px;
   text-align: center;
@@ -817,7 +839,7 @@ body.vscode-dark {
 }
 
 .xr-section-summary-in:checked + label:before {
-  content: '▼';
+  content: "▼";
 }
 
 .xr-section-summary-in:checked + label > span {
@@ -889,15 +911,15 @@ body.vscode-dark {
 }
 
 .xr-dim-list:before {
-  content: '(';
+  content: "(";
 }
 
 .xr-dim-list:after {
-  content: ')';
+  content: ")";
 }
 
 .xr-dim-list li:not(:last-child):after {
-  content: ',';
+  content: ",";
   padding-right: 5px;
 }
 
@@ -945,6 +967,11 @@ body.vscode-dark {
   grid-column: 4;
 }
 
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
 .xr-var-name,
 .xr-var-dims,
 .xr-var-dtype,
@@ -966,14 +993,16 @@ body.vscode-dark {
 }
 
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   display: none;
   background-color: var(--xr-background-color) !important;
   padding-bottom: 5px !important;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
-.xr-var-data-in:checked ~ .xr-var-data {
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
   display: block;
 }
 
@@ -983,13 +1012,16 @@ body.vscode-dark {
 
 .xr-var-name span,
 .xr-var-data,
+.xr-index-name div,
+.xr-index-data,
 .xr-attrs {
   padding-left: 25px !important;
 }
 
 .xr-attrs,
 .xr-var-attrs,
-.xr-var-data {
+.xr-var-data,
+.xr-index-data {
   grid-column: 1 / -1;
 }
 
@@ -1027,7 +1059,8 @@ dl.xr-attrs {
 }
 
 .xr-icon-database,
-.xr-icon-file-text2 {
+.xr-icon-file-text2,
+.xr-no-icon {
   display: inline-block;
   vertical-align: middle;
   width: 1em;
@@ -1036,8 +1069,8 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (depth: 1, lat: 180)&gt;
-array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (depth: 1, lat: 180)&gt; Size: 1kB
+Field([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
          66.15142104,  66.36917776,  66.63263704,  66.93823592,
          67.2910667 ,  67.69112601,  68.13642192,  68.63061992,
          69.17502064,  69.76984994,  70.41686003,  71.11806553,
@@ -1079,8 +1112,8 @@ array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
          66.93823612,  66.63263724,  66.36917797,  66.15142124,
          65.97923958,  65.84761924,  65.76244835,  65.71797553]])
 Coordinates:
-  * depth    (depth) float64 5.0
-  * lat      (lat) float64 -89.5 -88.5 -87.5 -86.5 -85.5 ... 86.5 87.5 88.5 89.5</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>lat</span>: 180</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-c01d4760-7dbd-404a-9d6a-202b5279203c' class='xr-array-in' type='checkbox' checked><label for='section-c01d4760-7dbd-404a-9d6a-202b5279203c' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>65.72 65.76 65.85 65.98 66.15 66.37 ... 66.15 65.98 65.85 65.76 65.72</span></div><div class='xr-array-data'><pre>array([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
+  * depth    (depth) float64 8B 5.0
+  * lat      (lat) float64 1kB -89.5 -88.5 -87.5 -86.5 ... 86.5 87.5 88.5 89.5</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>depth</span>: 1</li><li><span class='xr-has-index'>lat</span>: 180</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-f555768d-f50f-4423-bf4f-1bd96f8a5360' class='xr-array-in' type='checkbox' checked><label for='section-f555768d-f50f-4423-bf4f-1bd96f8a5360' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>65.72 65.76 65.85 65.98 66.15 66.37 ... 66.15 65.98 65.85 65.76 65.72</span></div><div class='xr-array-data'><pre>Field([[ 65.71797533,  65.76244815,  65.84761904,  65.97923937,
          66.15142104,  66.36917776,  66.63263704,  66.93823592,
          67.2910667 ,  67.69112601,  68.13642192,  68.63061992,
          69.17502064,  69.76984994,  70.41686003,  71.11806553,
@@ -1120,7 +1153,7 @@ Coordinates:
          71.11806573,  70.41686023,  69.76985014,  69.17502084,
          68.63062012,  68.13642212,  67.69112621,  67.2910669 ,
          66.93823612,  66.63263724,  66.36917797,  66.15142124,
-         65.97923958,  65.84761924,  65.76244835,  65.71797553]])</pre></div></div></li><li class='xr-section-item'><input id='section-18d3f98e-734e-440f-98fc-8b430c377aa2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-18d3f98e-734e-440f-98fc-8b430c377aa2' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.0</div><input id='attrs-0902af55-f9ad-479b-9899-b70c716768c9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0902af55-f9ad-479b-9899-b70c716768c9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bb86f588-9082-4535-b348-aac5e6c29200' class='xr-var-data-in' type='checkbox'><label for='data-bb86f588-9082-4535-b348-aac5e6c29200' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([5.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-3c2d9513-697d-4f5a-8070-9f5e822ac10f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3c2d9513-697d-4f5a-8070-9f5e822ac10f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1a309f3b-ee58-484d-b570-40e71f3011d3' class='xr-var-data-in' type='checkbox'><label for='data-1a309f3b-ee58-484d-b570-40e71f3011d3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
+         65.97923958,  65.84761924,  65.76244835,  65.71797553]])</pre></div></div></li><li class='xr-section-item'><input id='section-92cc3773-691f-43f9-9842-ee849e3d66c4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-92cc3773-691f-43f9-9842-ee849e3d66c4' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>depth</span></div><div class='xr-var-dims'>(depth)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.0</div><input id='attrs-77e90e86-70ea-4e9a-8328-28124d220a49' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-77e90e86-70ea-4e9a-8328-28124d220a49' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d776a49f-6d2d-4c7e-a6c5-4746169f3643' class='xr-var-data-in' type='checkbox'><label for='data-d776a49f-6d2d-4c7e-a6c5-4746169f3643' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>meters</dd></dl></div><div class='xr-var-data'><pre>array([5.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.5 -88.5 -87.5 ... 88.5 89.5</div><input id='attrs-bf783bee-137d-407f-8229-194930d8a5ee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf783bee-137d-407f-8229-194930d8a5ee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d07c4acf-67f0-42ae-bf55-5a6e9d4e84e4' class='xr-var-data-in' type='checkbox'><label for='data-d07c4acf-67f0-42ae-bf55-5a6e9d4e84e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees</dd></dl></div><div class='xr-var-data'><pre>array([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
        -79.5, -78.5, -77.5, -76.5, -75.5, -74.5, -73.5, -72.5, -71.5, -70.5,
        -69.5, -68.5, -67.5, -66.5, -65.5, -64.5, -63.5, -62.5, -61.5, -60.5,
        -59.5, -58.5, -57.5, -56.5, -55.5, -54.5, -53.5, -52.5, -51.5, -50.5,
@@ -1137,7 +1170,10 @@ Coordinates:
         50.5,  51.5,  52.5,  53.5,  54.5,  55.5,  56.5,  57.5,  58.5,  59.5,
         60.5,  61.5,  62.5,  63.5,  64.5,  65.5,  66.5,  67.5,  68.5,  69.5,
         70.5,  71.5,  72.5,  73.5,  74.5,  75.5,  76.5,  77.5,  78.5,  79.5,
-        80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-95079c31-5f27-48dd-83b9-ec2e321655be' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-95079c31-5f27-48dd-83b9-ec2e321655be' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+        80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e3881963-e82f-426e-a13e-aeb97acfa39c' class='xr-section-summary-in' type='checkbox'  ><label for='section-e3881963-e82f-426e-a13e-aeb97acfa39c' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>depth</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-13c05df6-372d-4b81-a8e9-d141343b9c24' class='xr-index-data-in' type='checkbox'/><label for='index-13c05df6-372d-4b81-a8e9-d141343b9c24' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([5.0], dtype=&#x27;float64&#x27;, name=&#x27;depth&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-b5cb2599-9352-49db-b03f-125716eeba55' class='xr-index-data-in' type='checkbox'/><label for='index-b5cb2599-9352-49db-b03f-125716eeba55' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.5, -88.5, -87.5, -86.5, -85.5, -84.5, -83.5, -82.5, -81.5, -80.5,
+       ...
+        80.5,  81.5,  82.5,  83.5,  84.5,  85.5,  86.5,  87.5,  88.5,  89.5],
+      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=180))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c5823369-0658-4668-9d7a-7d2c8ef717e9' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c5823369-0658-4668-9d7a-7d2c8ef717e9' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>There is a built-in utility to take properly area-weighted global averages!</p>
 <p>This gives us the net global energy imbalance:</p>
@@ -1180,10 +1216,10 @@ Coordinates:
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Integrating for 450 steps, 1826.2110000000002 days, or 5 years.
 Total elapsed time is 9.999999999999863 years.
-1.2815863643387452e-05
+1.2815863496433792e-05
 </pre></div>
 </div>
-<img alt="../_images/c4d5889fb5359cb22eb3699f8fd5fb0b027e3c4ef7dbf6b3bbcc4793ead30420.png" src="../_images/c4d5889fb5359cb22eb3699f8fd5fb0b027e3c4ef7dbf6b3bbcc4793ead30420.png" />
+<img alt="../_images/ffeda5536ac2855754a68d42e816fbfe60028b04113e34b8f39c03ce594baae4.png" src="../_images/ffeda5536ac2855754a68d42e816fbfe60028b04113e34b8f39c03ce594baae4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1243,7 +1279,7 @@ Total elapsed time is 9.999999999999863 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f400bc5382681b1884c056f2e01a12ab16fd71d709fc29aafad27cd5ebd11c38.png" src="../_images/f400bc5382681b1884c056f2e01a12ab16fd71d709fc29aafad27cd5ebd11c38.png" />
+<img alt="../_images/8e62bef8eae8e65703aa54c68123eccc15533368bfd23c40c029fa5976a999b2.png" src="../_images/8e62bef8eae8e65703aa54c68123eccc15533368bfd23c40c029fa5976a999b2.png" />
 </div>
 </div>
 <p><strong>The warming is polar-amplified</strong>:  more warming at the poles than elsewhere.</p>
@@ -1279,10 +1315,10 @@ Total elapsed time is 9.999999999999863 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1688b9430&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x152f2a0d0&gt;
 </pre></div>
 </div>
-<img alt="../_images/ff4088a0f3044f252d734d754970e3fd86ff5379e8f445567a2ef41955e573dd.png" src="../_images/ff4088a0f3044f252d734d754970e3fd86ff5379e8f445567a2ef41955e573dd.png" />
+<img alt="../_images/51ea48bb9c0847e38ff53370d462a700fbfc7dd2ec423d045a6ae66463fbedc0.png" src="../_images/51ea48bb9c0847e38ff53370d462a700fbfc7dd2ec423d045a6ae66463fbedc0.png" />
 </div>
 </div>
 <p>In the ice-free regime, there is no polar-amplified warming. A uniform radiative forcing produces a uniform warming.</p>
@@ -1388,7 +1424,7 @@ Total elapsed time is 14.999999999999647 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d09af7461519076c15730432f55b52086f8ea7ab66e6ffa735110c469c7889c1.png" src="../_images/d09af7461519076c15730432f55b52086f8ea7ab66e6ffa735110c469c7889c1.png" />
+<img alt="../_images/dede167f10c6bed6ce4e8cf2b7610890c06b219f9adaa809b231fd933bd67894.png" src="../_images/dede167f10c6bed6ce4e8cf2b7610890c06b219f9adaa809b231fd933bd67894.png" />
 </div>
 </div>
 <p>A much colder climate!  The ice line is sitting at 54º. The heat transport shows that the atmosphere is moving lots of energy across the ice line, trying hard to compensate for the strong radiative cooling everywhere poleward of the ice line.</p>
@@ -1435,7 +1471,7 @@ Total elapsed time is 19.99999999999943 years.
 Total elapsed time is 30.000000000000693 years.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(-1.25838355e-06)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array(-1.25838372e-06)
 </pre></div>
 </div>
 </div>
@@ -1447,7 +1483,7 @@ Total elapsed time is 30.000000000000693 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/52563f3f123fc6b32d78bbbaf3c45f4b3945bbd46cabca6bf83daced98636d76.png" src="../_images/52563f3f123fc6b32d78bbbaf3c45f4b3945bbd46cabca6bf83daced98636d76.png" />
+<img alt="../_images/c9b0307b0b4f5dcd6897b099dd96c6848b5bbe841792fc0787951c9b31652335.png" src="../_images/c9b0307b0b4f5dcd6897b099dd96c6848b5bbe841792fc0787951c9b31652335.png" />
 </div>
 </div>
 <p>Something very different happened! Where is the ice line now?</p>
@@ -1494,7 +1530,7 @@ Total elapsed time is 35.0000000000016 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c63a100d2b7ad2aea00e7d14240cfce9b0ef1bbaa4ce5594b70699c23dcbd060.png" src="../_images/c63a100d2b7ad2aea00e7d14240cfce9b0ef1bbaa4ce5594b70699c23dcbd060.png" />
+<img alt="../_images/3ed1a5e882c463ee1d08510abff11cd57766fa4c1ff6f9cdcf1e93ef94745afe.png" src="../_images/3ed1a5e882c463ee1d08510abff11cd57766fa4c1ff6f9cdcf1e93ef94745afe.png" />
 </div>
 </div>
 <p>Is this the same climate we started with?</p>
@@ -1605,7 +1641,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/101daf46e42807459d53efeeb51c468a1385958f0c6ee473f9a5074eacbb77fd.png" src="../_images/101daf46e42807459d53efeeb51c468a1385958f0c6ee473f9a5074eacbb77fd.png" />
+<img alt="../_images/cc43238c83024f3217da11347be705da6ae44f7fe357e9412fa9ec29f912896d.png" src="../_images/cc43238c83024f3217da11347be705da6ae44f7fe357e9412fa9ec29f912896d.png" />
 </div>
 </div>
 <p>There are actually up to 3 different climates possible for a given value of <span class="math notranslate nohighlight">\(S_0\)</span>!</p>
@@ -1635,7 +1671,7 @@ Total elapsed time is 4044.99999997769 years.
 The ice edge is at [-0.  0.] degrees latitude.
 </pre></div>
 </div>
-<img alt="../_images/a200929d5210f3001978f8415141314b8c13bdbb2da627fabd2b53865eea3ef4.png" src="../_images/a200929d5210f3001978f8415141314b8c13bdbb2da627fabd2b53865eea3ef4.png" />
+<img alt="../_images/c3095d42171aeb9276e44063f62b0d1f81d704d9920fe4f9b17165df005ab2db.png" src="../_images/c3095d42171aeb9276e44063f62b0d1f81d704d9920fe4f9b17165df005ab2db.png" />
 </div>
 </div>
 <p>Still a Snowball… but just barely! The temperature at the equator is just below the threshold.</p>
@@ -1656,7 +1692,7 @@ The ice edge is at [-0.  0.] degrees latitude.
 Total elapsed time is 4054.999999977441 years.
 </pre></div>
 </div>
-<img alt="../_images/76f2e7ac2eb7c11ac84ace586215730903c14456829409450fc9c6abe37f66aa.png" src="../_images/76f2e7ac2eb7c11ac84ace586215730903c14456829409450fc9c6abe37f66aa.png" />
+<img alt="../_images/c28528b9868711cffd4cf6ccc276503abf118567dc52309ee2690b712920eb7d.png" src="../_images/c28528b9868711cffd4cf6ccc276503abf118567dc52309ee2690b712920eb7d.png" />
 </div>
 </div>
 <p>Suddenly the climate looks very very different again! The global mean temperature is</p>
@@ -1714,7 +1750,7 @@ Total elapsed time is 4054.999999977441 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/77acbc68892511d94ef45c5ed7a576b3de797a2363a9481fb369d7462d409caa.png" src="../_images/77acbc68892511d94ef45c5ed7a576b3de797a2363a9481fb369d7462d409caa.png" />
+<img alt="../_images/6554883e7094225fd11263366320d948c78a125763b480c04a7f30a273ff5c08.png" src="../_images/6554883e7094225fd11263366320d948c78a125763b480c04a7f30a273ff5c08.png" />
 </div>
 </div>
 <p>The upshot:</p>
@@ -1794,8 +1830,7 @@ Total elapsed time is 4054.999999977441 years.
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1882,8 +1917,8 @@ By Brian E. J. Rose
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
