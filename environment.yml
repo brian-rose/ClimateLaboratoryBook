@@ -1,4 +1,4 @@
-name: new-climlab-courseware
+name: climlab-courseware
 channels:
   - conda-forge
 dependencies:
