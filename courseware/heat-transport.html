@@ -541,14 +541,14 @@ document.write(`
 
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
 <span class="n">CS</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">600.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Daily average insolation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">contourf</span> <span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">100.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">)</span>
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">CS</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="p">(</span><span class="n">ncep_temp</span><span class="o">.</span><span class="n">time</span> <span class="o">-</span> <span class="n">ncep_temp</span><span class="o">.</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">const</span><span class="o">.</span><span class="n">hours_per_day</span><span class="p">,</span> <span class="n">ncep_temp</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> 
                  <span class="n">ncep_temp_zon</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">210.</span><span class="p">,</span> <span class="mf">310.</span><span class="p">,</span> <span class="mf">10.</span> <span class="p">)</span> <span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Observed zonal average surface temperature&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span> <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">]:</span>
@@ -560,7 +560,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3fffc8631afc1d946219187451d3481a1c99a715fc92f450a5305a4b42dd37a1.png" src="../_images/3fffc8631afc1d946219187451d3481a1c99a715fc92f450a5305a4b42dd37a1.png" />
+<img alt="../_images/535ab6b73c63343c98a9503a1d3d0447ed4767ce2d1b2ed68b19603084fcff72.png" src="../_images/535ab6b73c63343c98a9503a1d3d0447ed4767ce2d1b2ed68b19603084fcff72.png" />
 </div>
 </div>
 <p>This figure reveals something fairly obvious, but still worth thinking about:</p>
@@ -602,8 +602,8 @@ document.write(`
                              <span class="n">state</span><span class="o">=</span><span class="n">state</span><span class="p">,</span> 
                              <span class="n">specific_humidity</span><span class="o">=</span><span class="n">h2o</span><span class="o">.</span><span class="n">q</span><span class="p">,</span> 
                              <span class="n">albedo</span><span class="o">=</span><span class="mf">0.125</span><span class="p">,</span>
-                             <span class="n">insolation</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">insolation</span><span class="p">,</span>
-                             <span class="n">coszen</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">coszen</span><span class="p">)</span>
+                             <span class="n">coszen</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">coszen</span><span class="p">,</span>
+                             <span class="n">irradiance_factor</span><span class="o">=</span><span class="n">sun</span><span class="o">.</span><span class="n">irradiance_factor</span><span class="p">,)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">climlab</span><span class="o">.</span><span class="n">couple</span><span class="p">([</span><span class="n">rad</span><span class="p">,</span><span class="n">sun</span><span class="p">,</span><span class="n">h2o</span><span class="p">,</span><span class="n">conv</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;RCM&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span> <span class="n">model</span><span class="p">)</span>
 </pre></div>
@@ -643,7 +643,7 @@ RCM: &lt;class &#39;climlab.process.time_dependent_process.TimeDependentProcess&
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9fa8e36e16aa08d81aa512312727f531e73033f2f95b8324cb97e59c921fc086.png" src="../_images/9fa8e36e16aa08d81aa512312727f531e73033f2f95b8324cb97e59c921fc086.png" />
+<img alt="../_images/bb021cb803db30923d6c7c1a32dcf7ac1970f4596c3afaa3ce40e6923643ab15.png" src="../_images/bb021cb803db30923d6c7c1a32dcf7ac1970f4596c3afaa3ce40e6923643ab15.png" />
 </div>
 </div>
 <p>This new insolation process uses the same code we’ve already been working with to compute realistic distributions of insolation. Here we are using</p>
@@ -702,7 +702,7 @@ Total elapsed time is 0.9774336043315914 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a044a4b4309748977379a269c9c5482ca2a857fa762995770b5c5c748c369ce2.png" src="../_images/a044a4b4309748977379a269c9c5482ca2a857fa762995770b5c5c748c369ce2.png" />
+<img alt="../_images/74cdb610705a485dd84ce5a944ff24305ec5bd16d669443db645063274e929fe.png" src="../_images/74cdb610705a485dd84ce5a944ff24305ec5bd16d669443db645063274e929fe.png" />
 </div>
 </div>
 <p>This just serves to demonstrate that the <code class="docutils literal notranslate"><span class="pre">DailyInsolation</span></code> process is doing something sensible.</p>
@@ -765,7 +765,7 @@ Total elapsed time is 5.97411799622278 years.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Insolation (W/m2)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/5b1be8a82796ddba6a6e91b7d99fb2806c59f745e712ff9f0f79a4b649069bb2.png" src="../_images/5b1be8a82796ddba6a6e91b7d99fb2806c59f745e712ff9f0f79a4b649069bb2.png" />
+<img alt="../_images/2e3799f5a863eb1cbd6b281f0d4f9f3eaf18bda40f8f447c29e7f80bc3b4d98a.png" src="../_images/2e3799f5a863eb1cbd6b281f0d4f9f3eaf18bda40f8f447c29e7f80bc3b4d98a.png" />
 </div>
 </div>
 </section>
@@ -784,7 +784,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/52f44bd7ec3c2bc1c3181eceaf484d02f1064612d011b30701561679dbe7c4b5.png" src="../_images/52f44bd7ec3c2bc1c3181eceaf484d02f1064612d011b30701561679dbe7c4b5.png" />
+<img alt="../_images/e14d1b0d2bb48f1e74a1f33b3b5739deba1da8df11906b0ecdb12fe842e8418d.png" src="../_images/e14d1b0d2bb48f1e74a1f33b3b5739deba1da8df11906b0ecdb12fe842e8418d.png" />
 </div>
 </div>
 <p>Our modeled RCE state is <strong>far too warm in the tropics</strong>, and <strong>too cold in the mid- to high latitudes.</strong></p>
@@ -830,7 +830,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/00731f2e304c2b4b10f3ae210d62a75592ec91b8d2afb40cc10fc58235435b20.png" src="../_images/00731f2e304c2b4b10f3ae210d62a75592ec91b8d2afb40cc10fc58235435b20.png" />
+<img alt="../_images/82e21f4d6954ddc50f6f36dd7ce5180f2963cef0ed303bcddfda125edbbfc6cd.png" src="../_images/82e21f4d6954ddc50f6f36dd7ce5180f2963cef0ed303bcddfda125edbbfc6cd.png" />
 </div>
 </div>
 <p>Again, this plot reveals temperatures that are too warm in the tropics, too cold at the poles throughout the troposphere.</p>
@@ -853,7 +853,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/553601a98710f1e524980d06404fbdad79954d0227301cfdcd1db384e38de31c.png" src="../_images/553601a98710f1e524980d06404fbdad79954d0227301cfdcd1db384e38de31c.png" />
+<img alt="../_images/a2ed6ae71dd6eb4e9e2d2da2182b893ad20ba4a14d2c38a4e2af6298aa141e4d.png" src="../_images/a2ed6ae71dd6eb4e9e2d2da2182b893ad20ba4a14d2c38a4e2af6298aa141e4d.png" />
 </div>
 </div>
 <p>Indeed, the budget is (very nearly) closed everywhere. Each latitude is in energy balance, independent of every other column.</p>
@@ -917,7 +917,7 @@ Total elapsed time is 5.97411799622278 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c35184e5b3809e0e8c1b6887a5107e4743a0e2d964943f34d082624cf9ddb275.png" src="../_images/c35184e5b3809e0e8c1b6887a5107e4743a0e2d964943f34d082624cf9ddb275.png" />
+<img alt="../_images/4f59be9fc8e457e637eb63b0cdf05905307fac74fb8b5d7a7a689b164fdef6cf.png" src="../_images/4f59be9fc8e457e637eb63b0cdf05905307fac74fb8b5d7a7a689b164fdef6cf.png" />
 </div>
 </div>
 <p>We find that ASR does NOT balance OLR in most locations.</p>
@@ -1002,7 +1002,7 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6bd987c441f58c4119dde8701dffd963e25c0a54a947f8dfcc732efa8727fa87.png" src="../_images/6bd987c441f58c4119dde8701dffd963e25c0a54a947f8dfcc732efa8727fa87.png" />
+<img alt="../_images/8cdac354fb8689ba4fe72de8614ccd6c5c8f2874dd9b2515bdab08486e63fe9c.png" src="../_images/8cdac354fb8689ba4fe72de8614ccd6c5c8f2874dd9b2515bdab08486e63fe9c.png" />
 </div>
 </div>
 <p>Essentially the same story as the reanalysis data: there is a <strong>surplus of energy across the tropics</strong> and a net <strong>energy deficit in mid- to high latitudes</strong>.</p>
@@ -1146,7 +1146,7 @@ h &amp;= \frac{\mathcal{H}(\phi) - \mathcal{H}(\phi+\delta\phi)}{2 \pi a^2  \cos
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Total northward heat transport inferred from CESM control simulation&#39;)
 </pre></div>
 </div>
-<img alt="../_images/337df80f096c12ec509fe256ba0185819f129d2106f1e50b4745f7fc1377b87e.png" src="../_images/337df80f096c12ec509fe256ba0185819f129d2106f1e50b4745f7fc1377b87e.png" />
+<img alt="../_images/edd8e1d1f626dbd67821065df53fe078ceb3e7cf2dec93e1165390d2b13511af.png" src="../_images/edd8e1d1f626dbd67821065df53fe078ceb3e7cf2dec93e1165390d2b13511af.png" />
 </div>
 </div>
 <p>The total heat transport is very nearly symmetric about the equator, with poleward transport of about 5 to 6 PW in both hemispheres.</p>
