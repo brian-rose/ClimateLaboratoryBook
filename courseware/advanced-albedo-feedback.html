@@ -588,7 +588,7 @@ Annual EBM with ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
     <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">latlimits</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">templimits</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (deg C)&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span> <span class="n">lat_ticks</span> <span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     
@@ -632,7 +632,7 @@ Annual EBM with ice line: &lt;class &#39;climlab.model.ebm.EBM_annual&#39;&gt;
 Total elapsed time is 5.000000000000044 years.
 </pre></div>
 </div>
-<img alt="../_images/7aa4a5967d586bb63ffb3ce98956b6f80dfe570401033a845e293883fc325457.png" src="../_images/7aa4a5967d586bb63ffb3ce98956b6f80dfe570401033a845e293883fc325457.png" />
+<img alt="../_images/24230a5c62dc84c9af2900a4c0e4dadab54dabd6cd0229f30c0e84c030f3ba13.png" src="../_images/24230a5c62dc84c9af2900a4c0e4dadab54dabd6cd0229f30c0e84c030f3ba13.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -674,10 +674,10 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12e6ba490&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1599b20d0&gt;]
 </pre></div>
 </div>
-<img alt="../_images/28e36a2a4a20f9addfb195cf3183b5fc02ad3fec1e3b3e96044fd5aba3ef5d51.png" src="../_images/28e36a2a4a20f9addfb195cf3183b5fc02ad3fec1e3b3e96044fd5aba3ef5d51.png" />
+<img alt="../_images/a3b5d7bddfe47bcb9a4e7eead715ac521fd05151ba640f3fb70b704727e016fd.png" src="../_images/a3b5d7bddfe47bcb9a4e7eead715ac521fd05151ba640f3fb70b704727e016fd.png" />
 </div>
 </div>
 <p>The warming is polar-amplified:  more warming at the poles than elsewhere.</p>
@@ -715,7 +715,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2b436a32d2cbfad81911472e47be3d633c0fa0ce8b8283eadf1593b6135910fb.png" src="../_images/2b436a32d2cbfad81911472e47be3d633c0fa0ce8b8283eadf1593b6135910fb.png" />
+<img alt="../_images/66bdc70b2a600aa387184f330c090a1d821c543386ebb5b0160e5f053036d0e1.png" src="../_images/66bdc70b2a600aa387184f330c090a1d821c543386ebb5b0160e5f053036d0e1.png" />
 </div>
 </div>
 <p>In the ice-free regime, there is no polar-amplified warming. A uniform radiative forcing produces a uniform warming.</p>
@@ -797,17 +797,17 @@ Total elapsed time is 5.000000000000044 years.
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Darray</span><span class="p">,</span> <span class="n">deltaT_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\Delta T$&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Darray</span><span class="p">,</span> <span class="n">Tmean_list</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\overline</span><span class="si">{T}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;D (W m$^{-2}$ K$^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Darray</span><span class="p">,</span> <span class="n">deltaT_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Delta T$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Darray</span><span class="p">,</span> <span class="n">Tmean_list</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\overline</span><span class="si">{T}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;D (W m$^{-2}$ °C$^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Darray</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Darray</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mf">0.2</span><span class="p">))</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature ($^\circ$C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="n">color1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>  <span class="n">color</span><span class="o">=</span><span class="n">color1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">tl</span> <span class="ow">in</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
     <span class="n">tl</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color1</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Darray</span><span class="p">,</span> <span class="n">Hmax_list</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color2</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Poleward heat transport across 35.5$^\circ$ (PW)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Poleward heat transport across 35.5° (PW)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color2</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">tl</span> <span class="ow">in</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">():</span>
     <span class="n">tl</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color2</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Effect of diffusivity on EBM with albedo feedback&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
@@ -816,25 +816,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\D&#39;
-&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\o&#39;
-&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
-&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\c&#39;
-&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\D&#39;
-&lt;&gt;:7: SyntaxWarning: invalid escape sequence &#39;\o&#39;
-&lt;&gt;:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
-&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\c&#39;
-/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:6: SyntaxWarning: invalid escape sequence &#39;\D&#39;
-  ax1.plot(Darray, deltaT_list, color=color1, label=&#39;$\Delta T$&#39;)
-/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:7: SyntaxWarning: invalid escape sequence &#39;\o&#39;
-  ax1.plot(Darray, Tmean_list, &#39;--&#39;, color=color1, label=&#39;$\overline{T}$&#39;)
-/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:10: SyntaxWarning: invalid escape sequence &#39;\c&#39;
-  ax1.set_ylabel(&#39;Temperature ($^\circ$C)&#39;, fontsize=14,  color=color1)
-/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_72701/1897083644.py:16: SyntaxWarning: invalid escape sequence &#39;\c&#39;
-  ax2.set_ylabel(&#39;Poleward heat transport across 35.5$^\circ$ (PW)&#39;, fontsize=14, color=color2)
-</pre></div>
-</div>
-<img alt="../_images/c6c6460bea6821511f259b931c687be7c1b4fef2887f3c8b9dad046b7f593bbe.png" src="../_images/c6c6460bea6821511f259b931c687be7c1b4fef2887f3c8b9dad046b7f593bbe.png" />
+<img alt="../_images/451a0f56e93a995be576e2852cdcf3819f0648bccd3a2fde8796cee3187fff9f.png" src="../_images/451a0f56e93a995be576e2852cdcf3819f0648bccd3a2fde8796cee3187fff9f.png" />
 </div>
 </div>
 <p>Discuss!</p>
@@ -939,12 +921,14 @@ Total elapsed time is 9.999999999999863 years.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m2</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">m2</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">m1</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta T_s$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8a5238bfda0b490259fc29bf41fdf9b2e11358e2a327c4819f9d0735b1d3131e.png" src="../_images/8a5238bfda0b490259fc29bf41fdf9b2e11358e2a327c4819f9d0735b1d3131e.png" />
+<img alt="../_images/b5736e345ec3a5f389a190bd846cb87522af4bf8e0d48ff2508ee784406d5a44.png" src="../_images/b5736e345ec3a5f389a190bd846cb87522af4bf8e0d48ff2508ee784406d5a44.png" />
 </div>
 </div>
 <p>The warming effects of our point source are felt <strong>at all latitudes</strong> but the effects decay away from the heat source.</p>
@@ -981,15 +965,17 @@ Total elapsed time is 9.999999999999863 years.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m4</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">m4</span><span class="o">.</span><span class="n">Ts</span> <span class="o">-</span> <span class="n">m3</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta T_s$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d975de768502e569beba78cf57f1a68fe715a6acb4a8ca3f2ce957377c7d4be4.png" src="../_images/d975de768502e569beba78cf57f1a68fe715a6acb4a8ca3f2ce957377c7d4be4.png" />
+<img alt="../_images/1efd9aa333785ec322e86ebc4c48817a508252a2a84476cec6c4ec5e96dda814.png" src="../_images/1efd9aa333785ec322e86ebc4c48817a508252a2a84476cec6c4ec5e96dda814.png" />
 </div>
 </div>
-<p>Now the maximum warming <strong>does not coincide with the heat source at 45º</strong>!</p>
+<p>Now the maximum warming <strong>does not coincide with the heat source at 45°</strong>!</p>
 <p>Our heat source has led to melting of snow and ice, which induces an additional heat source in the high northern latitudes.</p>
 <p><strong>Heat transport communicates the external warming to the ice cap, and also commuicates the increased shortwave absorption due to ice melt globally!</strong></p>
 </section>

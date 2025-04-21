@@ -627,7 +627,7 @@ Total elapsed time is 5.000000000000044 years.
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">my_ticks</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (degC)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">lat</span><span class="p">,</span> <span class="n">ASRequil</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;equil&#39;</span><span class="p">)</span> 
@@ -645,7 +645,7 @@ Total elapsed time is 5.000000000000044 years.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ASR (W m$^{-2}$)&#39;)
 </pre></div>
 </div>
-<img alt="../_images/e69326e19f77a9e4d3494560ec8f470279fe34369a66aa4fd33972001d2ed708.png" src="../_images/e69326e19f77a9e4d3494560ec8f470279fe34369a66aa4fd33972001d2ed708.png" />
+<img alt="../_images/e35c94665f6fbad855297e9bbe9ae75b4cf0f3bdc6b362fa13fee3fa82f9350d.png" src="../_images/e35c94665f6fbad855297e9bbe9ae75b4cf0f3bdc6b362fa13fee3fa82f9350d.png" />
 </div>
 </div>
 <p>So there is less absorbed shortwave now, because of the increased albedo. The global mean difference is:</p>
@@ -698,11 +698,16 @@ Total elapsed time is 5.000000000000044 years.
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">model1</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">model1</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/761e08acb1e90c689d17512723ca77076b8766d291142d8e69e8ce9744b84501.png" src="../_images/761e08acb1e90c689d17512723ca77076b8766d291142d8e69e8ce9744b84501.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Latitude&#39;)
+</pre></div>
+</div>
+<img alt="../_images/2bec42731507fc68c467acd4dec246a357f514c5ac7404651174490c80cff3c7.png" src="../_images/2bec42731507fc68c467acd4dec246a357f514c5ac7404651174490c80cff3c7.png" />
 </div>
 </div>
 <p>Temperature drifts back towards equilibrium, as we expected!</p>
@@ -740,11 +745,16 @@ Total elapsed time is 5.000000000000044 years.
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
     <span class="n">model1</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">model1</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/690117bc5a38e4d2e03f0751f6a294816b4ae0eaa9d90d3c7cec00feeacb6dc2.png" src="../_images/690117bc5a38e4d2e03f0751f6a294816b4ae0eaa9d90d3c7cec00feeacb6dc2.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Latitude&#39;)
+</pre></div>
+</div>
+<img alt="../_images/52d0ab0f57b84b71511a33fc6ccdd59b6978c53754658bf6244b3c2e20e8fe19.png" src="../_images/52d0ab0f57b84b71511a33fc6ccdd59b6978c53754658bf6244b3c2e20e8fe19.png" />
 </div>
 </div>
 <p>Something <strong>very different</strong> happened! The climate drifted towards an entirely different equilibrium state, in which the entire planet is cold and ice-covered.</p>
@@ -863,7 +873,7 @@ Total elapsed time is 5.000000000000044 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cc43238c83024f3217da11347be705da6ae44f7fe357e9412fa9ec29f912896d.png" src="../_images/cc43238c83024f3217da11347be705da6ae44f7fe357e9412fa9ec29f912896d.png" />
+<img alt="../_images/4015513a37f6e2523b85cbf3369b5999ff1538f50f225ddd6f6c806d9189a4b2.png" src="../_images/4015513a37f6e2523b85cbf3369b5999ff1538f50f225ddd6f6c806d9189a4b2.png" />
 </div>
 </div>
 <p>There are actually up to 3 different climates possible for a given value of <span class="math notranslate nohighlight">\(S_0\)</span>!</p>
@@ -879,7 +889,7 @@ Total elapsed time is 5.000000000000044 years.
 <span class="n">model4</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1830.</span>
 <span class="n">model4</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model4</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">my_ticks</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The ice edge is at &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">icelat</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; degrees latitude.&#39;</span> <span class="p">)</span>
 </pre></div>
@@ -891,7 +901,7 @@ Total elapsed time is 4044.99999997769 years.
 The ice edge is at [-0.  0.] degrees latitude.
 </pre></div>
 </div>
-<img alt="../_images/c3095d42171aeb9276e44063f62b0d1f81d704d9920fe4f9b17165df005ab2db.png" src="../_images/c3095d42171aeb9276e44063f62b0d1f81d704d9920fe4f9b17165df005ab2db.png" />
+<img alt="../_images/f7730eb6d911856b9d9adde29d12323160922eac88d3a4adb3eee2e8c11b2b3b.png" src="../_images/f7730eb6d911856b9d9adde29d12323160922eac88d3a4adb3eee2e8c11b2b3b.png" />
 </div>
 </div>
 <p>Still a Snowball… but just barely! The temperature at the equator is just below the threshold.</p>
@@ -902,7 +912,7 @@ The ice edge is at [-0.  0.] degrees latitude.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model4</span><span class="o">.</span><span class="n">subprocess</span><span class="p">[</span><span class="s1">&#39;insolation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">S0</span> <span class="o">=</span> <span class="mf">1840.</span>
 <span class="n">model4</span><span class="o">.</span><span class="n">integrate_years</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model4</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span> <span class="n">model4</span><span class="o">.</span><span class="n">Ts</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Temperature (°C)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">my_ticks</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -912,7 +922,7 @@ The ice edge is at [-0.  0.] degrees latitude.
 Total elapsed time is 4054.999999977441 years.
 </pre></div>
 </div>
-<img alt="../_images/c28528b9868711cffd4cf6ccc276503abf118567dc52309ee2690b712920eb7d.png" src="../_images/c28528b9868711cffd4cf6ccc276503abf118567dc52309ee2690b712920eb7d.png" />
+<img alt="../_images/38bd37fb80c1fcb10bb5fc9223d6b1fb5904f79363c2a60c9234e0c7df73a75b.png" src="../_images/38bd37fb80c1fcb10bb5fc9223d6b1fb5904f79363c2a60c9234e0c7df73a75b.png" />
 </div>
 </div>
 <p>Suddenly the climate looks very very different again! The global mean temperature is</p>
@@ -970,7 +980,7 @@ Total elapsed time is 4054.999999977441 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b5894ddff93d21c82e16f12ec7f2fa968e709d2ca6a7dd37c28b2c59c4ce7cd7.png" src="../_images/b5894ddff93d21c82e16f12ec7f2fa968e709d2ca6a7dd37c28b2c59c4ce7cd7.png" />
+<img alt="../_images/3500c1584b06296dba80f9860745772de4f56276e7df394614aded26891a81f9.png" src="../_images/3500c1584b06296dba80f9860745772de4f56276e7df394614aded26891a81f9.png" />
 </div>
 </div>
 <p>The upshot:</p>
