@@ -535,12 +535,11 @@ document.write(`
 <section id="the-surface-energy-budget-in-cesm-simulations">
 <h2>2. The surface energy budget in CESM simulations<a class="headerlink" href="#the-surface-energy-budget-in-cesm-simulations" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
-<p>We will examine the surface budget in the CESM slab ocean simulations. The advantage of looking at surface fluxes in a model rather than observations is that the model fluxes are completely consistent with the model climate, so that the net flux <span class="math notranslate nohighlight">\(F_S\)</span> will be a meaningful measure of the heat storage in the system.</p>
-<p>The model also gives us an opportunity to look at how the surface budget reponds to global warming under a doubling of CO<span class="math notranslate nohighlight">\(_2\)</span>.</p>
+<p>We will examine the surface budget in our fully coupled CESM simulations. The advantage of looking at surface fluxes in a model rather than observations is that the model fluxes are completely consistent with the model climate, so that the net flux <span class="math notranslate nohighlight">\(F_S\)</span> will be a meaningful measure of the heat storage in the system.</p>
+<p>The model also gives us an opportunity to look at how the surface budget reponds to global warming under a transient increase in CO<span class="math notranslate nohighlight">\(_2\)</span>.</p>
 <section id="first-load-the-data">
 <h3>First, load the data<a class="headerlink" href="#first-load-the-data" title="Link to this heading">#</a></h3>
-<p>We’ll use some of the same simulations we worked with in the lecture on the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html">Transient and Equilibrium Response of the CESM</a> to CO2 forcing.</p>
-<p>However, unlike in that lecture, here we will use output files that have already been time-averaged to represent seasonal climatologies of the equilibrium states before and after adding the CO<span class="math notranslate nohighlight">\(_2\)</span>.</p>
+<p>We’ll use the same simulations we worked with in the lecture on the <a class="reference external" href="https://brian-rose.github.io/ClimateLaboratoryBook/courseware/transient-cesm.html">Transient and Equilibrium Response of the CESM</a> to CO2 forcing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -721,10 +720,10 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
 <li><p>This indicates that the model has reached quasi-equilibrium. Non-zero changes in <span class="math notranslate nohighlight">\(F_S\)</span> would indicate either</p>
 <ul>
 <li><p>heat storage below the surface</p></li>
-<li><p>changes in ocean heat transport (not permitted in a slab ocean model).</p></li>
+<li><p>changes in ocean heat transport</p></li>
 </ul>
 </li>
-<li><p>Non-zero changes are found in areas where the sea ice cover is changing in the model.</p></li>
+<li><p>We can see the dominant regions of ocean heat uptake in the North Atlantic as well as the Southern Ocean showing up as negative anomalies in <span class="math notranslate nohighlight">\(F_S\)</span> in the right hand plot.</p></li>
 </ul>
 </section>
 <section id="variation-of-energy-balance-components-with-latitude">
@@ -739,11 +738,14 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Components of ANNUAL surface energy budget (+ up) - CESM control&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Anomaly after CO2 doubling&#39;</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W m$^{-2}$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e56c4f30d4e55c88fac1afc3b447d41e0ab818468b7e2dc40962cb29a0b474db.png" src="../_images/e56c4f30d4e55c88fac1afc3b447d41e0ab818468b7e2dc40962cb29a0b474db.png" />
+<img alt="../_images/c0b97e9183a9ae8412a441ed69420b8d37ce646a7aa84ab59722714eed1eefba.png" src="../_images/c0b97e9183a9ae8412a441ed69420b8d37ce646a7aa84ab59722714eed1eefba.png" />
 </div>
 </div>
 <p>In these graphs, the curve labeled “Net” is the net flux <span class="math notranslate nohighlight">\(F_S\)</span>. It is just the zonal average of the maps from the previous figure, and shows the ocean heat uptake at the equator and release in mid- to high latitudes.</p>
@@ -799,11 +801,13 @@ Attempting to open the dataset  http://thredds.atmos.albany.edu:8080/thredds/dod
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;W m$^{-2}$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bcc0ae20107161ea5456aae9dc0cbe15004915649a379232bf8fb382eafdd0a7.png" src="../_images/bcc0ae20107161ea5456aae9dc0cbe15004915649a379232bf8fb382eafdd0a7.png" />
+<img alt="../_images/c9b38e0a0203dacb676f7f11f4d5490ff517ffe1317acb604589d5789798d69c.png" src="../_images/c9b38e0a0203dacb676f7f11f4d5490ff517ffe1317acb604589d5789798d69c.png" />
 </div>
 </div>
 <p>Seasonally, the dominant balance by far is between solar radiation and heat storage!</p>
