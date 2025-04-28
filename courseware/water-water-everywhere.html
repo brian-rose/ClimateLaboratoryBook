@@ -660,7 +660,7 @@ Radiative-Convective-Diffusive Model: &lt;class &#39;climlab.process.time_depend
    Convection: &lt;class &#39;climlab.convection.convadj.ConvectiveAdjustment&#39;&gt;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/new-climlab-courseware/lib/python3.13/site-packages/climlab/radiation/radiation.py:153: UserWarning: Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/br546577/miniconda3/envs/climlab-courseware/lib/python3.13/site-packages/climlab/radiation/radiation.py:153: UserWarning: Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.
   warnings.warn(&#39;Some grid points are beyond the bounds of the ozone file. Ozone values will be extrapolated.&#39;)
 </pre></div>
 </div>
@@ -861,7 +861,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 0.84 K.
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_85353/3339827933.py:33: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_7864/3339827933.py:33: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
   print (&#39;The global mean surface temperature anomaly is %0.2f K.&#39;
 </pre></div>
 </div>
@@ -902,7 +902,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the climatologies from the CAM4 aquaplanet runs</span>
 <span class="n">datapath</span> <span class="o">=</span> <span class="s2">&quot;http://thredds.atmos.albany.edu:8080/thredds/dodsC/CESMA/&quot;</span>
 <span class="n">ctrl</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">datapath</span> <span class="o">+</span> <span class="s2">&quot;QAqu_ctrl/clim/QAqu_ctrl.cam.h0.clim.nc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-<span class="n">halfEvap</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">datapath</span> <span class="o">+</span> <span class="s2">&quot;QAqu_halfEvap/clim/QAqu_halfEvap.cam.h0.clim.nc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">halfEvap</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">datapath</span> <span class="o">+</span> <span class="s2">&quot;QAqu_halfEvap_old/clim/QAqu_halfEvap.cam2.h0.clim.nc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -940,10 +940,10 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 4.94 K.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The global mean surface temperature anomaly is 4.38 K.
 </pre></div>
 </div>
-<img alt="../_images/bce0d7d6cce53806a8f4e948b63e9c96f535ededb0776bde51339cac95c8a49a.png" src="../_images/bce0d7d6cce53806a8f4e948b63e9c96f535ededb0776bde51339cac95c8a49a.png" />
+<img alt="../_images/bf44aac9b0170de4e1e9c23f22c0488af1575d1702a673232aa24cb1e29ef591.png" src="../_images/bf44aac9b0170de4e1e9c23f22c0488af1575d1702a673232aa24cb1e29ef591.png" />
 </div>
 </div>
 <p>In this model, reducing the evaporation efficiency leads to a <strong>much warmer climate</strong>.  The largest warming occurs in mid-latitudes. The warming is <strong>not</strong> limited to the surface but in fact extends deeply through the troposphere.</p>
@@ -1030,7 +1030,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0534c7141557528facd85d673d9dfce5bc0f243b763111b479cb4f578df4dae7.png" src="../_images/0534c7141557528facd85d673d9dfce5bc0f243b763111b479cb4f578df4dae7.png" />
+<img alt="../_images/c9fd0a79eff879557799b88d2c8627e31567a7accb67408f0c8f67a79f944664.png" src="../_images/c9fd0a79eff879557799b88d2c8627e31567a7accb67408f0c8f67a79f944664.png" />
 </div>
 </div>
 <p>Dashed lines are <strong>clear-sky</strong> radiation anomalies.</p>
@@ -1074,7 +1074,7 @@ Total elapsed time is 9.993368783782378 years.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f5ff0fbb234e536817a5247f57d74685904124c49bb5e43b22e4136e3bd0ca59.png" src="../_images/f5ff0fbb234e536817a5247f57d74685904124c49bb5e43b22e4136e3bd0ca59.png" />
+<img alt="../_images/ef23fc6c068d9614597b78626167d42ba0d826168c6f4123bcbe83912adda3a2.png" src="../_images/ef23fc6c068d9614597b78626167d42ba0d826168c6f4123bcbe83912adda3a2.png" />
 </div>
 </div>
 </section>
@@ -1106,7 +1106,7 @@ Total elapsed time is 9.993368783782378 years.
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Latitude&#39;)
 </pre></div>
 </div>
-<img alt="../_images/a98f0b112a56643212c99412a32cc379e9ee7139eb7f967f9e2aae730a0818a1.png" src="../_images/a98f0b112a56643212c99412a32cc379e9ee7139eb7f967f9e2aae730a0818a1.png" />
+<img alt="../_images/70231dc3f86843c891048efb29f8a46e466fabc5e160b279d4cb469054433357.png" src="../_images/70231dc3f86843c891048efb29f8a46e466fabc5e160b279d4cb469054433357.png" />
 </div>
 </div>
 <hr class="docutils" />
