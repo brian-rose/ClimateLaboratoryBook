@@ -622,13 +622,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_73623/797907564.py:14: RuntimeWarning: invalid value encountered in arccos
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_1048/797907564.py:14: RuntimeWarning: invalid value encountered in arccos
   arccos(-tan(phi)*tan(delta)),
-/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_73623/797907564.py:23: RuntimeWarning: invalid value encountered in divide
+/var/folders/dl/j7hb106d36n501mrm8j646bxpf4y1c/T/ipykernel_1048/797907564.py:23: RuntimeWarning: invalid value encountered in divide
   return numerator / denominator / 2
 </pre></div>
 </div>
-<img alt="../_images/86cf7b817b3bb62fa47b13d33a4455aa98bff278b0cfa5612693101ac5fbf54b.png" src="../_images/86cf7b817b3bb62fa47b13d33a4455aa98bff278b0cfa5612693101ac5fbf54b.png" />
+<img alt="../_images/da49fc9bbe3de830401c745f0e6718ef32c9aab845522229542eb88b0453bae0.png" src="../_images/da49fc9bbe3de830401c745f0e6718ef32c9aab845522229542eb88b0453bae0.png" />
 </div>
 </div>
 <p><em>The figure above reproduces Figure 2.8 from <span id="id4">[<a class="reference internal" href="../references.html#id16" title="Dennis L. Hartmann. Global Physical Climatology. Volume 56 of International Geophysics Series. Academic Press, San Diego, 1994.">Hartmann, 1994</a>]</span>.</em></p>
@@ -816,7 +816,7 @@ daily_insolation(
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Daily average insolation on March 21&#39;)
 </pre></div>
 </div>
-<img alt="../_images/78d4f4a17e66b03aeed74e681998f38c48f0f515bb88340c1ea9c26f2b84be92.png" src="../_images/78d4f4a17e66b03aeed74e681998f38c48f0f515bb88340c1ea9c26f2b84be92.png" />
+<img alt="../_images/74675901fe5664cd9ad387659bc5deed5f8e4910b32560c137da6d708e03e8d8.png" src="../_images/74675901fe5664cd9ad387659bc5deed5f8e4910b32560c137da6d708e03e8d8.png" />
 </div>
 </div>
 </section>
@@ -853,7 +853,7 @@ daily_insolation(
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span> <span class="n">days</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">600.</span><span class="p">,</span> <span class="mf">50.</span><span class="p">)</span> <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.0f</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Days since January 1&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Latitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span> <span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Daily average insolation&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span> <span class="p">)</span>
@@ -862,10 +862,10 @@ daily_insolation(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x175a0e990&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.contour.QuadContourSet at 0x168e18690&gt;
 </pre></div>
 </div>
-<img alt="../_images/fe5975e2aabfa4df487c27177c63e8513d196d40c52a02162c1d0e0359437e35.png" src="../_images/fe5975e2aabfa4df487c27177c63e8513d196d40c52a02162c1d0e0359437e35.png" />
+<img alt="../_images/f12ec40ecf415e632a2cffc7c959b1da9e8590dad6eebb80c2da61daaeafa551.png" src="../_images/f12ec40ecf415e632a2cffc7c959b1da9e8590dad6eebb80c2da61daaeafa551.png" />
 </div>
 </div>
 <section id="time-and-space-averages">
@@ -901,7 +901,7 @@ daily_insolation(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/24ed20ebb87904e6715718c8a0b5b8a3830495dd1687bb025b98a21b738901e4.png" src="../_images/24ed20ebb87904e6715718c8a0b5b8a3830495dd1687bb025b98a21b738901e4.png" />
+<img alt="../_images/88c7f3f2e73b2e9703f6bbb6efbab54ab0bbc39d69f5ff38bf37fda2e2039601.png" src="../_images/88c7f3f2e73b2e9703f6bbb6efbab54ab0bbc39d69f5ff38bf37fda2e2039601.png" />
 </div>
 </div>
 </section>
