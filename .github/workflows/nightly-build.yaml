@@ -1,0 +1,17 @@
+name: nightly-build
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # Daily “At 00:00”
+
+jobs:
+  build:
+    if: ${{ github.repository_owner == 'brian-rose' }}
+    uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
+    with:
+      build_command: 'myst build --html'
+
+  deploy:
+    needs: build
+    uses: ProjectPythia/cookbook-actions/.github/workflows/deploy-book.yaml@main

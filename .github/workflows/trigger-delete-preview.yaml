@@ -1,0 +1,9 @@
+name: trigger-delete-preview
+
+on:
+  pull_request_target:
+    types: closed
+
+jobs:
+  delete:
+    uses: ProjectPythia/cookbook-actions/.github/workflows/delete-preview.yaml@main
