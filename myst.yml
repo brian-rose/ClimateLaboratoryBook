@@ -18,10 +18,12 @@ project:
   doi: https://doi.org/10.5281/zenodo.4265097
   github: brian-rose/ClimateLaboratoryBook
   bibliography:
-    - references.bib
+    - _bibliography/references.bib
+  license: CC-BY-4.0
+  open_access: true
   toc:
     - file: home.md
-    - title: Preamble
+    - file: preamble.md
       children:
         - file: about
         - file: who-for
@@ -85,3 +87,4 @@ site:
   options:
     logo: logo.png
   template: book-theme
+  
