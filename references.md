@@ -1,5 +1,4 @@
 # References
 
 ```{bibliography}
-:style: plain
 ```

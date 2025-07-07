@@ -1,20 +1,8 @@
 version: 1
+extends: authors.yml
 project:
   title: The Climate Laboratory
-  subtitle: A hands-on approach to climate physics and climate modeling
-  authors:
-    - name: Brian E. J. Rose
-      id: brian-rose
-      github: brian-rose
-      email: brose@albany.edu
-      orcid: 0000-0002-9961-3821
-      url: https://brian-rose.github.io
-      blueksy: brianejrose.bsky.social
-      linkedin: https://www.linkedin.com/in/brian-rose-37bb55106/
-      affiliations:
-        - name: University at Albany (SUNY)
-          department: Atmospheric and Environmental Sciences
-          url: https://www.albany.edu/daes
+  authors: brian-rose
   doi: https://doi.org/10.5281/zenodo.4265097
   github: brian-rose/ClimateLaboratoryBook
   bibliography:
@@ -25,66 +13,64 @@ project:
     - file: home.md
     - file: preamble.md
       children:
-        - file: about
-        - file: who-for
-        - file: how-to
-        - file: attribution
-    - title: Lectures
+        - file: about.md
+        - file: who-for.md
+        - file: how-to.md
+        - file: attribution.md
+    - file: lectures.md
       children:
-        - file: courseware/models-budgets-fun
-        - file: courseware/zero-dim-ebm
+        - file: courseware/models-budgets-fun.ipynb
+        - file: courseware/zero-dim-ebm.ipynb
           children:
-            - file: courseware/analytical-efolding
-        - file: courseware/climate-system-models
-        - file: courseware/introducing-cesm
-        - file: courseware/climlab-intro
-        - file: courseware/radiation
-        - file: courseware/elementary-greenhouse
+            - file: courseware/analytical-efolding.ipynb
+        - file: courseware/climate-system-models.ipynb
+        - file: courseware/introducing-cesm.ipynb
+        - file: courseware/climlab-intro.ipynb
+        - file: courseware/radiation.ipynb
+        - file: courseware/elementary-greenhouse.ipynb
           children:
-            - file: courseware/sympy-greenhouse
-        - file: courseware/grey-radiation-climlab
-        - file: courseware/radiative-transfer
-        - file: courseware/spectral-bands
-        - file: courseware/radeq
-        - file: courseware/rce
-        - file: courseware/sensitivity-feedback
+            - file: courseware/sympy-greenhouse.ipynb
+        - file: courseware/grey-radiation-climlab.ipynb
+        - file: courseware/radiative-transfer.ipynb
+        - file: courseware/spectral-bands.ipynb
+        - file: courseware/radeq.ipynb
+        - file: courseware/rce.ipynb
+        - file: courseware/sensitivity-feedback.ipynb
           children:
-            - file: courseware/advanced-sensitivity-feedback
-        - file: courseware/transient-cesm
-        - file: courseware/transient-toy
-        - file: courseware/clouds
-        - file: courseware/insolation
-        - file: courseware/orbital
-        - file: courseware/heat-transport
+            - file: courseware/advanced-sensitivity-feedback.ipynb
+        - file: courseware/transient-cesm.ipynb
+        - file: courseware/transient-toy.ipynb
+        - file: courseware/clouds.ipynb
+        - file: courseware/insolation.ipynb
+        - file: courseware/orbital.ipynb
+        - file: courseware/heat-transport.ipynb
           children:
-            - file: courseware/advanced-heat-transport
-        - file: courseware/one-dim-ebm
-        - file: courseware/seasonal-cycle
-        - file: courseware/numerical-diffusion
-        - file: courseware/albedo-snowball
+            - file: courseware/advanced-heat-transport.ipynb
+        - file: courseware/one-dim-ebm.ipynb
+        - file: courseware/seasonal-cycle.ipynb
+        - file: courseware/numerical-diffusion.ipynb
+        - file: courseware/albedo-snowball.ipynb
           children:
-            - file: courseware/advanced-albedo-feedback
-            - file: courseware/advanced-snowball-earth
-        - file: courseware/surface-energy-balance
-        - file: courseware/land-ocean-contrast
-        - file: courseware/water-water-everywhere
-    - title: Assignments
+            - file: courseware/advanced-albedo-feedback.ipynb
+            - file: courseware/advanced-snowball-earth.ipynb
+        - file: courseware/surface-energy-balance.ipynb
+        - file: courseware/land-ocean-contrast.ipynb
+        - file: courseware/water-water-everywhere.ipynb
+    - file: about-assignments.md
       children:
-        - file: about-assignments
-        - file: courseware/assignment-zero-dim-ebm
-        - file: courseware/assignment-cesm-control
+        - file: courseware/assignment-zero-dim-ebm.ipynb
+        - file: courseware/assignment-cesm-control.ipynb
           children:
-            - file: courseware/assignment-cesm-control-hints
-        - file: courseware/assignment-simple-clouds
-        - file: courseware/assignment-rcm-feedback
-        - file: courseware/assignment-cesm-climate-change
-        - file: courseware/assignment-insolation-orbit
+            - file: courseware/assignment-cesm-control-hints.ipynb
+        - file: courseware/assignment-simple-clouds.ipynb
+        - file: courseware/assignment-rcm-feedback.ipynb
+        - file: courseware/assignment-cesm-climate-change.ipynb
+        - file: courseware/assignment-insolation-orbit.ipynb
     - title: Postamble
       children:
-        - file: references
+        - file: references.md
 
 site:
   options:
     logo: logo.png
   template: book-theme
-  

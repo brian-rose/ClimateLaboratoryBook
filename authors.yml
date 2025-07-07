@@ -1,0 +1,18 @@
+version: 1
+project:
+  contributors:
+    - id: brian-rose
+      name: Brian E. J. Rose
+      github: brian-rose
+      email: 'brose@albany.edu'
+      orcid: 0000-0002-9961-3821
+      affiliations:
+        - id: UAlbany
+      url: https://brian-rose.github.io
+      bluesky: '@brianejrose.bsky.social'
+      linkedin: https://www.linkedin.com/in/brian-rose-37bb55106/
+  affiliations:
+    - id: UAlbany
+      name: University at Albany (SUNY)
+      department: Atmospheric and Environmental Sciences
+      url: https://www.albany.edu/daes
