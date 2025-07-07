@@ -9,6 +9,10 @@ project:
     - _bibliography/references.bib
   license: CC-BY-4.0
   open_access: true
+  jupyter:
+    binder:
+      url: https://binder.projectpythia.org
+      repo: brian-rose/ClimateLaboratoryBook
   toc:
     - file: home.md
     - file: preamble.md
