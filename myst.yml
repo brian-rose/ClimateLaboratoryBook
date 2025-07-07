@@ -13,7 +13,6 @@ project:
     - file: home.md
     - file: preamble.md
       children:
-        - file: about.md
         - file: who-for.md
         - file: how-to.md
         - file: attribution.md
