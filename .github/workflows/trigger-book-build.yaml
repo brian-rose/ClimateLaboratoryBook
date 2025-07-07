@@ -1,0 +1,11 @@
+name: trigger-book-build
+on:
+  pull_request:
+
+jobs:
+  build:
+    uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
+    with:
+      artifact_name: book-zip-${{ github.event.number }}
+      base_url: '/_preview/${{ github.event.number }}'
+      build_command: 'myst build --html'

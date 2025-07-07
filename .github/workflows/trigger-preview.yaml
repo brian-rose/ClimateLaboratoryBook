@@ -1,0 +1,27 @@
+name: trigger-preview
+on:
+  workflow_run:
+    workflows:
+      - trigger-book-build
+    types:
+      - requested
+      - completed
+
+jobs:
+  find-pull-request:
+    uses: ProjectPythia/cookbook-actions/.github/workflows/find-pull-request.yaml@main
+  deploy-preview:
+    needs: find-pull-request
+    if: github.event.workflow_run.conclusion == 'success'
+    uses: ProjectPythia/cookbook-actions/.github/workflows/deploy-book.yaml@main
+    with:
+      artifact_name: book-zip-${{ needs.find-pull-request.outputs.number }}
+      destination_dir: _preview/${{ needs.find-pull-request.outputs.number }} # deploy to subdirectory labeled with PR number
+      is_preview: "true"
+
+  preview-comment:
+    needs: find-pull-request
+    uses: ProjectPythia/cookbook-actions/.github/workflows/preview-comment.yaml@main
+    with:
+      pull_request_number: ${{ needs.find-pull-request.outputs.number }}
+      sha: ${{ needs.find-pull-request.outputs.sha }}s

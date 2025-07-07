@@ -1,4 +1,4 @@
-name: climlab-courseware
+name: climlab-courseware-myst
 channels:
   - conda-forge
 dependencies:
@@ -15,4 +15,6 @@ dependencies:
   - numba>=0.43.1  # older version will hang forever under python 3, https://github.com/climlab/climlab/issues/101
   - netcdf4
   - nc-time-axis
-  - jupyter-book  # needed to rebuild the book from source
+  - mystmd  # needed to rebuild the book from source
+  - jupyterlab-myst
+  - imagemagick

@@ -1,0 +1,97 @@
+version: 1
+extends: authors.yml
+project:
+  title: The Climate Laboratory
+  authors: brian-rose
+  doi: https://doi.org/10.5281/zenodo.4265097
+  github: brian-rose/ClimateLaboratoryBook
+  bibliography:
+    - _bibliography/references.bib
+  license: CC-BY-4.0
+  open_access: true
+  jupyter:
+    binder:
+      url: https://binder.projectpythia.org
+      repo: brian-rose/ClimateLaboratoryBook
+  abbreviations:
+    OLR: Outgoing Longwave Radiation
+    ASR: Absorbed Shortwave Radiation
+    ECS: Equilibrium Climate Sensitivity
+    TCR: Transient Climate Response
+    EBM: Energy Balance Model
+    GCM: Global Circulation Model
+    OGCM: Ocean Global Circulation Model
+    AGCM: Atmospheric Global Circulation Model
+    AOGCM: Atmosphere-Ocean Global Circulation Model
+    RCM: Radiative-Convective Model
+    RCE: Radiative-Convective Equilibrium
+    SCM: Single-Column Model
+    ESM: Earth System Model
+    CESM: Community Earth System Model
+    IPCC: Intergovernmental Panel on Climate Change
+    NCAR: National Center for Atmospheric Research
+  toc:
+    - file: home.md
+    - file: preamble.md
+      children:
+        - file: who-for.md
+        - file: how-to.md
+        - file: attribution.md
+    - file: lectures.md
+      children:
+        - file: courseware/models-budgets-fun.ipynb
+        - file: courseware/zero-dim-ebm.ipynb
+          children:
+            - file: courseware/analytical-efolding.ipynb
+        - file: courseware/climate-system-models.ipynb
+        - file: courseware/introducing-cesm.ipynb
+        - file: courseware/climlab-intro.ipynb
+        - file: courseware/radiation.ipynb
+        - file: courseware/elementary-greenhouse.ipynb
+          children:
+            - file: courseware/sympy-greenhouse.ipynb
+        - file: courseware/grey-radiation-climlab.ipynb
+        - file: courseware/radiative-transfer.ipynb
+        - file: courseware/spectral-bands.ipynb
+        - file: courseware/radeq.ipynb
+        - file: courseware/rce.ipynb
+        - file: courseware/sensitivity-feedback.ipynb
+          children:
+            - file: courseware/advanced-sensitivity-feedback.ipynb
+        - file: courseware/transient-cesm.ipynb
+        - file: courseware/transient-toy.ipynb
+        - file: courseware/clouds.ipynb
+        - file: courseware/insolation.ipynb
+        - file: courseware/orbital.ipynb
+        - file: courseware/heat-transport.ipynb
+          children:
+            - file: courseware/advanced-heat-transport.ipynb
+        - file: courseware/one-dim-ebm.ipynb
+        - file: courseware/seasonal-cycle.ipynb
+        - file: courseware/numerical-diffusion.ipynb
+        - file: courseware/albedo-snowball.ipynb
+          children:
+            - file: courseware/advanced-albedo-feedback.ipynb
+            - file: courseware/advanced-snowball-earth.ipynb
+        - file: courseware/surface-energy-balance.ipynb
+        - file: courseware/land-ocean-contrast.ipynb
+        - file: courseware/water-water-everywhere.ipynb
+    - file: about-assignments.md
+      children:
+        - file: courseware/assignment-zero-dim-ebm.ipynb
+        - file: courseware/assignment-cesm-control.ipynb
+          children:
+            - file: courseware/assignment-cesm-control-hints.ipynb
+        - file: courseware/assignment-simple-clouds.ipynb
+        - file: courseware/assignment-rcm-feedback.ipynb
+        - file: courseware/assignment-cesm-climate-change.ipynb
+        - file: courseware/assignment-insolation-orbit.ipynb
+    - title: Postamble
+      children:
+        - file: glossary.md
+        - file: references.md
+
+site:
+  options:
+    logo: logo.png
+  template: book-theme
