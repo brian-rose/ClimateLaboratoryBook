@@ -13,6 +13,11 @@ project:
     binder:
       url: https://binder.projectpythia.org
       repo: brian-rose/ClimateLaboratoryBook
+  abbreviations:
+    OLR: Outgoing Longwave Radiation
+    ASR: Absorbed Shortwave Radiation
+    ECS: Equilibrium Climate Sensitivity
+    TCR: Transient Climate Response
   toc:
     - file: home.md
     - file: preamble.md
