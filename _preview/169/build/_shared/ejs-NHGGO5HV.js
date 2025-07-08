@@ -1,1 +1,1 @@
-import{a}from"/_preview/169/build/_shared/chunk-OEGYZSRB.js";import"/_preview/169/build/_shared/chunk-3MZURCDM.js";import"/_preview/169/build/_shared/chunk-2NH4LW52.js";export default a();
+import{a}from"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-OEGYZSRB.js";import"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-3MZURCDM.js";import"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-2NH4LW52.js";export default a();

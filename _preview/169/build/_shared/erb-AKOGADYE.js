@@ -1,1 +1,1 @@
-import{a}from"/_preview/169/build/_shared/chunk-QMEMAHXE.js";import"/_preview/169/build/_shared/chunk-3MZURCDM.js";import"/_preview/169/build/_shared/chunk-5JQ5LNKE.js";import"/_preview/169/build/_shared/chunk-2NH4LW52.js";export default a();
+import{a}from"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-QMEMAHXE.js";import"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-3MZURCDM.js";import"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-5JQ5LNKE.js";import"/ClimateLaboratoryBook/_preview/169/build/_shared/chunk-2NH4LW52.js";export default a();
