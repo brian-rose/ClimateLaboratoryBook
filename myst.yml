@@ -23,10 +23,15 @@ project:
     OGCM: Ocean Global Circulation Model
     AGCM: Atmospheric Global Circulation Model
     AOGCM: Atmosphere-Ocean Global Circulation Model
+    CGCM: Coupled Global Circulation Model
+    RC: Radiative-Convective
     RCM: Radiative-Convective Model
     RCE: Radiative-Convective Equilibrium
     SCM: Single-Column Model
     ESM: Earth System Model
+    SD: Statistical-Dynamical
+    EMIC: Earth System Model of Intermediate Complexity
+    IAM: Integrated Asessment Model
     CESM: Community Earth System Model
     IPCC: Intergovernmental Panel on Climate Change
     NCAR: National Center for Atmospheric Research
