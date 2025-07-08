@@ -14,10 +14,37 @@ project:
       url: https://binder.projectpythia.org
       repo: brian-rose/ClimateLaboratoryBook
   abbreviations:
+    TOA: Top of Atmosphere
+    SW: Shortwave
+    LW: Longwave
+    UV: Ultraviolet
+    IR: Infrared
     OLR: Outgoing Longwave Radiation
     ASR: Absorbed Shortwave Radiation
+    CC: Clausius-Clapeyron
+    LWP: Liquid Water Path
+    CRE: Cloud Radiative Effect
     ECS: Equilibrium Climate Sensitivity
     TCR: Transient Climate Response
+    WV: Water Vapor
+    LR: Lapse Rate
+    LCL: Lifting Condensation Level
+    LGM: Last Glacial Maximum
+    MSE: Moist Static Energy
+    AHT: Atmospheric Heat Transport
+    OHT: Ocean Heat Transport
+    THT: Total Heat Transport
+    1D: One-dimensional
+    2D: Two-dimensional
+    3D: Three-dimensional
+    lat: latitude
+    lon: longitude
+    ppm: parts per million
+    ppmv: parts per million by volume
+    hPa: hectoPascals
+    Ma: Millions of years
+    LHS: Left hand side
+    RHS: Right hand side
     EBM: Energy Balance Model
     GCM: Global Circulation Model
     OGCM: Ocean Global Circulation Model
@@ -32,9 +59,26 @@ project:
     SD: Statistical-Dynamical
     EMIC: Earth System Model of Intermediate Complexity
     IAM: Integrated Asessment Model
+    SOM: Slab Ocean Model
     CESM: Community Earth System Model
+    CAM: Community Atmosphere Model
+    POP: Parallel Ocean Program
+    CLM: Community Land Model
+    CICE: Community Ice CodE
+    RRTMG: Rapid Radiative Transfer Model
+    ODE: Ordinary Differential Equation
+    PDE: Partial Differential Equation
+    FTCS: Forward Time, Centered Space
+    URL: Uniform Research Locator
+    CMIP: Coupled Model Intercomparison Project
     IPCC: Intergovernmental Panel on Climate Change
+    AR5: Fifth Assessment Report
+    AR6: Sixth Assessment Report
+    WG1: Working Group 1
     NCAR: National Center for Atmospheric Research
+    AMS: American Meteorological Society
+    NCEP: National Centers for Environmental Prediction
+
   toc:
     - file: index.md
     - file: preamble.md
