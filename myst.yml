@@ -31,12 +31,13 @@ project:
     IPCC: Intergovernmental Panel on Climate Change
     NCAR: National Center for Atmospheric Research
   toc:
-    - file: home.md
+    - file: index.md
     - file: preamble.md
       children:
         - file: who-for.md
         - file: how-to.md
         - file: attribution.md
+        - file: sequences.md
     - file: lectures.md
       children:
         - file: courseware/models-budgets-fun.ipynb
@@ -86,12 +87,11 @@ project:
         - file: courseware/assignment-rcm-feedback.ipynb
         - file: courseware/assignment-cesm-climate-change.ipynb
         - file: courseware/assignment-insolation-orbit.ipynb
-    - title: Postamble
-      children:
-        - file: glossary.md
-        - file: references.md
+    - file: glossary.md
+    - file: references.md
 
 site:
   options:
-    logo: logo.png
+    logo_text: The Climate Laboratory
+    folders: true
   template: book-theme
