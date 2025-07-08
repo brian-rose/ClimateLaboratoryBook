@@ -3,7 +3,7 @@
 :::{topic} Dedication
 This book is dedicated to my children, Eleanor and Annabel.
 
-*Minds full of knowledge, reason, and curiosity; hearts full of compassion and hope. That's how we navigate this troubled world.*
+*We navigate this troubled world with minds full of curiosity, reason, and compassion.*
 :::
 
 
