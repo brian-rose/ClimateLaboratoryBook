@@ -1,4 +1,4 @@
-name: climlab-courseware-myst
+name: climlab-courseware
 channels:
   - conda-forge
 dependencies:
