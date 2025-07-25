@@ -63,7 +63,7 @@ Anyone is welcome to suggest edits or improvements by opening pull requests on t
 [The book][book] is just the rendered html that results from running `jupyter-book build`. A new build is triggered on GitHub Actions whenever the sources are updated on the [github repository][repo], and the successful build is deployed to the `gh-pages` branch of the repo.
 
 
-[brian]: http://www.atmos.albany.edu/facstaff/brose/index.html
+[brian]: https://www.atmos.albany.edu/facstaff/brose/
 [env415]: http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/
 [atm623]: http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2019/
 [ualbany]: https://www.albany.edu

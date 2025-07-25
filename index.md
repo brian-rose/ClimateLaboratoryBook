@@ -28,7 +28,7 @@ The contents of this book are licensed for free and open consumption under the
 [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
 license.
 
-[brian]: http://www.atmos.albany.edu/facstaff/brose/index.html
+[brian]: https://www.atmos.albany.edu/facstaff/brose/
 [env415]: http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/
 [atm623]: http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2019/
 [ualbany]: https://www.albany.edu
