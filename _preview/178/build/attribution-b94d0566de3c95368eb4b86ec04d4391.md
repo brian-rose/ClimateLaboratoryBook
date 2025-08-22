@@ -12,7 +12,7 @@ is archived with a DOI:
 You can use this DOI to cite anything in the source code
 (including code and calculations in the notebooks that comprise each chapter).
 
-Alternatively, you can cite the text of individual chapters by linking directly to the URL,
+Alternatively, you can cite the text of individual chapters by linking directly to the URL with a date of access,
 for example
 
-> Rose, Brian E. J. (2020, November 9). *Insolation*, **The Climate Laboratory**, https://brian-rose.github.io/ClimateLaboratoryBook/courseware/insolation.html
+> Rose, Brian E. J. (2025, August 22). *Insolation*, **The Climate Laboratory**, https://brian-rose.github.io/ClimateLaboratoryBook/courseware/insolation.html
