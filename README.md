@@ -10,12 +10,12 @@
 
 ## About the book
 
-This book is powered by [JupyterBook][jupyterbook],
+This book is powered by [MyST Markdown][mystmd] and [JupyterBook 2][jupyterbook2],
 and aims to be all of the following:
 - **self-reproducing** *(most figures are self-generating in the notebooks)*
 - **free** and **open** *(permissive license, sources and content available through github)*
-- **interactive** *(integration with JupyterHub and Binder will allow readers to run and modify code examples)*
-- a **living document** *(content will continue to evolve, and collaboration is welcome)*
+- **interactive** *(integration with JupyterHub and Binder allows readers to run and modify code examples)*
+- a **living document** *(content continues to evolve, and collaboration is welcome)*
 
 The material is mostly based on lecture notes for
 [ENV 415: Climate Laboratory][env415] and [ATM 623: Climate Modeling][atm623]
@@ -45,33 +45,27 @@ This environment contains all dependencies for *both* building the book and runn
 
 To build a local copy of the book, do this from the source root
 ```
-jupyter-book build .
+myst start
 ```
 
-You will then find the built book in `_build/html/`, which you can open in a web browser e.g. with
-```
-open _build/html/index.html
-```
+Then point your web brower to http://localhost:3000 to find the built pages.
 
-Note that building the book creates the html from the `*.md` and `*.ipynb` sources, but does ***not*** re-run the notebooks. When building the book, we assume that all notebooks are already up-to-date!
-*(You can change this behavior by modifying the `execute_notebooks` flag in `_config.yml`, but beware that some of the notebooks take a very long time to execute.)*
+Note that building the book creates the web pages from the `*.md` and `*.ipynb` sources, but does ***not*** re-run the notebooks. When building the book, we assume that all notebooks are already up-to-date!
 
 Anyone is welcome to suggest edits or improvements by opening pull requests on the [github repository][repo]. If you are editing any code in a notebook, please make sure you execute the modified notebook cleanly before submitting the PR.
 
 ## How is the book published
 
-[The book][book] is just the rendered html that results from running `jupyter-book build`. A new build is triggered on GitHub Actions whenever the sources are updated on the [github repository][repo], and the successful build is deployed to the `gh-pages` branch of the repo.
+[The book][book] is just the rendered html that results from running `myst build --html`. A new build is triggered on GitHub Actions whenever the sources are updated on the [github repository][repo], and the successful build is deployed to the `gh-pages` branch of the repo.
 
 
 [brian]: https://www.atmos.albany.edu/facstaff/brose/
-[env415]: http://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2018/
-[atm623]: http://www.atmos.albany.edu/facstaff/brose/classes/ATM623_Spring2019/
+[env415]: https://www.atmos.albany.edu/facstaff/brose/classes/ENV415_Spring2022/
+[atm623]: https://brian-rose.github.io/atm623-spring2025/
 [ualbany]: https://www.albany.edu
-[about]: /about
-[jupyterbook]: https://jupyterbook.org
+[mystmd]: https://mystmd.org
+[jupyterbook2]: https://next.jupyterbook.org
 [climlab]: https://github.com/climlab/climlab
 [book]: https://brian-rose.github.io/ClimateLaboratoryBook/
 [repo]: https://github.com/brian-rose/ClimateLaboratoryBook
 [notebook]: https://jupyter-notebook.readthedocs.io/en/stable/
-[ghp-import]: https://github.com/c-w/ghp-import
-[jbook-publish]: https://jupyterbook.org/publish/gh-pages.html
