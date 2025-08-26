@@ -24,21 +24,20 @@ version of the notes, and will be able to save their work and pull in new update
 
 Here's what to do:
 
-- In a web browser, open this link to the JupyterHub: <https://lore.atmos.albany.edu:8000>
-This should bring you to a login screen. Use your standard UAlbany netid and password.
-- You should now see a JupyterHub screen showing your home space on the DAES linux system.
-- In a different browser window, navigate to the desired page of this book.
-- Find the "Rocket ship" icon at top right. Hover over the icon and you should see several buttons appear.
-- Click on the button that says `JupyterHub`.
-- There may be a brief delay while a local copy of the notes is made for you (or updated) on the server.
-- You should then see the notebook open and running live on the JupyterHub.
-- **IMPORTANT** you need to manually *change the kernel* before things will run properly:
+1. Navigate to the desired page of this book.
+2. Find the "Rocket ship" icon at top right. Click on it to reveal a drop-down menu.
+3. In the URL box, paste in this link to the JupyterHub: <https://lore.atmos.albany.edu:8000>
+4. Select "JupyterHub" as the provider type
+5. Click the "Launch" button
+6. If prompted to login, use your standard UAlbany netid and password.
+7. There may be a brief delay while a local copy of the notes is made for you (or updated) on the server. You should then see the notebook open and running live on the JupyterHub.
+8. **IMPORTANT** you need to manually *change the kernel* before things will run properly:
   - Find the `Kernel` menu
-  - Select `Kernel --> Change kernel --> Python 3 Jan. 2024 Environment`
-- You should then be able to run all the code without any trouble.
+  - Select `Kernel --> Change kernel --> Python 3 Jan. 2025 Environment`
+  - You should then be able to run all the code without any trouble.
 
 ```{note}
-Do this step every time! If you get errors trying to run any `import` statements, double check that you're using the `Python 3 Jan. 2024 Environment` kernel.
+Do this step every time! If you get errors trying to run any `import` statements, double check that you're using the `Python 3 Jan. 2025 Environment` kernel.
 ```
 
 *UAlbany users, please let me know if things don't seem to be working correctly.*
