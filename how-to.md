@@ -69,7 +69,7 @@ You will need the following:
 - Basic knowledge of [Jupyter notebooks][notebook]
 
 ```{note}
-A great learning resource for all these skills is [Pythia Foundations](https://foundations.projectpythia.org) [](https://doi.org/10.5281/zenodo.7884571). Check it out!
+Looking for a great geoscience-oriented learning resource for all these skills? Check out [Pythia Foundations](https://foundations.projectpythia.org) [(Rose et al. 2025)](https://doi.org/10.5281/zenodo.7884571)!
 ```
 
 The first step is to clone the [source repository for this book on github][repo].
