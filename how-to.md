@@ -68,6 +68,10 @@ You will need the following:
 - Basic knowledge of [version control with git](https://git-scm.com)
 - Basic knowledge of [Jupyter notebooks][notebook]
 
+```{note}
+Looking for a great geoscience-oriented learning resource for all these skills? Check out [Pythia Foundations](https://foundations.projectpythia.org) [(Rose et al. 2025)](https://doi.org/10.5281/zenodo.7884571)!
+```
+
 The first step is to clone the [source repository for this book on github][repo].
 
 Once you have the source repo, the following commands will create a self-contained
@@ -82,7 +86,7 @@ conda env create --file environment.yml
 conda activate climlab-courseware
 ```
 
-Then find all the Jupyter notebook `*.ipynb` files in `ClimateLaboratoryBook/content/courseware`
+Then find all the Jupyter notebook `*.ipynb` files in `ClimateLaboratoryBook/courseware`
 
 You may find it useful to do all your work in a separate git branch,
 and leave your `main` branch untouched so you can keep it up to date with
