@@ -32,9 +32,9 @@ Here's what to do:
 6. If prompted to login, use your standard UAlbany netid and password.
 7. There may be a brief delay while a local copy of the notes is made for you (or updated) on the server. You should then see the notebook open and running live on the JupyterHub.
 8. **IMPORTANT** you need to manually *change the kernel* before things will run properly:
-  - Find the `Kernel` menu
-  - Select `Kernel --> Change kernel --> Python 3 Jan. 2025 Environment`
-  - You should then be able to run all the code without any trouble.
+    - Find the `Kernel` menu
+    - Select `Kernel --> Change kernel --> Python 3 Jan. 2025 Environment`
+    - You should then be able to run all the code without any trouble.
 
 ```{note}
 Do this step every time! If you get errors trying to run any `import` statements, double check that you're using the `Python 3 Jan. 2025 Environment` kernel.
