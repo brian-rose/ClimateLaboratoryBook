@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Human Verification</title>
+    <style>
+        body {
+            font-family: "Arial";
+        }
+    </style>
+    <script type="text/javascript">
+    window.awsWafCookieDomainList = [];
+    window.gokuProps = {
+"key":"AQIDAHjcYu/GjX+QlghicBgQ/7bFaQZ+m5FKCMDnO+vTbNg96AEq3mxDdbNEc8ZNkK+cYGrxAAAAfjB8BgkqhkiG9w0BBwagbzBtAgEAMGgGCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMb2PkfSX6DY1hOZ55AgEQgDtMFccqBuZyS8U5HLyOL11rc5Ej/H43OezxHIpMtnZ4a8g5W1eTH/FOwjYL3UtEeIAZpU9sdUkplEknSQ==",
+          "iv":"D54rtADFAwAAA1vA",
+          "context":"3IemzPPMdYXaSey7ExU16wvCtiJUv3OZGBhGQUIR0A7TtHjAATsRkNK/8hVO2rkIBPkWlGu3mKS70ns2+lDQwIcg8+8SkttpbB2pDKlMidAVfZJ+sqbapQf/PfUEoJ6kQyZw6Mx6zDYTyFQB5iUq57k4X3T1Eg0/2TGfM/nhC8Zzz67gCdekpypTXM1GL1HN5ddunEia3pUcypYkJhvUKHBsXzPeIQMrQbBbALb/CWjBiEok5RnTpMeQ5IpJrvN7tSUsg9y26wursfXXQn/N8OIlCT6kw21GNkUg4TtJjfY82SXr7ct4JEJXXkjCaWppewmwf+tvVL48+bLag6F5nx4iBHh10U0ehxh6xdhYH0qN35Esf8O62t2V22KEEnGH3qdcPWjynTx4C+Nbn+i5ijBdtDppcDXGjMcrj9PaPZUhsnngutZ6lKFuCqEs3A4xtMQjZNHBsJnOeCWAn8pWDCz4lN+WHF6tpxD/FSjFnK7YG1mrJ+JXXY1L8dzWqQPyoF0PV+MQ+Tok2IcvwmCLnhW5t9McIuAnji4Y8DXveos/9C7Vxh2OGQGN/r/IwGzlCHKkZb3m6tobIf2Ft12zHSTHxH+8lXXBqWY8UWGubjwjwujOnf+ktWc2Jd10Nv7kqbSlftwV8GmvezFKowf51itJ1jfbLsEHammM+YENVcVJkIjzyIcHrOCT+GIBg0QoOyg/btcADexLG7lAbHNr/NosDmtdhn/tSkGv6pqiJyAOQuQguyZeMzQ8qDY4JePd6HdH"
+};
+    </script>
+    <script src="https://ac0c8b7050ff.23402c99.us-east-1.token.awswaf.com/ac0c8b7050ff/308ff3d1b0fe/3f61fdc949cd/challenge.js"></script>
+    <script src="https://ac0c8b7050ff.23402c99.us-east-1.captcha.awswaf.com/ac0c8b7050ff/308ff3d1b0fe/3f61fdc949cd/captcha.js"></script>
+</head>
+<body>
+    <div id="captcha-container"></div>
+    <script type="text/javascript">
+        AwsWafIntegration.saveReferrer();
+        window.addEventListener("load", function() {
+          const container = document.querySelector("#captcha-container");
+          CaptchaScript.renderCaptcha(container, async (voucher) => {
+              await ChallengeScript.submitCaptcha(voucher);
+              window.location.reload(true);
+          }
+      );
+    });
+    </script>
+    <noscript>
+        <h1>JavaScript is disabled</h1>
+        In order to continue, you need to verify that you're not a robot by solving a CAPTCHA puzzle.
+         The CAPTCHA puzzle requires JavaScript. Enable JavaScript and then reload the page.
+    </noscript>
+</body>
+</html>
