@@ -1,1 +1,0 @@
-import{a as e,b as r}from"/ClimateLaboratoryBook/build/_shared/chunk-7FGDXJSL.js";import"/ClimateLaboratoryBook/build/_shared/chunk-GEZIJWLJ.js";import"/ClimateLaboratoryBook/build/_shared/chunk-RAQ24GF6.js";export{e as ArchitectureModule,r as createArchitectureServices};
